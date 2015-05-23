@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AppCore.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self.window setBackgroundColor:RGBCOLOR(236, 236, 236)];
+    
+    [[UINavigationBar appearance] setBarTintColor:RGBCOLOR(255, 109, 63)];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:20]}];
+    
+    [[UITabBar appearance] setSelectedImageTintColor:RGBCOLOR(255, 109, 63)];
+    
     return YES;
 }
 
