@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CEE502F8-F1FA-4450-9598-A48A5D8F04F0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>XEEnglish</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F08B027816DEDAFE82E6091D397B56A7D6C7FFA0</key>
+		<string>github.com:witaiIOS/XEEnglish.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>XEEnglish.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F08B027816DEDAFE82E6091D397B56A7D6C7FFA0</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:witaiIOS/XEEnglish.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F08B027816DEDAFE82E6091D397B56A7D6C7FFA0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F08B027816DEDAFE82E6091D397B56A7D6C7FFA0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>XEEnglish</string>
+		</dict>
+	</array>
+</dict>
+</plist>

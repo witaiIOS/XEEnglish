@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
+		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		A6284CCF1B10592100EFF820 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6284CCE1B10592100EFF820 /* main.m */; };
 		A6284CD21B10592100EFF820 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6284CD11B10592100EFF820 /* AppDelegate.m */; };
 		A6284CD81B10592100EFF820 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6284CD61B10592100EFF820 /* Main.storyboard */; };
@@ -70,6 +72,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09D450AC1B10786800B39B4A /* MyAccountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTVC.h; sourceTree = "<group>"; };
+		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
+		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
+		09D450B01B1078AB00B39B4A /* BaseTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTVC.m; sourceTree = "<group>"; };
 		A6284CC91B10592100EFF820 /* XEEnglish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XEEnglish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6284CCD1B10592100EFF820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6284CCE1B10592100EFF820 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -439,6 +445,8 @@
 			children = (
 				A6284D651B105E6600EFF820 /* BaseVC.h */,
 				A6284D661B105E6600EFF820 /* BaseVC.m */,
+				09D450AF1B1078AB00B39B4A /* BaseTVC.h */,
+				09D450B01B1078AB00B39B4A /* BaseTVC.m */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -497,6 +505,8 @@
 			children = (
 				A6284D961B1066DE00EFF820 /* SettingVC.h */,
 				A6284D971B1066DE00EFF820 /* SettingVC.m */,
+				09D450AC1B10786800B39B4A /* MyAccountTVC.h */,
+				09D450AD1B10786800B39B4A /* MyAccountTVC.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -676,6 +686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6284D791B105F9500EFF820 /* UIFactory.m in Sources */,
+				09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */,
 				A6284D4B1B105E5600EFF820 /* AFURLRequestSerialization.m in Sources */,
 				A6284D4A1B105E5600EFF820 /* AFURLConnectionOperation.m in Sources */,
 				A6284D8F1B10668300EFF820 /* HomeVC.m in Sources */,
@@ -712,6 +723,7 @@
 				A6284D461B105E5600EFF820 /* AFHTTPRequestOperationManager.m in Sources */,
 				A6284D951B1066CC00EFF820 /* ActivityVC.m in Sources */,
 				A6284D481B105E5600EFF820 /* AFNetworkReachabilityManager.m in Sources */,
+				09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */,
 				A6284CCF1B10592100EFF820 /* main.m in Sources */,
 				A6284D5C1B105E5600EFF820 /* AFNetworkActivityIndicatorManager.m in Sources */,
 			);
@@ -902,6 +914,7 @@
 				A6284CEE1B10592100EFF820 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6284CEF1B10592100EFF820 /* Build configuration list for PBXNativeTarget "XEEnglishTests" */ = {
 			isa = XCConfigurationList;
@@ -910,6 +923,7 @@
 				A6284CF11B10592100EFF820 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
