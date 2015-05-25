@@ -1,23 +1,20 @@
 //
-//  LoginVC.m
+//  PhoneLoginVC.m
 //  XEEnglish
 //
-//  Created by MacAir2 on 15/5/23.
+//  Created by houjing on 15/5/25.
 //  Copyright (c) 2015年 lixiang. All rights reserved.
 //
 
-#import "LoginVC.h"
 #import "PhoneLoginVC.h"
 
-@interface LoginVC ()<UITextFieldDelegate>
+@interface PhoneLoginVC ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
 
-@property (strong, nonatomic) UIScrollView *myScrollView;
-
 @end
 
-@implementation LoginVC
+@implementation PhoneLoginVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,16 +24,16 @@
 
 - (void)initTitleBar
 {
-    self.title = @"登陆";
-    
-    UIButton * leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setFrame:CGRectMake(0, 0, self.view.frame.size.width/8, 20)];
+    self.title = @"手机注册";
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftBtn setFrame:CGRectMake(0, 0, kScreenWidth/8, 40)];
     [leftBtn setTitle:@"" forState:UIControlStateNormal];
     [leftBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [leftBtn addTarget:self action:@selector(leftClick) forControlEvents:UIControlEventTouchUpInside];
     [leftBtn setBackgroundImage:[UIImage imageNamed:@"nav_backButtonBg.png"] forState:UIControlStateNormal];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithCustomView:leftBtn];
 }
+
 - (void)initUI
 {
     self.phoneTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"s_phone.png"]];
@@ -46,41 +43,28 @@
     self.codeTextField.leftViewMode = UITextFieldViewModeAlways;
 }
 
-
-#pragma mark - My Action
-
 - (void)leftClick
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
-- (IBAction)loginAction:(id)sender {
-    
-    
+
+
+- (IBAction)getCodeAction:(id)sender {
 }
 
-- (IBAction)forgetPasswordAction:(id)sender {
+
+- (IBAction)nextAction:(id)sender {
 }
 
-- (IBAction)phoneResigerAction:(id)sender {
-    PhoneLoginVC *phoneLoginVC = [[PhoneLoginVC alloc] init];
-    
-    UINavigationController *phoneLoginNC = [[UINavigationController alloc] initWithRootViewController:phoneLoginVC];
-    [self presentViewController:phoneLoginNC animated:YES completion:nil];
-    
-}
 
-#pragma mark - UITextField Delegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [self.phoneTextField resignFirstResponder];
-    [self.codeTextField resignFirstResponder];
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
     
     return YES;
-}
 
+}
 
 
 - (void)didReceiveMemoryWarning {

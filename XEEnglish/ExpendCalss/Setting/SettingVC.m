@@ -44,15 +44,15 @@
 #pragma mark - Set tableView
 - (UIView *)tableHeaderView{
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 148)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 148)];
     view.backgroundColor = [UIColor clearColor];
     
-    UIImageView *bakeGroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, 128)];
+    UIImageView *bakeGroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 128)];
     [bakeGroundImage setImage:[UIImage imageNamed:@"mybgpic"]];
     [view addSubview:bakeGroundImage];
     
     UIImageView *phoneImage = [[UIImageView alloc] initWithFrame:CGRectMake(40, 50, 31, 34)];
-    [phoneImage setImage:[UIImage imageNamed:@"people_ayb"]];
+    [phoneImage setImage:[UIImage imageNamed:@"people_ayb.png"]];
     [view addSubview: phoneImage];
     
     self.loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
