@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		090604701B140A5E0038BAC4 /* FeedBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906046E1B140A5E0038BAC4 /* FeedBackVC.m */; };
 		090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0906046F1B140A5E0038BAC4 /* FeedBackVC.xib */; };
+		090604751B14174F0038BAC4 /* MoreSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 090604741B14174F0038BAC4 /* MoreSettingVC.m */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */; };
@@ -91,6 +92,8 @@
 		0906046D1B140A5E0038BAC4 /* FeedBackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBackVC.h; sourceTree = "<group>"; };
 		0906046E1B140A5E0038BAC4 /* FeedBackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBackVC.m; sourceTree = "<group>"; };
 		0906046F1B140A5E0038BAC4 /* FeedBackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedBackVC.xib; sourceTree = "<group>"; };
+		090604731B14174F0038BAC4 /* MoreSettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreSettingVC.h; sourceTree = "<group>"; };
+		090604741B14174F0038BAC4 /* MoreSettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreSettingVC.m; sourceTree = "<group>"; };
 		09D450AC1B10786800B39B4A /* MyAccountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTVC.h; sourceTree = "<group>"; };
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
@@ -231,6 +234,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090604721B14171C0038BAC4 /* MoreSetting */ = {
+			isa = PBXGroup;
+			children = (
+				090604731B14174F0038BAC4 /* MoreSettingVC.h */,
+				090604741B14174F0038BAC4 /* MoreSettingVC.m */,
+			);
+			path = MoreSetting;
+			sourceTree = "<group>";
+		};
 		09DB2DB61B1322800078AAF5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -601,6 +613,7 @@
 				0906046D1B140A5E0038BAC4 /* FeedBackVC.h */,
 				0906046E1B140A5E0038BAC4 /* FeedBackVC.m */,
 				0906046F1B140A5E0038BAC4 /* FeedBackVC.xib */,
+				090604721B14171C0038BAC4 /* MoreSetting */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -771,6 +784,7 @@
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,
 				A6284D591B105E5600EFF820 /* UIScrollView+MJExtension.m in Sources */,
 				A6284D981B1066DE00EFF820 /* SettingVC.m in Sources */,
+				090604751B14174F0038BAC4 /* MoreSettingVC.m in Sources */,
 				A6284D4D1B105E5600EFF820 /* AFURLSessionManager.m in Sources */,
 				A6284D581B105E5600EFF820 /* MJRefreshHeaderView.m in Sources */,
 				A6284D5D1B105E5600EFF820 /* UIActivityIndicatorView+AFNetworking.m in Sources */,

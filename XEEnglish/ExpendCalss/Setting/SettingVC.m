@@ -13,6 +13,8 @@
 
 #import "FeedBackVC.h"
 
+#import "MoreSettingVC.h"
+
 @interface SettingVC ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *loginBtn;
@@ -229,7 +231,10 @@
             {}
                 break;
             case 3:
-            {}
+            {
+                MoreSettingVC *vc = [[MoreSettingVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
                 break;
                 
             default:
