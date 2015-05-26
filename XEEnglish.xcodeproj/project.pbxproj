@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090604701B140A5E0038BAC4 /* FeedBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906046E1B140A5E0038BAC4 /* FeedBackVC.m */; };
+		090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0906046F1B140A5E0038BAC4 /* FeedBackVC.xib */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */; };
@@ -86,6 +88,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0906046D1B140A5E0038BAC4 /* FeedBackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBackVC.h; sourceTree = "<group>"; };
+		0906046E1B140A5E0038BAC4 /* FeedBackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBackVC.m; sourceTree = "<group>"; };
+		0906046F1B140A5E0038BAC4 /* FeedBackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedBackVC.xib; sourceTree = "<group>"; };
 		09D450AC1B10786800B39B4A /* MyAccountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTVC.h; sourceTree = "<group>"; };
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
@@ -593,6 +598,9 @@
 				A6284D971B1066DE00EFF820 /* SettingVC.m */,
 				09D450AC1B10786800B39B4A /* MyAccountTVC.h */,
 				09D450AD1B10786800B39B4A /* MyAccountTVC.m */,
+				0906046D1B140A5E0038BAC4 /* FeedBackVC.h */,
+				0906046E1B140A5E0038BAC4 /* FeedBackVC.m */,
+				0906046F1B140A5E0038BAC4 /* FeedBackVC.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -720,6 +728,7 @@
 				09DB2DC91B1322A30078AAF5 /* people_ayb.png in Resources */,
 				09DB2DBF1B13228B0078AAF5 /* join_06.png in Resources */,
 				A6284CDA1B10592100EFF820 /* Images.xcassets in Resources */,
+				090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */,
 				09DB2DBE1B13228B0078AAF5 /* join_05.png in Resources */,
 				09DB2DC81B1322A30078AAF5 /* mybgpic@2x.png in Resources */,
 				09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */,
@@ -783,6 +792,7 @@
 				09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */,
 				A6284CCF1B10592100EFF820 /* main.m in Sources */,
 				A6284D5C1B105E5600EFF820 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				090604701B140A5E0038BAC4 /* FeedBackVC.m in Sources */,
 				09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

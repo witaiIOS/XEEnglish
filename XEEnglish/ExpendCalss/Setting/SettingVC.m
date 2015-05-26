@@ -10,6 +10,9 @@
 #import "LoginVC.h"
 #import "MyAccountTVC.h"
 
+
+#import "FeedBackVC.h"
+
 @interface SettingVC ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *loginBtn;
@@ -185,6 +188,85 @@
     
       return cell;
 }
+
+
+#pragma mark - UITableView Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 0:
+            {}
+                break;
+            case 1:
+            {}
+                break;
+            case 2:
+            {}
+                break;
+            case 3:
+            {}
+                break;
+                
+            default:
+                break;
+        }
+    }
+    else{
+        switch (indexPath.row) {
+            case 0:
+            {}
+                break;
+            case 1:
+            {
+                FeedBackVC *vc = [[FeedBackVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 2:
+            {}
+                break;
+            case 3:
+            {}
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44.0;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 3.0;
+    }
+    else
+    {
+        return 20.0;
+    }
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == 1) {
+        return 40.0;
+    }
+    else
+    {
+        return 3.0;
+    }
+    
+}
+
 
 
 @end

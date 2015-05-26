@@ -26,8 +26,8 @@
 {
     self.title = @"手机注册";
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setFrame:CGRectMake(0, 0, kScreenWidth/8, 40)];
-    [leftBtn setTitle:@"" forState:UIControlStateNormal];
+    [leftBtn setFrame:CGRectMake(0, 0, kScreenWidth/8, 30)];
+    //[leftBtn setTitle:@"" forState:UIControlStateNormal];
     [leftBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [leftBtn addTarget:self action:@selector(leftClick) forControlEvents:UIControlEventTouchUpInside];
     [leftBtn setBackgroundImage:[UIImage imageNamed:@"nav_backButtonBg.png"] forState:UIControlStateNormal];

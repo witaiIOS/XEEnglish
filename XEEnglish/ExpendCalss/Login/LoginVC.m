@@ -30,8 +30,8 @@
     self.title = @"登陆";
     
     UIButton * leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setFrame:CGRectMake(0, 0, self.view.frame.size.width/8, 20)];
-    [leftBtn setTitle:@"" forState:UIControlStateNormal];
+    [leftBtn setFrame:CGRectMake(0, 0, self.view.frame.size.width/8, 30)];
+    //[leftBtn setTitle:@"" forState:UIControlStateNormal];
     [leftBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [leftBtn addTarget:self action:@selector(leftClick) forControlEvents:UIControlEventTouchUpInside];
     [leftBtn setBackgroundImage:[UIImage imageNamed:@"nav_backButtonBg.png"] forState:UIControlStateNormal];
