@@ -57,7 +57,7 @@
                 </textField>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-            <point key="canvasLocation" x="413" y="303"/>
+            <point key="canvasLocation" x="180" y="82"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

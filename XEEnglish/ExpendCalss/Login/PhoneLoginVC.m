@@ -19,20 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self initTitleBar];
+    self.title = @"手机注册";
 }
 
-- (void)initTitleBar
-{
-    self.title = @"手机注册";
-    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setFrame:CGRectMake(0, 0, kScreenWidth/8, 30)];
-    //[leftBtn setTitle:@"" forState:UIControlStateNormal];
-    [leftBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [leftBtn addTarget:self action:@selector(leftClick) forControlEvents:UIControlEventTouchUpInside];
-    [leftBtn setBackgroundImage:[UIImage imageNamed:@"nav_backButtonBg.png"] forState:UIControlStateNormal];
-    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithCustomView:leftBtn];
-}
 
 - (void)initUI
 {
@@ -43,13 +32,7 @@
     self.codeTextField.leftViewMode = UITextFieldViewModeAlways;
 }
 
-- (void)leftClick
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-
-
+#pragma mark - My Action
 
 - (IBAction)getCodeAction:(id)sender {
 }

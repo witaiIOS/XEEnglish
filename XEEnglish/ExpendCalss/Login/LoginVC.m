@@ -22,21 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self initTitleBar];
+    self.title = @"登陆";
+
 }
 
-- (void)initTitleBar
-{
-    self.title = @"登陆";
-    
-    UIButton * leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setFrame:CGRectMake(0, 0, self.view.frame.size.width/8, 30)];
-    //[leftBtn setTitle:@"" forState:UIControlStateNormal];
-    [leftBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [leftBtn addTarget:self action:@selector(leftClick) forControlEvents:UIControlEventTouchUpInside];
-    [leftBtn setBackgroundImage:[UIImage imageNamed:@"nav_backButtonBg.png"] forState:UIControlStateNormal];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
-}
 - (void)initUI
 {
     self.phoneTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"s_phone.png"]];
@@ -48,11 +37,6 @@
 
 
 #pragma mark - My Action
-
-- (void)leftClick
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 
 - (IBAction)loginAction:(id)sender {
@@ -66,8 +50,7 @@
 - (IBAction)phoneResigerAction:(id)sender {
     PhoneLoginVC *phoneLoginVC = [[PhoneLoginVC alloc] init];
     
-    UINavigationController *phoneLoginNC = [[UINavigationController alloc] initWithRootViewController:phoneLoginVC];
-    [self presentViewController:phoneLoginNC animated:YES completion:nil];
+    [self.navigationController pushViewController:phoneLoginVC animated:YES];
     
 }
 

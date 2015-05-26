@@ -106,9 +106,7 @@
 - (void)loginAction:(id)sender{
     
     LoginVC *loginVC = [[LoginVC alloc] init];
-    //[self.navigationController pushViewController:vc animated:YES];
-    UINavigationController *loginNC = [[UINavigationController alloc] initWithRootViewController:loginVC];
-    [self presentViewController:loginNC animated:YES completion:nil];
+    [self.navigationController pushViewController:loginVC animated:YES];
 }
 
 - (void)exitAction{
