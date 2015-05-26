@@ -10,6 +10,9 @@
 		090604701B140A5E0038BAC4 /* FeedBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906046E1B140A5E0038BAC4 /* FeedBackVC.m */; };
 		090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0906046F1B140A5E0038BAC4 /* FeedBackVC.xib */; };
 		090604751B14174F0038BAC4 /* MoreSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 090604741B14174F0038BAC4 /* MoreSettingVC.m */; };
+		090604781B1420FD0038BAC4 /* UserProblemsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 090604771B1420FD0038BAC4 /* UserProblemsVC.m */; };
+		0906047B1B14218A0038BAC4 /* UserProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906047A1B14218A0038BAC4 /* UserProtocolVC.m */; };
+		0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906047D1B1421B60038BAC4 /* AboutVC.m */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */; };
@@ -94,6 +97,12 @@
 		0906046F1B140A5E0038BAC4 /* FeedBackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedBackVC.xib; sourceTree = "<group>"; };
 		090604731B14174F0038BAC4 /* MoreSettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreSettingVC.h; sourceTree = "<group>"; };
 		090604741B14174F0038BAC4 /* MoreSettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreSettingVC.m; sourceTree = "<group>"; };
+		090604761B1420FD0038BAC4 /* UserProblemsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProblemsVC.h; sourceTree = "<group>"; };
+		090604771B1420FD0038BAC4 /* UserProblemsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProblemsVC.m; sourceTree = "<group>"; };
+		090604791B14218A0038BAC4 /* UserProtocolVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProtocolVC.h; sourceTree = "<group>"; };
+		0906047A1B14218A0038BAC4 /* UserProtocolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProtocolVC.m; sourceTree = "<group>"; };
+		0906047C1B1421B60038BAC4 /* AboutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutVC.h; sourceTree = "<group>"; };
+		0906047D1B1421B60038BAC4 /* AboutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutVC.m; sourceTree = "<group>"; };
 		09D450AC1B10786800B39B4A /* MyAccountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTVC.h; sourceTree = "<group>"; };
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
@@ -239,6 +248,12 @@
 			children = (
 				090604731B14174F0038BAC4 /* MoreSettingVC.h */,
 				090604741B14174F0038BAC4 /* MoreSettingVC.m */,
+				090604761B1420FD0038BAC4 /* UserProblemsVC.h */,
+				090604771B1420FD0038BAC4 /* UserProblemsVC.m */,
+				090604791B14218A0038BAC4 /* UserProtocolVC.h */,
+				0906047A1B14218A0038BAC4 /* UserProtocolVC.m */,
+				0906047C1B1421B60038BAC4 /* AboutVC.h */,
+				0906047D1B1421B60038BAC4 /* AboutVC.m */,
 			);
 			path = MoreSetting;
 			sourceTree = "<group>";
@@ -765,6 +780,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6284D791B105F9500EFF820 /* UIFactory.m in Sources */,
+				0906047B1B14218A0038BAC4 /* UserProtocolVC.m in Sources */,
 				09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */,
 				A6284D4B1B105E5600EFF820 /* AFURLRequestSerialization.m in Sources */,
 				A6284D4A1B105E5600EFF820 /* AFURLConnectionOperation.m in Sources */,
@@ -796,6 +812,7 @@
 				A6284D511B105E5600EFF820 /* DDXMLElement.m in Sources */,
 				A6284CD21B10592100EFF820 /* AppDelegate.m in Sources */,
 				A6284D471B105E5600EFF820 /* AFHTTPSessionManager.m in Sources */,
+				0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */,
 				A6284D5A1B105E5600EFF820 /* UIScrollView+MJRefresh.m in Sources */,
 				A6284D621B105E5600EFF820 /* UIRefreshControl+AFNetworking.m in Sources */,
 				A6284D5E1B105E5600EFF820 /* UIAlertView+AFNetworking.m in Sources */,
@@ -808,6 +825,7 @@
 				A6284D5C1B105E5600EFF820 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				090604701B140A5E0038BAC4 /* FeedBackVC.m in Sources */,
 				09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */,
+				090604781B1420FD0038BAC4 /* UserProblemsVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

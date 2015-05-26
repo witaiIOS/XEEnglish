@@ -8,7 +8,8 @@
 
 #import "UserProtocolVC.h"
 
-@interface UserProtocolVC ()
+@interface UserProtocolVC ()<UIWebViewDelegate>
+@property (nonatomic, strong) UIWebView *myWebView;
 
 @end
 
@@ -17,7 +18,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"用户协议";
+    
 }
+
+- (void)initUI
+{
+    self.myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    self.myWebView.delegate = self;
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:@"http://www.hao123.com"]];
+    [self.view addSubview:self.myWebView];
+    [self.myWebView loadRequest:request];
+}
+
+#pragma mark - UIWebView Delegate
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

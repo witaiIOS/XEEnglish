@@ -8,6 +8,11 @@
 
 #import "MoreSettingVC.h"
 
+#import "UserProblemsVC.h"
+#import "UserProtocolVC.h"
+
+#import "AboutVC.h"
+
 @interface MoreSettingVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -54,10 +59,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse];
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.textAlignment = NSTextAlignmentLeft;
+        //cell.textLabel.textAlignment = NSTextAlignmentLeft;
         cell.textLabel.textColor = [UIColor darkGrayColor];
     }
     
@@ -85,6 +90,7 @@
             case 0:
             {
                 str = @"版本升级";
+                cell.detailTextLabel.text = @"v 1.0";
             }
                 break;
             case 1:
@@ -112,6 +118,46 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                UserProblemsVC *vc = [[UserProblemsVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 1:
+            {
+                UserProtocolVC *vc = [[UserProtocolVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    else{
+        switch (indexPath.row) {
+            case 0:
+            {
+                UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"提示" message:@"本版本已是最新版本" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+                
+                [alter show];
+            }
+                break;
+            case 1:
+            {
+                AboutVC *vc = [[AboutVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
     
     
 }
