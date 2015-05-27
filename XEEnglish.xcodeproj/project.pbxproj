@@ -14,6 +14,8 @@
 		0906047B1B14218A0038BAC4 /* UserProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906047A1B14218A0038BAC4 /* UserProtocolVC.m */; };
 		0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906047D1B1421B60038BAC4 /* AboutVC.m */; };
 		090604841B146B050038BAC4 /* CountdownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 090604831B146B050038BAC4 /* CountdownButton.m */; };
+		09CBFE8E1B1572FD000C401D /* PersonInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFE8D1B1572FD000C401D /* PersonInfoVC.m */; };
+		09CBFE911B157418000C401D /* PersonImageTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFE901B157417000C401D /* PersonImageTVC.m */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */; };
@@ -106,6 +108,10 @@
 		0906047D1B1421B60038BAC4 /* AboutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutVC.m; sourceTree = "<group>"; };
 		090604821B146B050038BAC4 /* CountdownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownButton.h; sourceTree = "<group>"; };
 		090604831B146B050038BAC4 /* CountdownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownButton.m; sourceTree = "<group>"; };
+		09CBFE8C1B1572FD000C401D /* PersonInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoVC.h; sourceTree = "<group>"; };
+		09CBFE8D1B1572FD000C401D /* PersonInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoVC.m; sourceTree = "<group>"; };
+		09CBFE8F1B157417000C401D /* PersonImageTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonImageTVC.h; sourceTree = "<group>"; };
+		09CBFE901B157417000C401D /* PersonImageTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonImageTVC.m; sourceTree = "<group>"; };
 		09D450AC1B10786800B39B4A /* MyAccountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTVC.h; sourceTree = "<group>"; };
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
@@ -259,6 +265,17 @@
 				0906047D1B1421B60038BAC4 /* AboutVC.m */,
 			);
 			path = MoreSetting;
+			sourceTree = "<group>";
+		};
+		09CBFE821B156C4E000C401D /* PersonInfo */ = {
+			isa = PBXGroup;
+			children = (
+				09CBFE8C1B1572FD000C401D /* PersonInfoVC.h */,
+				09CBFE8D1B1572FD000C401D /* PersonInfoVC.m */,
+				09CBFE8F1B157417000C401D /* PersonImageTVC.h */,
+				09CBFE901B157417000C401D /* PersonImageTVC.m */,
+			);
+			name = PersonInfo;
 			sourceTree = "<group>";
 		};
 		09DB2DB61B1322800078AAF5 /* Common */ = {
@@ -626,6 +643,7 @@
 		A6284D6C1B105E6600EFF820 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				09CBFE821B156C4E000C401D /* PersonInfo */,
 				A6284D961B1066DE00EFF820 /* SettingVC.h */,
 				A6284D971B1066DE00EFF820 /* SettingVC.m */,
 				09D450AC1B10786800B39B4A /* MyAccountTVC.h */,
@@ -813,6 +831,7 @@
 				A6284D4F1B105E5600EFF820 /* NSString+DDXML.m in Sources */,
 				A6284D4C1B105E5600EFF820 /* AFURLResponseSerialization.m in Sources */,
 				A6284D571B105E5600EFF820 /* MJRefreshFooterView.m in Sources */,
+				09CBFE911B157418000C401D /* PersonImageTVC.m in Sources */,
 				A6284D6D1B105E6600EFF820 /* BaseVC.m in Sources */,
 				A6284D511B105E5600EFF820 /* DDXMLElement.m in Sources */,
 				A6284CD21B10592100EFF820 /* AppDelegate.m in Sources */,
@@ -830,6 +849,7 @@
 				A6284CCF1B10592100EFF820 /* main.m in Sources */,
 				A6284D5C1B105E5600EFF820 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				090604701B140A5E0038BAC4 /* FeedBackVC.m in Sources */,
+				09CBFE8E1B1572FD000C401D /* PersonInfoVC.m in Sources */,
 				09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */,
 				090604781B1420FD0038BAC4 /* UserProblemsVC.m in Sources */,
 			);

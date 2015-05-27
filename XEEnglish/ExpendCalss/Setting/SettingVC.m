@@ -10,6 +10,7 @@
 #import "LoginVC.h"
 #import "MyAccountTVC.h"
 
+#import "PersonInfoVC.h"
 
 #import "FeedBackVC.h"
 
@@ -201,7 +202,10 @@
             {}
                 break;
             case 1:
-            {}
+            {
+                PersonInfoVC *vc = [[PersonInfoVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
                 break;
             case 2:
             {}

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppMacros.h"
+#import "AppConfig.h"
 
 @interface BaseTVC : UITableViewCell
 
