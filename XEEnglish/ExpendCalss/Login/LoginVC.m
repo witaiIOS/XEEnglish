@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
 
+
 @property (strong, nonatomic) UIScrollView *myScrollView;
 
 @end

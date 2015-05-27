@@ -13,6 +13,7 @@
 		090604781B1420FD0038BAC4 /* UserProblemsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 090604771B1420FD0038BAC4 /* UserProblemsVC.m */; };
 		0906047B1B14218A0038BAC4 /* UserProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906047A1B14218A0038BAC4 /* UserProtocolVC.m */; };
 		0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906047D1B1421B60038BAC4 /* AboutVC.m */; };
+		090604841B146B050038BAC4 /* CountdownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 090604831B146B050038BAC4 /* CountdownButton.m */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */; };
@@ -103,6 +104,8 @@
 		0906047A1B14218A0038BAC4 /* UserProtocolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProtocolVC.m; sourceTree = "<group>"; };
 		0906047C1B1421B60038BAC4 /* AboutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutVC.h; sourceTree = "<group>"; };
 		0906047D1B1421B60038BAC4 /* AboutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutVC.m; sourceTree = "<group>"; };
+		090604821B146B050038BAC4 /* CountdownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownButton.h; sourceTree = "<group>"; };
+		090604831B146B050038BAC4 /* CountdownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownButton.m; sourceTree = "<group>"; };
 		09D450AC1B10786800B39B4A /* MyAccountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTVC.h; sourceTree = "<group>"; };
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
@@ -614,6 +617,8 @@
 				09DB2DB11B1312F80078AAF5 /* PhoneLoginVC.h */,
 				09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */,
 				09DB2DB31B1312F80078AAF5 /* PhoneLoginVC.xib */,
+				090604821B146B050038BAC4 /* CountdownButton.h */,
+				090604831B146B050038BAC4 /* CountdownButton.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -820,6 +825,7 @@
 				A6284D461B105E5600EFF820 /* AFHTTPRequestOperationManager.m in Sources */,
 				A6284D951B1066CC00EFF820 /* ActivityVC.m in Sources */,
 				A6284D481B105E5600EFF820 /* AFNetworkReachabilityManager.m in Sources */,
+				090604841B146B050038BAC4 /* CountdownButton.m in Sources */,
 				09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */,
 				A6284CCF1B10592100EFF820 /* main.m in Sources */,
 				A6284D5C1B105E5600EFF820 /* AFNetworkActivityIndicatorManager.m in Sources */,

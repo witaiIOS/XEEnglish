@@ -7,10 +7,12 @@
 //
 
 #import "PhoneLoginVC.h"
+#import "CountdownButton.h"
 
 @interface PhoneLoginVC ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+@property (strong, nonatomic) CountdownButton *getCodeBtn;
 
 @end
 
@@ -30,11 +32,41 @@
     
     self.codeTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tab_course@2x.png"]];
     self.codeTextField.leftViewMode = UITextFieldViewModeAlways;
+    
+    self.getCodeBtn = [[CountdownButton alloc] initWithFrame:CGRectMake(210, 80, 90, 40) time:60 normal:@"获取验证码" countingTitle:@"重新获取"];
+    [self.getCodeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.getCodeBtn setBackgroundColor:[UIColor orangeColor]];
+    //self.getCodeBtn.layer.cornerRadius = 4.0;
+    [self.getCodeBtn.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
+    [self.getCodeBtn addTarget:self action:@selector(getCodeAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.getCodeBtn];
 }
 
 #pragma mark - My Action
 
-- (IBAction)getCodeAction:(id)sender {
+- (void)getCodeAction:(id)sender {
+    if (self.phoneTextField.text.length <= 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"手机号不能为空" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    if (self.phoneTextField.text.length <11 ||self.phoneTextField.text.length >11) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入11位数的手机号" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }else{
+        
+        if (![self.phoneTextField.text hasPrefix:@"1"]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"手机号只能以\"1\"开头" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+            [alert show];
+            return;
+        }else{
+            
+            [self.getCodeBtn startCounting];
+            
+            //NSString *jsonParam = [NSString stringWithFormat:@""];
+        }
+    }
 }
 
 
