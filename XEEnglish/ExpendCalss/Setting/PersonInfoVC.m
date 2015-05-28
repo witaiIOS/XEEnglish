@@ -9,6 +9,8 @@
 #import "PersonInfoVC.h"
 #import "PersonImageTVC.h"
 
+#import "NeTNameAndDomicileVC.h"
+#import "SettingBirthdayVC.h"
 
 #import "ChangePassWordVC.h"
 
@@ -113,7 +115,7 @@
  
     
         }
-        
+                
         NSString *infoString = nil;
         NSString *detailInfoString = nil;
         
@@ -128,6 +130,8 @@
             {
                 infoString = @"账号";
                 detailInfoString = @"123";
+                cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
                 break;
 
@@ -194,7 +198,8 @@
         switch (indexPath.row) {
             case 0:
             {
-                
+                NeTNameAndDomicileVC *vc = [[NeTNameAndDomicileVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
             }
                 break;
             case 1:
@@ -209,12 +214,14 @@
                 break;
             case 3:
             {
-                
+                NeTNameAndDomicileVC *vc = [[NeTNameAndDomicileVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
             }
                 break;
             case 4:
             {
-                
+                SettingBirthdayVC *vc = [[SettingBirthdayVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
             }
                 break;
             case 5:

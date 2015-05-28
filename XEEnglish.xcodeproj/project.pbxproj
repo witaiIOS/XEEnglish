@@ -18,6 +18,10 @@
 		097990691B17006600D4A8DC /* ResetPassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 097990671B17006600D4A8DC /* ResetPassWordVC.xib */; };
 		0979906D1B1712D800D4A8DC /* ChangePassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0979906B1B1712D800D4A8DC /* ChangePassWordVC.m */; };
 		0979906E1B1712D800D4A8DC /* ChangePassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0979906C1B1712D800D4A8DC /* ChangePassWordVC.xib */; };
+		0979907A1B171D6A00D4A8DC /* NeTNameAndDomicileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 097990781B171D6A00D4A8DC /* NeTNameAndDomicileVC.m */; };
+		0979907B1B171D6A00D4A8DC /* NeTNameAndDomicileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 097990791B171D6A00D4A8DC /* NeTNameAndDomicileVC.xib */; };
+		0979907F1B172DAD00D4A8DC /* SettingBirthdayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0979907D1B172DAD00D4A8DC /* SettingBirthdayVC.m */; };
+		097990801B172DAD00D4A8DC /* SettingBirthdayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0979907E1B172DAD00D4A8DC /* SettingBirthdayVC.xib */; };
 		09CBFE8E1B1572FD000C401D /* PersonInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFE8D1B1572FD000C401D /* PersonInfoVC.m */; };
 		09CBFE911B157418000C401D /* PersonImageTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFE901B157417000C401D /* PersonImageTVC.m */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
@@ -118,6 +122,12 @@
 		0979906A1B1712D800D4A8DC /* ChangePassWordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePassWordVC.h; sourceTree = "<group>"; };
 		0979906B1B1712D800D4A8DC /* ChangePassWordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePassWordVC.m; sourceTree = "<group>"; };
 		0979906C1B1712D800D4A8DC /* ChangePassWordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePassWordVC.xib; sourceTree = "<group>"; };
+		097990771B171D6A00D4A8DC /* NeTNameAndDomicileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeTNameAndDomicileVC.h; sourceTree = "<group>"; };
+		097990781B171D6A00D4A8DC /* NeTNameAndDomicileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeTNameAndDomicileVC.m; sourceTree = "<group>"; };
+		097990791B171D6A00D4A8DC /* NeTNameAndDomicileVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeTNameAndDomicileVC.xib; sourceTree = "<group>"; };
+		0979907C1B172DAD00D4A8DC /* SettingBirthdayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingBirthdayVC.h; sourceTree = "<group>"; };
+		0979907D1B172DAD00D4A8DC /* SettingBirthdayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingBirthdayVC.m; sourceTree = "<group>"; };
+		0979907E1B172DAD00D4A8DC /* SettingBirthdayVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingBirthdayVC.xib; sourceTree = "<group>"; };
 		09CBFE8C1B1572FD000C401D /* PersonInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoVC.h; sourceTree = "<group>"; };
 		09CBFE8D1B1572FD000C401D /* PersonInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoVC.m; sourceTree = "<group>"; };
 		09CBFE8F1B157417000C401D /* PersonImageTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonImageTVC.h; sourceTree = "<group>"; };
@@ -287,6 +297,12 @@
 				0979906A1B1712D800D4A8DC /* ChangePassWordVC.h */,
 				0979906B1B1712D800D4A8DC /* ChangePassWordVC.m */,
 				0979906C1B1712D800D4A8DC /* ChangePassWordVC.xib */,
+				097990771B171D6A00D4A8DC /* NeTNameAndDomicileVC.h */,
+				097990781B171D6A00D4A8DC /* NeTNameAndDomicileVC.m */,
+				097990791B171D6A00D4A8DC /* NeTNameAndDomicileVC.xib */,
+				0979907C1B172DAD00D4A8DC /* SettingBirthdayVC.h */,
+				0979907D1B172DAD00D4A8DC /* SettingBirthdayVC.m */,
+				0979907E1B172DAD00D4A8DC /* SettingBirthdayVC.xib */,
 			);
 			name = PersonInfo;
 			sourceTree = "<group>";
@@ -782,7 +798,9 @@
 				A6284D8C1B10652700EFF820 /* tab_setting@2x.png in Resources */,
 				09DB2DBA1B1322800078AAF5 /* s_phone.png in Resources */,
 				A6284D891B10652700EFF820 /* tab_home@2x.png in Resources */,
+				097990801B172DAD00D4A8DC /* SettingBirthdayVC.xib in Resources */,
 				09DB2DC41B1322980078AAF5 /* join_07.png in Resources */,
+				0979907B1B171D6A00D4A8DC /* NeTNameAndDomicileVC.xib in Resources */,
 				0979906E1B1712D800D4A8DC /* ChangePassWordVC.xib in Resources */,
 				09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */,
 				A6284CD81B10592100EFF820 /* Main.storyboard in Resources */,
@@ -837,6 +855,7 @@
 				A6284D451B105E5600EFF820 /* AFHTTPRequestOperation.m in Sources */,
 				A6284D601B105E5600EFF820 /* UIImageView+AFNetworking.m in Sources */,
 				A6284D501B105E5600EFF820 /* DDXMLDocument.m in Sources */,
+				0979907A1B171D6A00D4A8DC /* NeTNameAndDomicileVC.m in Sources */,
 				A6284D521B105E5600EFF820 /* DDXMLNode.m in Sources */,
 				A6284D9C1B1067C100EFF820 /* LoginVC.m in Sources */,
 				A6284D5B1B105E5600EFF820 /* UIView+MJExtension.m in Sources */,
@@ -855,6 +874,7 @@
 				A6284D6D1B105E6600EFF820 /* BaseVC.m in Sources */,
 				A6284D511B105E5600EFF820 /* DDXMLElement.m in Sources */,
 				A6284CD21B10592100EFF820 /* AppDelegate.m in Sources */,
+				0979907F1B172DAD00D4A8DC /* SettingBirthdayVC.m in Sources */,
 				A6284D471B105E5600EFF820 /* AFHTTPSessionManager.m in Sources */,
 				0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */,
 				A6284D5A1B105E5600EFF820 /* UIScrollView+MJRefresh.m in Sources */,
