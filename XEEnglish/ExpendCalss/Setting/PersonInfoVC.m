@@ -10,7 +10,7 @@
 #import "PersonImageTVC.h"
 
 
-#import "ResetPassWordVC.h"
+#import "ChangePassWordVC.h"
 
 @interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -224,7 +224,7 @@
                 break;
             case 6:
             {
-                ResetPassWordVC *vc = [[ResetPassWordVC alloc] init];
+                ChangePassWordVC *vc = [[ChangePassWordVC alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
             }
                 break;

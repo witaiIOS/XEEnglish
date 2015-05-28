@@ -16,6 +16,8 @@
 		090604841B146B050038BAC4 /* CountdownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 090604831B146B050038BAC4 /* CountdownButton.m */; };
 		097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 097990661B17006600D4A8DC /* ResetPassWordVC.m */; };
 		097990691B17006600D4A8DC /* ResetPassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 097990671B17006600D4A8DC /* ResetPassWordVC.xib */; };
+		0979906D1B1712D800D4A8DC /* ChangePassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0979906B1B1712D800D4A8DC /* ChangePassWordVC.m */; };
+		0979906E1B1712D800D4A8DC /* ChangePassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0979906C1B1712D800D4A8DC /* ChangePassWordVC.xib */; };
 		09CBFE8E1B1572FD000C401D /* PersonInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFE8D1B1572FD000C401D /* PersonInfoVC.m */; };
 		09CBFE911B157418000C401D /* PersonImageTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFE901B157417000C401D /* PersonImageTVC.m */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
@@ -113,6 +115,9 @@
 		097990651B17006600D4A8DC /* ResetPassWordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPassWordVC.h; sourceTree = "<group>"; };
 		097990661B17006600D4A8DC /* ResetPassWordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPassWordVC.m; sourceTree = "<group>"; };
 		097990671B17006600D4A8DC /* ResetPassWordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPassWordVC.xib; sourceTree = "<group>"; };
+		0979906A1B1712D800D4A8DC /* ChangePassWordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePassWordVC.h; sourceTree = "<group>"; };
+		0979906B1B1712D800D4A8DC /* ChangePassWordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePassWordVC.m; sourceTree = "<group>"; };
+		0979906C1B1712D800D4A8DC /* ChangePassWordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePassWordVC.xib; sourceTree = "<group>"; };
 		09CBFE8C1B1572FD000C401D /* PersonInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoVC.h; sourceTree = "<group>"; };
 		09CBFE8D1B1572FD000C401D /* PersonInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoVC.m; sourceTree = "<group>"; };
 		09CBFE8F1B157417000C401D /* PersonImageTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonImageTVC.h; sourceTree = "<group>"; };
@@ -279,6 +284,9 @@
 				09CBFE8D1B1572FD000C401D /* PersonInfoVC.m */,
 				09CBFE8F1B157417000C401D /* PersonImageTVC.h */,
 				09CBFE901B157417000C401D /* PersonImageTVC.m */,
+				0979906A1B1712D800D4A8DC /* ChangePassWordVC.h */,
+				0979906B1B1712D800D4A8DC /* ChangePassWordVC.m */,
+				0979906C1B1712D800D4A8DC /* ChangePassWordVC.xib */,
 			);
 			name = PersonInfo;
 			sourceTree = "<group>";
@@ -775,6 +783,7 @@
 				09DB2DBA1B1322800078AAF5 /* s_phone.png in Resources */,
 				A6284D891B10652700EFF820 /* tab_home@2x.png in Resources */,
 				09DB2DC41B1322980078AAF5 /* join_07.png in Resources */,
+				0979906E1B1712D800D4A8DC /* ChangePassWordVC.xib in Resources */,
 				09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */,
 				A6284CD81B10592100EFF820 /* Main.storyboard in Resources */,
 				09DB2DCE1B1322AF0078AAF5 /* accountDetail04@2x.png in Resources */,
@@ -818,6 +827,7 @@
 				A6284D4A1B105E5600EFF820 /* AFURLConnectionOperation.m in Sources */,
 				A6284D8F1B10668300EFF820 /* HomeVC.m in Sources */,
 				A6284D921B10669200EFF820 /* CourseVC.m in Sources */,
+				0979906D1B1712D800D4A8DC /* ChangePassWordVC.m in Sources */,
 				A6284D5F1B105E5600EFF820 /* UIButton+AFNetworking.m in Sources */,
 				A6284D491B105E5600EFF820 /* AFSecurityPolicy.m in Sources */,
 				097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */,
