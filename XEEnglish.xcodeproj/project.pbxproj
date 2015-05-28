@@ -14,6 +14,8 @@
 		0906047B1B14218A0038BAC4 /* UserProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906047A1B14218A0038BAC4 /* UserProtocolVC.m */; };
 		0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906047D1B1421B60038BAC4 /* AboutVC.m */; };
 		090604841B146B050038BAC4 /* CountdownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 090604831B146B050038BAC4 /* CountdownButton.m */; };
+		097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 097990661B17006600D4A8DC /* ResetPassWordVC.m */; };
+		097990691B17006600D4A8DC /* ResetPassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 097990671B17006600D4A8DC /* ResetPassWordVC.xib */; };
 		09CBFE8E1B1572FD000C401D /* PersonInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFE8D1B1572FD000C401D /* PersonInfoVC.m */; };
 		09CBFE911B157418000C401D /* PersonImageTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFE901B157417000C401D /* PersonImageTVC.m */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
@@ -108,6 +110,9 @@
 		0906047D1B1421B60038BAC4 /* AboutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutVC.m; sourceTree = "<group>"; };
 		090604821B146B050038BAC4 /* CountdownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownButton.h; sourceTree = "<group>"; };
 		090604831B146B050038BAC4 /* CountdownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownButton.m; sourceTree = "<group>"; };
+		097990651B17006600D4A8DC /* ResetPassWordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPassWordVC.h; sourceTree = "<group>"; };
+		097990661B17006600D4A8DC /* ResetPassWordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPassWordVC.m; sourceTree = "<group>"; };
+		097990671B17006600D4A8DC /* ResetPassWordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPassWordVC.xib; sourceTree = "<group>"; };
 		09CBFE8C1B1572FD000C401D /* PersonInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoVC.h; sourceTree = "<group>"; };
 		09CBFE8D1B1572FD000C401D /* PersonInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoVC.m; sourceTree = "<group>"; };
 		09CBFE8F1B157417000C401D /* PersonImageTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonImageTVC.h; sourceTree = "<group>"; };
@@ -636,6 +641,9 @@
 				09DB2DB31B1312F80078AAF5 /* PhoneLoginVC.xib */,
 				090604821B146B050038BAC4 /* CountdownButton.h */,
 				090604831B146B050038BAC4 /* CountdownButton.m */,
+				097990651B17006600D4A8DC /* ResetPassWordVC.h */,
+				097990661B17006600D4A8DC /* ResetPassWordVC.m */,
+				097990671B17006600D4A8DC /* ResetPassWordVC.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -781,6 +789,7 @@
 				A6284CDA1B10592100EFF820 /* Images.xcassets in Resources */,
 				090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */,
 				09DB2DBE1B13228B0078AAF5 /* join_05.png in Resources */,
+				097990691B17006600D4A8DC /* ResetPassWordVC.xib in Resources */,
 				09DB2DC81B1322A30078AAF5 /* mybgpic@2x.png in Resources */,
 				09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */,
 				A6284D541B105E5600EFF820 /* MJRefresh.bundle in Resources */,
@@ -811,6 +820,7 @@
 				A6284D921B10669200EFF820 /* CourseVC.m in Sources */,
 				A6284D5F1B105E5600EFF820 /* UIButton+AFNetworking.m in Sources */,
 				A6284D491B105E5600EFF820 /* AFSecurityPolicy.m in Sources */,
+				097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */,
 				A6284D631B105E5600EFF820 /* UIWebView+AFNetworking.m in Sources */,
 				A6284D611B105E5600EFF820 /* UIProgressView+AFNetworking.m in Sources */,
 				A6284D561B105E5600EFF820 /* MJRefreshConst.m in Sources */,

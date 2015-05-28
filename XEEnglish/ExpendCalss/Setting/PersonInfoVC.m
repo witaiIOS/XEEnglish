@@ -9,6 +9,9 @@
 #import "PersonInfoVC.h"
 #import "PersonImageTVC.h"
 
+
+#import "ResetPassWordVC.h"
+
 @interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *keepBtn;
@@ -185,6 +188,52 @@
     
     if (indexPath.section == 0) {
         [self changeImage];
+    }
+    else{
+        
+        switch (indexPath.row) {
+            case 0:
+            {
+                
+            }
+                break;
+            case 1:
+            {
+                
+            }
+                break;
+            case 2:
+            {
+                
+            }
+                break;
+            case 3:
+            {
+                
+            }
+                break;
+            case 4:
+            {
+                
+            }
+                break;
+            case 5:
+            {
+                
+            }
+                break;
+            case 6:
+            {
+                ResetPassWordVC *vc = [[ResetPassWordVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+
+
+                
+            default:
+                break;
+        }
     }
 }
 
