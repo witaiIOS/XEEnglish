@@ -643,7 +643,6 @@
 		A6284D6C1B105E6600EFF820 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				09CBFE821B156C4E000C401D /* PersonInfo */,
 				A6284D961B1066DE00EFF820 /* SettingVC.h */,
 				A6284D971B1066DE00EFF820 /* SettingVC.m */,
 				09D450AC1B10786800B39B4A /* MyAccountTVC.h */,
@@ -651,6 +650,7 @@
 				0906046D1B140A5E0038BAC4 /* FeedBackVC.h */,
 				0906046E1B140A5E0038BAC4 /* FeedBackVC.m */,
 				0906046F1B140A5E0038BAC4 /* FeedBackVC.xib */,
+				09CBFE821B156C4E000C401D /* PersonInfo */,
 				090604721B14171C0038BAC4 /* MoreSetting */,
 			);
 			path = Setting;

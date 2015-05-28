@@ -10,6 +10,7 @@
 #import "LoginVC.h"
 #import "MyAccountTVC.h"
 
+
 #import "PersonInfoVC.h"
 
 #import "FeedBackVC.h"
@@ -221,7 +222,10 @@
     else{
         switch (indexPath.row) {
             case 0:
-            {}
+            {
+                
+            
+            }
                 break;
             case 1:
             {
@@ -274,6 +278,7 @@
     
 }
 
+#pragma mark - My Action
 
 
 @end

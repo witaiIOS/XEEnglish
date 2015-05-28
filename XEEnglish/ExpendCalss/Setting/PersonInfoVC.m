@@ -9,7 +9,7 @@
 #import "PersonInfoVC.h"
 #import "PersonImageTVC.h"
 
-@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource>
+@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *keepBtn;
 
@@ -39,8 +39,14 @@
     [self.keepBtn.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
     self.keepBtn.backgroundColor = [UIColor orangeColor];
     self.keepBtn.layer.cornerRadius = 4.0;
+    [self.keepBtn addTarget:self action:@selector(keepBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.tableView addSubview:self.keepBtn];
+}
+
+- (void)keepBtnAction:(id)sender
+{
+    
 }
 
 #pragma mark - UITableView DataSource
@@ -176,6 +182,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0) {
+        [self changeImage];
+    }
 }
 
 
@@ -194,6 +204,50 @@
     return 5;
     
 }
+
+- (void)changeImage{
+    
+    UIActionSheet *photoSource = [[UIActionSheet alloc] initWithTitle:@""
+                                                             delegate:self
+                                                    cancelButtonTitle:@"取消"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"相册", @"图库",@"拍照",nil];
+    [photoSource showFromRect:self.view.bounds inView:self.view animated:YES];
+    
+}
+
+#pragma mark - UIActionSheet Delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    UIImagePickerController *imageSource = [[UIImagePickerController alloc] init];
+    imageSource.delegate = self;
+    
+    if (buttonIndex == 0) {
+        imageSource.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
+            [self presentViewController:imageSource animated:YES completion:nil];
+        }
+        
+        
+    }else if (buttonIndex == 1){
+        imageSource.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] ) {
+            [self presentViewController:imageSource animated:YES completion:nil];
+        }
+        
+    }else if (buttonIndex == 2){
+        imageSource.sourceType = UIImagePickerControllerSourceTypeCamera;
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            [self presentViewController:imageSource animated:YES completion:nil];
+        }
+
+        
+        
+    }
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning {
