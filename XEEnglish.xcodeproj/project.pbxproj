@@ -22,6 +22,8 @@
 		0979907B1B171D6A00D4A8DC /* NeTNameAndDomicileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 097990791B171D6A00D4A8DC /* NeTNameAndDomicileVC.xib */; };
 		0979907F1B172DAD00D4A8DC /* SettingBirthdayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0979907D1B172DAD00D4A8DC /* SettingBirthdayVC.m */; };
 		097990801B172DAD00D4A8DC /* SettingBirthdayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0979907E1B172DAD00D4A8DC /* SettingBirthdayVC.xib */; };
+		0988632F1B180CFE002F2196 /* SettingSignatureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988632D1B180CFE002F2196 /* SettingSignatureVC.m */; };
+		098863301B180CFE002F2196 /* SettingSignatureVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0988632E1B180CFE002F2196 /* SettingSignatureVC.xib */; };
 		09CBFE8E1B1572FD000C401D /* PersonInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFE8D1B1572FD000C401D /* PersonInfoVC.m */; };
 		09CBFE911B157418000C401D /* PersonImageTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFE901B157417000C401D /* PersonImageTVC.m */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
@@ -128,6 +130,9 @@
 		0979907C1B172DAD00D4A8DC /* SettingBirthdayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingBirthdayVC.h; sourceTree = "<group>"; };
 		0979907D1B172DAD00D4A8DC /* SettingBirthdayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingBirthdayVC.m; sourceTree = "<group>"; };
 		0979907E1B172DAD00D4A8DC /* SettingBirthdayVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingBirthdayVC.xib; sourceTree = "<group>"; };
+		0988632C1B180CFE002F2196 /* SettingSignatureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingSignatureVC.h; sourceTree = "<group>"; };
+		0988632D1B180CFE002F2196 /* SettingSignatureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingSignatureVC.m; sourceTree = "<group>"; };
+		0988632E1B180CFE002F2196 /* SettingSignatureVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingSignatureVC.xib; sourceTree = "<group>"; };
 		09CBFE8C1B1572FD000C401D /* PersonInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoVC.h; sourceTree = "<group>"; };
 		09CBFE8D1B1572FD000C401D /* PersonInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoVC.m; sourceTree = "<group>"; };
 		09CBFE8F1B157417000C401D /* PersonImageTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonImageTVC.h; sourceTree = "<group>"; };
@@ -294,15 +299,18 @@
 				09CBFE8D1B1572FD000C401D /* PersonInfoVC.m */,
 				09CBFE8F1B157417000C401D /* PersonImageTVC.h */,
 				09CBFE901B157417000C401D /* PersonImageTVC.m */,
-				0979906A1B1712D800D4A8DC /* ChangePassWordVC.h */,
-				0979906B1B1712D800D4A8DC /* ChangePassWordVC.m */,
-				0979906C1B1712D800D4A8DC /* ChangePassWordVC.xib */,
 				097990771B171D6A00D4A8DC /* NeTNameAndDomicileVC.h */,
 				097990781B171D6A00D4A8DC /* NeTNameAndDomicileVC.m */,
 				097990791B171D6A00D4A8DC /* NeTNameAndDomicileVC.xib */,
 				0979907C1B172DAD00D4A8DC /* SettingBirthdayVC.h */,
 				0979907D1B172DAD00D4A8DC /* SettingBirthdayVC.m */,
 				0979907E1B172DAD00D4A8DC /* SettingBirthdayVC.xib */,
+				0988632C1B180CFE002F2196 /* SettingSignatureVC.h */,
+				0988632D1B180CFE002F2196 /* SettingSignatureVC.m */,
+				0988632E1B180CFE002F2196 /* SettingSignatureVC.xib */,
+				0979906A1B1712D800D4A8DC /* ChangePassWordVC.h */,
+				0979906B1B1712D800D4A8DC /* ChangePassWordVC.m */,
+				0979906C1B1712D800D4A8DC /* ChangePassWordVC.xib */,
 			);
 			name = PersonInfo;
 			sourceTree = "<group>";
@@ -802,6 +810,7 @@
 				09DB2DC41B1322980078AAF5 /* join_07.png in Resources */,
 				0979907B1B171D6A00D4A8DC /* NeTNameAndDomicileVC.xib in Resources */,
 				0979906E1B1712D800D4A8DC /* ChangePassWordVC.xib in Resources */,
+				098863301B180CFE002F2196 /* SettingSignatureVC.xib in Resources */,
 				09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */,
 				A6284CD81B10592100EFF820 /* Main.storyboard in Resources */,
 				09DB2DCE1B1322AF0078AAF5 /* accountDetail04@2x.png in Resources */,
@@ -869,6 +878,7 @@
 				A6284D531B105E5600EFF820 /* MBProgressHUD.m in Sources */,
 				A6284D4F1B105E5600EFF820 /* NSString+DDXML.m in Sources */,
 				A6284D4C1B105E5600EFF820 /* AFURLResponseSerialization.m in Sources */,
+				0988632F1B180CFE002F2196 /* SettingSignatureVC.m in Sources */,
 				A6284D571B105E5600EFF820 /* MJRefreshFooterView.m in Sources */,
 				09CBFE911B157418000C401D /* PersonImageTVC.m in Sources */,
 				A6284D6D1B105E6600EFF820 /* BaseVC.m in Sources */,

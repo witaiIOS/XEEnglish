@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"修改个人信息";
+    //self.title = @"修改个人信息";
 }
 
 

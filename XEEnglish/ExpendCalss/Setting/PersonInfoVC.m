@@ -11,7 +11,7 @@
 
 #import "NeTNameAndDomicileVC.h"
 #import "SettingBirthdayVC.h"
-
+#import "SettingSignatureVC.h"
 #import "ChangePassWordVC.h"
 
 @interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIImagePickerControllerDelegate>
@@ -200,13 +200,14 @@
             {
                 NeTNameAndDomicileVC *vc = [[NeTNameAndDomicileVC alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
+
             }
                 break;
-            case 1:
-            {
-                
-            }
-                break;
+//            case 1:
+//            {
+//                
+//            }
+//                break;
             case 2:
             {
                 
@@ -226,7 +227,9 @@
                 break;
             case 5:
             {
-                
+                SettingSignatureVC *vc = [[SettingSignatureVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+              
             }
                 break;
             case 6:
