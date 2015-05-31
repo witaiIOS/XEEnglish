@@ -10,4 +10,7 @@
 
 @interface NeTNameAndDomicileVC : BaseVC
 
+@property (strong, nonatomic) NSString *nTitle;
+@property (strong, nonatomic) NSString *nplaceholder;
+
 @end

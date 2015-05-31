@@ -199,6 +199,8 @@
             case 0:
             {
                 NeTNameAndDomicileVC *vc = [[NeTNameAndDomicileVC alloc] init];
+                vc.nTitle = @"修改网名";
+                vc.nplaceholder = @"请输入网名";
                 [self.navigationController pushViewController:vc animated:YES];
 
             }
@@ -216,6 +218,8 @@
             case 3:
             {
                 NeTNameAndDomicileVC *vc = [[NeTNameAndDomicileVC alloc] init];
+                vc.nTitle = @"修改居住地";
+                vc.nplaceholder = @"请输入居住地";
                 [self.navigationController pushViewController:vc animated:YES];
             }
                 break;
