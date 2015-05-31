@@ -41,10 +41,15 @@
 }
 
 
-- (void)textViewDidEndEditing:(UITextView *)textView{
-    
-    [self.mySignatureTextView resignFirstResponder];
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString*)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [self.mySignatureTextView resignFirstResponder];
+        return NO;
+    }
+    return YES;
 }
+
 
 
 - (void)didReceiveMemoryWarning {
