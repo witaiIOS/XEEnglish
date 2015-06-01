@@ -243,7 +243,6 @@
             }
                 break;
 
-
                 
             default:
                 break;
@@ -304,9 +303,6 @@
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             [self presentViewController:imageSource animated:YES completion:nil];
         }
-
-        
-        
     }
     
 }
