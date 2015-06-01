@@ -13,7 +13,7 @@
 
 #import "PersonInfoVC.h"
 
-#import "FeedBackVC.h"
+
 
 #import "MoreSettingVC.h"
 
@@ -129,12 +129,12 @@
 {
     
     if (section == 0) {
-        return 4;
+        return 5;
     }
     else{
-        return 4;
+        return 2;
     }
-
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -143,21 +143,30 @@
     MyAccountTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
     if (cell ==nil) {
         cell = [[MyAccountTVC alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
-       
+        
     }
     NSString *str = nil;
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
+            {
                 str =@"积分";
                 break;
+            }
             case 1:
+            {
+                str =@"优惠券";
+                break;
+            }
+            case 2:
+            {
                 str = @"个人信息";
                 break;
-            case 2:
-                str =@"订单信息";
-                break;
+            }
             case 3:
+                str =@"我的预定";
+                break;
+            case 4:
                 str = @"消费记录";
                 break;
                 
@@ -169,27 +178,27 @@
     {
         switch (indexPath.row) {
             case 0:
-                str = @"告诉朋友";
+            {
+                str = @"城市";
                 break;
+            }
+                
             case 1:
-                str = @"意见反馈";
-                break;
-            case 2:
-                str = @"获取开通服务城市";
-                break;
-            case 3:
+            {
                 str = @"更多设置";
                 break;
+            }
                 
             default:
                 break;
         }
     }
     cell.str = str;
-
     
-      return cell;
+    
+    return cell;
 }
+
 
 
 #pragma mark - UITableView Delegate
@@ -200,20 +209,31 @@
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
-            {}
+            {
                 break;
+            }
+                
             case 1:
+            {
+                break;
+            }
+                
+            case 2:
             {
                 PersonInfoVC *vc = [[PersonInfoVC alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
+                break;
             }
-                break;
-            case 2:
-            {}
-                break;
+                
             case 3:
-            {}
+            {
                 break;
+            }
+            case 4:
+            {
+                break;
+            }
+                
                 
             default:
                 break;
@@ -223,32 +243,21 @@
         switch (indexPath.row) {
             case 0:
             {
+                break;
+            }
                 
-            
-            }
-                break;
             case 1:
-            {
-                FeedBackVC *vc = [[FeedBackVC alloc] init];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-                break;
-            case 2:
-            {}
-                break;
-            case 3:
             {
                 MoreSettingVC *vc = [[MoreSettingVC alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
-            }
                 break;
+            }
                 
             default:
                 break;
         }
     }
 }
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 44.0;
