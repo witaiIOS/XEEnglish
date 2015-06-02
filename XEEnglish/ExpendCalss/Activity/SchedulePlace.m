@@ -19,14 +19,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"场馆预定";
-    [self initUI];
 }
 
 - (void)initUI{
     
     [super initUI];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [self tableFooterView];

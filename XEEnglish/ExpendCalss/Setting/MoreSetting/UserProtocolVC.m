@@ -24,6 +24,7 @@
 
 - (void)initUI
 {
+    [super initUI];
     self.myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     self.myWebView.delegate = self;
     

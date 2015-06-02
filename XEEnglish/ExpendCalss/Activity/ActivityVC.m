@@ -22,12 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self initUI];
-    
+
 }
 
 - (void)initUI{
+    [super initUI];
     NSString *leftString = @"当前活动";
     NSString *rightString = @"历史活动";
     
