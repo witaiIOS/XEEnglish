@@ -8,6 +8,6 @@
 
 #import "BaseVC.h"
 
-@interface PersonInfoVC : BaseVC
+@interface PersonInfoVC : BaseVC<UIActionSheetDelegate, UIImagePickerControllerDelegate>
 
 @end

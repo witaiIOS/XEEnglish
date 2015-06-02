@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C2043" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C2043" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -16,11 +16,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2D-TS-rFw">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="q2D-TS-rFw">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="请输入您的宝贵意见" translatesAutoresizingMaskIntoConstraints="NO" id="CC6-Uj-G8J">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" text="请输入您的宝贵意见" id="CC6-Uj-G8J">
                             <rect key="frame" x="10" y="62" width="300" height="110"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numbersAndPunctuation"/>
@@ -28,8 +30,9 @@
                                 <outlet property="delegate" destination="-1" id="Olf-7p-Ov5"/>
                             </connections>
                         </textView>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLQ-cM-65V">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wLQ-cM-65V">
                             <rect key="frame" x="20" y="202" width="280" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="0.48263922009999999" blue="0.1546600128" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="提交宝贵意见">
                                 <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -39,41 +42,20 @@
                                 <action selector="submitBtnClicked:" destination="-1" eventType="touchUpInside" id="XeV-lj-3vM"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="提交您的宝贵意见，我们改进会更快哦～" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsW-Ab-5cC">
+                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提交您的宝贵意见，我们改进会更快哦～" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KsW-Ab-5cC">
                             <rect key="frame" x="10" y="12" width="300" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <constraints>
-                        <constraint firstItem="CC6-Uj-G8J" firstAttribute="top" secondItem="KsW-Ab-5cC" secondAttribute="bottom" constant="10" id="6uh-vM-SJl"/>
-                        <constraint firstItem="KsW-Ab-5cC" firstAttribute="leading" secondItem="q2D-TS-rFw" secondAttribute="leading" constant="10" id="GWv-dE-iiX"/>
-                        <constraint firstItem="wLQ-cM-65V" firstAttribute="top" secondItem="CC6-Uj-G8J" secondAttribute="bottom" constant="30" id="JeW-2w-b2s"/>
-                        <constraint firstItem="CC6-Uj-G8J" firstAttribute="leading" secondItem="q2D-TS-rFw" secondAttribute="leading" constant="10" id="Lfq-NP-JTe"/>
-                        <constraint firstItem="wLQ-cM-65V" firstAttribute="leading" secondItem="q2D-TS-rFw" secondAttribute="leading" constant="20" id="Y1o-I5-Qgf"/>
-                        <constraint firstAttribute="trailing" secondItem="KsW-Ab-5cC" secondAttribute="trailing" constant="10" id="c4K-4f-Ejw"/>
-                        <constraint firstAttribute="trailing" secondItem="CC6-Uj-G8J" secondAttribute="trailing" constant="10" id="ePR-87-Pjl"/>
-                        <constraint firstAttribute="bottom" secondItem="wLQ-cM-65V" secondAttribute="bottom" constant="326" id="i7X-Ka-IHX"/>
-                        <constraint firstAttribute="trailing" secondItem="wLQ-cM-65V" secondAttribute="trailing" constant="20" id="j2E-3M-9IU"/>
-                        <constraint firstItem="KsW-Ab-5cC" firstAttribute="top" secondItem="q2D-TS-rFw" secondAttribute="top" constant="12" id="o4R-k1-qNZ"/>
-                    </constraints>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="q2D-TS-rFw" secondAttribute="trailing" id="C7B-XS-Dhq"/>
-                <constraint firstAttribute="bottom" secondItem="q2D-TS-rFw" secondAttribute="bottom" id="g7a-3v-7tI"/>
-                <constraint firstItem="q2D-TS-rFw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uVY-KM-9Fd"/>
-                <constraint firstItem="q2D-TS-rFw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wDT-zl-fPK"/>
-            </constraints>
             <point key="canvasLocation" x="455" y="351"/>
         </view>
         <viewController id="DIh-ej-uTH">
-            <layoutGuides>
-                <viewControllerLayoutGuide type="top" id="rT3-AP-5tT"/>
-                <viewControllerLayoutGuide type="bottom" id="wmj-EX-2io"/>
-            </layoutGuides>
             <view key="view" contentMode="scaleToFill" id="wWG-bj-W8t">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

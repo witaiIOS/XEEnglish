@@ -14,7 +14,7 @@
 #import "SettingSignatureVC.h"
 #import "ChangePassWordVC.h"
 
-@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIImagePickerControllerDelegate>
+@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *keepBtn;
 

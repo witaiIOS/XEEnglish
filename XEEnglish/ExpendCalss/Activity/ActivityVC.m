@@ -10,6 +10,8 @@
 #import "ActivityVC.h"
 #import "ActivityCell.h"
 
+#import "SchedulePlace.h"
+
 @interface ActivityVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -50,11 +52,20 @@
     reservePlaceBtn.backgroundColor = [UIColor orangeColor];
     [reservePlaceBtn setTitle:@"场馆预定" forState:UIControlStateNormal];
     [reservePlaceBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [reservePlaceBtn addTarget:self action:@selector(reservePlaceBtnAction) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *reservePlaceBarBtn = [[UIBarButtonItem alloc] initWithCustomView:reservePlaceBtn];
     self.navigationItem.rightBarButtonItem = reservePlaceBarBtn;
     
 }
+
+- (void)reservePlaceBtnAction{
+    
+    SchedulePlace *vc = [[SchedulePlace alloc] init];
+    [self.navigationController pushViewController:vc
+                                         animated:YES];
+}
+
 
 #pragma mark - UITableView DataSource
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

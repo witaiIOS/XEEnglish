@@ -14,6 +14,7 @@
 		0906047B1B14218A0038BAC4 /* UserProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906047A1B14218A0038BAC4 /* UserProtocolVC.m */; };
 		0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906047D1B1421B60038BAC4 /* AboutVC.m */; };
 		090604841B146B050038BAC4 /* CountdownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 090604831B146B050038BAC4 /* CountdownButton.m */; };
+		093CD67D1B1D692B004F7D11 /* SchedulePlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 093CD67C1B1D692B004F7D11 /* SchedulePlace.m */; };
 		097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 097990661B17006600D4A8DC /* ResetPassWordVC.m */; };
 		097990691B17006600D4A8DC /* ResetPassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 097990671B17006600D4A8DC /* ResetPassWordVC.xib */; };
 		09CA408F1B1C655000D12796 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA408D1B1C655000D12796 /* ActivityCell.m */; };
@@ -120,6 +121,8 @@
 		0906047D1B1421B60038BAC4 /* AboutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutVC.m; sourceTree = "<group>"; };
 		090604821B146B050038BAC4 /* CountdownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownButton.h; sourceTree = "<group>"; };
 		090604831B146B050038BAC4 /* CountdownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownButton.m; sourceTree = "<group>"; };
+		093CD67B1B1D692B004F7D11 /* SchedulePlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchedulePlace.h; sourceTree = "<group>"; };
+		093CD67C1B1D692B004F7D11 /* SchedulePlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchedulePlace.m; sourceTree = "<group>"; };
 		097990651B17006600D4A8DC /* ResetPassWordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPassWordVC.h; sourceTree = "<group>"; };
 		097990661B17006600D4A8DC /* ResetPassWordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPassWordVC.m; sourceTree = "<group>"; };
 		097990671B17006600D4A8DC /* ResetPassWordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPassWordVC.xib; sourceTree = "<group>"; };
@@ -620,11 +623,13 @@
 		A6284D681B105E6600EFF820 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				A6284D931B1066CC00EFF820 /* ActivityVC.h */,
+				A6284D941B1066CC00EFF820 /* ActivityVC.m */,
 				09CA408C1B1C655000D12796 /* ActivityCell.h */,
 				09CA408D1B1C655000D12796 /* ActivityCell.m */,
 				09CA408E1B1C655000D12796 /* ActivityCell.xib */,
-				A6284D931B1066CC00EFF820 /* ActivityVC.h */,
-				A6284D941B1066CC00EFF820 /* ActivityVC.m */,
+				093CD67B1B1D692B004F7D11 /* SchedulePlace.h */,
+				093CD67C1B1D692B004F7D11 /* SchedulePlace.m */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -880,6 +885,7 @@
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,
 				A6284D591B105E5600EFF820 /* UIScrollView+MJExtension.m in Sources */,
 				A6284D981B1066DE00EFF820 /* SettingVC.m in Sources */,
+				093CD67D1B1D692B004F7D11 /* SchedulePlace.m in Sources */,
 				090604751B14174F0038BAC4 /* MoreSettingVC.m in Sources */,
 				A6284D4D1B105E5600EFF820 /* AFURLSessionManager.m in Sources */,
 				A6284D581B105E5600EFF820 /* MJRefreshHeaderView.m in Sources */,
