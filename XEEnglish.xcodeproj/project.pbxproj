@@ -102,6 +102,7 @@
 		A6B1CEF21B1D909800100E9F /* WebServiceOpration.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEF11B1D909800100E9F /* WebServiceOpration.m */; };
 		A6B1CEF51B1D90EC00100E9F /* XeeService.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEF41B1D90EC00100E9F /* XeeService.m */; };
 		A6B1CEFB1B1D968600100E9F /* MyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEFA1B1D968600100E9F /* MyParser.m */; };
+		A6B1CF091B1DC65900100E9F /* LXSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CF081B1DC65900100E9F /* LXSegementView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,6 +286,8 @@
 		A6B1CEF41B1D90EC00100E9F /* XeeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XeeService.m; sourceTree = "<group>"; };
 		A6B1CEF91B1D968600100E9F /* MyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyParser.h; sourceTree = "<group>"; };
 		A6B1CEFA1B1D968600100E9F /* MyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyParser.m; sourceTree = "<group>"; };
+		A6B1CF071B1DC65900100E9F /* LXSegementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSegementView.h; sourceTree = "<group>"; };
+		A6B1CF081B1DC65900100E9F /* LXSegementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegementView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +476,8 @@
 		A6284CF81B105E5600EFF820 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A6B1CF071B1DC65900100E9F /* LXSegementView.h */,
+				A6B1CF081B1DC65900100E9F /* LXSegementView.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -930,6 +935,7 @@
 				A6284D5B1B105E5600EFF820 /* UIView+MJExtension.m in Sources */,
 				A6B1CEFB1B1D968600100E9F /* MyParser.m in Sources */,
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,
+				A6B1CF091B1DC65900100E9F /* LXSegementView.m in Sources */,
 				A6284D591B105E5600EFF820 /* UIScrollView+MJExtension.m in Sources */,
 				A6284D981B1066DE00EFF820 /* SettingVC.m in Sources */,
 				093CD67D1B1D692B004F7D11 /* SchedulePlace.m in Sources */,
