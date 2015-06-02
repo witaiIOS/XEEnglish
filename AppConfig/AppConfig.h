@@ -22,6 +22,10 @@
 #define IMAGEURL @"http://211.152.38.164:9080/IDOC/service/file"
 
 
+#define imageURLPrefix @"http://www.mrchabo.com/mrchabo/"
+#define MZBWebURL @"http://www.mrchabo.com/houseWs/ws/houseWs?wsdl"
+
+
 
 
 

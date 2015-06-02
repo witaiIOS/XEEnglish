@@ -95,6 +95,13 @@
 		A6B1CEE01B1C62D400100E9F /* SettingBirthdayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6B1CED51B1C62D400100E9F /* SettingBirthdayVC.xib */; };
 		A6B1CEE11B1C62D400100E9F /* SettingSignatureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CED71B1C62D400100E9F /* SettingSignatureVC.m */; };
 		A6B1CEE21B1C62D400100E9F /* SettingSignatureVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6B1CED81B1C62D400100E9F /* SettingSignatureVC.xib */; };
+		A6B1CEE91B1D8C7200100E9F /* HomeAdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEE41B1D8C7200100E9F /* HomeAdCell.m */; };
+		A6B1CEEA1B1D8C7200100E9F /* HomeBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEE61B1D8C7200100E9F /* HomeBtnCell.m */; };
+		A6B1CEEB1B1D8C7200100E9F /* HomeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEE81B1D8C7200100E9F /* HomeButton.m */; };
+		A6B1CEEF1B1D8D2C00100E9F /* XeeAd.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEEE1B1D8D2C00100E9F /* XeeAd.m */; };
+		A6B1CEF21B1D909800100E9F /* WebServiceOpration.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEF11B1D909800100E9F /* WebServiceOpration.m */; };
+		A6B1CEF51B1D90EC00100E9F /* XeeService.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEF41B1D90EC00100E9F /* XeeService.m */; };
+		A6B1CEFB1B1D968600100E9F /* MyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEFA1B1D968600100E9F /* MyParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -264,6 +271,20 @@
 		A6B1CED61B1C62D400100E9F /* SettingSignatureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingSignatureVC.h; sourceTree = "<group>"; };
 		A6B1CED71B1C62D400100E9F /* SettingSignatureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingSignatureVC.m; sourceTree = "<group>"; };
 		A6B1CED81B1C62D400100E9F /* SettingSignatureVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingSignatureVC.xib; sourceTree = "<group>"; };
+		A6B1CEE31B1D8C7200100E9F /* HomeAdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeAdCell.h; sourceTree = "<group>"; };
+		A6B1CEE41B1D8C7200100E9F /* HomeAdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeAdCell.m; sourceTree = "<group>"; };
+		A6B1CEE51B1D8C7200100E9F /* HomeBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeBtnCell.h; sourceTree = "<group>"; };
+		A6B1CEE61B1D8C7200100E9F /* HomeBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeBtnCell.m; sourceTree = "<group>"; };
+		A6B1CEE71B1D8C7200100E9F /* HomeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeButton.h; sourceTree = "<group>"; };
+		A6B1CEE81B1D8C7200100E9F /* HomeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeButton.m; sourceTree = "<group>"; };
+		A6B1CEED1B1D8D2C00100E9F /* XeeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XeeAd.h; sourceTree = "<group>"; };
+		A6B1CEEE1B1D8D2C00100E9F /* XeeAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XeeAd.m; sourceTree = "<group>"; };
+		A6B1CEF01B1D909800100E9F /* WebServiceOpration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceOpration.h; sourceTree = "<group>"; };
+		A6B1CEF11B1D909800100E9F /* WebServiceOpration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceOpration.m; sourceTree = "<group>"; };
+		A6B1CEF31B1D90EC00100E9F /* XeeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XeeService.h; sourceTree = "<group>"; };
+		A6B1CEF41B1D90EC00100E9F /* XeeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XeeService.m; sourceTree = "<group>"; };
+		A6B1CEF91B1D968600100E9F /* MyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyParser.h; sourceTree = "<group>"; };
+		A6B1CEFA1B1D968600100E9F /* MyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +451,7 @@
 		A6284CF61B105E5600EFF820 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A6B1CEEC1B1D8D1600100E9F /* Modules */,
 				A6284CF71B105E5600EFF820 /* Global */,
 				A6284CF81B105E5600EFF820 /* Utils */,
 				A6284CF91B105E5600EFF820 /* WebService */,
@@ -442,6 +464,8 @@
 			children = (
 				A6284D771B105F9500EFF820 /* UIFactory.h */,
 				A6284D781B105F9500EFF820 /* UIFactory.m */,
+				A6B1CEF91B1D968600100E9F /* MyParser.h */,
+				A6B1CEFA1B1D968600100E9F /* MyParser.m */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -456,6 +480,10 @@
 		A6284CF91B105E5600EFF820 /* WebService */ = {
 			isa = PBXGroup;
 			children = (
+				A6B1CEF01B1D909800100E9F /* WebServiceOpration.h */,
+				A6B1CEF11B1D909800100E9F /* WebServiceOpration.m */,
+				A6B1CEF31B1D90EC00100E9F /* XeeService.h */,
+				A6B1CEF41B1D90EC00100E9F /* XeeService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -648,6 +676,12 @@
 			children = (
 				A6284D8D1B10668300EFF820 /* HomeVC.h */,
 				A6284D8E1B10668300EFF820 /* HomeVC.m */,
+				A6B1CEE31B1D8C7200100E9F /* HomeAdCell.h */,
+				A6B1CEE41B1D8C7200100E9F /* HomeAdCell.m */,
+				A6B1CEE51B1D8C7200100E9F /* HomeBtnCell.h */,
+				A6B1CEE61B1D8C7200100E9F /* HomeBtnCell.m */,
+				A6B1CEE71B1D8C7200100E9F /* HomeButton.h */,
+				A6B1CEE81B1D8C7200100E9F /* HomeButton.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -733,6 +767,15 @@
 				A6B1CECB1B1C62D400100E9F /* ChangePassWordVC.xib */,
 			);
 			path = PersonInfo;
+			sourceTree = "<group>";
+		};
+		A6B1CEEC1B1D8D1600100E9F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				A6B1CEED1B1D8D2C00100E9F /* XeeAd.h */,
+				A6B1CEEE1B1D8D2C00100E9F /* XeeAd.m */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -861,11 +904,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6B1CEEB1B1D8C7200100E9F /* HomeButton.m in Sources */,
 				A6284D791B105F9500EFF820 /* UIFactory.m in Sources */,
 				0906047B1B14218A0038BAC4 /* UserProtocolVC.m in Sources */,
 				09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */,
 				A6284D4B1B105E5600EFF820 /* AFURLRequestSerialization.m in Sources */,
 				A6284D4A1B105E5600EFF820 /* AFURLConnectionOperation.m in Sources */,
+				A6B1CEF21B1D909800100E9F /* WebServiceOpration.m in Sources */,
 				A6284D8F1B10668300EFF820 /* HomeVC.m in Sources */,
 				A6284D921B10669200EFF820 /* CourseVC.m in Sources */,
 				A6284D5F1B105E5600EFF820 /* UIButton+AFNetworking.m in Sources */,
@@ -880,8 +925,10 @@
 				A6284D501B105E5600EFF820 /* DDXMLDocument.m in Sources */,
 				A6284D521B105E5600EFF820 /* DDXMLNode.m in Sources */,
 				A6284D9C1B1067C100EFF820 /* LoginVC.m in Sources */,
+				A6B1CEEA1B1D8C7200100E9F /* HomeBtnCell.m in Sources */,
 				A6B1CEDE1B1C62D400100E9F /* PersonInfoVC.m in Sources */,
 				A6284D5B1B105E5600EFF820 /* UIView+MJExtension.m in Sources */,
+				A6B1CEFB1B1D968600100E9F /* MyParser.m in Sources */,
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,
 				A6284D591B105E5600EFF820 /* UIScrollView+MJExtension.m in Sources */,
 				A6284D981B1066DE00EFF820 /* SettingVC.m in Sources */,
@@ -895,9 +942,12 @@
 				A6284D4C1B105E5600EFF820 /* AFURLResponseSerialization.m in Sources */,
 				A6B1CEE11B1C62D400100E9F /* SettingSignatureVC.m in Sources */,
 				A6B1CED91B1C62D400100E9F /* ChangePassWordVC.m in Sources */,
+				A6B1CEF51B1D90EC00100E9F /* XeeService.m in Sources */,
 				A6284D571B105E5600EFF820 /* MJRefreshFooterView.m in Sources */,
 				A6284D6D1B105E6600EFF820 /* BaseVC.m in Sources */,
+				A6B1CEEF1B1D8D2C00100E9F /* XeeAd.m in Sources */,
 				A6284D511B105E5600EFF820 /* DDXMLElement.m in Sources */,
+				A6B1CEE91B1D8C7200100E9F /* HomeAdCell.m in Sources */,
 				A6284CD21B10592100EFF820 /* AppDelegate.m in Sources */,
 				A6B1CEDF1B1C62D400100E9F /* SettingBirthdayVC.m in Sources */,
 				A6284D471B105E5600EFF820 /* AFHTTPSessionManager.m in Sources */,

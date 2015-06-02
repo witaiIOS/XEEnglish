@@ -7,8 +7,17 @@
 //
 
 #import "HomeVC.h"
+#import "HomeBtnCell.h"
+#import "HomeAdCell.h"
+#import "XeeService.h"
 
-@interface HomeVC ()
+@interface HomeVC ()<HomeBtnCellDelegate, UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSArray *serviceInfos;
+@property (strong, nonatomic) NSArray *adInfos;
+
 
 @end
 
@@ -17,6 +26,42 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    _adInfos = [[NSArray alloc] init];
+    _serviceInfos = [[NSArray alloc] init];
+    
+    [[XeeService sharedInstance] getHomeServiceWithBlock:^(NSNumber *result, NSArray *resultInfo, NSError *error) {
+        if (error) {
+            [UIFactory showAlert:@"网络错误"];
+        }
+        else{
+            if ([result integerValue] == 0) {
+                _serviceInfos = [resultInfo mutableCopy];
+                [self.tableView reloadData];
+            }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }
+
+    }];
+    
+    [[XeeService sharedInstance] getHomeAdWithBlock:^(NSNumber *result, NSArray *resultInfo, NSError *error) {
+        if (error) {
+            NSLog(@"网络错误");
+        }
+        else{
+            if ([result integerValue] == 0) {
+                _adInfos = [resultInfo mutableCopy];
+                [self.tableView reloadData];
+            }
+            else{
+                NSLog(@"resultInfo = 1");
+            }
+            
+        }
+
+    }];
  
 }
 
@@ -25,14 +70,93 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Table view data source
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 2;
 }
-*/
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    if (section == 0) {
+        return 1;
+    }
+    else if (section == 1) {
+        return (_serviceInfos.count+1)/2;
+    }
+    else{
+        return 0;
+    }
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier1 = @"HomeAdCell_Identifier";
+    static NSString *CellIdentifier2 = @"HomeBntCell_Identifier";
+    
+    UITableViewCell *cell = nil;
+
+    
+    if (indexPath.section == 0) {//ad
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
+        if (cell == nil) {
+            cell = [[HomeAdCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier1];
+        }
+        
+        ((HomeAdCell *)cell).adArray = _adInfos;
+        
+        return cell;
+        
+        
+    }
+    else if (indexPath.section == 1){//bnt
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
+        
+        ((HomeBtnCell *)cell).delegate = self;
+        ((HomeBtnCell *)cell).serviceDic1 = [_serviceInfos objectAtIndex:2*(indexPath.row)];
+        
+        if ( (2*(indexPath.row)+1) < _serviceInfos.count) {
+            ((HomeBtnCell *)cell).serviceDic2 = [_serviceInfos objectAtIndex:2*(indexPath.row)+1];
+        }
+        else{
+            ((HomeBtnCell *)cell).serviceDic2 = nil;
+        }
+
+        return cell;
+    }
+    else{
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        }
+        
+        return cell;
+    }
+    
+    
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(indexPath.section == 0){
+        return 160;
+    }
+    else if (indexPath.section == 1){
+        return 120;
+    }
+    else{
+        return 44;
+    }
+}
+
+#pragma mark - HomeBtnCell delegate
+- (void)HomeBtnCellButtonPressed:(id)sender andServiceInfo:(NSDictionary *)serviceDic{
+    
+    UIButton *button = (UIButton *)sender;
+    NSLog(@"button.tag:%li",(long)button.tag);
+}
+
+
 
 @end
