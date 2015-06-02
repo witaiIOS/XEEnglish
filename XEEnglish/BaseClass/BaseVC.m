@@ -24,6 +24,8 @@
     
     _backButton.hidden = (self.navigationController.viewControllers.count == 1) ? YES : NO;
     
+   
+    
 }
 
 - (void)viewDidLoad {
@@ -31,6 +33,7 @@
     // Do any additional setup after loading the view.
     [self initUI];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

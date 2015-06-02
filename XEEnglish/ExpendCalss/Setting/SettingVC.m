@@ -41,6 +41,7 @@
     self.tableView.tableFooterView = [self tableFooterView];
     //[self.tableView registerClass:[MyAccountTVC class] forCellReuseIdentifier:@"MyAccountTVC"];
     [self.view addSubview:self.tableView];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -221,6 +222,7 @@
             case 2:
             {
                 PersonInfoVC *vc = [[PersonInfoVC alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
