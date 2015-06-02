@@ -46,11 +46,16 @@
 }
 
 - (IBAction)forgetPasswordAction:(id)sender {
+    
+    //忘记密码的去手机注册页面通过获取验证码先登录
+    PhoneLoginVC *forgetPasswordLoginVC = [[PhoneLoginVC alloc] init];
+    [self.navigationController pushViewController:forgetPasswordLoginVC animated:YES];
 }
 
 - (IBAction)phoneResigerAction:(id)sender {
-    PhoneLoginVC *phoneLoginVC = [[PhoneLoginVC alloc] init];
     
+    //没有注册的去手机注册页面注册
+    PhoneLoginVC *phoneLoginVC = [[PhoneLoginVC alloc] init];
     [self.navigationController pushViewController:phoneLoginVC animated:YES];
     
 }

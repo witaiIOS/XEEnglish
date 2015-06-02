@@ -28,6 +28,9 @@
 - (IBAction)keepBtn:(id)sender {
     
     
+    
+    //保存完数据之后回到主界面
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 

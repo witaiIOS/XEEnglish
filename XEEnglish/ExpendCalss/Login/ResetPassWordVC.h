@@ -9,5 +9,6 @@
 #import "BaseVC.h"
 
 @interface ResetPassWordVC : BaseVC
+@property (nonatomic, assign) BOOL isRegistered;
 
 @end

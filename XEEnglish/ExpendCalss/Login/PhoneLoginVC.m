@@ -9,6 +9,8 @@
 #import "PhoneLoginVC.h"
 #import "CountdownButton.h"
 
+#import "ResetPassWordVC.h"
+
 @interface PhoneLoginVC ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
@@ -71,6 +73,11 @@
 
 
 - (IBAction)nextAction:(id)sender {
+    
+    
+    //用验证码校验完登陆成功后去设置密码
+    ResetPassWordVC *setPassWordVC = [[ResetPassWordVC alloc] init];
+    [self.navigationController pushViewController:setPassWordVC animated:YES];
 }
 
 
