@@ -57,20 +57,19 @@
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 2;
+    return 5;
 }
 
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (section == 0) {
+    if (section == 3) {
         
+        return 3;
+    }else{
         return 1;
     }
-    else{
-        
-        return 7;
-    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -88,7 +87,7 @@
             {
                 cell.title.text = @"头像";
                 [cell.personImageView setImage:[UIImage imageNamed:@"people_ayb"]];
-
+                
             }
                 break;
                 
@@ -112,75 +111,77 @@
             cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
- 
-    
+            
+            
         }
-                
+        
         NSString *infoString = nil;
         NSString *detailInfoString = nil;
         
-        switch (indexPath.row) {
-            case 0:
-            {
-                infoString = @"网名";
-                detailInfoString = @"风哥";
+        if (indexPath.section == 1){
+            switch (indexPath.row) {
+                case 0:
+                {
+                    infoString = @"名字";
+                    detailInfoString = @"风哥";
+                    break;
+                }
             }
-                break;
-            case 1:
-            {
-                infoString = @"账号";
-                detailInfoString = @"123";
-                cell.accessoryType = UITableViewCellAccessoryNone;
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
-                break;
-
-            case 2:
-            {
-                infoString = @"手机号";
-                detailInfoString = @"13797066866";
-            }
-                break;
-
-            case 3:
-            {
-                infoString = @"居住地";
-                detailInfoString = @"武汉";
-            }
-                break;
-
-            case 4:
-            {
-                infoString = @"生日";
-                detailInfoString = @"1990-01-01";
-            }
-                break;
-
-            case 5:
-            {
-                infoString = @"个性签名";
-                detailInfoString = @"随风飘扬";
-            }
-                break;
-
-            case 6:
-            {
-                infoString = @"修改密码";
-                detailInfoString = @"";
-            }
-                break;
-
-                
-            default:
-                break;
         }
+        else if (indexPath.section == 2){
+            switch (indexPath.row) {
+                case 0:
+                {
+                    infoString = @"手机号";
+                    detailInfoString = @"13797066866";
+                    break;
+                }
+            }
+        }
+        else if (indexPath.section == 3){
+            switch (indexPath.row) {
+                case 0:
+                {
+                    infoString = @"居住地";
+                    detailInfoString = @"武汉";
+                    break;
+                }
+                case 1:
+                {
+                    infoString = @"生日";
+                    detailInfoString = @"1990-01-01";
+                    break;
+                }
+                case 2:
+                {
+                    infoString = @"个性签名";
+                    detailInfoString = @"随风飘扬";
+                    break;
+                }
+                default:
+                    break;
+            }
+        }else {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    infoString = @"修改密码";
+                    detailInfoString = @"";
+                    break;
+                }
+                default:
+                    break;
+            }
+            
+        }
+        
         
         cell.textLabel.text = infoString;
         cell.detailTextLabel.text = detailInfoString;
         
         return cell;
-    
     }
+    
 }
 
 
@@ -193,8 +194,7 @@
     if (indexPath.section == 0) {
         [self changeImage];
     }
-    else{
-        
+    else if (indexPath.section == 1){
         switch (indexPath.row) {
             case 0:
             {
@@ -202,53 +202,63 @@
                 vc.nTitle = @"修改网名";
                 vc.nplaceholder = @"请输入网名";
                 [self.navigationController pushViewController:vc animated:YES];
-
-            }
                 break;
-//            case 1:
-//            {
-//                
-//            }
-//                break;
-            case 2:
+            }
+            default:
+                break;
+        }
+    }
+    else if (indexPath.section == 2){
+        switch (indexPath.row) {
+            case 0:
             {
                 
             }
+            default:
                 break;
-            case 3:
+        }
+    }
+    else if (indexPath.section == 3){
+        switch (indexPath.row) {
+            case 0:
             {
                 NeTNameAndDomicileVC *vc = [[NeTNameAndDomicileVC alloc] init];
                 vc.nTitle = @"修改居住地";
                 vc.nplaceholder = @"请输入居住地";
                 [self.navigationController pushViewController:vc animated:YES];
-            }
                 break;
-            case 4:
+            }
+                
+            case 1:
             {
                 SettingBirthdayVC *vc = [[SettingBirthdayVC alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
-            }
                 break;
-            case 5:
+            }
+                
+            case 2:
             {
                 SettingSignatureVC *vc = [[SettingSignatureVC alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
-              
-            }
                 break;
-            case 6:
+            }
+            default:
+                break;
+                
+        }
+    }
+    else{
+        switch (indexPath.row) {
+            case 0:
             {
                 ChangePassWordVC *vc = [[ChangePassWordVC alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
             }
-                break;
-
-
-                
             default:
                 break;
         }
     }
+    
 }
 
 
@@ -258,7 +268,7 @@
         return 10;
     }
     else{
-        return 20;
+        return 5;
     }
 }
 
@@ -304,7 +314,7 @@
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             [self presentViewController:imageSource animated:YES completion:nil];
         }
-
+        
         
         
     }

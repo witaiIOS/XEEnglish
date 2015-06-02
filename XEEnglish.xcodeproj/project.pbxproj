@@ -710,22 +710,22 @@
 		A6B1CEC81B1C62D400100E9F /* PersonInfo */ = {
 			isa = PBXGroup;
 			children = (
-				A6B1CEC91B1C62D400100E9F /* ChangePassWordVC.h */,
-				A6B1CECA1B1C62D400100E9F /* ChangePassWordVC.m */,
-				A6B1CECB1B1C62D400100E9F /* ChangePassWordVC.xib */,
+				A6B1CED11B1C62D400100E9F /* PersonInfoVC.h */,
+				A6B1CED21B1C62D400100E9F /* PersonInfoVC.m */,
+				A6B1CECF1B1C62D400100E9F /* PersonImageTVC.h */,
+				A6B1CED01B1C62D400100E9F /* PersonImageTVC.m */,
 				A6B1CECC1B1C62D400100E9F /* NeTNameAndDomicileVC.h */,
 				A6B1CECD1B1C62D400100E9F /* NeTNameAndDomicileVC.m */,
 				A6B1CECE1B1C62D400100E9F /* NeTNameAndDomicileVC.xib */,
-				A6B1CECF1B1C62D400100E9F /* PersonImageTVC.h */,
-				A6B1CED01B1C62D400100E9F /* PersonImageTVC.m */,
-				A6B1CED11B1C62D400100E9F /* PersonInfoVC.h */,
-				A6B1CED21B1C62D400100E9F /* PersonInfoVC.m */,
 				A6B1CED31B1C62D400100E9F /* SettingBirthdayVC.h */,
 				A6B1CED41B1C62D400100E9F /* SettingBirthdayVC.m */,
 				A6B1CED51B1C62D400100E9F /* SettingBirthdayVC.xib */,
 				A6B1CED61B1C62D400100E9F /* SettingSignatureVC.h */,
 				A6B1CED71B1C62D400100E9F /* SettingSignatureVC.m */,
 				A6B1CED81B1C62D400100E9F /* SettingSignatureVC.xib */,
+				A6B1CEC91B1C62D400100E9F /* ChangePassWordVC.h */,
+				A6B1CECA1B1C62D400100E9F /* ChangePassWordVC.m */,
+				A6B1CECB1B1C62D400100E9F /* ChangePassWordVC.xib */,
 			);
 			path = PersonInfo;
 			sourceTree = "<group>";
