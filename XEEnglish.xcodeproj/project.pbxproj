@@ -17,6 +17,9 @@
 		093CD67D1B1D692B004F7D11 /* SchedulePlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 093CD67C1B1D692B004F7D11 /* SchedulePlace.m */; };
 		097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 097990661B17006600D4A8DC /* ResetPassWordVC.m */; };
 		097990691B17006600D4A8DC /* ResetPassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 097990671B17006600D4A8DC /* ResetPassWordVC.xib */; };
+		09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */; };
+		09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */; };
+		09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDB1B1EDD3E00ABC885 /* select_flag.png */; };
 		09CA408F1B1C655000D12796 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA408D1B1C655000D12796 /* ActivityCell.m */; };
 		09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA408E1B1C655000D12796 /* ActivityCell.xib */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
@@ -134,6 +137,10 @@
 		097990651B17006600D4A8DC /* ResetPassWordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPassWordVC.h; sourceTree = "<group>"; };
 		097990661B17006600D4A8DC /* ResetPassWordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPassWordVC.m; sourceTree = "<group>"; };
 		097990671B17006600D4A8DC /* ResetPassWordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPassWordVC.xib; sourceTree = "<group>"; };
+		09C95CD71B1EDD2800ABC885 /* LXSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSegmentView.h; sourceTree = "<group>"; };
+		09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegmentView.m; sourceTree = "<group>"; };
+		09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_tab_selected.png; sourceTree = "<group>"; };
+		09C95CDB1B1EDD3E00ABC885 /* select_flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_flag.png; sourceTree = "<group>"; };
 		09CA408C1B1C655000D12796 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		09CA408D1B1C655000D12796 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		09CA408E1B1C655000D12796 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
@@ -363,6 +370,8 @@
 		09DB2DCA1B1322AF0078AAF5 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */,
+				09C95CDB1B1EDD3E00ABC885 /* select_flag.png */,
 				09DB2DCB1B1322AF0078AAF5 /* accountDetail03@2x.png */,
 				09DB2DCC1B1322AF0078AAF5 /* accountDetail04@2x.png */,
 			);
@@ -661,6 +670,8 @@
 				09CA408C1B1C655000D12796 /* ActivityCell.h */,
 				09CA408D1B1C655000D12796 /* ActivityCell.m */,
 				09CA408E1B1C655000D12796 /* ActivityCell.xib */,
+				09C95CD71B1EDD2800ABC885 /* LXSegmentView.h */,
+				09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */,
 				093CD67B1B1D692B004F7D11 /* SchedulePlace.h */,
 				093CD67C1B1D692B004F7D11 /* SchedulePlace.m */,
 			);
@@ -878,6 +889,8 @@
 				09DB2DC31B1322980078AAF5 /* icon_time.png in Resources */,
 				09DB2DD21B1322CC0078AAF5 /* star_select.png in Resources */,
 				A6284D8B1B10652700EFF820 /* tab_course@2x.png in Resources */,
+				09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */,
+				09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */,
 				A6284D7C1B10615200EFF820 /* nav_backButtonBg.png in Resources */,
 				09DB2DCD1B1322AF0078AAF5 /* accountDetail03@2x.png in Resources */,
 				A6284D9D1B1067C100EFF820 /* LoginVC.xib in Resources */,
@@ -917,6 +930,7 @@
 				A6284D4A1B105E5600EFF820 /* AFURLConnectionOperation.m in Sources */,
 				A6B1CEF21B1D909800100E9F /* WebServiceOpration.m in Sources */,
 				A6284D8F1B10668300EFF820 /* HomeVC.m in Sources */,
+				09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */,
 				A6284D921B10669200EFF820 /* CourseVC.m in Sources */,
 				A6284D5F1B105E5600EFF820 /* UIButton+AFNetworking.m in Sources */,
 				A6284D491B105E5600EFF820 /* AFSecurityPolicy.m in Sources */,
