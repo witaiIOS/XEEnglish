@@ -29,11 +29,11 @@
     self.title = @"个人信息";
 }
 
-//- (void)viewWillAppear:(BOOL)animated{
-//    
-//    [super viewWillAppear:YES];
-//    [self.tableView reloadData];
-//}
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:YES];
+    [self.tableView reloadData];
+}
 
 - (void)initUI
 {
@@ -290,54 +290,30 @@
     
 }
 
+//用UIActionSheet控件来选择相片的来源
 - (void)changeImage{
     
     UIActionSheet *photoSource = [[UIActionSheet alloc] initWithTitle:@""
                                                              delegate:self
                                                     cancelButtonTitle:@"取消"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"相册", @"图库",@"拍照",nil];
+                                                    otherButtonTitles:@"相册", @"拍照",nil];
     [photoSource showFromRect:self.view.bounds inView:self.view animated:YES];
     
 }
 
 #pragma mark - UIActionSheet Delegate
 
-//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-//    
-//    UIImagePickerController *imageSource = [[UIImagePickerController alloc] init];
-//    imageSource.delegate = self;
-//    
-//    if (buttonIndex == 0) {
-//        imageSource.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-//        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
-//            [self presentViewController:imageSource animated:YES completion:nil];
-//        }
-//        
-//        
-//    }else if (buttonIndex == 1){
-//        imageSource.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] ) {
-//            [self presentViewController:imageSource animated:YES completion:nil];
-//        }
-//        
-//    }else if (buttonIndex == 2){
-//        imageSource.sourceType = UIImagePickerControllerSourceTypeCamera;
-//        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-//            [self presentViewController:imageSource animated:YES completion:nil];
-//        }
-//    }
-//}
+//实现UIActionSheet的 Delegate方法
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     switch (buttonIndex) {
         case 0:
+            //当选中第一个按钮时，选用localPhoto方法设置图片
             [self localPhoto];
             break;
         case 1:
-            [self localPhoto];
-            break;
-        case 2:
+            //当选中第二个按钮时，选用takePhoto方法设置图片
             [self takePhoto];
             break;
             
@@ -384,7 +360,7 @@
     
     UIImage *myImage = [info objectForKey:UIImagePickerControllerEditedImage];
     self.personImage = myImage;
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
