@@ -14,9 +14,10 @@
 #import "SettingSignatureVC.h"
 #import "ChangePassWordVC.h"
 
-@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource>
+@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *keepBtn;
+@property (nonatomic, strong) UIImage *personImage;
 
 @end
 
@@ -28,9 +29,18 @@
     self.title = @"个人信息";
 }
 
+//- (void)viewWillAppear:(BOOL)animated{
+//    
+//    [super viewWillAppear:YES];
+//    [self.tableView reloadData];
+//}
+
 - (void)initUI
 {
     [super initUI];
+    
+    self.personImage =[UIImage imageNamed:@"people_ayb"];
+    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     
     self.tableView.delegate =self;
@@ -87,7 +97,8 @@
             case 0:
             {
                 cell.title.text = @"头像";
-                [cell.personImageView setImage:[UIImage imageNamed:@"people_ayb"]];
+                
+                [cell.personImageView setImage:self.personImage];
                 
             }
                 break;
@@ -292,45 +303,94 @@
 
 #pragma mark - UIActionSheet Delegate
 
+//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    
+//    UIImagePickerController *imageSource = [[UIImagePickerController alloc] init];
+//    imageSource.delegate = self;
+//    
+//    if (buttonIndex == 0) {
+//        imageSource.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+//        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
+//            [self presentViewController:imageSource animated:YES completion:nil];
+//        }
+//        
+//        
+//    }else if (buttonIndex == 1){
+//        imageSource.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] ) {
+//            [self presentViewController:imageSource animated:YES completion:nil];
+//        }
+//        
+//    }else if (buttonIndex == 2){
+//        imageSource.sourceType = UIImagePickerControllerSourceTypeCamera;
+//        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+//            [self presentViewController:imageSource animated:YES completion:nil];
+//        }
+//    }
+//}
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     
-    UIImagePickerController *imageSource = [[UIImagePickerController alloc] init];
-    imageSource.delegate = self;
+    switch (buttonIndex) {
+        case 0:
+            [self localPhoto];
+            break;
+        case 1:
+            [self localPhoto];
+            break;
+        case 2:
+            [self takePhoto];
+            break;
+            
+            
+        default:
+            break;
+    }
+}
+
+
+//从相册选择
+- (void)localPhoto{
     
-    if (buttonIndex == 0) {
-        imageSource.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
-            [self presentViewController:imageSource animated:YES completion:nil];
-        }
-        
-        
-    }else if (buttonIndex == 1){
-        imageSource.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] ) {
-            [self presentViewController:imageSource animated:YES completion:nil];
-        }
-        
-    }else if (buttonIndex == 2){
-        imageSource.sourceType = UIImagePickerControllerSourceTypeCamera;
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            [self presentViewController:imageSource animated:YES completion:nil];
-        }
-        
-        
-        
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    //资源类型为图库文件
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.delegate = self;
+    //设置选择后的图片可以编辑
+    picker.allowsEditing = YES;
+    [self presentViewController:picker animated:YES completion:nil];
+}
+//拍照
+- (void)takePhoto{
+    //资源类型为照相机
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+    //判断是否有相机
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        //设置拍照后的照片可以编辑
+        picker.allowsEditing = YES;
+        //资源类型为照相机
+        picker.sourceType = sourceType;
+        [self presentViewController:picker animated:YES completion:nil];
+    }else{
+        NSLog(@"该设备没有摄像头");
     }
     
 }
 
+
 #pragma mark - UIImagePickerController Delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
-    
+    UIImage *myImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    self.personImage = myImage;
+    [self.tableView reloadData];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     
-    
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 
