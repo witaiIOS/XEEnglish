@@ -32,7 +32,7 @@
     [super initUI];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.mySegmentView = [[LXSegmentView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
+    self.mySegmentView = [[LXSegmentView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-49)];
     self.mySegmentView.tabBgImageView.image = [UIImage imageNamed:@"bg_tab_selected.png"];
     self.mySegmentView.tabButtonSeclectImageView.image = [UIImage imageNamed:@"select_flag.png"];
     self.mySegmentView.tabButtonColor = [UIColor blackColor];
@@ -41,14 +41,16 @@
     
     [self.view addSubview:self.mySegmentView];
     
-    self.tableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-42) style:UITableViewStyleGrouped];
+    CGFloat segHeight = self.mySegmentView.frame.size.height;
+    
+    self.tableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, segHeight-42) style:UITableViewStyleGrouped];
     self.tableView1.delegate = self;
     self.tableView1.dataSource = self;
     self.tableView1.backgroundColor = [UIColor clearColor];
     
     [self.mySegmentView.mainScrollView addSubview:self.tableView1];
     
-    self.tableView2 = [[UITableView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight-42) style:UITableViewStyleGrouped];
+    self.tableView2 = [[UITableView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, segHeight-42) style:UITableViewStyleGrouped];
     self.tableView2.delegate = self;
     self.tableView2.dataSource = self;
     self.tableView2.backgroundColor = [UIColor clearColor];
@@ -58,7 +60,7 @@
     
     UIButton *reservePlaceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [reservePlaceBtn setFrame:CGRectMake(kScreenWidth-90, 15, 80, 30)];
-    reservePlaceBtn.backgroundColor = [UIColor orangeColor];
+    //reservePlaceBtn.backgroundColor = [UIColor orangeColor];
     [reservePlaceBtn setTitle:@"场馆预定" forState:UIControlStateNormal];
     [reservePlaceBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [reservePlaceBtn.titleLabel setFont: [UIFont systemFontOfSize:16.0]];
@@ -68,6 +70,13 @@
     self.navigationItem.rightBarButtonItem = reservePlaceBarBtn;
     
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - action
 
 - (void)reservePlaceBtnAction{
     
@@ -81,10 +90,10 @@
 #pragma mark - UITableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if (tableView == self.tableView1) {
-        return 2;
+        return 4;
     }
     else if (tableView == self.tableView2){
-        return 3;
+        return 6;
     }
     else{
         return 0;
@@ -114,6 +123,7 @@
             
         }
         
+        cell.cellEdge = 10;
                 
         return cell;
         
@@ -123,6 +133,8 @@
         [tableView registerNib:[UINib nibWithNibName:@"ActivityCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse2];
         ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
         
+        cell.cellEdge = 10;
+        
         if (cell == nil) {
             cell = [[ActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
             
@@ -131,13 +143,11 @@
         return cell;
     }
     else{
-        [tableView registerNib:[UINib nibWithNibName:@"ActivityCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse3];
-        ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse3];
-        
+        BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse3];
         if (cell == nil) {
-            cell = [[ActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+            cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
         }
-        
+        cell.cellEdge = 10;
         return cell;
     
     }
@@ -154,10 +164,7 @@
 
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    if (section == 0) {
-        return 1.0f;
-    }else
-        return 5.0f;
+    return 5.0f;
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -165,9 +172,8 @@
     return 5.0f;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /*
