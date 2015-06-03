@@ -109,6 +109,7 @@
 - (void)loginAction:(id)sender{
     
     LoginVC *loginVC = [[LoginVC alloc] init];
+    loginVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:loginVC animated:YES];
 }
 
@@ -251,6 +252,7 @@
             case 1:
             {
                 MoreSettingVC *vc = [[MoreSettingVC alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }

@@ -293,11 +293,11 @@
 //用UIActionSheet控件来选择相片的来源
 - (void)changeImage{
     
-    UIActionSheet *photoSource = [[UIActionSheet alloc] initWithTitle:@""
+    UIActionSheet *photoSource = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
                                                     cancelButtonTitle:@"取消"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"相册", @"拍照",nil];
+                                                    otherButtonTitles:@"相册",@"拍照",nil];
     [photoSource showFromRect:self.view.bounds inView:self.view animated:YES];
     
 }
@@ -313,7 +313,7 @@
             [self localPhoto];
             break;
         case 1:
-            //当选中第二个按钮时，选用takePhoto方法设置图片
+            //当选中第三个按钮时，选用takePhoto方法设置图片
             [self takePhoto];
             break;
             

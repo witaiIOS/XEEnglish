@@ -61,6 +61,7 @@
 - (void)reservePlaceBtnAction{
     
     SchedulePlace *vc = [[SchedulePlace alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc
                                          animated:YES];
 }
