@@ -28,13 +28,15 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
      self.myDate =  [dateFormatter stringFromDate:select];
+    
     NSLog(@"%@",self.myDate);
 }
 
 
 - (IBAction)keepBtn:(id)sender {
     
-    
+    [self.delegate ChangeBirthday:self.myDate];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

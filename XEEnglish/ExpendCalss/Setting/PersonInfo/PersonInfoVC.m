@@ -14,12 +14,16 @@
 #import "SettingSignatureVC.h"
 #import "ChangePassWordVC.h"
 
-@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeTNameAndDomicileDelegate>
+@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeTNameAndDomicileDelegate,SettingBirthdayDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *keepBtn;
+
 @property (nonatomic, strong) UIImage *personImage;
+
 @property (nonatomic, strong) NSString *netName;
 @property (nonatomic, strong) NSString *cityName;
+@property (nonatomic, strong) NSString *myBirthday;
+
 
 @end
 
@@ -44,6 +48,7 @@
     self.personImage =[UIImage imageNamed:@"people_ayb"];
     self.netName = @"风哥";
     self.cityName = @"武汉";
+    self.myBirthday = @"1990-01-01";
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     
@@ -165,7 +170,7 @@
                 case 1:
                 {
                     infoString = @"生日";
-                    detailInfoString = @"1990-01-01";
+                    detailInfoString = self.myBirthday;
                     break;
                 }
                 case 2:
@@ -252,6 +257,7 @@
             case 1:
             {
                 SettingBirthdayVC *vc = [[SettingBirthdayVC alloc] init];
+                vc.delegate =self;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
@@ -385,6 +391,12 @@
     }else{
         self.cityName = sender;
     }
+}
+
+#pragma mark - SettingBirthday Delegate
+- (void)ChangeBirthday:(id)sender{
+    
+    self.myBirthday = sender;
 }
 
 

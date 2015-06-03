@@ -8,6 +8,15 @@
 
 #import "BaseVC.h"
 
+@protocol SettingBirthdayDelegate <NSObject>
+
+@optional
+- (void)ChangeBirthday: (id) sender;
+
+@end
+
 @interface SettingBirthdayVC : BaseVC
+
+@property (nonatomic,strong) id<SettingBirthdayDelegate> delegate;
 
 @end
