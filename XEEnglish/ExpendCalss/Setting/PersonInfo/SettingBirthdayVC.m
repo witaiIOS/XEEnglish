@@ -20,6 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"修改生日";
+    self.myBirthdayPicker.maximumDate = [NSDate date];//设置最大日期为当前日期
 }
 
 #pragma mark - My Action
