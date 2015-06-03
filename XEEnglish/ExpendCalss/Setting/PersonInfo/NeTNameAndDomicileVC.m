@@ -24,8 +24,14 @@
 
 
 - (IBAction)keepBtn:(id)sender {
+    if ([self.index isEqualToString:@"NetName"]) {
+        [self.delegate ChangeNeTNameAndDomicile:self.myInfoField.text index:0];
+    }
+    else{
+        [self.delegate ChangeNeTNameAndDomicile:self.myInfoField.text index:1];
+    }
     
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

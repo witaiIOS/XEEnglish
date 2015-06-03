@@ -14,10 +14,12 @@
 #import "SettingSignatureVC.h"
 #import "ChangePassWordVC.h"
 
-@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeTNameAndDomicileDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *keepBtn;
 @property (nonatomic, strong) UIImage *personImage;
+@property (nonatomic, strong) NSString *netName;
+@property (nonatomic, strong) NSString *cityName;
 
 @end
 
@@ -40,6 +42,8 @@
     [super initUI];
     
     self.personImage =[UIImage imageNamed:@"people_ayb"];
+    self.netName = @"风哥";
+    self.cityName = @"武汉";
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     
@@ -135,7 +139,7 @@
                 case 0:
                 {
                     infoString = @"名字";
-                    detailInfoString = @"风哥";
+                    detailInfoString = self.netName;
                     break;
                 }
             }
@@ -155,7 +159,7 @@
                 case 0:
                 {
                     infoString = @"居住地";
-                    detailInfoString = @"武汉";
+                    detailInfoString = self.cityName;
                     break;
                 }
                 case 1:
@@ -213,6 +217,8 @@
                 NeTNameAndDomicileVC *vc = [[NeTNameAndDomicileVC alloc] init];
                 vc.nTitle = @"修改网名";
                 vc.nplaceholder = @"请输入网名";
+                vc.delegate =self;
+                vc.index = @"NetName";//标记更改哪个cell
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
@@ -237,6 +243,8 @@
                 NeTNameAndDomicileVC *vc = [[NeTNameAndDomicileVC alloc] init];
                 vc.nTitle = @"修改居住地";
                 vc.nplaceholder = @"请输入居住地";
+                vc.index = @"City";
+                vc.delegate = self;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
@@ -367,6 +375,16 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     
     [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - NeTNameAndDomicile Delegate
+- (void)ChangeNeTNameAndDomicile:(id)sender index:(NSInteger)index{
+    
+    if (index == 0) {
+        self.netName = sender;
+    }else{
+        self.cityName = sender;
+    }
 }
 
 
