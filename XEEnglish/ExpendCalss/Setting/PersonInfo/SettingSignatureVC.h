@@ -8,6 +8,15 @@
 
 #import "BaseVC.h"
 
+@protocol SettingSignatureDelegate <NSObject>
+
+@optional
+- (void)changeSignature:(id)sender;
+
+@end
+
 @interface SettingSignatureVC : BaseVC
+
+@property (nonatomic, strong) id<SettingSignatureDelegate> delegate;
 
 @end

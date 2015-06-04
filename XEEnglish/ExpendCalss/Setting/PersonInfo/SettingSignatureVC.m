@@ -26,7 +26,8 @@
 #pragma mark - My Action
 - (IBAction)keepBtn:(id)sender {
     
-    
+    [self.delegate changeSignature:self.mySignatureTextView.text];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

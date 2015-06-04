@@ -14,7 +14,7 @@
 #import "SettingSignatureVC.h"
 #import "ChangePassWordVC.h"
 
-@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeTNameAndDomicileDelegate,SettingBirthdayDelegate>
+@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeTNameAndDomicileDelegate,SettingBirthdayDelegate,SettingSignatureDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *keepBtn;
 
@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString *netName;
 @property (nonatomic, strong) NSString *cityName;
 @property (nonatomic, strong) NSString *myBirthday;
+@property (nonatomic, strong) NSString *mySignature;
 
 
 @end
@@ -49,6 +50,7 @@
     self.netName = @"风哥";
     self.cityName = @"武汉";
     self.myBirthday = @"1990-01-01";
+    self.mySignature = @"随风飘扬";
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     
@@ -176,7 +178,7 @@
                 case 2:
                 {
                     infoString = @"个性签名";
-                    detailInfoString = @"随风飘扬";
+                    detailInfoString = self.mySignature;
                     break;
                 }
                 default:
@@ -265,6 +267,7 @@
             case 2:
             {
                 SettingSignatureVC *vc = [[SettingSignatureVC alloc] init];
+                vc.delegate = self;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
@@ -398,6 +401,13 @@
     
     self.myBirthday = sender;
 }
+
+#pragma mark - SettingSignature Delegate
+- (void)changeSignature:(id)sender{
+    
+    self.mySignature = sender;
+}
+
 
 
 - (void)didReceiveMemoryWarning {
