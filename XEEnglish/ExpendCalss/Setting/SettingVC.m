@@ -10,7 +10,7 @@
 #import "LoginVC.h"
 #import "MyAccountTVC.h"
 
-
+#import "CouponsVC.h"
 #import "PersonInfoVC.h"
 
 
@@ -217,6 +217,8 @@
                 
             case 1:
             {
+                CouponsVC *vc = [[CouponsVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
                 

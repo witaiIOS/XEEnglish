@@ -22,6 +22,11 @@
 		09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDB1B1EDD3E00ABC885 /* select_flag.png */; };
 		09CA408F1B1C655000D12796 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA408D1B1C655000D12796 /* ActivityCell.m */; };
 		09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA408E1B1C655000D12796 /* ActivityCell.xib */; };
+		09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA69171B1FFC8200A31E0E /* CouponsVC.m */; };
+		09CA691B1B1FFCCA00A31E0E /* CouponsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA691A1B1FFCCA00A31E0E /* CouponsCell.m */; };
+		09CA691D1B1FFCE300A31E0E /* CouponsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */; };
+		09CA69211B201F2500A31E0E /* coupons1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69201B201F2500A31E0E /* coupons1.png */; };
+		09CA69231B20213800A31E0E /* couponstime.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69221B20213800A31E0E /* couponstime.png */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */; };
@@ -144,6 +149,13 @@
 		09CA408C1B1C655000D12796 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		09CA408D1B1C655000D12796 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		09CA408E1B1C655000D12796 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
+		09CA69161B1FFC8200A31E0E /* CouponsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponsVC.h; sourceTree = "<group>"; };
+		09CA69171B1FFC8200A31E0E /* CouponsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponsVC.m; sourceTree = "<group>"; };
+		09CA69191B1FFCCA00A31E0E /* CouponsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponsCell.h; sourceTree = "<group>"; };
+		09CA691A1B1FFCCA00A31E0E /* CouponsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponsCell.m; sourceTree = "<group>"; };
+		09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponsCell.xib; sourceTree = "<group>"; };
+		09CA69201B201F2500A31E0E /* coupons1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupons1.png; sourceTree = "<group>"; };
+		09CA69221B20213800A31E0E /* couponstime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couponstime.png; sourceTree = "<group>"; };
 		09D450AC1B10786800B39B4A /* MyAccountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTVC.h; sourceTree = "<group>"; };
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
@@ -331,6 +343,18 @@
 			path = MoreSetting;
 			sourceTree = "<group>";
 		};
+		09CA69151B1FFC5D00A31E0E /* Coupons */ = {
+			isa = PBXGroup;
+			children = (
+				09CA69161B1FFC8200A31E0E /* CouponsVC.h */,
+				09CA69171B1FFC8200A31E0E /* CouponsVC.m */,
+				09CA69191B1FFCCA00A31E0E /* CouponsCell.h */,
+				09CA691A1B1FFCCA00A31E0E /* CouponsCell.m */,
+				09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */,
+			);
+			path = Coupons;
+			sourceTree = "<group>";
+		};
 		09DB2DB61B1322800078AAF5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +385,8 @@
 		09DB2DC51B1322A30078AAF5 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				09CA69221B20213800A31E0E /* couponstime.png */,
+				09CA69201B201F2500A31E0E /* coupons1.png */,
 				09DB2DC61B1322A30078AAF5 /* mybgpic@2x.png */,
 				09DB2DC71B1322A30078AAF5 /* people_ayb.png */,
 			);
@@ -723,6 +749,7 @@
 		A6284D6C1B105E6600EFF820 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				09CA69151B1FFC5D00A31E0E /* Coupons */,
 				A6284D961B1066DE00EFF820 /* SettingVC.h */,
 				A6284D971B1066DE00EFF820 /* SettingVC.m */,
 				09D450AC1B10786800B39B4A /* MyAccountTVC.h */,
@@ -878,9 +905,11 @@
 				A6284D8C1B10652700EFF820 /* tab_setting@2x.png in Resources */,
 				09DB2DBA1B1322800078AAF5 /* s_phone.png in Resources */,
 				A6284D891B10652700EFF820 /* tab_home@2x.png in Resources */,
+				09CA69211B201F2500A31E0E /* coupons1.png in Resources */,
 				A6B1CEE01B1C62D400100E9F /* SettingBirthdayVC.xib in Resources */,
 				09DB2DC41B1322980078AAF5 /* join_07.png in Resources */,
 				A6B1CEDC1B1C62D400100E9F /* NeTNameAndDomicileVC.xib in Resources */,
+				09CA691D1B1FFCE300A31E0E /* CouponsCell.xib in Resources */,
 				A6B1CEDA1B1C62D400100E9F /* ChangePassWordVC.xib in Resources */,
 				A6B1CEE21B1C62D400100E9F /* SettingSignatureVC.xib in Resources */,
 				09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */,
@@ -888,6 +917,7 @@
 				09DB2DCE1B1322AF0078AAF5 /* accountDetail04@2x.png in Resources */,
 				09DB2DC31B1322980078AAF5 /* icon_time.png in Resources */,
 				09DB2DD21B1322CC0078AAF5 /* star_select.png in Resources */,
+				09CA69231B20213800A31E0E /* couponstime.png in Resources */,
 				A6284D8B1B10652700EFF820 /* tab_course@2x.png in Resources */,
 				09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */,
 				09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */,
@@ -949,6 +979,7 @@
 				A6284D5B1B105E5600EFF820 /* UIView+MJExtension.m in Sources */,
 				A6B1CEFB1B1D968600100E9F /* MyParser.m in Sources */,
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,
+				09CA691B1B1FFCCA00A31E0E /* CouponsCell.m in Sources */,
 				A6B1CF091B1DC65900100E9F /* LXSegementView.m in Sources */,
 				A6284D591B105E5600EFF820 /* UIScrollView+MJExtension.m in Sources */,
 				A6284D981B1066DE00EFF820 /* SettingVC.m in Sources */,
@@ -974,6 +1005,7 @@
 				0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */,
 				A6284D5A1B105E5600EFF820 /* UIScrollView+MJRefresh.m in Sources */,
 				A6284D621B105E5600EFF820 /* UIRefreshControl+AFNetworking.m in Sources */,
+				09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */,
 				A6284D5E1B105E5600EFF820 /* UIAlertView+AFNetworking.m in Sources */,
 				A6284D4E1B105E5600EFF820 /* DDXMLElementAdditions.m in Sources */,
 				A6284D461B105E5600EFF820 /* AFHTTPRequestOperationManager.m in Sources */,
