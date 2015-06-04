@@ -29,7 +29,7 @@
         
         [self.contentView addSubview:self.title];
         
-        self.personImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-70, self.frame.origin.y+2, 40, 40)];
+        self.personImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-90, self.frame.origin.y+2, 40, 40)];
         self.personImageView.backgroundColor = RGBCOLOR(210, 210, 210);
         [self.contentView addSubview:self.personImageView];
         

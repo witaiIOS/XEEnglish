@@ -8,6 +8,7 @@
 
 #import "PersonInfoVC.h"
 #import "PersonImageTVC.h"
+#import "BaseTVC.h"
 
 #import "NeTNameAndDomicileVC.h"
 #import "SettingBirthdayVC.h"
@@ -24,6 +25,8 @@
 @property (nonatomic, strong) NSString *cityName;
 @property (nonatomic, strong) NSString *myBirthday;
 @property (nonatomic, strong) NSString *mySignature;
+
+@property (nonatomic, assign) BOOL isChangePhoneNuber;//标记是否是修改手机操作启动的UIActionSheet
 
 
 @end
@@ -102,6 +105,7 @@
         
         if (cell == nil) {
             cell = [[PersonImageTVC alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+            cell.cellEdge = 10;
         }
         
         switch (indexPath.row) {
@@ -122,10 +126,10 @@
     else{
         static NSString *reuse = @"PersonInfoCell";
         
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
+        BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
         
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse];
+            cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse];
             
             cell.textLabel.textColor = [UIColor darkGrayColor];
             cell.textLabel.font = [UIFont systemFontOfSize:14.0];
@@ -134,6 +138,7 @@
             cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.cellEdge = 10;
             
             
         }
@@ -237,7 +242,7 @@
         switch (indexPath.row) {
             case 0:
             {
-                
+                [self changePhoneNumber];
             }
             default:
                 break;
@@ -319,24 +324,44 @@
     
 }
 
+//用UIActionSheet控件来修改注册手机号
+- (void)changePhoneNumber{
+    
+    self.isChangePhoneNuber = YES;
+    UIActionSheet *photoNumber = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"取消"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"修改绑定手机号",nil];
+    [photoNumber showFromRect:self.view.bounds inView:self.view animated:YES];
+    
+}
+
+
 #pragma mark - UIActionSheet Delegate
 
-//实现UIActionSheet的 Delegate方法
+//实现用UIActionSheet控件来选择相片来源的 Delegate方法
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     
-    switch (buttonIndex) {
-        case 0:
-            //当选中第一个按钮时，选用localPhoto方法设置图片
-            [self localPhoto];
-            break;
-        case 1:
-            //当选中第三个按钮时，选用takePhoto方法设置图片
-            [self takePhoto];
-            break;
-            
-            
-        default:
-            break;
+    if (self.isChangePhoneNuber ) {
+        //添加修改手机号的界面
+    }
+    else{
+        switch (buttonIndex) {
+            case 0:
+                //当选中第一个按钮时，选用localPhoto方法设置图片
+                [self localPhoto];
+                break;
+            case 1:
+                //当选中第三个按钮时，选用takePhoto方法设置图片
+                [self takePhoto];
+                break;
+                
+                
+            default:
+                break;
+        }
+ 
     }
 }
 
