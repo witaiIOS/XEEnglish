@@ -315,6 +315,7 @@
 //用UIActionSheet控件来选择相片的来源
 - (void)changeImage{
     
+    self.isChangePhoneNuber = NO;
     UIActionSheet *photoSource = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
                                                     cancelButtonTitle:@"取消"
