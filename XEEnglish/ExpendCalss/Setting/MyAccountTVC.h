@@ -10,7 +10,9 @@
 
 @interface MyAccountTVC : BaseTVC
 
-@property (strong, nonatomic) NSString *str;
+//@property (strong, nonatomic) NSString *str;
+@property (nonatomic, strong) UIImageView *myImageView;
+@property (nonatomic, strong) UILabel *myLabel;
 
 
 @end

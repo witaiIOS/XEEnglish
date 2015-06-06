@@ -150,6 +150,7 @@
         cell = [[MyAccountTVC alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
         
     }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NSString *str = nil;
     UIImage *image = nil;
     if (indexPath.section == 0) {
@@ -213,8 +214,8 @@
                 break;
         }
     }
-    cell.str = str;
-    cell.imageView.image = image;
+    cell.myLabel.text = str;
+    cell.myImageView.image = image;
     
     
     return cell;

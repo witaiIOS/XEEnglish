@@ -17,6 +17,16 @@
         UIView *bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 1, self.frame.size.width, 1)];
         [bottomLine setBackgroundColor:[UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1.0]];
         [self addSubview:bottomLine];
+        
+        self.myImageView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 20, 20)];
+        [self.contentView addSubview:self.myImageView];
+        
+        self.myLabel = [[UILabel alloc] initWithFrame:CGRectMake(44, 6, 80, 30)];
+        self.myLabel.textAlignment = NSTextAlignmentLeft;
+        self.myLabel.textColor = [UIColor darkGrayColor];
+        self.myLabel.font = [UIFont systemFontOfSize:14];
+        [self.contentView addSubview:self.myLabel];
+ 
     }
     return self;
 }
@@ -25,10 +35,10 @@
     
     [super layoutSubviews];
     
-    self.textLabel.font = [UIFont systemFontOfSize:14];
-    self.textLabel.textColor = [UIColor darkGrayColor];
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    self.textLabel.text = _str;
+//    self.textLabel.font = [UIFont systemFontOfSize:14];
+//    self.textLabel.textColor = [UIColor darkGrayColor];
+//    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    self.textLabel.text = _str;
 }
 /*
 // Only override drawRect: if you perform custom drawing.
