@@ -29,6 +29,7 @@
 
 - (void)initUI
 {
+    [super initUI];
     self.phoneTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"s_phone.png"]];
     self.phoneTextField.leftViewMode = UITextFieldViewModeAlways;
     
