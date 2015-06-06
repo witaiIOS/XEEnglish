@@ -27,6 +27,7 @@
 		09CA691D1B1FFCE300A31E0E /* CouponsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */; };
 		09CA69211B201F2500A31E0E /* coupons1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69201B201F2500A31E0E /* coupons1.png */; };
 		09CA69231B20213800A31E0E /* couponstime.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69221B20213800A31E0E /* couponstime.png */; };
+		09CA9FAE1B21818D003693D2 /* WHSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA9FAD1B21818D003693D2 /* WHSegmentView.m */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */; };
@@ -156,6 +157,8 @@
 		09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponsCell.xib; sourceTree = "<group>"; };
 		09CA69201B201F2500A31E0E /* coupons1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupons1.png; sourceTree = "<group>"; };
 		09CA69221B20213800A31E0E /* couponstime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couponstime.png; sourceTree = "<group>"; };
+		09CA9FAC1B21818D003693D2 /* WHSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHSegmentView.h; sourceTree = "<group>"; };
+		09CA9FAD1B21818D003693D2 /* WHSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHSegmentView.m; sourceTree = "<group>"; };
 		09D450AC1B10786800B39B4A /* MyAccountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTVC.h; sourceTree = "<group>"; };
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
@@ -709,6 +712,8 @@
 			children = (
 				A6284D901B10669200EFF820 /* CourseVC.h */,
 				A6284D911B10669200EFF820 /* CourseVC.m */,
+				09CA9FAC1B21818D003693D2 /* WHSegmentView.h */,
+				09CA9FAD1B21818D003693D2 /* WHSegmentView.m */,
 			);
 			path = Course;
 			sourceTree = "<group>";
@@ -993,6 +998,7 @@
 				A6284D4C1B105E5600EFF820 /* AFURLResponseSerialization.m in Sources */,
 				A6B1CEE11B1C62D400100E9F /* SettingSignatureVC.m in Sources */,
 				A6B1CED91B1C62D400100E9F /* ChangePassWordVC.m in Sources */,
+				09CA9FAE1B21818D003693D2 /* WHSegmentView.m in Sources */,
 				A6B1CEF51B1D90EC00100E9F /* XeeService.m in Sources */,
 				A6284D571B105E5600EFF820 /* MJRefreshFooterView.m in Sources */,
 				A6284D6D1B105E6600EFF820 /* BaseVC.m in Sources */,
