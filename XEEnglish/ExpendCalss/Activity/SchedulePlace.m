@@ -7,6 +7,8 @@
 //
 
 #import "SchedulePlace.h"
+#import "PlaceDemandCell.h"
+#import "HardwareDemandCell.h"
 
 @interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -67,64 +69,120 @@
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (section == 2) {
-        return 2;
-    }else
+    if (section == 0) {
         return 1;
+    }
+    else if (section == 1){
+        return 2;
+    }
+    else if (section == 2){
+        return 2;
+    }
+    else if (section == 3){
+        return 2;
+    }
+    else
+        return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    static NSString *reuse = @"SchedulePlaceCell";
+    static NSString *reuse1 = @"SchedulePlaceCell";
+    static NSString *reuse2 = @"PlaceDemandCell";
+    static NSString *reuse3 = @"HardwareDemandCell";
     
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.textColor = [UIColor darkGrayColor];
-    cell.textLabel.font = [UIFont systemFontOfSize:16];
+    UITableViewCell *cell = nil;
     
-    cell.detailTextLabel.textColor = [UIColor grayColor];
-    cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
-    
-    NSString *scheduleString = nil;
-    NSString *detailScheduleString = nil;
     
     if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
+            cell.textLabel.textColor = [UIColor darkGrayColor];
+            cell.textLabel.font = [UIFont systemFontOfSize:14];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        cell.textLabel.text = @"校区选择";
         
-        scheduleString = @"校区选择";
-        detailScheduleString = @"武昌区";
-    }else if (indexPath.section == 1){
-        
-        scheduleString = @"预定时间";
-        detailScheduleString = @"09:00 - 12:00";
-    }else if (indexPath.section == 2){
-        
+        return cell;
+    }
+    else if (indexPath.section == 1){
+        cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
+            cell.textLabel.textColor = [UIColor darkGrayColor];
+            cell.textLabel.font = [UIFont systemFontOfSize:14];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
         switch (indexPath.row) {
-                            case 0:
-            {
-                scheduleString = @"投影仪";
-                detailScheduleString = @"有";
+            case 0:{
+                cell.textLabel.text = @"预定起始时间";
                 break;
             }
-            case 1:
-            {
-                scheduleString = @"老师陪同";
-                detailScheduleString = @"要";
+            case 1:{
+                cell.textLabel.text = @"预定结束时间";
                 break;
             }
+                
             default:
                 break;
         }
-    }else{
-        
-        scheduleString = @"其他";
-        detailScheduleString = @"";
+        return cell;
     }
-    
-    cell.textLabel.text = scheduleString;
-    cell.detailTextLabel.text = detailScheduleString;
-    
-    return cell;
-    
+    else if (indexPath.section == 2){
+        PlaceDemandCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
+        if (cell == nil) {
+            cell = [[PlaceDemandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
+        }
+        switch (indexPath.row) {
+            case 0:{
+                cell.tipInfoLabel.text = @"预计人数";
+                cell.peopleAndPlaceTF.text = @"";
+                break;
+            }
+            case 1:{
+                cell.tipInfoLabel.text = @"所需面积";
+                cell.peopleAndPlaceTF.text = @"";
+                break;
+            }
+  
+            default:
+                break;
+        }
+        return cell;
+    }
+    else if (indexPath.section == 3){
+        HardwareDemandCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
+        if (cell == nil) {
+            cell = [[HardwareDemandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+        }
+        switch (indexPath.row) {
+            case 0:{
+                cell.tipInfoLabel.text = @"投影仪";
+                cell.yesLabel.text = @"有";
+                cell.noLabel.text = @"没有";
+                break;
+            }
+            case 1:{
+                cell.tipInfoLabel.text = @"老师陪同";
+                cell.yesLabel.text = @"要";
+                cell.noLabel.text = @"不要";
+                break;
+            }
+                
+            default:
+                break;
+        }
+        return cell;
+    }
+    else{
+        cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
+        }
+        return cell;
+    }
+
 }
 
 #pragma mark - UITableView Delegate

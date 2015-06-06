@@ -28,6 +28,10 @@
 		09C9C0E41B22C890001BBA1C /* STreserve.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0DD1B22C890001BBA1C /* STreserve.png */; };
 		09C9C0E51B22C890001BBA1C /* STset.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0DE1B22C890001BBA1C /* STset.png */; };
 		09C9C0E71B22D252001BBA1C /* SThead.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0E61B22D252001BBA1C /* SThead.png */; };
+		09C9C0F11B22E3E5001BBA1C /* PlaceDemandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9C0F01B22E3E5001BBA1C /* PlaceDemandCell.m */; };
+		09C9C0F41B22E409001BBA1C /* HardwareDemandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9C0F31B22E409001BBA1C /* HardwareDemandCell.m */; };
+		09C9C0F71B22FA19001BBA1C /* no.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0F51B22FA19001BBA1C /* no.png */; };
+		09C9C0F81B22FA19001BBA1C /* yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0F61B22FA19001BBA1C /* yes.png */; };
 		09CA408F1B1C655000D12796 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA408D1B1C655000D12796 /* ActivityCell.m */; };
 		09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA408E1B1C655000D12796 /* ActivityCell.xib */; };
 		09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA69171B1FFC8200A31E0E /* CouponsVC.m */; };
@@ -163,6 +167,12 @@
 		09C9C0DD1B22C890001BBA1C /* STreserve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STreserve.png; sourceTree = "<group>"; };
 		09C9C0DE1B22C890001BBA1C /* STset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STset.png; sourceTree = "<group>"; };
 		09C9C0E61B22D252001BBA1C /* SThead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SThead.png; sourceTree = "<group>"; };
+		09C9C0EF1B22E3E5001BBA1C /* PlaceDemandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDemandCell.h; sourceTree = "<group>"; };
+		09C9C0F01B22E3E5001BBA1C /* PlaceDemandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDemandCell.m; sourceTree = "<group>"; };
+		09C9C0F21B22E409001BBA1C /* HardwareDemandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HardwareDemandCell.h; sourceTree = "<group>"; };
+		09C9C0F31B22E409001BBA1C /* HardwareDemandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HardwareDemandCell.m; sourceTree = "<group>"; };
+		09C9C0F51B22FA19001BBA1C /* no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no.png; sourceTree = "<group>"; };
+		09C9C0F61B22FA19001BBA1C /* yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yes.png; sourceTree = "<group>"; };
 		09CA408C1B1C655000D12796 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		09CA408D1B1C655000D12796 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		09CA408E1B1C655000D12796 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
@@ -362,6 +372,17 @@
 			path = MoreSetting;
 			sourceTree = "<group>";
 		};
+		09C9C0E81B22E059001BBA1C /* SchedulePlace */ = {
+			isa = PBXGroup;
+			children = (
+				09C9C0EF1B22E3E5001BBA1C /* PlaceDemandCell.h */,
+				09C9C0F01B22E3E5001BBA1C /* PlaceDemandCell.m */,
+				09C9C0F21B22E409001BBA1C /* HardwareDemandCell.h */,
+				09C9C0F31B22E409001BBA1C /* HardwareDemandCell.m */,
+			);
+			path = SchedulePlace;
+			sourceTree = "<group>";
+		};
 		09CA69151B1FFC5D00A31E0E /* Coupons */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,6 +444,8 @@
 		09DB2DCA1B1322AF0078AAF5 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				09C9C0F51B22FA19001BBA1C /* no.png */,
+				09C9C0F61B22FA19001BBA1C /* yes.png */,
 				09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */,
 				09C95CDB1B1EDD3E00ABC885 /* select_flag.png */,
 				09DB2DCB1B1322AF0078AAF5 /* accountDetail03@2x.png */,
@@ -718,6 +741,7 @@
 		A6284D681B105E6600EFF820 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				09C9C0E81B22E059001BBA1C /* SchedulePlace */,
 				A6284D931B1066CC00EFF820 /* ActivityVC.h */,
 				A6284D941B1066CC00EFF820 /* ActivityVC.m */,
 				09CA408C1B1C655000D12796 /* ActivityCell.h */,
@@ -958,8 +982,10 @@
 				A6284D9D1B1067C100EFF820 /* LoginVC.xib in Resources */,
 				09DB2DC91B1322A30078AAF5 /* people_ayb.png in Resources */,
 				09DB2DBF1B13228B0078AAF5 /* join_06.png in Resources */,
+				09C9C0F71B22FA19001BBA1C /* no.png in Resources */,
 				09C9C0E21B22C890001BBA1C /* STintegral.png in Resources */,
 				09C9C0E01B22C890001BBA1C /* STcoupon.png in Resources */,
+				09C9C0F81B22FA19001BBA1C /* yes.png in Resources */,
 				A6284CDA1B10592100EFF820 /* Images.xcassets in Resources */,
 				090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */,
 				09DB2DBE1B13228B0078AAF5 /* join_05.png in Resources */,
@@ -999,9 +1025,11 @@
 				A6284D8F1B10668300EFF820 /* HomeVC.m in Sources */,
 				09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */,
 				A6284D921B10669200EFF820 /* CourseVC.m in Sources */,
+				09C9C0F11B22E3E5001BBA1C /* PlaceDemandCell.m in Sources */,
 				A6284D5F1B105E5600EFF820 /* UIButton+AFNetworking.m in Sources */,
 				A6284D491B105E5600EFF820 /* AFSecurityPolicy.m in Sources */,
 				097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */,
+				09C9C0F41B22E409001BBA1C /* HardwareDemandCell.m in Sources */,
 				A6284D631B105E5600EFF820 /* UIWebView+AFNetworking.m in Sources */,
 				A6284D611B105E5600EFF820 /* UIProgressView+AFNetworking.m in Sources */,
 				A6284D561B105E5600EFF820 /* MJRefreshConst.m in Sources */,
