@@ -70,19 +70,19 @@
             case 0:
             {
                 aboutText = @"微信关注";
-                aboutDetailText = @"xiaenyingyu";
+                aboutDetailText = @"idealangel-shane";
             }
                 break;
             case 1:
             {
                 aboutText = @"新浪微博";
-                aboutDetailText = @"xiaenyingyu@sina.com";
+                aboutDetailText = @"爱迪天才宝贝学习中心";
             }
                 break;
             case 2:
             {
                 aboutText = @"公司网址";
-                aboutDetailText = @"http://www.xiaenyingyu.com";
+                aboutDetailText = @"http://www.idealangel.cn";
             }
                 break;
                 
@@ -106,7 +106,7 @@
 
 - (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
-    return 500.0;
+    return kScreenHeight-178-64;
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -123,14 +123,24 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     
-    UILabel *footerLabel = [[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/3, kScreenHeight-40, kScreenWidth/3, 40)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight-80, kScreenWidth,80)];
+    UILabel *footerLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, kScreenHeight-178-64-80, kScreenWidth, 30)];
     
-    footerLabel.text = @"@ 2015 夏恩英语";
-    footerLabel.textAlignment = NSTextAlignmentCenter;
-    footerLabel.textColor = [UIColor darkGrayColor];
-    footerLabel.font = [UIFont systemFontOfSize:11];
+    footerLabel1.text = @"Copyright@2008-2013";
+    footerLabel1.textAlignment = NSTextAlignmentCenter;
+    footerLabel1.textColor = [UIColor darkGrayColor];
+    footerLabel1.font = [UIFont systemFontOfSize:11];
+    [view addSubview:footerLabel1];
     
-    return footerLabel;
+    UILabel *footerLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(0, kScreenHeight-178-64-50, kScreenWidth, 30)];
+    
+    footerLabel2.text = @"IdealAngel China.All Rigths Reserved";
+    footerLabel2.textAlignment = NSTextAlignmentCenter;
+    footerLabel2.textColor = [UIColor darkGrayColor];
+    footerLabel2.font = [UIFont systemFontOfSize:11];
+    [view addSubview:footerLabel2];
+    
+    return view;
 }
 
 
