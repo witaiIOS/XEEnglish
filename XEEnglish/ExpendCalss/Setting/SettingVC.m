@@ -52,7 +52,7 @@
 #pragma mark - Set tableView
 - (UIView *)tableHeaderView{
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 148)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 138)];
     view.backgroundColor = [UIColor clearColor];
     
     UIImageView *bakeGroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 128)];
@@ -124,14 +124,17 @@
 #pragma mark - UITableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
     if (section == 0) {
-        return 5;
+        return 1;
+    }
+    else if(section == 1){
+        return 4;
     }
     else{
         return 2;
@@ -148,46 +151,61 @@
         
     }
     NSString *str = nil;
+    UIImage *image = nil;
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
             {
+                str = @"个人信息";
+                image = [UIImage imageNamed:@"STpersonal.png"];
+                break;
+            }
+            default:
+                break;
+        }
+    }
+    else if (indexPath.section == 1) {
+        switch (indexPath.row) {
+            case 0:
+            {
                 str =@"积分";
+                image = [UIImage imageNamed:@"STintegral.png"];
                 break;
             }
             case 1:
             {
                 str =@"优惠券";
+                image = [UIImage imageNamed:@"STcoupon.png"];
                 break;
             }
             case 2:
-            {
-                str = @"个人信息";
-                break;
-            }
-            case 3:
                 str =@"我的预定";
+                image = [UIImage imageNamed:@"STreserve.png"];
                 break;
-            case 4:
+            case 3:
                 str = @"消费记录";
+                image = [UIImage imageNamed:@"STexpense.png"];
                 break;
                 
             default:
                 break;
         }
     }
-    else
-    {
+
+    else{
+        
         switch (indexPath.row) {
             case 0:
             {
                 str = @"城市";
+                image = [UIImage imageNamed:@"STcity.png"];
                 break;
             }
                 
             case 1:
             {
                 str = @"更多设置";
+                image = [UIImage imageNamed:@"STset.png"];
                 break;
             }
                 
@@ -196,6 +214,7 @@
         }
     }
     cell.str = str;
+    cell.imageView.image = image;
     
     
     return cell;
@@ -214,15 +233,20 @@
             {
                 break;
             }
-                
-            case 1:
+             default:
+                break;
+        }
+    }
+    else if (indexPath.section == 1) {
+        switch (indexPath.row) {
+            case 0:
             {
                 CouponsVC *vc = [[CouponsVC alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
                 
-            case 2:
+            case 1:
             {
                 PersonInfoVC *vc = [[PersonInfoVC alloc] init];
                 vc.hidesBottomBarWhenPushed = YES;
@@ -230,11 +254,11 @@
                 break;
             }
                 
-            case 3:
+            case 2:
             {
                 break;
             }
-            case 4:
+            case 3:
             {
                 break;
             }
@@ -244,6 +268,7 @@
                 break;
         }
     }
+
     else{
         switch (indexPath.row) {
             case 0:
@@ -266,29 +291,29 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.0;
+    return 44.0f;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 3.0;
+        return 5.0f;
     }
     else
     {
-        return 20.0;
+        return 10.0f;
     }
     
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section == 1) {
-        return 40.0;
+    if (section == 2) {
+        return 40.0f;
     }
     else
     {
-        return 3.0;
+        return 3.0f;
     }
     
 }

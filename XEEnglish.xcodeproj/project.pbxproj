@@ -20,6 +20,13 @@
 		09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */; };
 		09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */; };
 		09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDB1B1EDD3E00ABC885 /* select_flag.png */; };
+		09C9C0DF1B22C890001BBA1C /* STcity.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0D81B22C890001BBA1C /* STcity.png */; };
+		09C9C0E01B22C890001BBA1C /* STcoupon.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0D91B22C890001BBA1C /* STcoupon.png */; };
+		09C9C0E11B22C890001BBA1C /* STexpense.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0DA1B22C890001BBA1C /* STexpense.png */; };
+		09C9C0E21B22C890001BBA1C /* STintegral.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0DB1B22C890001BBA1C /* STintegral.png */; };
+		09C9C0E31B22C890001BBA1C /* STpersonal.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0DC1B22C890001BBA1C /* STpersonal.png */; };
+		09C9C0E41B22C890001BBA1C /* STreserve.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0DD1B22C890001BBA1C /* STreserve.png */; };
+		09C9C0E51B22C890001BBA1C /* STset.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0DE1B22C890001BBA1C /* STset.png */; };
 		09CA408F1B1C655000D12796 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA408D1B1C655000D12796 /* ActivityCell.m */; };
 		09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA408E1B1C655000D12796 /* ActivityCell.xib */; };
 		09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA69171B1FFC8200A31E0E /* CouponsVC.m */; };
@@ -147,6 +154,13 @@
 		09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegmentView.m; sourceTree = "<group>"; };
 		09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_tab_selected.png; sourceTree = "<group>"; };
 		09C95CDB1B1EDD3E00ABC885 /* select_flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_flag.png; sourceTree = "<group>"; };
+		09C9C0D81B22C890001BBA1C /* STcity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STcity.png; sourceTree = "<group>"; };
+		09C9C0D91B22C890001BBA1C /* STcoupon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STcoupon.png; sourceTree = "<group>"; };
+		09C9C0DA1B22C890001BBA1C /* STexpense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STexpense.png; sourceTree = "<group>"; };
+		09C9C0DB1B22C890001BBA1C /* STintegral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STintegral.png; sourceTree = "<group>"; };
+		09C9C0DC1B22C890001BBA1C /* STpersonal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STpersonal.png; sourceTree = "<group>"; };
+		09C9C0DD1B22C890001BBA1C /* STreserve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STreserve.png; sourceTree = "<group>"; };
+		09C9C0DE1B22C890001BBA1C /* STset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STset.png; sourceTree = "<group>"; };
 		09CA408C1B1C655000D12796 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		09CA408D1B1C655000D12796 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		09CA408E1B1C655000D12796 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
@@ -388,6 +402,13 @@
 		09DB2DC51B1322A30078AAF5 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				09C9C0D81B22C890001BBA1C /* STcity.png */,
+				09C9C0D91B22C890001BBA1C /* STcoupon.png */,
+				09C9C0DA1B22C890001BBA1C /* STexpense.png */,
+				09C9C0DB1B22C890001BBA1C /* STintegral.png */,
+				09C9C0DC1B22C890001BBA1C /* STpersonal.png */,
+				09C9C0DD1B22C890001BBA1C /* STreserve.png */,
+				09C9C0DE1B22C890001BBA1C /* STset.png */,
 				09CA69221B20213800A31E0E /* couponstime.png */,
 				09CA69201B201F2500A31E0E /* coupons1.png */,
 				09DB2DC61B1322A30078AAF5 /* mybgpic@2x.png */,
@@ -922,22 +943,29 @@
 				09DB2DCE1B1322AF0078AAF5 /* accountDetail04@2x.png in Resources */,
 				09DB2DC31B1322980078AAF5 /* icon_time.png in Resources */,
 				09DB2DD21B1322CC0078AAF5 /* star_select.png in Resources */,
+				09C9C0DF1B22C890001BBA1C /* STcity.png in Resources */,
 				09CA69231B20213800A31E0E /* couponstime.png in Resources */,
 				A6284D8B1B10652700EFF820 /* tab_course@2x.png in Resources */,
 				09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */,
 				09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */,
 				A6284D7C1B10615200EFF820 /* nav_backButtonBg.png in Resources */,
 				09DB2DCD1B1322AF0078AAF5 /* accountDetail03@2x.png in Resources */,
+				09C9C0E31B22C890001BBA1C /* STpersonal.png in Resources */,
 				A6284D9D1B1067C100EFF820 /* LoginVC.xib in Resources */,
 				09DB2DC91B1322A30078AAF5 /* people_ayb.png in Resources */,
 				09DB2DBF1B13228B0078AAF5 /* join_06.png in Resources */,
+				09C9C0E21B22C890001BBA1C /* STintegral.png in Resources */,
+				09C9C0E01B22C890001BBA1C /* STcoupon.png in Resources */,
 				A6284CDA1B10592100EFF820 /* Images.xcassets in Resources */,
 				090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */,
 				09DB2DBE1B13228B0078AAF5 /* join_05.png in Resources */,
 				097990691B17006600D4A8DC /* ResetPassWordVC.xib in Resources */,
 				09DB2DC81B1322A30078AAF5 /* mybgpic@2x.png in Resources */,
+				09C9C0E11B22C890001BBA1C /* STexpense.png in Resources */,
+				09C9C0E41B22C890001BBA1C /* STreserve.png in Resources */,
 				09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */,
 				09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */,
+				09C9C0E51B22C890001BBA1C /* STset.png in Resources */,
 				A6284D541B105E5600EFF820 /* MJRefresh.bundle in Resources */,
 				09DB2DD31B1322CC0078AAF5 /* yue.png in Resources */,
 			);
