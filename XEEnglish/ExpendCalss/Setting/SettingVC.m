@@ -52,14 +52,14 @@
 #pragma mark - Set tableView
 - (UIView *)tableHeaderView{
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 138)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 98)];
     view.backgroundColor = [UIColor clearColor];
     
-    UIImageView *bakeGroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 128)];
-    [bakeGroundImage setImage:[UIImage imageNamed:@"mybgpic"]];
+    UIImageView *bakeGroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 88)];
+    [bakeGroundImage setImage:[UIImage imageNamed:@"SThead.png"]];
     [view addSubview:bakeGroundImage];
     
-    UIImageView *phoneImage = [[UIImageView alloc] initWithFrame:CGRectMake(40, 50, 31, 34)];
+    UIImageView *phoneImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 30, 31, 34)];
     [phoneImage setImage:[UIImage imageNamed:@"people_ayb.png"]];
     [view addSubview: phoneImage];
     
@@ -67,7 +67,7 @@
     //    [self.loginBtn setFrame:CGRectMake(80, 50, 80, 40)];
     //    self.loginBtn.titleLabel.text = @"请点击登陆";
     //    self.loginBtn.titleLabel.textColor = [UIColor whiteColor];
-    [self.loginBtn setFrame:CGRectMake(80, 50, 80, 40)];
+    [self.loginBtn setFrame:CGRectMake(50, 30, 80, 40)];
     [self.loginBtn setTitle:@"立即登陆" forState:UIControlStateNormal];
     self.loginBtn.layer.cornerRadius =4.0;
     self.loginBtn.hidden = NO;
@@ -75,7 +75,7 @@
     [view addSubview:self.loginBtn];
     
     
-    self.userPhoneNumber =[[UILabel alloc] initWithFrame:CGRectMake(80, 50, 220, 40)];
+    self.userPhoneNumber =[[UILabel alloc] initWithFrame:CGRectMake(50, 30, 220, 40)];
     self.userPhoneNumber.textAlignment =NSTextAlignmentCenter;
     self.userPhoneNumber.textColor = [UIColor darkGrayColor];
     self.userPhoneNumber.font = [UIFont systemFontOfSize:14];

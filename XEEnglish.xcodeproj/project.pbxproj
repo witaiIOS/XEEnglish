@@ -27,6 +27,7 @@
 		09C9C0E31B22C890001BBA1C /* STpersonal.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0DC1B22C890001BBA1C /* STpersonal.png */; };
 		09C9C0E41B22C890001BBA1C /* STreserve.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0DD1B22C890001BBA1C /* STreserve.png */; };
 		09C9C0E51B22C890001BBA1C /* STset.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0DE1B22C890001BBA1C /* STset.png */; };
+		09C9C0E71B22D252001BBA1C /* SThead.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0E61B22D252001BBA1C /* SThead.png */; };
 		09CA408F1B1C655000D12796 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA408D1B1C655000D12796 /* ActivityCell.m */; };
 		09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA408E1B1C655000D12796 /* ActivityCell.xib */; };
 		09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA69171B1FFC8200A31E0E /* CouponsVC.m */; };
@@ -161,6 +162,7 @@
 		09C9C0DC1B22C890001BBA1C /* STpersonal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STpersonal.png; sourceTree = "<group>"; };
 		09C9C0DD1B22C890001BBA1C /* STreserve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STreserve.png; sourceTree = "<group>"; };
 		09C9C0DE1B22C890001BBA1C /* STset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STset.png; sourceTree = "<group>"; };
+		09C9C0E61B22D252001BBA1C /* SThead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SThead.png; sourceTree = "<group>"; };
 		09CA408C1B1C655000D12796 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		09CA408D1B1C655000D12796 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		09CA408E1B1C655000D12796 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 		09DB2DC51B1322A30078AAF5 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				09C9C0E61B22D252001BBA1C /* SThead.png */,
 				09C9C0D81B22C890001BBA1C /* STcity.png */,
 				09C9C0D91B22C890001BBA1C /* STcoupon.png */,
 				09C9C0DA1B22C890001BBA1C /* STexpense.png */,
@@ -947,6 +950,7 @@
 				09CA69231B20213800A31E0E /* couponstime.png in Resources */,
 				A6284D8B1B10652700EFF820 /* tab_course@2x.png in Resources */,
 				09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */,
+				09C9C0E71B22D252001BBA1C /* SThead.png in Resources */,
 				09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */,
 				A6284D7C1B10615200EFF820 /* nav_backButtonBg.png in Resources */,
 				09DB2DCD1B1322AF0078AAF5 /* accountDetail03@2x.png in Resources */,
