@@ -231,6 +231,9 @@
         switch (indexPath.row) {
             case 0:
             {
+                PersonInfoVC *vc = [[PersonInfoVC alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
              default:
@@ -241,15 +244,12 @@
         switch (indexPath.row) {
             case 0:
             {
-                CouponsVC *vc = [[CouponsVC alloc] init];
-                [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
                 
             case 1:
             {
-                PersonInfoVC *vc = [[PersonInfoVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
+                CouponsVC *vc = [[CouponsVC alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
