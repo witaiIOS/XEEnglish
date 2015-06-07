@@ -29,7 +29,7 @@
         NSString *responseStr = operation.responseString;
         //NSLog(@"responseStr:%@",responseStr);
         
-        [[MyParser sharedInstance] parserWithContent:responseStr];
+        [[MyParser sharedInstance] parserWithContent:responseStr andKey:@"return"];
         
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[[MyParser sharedInstance].results dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
@@ -60,7 +60,7 @@
         NSString *responseStr = operation.responseString;
         //NSLog(@"responseStr:%@",responseStr);
         
-        [[MyParser sharedInstance] parserWithContent:responseStr];
+        [[MyParser sharedInstance] parserWithContent:responseStr andKey:@"return"];
 
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[[MyParser sharedInstance].results dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
@@ -82,5 +82,33 @@
     }];
 }
 
+
+///////////////////////////////////
+- (void)checkPhoneWithPhoneNumber:(NSString *)phoneNumber andBlock:(void (^)(NSDictionary *result, NSError *error))block {
+    AFHTTPRequestOperation *operation = [WebServiceOpration checkPhoneWithJson:phoneNumber];
+    [operation start];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSString *responseStr = operation.responseString;
+        //NSLog(@"responseStr:%@",responseStr);
+        
+        [[MyParser sharedInstance] parserWithContent:responseStr andKey:@"checkPhoneResult"];
+        
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[[MyParser sharedInstance].results dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"%@",dic);
+        
+        if (block) {
+            block(dic, nil);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (block) {
+            block(nil, error);
+        }
+
+    }];
+}
 
 @end

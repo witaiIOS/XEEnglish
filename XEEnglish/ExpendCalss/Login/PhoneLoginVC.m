@@ -11,6 +11,8 @@
 
 #import "ResetPassWordVC.h"
 
+#import "XeeService.h"
+
 @interface PhoneLoginVC ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
@@ -67,7 +69,21 @@
             
             [self.getCodeBtn startCounting];
             
-            //NSString *jsonParam = [NSString stringWithFormat:@""];
+            [[XeeService sharedInstance] checkPhoneWithPhoneNumber:self.phoneTextField.text andBlock:^(NSDictionary *result, NSError *error) {
+                if (!error) {
+                    
+                    NSNumber *r = result[@"result"] ; //[result objectForKey:@"result"];
+                    
+                    if (r.integerValue == 0) {//成功
+                        [UIFactory showAlert:result[@"resultInfo"]];
+                    }
+                    else{
+                        [UIFactory showAlert:result[@"resultInfo"]];
+                    }
+                }
+                else{
+                }
+            }];
         }
     }
 }

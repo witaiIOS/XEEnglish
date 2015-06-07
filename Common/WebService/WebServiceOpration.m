@@ -36,7 +36,6 @@
     
 }
 
-#pragma mark - home
 + (AFHTTPRequestOperation *)getHomePageServiceCategroy
 {
     return [WebServiceOpration XeeWebService:@"<ws:getHomePageServiceCategroy/>"];
@@ -50,5 +49,33 @@
     return [WebServiceOpration XeeWebService:@"<ws:getHomeAppAdConfigure/>"];
 }
 
+#pragma mark - XEE
++ (AFHTTPRequestOperation *)XEEWebService:(NSString *)body {
+    
+    NSURL* WebURL = [NSURL URLWithString:XEEWebURL];
+    NSMutableURLRequest* req = [[NSMutableURLRequest alloc] init];
+    [req setURL:WebURL];
+    [req setHTTPMethod:@"POST"];
+    
+    [req addValue:@"text/xml" forHTTPHeaderField:@"Content-Type"];
+    NSMutableData* postbody = [[NSMutableData alloc] init];
+    [postbody appendData:[[NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://webservice.ereal.com/\"><soapenv:Header/><soapenv:Body>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [postbody appendData:[[NSString stringWithFormat:@"%@",body] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [postbody appendData:[[NSString stringWithFormat:@"</soapenv:Body></soapenv:Envelope>"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [req setHTTPBody:postbody];
+    
+    
+    // NSString *requestURL = [[NSString alloc]initWithData:postbody encoding:NSUTF8StringEncoding];
+    //NSLog(@"requestURL:%@",requestURL);
+    
+    AFHTTPRequestOperation *opration = [[AFHTTPRequestOperation alloc] initWithRequest:req];
+    return opration;
+}
+
++ (AFHTTPRequestOperation *)checkPhoneWithJson:(NSString *)phoneNumber {
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:checkPhone><web:json>{\"mobile\":\"%@\",\"sign\":\"2\"}</web:json></web:checkPhone>",phoneNumber]];
+}
 
 @end

@@ -24,9 +24,11 @@ typedef enum {
 
 @property (strong, nonatomic) NSMutableString *results;
 
+@property (strong, nonatomic) NSString *currentKey;
+
 + (MyParser *)sharedInstance;
 
-- (void)parserWithContent:(NSString *)aContent;
+- (void)parserWithContent:(NSString *)aContent andKey:(NSString *)key;
 
 
 

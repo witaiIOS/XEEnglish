@@ -17,15 +17,13 @@
 #define kScreenWidth          ([UIScreen mainScreen].bounds.size.width)
 #define kScreenHeight         ([UIScreen mainScreen].bounds.size.height)
 
-//云平台WebService
-#define CLOUDURL @"http://211.152.38.164:9080/IDOC/WebService"
-#define IMAGEURL @"http://211.152.38.164:9080/IDOC/service/file"
 
 
-#define imageURLPrefix @"http://www.mrchabo.com/mrchabo/"
+#define MZBimageURLPrefix @"http://www.mrchabo.com/mrchabo/"
 #define MZBWebURL @"http://www.mrchabo.com/houseWs/ws/houseWs?wsdl"
 
-
+//#define XEEimageURLPrefix @"http://www.mrchabo.com/mrchabo/"
+#define XEEWebURL @"http://218.244.143.58:604/ShaneAppWs.asmx?wsdl"
 
 
 

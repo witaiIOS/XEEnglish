@@ -35,7 +35,7 @@
     HomeButton *button1 = (HomeButton *)[self viewWithTag:1];
     [button1 setTitle:[_serviceDic1 objectForKey:@"serviceName"] forState:UIControlStateNormal];
     
-    NSString *imageUrl1 = [NSString stringWithFormat:@"%@%@",imageURLPrefix,[_serviceDic1 objectForKey:@"servicePhoto"]];
+    NSString *imageUrl1 = [NSString stringWithFormat:@"%@%@",MZBimageURLPrefix,[_serviceDic1 objectForKey:@"servicePhoto"]];
     
     [button1 setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl1] placeholderImage:[UIImage imageNamed:@""]];
     
@@ -46,7 +46,7 @@
         
         [button2 setTitle:[_serviceDic2 objectForKey:@"serviceName"] forState:UIControlStateNormal];
         
-        NSString *imageUrl2 = [NSString stringWithFormat:@"%@%@",imageURLPrefix,[_serviceDic2 objectForKey:@"servicePhoto"]];
+        NSString *imageUrl2 = [NSString stringWithFormat:@"%@%@",MZBimageURLPrefix,[_serviceDic2 objectForKey:@"servicePhoto"]];
         
         [button2 setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl2] placeholderImage:[UIImage imageNamed:@""]];
     }

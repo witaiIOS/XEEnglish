@@ -124,6 +124,9 @@
 		A6B1CEF51B1D90EC00100E9F /* XeeService.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEF41B1D90EC00100E9F /* XeeService.m */; };
 		A6B1CEFB1B1D968600100E9F /* MyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEFA1B1D968600100E9F /* MyParser.m */; };
 		A6B1CF091B1DC65900100E9F /* LXSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CF081B1DC65900100E9F /* LXSegementView.m */; };
+		A6B9C6A71B22F07700DFA308 /* DropList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B9C6A61B22F07700DFA308 /* DropList.m */; };
+		A6B9C6AA1B22F26E00DFA308 /* StudentList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B9C6A91B22F26E00DFA308 /* StudentList.m */; };
+		A6B9C6AD1B22F28700DFA308 /* CourseList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B9C6AC1B22F28700DFA308 /* CourseList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -336,6 +339,12 @@
 		A6B1CEFA1B1D968600100E9F /* MyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyParser.m; sourceTree = "<group>"; };
 		A6B1CF071B1DC65900100E9F /* LXSegementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSegementView.h; sourceTree = "<group>"; };
 		A6B1CF081B1DC65900100E9F /* LXSegementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegementView.m; sourceTree = "<group>"; };
+		A6B9C6A51B22F07700DFA308 /* DropList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropList.h; sourceTree = "<group>"; };
+		A6B9C6A61B22F07700DFA308 /* DropList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropList.m; sourceTree = "<group>"; };
+		A6B9C6A81B22F26E00DFA308 /* StudentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentList.h; sourceTree = "<group>"; };
+		A6B9C6A91B22F26E00DFA308 /* StudentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentList.m; sourceTree = "<group>"; };
+		A6B9C6AB1B22F28700DFA308 /* CourseList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseList.h; sourceTree = "<group>"; };
+		A6B9C6AC1B22F28700DFA308 /* CourseList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -762,6 +771,12 @@
 				A6284D911B10669200EFF820 /* CourseVC.m */,
 				09CA9FAC1B21818D003693D2 /* WHSegmentView.h */,
 				09CA9FAD1B21818D003693D2 /* WHSegmentView.m */,
+				A6B9C6A51B22F07700DFA308 /* DropList.h */,
+				A6B9C6A61B22F07700DFA308 /* DropList.m */,
+				A6B9C6A81B22F26E00DFA308 /* StudentList.h */,
+				A6B9C6A91B22F26E00DFA308 /* StudentList.m */,
+				A6B9C6AB1B22F28700DFA308 /* CourseList.h */,
+				A6B9C6AC1B22F28700DFA308 /* CourseList.m */,
 			);
 			path = Course;
 			sourceTree = "<group>";
@@ -1019,6 +1034,7 @@
 				A6284D791B105F9500EFF820 /* UIFactory.m in Sources */,
 				0906047B1B14218A0038BAC4 /* UserProtocolVC.m in Sources */,
 				09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */,
+				A6B9C6AD1B22F28700DFA308 /* CourseList.m in Sources */,
 				A6284D4B1B105E5600EFF820 /* AFURLRequestSerialization.m in Sources */,
 				A6284D4A1B105E5600EFF820 /* AFURLConnectionOperation.m in Sources */,
 				A6B1CEF21B1D909800100E9F /* WebServiceOpration.m in Sources */,
@@ -1074,7 +1090,9 @@
 				09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */,
 				A6284D5E1B105E5600EFF820 /* UIAlertView+AFNetworking.m in Sources */,
 				A6284D4E1B105E5600EFF820 /* DDXMLElementAdditions.m in Sources */,
+				A6B9C6AA1B22F26E00DFA308 /* StudentList.m in Sources */,
 				A6284D461B105E5600EFF820 /* AFHTTPRequestOperationManager.m in Sources */,
+				A6B9C6A71B22F07700DFA308 /* DropList.m in Sources */,
 				A6284D951B1066CC00EFF820 /* ActivityVC.m in Sources */,
 				A6284D481B105E5600EFF820 /* AFNetworkReachabilityManager.m in Sources */,
 				090604841B146B050038BAC4 /* CountdownButton.m in Sources */,

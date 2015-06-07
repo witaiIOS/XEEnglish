@@ -11,11 +11,13 @@
 
 @interface WebServiceOpration : NSObject
 
+//////////////////////////////////美宅宝接口
 /**
  WebService基类
  @param body 不同方法body不同
  */
 + (AFHTTPRequestOperation *)XeeWebService:(NSString *)body;
+
 
 /**
  获取主页服务
@@ -29,5 +31,11 @@
  */
 + (AFHTTPRequestOperation *)getHomeAppAdConfigure;
 
+//////////////////////////////////艾迪天才接口
+
++ (AFHTTPRequestOperation *)XEEWebService:(NSString *)body;
+
+///获取验证码
++ (AFHTTPRequestOperation *)checkPhoneWithJson:(NSString *)phoneNumber;
 
 @end

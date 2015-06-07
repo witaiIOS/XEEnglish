@@ -1,10 +1,3 @@
-//
-//  WHSegmentView.m
-//  XEEnglish
-//
-//  Created by houjing on 15/6/5.
-//  Copyright (c) 2015年 lixiang. All rights reserved.
-//
 
 #import "WHSegmentView.h"
 
@@ -13,15 +6,6 @@
 #define kCellHeight 35.0f
 
 @implementation WHSegmentView
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 
 - (id)initWithFrame:(CGRect)frame{
     
@@ -34,9 +18,6 @@
         
         self.tabTFImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 42)];
         
-//        self.studentsArray = [[NSArray alloc] initWithObjects:@"小明",@"小华",@"小刚", nil];
-//        self.coursesArray = [[NSArray  alloc] initWithObjects:@"CP",@"CK",@"CL",@"CH",@"CJ", nil];
-        
         self.textFieldStudent = [[UITextField alloc] initWithFrame:CGRectMake(0, 0,frame.size.width/2 ,kTFHeight )];
         self.textFieldStudent.placeholder = @"请选择姓名";
         self.textFieldStudent.textColor = [UIColor grayColor];
@@ -45,6 +26,7 @@
         self.textFieldStudent.borderStyle = UITextBorderStyleNone;
         [self.textFieldStudent addTarget:self action:@selector(DropDown1) forControlEvents:UIControlEventAllTouchEvents];
         [self addSubview:self.textFieldStudent];
+        
         
         self.textFieldCourse = [[UITextField alloc] initWithFrame:CGRectMake(frame.size.width/2, 0,frame.size.width/2 ,kTFHeight )];
         self.textFieldCourse.placeholder = @"请选择课程";

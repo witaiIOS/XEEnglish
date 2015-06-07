@@ -20,5 +20,8 @@
 //获取主页广告
 - (void)getHomeAdWithBlock:(void (^)(NSNumber *result, NSArray *resultInfo, NSError *error))block;
 
+/////////////////////////////XEE
+- (void)checkPhoneWithPhoneNumber:(NSString *)phoneNumber andBlock:(void (^)(NSDictionary *result, NSError *error))block;
+
 
 @end

@@ -7,11 +7,11 @@
 //
 
 #import "CourseVC.h"
-#import "WHSegmentView.h"
+#import "StudentList.h"
 
 @interface CourseVC ()
 
-@property (nonatomic, strong) WHSegmentView *mySegment;
+@property (nonatomic, strong) StudentList *students;
 
 @end
 
@@ -26,17 +26,13 @@
 - (void)initUI{
     
     [super initUI];
-    self.mySegment = [[WHSegmentView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 44)];
+    self.students = [[StudentList alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth/2, 44)];
     NSArray *array1 = [[NSArray alloc] initWithObjects:@"小明",@"小华",@"小刚", nil];
-    self.mySegment.studentsArray = array1;
-    NSArray *array2 = [[NSArray  alloc] initWithObjects:@"CP",@"CK",@"CL",@"CH",@"CJ", nil];
-    self.mySegment.coursesArray = array2;
+    self.students.tableList = array1;
+//    NSArray *array2 = [[NSArray  alloc] initWithObjects:@"CP",@"CK",@"CL",@"CH",@"CJ", nil];
+//    self.mySegment.coursesArray = array2;
     
-    self.mySegment.tabTFImageView.image = [UIImage imageNamed:@"bg_tab_selected.png"];
-    self.mySegment.tabTFSeclectImageView.image = [UIImage imageNamed:@"select_flag.png"];
-//    self.mySegment.tabTFColor = [UIColor blackColor];
-//    self.mySegment.tabTFSelectCorlor = [UIColor redColor];
-    [self.view addSubview:self.mySegment];
+    [self.view addSubview:self.students];
 
 }
 

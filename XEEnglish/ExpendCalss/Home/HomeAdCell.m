@@ -70,7 +70,7 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, 0, 320, 160)];
         NSDictionary *infoDic = [imageArray objectAtIndex:i];
         
-          NSString *imageUrl = [NSString stringWithFormat:@"%@%@",imageURLPrefix,[infoDic objectForKey:@"imageUrl"]];
+          NSString *imageUrl = [NSString stringWithFormat:@"%@%@",MZBimageURLPrefix,[infoDic objectForKey:@"imageUrl"]];
         [imageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@""]];
         
         [_imageScrollView addSubview:imageView];

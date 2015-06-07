@@ -19,11 +19,12 @@
     return sharedMyParser;
 }
 
-- (void)parserWithContent:(NSString *)aContent{
+- (void)parserWithContent:(NSString *)aContent andKey:(NSString *)key{
     self.content = aContent;
     self.parser = [[NSXMLParser alloc] initWithData:[self.content dataUsingEncoding:NSUTF8StringEncoding]];
     _parser.delegate = self;
     _currentType = noneType;
+    _currentKey = key;
     _results = [[NSMutableString alloc] init];
     
     [_parser parse];
@@ -36,7 +37,7 @@
 {
     //NSLog(@"start element:%@",elementName);
     
-    if ([elementName isEqualToString:@"return"]) {
+    if ([elementName isEqualToString:_currentKey]) {
         _currentType = returnType;
     }
 }
