@@ -91,7 +91,7 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSString *responseStr = operation.responseString;
-        //NSLog(@"responseStr:%@",responseStr);
+        NSLog(@"responseStr:%@",responseStr);
         
         [[MyParser sharedInstance] parserWithContent:responseStr andKey:@"checkPhoneResult"];
         
@@ -109,6 +109,35 @@
         }
 
     }];
+}
+
+
+- (void)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andBlock:(void (^)(NSDictionary *result, NSError *error))block {
+    AFHTTPRequestOperation *operation = [WebServiceOpration checkCodeWithPhoneNumber:phoneNumber andCode:code];
+    [operation start];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSString *responseStr = operation.responseString;
+        NSLog(@"responseStr:%@",responseStr);
+        
+        [[MyParser sharedInstance] parserWithContent:responseStr andKey:@"checkCodeResult"];
+        
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[[MyParser sharedInstance].results dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"%@",dic);
+        
+        if (block) {
+            block(dic, nil);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (block) {
+            block(nil, error);
+        }
+        
+    }];
+
 }
 
 @end

@@ -91,10 +91,24 @@
 
 - (IBAction)nextAction:(id)sender {
     
+    [[XeeService sharedInstance] checkCodeWithPhoneNumber:self.phoneTextField.text andCode:self.codeTextField.text andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *r = result[@"result"];
+            if (r.integerValue == 0) {
+                //用验证码校验完登陆成功后去设置密码
+                ResetPassWordVC *setPassWordVC = [[ResetPassWordVC alloc] init];
+                [self.navigationController pushViewController:setPassWordVC animated:YES];
+            }
+            else {
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }
+        else {
+            [UIFactory showAlert:@"网络错误"];
+            
+        }
+    }];
     
-    //用验证码校验完登陆成功后去设置密码
-    ResetPassWordVC *setPassWordVC = [[ResetPassWordVC alloc] init];
-    [self.navigationController pushViewController:setPassWordVC animated:YES];
 }
 
 

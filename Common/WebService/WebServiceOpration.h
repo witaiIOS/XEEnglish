@@ -38,4 +38,7 @@
 ///获取验证码
 + (AFHTTPRequestOperation *)checkPhoneWithJson:(NSString *)phoneNumber;
 
+//验证发送来的验证码
++ (AFHTTPRequestOperation *)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code;
+
 @end

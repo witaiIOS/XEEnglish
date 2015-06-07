@@ -78,4 +78,8 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:checkPhone><web:json>{\"mobile\":\"%@\",\"sign\":\"2\"}</web:json></web:checkPhone>",phoneNumber]];
 }
 
++ (AFHTTPRequestOperation *)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code{
+    return [self XEEWebService:[NSString stringWithFormat:@" <web:checkCode><web:json>{\"sign\":2,\"mobile\":\"%@\",\"code\":\"%@\"}</web:json></web:checkCode>",phoneNumber,code]];
+}
+
 @end

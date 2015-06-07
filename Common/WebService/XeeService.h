@@ -22,6 +22,6 @@
 
 /////////////////////////////XEE
 - (void)checkPhoneWithPhoneNumber:(NSString *)phoneNumber andBlock:(void (^)(NSDictionary *result, NSError *error))block;
-
+- (void)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andBlock:(void (^)(NSDictionary *result, NSError *error))block;
 
 @end
