@@ -17,6 +17,8 @@
 		093CD67D1B1D692B004F7D11 /* SchedulePlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 093CD67C1B1D692B004F7D11 /* SchedulePlace.m */; };
 		097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 097990661B17006600D4A8DC /* ResetPassWordVC.m */; };
 		097990691B17006600D4A8DC /* ResetPassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 097990671B17006600D4A8DC /* ResetPassWordVC.xib */; };
+		09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A41B25AC4700E72163 /* ActivityContentCell.m */; };
+		09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A71B25BB0100E72163 /* otherRequireCell.m */; };
 		09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */; };
 		09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */; };
 		09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDB1B1EDD3E00ABC885 /* select_flag.png */; };
@@ -158,6 +160,10 @@
 		097990651B17006600D4A8DC /* ResetPassWordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPassWordVC.h; sourceTree = "<group>"; };
 		097990661B17006600D4A8DC /* ResetPassWordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPassWordVC.m; sourceTree = "<group>"; };
 		097990671B17006600D4A8DC /* ResetPassWordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPassWordVC.xib; sourceTree = "<group>"; };
+		09C832A31B25AC4700E72163 /* ActivityContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityContentCell.h; sourceTree = "<group>"; };
+		09C832A41B25AC4700E72163 /* ActivityContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityContentCell.m; sourceTree = "<group>"; };
+		09C832A61B25BB0100E72163 /* otherRequireCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = otherRequireCell.h; sourceTree = "<group>"; };
+		09C832A71B25BB0100E72163 /* otherRequireCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = otherRequireCell.m; sourceTree = "<group>"; };
 		09C95CD71B1EDD2800ABC885 /* LXSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSegmentView.h; sourceTree = "<group>"; };
 		09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegmentView.m; sourceTree = "<group>"; };
 		09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_tab_selected.png; sourceTree = "<group>"; };
@@ -388,6 +394,10 @@
 				09C9C0F01B22E3E5001BBA1C /* PlaceDemandCell.m */,
 				09C9C0F21B22E409001BBA1C /* HardwareDemandCell.h */,
 				09C9C0F31B22E409001BBA1C /* HardwareDemandCell.m */,
+				09C832A31B25AC4700E72163 /* ActivityContentCell.h */,
+				09C832A41B25AC4700E72163 /* ActivityContentCell.m */,
+				09C832A61B25BB0100E72163 /* otherRequireCell.h */,
+				09C832A71B25BB0100E72163 /* otherRequireCell.m */,
 			);
 			path = SchedulePlace;
 			sourceTree = "<group>";
@@ -1049,6 +1059,7 @@
 				A6284D631B105E5600EFF820 /* UIWebView+AFNetworking.m in Sources */,
 				A6284D611B105E5600EFF820 /* UIProgressView+AFNetworking.m in Sources */,
 				A6284D561B105E5600EFF820 /* MJRefreshConst.m in Sources */,
+				09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */,
 				A6284D451B105E5600EFF820 /* AFHTTPRequestOperation.m in Sources */,
 				A6B1CEDD1B1C62D400100E9F /* PersonImageTVC.m in Sources */,
 				A6284D601B105E5600EFF820 /* UIImageView+AFNetworking.m in Sources */,
@@ -1057,6 +1068,7 @@
 				A6284D9C1B1067C100EFF820 /* LoginVC.m in Sources */,
 				A6B1CEEA1B1D8C7200100E9F /* HomeBtnCell.m in Sources */,
 				A6B1CEDE1B1C62D400100E9F /* PersonInfoVC.m in Sources */,
+				09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */,
 				A6284D5B1B105E5600EFF820 /* UIView+MJExtension.m in Sources */,
 				A6B1CEFB1B1D968600100E9F /* MyParser.m in Sources */,
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,

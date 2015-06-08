@@ -8,7 +8,7 @@
 
 #import "BaseTVC.h"
 
-@interface PlaceDemandCell : BaseTVC
+@interface PlaceDemandCell : BaseTVC<UITextFieldDelegate>
 @property (nonatomic, strong) UILabel *tipInfoLabel;
 @property (nonatomic, strong) UITextField *peopleAndPlaceTF;
 

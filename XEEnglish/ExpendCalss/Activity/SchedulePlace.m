@@ -9,6 +9,8 @@
 #import "SchedulePlace.h"
 #import "PlaceDemandCell.h"
 #import "HardwareDemandCell.h"
+#import "ActivityContentCell.h"
+#import "otherRequireCell.h"
 
 @interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -64,7 +66,7 @@
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 4;
+    return 6;
 }
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -81,6 +83,12 @@
     else if (section == 3){
         return 2;
     }
+    else if (section == 4){
+        return 1;
+    }
+    else if (section == 5){
+        return 1;
+    }
     else
         return 0;
 }
@@ -90,17 +98,19 @@
     static NSString *reuse1 = @"SchedulePlaceCell";
     static NSString *reuse2 = @"PlaceDemandCell";
     static NSString *reuse3 = @"HardwareDemandCell";
+    static NSString *reuse4 = @"ActivityContentCell";
+    static NSString *reuse5 = @"otherRequireCell";
     
-    UITableViewCell *cell = nil;
-    
-    
+    BaseTVC *cell = nil;
+
     if (indexPath.section == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
+            cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
             cell.textLabel.textColor = [UIColor darkGrayColor];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.cellEdge = 10;
         }
         cell.textLabel.text = @"校区选择";
         
@@ -109,10 +119,11 @@
     else if (indexPath.section == 1){
         cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
+            cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
             cell.textLabel.textColor = [UIColor darkGrayColor];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.cellEdge = 10;
         }
         switch (indexPath.row) {
             case 0:{
@@ -133,6 +144,7 @@
         PlaceDemandCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
         if (cell == nil) {
             cell = [[PlaceDemandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
+            cell.cellEdge = 10;
         }
         switch (indexPath.row) {
             case 0:{
@@ -152,9 +164,10 @@
         return cell;
     }
     else if (indexPath.section == 3){
-        HardwareDemandCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
+        HardwareDemandCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse3];
         if (cell == nil) {
             cell = [[HardwareDemandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+            cell.cellEdge = 10;
         }
         switch (indexPath.row) {
             case 0:{
@@ -175,10 +188,26 @@
         }
         return cell;
     }
+    else if (indexPath.section == 4){
+        ActivityContentCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse4];
+        if (cell == nil) {
+            cell = [[ActivityContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+            cell.cellEdge = 10;
+        }
+        return cell;
+    }
+    else if (indexPath.section == 5){
+        otherRequireCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse5];
+        if (cell == nil) {
+            cell = [[otherRequireCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+            cell.cellEdge = 10;
+        }
+        return cell;
+    }
     else{
         cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
+            cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
         }
         return cell;
     }
@@ -193,14 +222,20 @@
 
 
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (indexPath.section == 4) {
+        return 90.0;
+    }
     return 44.0;
 }
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
     if (section == 0) {
         return 20.0;
-    }else{
+    }
+    else if (section == 4 || section == 5){
+        return 15.0;
+    }
+    else{
         
         return 5.0;
     }
@@ -208,10 +243,27 @@
 
 - (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
-    if (section == 3) {
+    if (section == 5) {
         return 30.0;
-    }else
+    }
+    else if (section == 3 ||section == 4){
+        return 10.0;
+    }
+    else
         return 5.0;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    
+    NSString *title = nil;
+    if (section == 4) {
+         title = @"活动内容";
+    }
+    else if (section == 5){
+        title = @"其他";
+    }
+    
+    return title;
 }
 
 

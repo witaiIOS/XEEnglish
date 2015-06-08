@@ -35,11 +35,28 @@
         self.peopleAndPlaceTF.textColor = [UIColor darkGrayColor];
         self.peopleAndPlaceTF.font = [UIFont systemFontOfSize:14];
         self.peopleAndPlaceTF.borderStyle = UITextBorderStyleRoundedRect;
+        self.peopleAndPlaceTF.keyboardType = UIKeyboardTypeDefault;
+        self.peopleAndPlaceTF.delegate = self;
         
         [self addSubview:self.peopleAndPlaceTF];
     }
     
     return self;
+}
+
+#pragma mark － UITextField Delegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+    [textField becomeFirstResponder];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if ([string isEqualToString:@"\n"]) {
+        [textField resignFirstResponder];
+        return NO;
+    }
+    return YES;
 }
 
 @end
