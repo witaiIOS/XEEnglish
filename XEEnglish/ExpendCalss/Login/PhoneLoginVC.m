@@ -91,23 +91,38 @@
 
 - (IBAction)nextAction:(id)sender {
     
-    [[XeeService sharedInstance] checkCodeWithPhoneNumber:self.phoneTextField.text andCode:self.codeTextField.text andBlock:^(NSDictionary *result, NSError *error) {
-        if (!error) {
-            NSNumber *r = result[@"result"];
-            if (r.integerValue == 0) {
-                //用验证码校验完登陆成功后去设置密码
-                ResetPassWordVC *setPassWordVC = [[ResetPassWordVC alloc] init];
-                [self.navigationController pushViewController:setPassWordVC animated:YES];
+    if(self.codeTextField.text.length <= 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入验证码" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    else if (self.codeTextField.text.length > 6){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"验证码输入错误" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    else{
+        
+        [[XeeService sharedInstance] checkCodeWithPhoneNumber:self.phoneTextField.text andCode:self.codeTextField.text andBlock:^(NSDictionary *result, NSError *error) {
+            if (!error) {
+                NSNumber *r = result[@"result"];
+                if (r.integerValue == 0) {
+                    //用验证码校验完登陆成功后去设置密码
+                    ResetPassWordVC *setPassWordVC = [[ResetPassWordVC alloc] init];
+                    [self.navigationController pushViewController:setPassWordVC animated:YES];
+                }
+                else {
+                    [UIFactory showAlert:result[@"resultInfo"]];
+                }
             }
             else {
-                [UIFactory showAlert:result[@"resultInfo"]];
+                [UIFactory showAlert:@"网络错误"];
+                
             }
-        }
-        else {
-            [UIFactory showAlert:@"网络错误"];
-            
-        }
-    }];
+        }];
+   
+    }
+    
     
 }
 
