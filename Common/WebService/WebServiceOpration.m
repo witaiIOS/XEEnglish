@@ -50,6 +50,7 @@
 }
 
 #pragma mark - XEE
+
 + (AFHTTPRequestOperation *)XEEWebService:(NSString *)body {
     
     NSURL* WebURL = [NSURL URLWithString:XEEWebURL];
@@ -74,6 +75,8 @@
     return opration;
 }
 
+#pragma mark - 登陆相关
+
 + (AFHTTPRequestOperation *)checkPhoneWithPhoneNumber:(NSString *)phoneNumber andSign:(NSString *)sign {
     return [self XEEWebService:[NSString stringWithFormat:@"<web:checkPhone><web:json>{\"mobile\":\"%@\",\"sign\":\"%@\"}</web:json></web:checkPhone>", phoneNumber, sign]];
 }
@@ -82,8 +85,18 @@
     return [self XEEWebService:[NSString stringWithFormat:@" <web:checkCode><web:json>{\"sign\":%@,\"mobile\":\"%@\",\"code\":\"%@\"}</web:json></web:checkCode>", sign, phoneNumber, code]];
 }
 
+
 + (AFHTTPRequestOperation *)registerWithPhoneNumber:(NSString *)phoneNumber andName:(NSString *)name andPassword:(NSString *)password andInvitation_code:(NSString *)invitation_code{
     return [self XEEWebService:[NSString stringWithFormat:@"<web:register><web:json>{\"mobile\":\"%@\",\"name\":\"%@\",\"password\":\"%@\",\"invitation_code\":\"%@\"}</web:json></web:register>",phoneNumber,name,password,invitation_code]];
 }
+
+
+#pragma mark - 活动
++ (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex {
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetActivityInfo><web:pageSize>%li</web:pageSize><web:pageIndex>%li</web:pageIndex></web:GetActivityInfo>", (long)pageSize, (long)pageIndex]];
+}
+
+
 
 @end

@@ -84,7 +84,7 @@
 
 
 ///////////////////////////////////XEE
-
+#pragma mark - XEE
 - (void)getResponseWithOpration:(AFHTTPRequestOperation *)opration andXmlKey:(NSString *)xmlKey andBlock:(void (^)(NSString *response, NSDictionary *result, NSError *error))block {
     
     [opration start];
@@ -111,6 +111,7 @@
     }];
 }
 
+#pragma mark - 登陆相关
 
 - (void)checkPhoneWithPhoneNumber:(NSString *)phoneNumber andSign:(NSString *)sign andBlock:(void (^)(NSDictionary *result, NSError *error))block {
     
@@ -142,6 +143,7 @@
     }];
 }
 
+
 - (void)registerWithPhoneNumber:(NSString *)phoneNumber andName:(NSString *)name andPassword:(NSString *)password andInvitation_code:(NSString *)invitation_code andBlock:(void (^)(NSDictionary *result, NSError *error))block{
     
     AFHTTPRequestOperation *operation = [WebServiceOpration registerWithPhoneNumber:phoneNumber andName:name andPassword:password andInvitation_code:invitation_code];
@@ -151,6 +153,20 @@
         if (block) {
             block(result,error);
         }
+    }];
+}
+
+
+
+#pragma mark - 活动
+- (void)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void (^)(NSDictionary *result, NSError *error))block {
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getActivityInfoWithPageSize:pageSize andPageIndex:pageIndex];
+    [self getResponseWithOpration:operation andXmlKey:@"GetActivityInfoResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        
+        NSLog(@"result:%@",result);
+        
+        
     }];
 }
 

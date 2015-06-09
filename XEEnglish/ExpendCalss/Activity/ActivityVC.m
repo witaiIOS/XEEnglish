@@ -11,6 +11,7 @@
 #import "LXSegmentView.h"
 
 #import "SchedulePlace.h"
+#import "XeeService.h"
 
 @interface ActivityVC ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -25,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self getActivityInfo];
 
 }
 
@@ -76,6 +79,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - getActivityInfo
+- (void)getActivityInfo{
+    [[XeeService sharedInstance] getActivityInfoWithPageSize:5 andPageIndex:0 andBlock:^(NSDictionary *result, NSError *error) {
+        
+    }];
+}
+
 #pragma mark - action
 
 - (void)reservePlaceBtnAction{
@@ -85,6 +95,8 @@
     [self.navigationController pushViewController:vc
                                          animated:YES];
 }
+
+
 
 
 #pragma mark - UITableView DataSource
@@ -158,7 +170,7 @@
 
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 140.0f;
+    return 280.0f;
 
 }
 

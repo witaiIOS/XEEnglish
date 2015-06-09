@@ -113,6 +113,7 @@
 		A6284D981B1066DE00EFF820 /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6284D971B1066DE00EFF820 /* SettingVC.m */; };
 		A6284D9C1B1067C100EFF820 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6284D9A1B1067C100EFF820 /* LoginVC.m */; };
 		A6284D9D1B1067C100EFF820 /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6284D9B1B1067C100EFF820 /* LoginVC.xib */; };
+		A6647CC01B270E9B00D2DC57 /* course7.png in Resources */ = {isa = PBXBuildFile; fileRef = A6647CBF1B270E9B00D2DC57 /* course7.png */; };
 		A6B1CED91B1C62D400100E9F /* ChangePassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CECA1B1C62D400100E9F /* ChangePassWordVC.m */; };
 		A6B1CEDA1B1C62D400100E9F /* ChangePassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6B1CECB1B1C62D400100E9F /* ChangePassWordVC.xib */; };
 		A6B1CEDB1B1C62D400100E9F /* NeTNameAndDomicileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CECD1B1C62D400100E9F /* NeTNameAndDomicileVC.m */; };
@@ -326,6 +327,7 @@
 		A6284D991B1067C100EFF820 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		A6284D9A1B1067C100EFF820 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		A6284D9B1B1067C100EFF820 /* LoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
+		A6647CBF1B270E9B00D2DC57 /* course7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course7.png; sourceTree = "<group>"; };
 		A6B1CEC91B1C62D400100E9F /* ChangePassWordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePassWordVC.h; sourceTree = "<group>"; };
 		A6B1CECA1B1C62D400100E9F /* ChangePassWordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePassWordVC.m; sourceTree = "<group>"; };
 		A6B1CECB1B1C62D400100E9F /* ChangePassWordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePassWordVC.xib; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 		09DB2DBB1B13228B0078AAF5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A6647CBF1B270E9B00D2DC57 /* course7.png */,
 				09DB2DBC1B13228B0078AAF5 /* join_05.png */,
 				09DB2DBD1B13228B0078AAF5 /* join_06.png */,
 			);
@@ -1040,6 +1043,7 @@
 				097990691B17006600D4A8DC /* ResetPassWordVC.xib in Resources */,
 				09DB2DC81B1322A30078AAF5 /* mybgpic@2x.png in Resources */,
 				09C9C0E11B22C890001BBA1C /* STexpense.png in Resources */,
+				A6647CC01B270E9B00D2DC57 /* course7.png in Resources */,
 				09C9C0E41B22C890001BBA1C /* STreserve.png in Resources */,
 				09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */,
 				09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */,

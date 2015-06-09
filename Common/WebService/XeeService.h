@@ -23,6 +23,7 @@
 - (void)getHomeAdWithBlock:(void (^)(NSNumber *result, NSArray *resultInfo, NSError *error))block;
 
 /////////////////////////////XEE
+#pragma mark - XEE
 /**
  得到请求返回的结果
  @param opration 请求的操作
@@ -31,6 +32,7 @@
  */
 - (void)getResponseWithOpration:(AFHTTPRequestOperation *)opration andXmlKey:(NSString *)xmlKey andBlock:(void (^)(NSString *response, NSDictionary *result, NSError *error))block;
 
+#pragma mark - 登陆相关
 /**
  发送验证码的请求
  @param phoneNumber 手机号
@@ -48,6 +50,7 @@
  */
 - (void)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andSign:(NSString *)sign andBlock:(void (^)(NSDictionary *result, NSError *error))block;
 
+
 /**
  验证发送来的验证码
  @param phoneNumber 手机号
@@ -56,5 +59,15 @@
  @param invitation_code  推荐码
  */
 - (void)registerWithPhoneNumber:(NSString *)phoneNumber andName:(NSString *)name andPassword:(NSString *)password andInvitation_code:(NSString *)invitation_code andBlock:(void (^)(NSDictionary *result, NSError *error))block;
+
+#pragma mark - 活动
+/**
+ 获取当前活动信息
+ @param pageSize 一次请求显示多少个活动
+ @param pageIndex 当前页码
+ @param block  (result 解析出来的结果, error 请求的错误信息)
+ */
+- (void)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void (^)(NSDictionary *result, NSError *error))block;
+
 
 @end

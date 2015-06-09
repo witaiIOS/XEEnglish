@@ -34,7 +34,7 @@
 
 #pragma mark - UITextField Delegate
 
-- (bool)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     [textField resignFirstResponder];
     

@@ -25,6 +25,8 @@
     
     [[UITabBar appearance] setSelectedImageTintColor:RGBCOLOR(255, 109, 63)];
     
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    
     
     return YES;
 }

@@ -32,13 +32,14 @@
 + (AFHTTPRequestOperation *)getHomeAppAdConfigure;
 
 //////////////////////////////////艾迪天才接口
-
+#pragma mark -  XEE
 /**
  XEEServiceOpration基类
  @param body 不同方法body不同
  */
 + (AFHTTPRequestOperation *)XEEWebService:(NSString *)body;
 
+#pragma mark - 登陆相关
 /**
  获取验证码的opration
  @param phoneNumber 手机号
@@ -63,5 +64,14 @@
  @param invitation_code  推荐码
  */
 + (AFHTTPRequestOperation *)registerWithPhoneNumber:(NSString *)phoneNumber andName:(NSString *)name andPassword:(NSString *)password andInvitation_code:(NSString *)invitation_code;
+
+#pragma mark - 活动
+/**
+ 获取当前活动信息
+ @param pageSize 一次请求显示多少个活动
+ @param pageIndex 当前页码
+ */
++ (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex;
+
 
 @end
