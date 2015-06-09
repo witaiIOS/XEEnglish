@@ -9,7 +9,7 @@
 #import "PhoneLoginVC.h"
 #import "CountdownButton.h"
 
-#import "ResetPassWordVC.h"
+#import "RegisterVC.h"
 
 #import "XeeService.h"
 
@@ -108,7 +108,7 @@
                 NSNumber *r = result[@"result"];
                 if (r.integerValue == 0) {
                     //用验证码校验完登陆成功后去设置密码
-                    ResetPassWordVC *setPassWordVC = [[ResetPassWordVC alloc] init];
+                    RegisterVC *setPassWordVC = [[RegisterVC alloc] init];
                     [self.navigationController pushViewController:setPassWordVC animated:YES];
                 }
                 else {
