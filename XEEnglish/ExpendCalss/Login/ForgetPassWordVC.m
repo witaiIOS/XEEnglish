@@ -10,6 +10,8 @@
 #import "CountdownButton.h"
 #import "ResetPassWordVC.h"
 
+#import "XeeService.h"
+
 @interface ForgetPassWordVC ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
 @property (weak, nonatomic) IBOutlet UITextField *codeTF;
@@ -49,24 +51,37 @@
 
 - (void)getCodeAction:(id)sender {
     if (self.phoneTF.text.length <= 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"手机号不能为空" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
-        [alert show];
+        [UIFactory showAlert:@"手机不能为空"];
         return;
     }
     if (self.phoneTF.text.length <11 ||self.phoneTF.text.length >11) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入11位数的手机号" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
-        [alert show];
+        [UIFactory showAlert:@"请输入11位数的手机号"];
         return;
     }else{
         
         if (![self.phoneTF.text hasPrefix:@"1"]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"手机号只能以\"1\"开头" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
-            [alert show];
+            [UIFactory showAlert:@"手机号只能以\"1\"开头"];
             return;
         }
         else{
             
             [self.getCodeBtn startCounting];
+            
+            [[XeeService sharedInstance] checkPhoneWithPhoneNumber:self.phoneTF.text andSign:@"1" andBlock:^(NSDictionary *result, NSError *error) {
+                if (!error) {
+                    
+                    NSNumber *resultNumber = result[@"result"];
+                    
+                    if (resultNumber.integerValue == 0) {
+                        
+                    }
+                    else{
+                        [UIFactory showAlert:result[@"resultInfo"]];
+                    }
+                }else{
+                    [UIFactory showAlert:@"网络错误"];
+                }
+            }];
             
         }
     }
