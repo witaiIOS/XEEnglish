@@ -105,7 +105,7 @@
         [UIFactory showAlert:@"请输入验证码"];
         return;
     }
-    else if (self.codeTextField.text.length > 6){
+    else if (self.codeTextField.text.length != 6){
         [UIFactory showAlert:@"验证码输入错误"];
         return;
     }

@@ -47,6 +47,12 @@
 
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
 #pragma mark - My Action
 
 - (void)getCodeAction:(id)sender {
@@ -89,9 +95,35 @@
 
 - (IBAction)keepBtn:(id)sender {
     
-    ResetPassWordVC *vc = [[ResetPassWordVC alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-    
+    if(self.codeTF.text.length <= 0){
+        [UIFactory showAlert:@"验证码不能为空"];
+        return;
+    }
+    else if (self.codeTF.text.length != 6){
+        [UIFactory showAlert:@"验证码输入错误"];
+        return;
+    }
+    else{
+        [[XeeService sharedInstance]checkCodeWithPhoneNumber:self.phoneTF.text andCode:self.codeTF.text andSign:@"1" andBlock:^(NSDictionary *result, NSError *error) {
+            
+            if (!error) {
+                NSNumber *r = result[@"result"];
+                if (r.integerValue == 0) {
+                    //用验证码校验完登陆成功后去重新设置密码
+                    ResetPassWordVC *vc = [[ResetPassWordVC alloc] init];
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+                else{
+                    
+                    [UIFactory showAlert:result[@"resultinfo"]];
+                }
+            }
+            else{
+                [UIFactory showAlert:@"网络错误"];
+            }
+        }];
+    }
+
 }
 
 #pragma mark - UITextField Delegate
@@ -103,10 +135,6 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /*
 #pragma mark - Navigation
