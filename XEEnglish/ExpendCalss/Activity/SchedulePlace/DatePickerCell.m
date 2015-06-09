@@ -41,6 +41,7 @@
         self.datePickerTF.delegate = self;
         
         [self addSubview:self.datePickerTF];
+        
     }
     
     return self;
@@ -65,6 +66,7 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     
     self.datePicker = [[UIDatePicker alloc] init];
+    self.datePicker.minimumDate = [NSDate date];
     
     self.datePickerTF.inputView = self.datePicker;
     
