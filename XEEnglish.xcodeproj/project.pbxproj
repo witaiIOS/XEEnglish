@@ -44,6 +44,7 @@
 		09CA9FAE1B21818D003693D2 /* WHSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA9FAD1B21818D003693D2 /* WHSegmentView.m */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
+		09D560401B26809400ADF334 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5603F1B26809400ADF334 /* DatePickerCell.m */; };
 		09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */; };
 		09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DB31B1312F80078AAF5 /* PhoneLoginVC.xib */; };
 		09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DB71B1322800078AAF5 /* nav_back.png */; };
@@ -198,6 +199,8 @@
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
 		09D450B01B1078AB00B39B4A /* BaseTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTVC.m; sourceTree = "<group>"; };
+		09D5603E1B26809400ADF334 /* DatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerCell.h; sourceTree = "<group>"; };
+		09D5603F1B26809400ADF334 /* DatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerCell.m; sourceTree = "<group>"; };
 		09DB2DB11B1312F80078AAF5 /* PhoneLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneLoginVC.h; sourceTree = "<group>"; };
 		09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneLoginVC.m; sourceTree = "<group>"; };
 		09DB2DB31B1312F80078AAF5 /* PhoneLoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneLoginVC.xib; sourceTree = "<group>"; };
@@ -398,6 +401,8 @@
 				09C832A41B25AC4700E72163 /* ActivityContentCell.m */,
 				09C832A61B25BB0100E72163 /* otherRequireCell.h */,
 				09C832A71B25BB0100E72163 /* otherRequireCell.m */,
+				09D5603E1B26809400ADF334 /* DatePickerCell.h */,
+				09D5603F1B26809400ADF334 /* DatePickerCell.m */,
 			);
 			path = SchedulePlace;
 			sourceTree = "<group>";
@@ -1047,6 +1052,7 @@
 				A6B9C6AD1B22F28700DFA308 /* CourseList.m in Sources */,
 				A6284D4B1B105E5600EFF820 /* AFURLRequestSerialization.m in Sources */,
 				A6284D4A1B105E5600EFF820 /* AFURLConnectionOperation.m in Sources */,
+				09D560401B26809400ADF334 /* DatePickerCell.m in Sources */,
 				A6B1CEF21B1D909800100E9F /* WebServiceOpration.m in Sources */,
 				A6284D8F1B10668300EFF820 /* HomeVC.m in Sources */,
 				09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */,

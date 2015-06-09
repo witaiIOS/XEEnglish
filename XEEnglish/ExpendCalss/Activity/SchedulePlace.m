@@ -7,6 +7,8 @@
 //
 
 #import "SchedulePlace.h"
+
+#import "DatePickerCell.h"
 #import "PlaceDemandCell.h"
 #import "HardwareDemandCell.h"
 #import "ActivityContentCell.h"
@@ -14,6 +16,7 @@
 
 @interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
+//@property (nonatomic, strong) NSString *dateStart;
 
 @end
 
@@ -117,21 +120,19 @@
         return cell;
     }
     else if (indexPath.section == 1){
-        cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
+        DatePickerCell*cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
         if (cell == nil) {
-            cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
-            cell.textLabel.textColor = [UIColor darkGrayColor];
-            cell.textLabel.font = [UIFont systemFontOfSize:14];
+            cell = [[DatePickerCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.cellEdge = 10;
         }
         switch (indexPath.row) {
             case 0:{
-                cell.textLabel.text = @"预定起始时间";
+                cell.dateLabel.text = @"预定起始时间";
                 break;
             }
             case 1:{
-                cell.textLabel.text = @"预定结束时间";
+                cell.dateLabel.text = @"预定结束时间";
                 break;
             }
                 
@@ -218,6 +219,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
 
@@ -265,9 +267,6 @@
     
     return title;
 }
-
-
-
 
 
 - (void)didReceiveMemoryWarning {
