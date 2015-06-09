@@ -47,42 +47,52 @@
     [self.view addSubview:self.getCodeBtn];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 #pragma mark - My Action
 
 - (void)getCodeAction:(id)sender {
     if (self.phoneTextField.text.length <= 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"手机号不能为空" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
-        [alert show];
+        
+        [UIFactory showAlert:@"手机号不能为空"];
         return;
+        
     }
     if (self.phoneTextField.text.length <11 ||self.phoneTextField.text.length >11) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入11位数的手机号" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
-        [alert show];
+        
+        [UIFactory showAlert:@"请输入11位数的手机号"];
         return;
+        
     }else{
         
         if (![self.phoneTextField.text hasPrefix:@"1"]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"手机号只能以\"1\"开头" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
-            [alert show];
+            
+            [UIFactory showAlert:@"手机号只能以\"1\"开头"];
             return;
+            
         }else{
             
             [self.getCodeBtn startCounting];
             
-            [[XeeService sharedInstance] checkPhoneWithPhoneNumber:self.phoneTextField.text andBlock:^(NSDictionary *result, NSError *error) {
+            [[XeeService sharedInstance] checkPhoneWithPhoneNumber:self.phoneTextField.text andSign:@"2" andBlock:^(NSDictionary *result, NSError *error) {
                 if (!error) {
                     
-                    NSNumber *r = result[@"result"] ; //[result objectForKey:@"result"];
+                    NSNumber *r = result[@"result"];
                     
                     if (r.integerValue == 0) {//成功
-                        [UIFactory showAlert:result[@"resultInfo"]];
+                        //[UIFactory showAlert:result[@"resultInfo"]];
                     }
                     else{
                         [UIFactory showAlert:result[@"resultInfo"]];
                     }
                 }
                 else{
+                    [UIFactory showAlert:@"网络错误"];
                 }
+
             }];
         }
     }
@@ -92,18 +102,17 @@
 - (IBAction)nextAction:(id)sender {
     
     if(self.codeTextField.text.length <= 0){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入验证码" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
-        [alert show];
+        [UIFactory showAlert:@"请输入验证码"];
         return;
     }
     else if (self.codeTextField.text.length > 6){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"验证码输入错误" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-        [alert show];
+        [UIFactory showAlert:@"验证码输入错误"];
         return;
     }
     else{
         
-        [[XeeService sharedInstance] checkCodeWithPhoneNumber:self.phoneTextField.text andCode:self.codeTextField.text andBlock:^(NSDictionary *result, NSError *error) {
+        [[XeeService sharedInstance] checkCodeWithPhoneNumber:self.phoneTextField.text andCode:self.codeTextField.text andSign:@"2" andBlock:^(NSDictionary *result, NSError *error) {
+            
             if (!error) {
                 NSNumber *r = result[@"result"];
                 if (r.integerValue == 0) {
@@ -117,15 +126,13 @@
             }
             else {
                 [UIFactory showAlert:@"网络错误"];
-                
             }
+
         }];
-   
     }
-    
-    
 }
 
+#pragma mark - UITextField delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
@@ -134,20 +141,5 @@
 
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

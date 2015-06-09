@@ -83,61 +83,63 @@
 }
 
 
-///////////////////////////////////
-- (void)checkPhoneWithPhoneNumber:(NSString *)phoneNumber andBlock:(void (^)(NSDictionary *result, NSError *error))block {
-    AFHTTPRequestOperation *operation = [WebServiceOpration checkPhoneWithJson:phoneNumber];
-    [operation start];
+///////////////////////////////////XEE
+
+- (void)getResponseWithOpration:(AFHTTPRequestOperation *)opration andXmlKey:(NSString *)xmlKey andBlock:(void (^)(NSString *response, NSDictionary *result, NSError *error))block {
     
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [opration start];
+    [opration setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSString *responseStr = operation.responseString;
-        NSLog(@"responseStr:%@",responseStr);
+        //NSLog(@"responseStr:%@",responseStr);
         
-        [[MyParser sharedInstance] parserWithContent:responseStr andKey:@"checkPhoneResult"];
+        [[MyParser sharedInstance] parserWithContent:responseStr andKey:xmlKey];
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[[MyParser sharedInstance].results dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-        NSLog(@"%@",dic);
+        //NSLog(@"%@",dic);
+
         
         if (block) {
-            block(dic, nil);
+            block(responseStr, dic, nil);
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
         if (block) {
-            block(nil, error);
+            block(nil, nil, error);
         }
 
     }];
 }
 
 
-- (void)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andBlock:(void (^)(NSDictionary *result, NSError *error))block {
-    AFHTTPRequestOperation *operation = [WebServiceOpration checkCodeWithPhoneNumber:phoneNumber andCode:code];
-    [operation start];
+- (void)checkPhoneWithPhoneNumber:(NSString *)phoneNumber andSign:(NSString *)sign andBlock:(void (^)(NSDictionary *result, NSError *error))block {
     
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    AFHTTPRequestOperation *operation = [WebServiceOpration checkPhoneWithPhoneNumber:phoneNumber andSign:sign];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"checkPhoneResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         
-        NSString *responseStr = operation.responseString;
-        NSLog(@"responseStr:%@",responseStr);
-        
-        [[MyParser sharedInstance] parserWithContent:responseStr andKey:@"checkCodeResult"];
-        
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[[MyParser sharedInstance].results dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-        NSLog(@"%@",dic);
+        NSLog(@"result:%@",result);
         
         if (block) {
-            block(dic, nil);
-        }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        if (block) {
-            block(nil, error);
+            block(result, error);
         }
         
     }];
+}
 
+
+- (void)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andSign:(NSString *)sign andBlock:(void (^)(NSDictionary *result, NSError *error))block {
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration checkCodeWithPhoneNumber:phoneNumber andCode:code andSign:sign];
+    [self getResponseWithOpration:operation andXmlKey:@"checkCodeResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        
+        NSLog(@"result:%@",result);
+        
+        if (block) {
+            block(result, error);
+        }
+        
+    }];
 }
 
 @end

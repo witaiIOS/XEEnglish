@@ -74,12 +74,12 @@
     return opration;
 }
 
-+ (AFHTTPRequestOperation *)checkPhoneWithJson:(NSString *)phoneNumber {
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:checkPhone><web:json>{\"mobile\":\"%@\",\"sign\":\"2\"}</web:json></web:checkPhone>",phoneNumber]];
++ (AFHTTPRequestOperation *)checkPhoneWithPhoneNumber:(NSString *)phoneNumber andSign:(NSString *)sign {
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:checkPhone><web:json>{\"mobile\":\"%@\",\"sign\":\"%@\"}</web:json></web:checkPhone>", phoneNumber, sign]];
 }
 
-+ (AFHTTPRequestOperation *)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code{
-    return [self XEEWebService:[NSString stringWithFormat:@" <web:checkCode><web:json>{\"sign\":2,\"mobile\":\"%@\",\"code\":\"%@\"}</web:json></web:checkCode>",phoneNumber,code]];
++ (AFHTTPRequestOperation *)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andSign:(NSString *)sign {
+    return [self XEEWebService:[NSString stringWithFormat:@" <web:checkCode><web:json>{\"sign\":%@,\"mobile\":\"%@\",\"code\":\"%@\"}</web:json></web:checkCode>", sign, phoneNumber, code]];
 }
 
 @end
