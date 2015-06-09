@@ -48,4 +48,13 @@
  */
 - (void)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andSign:(NSString *)sign andBlock:(void (^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 验证发送来的验证码
+ @param phoneNumber 手机号
+ @param name  用户名
+ @param password 密码
+ @param invitation_code  推荐码
+ */
+- (void)registerWithPhoneNumber:(NSString *)phoneNumber andName:(NSString *)name andPassword:(NSString *)password andInvitation_code:(NSString *)invitation_code andBlock:(void (^)(NSDictionary *result, NSError *error))block;
+
 @end
