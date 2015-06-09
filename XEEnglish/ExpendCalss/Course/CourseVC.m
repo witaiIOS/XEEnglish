@@ -7,11 +7,11 @@
 //
 
 #import "CourseVC.h"
-#import "StudentList.h"
+#import "DropList.h"
 
 @interface CourseVC ()
 
-@property (nonatomic, strong) StudentList *students;
+@property (nonatomic, strong) DropList *students;
 
 @end
 
@@ -26,14 +26,18 @@
 - (void)initUI{
     
     [super initUI];
-    self.students = [[StudentList alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth/2, 44)];
+    self.students = [[DropList alloc] init];
     NSArray *array1 = [[NSArray alloc] initWithObjects:@"小明",@"小华",@"小刚", nil];
     self.students.tableList = array1;
+    [self.students initiation:CGRectMake(0, 64, kScreenWidth/2, 44) andTextField:array1[0]];
+    
+    
 //    NSArray *array2 = [[NSArray  alloc] initWithObjects:@"CP",@"CK",@"CL",@"CH",@"CJ", nil];
 //    self.mySegment.coursesArray = array2;
+    NSLog(@"%@", self.students);
     
     [self.view addSubview:self.students];
-
+    
 }
 
 

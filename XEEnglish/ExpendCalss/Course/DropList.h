@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #define kTFHeight 40
 #define kFont 14
-#define kCellHeight 35.0f
+#define kCellHeight 44.0f
 
-@interface DropList : UIView<UITableViewDataSource, UITableViewDelegate>
+@interface DropList : UIView<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) UITextField *textField;
 
@@ -20,5 +20,7 @@
 @property (nonatomic, strong) NSArray *tableList;
 
 @property (nonatomic) BOOL showTable;
+
+- (void)initiation:(CGRect)frame andTextField:(NSString*)text;
 
 @end
