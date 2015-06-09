@@ -45,6 +45,8 @@
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		09D560401B26809400ADF334 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5603F1B26809400ADF334 /* DatePickerCell.m */; };
+		09D560441B26D3E700ADF334 /* ForgetPassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D560421B26D3E700ADF334 /* ForgetPassWordVC.m */; };
+		09D560451B26D3E700ADF334 /* ForgetPassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D560431B26D3E700ADF334 /* ForgetPassWordVC.xib */; };
 		09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */; };
 		09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DB31B1312F80078AAF5 /* PhoneLoginVC.xib */; };
 		09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DB71B1322800078AAF5 /* nav_back.png */; };
@@ -201,6 +203,9 @@
 		09D450B01B1078AB00B39B4A /* BaseTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTVC.m; sourceTree = "<group>"; };
 		09D5603E1B26809400ADF334 /* DatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerCell.h; sourceTree = "<group>"; };
 		09D5603F1B26809400ADF334 /* DatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerCell.m; sourceTree = "<group>"; };
+		09D560411B26D3E700ADF334 /* ForgetPassWordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPassWordVC.h; sourceTree = "<group>"; };
+		09D560421B26D3E700ADF334 /* ForgetPassWordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPassWordVC.m; sourceTree = "<group>"; };
+		09D560431B26D3E700ADF334 /* ForgetPassWordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPassWordVC.xib; sourceTree = "<group>"; };
 		09DB2DB11B1312F80078AAF5 /* PhoneLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneLoginVC.h; sourceTree = "<group>"; };
 		09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneLoginVC.m; sourceTree = "<group>"; };
 		09DB2DB31B1312F80078AAF5 /* PhoneLoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneLoginVC.xib; sourceTree = "<group>"; };
@@ -825,6 +830,9 @@
 				097990651B17006600D4A8DC /* ResetPassWordVC.h */,
 				097990661B17006600D4A8DC /* ResetPassWordVC.m */,
 				097990671B17006600D4A8DC /* ResetPassWordVC.xib */,
+				09D560411B26D3E700ADF334 /* ForgetPassWordVC.h */,
+				09D560421B26D3E700ADF334 /* ForgetPassWordVC.m */,
+				09D560431B26D3E700ADF334 /* ForgetPassWordVC.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -993,6 +1001,7 @@
 				09DB2DC41B1322980078AAF5 /* join_07.png in Resources */,
 				A6B1CEDC1B1C62D400100E9F /* NeTNameAndDomicileVC.xib in Resources */,
 				09CA691D1B1FFCE300A31E0E /* CouponsCell.xib in Resources */,
+				09D560451B26D3E700ADF334 /* ForgetPassWordVC.xib in Resources */,
 				A6B1CEDA1B1C62D400100E9F /* ChangePassWordVC.xib in Resources */,
 				A6B1CEE21B1C62D400100E9F /* SettingSignatureVC.xib in Resources */,
 				09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */,
@@ -1079,6 +1088,7 @@
 				A6B1CEFB1B1D968600100E9F /* MyParser.m in Sources */,
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,
 				09CA691B1B1FFCCA00A31E0E /* CouponsCell.m in Sources */,
+				09D560441B26D3E700ADF334 /* ForgetPassWordVC.m in Sources */,
 				A6B1CF091B1DC65900100E9F /* LXSegementView.m in Sources */,
 				A6284D591B105E5600EFF820 /* UIScrollView+MJExtension.m in Sources */,
 				A6284D981B1066DE00EFF820 /* SettingVC.m in Sources */,

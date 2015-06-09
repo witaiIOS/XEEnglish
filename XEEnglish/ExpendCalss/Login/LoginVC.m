@@ -8,6 +8,7 @@
 
 #import "LoginVC.h"
 #import "PhoneLoginVC.h"
+#import "ForgetPassWordVC.h"
 
 @interface LoginVC ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
@@ -50,7 +51,7 @@
 - (IBAction)forgetPasswordAction:(id)sender {
     
     //忘记密码的去手机注册页面通过获取验证码先登录
-    PhoneLoginVC *forgetPasswordLoginVC = [[PhoneLoginVC alloc] init];
+    ForgetPassWordVC *forgetPasswordLoginVC = [[ForgetPassWordVC alloc] init];
     [self.navigationController pushViewController:forgetPasswordLoginVC animated:YES];
 }
 
