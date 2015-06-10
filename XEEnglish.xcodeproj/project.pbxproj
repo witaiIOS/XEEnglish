@@ -22,6 +22,10 @@
 		09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */; };
 		09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */; };
 		09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDB1B1EDD3E00ABC885 /* select_flag.png */; };
+		09C95EBE1B27EAAD000972D8 /* SchoolZoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95EBD1B27EAAD000972D8 /* SchoolZoneVC.m */; };
+		09C95EC11B2806FA000972D8 /* school_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95EBF1B2806FA000972D8 /* school_selected.png */; };
+		09C95EC21B2806FA000972D8 /* school_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95EC01B2806FA000972D8 /* school_unselected.png */; };
+		09C95EC51B280738000972D8 /* SchoolZoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95EC41B280738000972D8 /* SchoolZoneCell.m */; };
 		09C9C0DF1B22C890001BBA1C /* STcity.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0D81B22C890001BBA1C /* STcity.png */; };
 		09C9C0E01B22C890001BBA1C /* STcoupon.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0D91B22C890001BBA1C /* STcoupon.png */; };
 		09C9C0E11B22C890001BBA1C /* STexpense.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0DA1B22C890001BBA1C /* STexpense.png */; };
@@ -174,6 +178,12 @@
 		09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegmentView.m; sourceTree = "<group>"; };
 		09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_tab_selected.png; sourceTree = "<group>"; };
 		09C95CDB1B1EDD3E00ABC885 /* select_flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_flag.png; sourceTree = "<group>"; };
+		09C95EBC1B27EAAD000972D8 /* SchoolZoneVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolZoneVC.h; sourceTree = "<group>"; };
+		09C95EBD1B27EAAD000972D8 /* SchoolZoneVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolZoneVC.m; sourceTree = "<group>"; };
+		09C95EBF1B2806FA000972D8 /* school_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = school_selected.png; sourceTree = "<group>"; };
+		09C95EC01B2806FA000972D8 /* school_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = school_unselected.png; sourceTree = "<group>"; };
+		09C95EC31B280738000972D8 /* SchoolZoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolZoneCell.h; sourceTree = "<group>"; };
+		09C95EC41B280738000972D8 /* SchoolZoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolZoneCell.m; sourceTree = "<group>"; };
 		09C9C0D81B22C890001BBA1C /* STcity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STcity.png; sourceTree = "<group>"; };
 		09C9C0D91B22C890001BBA1C /* STcoupon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STcoupon.png; sourceTree = "<group>"; };
 		09C9C0DA1B22C890001BBA1C /* STexpense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STexpense.png; sourceTree = "<group>"; };
@@ -415,6 +425,10 @@
 				09C832A71B25BB0100E72163 /* otherRequireCell.m */,
 				09D5603E1B26809400ADF334 /* DatePickerCell.h */,
 				09D5603F1B26809400ADF334 /* DatePickerCell.m */,
+				09C95EBC1B27EAAD000972D8 /* SchoolZoneVC.h */,
+				09C95EBD1B27EAAD000972D8 /* SchoolZoneVC.m */,
+				09C95EC31B280738000972D8 /* SchoolZoneCell.h */,
+				09C95EC41B280738000972D8 /* SchoolZoneCell.m */,
 			);
 			path = SchedulePlace;
 			sourceTree = "<group>";
@@ -481,6 +495,8 @@
 		09DB2DCA1B1322AF0078AAF5 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				09C95EBF1B2806FA000972D8 /* school_selected.png */,
+				09C95EC01B2806FA000972D8 /* school_unselected.png */,
 				09C9C0F51B22FA19001BBA1C /* no.png */,
 				09C9C0F61B22FA19001BBA1C /* yes.png */,
 				09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */,
@@ -1035,12 +1051,14 @@
 				09DB2DBF1B13228B0078AAF5 /* join_06.png in Resources */,
 				09C9C0F71B22FA19001BBA1C /* no.png in Resources */,
 				09C9C0E21B22C890001BBA1C /* STintegral.png in Resources */,
+				09C95EC21B2806FA000972D8 /* school_unselected.png in Resources */,
 				09C9C0E01B22C890001BBA1C /* STcoupon.png in Resources */,
 				09C9C0F81B22FA19001BBA1C /* yes.png in Resources */,
 				A6284CDA1B10592100EFF820 /* Images.xcassets in Resources */,
 				090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */,
 				09DB2DBE1B13228B0078AAF5 /* join_05.png in Resources */,
 				097990691B17006600D4A8DC /* ResetPassWordVC.xib in Resources */,
+				09C95EC11B2806FA000972D8 /* school_selected.png in Resources */,
 				09DB2DC81B1322A30078AAF5 /* mybgpic@2x.png in Resources */,
 				09C9C0E11B22C890001BBA1C /* STexpense.png in Resources */,
 				A6647CC01B270E9B00D2DC57 /* course7.png in Resources */,
@@ -1070,6 +1088,7 @@
 				A6B1CEEB1B1D8C7200100E9F /* HomeButton.m in Sources */,
 				A6284D791B105F9500EFF820 /* UIFactory.m in Sources */,
 				0906047B1B14218A0038BAC4 /* UserProtocolVC.m in Sources */,
+				09C95EC51B280738000972D8 /* SchoolZoneCell.m in Sources */,
 				09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */,
 				09D560491B26DB8F00ADF334 /* RegisterVC.m in Sources */,
 				A6B9C6AD1B22F28700DFA308 /* CourseList.m in Sources */,
@@ -1137,6 +1156,7 @@
 				A6B9C6A71B22F07700DFA308 /* DropList.m in Sources */,
 				A6284D951B1066CC00EFF820 /* ActivityVC.m in Sources */,
 				A6284D481B105E5600EFF820 /* AFNetworkReachabilityManager.m in Sources */,
+				09C95EBE1B27EAAD000972D8 /* SchoolZoneVC.m in Sources */,
 				090604841B146B050038BAC4 /* CountdownButton.m in Sources */,
 				09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */,
 				A6284CCF1B10592100EFF820 /* main.m in Sources */,
