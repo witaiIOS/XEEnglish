@@ -44,7 +44,7 @@
     NSMutableArray *array = [NSMutableArray arrayWithObjects:@"青山校区",@"关谷校区",@"汉口校区",@"创业街校区",@"江夏校区",nil];
     self.schoolArray = array;
     
-    self.schoolZone = @"武昌校区";
+    //self.schoolZone = @"武昌校区";
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
@@ -218,7 +218,7 @@
     else if (indexPath.section == 4){
         ActivityContentCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse4];
         if (cell == nil) {
-            cell = [[ActivityContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+            cell = [[ActivityContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse4];
             cell.cellEdge = 10;
         }
         return cell;
@@ -226,7 +226,7 @@
     else if (indexPath.section == 5){
         otherRequireCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse5];
         if (cell == nil) {
-            cell = [[otherRequireCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+            cell = [[otherRequireCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse5];
             cell.cellEdge = 10;
         }
         return cell;
