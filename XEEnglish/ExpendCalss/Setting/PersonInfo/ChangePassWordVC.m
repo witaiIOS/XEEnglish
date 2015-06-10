@@ -7,6 +7,7 @@
 //
 
 #import "ChangePassWordVC.h"
+#import "ForgetPassWordVC.h"
 
 @interface ChangePassWordVC ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *orgainPasswordField;
@@ -29,7 +30,11 @@
     
 }
 
-
+- (IBAction)forgetBtn:(id)sender {
+    
+    ForgetPassWordVC *vc = [[ForgetPassWordVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 #pragma mark - UITextField Delegate
