@@ -8,6 +8,8 @@
 
 #import "ResetPassWordVC.h"
 
+#import "XeeService.h"
+
 @interface ResetPassWordVC ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *myNewPasswordField;
@@ -27,10 +29,27 @@
 #pragma mark - My Action
 - (IBAction)keepBtn:(id)sender {
     
+    if([self.myNewPasswordField.text isEqualToString:self.confirmField.text]){
+        
+        [[XeeService sharedInstance] modifyPwdByMobilephoneWithPhoneNumber:@"13797040872" andPassword:self.myNewPasswordField.text andBlock:^(NSDictionary *result, NSError *error) {
+            NSNumber *r = result[@"result"];
+            if (!error) {
+                if (r.integerValue == 0) {
+                    //保存完数据之后回到主界面
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                }
+                else{
+                    
+                }
+            }else{
+                [UIFactory showAlert:@"网络错误"];
+            }
+        }];
+    }
     
     
-    //保存完数据之后回到主界面
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    
 }
 
 
