@@ -60,6 +60,13 @@
  */
 - (void)registerWithPhoneNumber:(NSString *)phoneNumber andName:(NSString *)name andPassword:(NSString *)password andInvitation_code:(NSString *)invitation_code andBlock:(void (^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 找回密码
+ @param phoneNumber 手机号
+ @param password 密码
+ */
+- (void)modifyPwdByMobilephoneWithPhoneNumber:(NSString *)phoneNumber andPassword:(NSString *)password andBlock:(void (^)(NSDictionary *result, NSError *error))block;
+
 #pragma mark - 活动
 /**
  获取当前活动信息

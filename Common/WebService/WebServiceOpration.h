@@ -65,6 +65,14 @@
  */
 + (AFHTTPRequestOperation *)registerWithPhoneNumber:(NSString *)phoneNumber andName:(NSString *)name andPassword:(NSString *)password andInvitation_code:(NSString *)invitation_code;
 
+/**
+ 找回密码
+ @param phoneNumber 手机号
+ @param password 密码
+ */
++ (AFHTTPRequestOperation *)modifyPwdByMobilephoneWithPhoneNumber:(NSString *)phoneNumber andPassword:(NSString *)password;
+
+
 #pragma mark - 活动
 /**
  获取当前活动信息

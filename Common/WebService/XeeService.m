@@ -156,6 +156,23 @@
     }];
 }
 
+/**
+ 找回密码
+ @param phoneNumber 手机号
+ @param password 密码
+ */
+- (void)modifyPwdByMobilephoneWithPhoneNumber:(NSString *)phoneNumber andPassword:(NSString *)password andBlock:(void (^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration modifyPwdByMobilephoneWithPhoneNumber:phoneNumber andPassword:password];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"modifyPwdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        NSLog(@"result:%@",result);
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 
 
 #pragma mark - 活动
