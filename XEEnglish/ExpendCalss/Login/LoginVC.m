@@ -68,20 +68,41 @@
 - (IBAction)loginAction:(id)sender {
     
     [self hideKeyboard];
-    [[XeeService sharedInstance] loginWithPhoneNumber:self.phoneTextField.text andPassword:self.codeTextField.text andBlock:^(NSDictionary *result, NSError *error) {
-        if (!error) {
-            NSNumber *r = result[@"result"];
-            if (r.integerValue == 0) {
-                [self.navigationController popViewControllerAnimated:YES];
+    
+    if (self.phoneTextField.text.length <= 0) {
+        
+        [UIFactory showAlert:@"用户名不能为空"];
+        return;
+        
+    }
+    else if (self.codeTextField.text.length < 6) {
+        
+        [UIFactory showAlert:@"密码不能少于6位数"];
+        return;
+        
+    }else{
+    
+        [[XeeService sharedInstance] loginWithPhoneNumber:self.phoneTextField.text andPassword:self.codeTextField.text andBlock:^(NSDictionary *result, NSError *error) {
+            if (!error) {
+                NSNumber *r = result[@"result"];
+                if (r.integerValue == 0) {
+                    
+                    [[UserInfo sharedUser] setUserInfoDicWithWebServiceResult:result];//本地化存储用户信息
+                    
+                    if ([self.delegate respondsToSelector:@selector(loginVCloginSuccess)]) {
+                        [self.delegate loginVCloginSuccess];
+                    }
+                    
+                    [self.navigationController popViewControllerAnimated:YES];
+                }else{
+                    [UIFactory showAlert:result[@"resultInfo"]];
+                }
             }else{
-                [UIFactory showAlert:result[@"resultInfo"]];
+                [UIFactory showAlert:@"网络错误"];
             }
-        }else{
-            [UIFactory showAlert:@"网络错误"];
-        }
-    }];
+        }];
     
-    
+    }
 }
 
 - (IBAction)forgetPasswordAction:(id)sender {

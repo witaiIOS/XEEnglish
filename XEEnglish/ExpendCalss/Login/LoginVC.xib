@@ -30,7 +30,7 @@
                     <rect key="frame" x="13" y="139" width="295" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" secureTextEntry="YES"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="Duk-3L-BdN"/>
                     </connections>

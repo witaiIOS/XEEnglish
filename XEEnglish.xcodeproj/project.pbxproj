@@ -140,6 +140,7 @@
 		A6B9C6A71B22F07700DFA308 /* DropList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B9C6A61B22F07700DFA308 /* DropList.m */; };
 		A6B9C6AA1B22F26E00DFA308 /* StudentList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B9C6A91B22F26E00DFA308 /* StudentList.m */; };
 		A6B9C6AD1B22F28700DFA308 /* CourseList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B9C6AC1B22F28700DFA308 /* CourseList.m */; };
+		A6C3CF2C1B285ECD0039C951 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3CF2B1B285ECD0039C951 /* UserInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -379,6 +380,8 @@
 		A6B9C6A91B22F26E00DFA308 /* StudentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentList.m; sourceTree = "<group>"; };
 		A6B9C6AB1B22F28700DFA308 /* CourseList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseList.h; sourceTree = "<group>"; };
 		A6B9C6AC1B22F28700DFA308 /* CourseList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseList.m; sourceTree = "<group>"; };
+		A6C3CF2A1B285ECD0039C951 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		A6C3CF2B1B285ECD0039C951 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,6 +613,8 @@
 				A6284D781B105F9500EFF820 /* UIFactory.m */,
 				A6B1CEF91B1D968600100E9F /* MyParser.h */,
 				A6B1CEFA1B1D968600100E9F /* MyParser.m */,
+				A6C3CF2A1B285ECD0039C951 /* UserInfo.h */,
+				A6C3CF2B1B285ECD0039C951 /* UserInfo.m */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -1124,6 +1129,7 @@
 				A6B1CEDE1B1C62D400100E9F /* PersonInfoVC.m in Sources */,
 				09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */,
 				A6284D5B1B105E5600EFF820 /* UIView+MJExtension.m in Sources */,
+				A6C3CF2C1B285ECD0039C951 /* UserInfo.m in Sources */,
 				A6B1CEFB1B1D968600100E9F /* MyParser.m in Sources */,
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,
 				09CA691B1B1FFCCA00A31E0E /* CouponsCell.m in Sources */,

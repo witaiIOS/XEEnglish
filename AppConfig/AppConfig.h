@@ -25,6 +25,17 @@
 #define XEEimageURLPrefix @"http://218.244.143.58:604"
 #define XEEWebURL @"http://218.244.143.58:604/ShaneAppWs.asmx?wsdl"
 
+///用户信息key
+#define UserInfoGlobalKey      @"UserInfoGlobalKey"
+
+#define uIslogin               @"uIslogin" //0登陆 1未登录
+#define uUserInfoKey           @"uUserInfoKey"
+
+#define uUserName              @"uUserName"
+#define uPassword              @"uPassword"
+#define uPhoneNumber           @"uPhoneNumber"
+
+
 
 
 

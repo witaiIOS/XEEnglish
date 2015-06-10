@@ -17,9 +17,10 @@
 #import "CitiesVC.h"
 #import "MoreSettingVC.h"
 
-@interface SettingVC ()<UITableViewDataSource, UITableViewDelegate,SelectedCityDelegate>
+@interface SettingVC ()<UITableViewDataSource, UITableViewDelegate,SelectedCityDelegate, UIAlertViewDelegate, LoginVCDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *loginBtn;
+@property (nonatomic, strong) UIButton *exitBtn;
 @property (nonatomic, strong) UILabel *userPhoneNumber;
 
 @property (nonatomic, strong) NSString *selectCity;
@@ -29,19 +30,23 @@
 @implementation SettingVC
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
+    
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.selectCity = @"武汉市";
+    
+    [self updateUserLoginUI];
 
 }
 
 - (void)initUI{
     [super initUI];
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-49) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.tableHeaderView = [self tableHeaderView];
@@ -54,6 +59,33 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UserInfo
+- (BOOL)isLogin {
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    
+    NSNumber *ifLogin = userDic[uIslogin];
+    
+    return ifLogin.integerValue == 0 ? YES : NO;
+}
+
+- (void)updateUserLoginUI {
+    if ([self isLogin]) {
+        self.userPhoneNumber.hidden = NO;
+        self.loginBtn.hidden = YES;
+        
+        self.userPhoneNumber.text = [[[[UserInfo sharedUser] getUserInfoDic] objectForKey:uUserInfoKey] objectForKey:uPhoneNumber];
+        
+        _exitBtn.hidden = NO;
+    }
+    else {
+        self.userPhoneNumber.hidden = YES;
+        self.loginBtn.hidden = NO;
+        
+        _exitBtn.hidden = YES;
+
+    }
 }
 
 #pragma mark - Set tableView
@@ -83,9 +115,9 @@
     
     
     self.userPhoneNumber =[[UILabel alloc] initWithFrame:CGRectMake(50, 30, 220, 40)];
-    self.userPhoneNumber.textAlignment =NSTextAlignmentCenter;
-    self.userPhoneNumber.textColor = [UIColor darkGrayColor];
-    self.userPhoneNumber.font = [UIFont systemFontOfSize:14];
+    //self.userPhoneNumber.textAlignment =NSTextAlignmentCenter;
+    self.userPhoneNumber.textColor = [UIColor whiteColor];
+    self.userPhoneNumber.font = [UIFont systemFontOfSize:17];
     [view addSubview:self.userPhoneNumber];
     
     return view;
@@ -98,15 +130,15 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
     view.backgroundColor = [UIColor clearColor];
     
-    UIButton *exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [exitBtn setFrame: CGRectMake(20, 0, kScreenWidth-40, 40)];
-    [exitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
-    [exitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [exitBtn setBackgroundColor:[UIColor orangeColor]];
+     _exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_exitBtn setFrame: CGRectMake(20, 0, kScreenWidth-40, 40)];
+    [_exitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
+    [_exitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_exitBtn setBackgroundColor:[UIColor orangeColor]];
     
-    exitBtn.layer.cornerRadius = 4.0;
-    [exitBtn addTarget:self action:@selector(exitAction) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:exitBtn];
+    _exitBtn.layer.cornerRadius = 4.0;
+    [_exitBtn addTarget:self action:@selector(exitAction) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:_exitBtn];
     
     return view;
     
@@ -117,12 +149,14 @@
     
     LoginVC *loginVC = [[LoginVC alloc] init];
     loginVC.hidesBottomBarWhenPushed = YES;
+    loginVC.delegate = self;
     [self.navigationController pushViewController:loginVC animated:YES];
 }
 
 - (void)exitAction{
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"你确定要退出吗" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    alert.tag = 99;
     [alert show];
 }
 
@@ -334,9 +368,21 @@
 - (void)SelectedCity:(id)sender{
     
     self.selectCity = sender;
+    [self.tableView reloadData];
 }
 
-#pragma mark - My Action
+#pragma mark - AlertView delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.tag == 99 && buttonIndex == 0) {
+        [[UserInfo sharedUser] initUserInfoDic];
+        [self updateUserLoginUI];
+    }
+}
+
+#pragma mark - LoginVC Delegate
+- (void)loginVCloginSuccess {
+    [self updateUserLoginUI];
+}
 
 
 @end

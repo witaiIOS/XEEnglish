@@ -8,6 +8,14 @@
 
 #import "BaseVC.h"
 
+@protocol LoginVCDelegate <NSObject>
+
+- (void)loginVCloginSuccess;
+
+@end
+
 @interface LoginVC : BaseVC
+
+@property (assign, nonatomic) id<LoginVCDelegate>delegate;
 
 @end

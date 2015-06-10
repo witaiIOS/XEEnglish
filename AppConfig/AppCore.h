@@ -18,6 +18,7 @@
 
 //Common
 #import "UIFactory.h"
+#import "UserInfo.h"
 
 
 

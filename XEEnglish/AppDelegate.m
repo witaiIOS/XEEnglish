@@ -27,6 +27,9 @@
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
+    ///初始化UserInfoDic
+    [[UserInfo sharedUser] firstInitUserInfoDic];
+    
     
     return YES;
 }

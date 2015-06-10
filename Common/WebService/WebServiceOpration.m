@@ -110,7 +110,7 @@
  */
 + (AFHTTPRequestOperation *)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andId:(NSInteger )parent_id{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:modifyPwd><web:json>{\"password\":\"%@\",\"old_password\":\"%@\",\"parent_id\":\"%li\"}</web:json></web:modifyPwd>",newPassword,oldPassword,parent_id]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:modifyPwd><web:json>{\"password\":\"%@\",\"old_password\":\"%@\",\"parent_id\":\"%li\"}</web:json></web:modifyPwd>",newPassword,oldPassword,(long)parent_id]];
 }
 
 @end
