@@ -7,6 +7,8 @@
 //
 
 #import "LoginVC.h"
+#import "XeeService.h"
+
 #import "PhoneLoginVC.h"
 #import "ForgetPassWordVC.h"
 
@@ -66,6 +68,18 @@
 - (IBAction)loginAction:(id)sender {
     
     [self hideKeyboard];
+    [[XeeService sharedInstance] loginWithPhoneNumber:self.phoneTextField.text andPassword:self.codeTextField.text andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *r = result[@"result"];
+            if (r.integerValue == 0) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
     
     
 }

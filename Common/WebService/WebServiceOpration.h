@@ -73,6 +73,13 @@
 + (AFHTTPRequestOperation *)modifyPwdByMobilephoneWithPhoneNumber:(NSString *)phoneNumber andPassword:(NSString *)password;
 
 
+/**
+ 登录
+ @param phoneNumber 手机号
+ @param password 密码
+ */
++ (AFHTTPRequestOperation *)loginWithPhoneNumber:(NSString *)phoneNumber andPassword:(NSString *)password;
+
 #pragma mark - 活动
 /**
  获取当前活动信息

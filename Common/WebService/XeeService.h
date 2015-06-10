@@ -67,6 +67,13 @@
  */
 - (void)modifyPwdByMobilephoneWithPhoneNumber:(NSString *)phoneNumber andPassword:(NSString *)password andBlock:(void (^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 登录
+ @param phoneNumber 手机号
+ @param password 密码
+ */
+- (void)loginWithPhoneNumber:(NSString *)phoneNumber andPassword:(NSString *)password andBlock:(void(^)(NSDictionary *result, NSError *error))block;
+
 #pragma mark - 活动
 /**
  获取当前活动信息
