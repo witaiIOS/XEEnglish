@@ -88,17 +88,14 @@
 #pragma mark - getActivityInfo
 - (void)getActivityInfo{
     [[XeeService sharedInstance] getActivityInfoWithPageSize:5 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
-        //NSLog(@"result:%@",result);
+        NSLog(@"result:%@",result);
         
         if (!error) {
             
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 
-                _tableList1 = [NSJSONSerialization JSONObjectWithData:[result[@"resultInfo"] dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-                
-                NSLog(@"%@",_tableList1);
-                
+                _tableList1 = result[@"resultInfo"];
                 
                 [self.tableView1 reloadData];
             }
