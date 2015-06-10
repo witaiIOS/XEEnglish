@@ -30,6 +30,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    _tableList1 = [NSMutableArray array];
+    _tableList2 = [NSMutableArray array];
+    
     [self getActivityInfo];
 
 }
@@ -85,15 +88,18 @@
 #pragma mark - getActivityInfo
 - (void)getActivityInfo{
     [[XeeService sharedInstance] getActivityInfoWithPageSize:5 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
+        //NSLog(@"result:%@",result);
         
         if (!error) {
+            
             NSNumber *isResult = result[@"result"];
-            NSLog(@"isResult%lu",(unsigned long)isResult.integerValue);
             if (isResult.integerValue == 0) {
                 
-                _tableList1 = result[@"resultInfo"];
+                _tableList1 = [NSJSONSerialization JSONObjectWithData:[result[@"resultInfo"] dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
                 
-                NSLog(@"%lu",(unsigned long)_tableList1.count);
+                NSLog(@"%@",_tableList1);
+                
+                
                 [self.tableView1 reloadData];
             }
             else {
@@ -157,7 +163,7 @@
         }
         
         cell.cellEdge = 10;
-        cell.activityInfo = _tableList1[indexPath.row];
+        cell.activityInfo = _tableList1[indexPath.section];
                 
         return cell;
         

@@ -7,6 +7,7 @@
 //
 
 #import "ActivityCell.h"
+#import "AppCore.h"
 
 @implementation ActivityCell
 
@@ -19,8 +20,8 @@
     _activitySchoolLabel.text = _activityInfo[@"address"];
     _activityPeopleLabel.text = [NSString stringWithFormat:@"人数%@/%@", _activityInfo[@"sum_current"], _activityInfo[@"sum_max"]];
     
-    //_activityImageView.image;
-    NSLog(@"%@",_activityInfo[@"image_url"]);
+    [_activityImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,_activityInfo[@"image_url"]]] placeholderImage:[UIImage imageNamed:@"course7.png"]];
+    //NSLog(@"%@",_activityInfo[@"image_url"]);
 }
 
 - (IBAction)reserveButtonClicked:(id)sender {

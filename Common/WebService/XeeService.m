@@ -95,7 +95,10 @@
         
         [[MyParser sharedInstance] parserWithContent:responseStr andKey:xmlKey];
         
+
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[[MyParser sharedInstance].results dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        
+        
         //NSLog(@"%@",dic);
 
         
@@ -181,7 +184,9 @@
     AFHTTPRequestOperation *operation = [WebServiceOpration getActivityInfoWithPageSize:pageSize andPageIndex:pageIndex];
     [self getResponseWithOpration:operation andXmlKey:@"GetActivityInfoResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         
-        NSLog(@"result:%@",result);
+        if (block) {
+            block(result, error);
+        }
         
         
     }];
