@@ -7,7 +7,7 @@
 //
 
 #import "ActivityCell.h"
-#import "AppCore.h"
+
 
 @implementation ActivityCell
 
