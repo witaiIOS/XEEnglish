@@ -7,6 +7,7 @@
 //
 
 #import "RegisterVC.h"
+#import "XeeService.h"
 
 @interface RegisterVC ()<UITextFieldDelegate>
 
@@ -47,7 +48,43 @@
 
 - (IBAction)registerBtn:(id)sender {
     
-    
+    if(self.nameTF.text.length <= 0){
+        [UIFactory showAlert:@"请填写用户名"];
+        return;
+    }
+    else if (self.passwordTF.text.length <= 0){
+        [UIFactory showAlert:@"密码不能为空"];
+        return;
+    }
+    else if(self.passwordTF.text.length <6 ||self.passwordTF.text.length >20){
+        [UIFactory showAlert:@"请输入6位至20位字符作为密码"];
+        return;
+    }
+    else if (self.confirmPasswordTF.text.length <= 0){
+        [UIFactory showAlert:@"请确认密码"];
+        return;
+    }
+    else if (![self.passwordTF.text isEqualToString:self.confirmPasswordTF.text]){
+        [UIFactory showAlert:@"确认密码错误"];
+        return;
+    }
+    //还差推荐信息的判断
+    else{
+        [[XeeService sharedInstance] registerWithPhoneNumber:@"13797040872" andName:self.nameTF.text andPassword:self.passwordTF.text andInvitation_code:self.confirmPasswordTF.text andBlock:^(NSDictionary *result, NSError *error) {
+            if (!error) {
+                NSNumber *r = result[@"result"];
+                
+                if (r.integerValue == 0) {
+                    [UIFactory showAlert:result[@"resultInfo"]];
+                }
+                else{
+                    [UIFactory showAlert:result[@"resultInfo"]];
+                }
+            }else{
+                [UIFactory showAlert:@"网络错误"];
+            }
+        }];
+    }
 }
 
 #pragma mark - UITextField Delegate

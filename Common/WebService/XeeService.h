@@ -52,7 +52,7 @@
 
 
 /**
- 验证发送来的验证码
+ 注册
  @param phoneNumber 手机号
  @param name  用户名
  @param password 密码
