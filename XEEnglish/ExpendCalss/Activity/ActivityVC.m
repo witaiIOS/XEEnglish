@@ -19,6 +19,9 @@
 @property (nonatomic, strong) UITableView *tableView1;
 @property (nonatomic, strong) UITableView *tableView2;
 
+@property (nonatomic, strong) NSMutableArray *tableList1;
+@property (nonatomic, strong) NSMutableArray *tableList2;
+
 @end
 
 @implementation ActivityVC
@@ -81,8 +84,26 @@
 
 #pragma mark - getActivityInfo
 - (void)getActivityInfo{
-    [[XeeService sharedInstance] getActivityInfoWithPageSize:5 andPageIndex:0 andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getActivityInfoWithPageSize:5 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
         
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            NSLog(@"isResult%lu",(unsigned long)isResult.integerValue);
+            if (isResult.integerValue == 0) {
+                
+                _tableList1 = result[@"resultInfo"];
+                
+                NSLog(@"%lu",(unsigned long)_tableList1.count);
+                [self.tableView1 reloadData];
+            }
+            else {
+                [UIFactory showAlert:@"未知错误"];
+            }
+
+        }
+        else {
+            [UIFactory showAlert:@"网络错误"];
+        }
     }];
 }
 
@@ -102,7 +123,7 @@
 #pragma mark - UITableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if (tableView == self.tableView1) {
-        return 4;
+        return _tableList1.count;
     }
     else if (tableView == self.tableView2){
         return 6;
@@ -136,6 +157,7 @@
         }
         
         cell.cellEdge = 10;
+        cell.activityInfo = _tableList1[indexPath.row];
                 
         return cell;
         

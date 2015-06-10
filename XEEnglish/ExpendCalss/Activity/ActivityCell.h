@@ -10,4 +10,15 @@
 
 @interface ActivityCell : BaseTVC
 
+@property (strong, nonatomic) NSDictionary *activityInfo;
+
+@property (weak, nonatomic) IBOutlet UILabel *activityTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *activityTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *activityDeadlineTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *activitySchoolLabel;
+@property (weak, nonatomic) IBOutlet UILabel *activityPeopleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *activityImageView;
+
+- (IBAction)reserveButtonClicked:(id)sender;
+
 @end

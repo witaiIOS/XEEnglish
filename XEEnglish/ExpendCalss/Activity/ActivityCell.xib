@@ -44,6 +44,9 @@
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="reserveButtonClicked:" destination="epD-zD-vXX" eventType="touchUpInside" id="ZyF-dn-omT"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HBN-cl-dww">
                         <rect key="frame" x="10" y="35" width="280" height="1"/>
@@ -87,6 +90,14 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="activityDeadlineTimeLabel" destination="Rpa-6r-wRN" id="xfn-yG-g9I"/>
+                <outlet property="activityImageView" destination="IcA-KK-RK0" id="RoU-vo-W0z"/>
+                <outlet property="activityPeopleLabel" destination="0xT-Te-Mbn" id="Mlf-DY-Qrt"/>
+                <outlet property="activitySchoolLabel" destination="kEZ-S2-nRg" id="sbo-L3-DgG"/>
+                <outlet property="activityTimeLabel" destination="i7e-IN-ULw" id="u1v-Oh-TRe"/>
+                <outlet property="activityTitleLabel" destination="Uev-eq-s3q" id="Nfd-Rd-AAx"/>
+            </connections>
             <point key="canvasLocation" x="561" y="339"/>
         </tableViewCell>
     </objects>

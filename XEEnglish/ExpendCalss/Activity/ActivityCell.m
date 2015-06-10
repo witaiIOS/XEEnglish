@@ -10,12 +10,21 @@
 
 @implementation ActivityCell
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    _activityTitleLabel.text = _activityInfo[@"title"];
+    _activityTimeLabel.text = [NSString stringWithFormat:@"%@ ~ %@", _activityInfo[@"start_time"], _activityInfo[@"end_time"]];
+    _activityDeadlineTimeLabel.text = _activityInfo[@"deadline"];
+    _activitySchoolLabel.text = _activityInfo[@"address"];
+    _activityPeopleLabel.text = [NSString stringWithFormat:@"人数%@/%@", _activityInfo[@"sum_current"], _activityInfo[@"sum_max"]];
+    
+    //_activityImageView.image;
+    NSLog(@"%@",_activityInfo[@"image_url"]);
 }
-*/
+
+- (IBAction)reserveButtonClicked:(id)sender {
+    
+}
 
 @end
