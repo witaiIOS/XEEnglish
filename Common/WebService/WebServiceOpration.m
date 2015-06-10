@@ -68,8 +68,8 @@
     [req setHTTPBody:postbody];
     
     
-    // NSString *requestURL = [[NSString alloc]initWithData:postbody encoding:NSUTF8StringEncoding];
-    //NSLog(@"requestURL:%@",requestURL);
+    NSString *requestURL = [[NSString alloc]initWithData:postbody encoding:NSUTF8StringEncoding];
+    NSLog(@"requestURL:%@",requestURL);
     
     AFHTTPRequestOperation *opration = [[AFHTTPRequestOperation alloc] initWithRequest:req];
     return opration;

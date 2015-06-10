@@ -9,7 +9,7 @@
 #import "RegisterVC.h"
 #import "XeeService.h"
 
-@interface RegisterVC ()<UITextFieldDelegate>
+@interface RegisterVC ()<UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTF;
 
@@ -70,12 +70,13 @@
     }
     //还差推荐信息的判断
     else{
-        [[XeeService sharedInstance] registerWithPhoneNumber:@"13797040872" andName:self.nameTF.text andPassword:self.passwordTF.text andInvitation_code:self.confirmPasswordTF.text andBlock:^(NSDictionary *result, NSError *error) {
+        [[XeeService sharedInstance] registerWithPhoneNumber:_phoneNumber andName:self.nameTF.text andPassword:self.passwordTF.text andInvitation_code:self.recommendcodeTF.text andBlock:^(NSDictionary *result, NSError *error) {
             if (!error) {
                 NSNumber *r = result[@"result"];
                 
                 if (r.integerValue == 0) {
-                    [UIFactory showAlert:result[@"resultInfo"]];
+                    [UIFactory showAlert:result[@"resultInfo"] tag:1000 delegate:self];
+                    //[UIFactory showAlert:result[@"resultInfo"]];
                 }
                 else{
                     [UIFactory showAlert:result[@"resultInfo"]];
@@ -105,14 +106,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - UIAlertView delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag == 1000) {
+        
+        if ([self.delegate respondsToSelector:@selector(registerSuccessWithPhoneNumber:andPassword:)]) {
+            [self.delegate registerSuccessWithPhoneNumber:_phoneNumber andPassword:self.passwordTF.text];
+        }                
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+    }
 }
-*/
 
 @end

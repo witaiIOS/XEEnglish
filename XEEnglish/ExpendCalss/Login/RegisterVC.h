@@ -8,6 +8,16 @@
 
 #import "BaseVC.h"
 
+@protocol RegisterVCDelegate <NSObject>
+
+- (void)registerSuccessWithPhoneNumber:(NSString *)phoneNumber andPassword:(NSString *)password;
+
+@end
+
 @interface RegisterVC : BaseVC
+
+@property (assign, nonatomic) id<RegisterVCDelegate>delegate;
+
+@property (strong, nonatomic) NSString *phoneNumber;
 
 @end

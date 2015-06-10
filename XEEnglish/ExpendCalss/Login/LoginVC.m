@@ -10,7 +10,7 @@
 #import "PhoneLoginVC.h"
 #import "ForgetPassWordVC.h"
 
-@interface LoginVC ()<UITextFieldDelegate>
+@interface LoginVC ()<UITextFieldDelegate, PhoneLoginVCDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
 
@@ -25,7 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"登陆";
-
+    
 }
 
 - (void)initUI
@@ -44,10 +44,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self hideKeyboard];
+}
+
+#pragma mark -myself
+- (void)hideKeyboard {
+    if ([self.phoneTextField isFirstResponder]) {
+        [self.phoneTextField resignFirstResponder];
+    }
+    else if ([self.codeTextField isFirstResponder]) {
+        [self.codeTextField resignFirstResponder];
+    }
+}
+
+
+
 #pragma mark - My Action
 
 
 - (IBAction)loginAction:(id)sender {
+    
+    [self hideKeyboard];
     
     
 }
@@ -63,6 +81,7 @@
     
     //没有注册的去手机注册页面注册
     PhoneLoginVC *phoneLoginVC = [[PhoneLoginVC alloc] init];
+    phoneLoginVC.delegate = self;
     [self.navigationController pushViewController:phoneLoginVC animated:YES];
     
 }
@@ -75,6 +94,12 @@
     [self.codeTextField resignFirstResponder];
     
     return YES;
+}
+
+#pragma mark - PhoneLoginVC delegate
+- (void)phoneLoginRegisterSuccessWithPhoneNumber:(NSString *)phoneNumber andPassword:(NSString *)password {
+    self.phoneTextField.text = phoneNumber;
+    self.codeTextField.text = password;
 }
 
 @end

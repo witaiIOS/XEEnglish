@@ -13,7 +13,7 @@
 
 #import "XeeService.h"
 
-@interface PhoneLoginVC ()<UITextFieldDelegate>
+@interface PhoneLoginVC ()<UITextFieldDelegate, RegisterVCDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
 @property (strong, nonatomic) CountdownButton *getCodeBtn;
@@ -51,6 +51,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self hideKeyboard];
+}
+
+#pragma mark -myself
+- (void)hideKeyboard {
+    if ([self.phoneTextField isFirstResponder]) {
+        [self.phoneTextField resignFirstResponder];
+    }
+    else if ([self.codeTextField isFirstResponder]) {
+        [self.codeTextField resignFirstResponder];
+    }
+    
+}
+
 
 #pragma mark - My Action
 
@@ -101,6 +117,8 @@
 
 - (IBAction)nextAction:(id)sender {
     
+    [self hideKeyboard];
+    
     if(self.codeTextField.text.length <= 0){
         [UIFactory showAlert:@"请输入验证码"];
         return;
@@ -117,8 +135,10 @@
                 NSNumber *r = result[@"result"];
                 if (r.integerValue == 0) {
                     //用验证码校验完登陆成功后去设置密码
-                    RegisterVC *setPassWordVC = [[RegisterVC alloc] init];
-                    [self.navigationController pushViewController:setPassWordVC animated:YES];
+                    RegisterVC *registerVC = [[RegisterVC alloc] init];
+                    registerVC.phoneNumber = self.phoneTextField.text;
+                    registerVC.delegate = self;
+                    [self.navigationController pushViewController:registerVC animated:YES];
                 }
                 else {
                     [UIFactory showAlert:result[@"resultInfo"]];
@@ -139,6 +159,14 @@
     
     return YES;
 
+}
+
+#pragma mark - RegisterVC delegate
+- (void)registerSuccessWithPhoneNumber:(NSString *)phoneNumber andPassword:(NSString *)password {
+    if ([self.delegate respondsToSelector:@selector(phoneLoginRegisterSuccessWithPhoneNumber:andPassword:)]) {
+        
+        [self.delegate phoneLoginRegisterSuccessWithPhoneNumber:phoneNumber andPassword:password];
+    }
 }
 
 
