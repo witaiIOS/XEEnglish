@@ -26,6 +26,13 @@
         self.myLabel.textColor = [UIColor darkGrayColor];
         self.myLabel.font = [UIFont systemFontOfSize:14];
         [self.contentView addSubview:self.myLabel];
+        
+        self.mydetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-80, 6, 50, 30)];
+        self.mydetailLabel.textAlignment = NSTextAlignmentRight;
+        self.mydetailLabel.textColor = [UIColor darkGrayColor];
+        self.mydetailLabel.font = [UIFont systemFontOfSize:14];
+        [self.contentView addSubview:self.mydetailLabel];
+
  
     }
     return self;

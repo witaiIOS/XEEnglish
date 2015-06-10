@@ -14,17 +14,24 @@
 #import "PersonInfoVC.h"
 
 
-
+#import "CitiesVC.h"
 #import "MoreSettingVC.h"
 
-@interface SettingVC ()<UITableViewDataSource, UITableViewDelegate>
+@interface SettingVC ()<UITableViewDataSource, UITableViewDelegate,SelectedCityDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *loginBtn;
 @property (nonatomic, strong) UILabel *userPhoneNumber;
 
+@property (nonatomic, strong) NSString *selectCity;
+
 @end
 
 @implementation SettingVC
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self.tableView reloadData];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -147,7 +154,7 @@
     static NSString *reuse = @"MyAccountTVC";
     MyAccountTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
     if (cell ==nil) {
-        cell = [[MyAccountTVC alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+        cell = [[MyAccountTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse];
         
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -200,6 +207,7 @@
             {
                 str = @"城市";
                 image = [UIImage imageNamed:@"STcity.png"];
+                cell.mydetailLabel.text = self.selectCity;
                 break;
             }
                 
@@ -274,6 +282,9 @@
         switch (indexPath.row) {
             case 0:
             {
+                CitiesVC *vc = [[CitiesVC alloc] init];
+                vc.delegate = self;
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
                 
@@ -317,6 +328,12 @@
         return 3.0f;
     }
     
+}
+
+#pragma mark - SelectedCity Delegate
+- (void)SelectedCity:(id)sender{
+    
+    self.selectCity = sender;
 }
 
 #pragma mark - My Action

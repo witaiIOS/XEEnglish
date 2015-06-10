@@ -13,6 +13,7 @@
 //@property (strong, nonatomic) NSString *str;
 @property (nonatomic, strong) UIImageView *myImageView;
 @property (nonatomic, strong) UILabel *myLabel;
+@property (nonatomic, strong) UILabel *mydetailLabel;
 
 
 @end

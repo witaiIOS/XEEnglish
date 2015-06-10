@@ -26,6 +26,7 @@
 		09C95EC11B2806FA000972D8 /* school_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95EBF1B2806FA000972D8 /* school_selected.png */; };
 		09C95EC21B2806FA000972D8 /* school_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95EC01B2806FA000972D8 /* school_unselected.png */; };
 		09C95EC51B280738000972D8 /* SchoolZoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95EC41B280738000972D8 /* SchoolZoneCell.m */; };
+		09C95ECE1B284225000972D8 /* CitiesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95ECD1B284225000972D8 /* CitiesVC.m */; };
 		09C9C0DF1B22C890001BBA1C /* STcity.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0D81B22C890001BBA1C /* STcity.png */; };
 		09C9C0E01B22C890001BBA1C /* STcoupon.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0D91B22C890001BBA1C /* STcoupon.png */; };
 		09C9C0E11B22C890001BBA1C /* STexpense.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0DA1B22C890001BBA1C /* STexpense.png */; };
@@ -184,6 +185,8 @@
 		09C95EC01B2806FA000972D8 /* school_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = school_unselected.png; sourceTree = "<group>"; };
 		09C95EC31B280738000972D8 /* SchoolZoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolZoneCell.h; sourceTree = "<group>"; };
 		09C95EC41B280738000972D8 /* SchoolZoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolZoneCell.m; sourceTree = "<group>"; };
+		09C95ECC1B284225000972D8 /* CitiesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitiesVC.h; sourceTree = "<group>"; };
+		09C95ECD1B284225000972D8 /* CitiesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitiesVC.m; sourceTree = "<group>"; };
 		09C9C0D81B22C890001BBA1C /* STcity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STcity.png; sourceTree = "<group>"; };
 		09C9C0D91B22C890001BBA1C /* STcoupon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STcoupon.png; sourceTree = "<group>"; };
 		09C9C0DA1B22C890001BBA1C /* STexpense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = STexpense.png; sourceTree = "<group>"; };
@@ -867,6 +870,8 @@
 		A6284D6C1B105E6600EFF820 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				09C95ECC1B284225000972D8 /* CitiesVC.h */,
+				09C95ECD1B284225000972D8 /* CitiesVC.m */,
 				09CA69151B1FFC5D00A31E0E /* Coupons */,
 				A6284D961B1066DE00EFF820 /* SettingVC.h */,
 				A6284D971B1066DE00EFF820 /* SettingVC.m */,
@@ -1108,6 +1113,7 @@
 				A6284D611B105E5600EFF820 /* UIProgressView+AFNetworking.m in Sources */,
 				A6284D561B105E5600EFF820 /* MJRefreshConst.m in Sources */,
 				09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */,
+				09C95ECE1B284225000972D8 /* CitiesVC.m in Sources */,
 				A6284D451B105E5600EFF820 /* AFHTTPRequestOperation.m in Sources */,
 				A6B1CEDD1B1C62D400100E9F /* PersonImageTVC.m in Sources */,
 				A6284D601B105E5600EFF820 /* UIImageView+AFNetworking.m in Sources */,
