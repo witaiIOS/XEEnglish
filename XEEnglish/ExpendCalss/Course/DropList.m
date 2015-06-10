@@ -65,7 +65,7 @@
         [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];//设置动画曲线，控制动画速度
         
         CGRect selfFrame = self.frame;
-        selfFrame.size.height += tableHeight;
+        selfFrame.size.height = tableHeight + kTFHeight;
         self.frame = selfFrame;
         
         [UIView commitAnimations];//提交动画
