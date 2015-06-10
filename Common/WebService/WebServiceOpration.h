@@ -82,4 +82,14 @@
 + (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex;
 
 
+
+#pragma mark - 我的
+/**
+ 登录后修改密码
+ @param newPassword 新密码
+ @param oldPassword 旧密码
+ @param parent_id 旧密码
+ */
++ (AFHTTPRequestOperation *)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andId:(NSInteger )parent_id;
+
 @end

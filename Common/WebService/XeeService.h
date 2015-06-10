@@ -76,5 +76,14 @@
  */
 - (void)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void (^)(NSDictionary *result, NSError *error))block;
 
+#pragma mark - 我的
+/**
+ 登录后修改密码
+ @param newPassword 新密码
+ @param oldPassword 旧密码
+ @param parent_id 旧密码
+ */
+- (void)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andId:(NSInteger )parent_id andBlock:(void (^)(NSDictionary *result, NSError *error))block;
+
 
 @end

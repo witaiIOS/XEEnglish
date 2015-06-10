@@ -187,5 +187,22 @@
     }];
 }
 
+#pragma mark - 我的
+/**
+ 登录后修改密码
+ */
+- (void)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andId:(NSInteger )parent_id andBlock:(void (^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration modifyPwdWithNewPassword:newPassword andOldPassword:oldPassword andId:parent_id];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"modifyPwdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        NSLog(@"result:%@",result);
+        if(block){
+            block(result,error);
+        }
+    }];
+
+}
+
 
 @end
