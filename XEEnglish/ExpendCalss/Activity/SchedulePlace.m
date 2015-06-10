@@ -13,14 +13,23 @@
 #import "HardwareDemandCell.h"
 #import "ActivityContentCell.h"
 #import "otherRequireCell.h"
+#import "SchoolZoneVC.h"
 
-@interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate>
+@interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate,SchoolZoneDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 //@property (nonatomic, strong) NSString *dateStart;
+@property (nonatomic, strong) NSMutableArray *schoolArray;
+@property (nonatomic, strong) NSString *schoolZone;//校区
 
 @end
 
 @implementation SchedulePlace
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:YES];
+    [self.tableView reloadData];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +41,11 @@
     
     [super initUI];
     
+    NSMutableArray *array = [NSMutableArray arrayWithObjects:@"青山校区",@"关谷校区",@"汉口校区",@"创业街校区",@"江夏校区",nil];
+    self.schoolArray = array;
+    
+    self.schoolZone = @"武昌校区";
+    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -40,6 +54,13 @@
     [self.view addSubview: self.tableView];
     
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
 #pragma mark - Set UITableFootView
 - (UIView *)tableFooterView{
     
@@ -112,10 +133,15 @@
             cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
             cell.textLabel.textColor = [UIColor darkGrayColor];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
+            
+            cell.detailTextLabel.textColor = [UIColor darkGrayColor];
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+            
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.cellEdge = 10;
         }
         cell.textLabel.text = @"校区选择";
+        cell.detailTextLabel.text = self.schoolZone;
         
         return cell;
     }
@@ -220,6 +246,13 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    if (indexPath.section == 0) {
+        SchoolZoneVC *vc = [[SchoolZoneVC alloc] init];
+        vc.schoolZoneArray =self.schoolArray;
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 
 
@@ -268,11 +301,12 @@
     return title;
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - SchoolZone Delegate
+- (void)SelectedSchoolZone:(id)sender{
+    self.schoolZone = sender;
 }
+
+
 
 /*
 #pragma mark - Navigation

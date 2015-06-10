@@ -22,7 +22,7 @@
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
-    self.schollLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, 80, 30)];
+    self.schollLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 6, 80, 30)];
     self.schollLabel.font = [UIFont systemFontOfSize:14];
     self.schollLabel.textColor = [UIColor darkGrayColor];
     
@@ -31,7 +31,8 @@
     UIImage *unSelectedImage = [UIImage imageNamed:@"school_unselected.png"];
     UIImage *selectedImage = [UIImage imageNamed:@"school_selected.png"];
     self.selectImageView = [[UIImageView alloc] initWithImage:unSelectedImage highlightedImage:selectedImage];
-    self.selectImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth -50, 2, 40, 40)];
+    //self.selectImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth -60, 2, 40, 40)];
+    [self.selectImageView setFrame:CGRectMake(kScreenWidth -50, 12, 20, 20)];
     
     [self addSubview:self.selectImageView];
     

@@ -11,8 +11,6 @@
 
 @interface SchoolZoneVC ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;//校区列表
-@property (nonatomic, strong) NSArray *schoolZoneArray;//校区数组
 
 @end
 
@@ -62,6 +60,7 @@
     if (cell == nil) {
         cell = [[SchoolZoneCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
         cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.cellEdge = 10;
     }
     cell.schollLabel.text = self.schoolZoneArray[indexPath.row];
     
@@ -72,9 +71,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.delegate SelectedSchoolZone:self.schoolZoneArray[indexPath.row]];
     
-    
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 
