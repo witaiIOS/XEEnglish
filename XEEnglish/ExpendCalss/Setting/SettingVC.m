@@ -154,7 +154,7 @@
     static NSString *reuse = @"MyAccountTVC";
     MyAccountTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
     if (cell ==nil) {
-        cell = [[MyAccountTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse];
+        cell = [[MyAccountTVC alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
         
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
