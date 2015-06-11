@@ -10,9 +10,10 @@
 #import "LoginVC.h"
 #import "MyAccountTVC.h"
 
-#import "CouponsVC.h"
-#import "PersonInfoVC.h"
 
+#import "PersonInfoVC.h"
+#import "CouponsVC.h"
+#import "MyScheduleVC.h"
 
 #import "CitiesVC.h"
 #import "MoreSettingVC.h"
@@ -300,6 +301,9 @@
                 
             case 2:
             {
+                MyScheduleVC *vc = [[MyScheduleVC alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
             case 3:

@@ -39,6 +39,8 @@
 		09C9C0F41B22E409001BBA1C /* HardwareDemandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9C0F31B22E409001BBA1C /* HardwareDemandCell.m */; };
 		09C9C0F71B22FA19001BBA1C /* no.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0F51B22FA19001BBA1C /* no.png */; };
 		09C9C0F81B22FA19001BBA1C /* yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0F61B22FA19001BBA1C /* yes.png */; };
+		09C9C3981B29A7CD00B1F902 /* MyScheduleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9C3971B29A7CD00B1F902 /* MyScheduleVC.m */; };
+		09C9C39B1B29AF1900B1F902 /* LXSegmentViewThree.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9C39A1B29AF1900B1F902 /* LXSegmentViewThree.m */; };
 		09CA408F1B1C655000D12796 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA408D1B1C655000D12796 /* ActivityCell.m */; };
 		09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA408E1B1C655000D12796 /* ActivityCell.xib */; };
 		09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA69171B1FFC8200A31E0E /* CouponsVC.m */; };
@@ -202,6 +204,10 @@
 		09C9C0F31B22E409001BBA1C /* HardwareDemandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HardwareDemandCell.m; sourceTree = "<group>"; };
 		09C9C0F51B22FA19001BBA1C /* no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no.png; sourceTree = "<group>"; };
 		09C9C0F61B22FA19001BBA1C /* yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yes.png; sourceTree = "<group>"; };
+		09C9C3961B29A7CD00B1F902 /* MyScheduleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyScheduleVC.h; sourceTree = "<group>"; };
+		09C9C3971B29A7CD00B1F902 /* MyScheduleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyScheduleVC.m; sourceTree = "<group>"; };
+		09C9C3991B29AF1900B1F902 /* LXSegmentViewThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSegmentViewThree.h; sourceTree = "<group>"; };
+		09C9C39A1B29AF1900B1F902 /* LXSegmentViewThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegmentViewThree.m; sourceTree = "<group>"; };
 		09CA408C1B1C655000D12796 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		09CA408D1B1C655000D12796 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		09CA408E1B1C655000D12796 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
@@ -437,6 +443,17 @@
 				09C95EC41B280738000972D8 /* SchoolZoneCell.m */,
 			);
 			path = SchedulePlace;
+			sourceTree = "<group>";
+		};
+		09C9C3921B29A78E00B1F902 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				09C9C3991B29AF1900B1F902 /* LXSegmentViewThree.h */,
+				09C9C39A1B29AF1900B1F902 /* LXSegmentViewThree.m */,
+				09C9C3961B29A7CD00B1F902 /* MyScheduleVC.h */,
+				09C9C3971B29A7CD00B1F902 /* MyScheduleVC.m */,
+			);
+			path = Schedule;
 			sourceTree = "<group>";
 		};
 		09CA69151B1FFC5D00A31E0E /* Coupons */ = {
@@ -875,6 +892,7 @@
 		A6284D6C1B105E6600EFF820 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				09C9C3921B29A78E00B1F902 /* Schedule */,
 				09C95ECC1B284225000972D8 /* CitiesVC.h */,
 				09C95ECD1B284225000972D8 /* CitiesVC.m */,
 				09CA69151B1FFC5D00A31E0E /* Coupons */,
@@ -1116,6 +1134,7 @@
 				09C9C0F41B22E409001BBA1C /* HardwareDemandCell.m in Sources */,
 				A6284D631B105E5600EFF820 /* UIWebView+AFNetworking.m in Sources */,
 				A6284D611B105E5600EFF820 /* UIProgressView+AFNetworking.m in Sources */,
+				09C9C39B1B29AF1900B1F902 /* LXSegmentViewThree.m in Sources */,
 				A6284D561B105E5600EFF820 /* MJRefreshConst.m in Sources */,
 				09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */,
 				09C95ECE1B284225000972D8 /* CitiesVC.m in Sources */,
@@ -1154,6 +1173,7 @@
 				A6B1CEEF1B1D8D2C00100E9F /* XeeAd.m in Sources */,
 				A6284D511B105E5600EFF820 /* DDXMLElement.m in Sources */,
 				A6B1CEE91B1D8C7200100E9F /* HomeAdCell.m in Sources */,
+				09C9C3981B29A7CD00B1F902 /* MyScheduleVC.m in Sources */,
 				A6284CD21B10592100EFF820 /* AppDelegate.m in Sources */,
 				A6B1CEDF1B1C62D400100E9F /* SettingBirthdayVC.m in Sources */,
 				A6284D471B105E5600EFF820 /* AFHTTPSessionManager.m in Sources */,
