@@ -225,5 +225,19 @@
 
 }
 
+/**
+ 获取我的预定中的活动
+ */
+- (void)GetActivityInfoByParentIdWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSInteger )parentId andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration GetActivityInfoByParentIdWithPageSize:pageSize andPageIndex:pageIndex andParentId:parentId];
+    [self getResponseWithOpration:operation andXmlKey:@"GetActivityInfoByParentIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        NSLog(@"result:%@",result);
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 
 @end

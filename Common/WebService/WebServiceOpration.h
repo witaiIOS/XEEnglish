@@ -99,4 +99,12 @@
  */
 + (AFHTTPRequestOperation *)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andId:(NSInteger )parent_id;
 
+/**
+ 获取我的预定中的活动
+ @param pageSize 一次请求显示多少个活动
+ @param pageIndex 当前页码
+ @param parentId 表示当前登录人id
+ */
++ (AFHTTPRequestOperation *)GetActivityInfoByParentIdWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSInteger )parentId;
+
 @end

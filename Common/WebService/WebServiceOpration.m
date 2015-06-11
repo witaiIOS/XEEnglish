@@ -113,4 +113,11 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:modifyPwd><web:json>{\"password\":\"%@\",\"old_password\":\"%@\",\"parent_id\":\"%li\"}</web:json></web:modifyPwd>",newPassword,oldPassword,(long)parent_id]];
 }
 
+/**
+ 获取我的预定中的活动
+ */
++ (AFHTTPRequestOperation *)GetActivityInfoByParentIdWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSInteger )parentId{
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetActivityInfoByParentId><web:pageSize>%li</web:pageSize><web:pageIndex>%li</web:pageIndex><web:parentId>%li</web:parentId></web:GetActivityInfoByParentId>",pageSize,pageIndex,parentId]];
+}
+
 @end
