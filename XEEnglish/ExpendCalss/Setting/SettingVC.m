@@ -293,6 +293,7 @@
             case 1:
             {
                 CouponsVC *vc = [[CouponsVC alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
@@ -318,6 +319,7 @@
             {
                 CitiesVC *vc = [[CitiesVC alloc] init];
                 vc.delegate = self;
+                vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
