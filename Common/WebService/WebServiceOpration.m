@@ -126,5 +126,11 @@
 + (AFHTTPRequestOperation *)GetActivityInfoByParentIdWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSInteger )parentId{
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetActivityInfoByParentId><web:pageSize>%li</web:pageSize><web:pageIndex>%li</web:pageIndex><web:parentId>%li</web:parentId></web:GetActivityInfoByParentId>",pageSize,pageIndex,parentId]];
 }
+/**
+ 获取城市
+ */
++ (AFHTTPRequestOperation *)getCity{
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCity/>"]];
+}
 
 @end

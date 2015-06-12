@@ -106,4 +106,9 @@
  */
 - (void)GetActivityInfoByParentIdWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSInteger )parentId andBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 获取城市
+ */
+- (void)getCityWithBlock:(void(^)(NSDictionary *result, NSError *error))block;
+
 @end

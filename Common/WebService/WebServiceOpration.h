@@ -112,4 +112,9 @@
  */
 + (AFHTTPRequestOperation *)GetActivityInfoByParentIdWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSInteger )parentId;
 
+/**
+ 获取城市
+ */
++ (AFHTTPRequestOperation *)getCity;
+
 @end

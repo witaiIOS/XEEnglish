@@ -7,6 +7,7 @@
 //
 
 #import "CitiesVC.h"
+#import "XeeService.h"
 
 @interface CitiesVC ()
 
@@ -21,8 +22,9 @@
 }
 
 - (void)initUI{
-    NSArray * array = [NSArray arrayWithObjects:@"武汉市",@"北京市",@"上海市",@"南京市",@"深圳市",@"广州市",@"西安市",nil] ;
-    self.citiesArray = array;
+//    NSArray * array = [NSArray arrayWithObjects:@"武汉市",@"北京市",@"上海市",@"南京市",@"深圳市",@"广州市",@"西安市",nil] ;
+//    self.citiesArray = array;
+    [self getCityInfo];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
@@ -30,6 +32,28 @@
     
     [self.view addSubview:self.tableView];
 }
+#pragma mark - My Action
+- (void)getCityInfo{
+    
+    [[XeeService sharedInstance] getCityWithBlock:^(NSDictionary *result, NSError *error) {
+        
+        if (!error) {
+            NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                self.citiesArray = result[@"resultInfo"];
+                [self.tableView reloadData];
+            }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }
+        else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
+
 
 #pragma mark - UITableView DataSource 
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
@@ -53,8 +77,8 @@
         cell.textLabel.textColor = [UIColor darkGrayColor];
         cell.textLabel.font = [UIFont systemFontOfSize:14];
     }
-    
-    cell.textLabel.text = self.citiesArray[indexPath.row];
+    NSDictionary *cityInfo = self.citiesArray[indexPath.row];
+    cell.textLabel.text = cityInfo[@"department"];
     
     return cell;
 }
