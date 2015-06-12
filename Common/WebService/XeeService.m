@@ -208,6 +208,21 @@
     }];
 }
 
+/**
+ 查询所有校区
+ */
+- (void)getSchoolWithBlock:(void(^)(NSDictionary *result,NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getSchool];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetSchoolResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        NSLog(@"result:%@",result);
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 #pragma mark - 我的
 /**
  登录后修改密码

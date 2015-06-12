@@ -41,8 +41,8 @@
     
     [super initUI];
     
-    NSMutableArray *array = [NSMutableArray arrayWithObjects:@"青山校区",@"关谷校区",@"汉口校区",@"创业街校区",@"江夏校区",nil];
-    self.schoolArray = array;
+//    NSMutableArray *array = [NSMutableArray arrayWithObjects:@"青山校区",@"关谷校区",@"汉口校区",@"创业街校区",@"江夏校区",nil];
+//    self.schoolArray = array;
     
     //self.schoolZone = @"武昌校区";
     
@@ -248,7 +248,7 @@
     
     if (indexPath.section == 0) {
         SchoolZoneVC *vc = [[SchoolZoneVC alloc] init];
-        vc.schoolZoneArray =self.schoolArray;
+        //vc.schoolZoneArray =self.schoolArray;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }

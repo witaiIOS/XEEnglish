@@ -88,6 +88,11 @@
  */
 + (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex;
 
+/**
+ 查询所有校区
+ */
++ (AFHTTPRequestOperation *)getSchool;
+
 
 
 #pragma mark - 我的

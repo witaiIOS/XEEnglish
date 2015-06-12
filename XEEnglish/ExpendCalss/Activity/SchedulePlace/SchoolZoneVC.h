@@ -17,7 +17,7 @@
 @interface SchoolZoneVC : BaseVC
 
 @property (nonatomic, strong) UITableView *tableView;//校区列表
-@property (nonatomic, strong) NSArray *schoolZoneArray;//校区数组
+@property (nonatomic, strong) NSMutableArray *schoolZoneArray;//校区数组
 
 @property (nonatomic, strong) id<SchoolZoneDelegate> delegate;
 

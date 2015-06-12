@@ -8,6 +8,7 @@
 
 #import "SchoolZoneVC.h"
 #import "SchoolZoneCell.h"
+#import "XeeService.h"
 
 @interface SchoolZoneVC ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -26,6 +27,8 @@
     
     [super initUI];
     
+    [self getSchoolInfo];
+    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     self.tableView.delegate =self;
     self.tableView.dataSource = self;
@@ -38,6 +41,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - My Action
+
+- (void)getSchoolInfo{
+    [[XeeService sharedInstance] getSchoolWithBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                self.schoolZoneArray= result[@"resultInfo"];
+                [self.tableView reloadData];
+            }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }
+        else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
 
 
 #pragma mark - UITableView DataSource
@@ -62,7 +85,8 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.cellEdge = 10;
     }
-    cell.schollLabel.text = self.schoolZoneArray[indexPath.row];
+    NSDictionary *singleSchoolInfo =self.schoolZoneArray[indexPath.row];
+    cell.schollLabel.text = singleSchoolInfo[@"department"];
     
     return cell;
 }
@@ -72,7 +96,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.delegate SelectedSchoolZone:self.schoolZoneArray[indexPath.row]];
+    //[self.delegate SelectedSchoolZone:self.schoolZoneArray[indexPath.row]];
+    NSDictionary *singleSchoolInfo =self.schoolZoneArray[indexPath.row];
+    [self.delegate SelectedSchoolZone:singleSchoolInfo[@"department"]];
     
     [self.navigationController popViewControllerAnimated:YES];
     

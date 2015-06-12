@@ -83,6 +83,12 @@
  */
 - (void)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void (^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 查询所有校区
+ */
+- (void)getSchoolWithBlock:(void(^)(NSDictionary *result,NSError *error))block;
+
+
 #pragma mark - 我的
 /**
  登录后修改密码

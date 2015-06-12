@@ -104,6 +104,13 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetActivityInfo><web:pageSize>%li</web:pageSize><web:pageIndex>%li</web:pageIndex></web:GetActivityInfo>", (long)pageSize, (long)pageIndex]];
 }
 
+/**
+ 查询所有校区
+ */
++ (AFHTTPRequestOperation *)getSchool{
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchool/>"]];
+}
+
 #pragma mark - 我的
 /**
  登录后修改密码
