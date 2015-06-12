@@ -50,7 +50,7 @@
     [self.view addSubview:self.mySegmentView];
     
     
-    self.activityTableView = [[UITableView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
+    self.activityTableView = [[UITableView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight-64-44) style:UITableViewStyleGrouped];
     self.activityTableView.backgroundColor = [UIColor clearColor];
     self.activityTableView.dataSource = self;
     self.activityTableView.delegate = self;
