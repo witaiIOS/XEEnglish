@@ -41,6 +41,8 @@
 		09C9C0F81B22FA19001BBA1C /* yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C9C0F61B22FA19001BBA1C /* yes.png */; };
 		09C9C3981B29A7CD00B1F902 /* MyScheduleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9C3971B29A7CD00B1F902 /* MyScheduleVC.m */; };
 		09C9C39B1B29AF1900B1F902 /* LXSegmentViewThree.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9C39A1B29AF1900B1F902 /* LXSegmentViewThree.m */; };
+		09C9DE3A1B2A66F600A07544 /* MyActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9DE391B2A66F600A07544 /* MyActivityCell.m */; };
+		09C9DE3C1B2A670C00A07544 /* MyActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C9DE3B1B2A670C00A07544 /* MyActivityCell.xib */; };
 		09CA408F1B1C655000D12796 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA408D1B1C655000D12796 /* ActivityCell.m */; };
 		09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA408E1B1C655000D12796 /* ActivityCell.xib */; };
 		09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA69171B1FFC8200A31E0E /* CouponsVC.m */; };
@@ -208,6 +210,9 @@
 		09C9C3971B29A7CD00B1F902 /* MyScheduleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyScheduleVC.m; sourceTree = "<group>"; };
 		09C9C3991B29AF1900B1F902 /* LXSegmentViewThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSegmentViewThree.h; sourceTree = "<group>"; };
 		09C9C39A1B29AF1900B1F902 /* LXSegmentViewThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegmentViewThree.m; sourceTree = "<group>"; };
+		09C9DE381B2A66F600A07544 /* MyActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActivityCell.h; sourceTree = "<group>"; };
+		09C9DE391B2A66F600A07544 /* MyActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActivityCell.m; sourceTree = "<group>"; };
+		09C9DE3B1B2A670C00A07544 /* MyActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyActivityCell.xib; sourceTree = "<group>"; };
 		09CA408C1B1C655000D12796 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		09CA408D1B1C655000D12796 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		09CA408E1B1C655000D12796 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
@@ -452,6 +457,9 @@
 				09C9C39A1B29AF1900B1F902 /* LXSegmentViewThree.m */,
 				09C9C3961B29A7CD00B1F902 /* MyScheduleVC.h */,
 				09C9C3971B29A7CD00B1F902 /* MyScheduleVC.m */,
+				09C9DE381B2A66F600A07544 /* MyActivityCell.h */,
+				09C9DE391B2A66F600A07544 /* MyActivityCell.m */,
+				09C9DE3B1B2A670C00A07544 /* MyActivityCell.xib */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -1089,6 +1097,7 @@
 				09C95EC11B2806FA000972D8 /* school_selected.png in Resources */,
 				09DB2DC81B1322A30078AAF5 /* mybgpic@2x.png in Resources */,
 				09C9C0E11B22C890001BBA1C /* STexpense.png in Resources */,
+				09C9DE3C1B2A670C00A07544 /* MyActivityCell.xib in Resources */,
 				A6647CC01B270E9B00D2DC57 /* course7.png in Resources */,
 				09C9C0E41B22C890001BBA1C /* STreserve.png in Resources */,
 				09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */,
@@ -1155,6 +1164,7 @@
 				09D560441B26D3E700ADF334 /* ForgetPassWordVC.m in Sources */,
 				A6B1CF091B1DC65900100E9F /* LXSegementView.m in Sources */,
 				A6284D591B105E5600EFF820 /* UIScrollView+MJExtension.m in Sources */,
+				09C9DE3A1B2A66F600A07544 /* MyActivityCell.m in Sources */,
 				A6284D981B1066DE00EFF820 /* SettingVC.m in Sources */,
 				093CD67D1B1D692B004F7D11 /* SchedulePlace.m in Sources */,
 				090604751B14174F0038BAC4 /* MoreSettingVC.m in Sources */,

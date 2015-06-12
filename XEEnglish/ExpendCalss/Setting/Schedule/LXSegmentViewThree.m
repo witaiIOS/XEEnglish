@@ -57,7 +57,7 @@
         [self addSubview:_mainScrollView];
         
         ///
-        _currentIndex = 0;
+        _currentIndex = 1;
 
 
     }
