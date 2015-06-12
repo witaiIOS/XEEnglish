@@ -248,6 +248,7 @@
     
     if (indexPath.section == 0) {
         SchoolZoneVC *vc = [[SchoolZoneVC alloc] init];
+        vc.selectedSchool = self.schoolZone;
         //vc.schoolZoneArray =self.schoolArray;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];

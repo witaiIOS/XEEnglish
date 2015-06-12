@@ -83,10 +83,13 @@
     if (cell == nil) {
         cell = [[SchoolZoneCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
         cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.cellEdge = 10;
     }
+    cell.cellEdge = 10;
     NSDictionary *singleSchoolInfo =self.schoolZoneArray[indexPath.row];
     cell.schollLabel.text = singleSchoolInfo[@"department"];
+    if ([self.selectedSchool isEqualToString:cell.schollLabel.text]) {
+        cell.selectImageView.highlighted = YES;
+    }
     
     return cell;
 }
@@ -98,6 +101,7 @@
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
     //[self.delegate SelectedSchoolZone:self.schoolZoneArray[indexPath.row]];
     NSDictionary *singleSchoolInfo =self.schoolZoneArray[indexPath.row];
+    self.selectedSchool = singleSchoolInfo[@"department"];
     [self.delegate SelectedSchoolZone:singleSchoolInfo[@"department"]];
     
     [self.navigationController popViewControllerAnimated:YES];

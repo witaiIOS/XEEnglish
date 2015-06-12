@@ -77,6 +77,7 @@
     if (cell == nil) {
         cell = [[CityVCCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
     }
+    cell.cellEdge = 10;
     NSDictionary *cityInfo = self.citiesArray[indexPath.row];
     cell.cityName.text = cityInfo[@"department"];
     if ([self.selectedCity isEqualToString:cell.cityName.text]) {
