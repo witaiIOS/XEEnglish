@@ -39,7 +39,7 @@
     self.activityArray = [NSMutableArray array];
     [self getMyActivityInfo];
     
-    self.mySegmentView = [[LXSegmentViewThree alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-49)];
+    self.mySegmentView = [[LXSegmentViewThree alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
     self.mySegmentView.tabBgImageView.image = [UIImage imageNamed:@"bg_tab_selected.png"];
     self.mySegmentView.tabButtonSeclectImageView.image = [UIImage imageNamed:@"select_flag.png"];
     self.mySegmentView.tabButtonColor = [UIColor blackColor];
