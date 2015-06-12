@@ -17,6 +17,7 @@
 @interface CitiesVC : BaseVC<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;//城市列表
 @property (nonatomic, strong) NSArray *citiesArray;//城市数组
+@property (nonatomic, strong) NSString *selectedCity;
 
 @property (nonatomic, strong) id<SelectedCityDelegate> delegate;
 

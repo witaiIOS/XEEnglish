@@ -322,6 +322,7 @@
             case 0:
             {
                 CitiesVC *vc = [[CitiesVC alloc] init];
+                vc.selectedCity = self.selectCity;
                 vc.delegate = self;
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];

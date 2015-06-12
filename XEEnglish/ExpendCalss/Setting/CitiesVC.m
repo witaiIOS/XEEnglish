@@ -7,6 +7,8 @@
 //
 
 #import "CitiesVC.h"
+#import "CityVCCell.h"
+
 #import "XeeService.h"
 
 @interface CitiesVC ()
@@ -70,16 +72,16 @@
     
     static NSString *reuse = @"CitiesCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
+    CityVCCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
-        cell.textLabel.textColor = [UIColor darkGrayColor];
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell = [[CityVCCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
     }
     NSDictionary *cityInfo = self.citiesArray[indexPath.row];
-    cell.textLabel.text = cityInfo[@"department"];
-    
+    cell.cityName.text = cityInfo[@"department"];
+    if ([self.selectedCity isEqualToString:cell.cityName.text]) {
+        cell.selectedImageView.highlighted = YES;
+    }
     return cell;
 }
 
@@ -90,7 +92,8 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    [self.delegate SelectedCity:self.citiesArray[indexPath.row]];
+    NSDictionary *cityInfo = self.citiesArray[indexPath.row];
+    [self.delegate SelectedCity:cityInfo[@"department"]];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

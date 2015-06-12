@@ -43,6 +43,7 @@
 		09C9C39B1B29AF1900B1F902 /* LXSegmentViewThree.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9C39A1B29AF1900B1F902 /* LXSegmentViewThree.m */; };
 		09C9DE3A1B2A66F600A07544 /* MyActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9DE391B2A66F600A07544 /* MyActivityCell.m */; };
 		09C9DE3C1B2A670C00A07544 /* MyActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C9DE3B1B2A670C00A07544 /* MyActivityCell.xib */; };
+		09C9DE701B2AD61000A07544 /* CityVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9DE6F1B2AD61000A07544 /* CityVCCell.m */; };
 		09CA408F1B1C655000D12796 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA408D1B1C655000D12796 /* ActivityCell.m */; };
 		09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA408E1B1C655000D12796 /* ActivityCell.xib */; };
 		09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA69171B1FFC8200A31E0E /* CouponsVC.m */; };
@@ -225,6 +226,8 @@
 		09C9DE381B2A66F600A07544 /* MyActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActivityCell.h; sourceTree = "<group>"; };
 		09C9DE391B2A66F600A07544 /* MyActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActivityCell.m; sourceTree = "<group>"; };
 		09C9DE3B1B2A670C00A07544 /* MyActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyActivityCell.xib; sourceTree = "<group>"; };
+		09C9DE6E1B2AD61000A07544 /* CityVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityVCCell.h; sourceTree = "<group>"; };
+		09C9DE6F1B2AD61000A07544 /* CityVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityVCCell.m; sourceTree = "<group>"; };
 		09CA408C1B1C655000D12796 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		09CA408D1B1C655000D12796 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		09CA408E1B1C655000D12796 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
@@ -938,6 +941,8 @@
 				09C9C3921B29A78E00B1F902 /* Schedule */,
 				09C95ECC1B284225000972D8 /* CitiesVC.h */,
 				09C95ECD1B284225000972D8 /* CitiesVC.m */,
+				09C9DE6E1B2AD61000A07544 /* CityVCCell.h */,
+				09C9DE6F1B2AD61000A07544 /* CityVCCell.m */,
 				09CA69151B1FFC5D00A31E0E /* Coupons */,
 				A6284D961B1066DE00EFF820 /* SettingVC.h */,
 				A6284D971B1066DE00EFF820 /* SettingVC.m */,
@@ -1247,6 +1252,7 @@
 				A6284D591B105E5600EFF820 /* UIScrollView+MJExtension.m in Sources */,
 				09C9DE3A1B2A66F600A07544 /* MyActivityCell.m in Sources */,
 				A6284D981B1066DE00EFF820 /* SettingVC.m in Sources */,
+				09C9DE701B2AD61000A07544 /* CityVCCell.m in Sources */,
 				093CD67D1B1D692B004F7D11 /* SchedulePlace.m in Sources */,
 				090604751B14174F0038BAC4 /* MoreSettingVC.m in Sources */,
 				A6284D4D1B105E5600EFF820 /* AFURLSessionManager.m in Sources */,
