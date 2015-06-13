@@ -30,35 +30,54 @@
         
         [self addSubview:self.tipInfoLabel];
         
-        self.yesButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.yesButton setFrame:CGRectMake(180, 6, 20, 20)];
-        //[self.yesButton setBackgroundColor:[UIColor orangeColor]];
-        [self.yesButton setImage:[UIImage imageNamed:@"yes.png"] forState:UIControlStateNormal];
-        //[self.yesButton setImage:[UIImage imageNamed:@"yes.png"] forState:UIControlStateHighlighted];
-        [self.yesButton addTarget:self action:@selector(YesAtion) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.yesButton ];
+//        self.yesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [self.yesButton setFrame:CGRectMake(180, 6, 20, 20)];
+//        //[self.yesButton setBackgroundColor:[UIColor orangeColor]];
+//        [self.yesButton setImage:[UIImage imageNamed:@"yes.png"] forState:UIControlStateNormal];
+//        //[self.yesButton setImage:[UIImage imageNamed:@"yes.png"] forState:UIControlStateHighlighted];
+//        [self.yesButton addTarget:self action:@selector(YesAtion) forControlEvents:UIControlEventTouchUpInside];
+//        [self addSubview:self.yesButton ];
+//        
+//        self.yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 6, 20, 30)];
+//        self.yesLabel.textAlignment = NSTextAlignmentLeft;
+//        self.yesLabel.textColor = [UIColor darkGrayColor];
+//        self.yesLabel.font = [UIFont systemFontOfSize:14];
+//        
+//        [self addSubview:self.yesLabel];
+//        
+//        self.noButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [self.noButton setFrame:CGRectMake(240, 6, 20, 20)];
+//        //[self.yesButton setBackgroundColor:[UIColor orangeColor]];
+//        [self.noButton setImage:[UIImage imageNamed:@"no.png"] forState:UIControlStateNormal];
+//        //[self.noButton setImage:[UIImage imageNamed:@"yes.png"] forState:UIControlStateHighlighted];
+//        [self.noButton addTarget:self action:@selector(NOAtion) forControlEvents:UIControlEventTouchUpInside];
+//        [self addSubview:self.noButton ];
+//        
+//        self.noLabel = [[UILabel alloc] initWithFrame:CGRectMake(270, 6, 30, 30)];
+//        self.noLabel.textAlignment = NSTextAlignmentLeft;
+//        self.noLabel.textColor = [UIColor darkGrayColor];
+//        self.noLabel.font = [UIFont systemFontOfSize:14];
+//        
+//        [self addSubview:self.noLabel];
+        self.boxNeed = [[RadioBox alloc] initWithFrame:CGRectMake(0, 6, 60, 20)];
+        self.boxUnNeed = [[RadioBox alloc] initWithFrame:CGRectMake(60, 6, 80, 20)];
+//        
+//        self.boxNeed.text = @"有";
+//        self.boxUnNeed.text = @"没有";
+//        
+        self.boxNeed.value = 0;
+        self.boxUnNeed.value = 1;
+        NSArray *controls = [NSArray arrayWithObjects:self.boxNeed,self.boxUnNeed, nil];
         
-        self.yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 6, 20, 30)];
-        self.yesLabel.textAlignment = NSTextAlignmentLeft;
-        self.yesLabel.textColor = [UIColor darkGrayColor];
-        self.yesLabel.font = [UIFont systemFontOfSize:14];
+        self.boxGroup = [[RadioGroup alloc] initWithFrame:CGRectMake(kScreenWidth-150, 6, 140, 30) WithControl:controls];
         
-        [self addSubview:self.yesLabel];
+        [self.boxGroup addSubview:self.boxNeed];
+        [self.boxGroup addSubview:self.boxUnNeed];
         
-        self.noButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.noButton setFrame:CGRectMake(240, 6, 20, 20)];
-        //[self.yesButton setBackgroundColor:[UIColor orangeColor]];
-        [self.noButton setImage:[UIImage imageNamed:@"no.png"] forState:UIControlStateNormal];
-        //[self.noButton setImage:[UIImage imageNamed:@"yes.png"] forState:UIControlStateHighlighted];
-        [self.noButton addTarget:self action:@selector(NOAtion) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.noButton ];
+        self.boxGroup.selectValue = 0;
+        self.boxGroup.textFont = [UIFont systemFontOfSize:14];
         
-        self.noLabel = [[UILabel alloc] initWithFrame:CGRectMake(270, 6, 30, 30)];
-        self.noLabel.textAlignment = NSTextAlignmentLeft;
-        self.noLabel.textColor = [UIColor darkGrayColor];
-        self.noLabel.font = [UIFont systemFontOfSize:14];
-        
-        [self addSubview:self.noLabel];
+        [self.contentView addSubview:self.boxGroup];
         
         
     }
@@ -67,17 +86,17 @@
 }
 
 #pragma mark - My Action
-- (void)YesAtion{
-    [self.yesButton setImage:[UIImage imageNamed:@"yes.png"] forState:UIControlStateNormal];
-    [self.noButton setImage:[UIImage imageNamed:@"no.png"] forState:UIControlStateNormal];
-    self.valueStr = self.yesLabel.text;
-}
-
-
-- (void)NOAtion{
-    [self.yesButton setImage:[UIImage imageNamed:@"no.png"] forState:UIControlStateNormal];
-    [self.noButton setImage:[UIImage imageNamed:@"yes.png"] forState:UIControlStateNormal];
-    self.valueStr = self.noLabel.text;
-}
+//- (void)YesAtion{
+//    [self.yesButton setImage:[UIImage imageNamed:@"yes.png"] forState:UIControlStateNormal];
+//    [self.noButton setImage:[UIImage imageNamed:@"no.png"] forState:UIControlStateNormal];
+//    self.valueStr = self.yesLabel.text;
+//}
+//
+//
+//- (void)NOAtion{
+//    [self.yesButton setImage:[UIImage imageNamed:@"no.png"] forState:UIControlStateNormal];
+//    [self.noButton setImage:[UIImage imageNamed:@"yes.png"] forState:UIControlStateNormal];
+//    self.valueStr = self.noLabel.text;
+//}
 
 @end

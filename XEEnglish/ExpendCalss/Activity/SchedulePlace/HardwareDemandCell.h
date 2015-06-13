@@ -7,16 +7,23 @@
 //
 
 #import "BaseTVC.h"
+#import "RadioBox.h"
+#import "RadioGroup.h"
 
 @interface HardwareDemandCell : BaseTVC
 
 @property (nonatomic, strong) UILabel *tipInfoLabel;
-@property (nonatomic, strong) UILabel *yesLabel;
-@property (nonatomic, strong) UILabel *noLabel;
+//@property (nonatomic, strong) UILabel *yesLabel;
+//@property (nonatomic, strong) UILabel *noLabel;
+//
+//@property (nonatomic, strong) UIButton *yesButton;
+//@property (nonatomic, strong) UIButton *noButton;
+@property (nonatomic, strong) RadioBox *boxNeed;
+@property (nonatomic, strong) RadioBox *boxUnNeed;
 
-@property (nonatomic, strong) UIButton *yesButton;
-@property (nonatomic, strong) UIButton *noButton;
+@property (nonatomic, strong) RadioGroup *boxGroup;
 
 @property (nonatomic, strong) NSString *valueStr;//提供给外部的值。
+
 
 @end
