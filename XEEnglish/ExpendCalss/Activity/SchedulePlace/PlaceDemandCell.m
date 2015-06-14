@@ -30,11 +30,12 @@
         
         [self addSubview:self.tipInfoLabel];
         
-        self.peopleAndPlaceTF = [[UITextField alloc] initWithFrame:CGRectMake(100, 6, 200, 30)];
+        self.peopleAndPlaceTF = [[UITextField alloc] initWithFrame:CGRectMake(100, 6, 190, 30)];
         self.peopleAndPlaceTF.textAlignment = NSTextAlignmentCenter;
         self.peopleAndPlaceTF.textColor = [UIColor darkGrayColor];
         self.peopleAndPlaceTF.font = [UIFont systemFontOfSize:14];
-        self.peopleAndPlaceTF.borderStyle = UITextBorderStyleRoundedRect;
+        self.peopleAndPlaceTF.borderStyle = UITextBorderStyleNone;
+        [self.peopleAndPlaceTF setBackgroundColor:RGBCOLOR(245, 245, 245)];
         self.peopleAndPlaceTF.keyboardType = UIKeyboardTypeDefault;
         self.peopleAndPlaceTF.delegate = self;
         

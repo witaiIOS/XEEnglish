@@ -51,6 +51,7 @@
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [self tableFooterView];
     
+    
     [self.view addSubview: self.tableView];
     
 }
@@ -199,18 +200,18 @@
         switch (indexPath.row) {
             case 0:{
                 cell.tipInfoLabel.text = @"投影仪";
-//                cell.yesLabel.text = @"有";
-//                cell.noLabel.text = @"没有";
-                cell.boxNeed.text = @"有";
-                cell.boxUnNeed.text = @"没有";
+                cell.yesLabel.text = @"有";
+                cell.noLabel.text = @"没有";
+                //cell.boxNeed.text = @"有";
+                //cell.boxUnNeed.text = @"没有";
                 break;
             }
             case 1:{
                 cell.tipInfoLabel.text = @"老师陪同";
-//                cell.yesLabel.text = @"要";
-//                cell.noLabel.text = @"不要";
-                cell.boxNeed.text = @"要";
-                cell.boxUnNeed.text = @"不要";
+                cell.yesLabel.text = @"要";
+                cell.noLabel.text = @"不要";
+                //cell.boxNeed.text = @"要";
+                //cell.boxUnNeed.text = @"不要";
                 break;
             }
                 

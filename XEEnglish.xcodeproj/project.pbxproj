@@ -125,6 +125,8 @@
 		A6284D981B1066DE00EFF820 /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6284D971B1066DE00EFF820 /* SettingVC.m */; };
 		A6284D9C1B1067C100EFF820 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6284D9A1B1067C100EFF820 /* LoginVC.m */; };
 		A6284D9D1B1067C100EFF820 /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6284D9B1B1067C100EFF820 /* LoginVC.xib */; };
+		A63A0A821B2D1BFF003D3852 /* chekbox_select.png in Resources */ = {isa = PBXBuildFile; fileRef = A63A0A801B2D1BFF003D3852 /* chekbox_select.png */; };
+		A63A0A831B2D1BFF003D3852 /* chekbox.png in Resources */ = {isa = PBXBuildFile; fileRef = A63A0A811B2D1BFF003D3852 /* chekbox.png */; };
 		A65678DD1B2AB4610032A6D0 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = A65678C31B2AB4610032A6D0 /* checked.png */; };
 		A65678DE1B2AB4610032A6D0 /* checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A65678C41B2AB4610032A6D0 /* checked@2x.png */; };
 		A65678DF1B2AB4610032A6D0 /* TNCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = A65678C61B2AB4610032A6D0 /* TNCheckBox.m */; };
@@ -373,6 +375,8 @@
 		A6284D991B1067C100EFF820 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		A6284D9A1B1067C100EFF820 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		A6284D9B1B1067C100EFF820 /* LoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
+		A63A0A801B2D1BFF003D3852 /* chekbox_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chekbox_select.png; sourceTree = "<group>"; };
+		A63A0A811B2D1BFF003D3852 /* chekbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chekbox.png; sourceTree = "<group>"; };
 		A65678C31B2AB4610032A6D0 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		A65678C41B2AB4610032A6D0 /* checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked@2x.png"; sourceTree = "<group>"; };
 		A65678C51B2AB4610032A6D0 /* TNCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNCheckBox.h; sourceTree = "<group>"; };
@@ -582,6 +586,8 @@
 		09DB2DCA1B1322AF0078AAF5 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				A63A0A801B2D1BFF003D3852 /* chekbox_select.png */,
+				A63A0A811B2D1BFF003D3852 /* chekbox.png */,
 				09C95EBF1B2806FA000972D8 /* school_selected.png */,
 				09C95EC01B2806FA000972D8 /* school_unselected.png */,
 				09C9C0F51B22FA19001BBA1C /* no.png */,
@@ -1174,6 +1180,7 @@
 				09DB2DC31B1322980078AAF5 /* icon_time.png in Resources */,
 				A65678DE1B2AB4610032A6D0 /* checked@2x.png in Resources */,
 				09DB2DD21B1322CC0078AAF5 /* star_select.png in Resources */,
+				A63A0A831B2D1BFF003D3852 /* chekbox.png in Resources */,
 				09C9C0DF1B22C890001BBA1C /* STcity.png in Resources */,
 				09CA69231B20213800A31E0E /* couponstime.png in Resources */,
 				A6284D8B1B10652700EFF820 /* tab_course@2x.png in Resources */,
@@ -1188,6 +1195,7 @@
 				09DB2DBF1B13228B0078AAF5 /* join_06.png in Resources */,
 				09C9C0F71B22FA19001BBA1C /* no.png in Resources */,
 				09C9C0E21B22C890001BBA1C /* STintegral.png in Resources */,
+				A63A0A821B2D1BFF003D3852 /* chekbox_select.png in Resources */,
 				09C95EC21B2806FA000972D8 /* school_unselected.png in Resources */,
 				09C9C0E01B22C890001BBA1C /* STcoupon.png in Resources */,
 				09C9C0F81B22FA19001BBA1C /* yes.png in Resources */,
