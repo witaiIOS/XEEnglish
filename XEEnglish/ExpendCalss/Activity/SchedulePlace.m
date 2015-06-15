@@ -347,7 +347,21 @@
         [textView resignFirstResponder];
         return NO;
     }
+    
     return YES;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    
+    [UIView beginAnimations:@"tableView" context:nil];
+    
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    
+    [UIView setAnimationDuration:0.275f];
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
+    
+    [UIView commitAnimations];
 }
 
 
@@ -419,13 +433,13 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
 
-    [UIView beginAnimations:@"srcollView" context:nil];
+    [UIView beginAnimations:@"tableView" context:nil];
 
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 
     [UIView setAnimationDuration:0.275f];
 
-    self.view.frame = CGRectMake(self.view.frame.origin.x, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.tableView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
 
     [UIView commitAnimations];
 
