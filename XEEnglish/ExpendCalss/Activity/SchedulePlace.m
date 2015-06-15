@@ -15,7 +15,7 @@
 #import "otherRequireCell.h"
 #import "SchoolZoneVC.h"
 
-@interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate,SchoolZoneDelegate,UITextFieldDelegate>
+@interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate,SchoolZoneDelegate,UITextFieldDelegate,UITextViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 //@property (nonatomic, strong) NSString *dateStart;
 //@property (nonatomic, strong) NSMutableArray *schoolArray;
@@ -228,6 +228,7 @@
             cell = [[ActivityContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse4];
             cell.cellEdge = 10;
         }
+        cell.activityContent.delegate = self;//设置cell中UITextView的代理。
         return cell;
     }
     else if (indexPath.section == 5){
@@ -236,7 +237,7 @@
             cell = [[otherRequireCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse5];
             cell.cellEdge = 10;
         }
-        cell.otherRequire.delegate = self;
+        cell.otherRequire.delegate = self;//设置cell中UITextField的delegate。
         return cell;
     }
     else{
@@ -313,7 +314,47 @@
 - (void)SelectedSchoolZone:(id)sender{
     self.schoolZone = sender;
 }
+//增加“其他”输入框的代理，使在cell中的UITextView在键盘出现时，上移。
+#pragma mark - UITextView Delegate
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    
+    [textView becomeFirstResponder];
+    
+    if ([textView.text isEqualToString:@"请输入－－"]) {
+        textView.text = @"";
+    }
+    CGFloat keyboardHeight = 216.0f;
+    UITableViewCell *cell = (UITableViewCell *)[textView superview];
+    
+    if (self.tableView.frame.size.height - keyboardHeight <= cell.frame.origin.y + cell.frame.size.height) {
+        CGFloat y = cell.frame.origin.y - (self.tableView.frame.size.height - keyboardHeight - cell.frame.size.height-40);
+        
+        [UIView beginAnimations:@"tableView" context:nil];
+        
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        
+        [UIView setAnimationDuration:0.275f];
+        
+        self.tableView.contentInset = UIEdgeInsetsMake(-y, 0, -y, 0);
+        
+        [UIView commitAnimations];
+    }
+}
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+
+
+
+
+//增加“其他”输入框的代理，使在cell中的UITextField在键盘出现时，上移。
 #pragma mark - UITextField Delegate
 //该方法为点击输入文本框要开始输入是调用的代理方法：就是把view上移到能看见文本框的地方
 - (void)textFieldDidBeginEditing:(UITextField *)textField{

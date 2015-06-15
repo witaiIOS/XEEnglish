@@ -24,7 +24,7 @@
     
     if (self) {
         self.activityContent = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width-20, self.frame.size.height)];
-        self.activityContent.delegate = self;
+        //self.activityContent.delegate = self;
         self.activityContent.font = [UIFont systemFontOfSize:14];
         self.activityContent.textColor = [UIColor darkGrayColor];
         self.activityContent.backgroundColor = [UIColor whiteColor];
@@ -38,24 +38,24 @@
     return self;
 }
 
-#pragma mark - UITextView Delegate
-- (void)textViewDidBeginEditing:(UITextView *)textView{
-    
-    [textView becomeFirstResponder];
-    
-    if ([textView.text isEqualToString:@"请输入－－"]) {
-        textView.text = @"";
-    }
-}
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    
-    if ([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];
-        return NO;
-    }
-    return YES;
-}
+//#pragma mark - UITextView Delegate
+//- (void)textViewDidBeginEditing:(UITextView *)textView{
+//    
+//    [textView becomeFirstResponder];
+//    
+//    if ([textView.text isEqualToString:@"请输入－－"]) {
+//        textView.text = @"";
+//    }
+//}
+//
+//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+//    
+//    if ([text isEqualToString:@"\n"]) {
+//        [textView resignFirstResponder];
+//        return NO;
+//    }
+//    return YES;
+//}
 
 
 
