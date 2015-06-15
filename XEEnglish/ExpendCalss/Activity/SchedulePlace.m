@@ -15,7 +15,7 @@
 #import "otherRequireCell.h"
 #import "SchoolZoneVC.h"
 
-@interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate,SchoolZoneDelegate>
+@interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate,SchoolZoneDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 //@property (nonatomic, strong) NSString *dateStart;
 //@property (nonatomic, strong) NSMutableArray *schoolArray;
@@ -28,6 +28,7 @@
     
     [super viewWillAppear:YES];
     [self.tableView reloadData];
+    
 }
 
 
@@ -235,6 +236,7 @@
             cell = [[otherRequireCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse5];
             cell.cellEdge = 10;
         }
+        cell.otherRequire.delegate = self;
         return cell;
     }
     else{
@@ -310,6 +312,82 @@
 #pragma mark - SchoolZone Delegate
 - (void)SelectedSchoolZone:(id)sender{
     self.schoolZone = sender;
+}
+
+#pragma mark - UITextField Delegate
+//该方法为点击输入文本框要开始输入是调用的代理方法：就是把view上移到能看见文本框的地方
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+    [textField becomeFirstResponder];
+    if ([textField.text isEqualToString:@"请输入－－"]) {
+        textField.text = @"";
+    }
+    
+    CGFloat keyboardHeight = 216.0f;
+
+//    UITableViewCell *cell = (UITableViewCell *)[textField superview];
+//    NSLog(@"cell:%.2f",cell.frame.origin.y);
+//    if (self.view.frame.size.height - keyboardHeight <= (cell.frame.origin.y + 44.0)) {
+//        CGFloat y = cell.frame.origin.y - (self.view.frame.size.height - keyboardHeight - textField.frame.size.height - 5);
+//        NSLog(@"cell:%.2f",cell.frame.origin.y);
+//        NSLog(@"y:%.2f",y);
+//
+//        [UIView beginAnimations:@"srcollView" context:nil];
+//
+//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//
+//        [UIView setAnimationDuration:0.275f];
+//
+//        self.view.frame = CGRectMake(self.view.frame.origin.x, -y, self.view.frame.size.width, self.view.frame.size.height);
+//
+//        [UIView commitAnimations];
+    UITableViewCell *cell = (UITableViewCell *)[textField superview];
+    //[self.view convertPoint:cell.frame.origin fromView:self.tableView];
+    NSLog(@"cell:%.2f",cell.frame.origin.y);
+    if (self.tableView.frame.size.height - keyboardHeight <= (cell.frame.origin.y + 44.0)) {
+        CGFloat y = cell.frame.origin.y - (self.tableView.frame.size.height - keyboardHeight - cell.frame.size.height - 40);
+        NSLog(@"cell:%.2f",cell.frame.origin.y);
+        NSLog(@"y:%.2f",y);
+        
+        [UIView beginAnimations:@"tableView" context:nil];
+        
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        
+        [UIView setAnimationDuration:0.275f];
+        
+        self.tableView.contentInset = UIEdgeInsetsMake(-y, 0, - y, 0);
+        
+        [UIView commitAnimations];
+
+    
+    }
+
+}
+
+//该方法为点击虚拟键盘Return，要调用的代理方法：隐藏虚拟键盘
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+
+    [textField resignFirstResponder];
+
+    return YES;
+
+}
+
+//该方法为完成输入后要调用的代理方法：虚拟键盘隐藏后，要恢复到之前的文本框地方
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+
+    [UIView beginAnimations:@"srcollView" context:nil];
+
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+
+    [UIView setAnimationDuration:0.275f];
+
+    self.view.frame = CGRectMake(self.view.frame.origin.x, 0, self.view.frame.size.width, self.view.frame.size.height);
+
+    [UIView commitAnimations];
+
 }
 
 /*

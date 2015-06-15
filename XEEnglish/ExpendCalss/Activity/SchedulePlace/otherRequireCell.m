@@ -35,23 +35,23 @@
 }
 
 
-#pragma mark - UITextField Delegate
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
-    
-    [textField becomeFirstResponder];
-    if ([textField.text isEqualToString:@"请输入－－"]) {
-        textField.text = @"";
-    }
-}
+//#pragma mark - UITextField Delegate
+//- (void)textFieldDidBeginEditing:(UITextField *)textField{
+//    
+//    [textField becomeFirstResponder];
+//    if ([textField.text isEqualToString:@"请输入－－"]) {
+//        textField.text = @"";
+//    }
+//}
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
-    if ([string isEqualToString:@"\n"]) {
-        [textField resignFirstResponder];
-        return NO;
-    }
-    return YES;
-}
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+//    
+//    if ([string isEqualToString:@"\n"]) {
+//        [textField resignFirstResponder];
+//        return NO;
+//    }
+//    return YES;
+//}
 
 
 @end
