@@ -77,7 +77,7 @@
     
     [self courseViewLayout];
     
-    self.courseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
+    self.courseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, kScreenWidth, kScreenHeight-150-49) style:UITableViewStyleGrouped];
     self.courseTableView.delegate = self;
     self.courseTableView.dataSource = self;
     
