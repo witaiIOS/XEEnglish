@@ -54,8 +54,8 @@
     _currentStudentsIndex = 0;
     _currentCouseListIndex = 0;
 
-    _menu.dataSource = self;
-    _menu.delegate = self;
+//    _menu.dataSource = self;
+//    _menu.delegate = self;
     
 }
 
@@ -193,7 +193,8 @@
             if (isResult.integerValue == 0) {
                 //NSLog(@"resultInfo1111:%@",result[@"resultInfo"]) ;
                 self.students = result[@"resultInfo"];
-                
+                _menu.dataSource = self;
+                _menu.delegate = self;
             }
         }
     }];
@@ -260,6 +261,7 @@
         
         return studentDic[@"name"];
         //return _students[indexPath.row];
+        
     }
     else if (indexPath.column == 1) {
         NSMutableArray *courseArray = studentDic[@"listCourse"];
