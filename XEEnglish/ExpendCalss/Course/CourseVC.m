@@ -236,7 +236,9 @@
         return _students.count;
     }
     else if (column == 1) {
-        return _courseList.count;
+        NSDictionary *studentDic = _students[_currentStudentsIndex];
+        NSMutableArray *courseArray = studentDic[@"listCourse"];
+        return courseArray.count;
     }
     
     return 0;
@@ -244,10 +246,16 @@
 
 - (NSString *)menu:(JSDropDownMenu *)menu titleForColumn:(NSInteger)column {
     if (column == 0) {
-        return _students[_currentStudentsIndex];
+        NSDictionary *studentDic = _students[_currentStudentsIndex];
+        return studentDic[@"name"];
+        //return _students[_currentStudentsIndex];
     }
     else if (column ==1) {
-        return _courseList[_currentCouseListIndex];
+        NSDictionary *studentDic = _students[_currentStudentsIndex];
+        NSMutableArray *courseArray = studentDic[@"listCourse"];
+        NSDictionary *courseDic = courseArray[_currentCouseListIndex];
+        return courseDic[@"title"];
+        //return _courseList[_currentCouseListIndex];
     }
     
     return nil;
@@ -255,15 +263,18 @@
 
 - (NSString *)menu:(JSDropDownMenu *)menu titleForRowAtIndexPath:(JSIndexPath *)indexPath {
     
-    NSDictionary *studentDic = _students[indexPath.row];
+    
     
     if (indexPath.column == 0) {
         
+        NSDictionary *studentDic = _students[indexPath.row];
         return studentDic[@"name"];
         //return _students[indexPath.row];
         
     }
     else if (indexPath.column == 1) {
+        
+        NSDictionary *studentDic = _students[_currentStudentsIndex];
         NSMutableArray *courseArray = studentDic[@"listCourse"];
         NSDictionary *courseDic = courseArray[indexPath.row];
         return courseDic[@"title"];
