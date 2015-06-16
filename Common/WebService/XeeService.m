@@ -193,6 +193,23 @@
     }];
 }
 
+#pragma mark - 课程
+/**
+ 通过家长id，查找学生选课关系简介列表
+ @param parent_id 注册id
+ */
+- (void)getVStudentCourseByParentId:(NSInteger )parent_id andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+    AFHTTPRequestOperation *operation = [WebServiceOpration getVStudentCourseByParentId:parent_id];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetVStudentCourseByParentIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        NSLog(@"result:%@",result);
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
+
 
 #pragma mark - 活动
 - (void)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void (^)(NSDictionary *result, NSError *error))block {

@@ -74,6 +74,15 @@
  */
 - (void)loginWithPhoneNumber:(NSString *)phoneNumber andPassword:(NSString *)password andBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
+#pragma mark - 课程
+/**
+ 通过家长id，查找学生选课关系简介列表
+ @param parent_id 注册id
+ */
+- (void)getVStudentCourseByParentId:(NSInteger )parent_id andBlock:(void(^)(NSDictionary *result,NSError *error))block;
+
+
+
 #pragma mark - 活动
 /**
  获取当前活动信息

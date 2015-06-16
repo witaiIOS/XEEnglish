@@ -15,6 +15,9 @@
 #import "CourseAbsentVC.h"
 
 
+#import "XeeService.h"
+
+
 @interface CourseVC ()<JSDropDownMenuDataSource, JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *students;
@@ -45,8 +48,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _students =[NSMutableArray arrayWithArray:@[@"小明", @"小红", @"小花"]];
-    _courseList = [NSMutableArray arrayWithArray:@[@"(2-4岁)创意思维课", @"(4-6岁)HABA数学课", @"初级英语"]];
+//    _students =[NSMutableArray arrayWithArray:@[@"小明", @"小红", @"小花"]];
+//    _courseList = [NSMutableArray arrayWithArray:@[@"(2-4岁)创意思维课", @"(4-6岁)HABA数学课", @"初级英语"]];
+    [self getVStudentCourseByParentId];
     _currentStudentsIndex = 0;
     _currentCouseListIndex = 0;
 
@@ -179,6 +183,19 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+#pragma mark - Web
+- (void)getVStudentCourseByParentId{
+    [[XeeService sharedInstance] getVStudentCourseByParentId:17 andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            //NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                NSLog(@"resultInfo1111:%@",result[@"resultInfo"]) ;
+                //self.students = result[@"resultInfo"];
+            }
+        }
+    }];
 }
 
 #pragma mark - JSDropDownMenu datasouce delegate

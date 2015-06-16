@@ -80,6 +80,14 @@
  */
 + (AFHTTPRequestOperation *)loginWithPhoneNumber:(NSString *)phoneNumber andPassword:(NSString *)password;
 
+#pragma mark - 课程
+/**
+ 通过家长id，查找学生选课关系简介列表
+ @param parent_id 注册id
+ */
++ (AFHTTPRequestOperation *)getVStudentCourseByParentId:(NSInteger )parent_id;
+
+
 #pragma mark - 活动
 /**
  获取当前活动信息
@@ -100,7 +108,7 @@
  登录后修改密码
  @param newPassword 新密码
  @param oldPassword 旧密码
- @param parent_id 旧密码
+ @param parent_id 注册id
  */
 + (AFHTTPRequestOperation *)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andId:(NSInteger )parent_id;
 

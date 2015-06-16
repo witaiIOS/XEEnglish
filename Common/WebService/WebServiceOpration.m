@@ -98,6 +98,16 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:Login><web:json>{\"mobile\":\"%@\",\"password\":\"%@\"}</web:json></web:Login>",phoneNumber,password]];
 }
 
+#pragma mark - 课程
+/**
+ 通过家长id，查找学生选课关系简介列表
+ @param parent_id 注册id
+ */
++ (AFHTTPRequestOperation *)getVStudentCourseByParentId:(NSInteger )parent_id{
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentCourseByParentId><web:parent_id>%li</web:parent_id></web:GetVStudentCourseByParentId>",(long)parent_id]];
+}
+
+
 #pragma mark - 活动
 + (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex {
     
