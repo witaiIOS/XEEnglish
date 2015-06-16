@@ -11,6 +11,9 @@
 //#import "DropList.h"
 #import "JSDropDownMenu.h"
 
+#import "CourseLeaveVC.h"
+#import "CourseAbsentVC.h"
+
 
 @interface CourseVC ()<JSDropDownMenuDataSource, JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate>
 
@@ -161,12 +164,16 @@
 
 //跳转到请假界面
 - (void)courseLeaveToLeaveVC{
-    
+    CourseLeaveVC *vc = [[CourseLeaveVC alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //跳转到缺课界面
 - (void)courseAbsentToAbsentVC{
-    
+    CourseAbsentVC *vc = [[CourseAbsentVC alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
