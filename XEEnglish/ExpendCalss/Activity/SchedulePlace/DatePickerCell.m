@@ -67,8 +67,15 @@
     
     self.datePicker = [[UIDatePicker alloc] init];
     self.datePicker.minimumDate = [NSDate date];
+    self.datePicker.backgroundColor = [UIColor whiteColor];
+    [self.datePicker setFrame:CGRectMake(10, 1, kScreenWidth-20, 100)];
     
     self.datePickerTF.inputView = self.datePicker;
+    
+    UILabel *labelLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, kScreenWidth-20, 1)];
+    labelLine.backgroundColor = [UIColor grayColor];
+    
+    [self.datePickerTF.inputView addSubview:labelLine];
     
     UIToolbar *accessoryView = [[UIToolbar alloc] init];
     accessoryView.frame = CGRectMake(0, self.frame.size.height-30, self.frame.size.width, 30);
@@ -77,8 +84,8 @@
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [cancelBtn setFrame:CGRectMake(0, self.frame.size.height-30, self.frame.size.width/2, 30)];
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
-    [cancelBtn setBackgroundColor:[UIColor orangeColor]];
-    [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [cancelBtn setBackgroundColor:[UIColor whiteColor]];
+    [cancelBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     [cancelBtn addTarget:self action:@selector(cancelBtnActon:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *cancelBtnItem = [[UIBarButtonItem alloc] initWithCustomView:cancelBtn];
@@ -86,8 +93,8 @@
     UIButton *confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [confirmBtn setFrame:CGRectMake(self.frame.size.width/2, self.frame.size.height-30, self.frame.size.width/2, 30)];
     [confirmBtn setTitle:@"确定" forState:UIControlStateNormal];
-    [confirmBtn setBackgroundColor:[UIColor orangeColor]];
-    [confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [confirmBtn setBackgroundColor:[UIColor whiteColor]];
+    [confirmBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     [confirmBtn addTarget:self action:@selector(confirmBtnActon:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *confirmBtnItem = [[UIBarButtonItem alloc] initWithCustomView:confirmBtn];
