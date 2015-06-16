@@ -20,6 +20,16 @@
 
 @property (strong, nonatomic) JSDropDownMenu *menu;
 
+
+@property (strong, nonatomic) UIView *courseView;//上课信息的View
+@property (strong, nonatomic) UILabel *courseTotal;//总课时
+@property (strong, nonatomic) UILabel *courseComplete;//已完成课时
+@property (strong, nonatomic) UIButton *courseLeave;//请假次数，需完成页面跳转
+@property (strong, nonatomic) UIButton *courseAbsent;//缺课次数，需完成跳转
+
+- (void)courseLeaveToLeaveVC;
+- (void)courseAbsentToAbsentVC;
+
 @end
 
 @implementation CourseVC
@@ -48,9 +58,105 @@
    
     [self.view addSubview:_menu];
     
+    self.courseView = [[UIView alloc] initWithFrame:CGRectMake(0, 110, kScreenWidth, 40)];
+    [self.courseView setBackgroundColor:[UIColor whiteColor]];
+    
+    [self.view addSubview: self.courseView];
+    
+    [self courseViewLayout];
    
 }
 
+- (void)courseViewLayout{
+    
+    UILabel *cStringTotal = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 40, 30)];
+    cStringTotal.font = [UIFont systemFontOfSize:12];
+    cStringTotal.text = @"总课程";
+    cStringTotal.textColor = [UIColor blackColor];
+    
+    [self.courseView addSubview:cStringTotal];
+    
+    self.courseTotal = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 20, 30)];
+    self.courseTotal.font = [UIFont systemFontOfSize:12];
+    self.courseTotal.text = @"48";
+    self.courseTotal.textColor = [UIColor blackColor];
+    
+    [self.courseView addSubview:self.courseTotal];
+    
+    UILabel *cStringComplete = [[UILabel alloc] initWithFrame:CGRectMake(80, 5, 40, 30)];
+    cStringComplete.font = [UIFont systemFontOfSize:12];
+    cStringComplete.text = @"已完成";
+    cStringComplete.textColor = [UIColor blackColor];
+    
+    [self.courseView addSubview:cStringComplete];
+    
+    self.courseComplete = [[UILabel alloc] initWithFrame:CGRectMake(120, 5, 20, 30)];
+    self.courseComplete.font = [UIFont systemFontOfSize:12];
+    self.courseComplete.text = @"12";
+    self.courseComplete.textColor = [UIColor blackColor];
+    
+    [self.courseView addSubview:self.courseComplete];
+    
+    UILabel *cStringLeave = [[UILabel alloc] initWithFrame:CGRectMake(160, 5, 40, 30)];
+    cStringLeave.font = [UIFont systemFontOfSize:12];
+    cStringLeave.text = @"（ 请假";
+    cStringLeave.textColor = [UIColor blackColor];
+    
+    [self.courseView addSubview:cStringLeave];
+    
+    self.courseLeave = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.courseLeave setFrame:CGRectMake(200, 9, 30, 20)];
+    [self.courseLeave setTitle:@"0" forState:UIControlStateNormal];
+    [self.courseLeave setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [self.courseLeave.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    [self.courseLeave addTarget:self action:@selector(courseLeaveToLeaveVC) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.courseView addSubview:self.courseLeave];
+    
+    UILabel *cLeaveLine = [[UILabel alloc] initWithFrame:CGRectMake(210, 30, 10, 1)];
+    cLeaveLine.backgroundColor = [UIColor grayColor];
+    
+    [self.courseView addSubview:cLeaveLine];
+    
+    UILabel *cStringAbsent = [[UILabel alloc] initWithFrame:CGRectMake(230, 5, 40, 30)];
+    cStringAbsent.font = [UIFont systemFontOfSize:12];
+    cStringAbsent.text = @", 缺课";
+    cStringAbsent.textColor = [UIColor blackColor];
+    
+    [self.courseView addSubview:cStringAbsent];
+    
+    self.courseAbsent = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.courseAbsent setFrame:CGRectMake(270, 9, 30, 20)];
+    [self.courseAbsent setTitle:@"0" forState:UIControlStateNormal];
+    [self.courseAbsent setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [self.courseAbsent.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    [self.courseAbsent addTarget:self action:@selector(courseAbsentToAbsentVC) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.courseView addSubview:self.courseAbsent];
+    
+    UILabel *cAbsentLine = [[UILabel alloc] initWithFrame:CGRectMake(280, 30, 10, 1)];
+    cAbsentLine.backgroundColor = [UIColor grayColor];
+    
+    [self.courseView addSubview:cAbsentLine];
+    
+    UILabel *cStringEdge = [[UILabel alloc] initWithFrame:CGRectMake(300, 5, 10, 30)];
+    cStringEdge.font = [UIFont systemFontOfSize:12];
+    cStringEdge.text = @"）";
+    cStringEdge.textColor = [UIColor blackColor];
+    
+    [self.courseView addSubview:cStringEdge];
+    
+}
+
+
+- (void)courseLeaveToLeaveVC{
+    
+}
+
+
+- (void)courseAbsentToAbsentVC{
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
