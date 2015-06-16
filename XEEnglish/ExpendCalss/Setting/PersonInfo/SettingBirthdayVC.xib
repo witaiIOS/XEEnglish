@@ -35,6 +35,7 @@
                     <date key="date" timeIntervalSinceReferenceDate="454503887.28605998">
                         <!--2015-05-28 11:04:47 +0000-->
                     </date>
+                    <locale key="locale" localeIdentifier="zh_CN"/>
                     <connections>
                         <action selector="ChangeDateAction:" destination="-1" eventType="valueChanged" id="c2L-9m-zkN"/>
                     </connections>
