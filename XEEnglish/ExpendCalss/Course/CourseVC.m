@@ -7,10 +7,12 @@
 //
 
 #import "CourseVC.h"
+#import "CourseCell.h"
 //#import "DropList.h"
 #import "JSDropDownMenu.h"
 
-@interface CourseVC ()<JSDropDownMenuDataSource, JSDropDownMenuDelegate>
+
+@interface CourseVC ()<JSDropDownMenuDataSource, JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *students;
 @property (strong, nonatomic) NSMutableArray *courseList;
@@ -27,8 +29,11 @@
 @property (strong, nonatomic) UIButton *courseLeave;//请假次数，需完成页面跳转
 @property (strong, nonatomic) UIButton *courseAbsent;//缺课次数，需完成跳转
 
-- (void)courseLeaveToLeaveVC;
-- (void)courseAbsentToAbsentVC;
+
+@property (strong, nonatomic) UITableView *courseTableView;//课表
+
+- (void)courseLeaveToLeaveVC;//跳转到请假界面
+- (void)courseAbsentToAbsentVC;//跳转到缺课界面
 
 @end
 
@@ -64,6 +69,12 @@
     [self.view addSubview: self.courseView];
     
     [self courseViewLayout];
+    
+    self.courseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
+    self.courseTableView.delegate = self;
+    self.courseTableView.dataSource = self;
+    
+    [self.view addSubview:self.courseTableView];
    
 }
 
@@ -148,12 +159,12 @@
     
 }
 
-
+//跳转到请假界面
 - (void)courseLeaveToLeaveVC{
     
 }
 
-
+//跳转到缺课界面
 - (void)courseAbsentToAbsentVC{
     
 }
@@ -233,6 +244,56 @@
     else if (indexPath.column == 1) {
         _currentCouseListIndex = indexPath.row;
     }
+}
+
+
+#pragma mark - UITableView DataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return 6;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *reuse = @"CourseVCCell";
+    
+    [tableView registerNib:[UINib nibWithNibName:@"CourseCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse];
+    
+    CourseCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
+    
+    if (cell == nil) {
+        cell = [[CourseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+    }
+    cell.cellEdge = 10;
+    return cell;
+}
+
+#pragma mark - UITableView Delegate
+
+- (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 120.0f;
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    if (section == 0) {
+        return 10.0f;
+    }
+    else{
+        return 5.0f;
+    }
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return 5.0f;
 }
 
 
