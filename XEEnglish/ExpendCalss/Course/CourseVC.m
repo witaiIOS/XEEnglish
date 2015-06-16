@@ -191,8 +191,9 @@
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
-                NSLog(@"resultInfo1111:%@",result[@"resultInfo"]) ;
-                //self.students = result[@"resultInfo"];
+                //NSLog(@"resultInfo1111:%@",result[@"resultInfo"]) ;
+                self.students = result[@"resultInfo"];
+                
             }
         }
     }];
@@ -252,11 +253,19 @@
 }
 
 - (NSString *)menu:(JSDropDownMenu *)menu titleForRowAtIndexPath:(JSIndexPath *)indexPath {
+    
+    NSDictionary *studentDic = _students[indexPath.row];
+    
     if (indexPath.column == 0) {
-        return _students[indexPath.row];
+        
+        return studentDic[@"name"];
+        //return _students[indexPath.row];
     }
     else if (indexPath.column == 1) {
-        return _courseList[indexPath.row];
+        NSMutableArray *courseArray = studentDic[@"listCourse"];
+        NSDictionary *courseDic = courseArray[indexPath.row];
+        return courseDic[@"title"];
+        //return _courseList[indexPath.row];
     }
     return nil;
 }
