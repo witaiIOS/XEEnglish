@@ -196,6 +196,12 @@
                 _menu.dataSource = self;
                 _menu.delegate = self;
             }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }
+        else{
+            [UIFactory showAlert:@"网络错误"];
         }
     }];
 }
