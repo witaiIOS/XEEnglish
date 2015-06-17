@@ -11,7 +11,7 @@
 @implementation CourseCell
 
 - (void)layoutSubviews{
-    [self layoutSubviews];
+    [super layoutSubviews];
     
     self.courseTitle.text = self.courseInfo[@"title"];
     self.courseTime.text = self.courseInfo[@"create_time"];

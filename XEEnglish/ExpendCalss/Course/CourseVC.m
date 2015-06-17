@@ -216,19 +216,19 @@
             
             NSLog(@"getVStudentSourseScheduleSign result:%@",result);
             
-          /*  NSNumber *isResult = result[@"result"];
+            NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 //NSLog(@"resuleInfo:%@",result[@"resultInfo"]);
                 NSDictionary *studentCourseDic = result[@"resultInfo"];
-                NSLog(@"aaaaaaa:%@",result[@"resultInfo"]);
-                NSLog(@"aaaaaaa:%@",studentCourseDic[@"student_id"]);
-                NSLog(@"aaaaaaa:%@",studentCourseDic[@"data"]);
+                //NSLog(@"aaaaaaa:%@",result[@"resultInfo"]);
+                //NSLog(@"aaaaaaa:%@",studentCourseDic[@"student_id"]);
+                //NSLog(@"aaaaaaa:%@",studentCourseDic[@"data"]);
                 self.studentCoursesArray = studentCourseDic[@"data"];
-                NSLog(@"aaaaaaa:%li",[self.studentCoursesArray count]);
+                //NSLog(@"aaaaaaa:%li",[self.studentCoursesArray count]);
                 self.courseTableView.delegate = self;
                 self.courseTableView.dataSource = self;
                 [self.courseTableView reloadData];
-            }*/
+            }
         }
     }];
 }
