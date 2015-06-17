@@ -35,7 +35,7 @@
 @property (strong, nonatomic) UIButton *courseLeave;//请假次数，需完成页面跳转
 @property (strong, nonatomic) UIButton *courseAbsent;//缺课次数，需完成跳转
 
-
+@property (strong, nonatomic) NSMutableArray *studentCoursesArray;
 @property (strong, nonatomic) UITableView *courseTableView;//课表
 
 - (void)courseLeaveToLeaveVC;//跳转到请假界面
@@ -70,6 +70,8 @@
    
     [self.view addSubview:_menu];
     
+    [self getVStudentSourseScheduleSign];
+    
     self.courseView = [[UIView alloc] initWithFrame:CGRectMake(0, 110, kScreenWidth, 40)];
     self.courseView.backgroundColor = [UIColor colorWithRed:244.0f/255.0f green:244.0f/255.0f blue:244.0f/255.0f alpha:1.0];
     
@@ -77,9 +79,11 @@
     
     [self courseViewLayout];
     
+    self.studentCoursesArray = [NSMutableArray array];
+    
     self.courseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, kScreenWidth, kScreenHeight-150-49) style:UITableViewStyleGrouped];
-    self.courseTableView.delegate = self;
-    self.courseTableView.dataSource = self;
+//    self.courseTableView.delegate = self;
+//    self.courseTableView.dataSource = self;
     
     [self.view addSubview:self.courseTableView];
    
@@ -191,7 +195,7 @@
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
-                //NSLog(@"resultInfo1111:%@",result[@"resultInfo"]) ;
+                NSLog(@"resultInfo1111:%@",result[@"resultInfo"]) ;
                 self.students = result[@"resultInfo"];
                 _menu.dataSource = self;
                 _menu.delegate = self;
@@ -202,6 +206,26 @@
         }
         else{
             [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
+
+- (void)getVStudentSourseScheduleSign{
+    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:17 andStudentId:63 andCourseId:1 andSignon:0 andSort:@"" andOrder:@"" andPageSize:10 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                //NSLog(@"resuleInfo:%@",result[@"resultInfo"]);
+                NSDictionary *studentCourseDic = result[@"resultInfo"];
+                NSLog(@"aaaaaaa:%@",result[@"resultInfo"]);
+                NSLog(@"aaaaaaa:%@",studentCourseDic[@"student_id"]);
+                NSLog(@"aaaaaaa:%@",studentCourseDic[@"data"]);
+                self.studentCoursesArray = studentCourseDic[@"data"];
+                NSLog(@"aaaaaaa:%li",[self.studentCoursesArray count]);
+                self.courseTableView.delegate = self;
+                self.courseTableView.dataSource = self;
+                [self.courseTableView reloadData];
+            }
         }
     }];
 }
@@ -302,8 +326,8 @@
 #pragma mark - UITableView DataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
-    return 6;
+    NSLog(@"count:%li",[self.studentCoursesArray count]);
+    return [self.studentCoursesArray count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -322,6 +346,7 @@
     if (cell == nil) {
         cell = [[CourseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
     }
+    cell.courseInfo = self.studentCoursesArray[indexPath.section];
     cell.cellEdge = 10;
     return cell;
 }

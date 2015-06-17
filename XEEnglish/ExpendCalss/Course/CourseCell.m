@@ -10,12 +10,14 @@
 
 @implementation CourseCell
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)layoutSubviews{
+    [self layoutSubviews];
+    
+    self.courseTitle.text = self.courseInfo[@"title"];
+    self.courseTime.text = self.courseInfo[@"create_time"];
+    self.courseState.text = self.courseInfo[@"is_signon"];
 }
-*/
 
+- (IBAction)leaveButtonClicked:(id)sender {
+}
 @end

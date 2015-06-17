@@ -53,6 +53,9 @@
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="leaveButtonClicked:" destination="TSP-cl-aKO" eventType="touchUpInside" id="8H7-wP-LX1"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="第三课：向日葵" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbv-71-9N4">
                         <rect key="frame" x="10" y="8" width="210" height="30"/>
@@ -62,6 +65,11 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="courseState" destination="dvS-C7-fxE" id="b6l-nD-YCa"/>
+                <outlet property="courseTime" destination="sdv-9G-hWh" id="NVO-Gp-D0h"/>
+                <outlet property="courseTitle" destination="Kbv-71-9N4" id="7yT-iM-vNy"/>
+            </connections>
             <point key="canvasLocation" x="402" y="243"/>
         </tableViewCell>
     </objects>

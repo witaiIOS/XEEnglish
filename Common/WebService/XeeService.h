@@ -81,6 +81,18 @@
  */
 - (void)getVStudentCourseByParentId:(NSInteger )parent_id andBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
+/**
+ 通过student_id学员id，获取课程计划签到信息分页(获取请假/缺课列表 共用)
+ @param parent_id 注册id
+ @param StudentId 学生id
+ @param CourseId  选课Id
+ @param Signon    标记取值 “时间已经过了： 1已上课且已签到 2 请假 3 缺课 时间没有过： 0正常 4  延迟 5 暂停”
+ @param Sort      排序字段(可选)
+ @param Order     desc/asc（可选）
+ @param PageSize  每页最大条数
+ @param PageIndex 从1开始的索引
+ */
+- (void)getVStudentSourseScheduleSignWithParentId:(NSInteger )parent_id andStudentId:(NSInteger )student_id andCourseId:(NSInteger )course_id andSignon:(NSInteger )is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
 
 #pragma mark - 活动
