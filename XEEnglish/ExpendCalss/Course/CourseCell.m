@@ -13,9 +13,11 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     
+    NSLog(@"self.courseInfo:%@",self.courseInfo);
+    
     self.courseTitle.text = self.courseInfo[@"title"];
     self.courseTime.text = self.courseInfo[@"create_time"];
-    self.courseState.text = self.courseInfo[@"is_signon"];
+    self.courseState.text = [NSString stringWithFormat:@"%@",self.courseInfo[@"is_signon"]];
 }
 
 - (IBAction)leaveButtonClicked:(id)sender {

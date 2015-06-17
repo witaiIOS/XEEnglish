@@ -82,8 +82,8 @@
     self.studentCoursesArray = [NSMutableArray array];
     
     self.courseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, kScreenWidth, kScreenHeight-150-49) style:UITableViewStyleGrouped];
-//    self.courseTableView.delegate = self;
-//    self.courseTableView.dataSource = self;
+    self.courseTableView.delegate = self;
+    self.courseTableView.dataSource = self;
     
     [self.view addSubview:self.courseTableView];
    
@@ -214,7 +214,7 @@
     [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:17 andStudentId:63 andCourseId:1 andSignon:0 andSort:@"" andOrder:@"" andPageSize:10 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             
-            NSLog(@"getVStudentSourseScheduleSign result:%@",result);
+            //NSLog(@"getVStudentSourseScheduleSign result:%@",result);
             
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
@@ -225,8 +225,6 @@
                 //NSLog(@"aaaaaaa:%@",studentCourseDic[@"data"]);
                 self.studentCoursesArray = studentCourseDic[@"data"];
                 //NSLog(@"aaaaaaa:%li",[self.studentCoursesArray count]);
-                self.courseTableView.delegate = self;
-                self.courseTableView.dataSource = self;
                 [self.courseTableView reloadData];
             }
         }

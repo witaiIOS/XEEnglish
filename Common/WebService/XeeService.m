@@ -33,7 +33,7 @@
         
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[[MyParser sharedInstance].results dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-        NSLog(@"%@",dic);
+        //NSLog(@"%@",dic);
         
         ////////
         NSNumber *serviceResult = [dic objectForKey:@"result"];
@@ -64,7 +64,7 @@
 
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[[MyParser sharedInstance].results dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-        NSLog(@"%@",dic);
+        //NSLog(@"%@",dic);
         
         ////////
         NSNumber *serviceResult = [dic objectForKey:@"result"];
