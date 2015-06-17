@@ -68,8 +68,8 @@
     [req setHTTPBody:postbody];
     
     
-    NSString *requestURL = [[NSString alloc]initWithData:postbody encoding:NSUTF8StringEncoding];
-    NSLog(@"requestURL:%@",requestURL);
+    //NSString *requestURL = [[NSString alloc]initWithData:postbody encoding:NSUTF8StringEncoding];
+    //NSLog(@"requestURL:%@",requestURL);
     
     AFHTTPRequestOperation *opration = [[AFHTTPRequestOperation alloc] initWithRequest:req];
     return opration;
@@ -112,7 +112,7 @@
  */
 + (AFHTTPRequestOperation *)getVStudentSourseScheduleSignWithParentId:(NSInteger )parent_id andStudentId:(NSInteger )student_id andCourseId:(NSInteger )course_id andSignon:(NSInteger )is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentSourseScheduleSign><web:json>{\"parent_id\":\"%li\",\"student_id\":\"%li\",\"course_id\":\"%li\", \"is_signon\":\"%li\",\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetVStudentSourseScheduleSign>",(long)parent_id,(long)student_id,(long)course_id,(long)is_signon,sort,order,(long)pageSize,(long)pageSize]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentSourseScheduleSign><web:json>{\"parent_id\":%li,\"student_id\":%li,\"course_id\":%li, \"is_signon\":%li,\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":%li,\"pageIndex\":%li}</web:json></web:GetVStudentSourseScheduleSign>",(long)parent_id,(long)student_id,(long)course_id,(long)is_signon,sort,order,(long)pageSize,(long)pageIndex]];
 }
 
 

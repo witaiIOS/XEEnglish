@@ -122,7 +122,7 @@
     
     [self getResponseWithOpration:operation andXmlKey:@"checkPhoneResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         
         if (block) {
             block(result, error);
@@ -137,7 +137,7 @@
     AFHTTPRequestOperation *operation = [WebServiceOpration checkCodeWithPhoneNumber:phoneNumber andCode:code andSign:sign];
     [self getResponseWithOpration:operation andXmlKey:@"checkCodeResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         
         if (block) {
             block(result, error);
@@ -152,7 +152,7 @@
     AFHTTPRequestOperation *operation = [WebServiceOpration registerWithPhoneNumber:phoneNumber andName:name andPassword:password andInvitation_code:invitation_code];
     
     [self getResponseWithOpration:operation andXmlKey:@"registerResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         if (block) {
             block(result,error);
         }
@@ -169,7 +169,7 @@
     AFHTTPRequestOperation *operation = [WebServiceOpration modifyPwdByMobilephoneWithPhoneNumber:phoneNumber andPassword:password];
     
     [self getResponseWithOpration:operation andXmlKey:@"modifyPwdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         if (block) {
             block(result,error);
         }
@@ -186,7 +186,7 @@
     AFHTTPRequestOperation *operation = [WebServiceOpration loginWithPhoneNumber:phoneNumber andPassword:password];
     
     [self getResponseWithOpration:operation andXmlKey:@"LoginResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         if (block) {
             block(result,error);
         }
@@ -202,7 +202,7 @@
     AFHTTPRequestOperation *operation = [WebServiceOpration getVStudentCourseByParentId:parent_id];
     
     [self getResponseWithOpration:operation andXmlKey:@"GetVStudentCourseByParentIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         if (block) {
             block(result,error);
         }
@@ -217,7 +217,7 @@
     AFHTTPRequestOperation *operation = [WebServiceOpration getVStudentSourseScheduleSignWithParentId:parent_id andStudentId:student_id andCourseId:course_id andSignon:is_signon andSort:sort andOrder:order andPageSize:pageSize andPageIndex:pageIndex];
     
     [self getResponseWithOpration:operation andXmlKey:@"GetVStudentSourseScheduleSignResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         if (block) {
             block(result,error);
         }
@@ -249,7 +249,7 @@
     AFHTTPRequestOperation *operation = [WebServiceOpration getSchool];
     
     [self getResponseWithOpration:operation andXmlKey:@"GetSchoolResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         if (block) {
             block(result,error);
         }
@@ -265,7 +265,7 @@
     AFHTTPRequestOperation *operation = [WebServiceOpration modifyPwdWithNewPassword:newPassword andOldPassword:oldPassword andId:parent_id];
     
     [self getResponseWithOpration:operation andXmlKey:@"modifyPwdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         if(block){
             block(result,error);
         }
@@ -280,7 +280,7 @@
     
     AFHTTPRequestOperation *operation = [WebServiceOpration GetActivityInfoByParentIdWithPageSize:pageSize andPageIndex:pageIndex andParentId:parentId];
     [self getResponseWithOpration:operation andXmlKey:@"GetActivityInfoByParentIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         if (block) {
             block(result,error);
         }
@@ -294,7 +294,7 @@
     
     AFHTTPRequestOperation *operation = [WebServiceOpration getCity];
     [self getResponseWithOpration:operation andXmlKey:@"GetCityResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         if (block) {
             block(result,error);
         }

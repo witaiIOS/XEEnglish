@@ -195,7 +195,7 @@
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
-                NSLog(@"resultInfo1111:%@",result[@"resultInfo"]) ;
+                //NSLog(@"resultInfo1111:%@",result[@"resultInfo"]) ;
                 self.students = result[@"resultInfo"];
                 _menu.dataSource = self;
                 _menu.delegate = self;
@@ -213,7 +213,10 @@
 - (void)getVStudentSourseScheduleSign{
     [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:17 andStudentId:63 andCourseId:1 andSignon:0 andSort:@"" andOrder:@"" andPageSize:10 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
-            NSNumber *isResult = result[@"result"];
+            
+            NSLog(@"getVStudentSourseScheduleSign result:%@",result);
+            
+          /*  NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 //NSLog(@"resuleInfo:%@",result[@"resultInfo"]);
                 NSDictionary *studentCourseDic = result[@"resultInfo"];
@@ -225,7 +228,7 @@
                 self.courseTableView.delegate = self;
                 self.courseTableView.dataSource = self;
                 [self.courseTableView reloadData];
-            }
+            }*/
         }
     }];
 }
