@@ -71,7 +71,7 @@
     [self.view addSubview:_menu];
     
     self.courseView = [[UIView alloc] initWithFrame:CGRectMake(0, 110, kScreenWidth, 40)];
-    [self.courseView setBackgroundColor:[UIColor whiteColor]];
+    self.courseView.backgroundColor = [UIColor colorWithRed:244.0f/255.0f green:244.0f/255.0f blue:244.0f/255.0f alpha:1.0];
     
     [self.view addSubview: self.courseView];
     
@@ -330,16 +330,16 @@
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
     if (section == 0) {
-        return 10.0f;
+        return 5.0f;
     }
     else{
-        return 5.0f;
+        return 1.0f;
     }
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
-    return 5.0f;
+    return 1.0f;
 }
 
 
