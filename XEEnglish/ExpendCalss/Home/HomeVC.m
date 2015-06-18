@@ -30,21 +30,21 @@
     _adInfos = [[NSArray alloc] init];
     _serviceInfos = [[NSArray alloc] init];
     
-    [[XeeService sharedInstance] getHomeServiceWithBlock:^(NSNumber *result, NSArray *resultInfo, NSError *error) {
-        if (error) {
-            [UIFactory showAlert:@"网络错误"];
-        }
-        else{
-            if ([result integerValue] == 0) {
-                _serviceInfos = [resultInfo mutableCopy];
-                [self.tableView reloadData];
-            }
-            else{
-                [UIFactory showAlert:@"未知错误"];
-            }
-        }
-
-    }];
+//    [[XeeService sharedInstance] getHomeServiceWithBlock:^(NSNumber *result, NSArray *resultInfo, NSError *error) {
+//        if (error) {
+//            [UIFactory showAlert:@"网络错误"];
+//        }
+//        else{
+//            if ([result integerValue] == 0) {
+//                _serviceInfos = [resultInfo mutableCopy];
+//                [self.tableView reloadData];
+//            }
+//            else{
+//                [UIFactory showAlert:@"未知错误"];
+//            }
+//        }
+//
+//    }];
     
     [[XeeService sharedInstance] getHomeAdWithBlock:^(NSNumber *result, NSArray *resultInfo, NSError *error) {
         if (error) {
@@ -61,6 +61,23 @@
             
         }
 
+    }];
+    
+    [[XeeService sharedInstance] getCourseListAppHomeAndBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            //NSLog(@"result:%@",result);
+            if (isResult.integerValue == 0) {
+                self.serviceInfos = result[@"resultInfo"];
+                [self.tableView reloadData];
+            }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }
+        else{
+            [UIFactory showAlert:@"网络错误"];
+        }
     }];
  
 }

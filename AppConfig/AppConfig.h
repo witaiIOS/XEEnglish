@@ -22,7 +22,8 @@
 #define MZBimageURLPrefix @"http://www.mrchabo.com/mrchabo/"
 #define MZBWebURL @"http://www.mrchabo.com/houseWs/ws/houseWs?wsdl"
 
-#define XEEimageURLPrefix @"http://218.244.143.58:604"
+//#define XEEimageURLPrefix @"http://218.244.143.58:604"
+#define XEEimageURLPrefix @"http://218.244.143.58:604/files/"
 #define XEEWebURL @"http://218.244.143.58:604/ShaneAppWs.asmx?wsdl"
 
 ///用户信息key

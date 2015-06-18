@@ -193,6 +193,25 @@
     }];
 }
 
+#pragma mark - 首页
+/**
+ 获取首页课程列表
+ @param {}
+ */
+- (void)getCourseListAppHomeAndBlock:(void(^)(NSDictionary *result,NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getCourseListAppHome];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetCourseListAppHomeResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        NSLog(@"result:%@",result);
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
+
+
 #pragma mark - 课程
 /**
  通过家长id，查找学生选课关系简介列表

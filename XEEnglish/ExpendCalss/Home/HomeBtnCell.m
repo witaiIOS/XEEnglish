@@ -32,10 +32,32 @@
 - (void)setButtonInfo{
     
     ///
-    HomeButton *button1 = (HomeButton *)[self viewWithTag:1];
-    [button1 setTitle:[_serviceDic1 objectForKey:@"serviceName"] forState:UIControlStateNormal];
+//    HomeButton *button1 = (HomeButton *)[self viewWithTag:1];
+//    [button1 setTitle:[_serviceDic1 objectForKey:@"serviceName"] forState:UIControlStateNormal];
+//    
+//    NSString *imageUrl1 = [NSString stringWithFormat:@"%@%@",MZBimageURLPrefix,[_serviceDic1 objectForKey:@"servicePhoto"]];
+//    
+//    [button1 setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl1] placeholderImage:[UIImage imageNamed:@""]];
+//    
+//    ///
+//    HomeButton *button2 = (HomeButton *)[self viewWithTag:2];
+//    if (_serviceDic2) {
+//        [button2 setHidden:NO];
+//        
+//        [button2 setTitle:[_serviceDic2 objectForKey:@"serviceName"] forState:UIControlStateNormal];
+//        
+//        NSString *imageUrl2 = [NSString stringWithFormat:@"%@%@",MZBimageURLPrefix,[_serviceDic2 objectForKey:@"servicePhoto"]];
+//        
+//        [button2 setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl2] placeholderImage:[UIImage imageNamed:@""]];
+//    }
+//    else{
+//        [button2 setHidden:YES];
+//    }
     
-    NSString *imageUrl1 = [NSString stringWithFormat:@"%@%@",MZBimageURLPrefix,[_serviceDic1 objectForKey:@"servicePhoto"]];
+    HomeButton *button1 = (HomeButton *)[self viewWithTag:1];
+    [button1 setTitle:[_serviceDic1 objectForKey:@"title"] forState:UIControlStateNormal];
+    
+    NSString *imageUrl1 = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[_serviceDic1 objectForKey:@"photo"]];
     
     [button1 setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl1] placeholderImage:[UIImage imageNamed:@""]];
     
@@ -44,17 +66,16 @@
     if (_serviceDic2) {
         [button2 setHidden:NO];
         
-        [button2 setTitle:[_serviceDic2 objectForKey:@"serviceName"] forState:UIControlStateNormal];
+        [button2 setTitle:[_serviceDic2 objectForKey:@"title"] forState:UIControlStateNormal];
         
-        NSString *imageUrl2 = [NSString stringWithFormat:@"%@%@",MZBimageURLPrefix,[_serviceDic2 objectForKey:@"servicePhoto"]];
+        NSString *imageUrl2 = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[_serviceDic2 objectForKey:@"photo"]];
         
         [button2 setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl2] placeholderImage:[UIImage imageNamed:@""]];
     }
     else{
         [button2 setHidden:YES];
     }
-    
-    
+
     
 }
 
