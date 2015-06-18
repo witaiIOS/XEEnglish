@@ -28,12 +28,12 @@
 
 @property (strong, nonatomic) JSDropDownMenu *menu;
 
-
 @property (strong, nonatomic) UIView *courseView;//上课信息的View
 @property (strong, nonatomic) UILabel *courseTotal;//总课时
 @property (strong, nonatomic) UILabel *courseComplete;//已完成课时
 @property (strong, nonatomic) UIButton *courseLeave;//请假次数，需完成页面跳转
 @property (strong, nonatomic) UIButton *courseAbsent;//缺课次数，需完成跳转
+
 
 @property (strong, nonatomic) NSMutableArray *studentCoursesArray;
 @property (strong, nonatomic) UITableView *courseTableView;//课表
@@ -70,17 +70,17 @@
    
     [self.view addSubview:_menu];
     
-    [self getVStudentSourseScheduleSign];
-    
+//    [self getVStudentSourseScheduleSign];
+    //课程信息栏
     self.courseView = [[UIView alloc] initWithFrame:CGRectMake(0, 110, kScreenWidth, 40)];
     self.courseView.backgroundColor = [UIColor colorWithRed:244.0f/255.0f green:244.0f/255.0f blue:244.0f/255.0f alpha:1.0];
     
     [self.view addSubview: self.courseView];
     
     [self courseViewLayout];
-    
+    //学生课程表数组
     self.studentCoursesArray = [NSMutableArray array];
-    
+    //学生课程表
     self.courseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, kScreenWidth, kScreenHeight-150-49) style:UITableViewStyleGrouped];
     self.courseTableView.delegate = self;
     self.courseTableView.dataSource = self;
@@ -199,6 +199,8 @@
                 self.students = result[@"resultInfo"];
                 _menu.dataSource = self;
                 _menu.delegate = self;
+                [self getVStudentSourseScheduleSign];
+                [self.courseTableView reloadData];
             }
             else{
                 [UIFactory showAlert:@"未知错误"];
@@ -211,7 +213,20 @@
 }
 
 - (void)getVStudentSourseScheduleSign{
-    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:17 andStudentId:63 andCourseId:1 andSignon:0 andSort:@"" andOrder:@"" andPageSize:10 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
+    //NSString *studentId = self.students[self.currentStudentsIndex][@"student_id"];
+    //NSString *courseId = self.courseList[self.currentCouseListIndex][@"course_id"];
+    NSDictionary *studentDic = self.students[self.currentStudentsIndex];
+    NSString *studentId = studentDic[@"student_id"];
+    NSLog(@"studentId:%@",studentId);
+    
+    //NSDictionary *courseDic = self.courseList[self.currentCouseListIndex];
+    NSMutableArray *courseArray = studentDic[@"listCourse"];
+    NSDictionary *courseDic = courseArray[_currentCouseListIndex];
+    NSString *courseId = courseDic[@"course_id"];
+    NSLog(@"courseId:%@",courseId);
+    
+    
+    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:@"17" andStudentId:studentId andCourseId:courseId andSignon:@"0" andSort:@"" andOrder:@"" andPageSize:10 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             
             //NSLog(@"getVStudentSourseScheduleSign result:%@",result);

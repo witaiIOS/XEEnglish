@@ -212,7 +212,7 @@
 /**
  通过student_id学员id，获取课程计划签到信息分页(获取请假/缺课列表 共用)
  */
-- (void)getVStudentSourseScheduleSignWithParentId:(NSInteger )parent_id andStudentId:(NSInteger )student_id andCourseId:(NSInteger )course_id andSignon:(NSInteger )is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+- (void)getVStudentSourseScheduleSignWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andCourseId:(NSString *)course_id andSignon:(NSString *)is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void(^)(NSDictionary *result,NSError *error))block{
     
     AFHTTPRequestOperation *operation = [WebServiceOpration getVStudentSourseScheduleSignWithParentId:parent_id andStudentId:student_id andCourseId:course_id andSignon:is_signon andSort:sort andOrder:order andPageSize:pageSize andPageIndex:pageIndex];
     

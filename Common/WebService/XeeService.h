@@ -92,7 +92,7 @@
  @param PageSize  每页最大条数
  @param PageIndex 从1开始的索引
  */
-- (void)getVStudentSourseScheduleSignWithParentId:(NSInteger )parent_id andStudentId:(NSInteger )student_id andCourseId:(NSInteger )course_id andSignon:(NSInteger )is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void(^)(NSDictionary *result,NSError *error))block;
+- (void)getVStudentSourseScheduleSignWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andCourseId:(NSString *)course_id andSignon:(NSString *)is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
 
 #pragma mark - 活动

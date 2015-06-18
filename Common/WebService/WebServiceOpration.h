@@ -98,7 +98,7 @@
  @param PageSize  每页最大条数
  @param PageIndex 从1开始的索引
  */
-+ (AFHTTPRequestOperation *)getVStudentSourseScheduleSignWithParentId:(NSInteger )parent_id andStudentId:(NSInteger )student_id andCourseId:(NSInteger )course_id andSignon:(NSInteger )is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex;
++ (AFHTTPRequestOperation *)getVStudentSourseScheduleSignWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andCourseId:(NSString *)course_id andSignon:(NSString *)is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex;
 
 #pragma mark - 活动
 /**

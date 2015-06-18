@@ -110,9 +110,9 @@
 /**
  通过student_id学员id，获取课程计划签到信息分页(获取请假/缺课列表 共用)
  */
-+ (AFHTTPRequestOperation *)getVStudentSourseScheduleSignWithParentId:(NSInteger )parent_id andStudentId:(NSInteger )student_id andCourseId:(NSInteger )course_id andSignon:(NSInteger )is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex{
++ (AFHTTPRequestOperation *)getVStudentSourseScheduleSignWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andCourseId:(NSString *)course_id andSignon:(NSString *)is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentSourseScheduleSign><web:json>{\"parent_id\":%li,\"student_id\":%li,\"course_id\":%li, \"is_signon\":%li,\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":%li,\"pageIndex\":%li}</web:json></web:GetVStudentSourseScheduleSign>",(long)parent_id,(long)student_id,(long)course_id,(long)is_signon,sort,order,(long)pageSize,(long)pageIndex]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentSourseScheduleSign><web:json>{\"parent_id\":%@,\"student_id\":%@,\"course_id\":%@, \"is_signon\":%@,\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":%li,\"pageIndex\":%li}</web:json></web:GetVStudentSourseScheduleSign>",parent_id,student_id,course_id,is_signon,sort,order,(long)pageSize,(long)pageIndex]];
 }
 
 
