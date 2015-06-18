@@ -9,6 +9,8 @@
 #import "AllCoursesVC.h"
 #import "JSDropDownMenu.h"
 
+#import "XeeService.h"
+
 @interface AllCoursesVC ()<JSDropDownMenuDataSource,JSDropDownMenuDelegate>
 
 @property (nonatomic, strong) NSMutableArray *coursesArray;
@@ -54,6 +56,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//待做
+#pragma mark - Web
+- (void)getCourseCategoryAge{
+    
+    [[XeeService sharedInstance] getCourseListAppHomeAndBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                
+            }
+        }
+    }];
 }
 
 

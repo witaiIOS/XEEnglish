@@ -203,14 +203,28 @@
     AFHTTPRequestOperation *operation = [WebServiceOpration getCourseListAppHome];
     
     [self getResponseWithOpration:operation andXmlKey:@"GetCourseListAppHomeResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         if (block) {
             block(result,error);
         }
     }];
 }
 
-
+/**
+ 获取首页课程列表
+ @param {}
+ */
+- (void)getCourseCategoryAgeAndBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getCourseCategoryAge];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetCourseCategoryAgeResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        NSLog(@"result:%@",result);
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
 
 #pragma mark - 课程
 /**

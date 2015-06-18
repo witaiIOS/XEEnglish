@@ -87,7 +87,11 @@
  */
 + (AFHTTPRequestOperation *)getCourseListAppHome;
 
-
+/**
+ 获取首页课程列表
+ @param {}
+ */
++ (AFHTTPRequestOperation *)getCourseCategoryAge;
 
 #pragma mark - 课程
 /**

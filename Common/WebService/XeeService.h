@@ -82,6 +82,13 @@
 - (void)getCourseListAppHomeAndBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
 
+/**
+ 获取首页课程列表
+ @param {}
+ */
+- (void)getCourseCategoryAgeAndBlock:(void(^)(NSDictionary *result, NSError *error))block;
+
+
 #pragma mark - 课程
 /**
  通过家长id，查找学生选课关系简介列表

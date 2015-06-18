@@ -108,6 +108,15 @@
 }
 
 
+/**
+ 获取首页课程列表
+ @param {}
+ */
++ (AFHTTPRequestOperation *)getCourseCategoryAge{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@" <web:GetCourseCategoryAge><web:json>{}</web:json></web:GetCourseCategoryAge>"]];
+}
+
 #pragma mark - 课程
 /**
  通过家长id，查找学生选课关系简介列表
