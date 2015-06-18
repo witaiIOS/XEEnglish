@@ -237,7 +237,10 @@
                 //NSLog(@"aaaaaaa:%@",result[@"resultInfo"]);
                 //NSLog(@"aaaaaaa:%@",studentCourseDic[@"student_id"]);
                 //NSLog(@"aaaaaaa:%@",studentCourseDic[@"data"]);
+                
+                //获取当前学生的当前课程 上课的相关信息
                 [self getCourseViewInfo:studentCourseDic];
+                //获取当前学生当前课程 课表的信息数据，并刷新课表
                 self.studentCoursesArray = studentCourseDic[@"data"];
                 //NSLog(@"aaaaaaa:%li",[self.studentCoursesArray count]);
                 [self.courseTableView reloadData];
@@ -246,7 +249,7 @@
     }];
 }
 
-
+//获取当前学生的当前课程 上课的相关信息
 - (void)getCourseViewInfo:(NSDictionary *)studentCourseDic{
     
     self.courseTotal.text = studentCourseDic[@"totalCount"];
@@ -341,10 +344,12 @@
 - (void)menu:(JSDropDownMenu *)menu didSelectRowAtIndexPath:(JSIndexPath *)indexPath {
     if (indexPath.column == 0) {
         _currentStudentsIndex = indexPath.row;
+        //点击更换学生后，重新发送请求刷新课表信息。
         [self getVStudentSourseScheduleSign];
     }
     else if (indexPath.column == 1) {
         _currentCouseListIndex = indexPath.row;
+        //点击更换课表后，中心发送请求刷新课表信息。
         [self getVStudentSourseScheduleSign];
     }
 }
