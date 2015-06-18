@@ -100,7 +100,7 @@
     
     self.courseTotal = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 20, 30)];
     self.courseTotal.font = [UIFont systemFontOfSize:12];
-    self.courseTotal.text = @"48";
+    //self.courseTotal.text = @"48";
     self.courseTotal.textColor = [UIColor blackColor];
     
     [self.courseView addSubview:self.courseTotal];
@@ -114,7 +114,7 @@
     
     self.courseComplete = [[UILabel alloc] initWithFrame:CGRectMake(120, 5, 20, 30)];
     self.courseComplete.font = [UIFont systemFontOfSize:12];
-    self.courseComplete.text = @"12";
+    //self.courseComplete.text = @"12";
     self.courseComplete.textColor = [UIColor blackColor];
     
     [self.courseView addSubview:self.courseComplete];
@@ -128,7 +128,7 @@
     
     self.courseLeave = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.courseLeave setFrame:CGRectMake(200, 9, 30, 20)];
-    [self.courseLeave setTitle:@"0" forState:UIControlStateNormal];
+    //[self.courseLeave setTitle:@"0" forState:UIControlStateNormal];
     [self.courseLeave setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     [self.courseLeave.titleLabel setFont:[UIFont systemFontOfSize:12]];
     [self.courseLeave addTarget:self action:@selector(courseLeaveToLeaveVC) forControlEvents:UIControlEventTouchUpInside];
@@ -149,7 +149,7 @@
     
     self.courseAbsent = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.courseAbsent setFrame:CGRectMake(270, 9, 30, 20)];
-    [self.courseAbsent setTitle:@"0" forState:UIControlStateNormal];
+    //[self.courseAbsent setTitle:@"0" forState:UIControlStateNormal];
     [self.courseAbsent setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     [self.courseAbsent.titleLabel setFont:[UIFont systemFontOfSize:12]];
     [self.courseAbsent addTarget:self action:@selector(courseAbsentToAbsentVC) forControlEvents:UIControlEventTouchUpInside];
@@ -225,7 +225,7 @@
     //NSLog(@"courseId:%@",courseId);
     
     
-    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:@"17" andStudentId:studentId andCourseId:courseId andSignon:@"0" andSort:@"" andOrder:@"" andPageSize:10 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:@"17" andStudentId:studentId andCourseId:courseId andSignon:@"0" andSort:@"" andOrder:@"" andPageSize:100 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             
             //NSLog(@"getVStudentSourseScheduleSign result:%@",result);
@@ -237,12 +237,22 @@
                 //NSLog(@"aaaaaaa:%@",result[@"resultInfo"]);
                 //NSLog(@"aaaaaaa:%@",studentCourseDic[@"student_id"]);
                 //NSLog(@"aaaaaaa:%@",studentCourseDic[@"data"]);
+                [self getCourseViewInfo:studentCourseDic];
                 self.studentCoursesArray = studentCourseDic[@"data"];
                 //NSLog(@"aaaaaaa:%li",[self.studentCoursesArray count]);
                 [self.courseTableView reloadData];
             }
         }
     }];
+}
+
+
+- (void)getCourseViewInfo:(NSDictionary *)studentCourseDic{
+    
+    self.courseTotal.text = studentCourseDic[@"totalCount"];
+    self.courseComplete.text = studentCourseDic[@"unit_count_over"];
+    [self.courseLeave setTitle:studentCourseDic[@"unit_count_miss"] forState:UIControlStateNormal];
+    [self.courseAbsent setTitle:studentCourseDic[@"unit_count_leave"] forState:UIControlStateNormal];
 }
 
 #pragma mark - JSDropDownMenu datasouce delegate
