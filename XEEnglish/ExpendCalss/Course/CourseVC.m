@@ -200,7 +200,6 @@
                 _menu.dataSource = self;
                 _menu.delegate = self;
                 [self getVStudentSourseScheduleSign];
-                [self.courseTableView reloadData];
             }
             else{
                 [UIFactory showAlert:@"未知错误"];
@@ -217,13 +216,13 @@
     //NSString *courseId = self.courseList[self.currentCouseListIndex][@"course_id"];
     NSDictionary *studentDic = self.students[self.currentStudentsIndex];
     NSString *studentId = studentDic[@"student_id"];
-    NSLog(@"studentId:%@",studentId);
+    //NSLog(@"studentId:%@",studentId);
     
     //NSDictionary *courseDic = self.courseList[self.currentCouseListIndex];
     NSMutableArray *courseArray = studentDic[@"listCourse"];
     NSDictionary *courseDic = courseArray[_currentCouseListIndex];
     NSString *courseId = courseDic[@"course_id"];
-    NSLog(@"courseId:%@",courseId);
+    //NSLog(@"courseId:%@",courseId);
     
     
     [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:@"17" andStudentId:studentId andCourseId:courseId andSignon:@"0" andSort:@"" andOrder:@"" andPageSize:10 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
@@ -332,9 +331,11 @@
 - (void)menu:(JSDropDownMenu *)menu didSelectRowAtIndexPath:(JSIndexPath *)indexPath {
     if (indexPath.column == 0) {
         _currentStudentsIndex = indexPath.row;
+        [self getVStudentSourseScheduleSign];
     }
     else if (indexPath.column == 1) {
         _currentCouseListIndex = indexPath.row;
+        [self getVStudentSourseScheduleSign];
     }
 }
 
