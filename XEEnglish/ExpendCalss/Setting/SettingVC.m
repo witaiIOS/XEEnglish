@@ -12,7 +12,7 @@
 
 
 #import "PersonInfoVC.h"
-#import "CouponsVC.h"
+//#import "CouponsVC.h"
 #import "MyScheduleVC.h"
 
 #import "CitiesVC.h"
@@ -176,7 +176,7 @@
         return 1;
     }
     else if(section == 1){
-        return 4;
+        return 3;
     }
     else{
         return 2;
@@ -215,17 +215,17 @@
                 image = [UIImage imageNamed:@"STintegral.png"];
                 break;
             }
+//            case 1:
+//            {
+//                str =@"优惠券";
+//                image = [UIImage imageNamed:@"STcoupon.png"];
+//                break;
+//            }
             case 1:
-            {
-                str =@"优惠券";
-                image = [UIImage imageNamed:@"STcoupon.png"];
-                break;
-            }
-            case 2:
                 str =@"我的预定";
                 image = [UIImage imageNamed:@"STreserve.png"];
                 break;
-            case 3:
+            case 2:
                 str = @"消费记录";
                 image = [UIImage imageNamed:@"STexpense.png"];
                 break;
@@ -291,22 +291,22 @@
                 break;
             }
                 
-            case 1:
-            {
-                CouponsVC *vc = [[CouponsVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-                break;
-            }
+//            case 1:
+//            {
+//                CouponsVC *vc = [[CouponsVC alloc] init];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//                break;
+//            }
                 
-            case 2:
+            case 1:
             {
                 MyScheduleVC *vc = [[MyScheduleVC alloc] init];
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
-            case 3:
+            case 2:
             {
                 break;
             }
