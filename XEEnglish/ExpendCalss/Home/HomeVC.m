@@ -11,6 +11,8 @@
 #import "HomeAdCell.h"
 #import "XeeService.h"
 
+#import "AllCoursesVC.h"
+
 @interface HomeVC ()<HomeBtnCellDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -170,8 +172,15 @@
 #pragma mark - HomeBtnCell delegate
 - (void)HomeBtnCellButtonPressed:(id)sender andServiceInfo:(NSDictionary *)serviceDic{
     
-    UIButton *button = (UIButton *)sender;
-    NSLog(@"button.tag:%li",(long)button.tag);
+    //UIButton *button = (UIButton *)sender;
+    //NSLog(@"button.tag:%li",(long)button.tag);
+    //NSLog(@"serviceDic:%@",serviceDic);
+    NSString *courseIdStr = [NSString stringWithFormat:@"%@",serviceDic[@"course_id"]];
+    if([courseIdStr isEqualToString:@"0"]){
+        AllCoursesVC *vc = [[AllCoursesVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 
