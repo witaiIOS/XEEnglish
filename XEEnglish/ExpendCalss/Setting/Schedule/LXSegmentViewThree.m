@@ -139,7 +139,7 @@
 {
     //NSLog(@"button:%li",(long)(button.frame.origin.x));
     //NSLog(@"width:%li",(long)(self.frame.size.width));
-    _currentIndex = (button.frame.origin.x +2)/(self.frame.size.width/3);
+    _currentIndex = button.tag-1;//(button.frame.origin.x +2)/(self.frame.size.width/3);
     //NSLog(@"currentIndex:%li",_currentIndex);
     [self scrolltabButtonSeclectImageViewAndSelectButtonForIndex:_currentIndex];
     
