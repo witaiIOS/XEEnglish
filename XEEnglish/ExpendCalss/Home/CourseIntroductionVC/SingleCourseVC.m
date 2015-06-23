@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"课程介绍";
+    //self.title = @"课程介绍";
 }
 
 

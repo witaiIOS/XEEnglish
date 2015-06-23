@@ -180,11 +180,13 @@
     if([courseIdStr isEqualToString:@"0"]){
         AllCoursesVC *vc = [[AllCoursesVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
+        vc.title = [serviceDic objectForKey:@"title"];
         [self.navigationController pushViewController:vc animated:YES];
     }
     else{
         SingleCourseVC *vc = [[SingleCourseVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
+        vc.title = [serviceDic objectForKey:@"title"];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

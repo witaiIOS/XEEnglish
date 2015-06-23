@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"所有课程";
+    //self.title = @"所有课程";
     
     self.coursesArray = [NSMutableArray arrayWithObjects:@"英语课", @"艺术课",@"趣味课",nil];
     self.ageGroupArray = [NSMutableArray arrayWithObjects:@"1013~1011", @"1021~1020",@"1022~1020",nil];
