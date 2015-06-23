@@ -8,6 +8,8 @@
 
 #import "SingleCourseVC.h"
 
+#import "ListenCourseVC.h"
+
 @interface SingleCourseVC ()
 
 @property (nonatomic, strong) UILabel *ageLabel;
@@ -96,7 +98,10 @@
 #pragma mark - My Action
 
 - (void)listenBtnClicked{
-    
+    ListenCourseVC *vc = [[ListenCourseVC alloc] init];
+    //vc.hidesBottomBarWhenPushed = YES;
+    vc.title = self.title;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)buyBtnClicked{
