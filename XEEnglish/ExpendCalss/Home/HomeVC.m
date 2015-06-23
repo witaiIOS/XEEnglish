@@ -12,6 +12,7 @@
 #import "XeeService.h"
 
 #import "AllCoursesVC.h"
+#import "SingleCourseVC.h"
 
 @interface HomeVC ()<HomeBtnCellDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -178,6 +179,11 @@
     NSString *courseIdStr = [NSString stringWithFormat:@"%@",serviceDic[@"course_id"]];
     if([courseIdStr isEqualToString:@"0"]){
         AllCoursesVC *vc = [[AllCoursesVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else{
+        SingleCourseVC *vc = [[SingleCourseVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
