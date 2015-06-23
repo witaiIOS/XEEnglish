@@ -8,7 +8,8 @@
 
 #import "SingleCourseVC.h"
 
-#import "ListenCourseVC.h"
+//#import "ListenCourseVC.h"
+#import "ListeningCourseVC.h"
 
 @interface SingleCourseVC ()
 
@@ -98,9 +99,8 @@
 #pragma mark - My Action
 
 - (void)listenBtnClicked{
-    ListenCourseVC *vc = [[ListenCourseVC alloc] init];
-    //vc.hidesBottomBarWhenPushed = YES;
-    vc.title = self.title;
+    ListeningCourseVC *vc = [[ListeningCourseVC alloc] init];
+    vc.courseName = self.title;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
