@@ -59,10 +59,13 @@
 
 - (void)refuseBtnClicked{
     
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)agreeBtnClicked{
     
+    [self.delegate changeSelectedBtn:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -13,7 +13,7 @@
 #import "PayCourseVC.h"
 #import "PayProtocolVC.h"
 
-@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *selectedBtn;
@@ -100,6 +100,7 @@
 - (void)protocolBtnClicked{
     
     PayProtocolVC *vc = [[PayProtocolVC alloc] init];
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -223,6 +224,10 @@
     return 44.0f;
 }
 
+#pragma mark - changeSelectedBtnDelegate
 
+- (void)changeSelectedBtn:(BOOL)sender{
+    self.selectedBtn.selected = sender;
+}
 
 @end

@@ -7,7 +7,16 @@
 //
 
 #import "BaseVC.h"
+@protocol changeSelectedBtnDelegate <NSObject>
+
+@optional
+- (void)changeSelectedBtn:(BOOL)sender;
+
+@end
+
 
 @interface PayProtocolVC : BaseVC
+
+@property (nonatomic, strong) id<changeSelectedBtnDelegate> delegate;
 
 @end
