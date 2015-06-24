@@ -10,6 +10,7 @@
 
 //#import "ListenCourseVC.h"
 #import "ListeningCourseVC.h"
+#import "BuyCourseVC.h"
 
 @interface SingleCourseVC ()
 
@@ -108,6 +109,9 @@
 
 - (void)buyBtnClicked{
     
+    BuyCourseVC *vc = [[BuyCourseVC alloc] init];
+    vc.courseName = self.title;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*
