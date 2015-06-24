@@ -106,9 +106,14 @@
 
 
 - (void)buyBtnClicked{
+    if (self.selectedBtn.selected) {
+        PayCourseVC *vc = [[PayCourseVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else{
+        [UIFactory showAlert:@"请阅读并同意协议"];
+    }
     
-    PayCourseVC *vc = [[PayCourseVC alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableView DataSource
