@@ -29,6 +29,8 @@
 
 - (void)initUI{
     
+    [super initUI];
+    
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 60)];
     headView.backgroundColor = [UIColor whiteColor];
     
