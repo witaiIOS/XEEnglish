@@ -35,8 +35,8 @@
         
         [self.contentView addSubview:myUnitLabel];
         
-        UILabel *myLineLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 40, 180, 1)];
-        myLineLabel.textColor = [UIColor redColor];
+        UILabel *myLineLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 35, 180, 1)];
+        myLineLabel.backgroundColor = [UIColor lightGrayColor];
         
         [self.contentView addSubview:myLineLabel];
     }
