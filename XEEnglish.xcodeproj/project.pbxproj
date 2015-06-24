@@ -27,6 +27,12 @@
 		09C328611B301D8E009F0BAB /* CourseLeaveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C328601B301D8E009F0BAB /* CourseLeaveVC.m */; };
 		09C328641B301E24009F0BAB /* CourseAbsentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C328631B301E24009F0BAB /* CourseAbsentVC.m */; };
 		09C639441B3A69D400510F00 /* BuyCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C639431B3A69D400510F00 /* BuyCourseVC.m */; };
+		09C639481B3A917400510F00 /* PayCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C639471B3A917400510F00 /* PayCourseVC.m */; };
+		09C6394B1B3A935100510F00 /* PaymoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6394A1B3A935100510F00 /* PaymoneyCell.m */; };
+		09C6394E1B3A957F00510F00 /* PayMethodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6394D1B3A957F00510F00 /* PayMethodCell.m */; };
+		09C639521B3A9F5E00510F00 /* pay_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C6394F1B3A9F5E00510F00 /* pay_01.png */; };
+		09C639541B3A9F5E00510F00 /* pay_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C639511B3A9F5E00510F00 /* pay_03.png */; };
+		09C639561B3AA77400510F00 /* pay_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C639551B3AA77400510F00 /* pay_02.png */; };
 		09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A41B25AC4700E72163 /* ActivityContentCell.m */; };
 		09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A71B25BB0100E72163 /* otherRequireCell.m */; };
 		09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */; };
@@ -73,7 +79,6 @@
 		09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DB71B1322800078AAF5 /* nav_back.png */; };
 		09DB2DBA1B1322800078AAF5 /* s_phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DB81B1322800078AAF5 /* s_phone.png */; };
 		09DB2DBE1B13228B0078AAF5 /* join_05.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DBC1B13228B0078AAF5 /* join_05.png */; };
-		09DB2DBF1B13228B0078AAF5 /* join_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DBD1B13228B0078AAF5 /* join_06.png */; };
 		09DB2DC31B1322980078AAF5 /* icon_time.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DC11B1322980078AAF5 /* icon_time.png */; };
 		09DB2DC41B1322980078AAF5 /* join_07.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DC21B1322980078AAF5 /* join_07.png */; };
 		09DB2DC81B1322A30078AAF5 /* mybgpic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DC61B1322A30078AAF5 /* mybgpic@2x.png */; };
@@ -205,6 +210,15 @@
 		09C328631B301E24009F0BAB /* CourseAbsentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseAbsentVC.m; sourceTree = "<group>"; };
 		09C639421B3A69D400510F00 /* BuyCourseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyCourseVC.h; sourceTree = "<group>"; };
 		09C639431B3A69D400510F00 /* BuyCourseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyCourseVC.m; sourceTree = "<group>"; };
+		09C639461B3A917400510F00 /* PayCourseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayCourseVC.h; sourceTree = "<group>"; };
+		09C639471B3A917400510F00 /* PayCourseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayCourseVC.m; sourceTree = "<group>"; };
+		09C639491B3A935100510F00 /* PaymoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymoneyCell.h; sourceTree = "<group>"; };
+		09C6394A1B3A935100510F00 /* PaymoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymoneyCell.m; sourceTree = "<group>"; };
+		09C6394C1B3A957F00510F00 /* PayMethodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayMethodCell.h; sourceTree = "<group>"; };
+		09C6394D1B3A957F00510F00 /* PayMethodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayMethodCell.m; sourceTree = "<group>"; };
+		09C6394F1B3A9F5E00510F00 /* pay_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_01.png; sourceTree = "<group>"; };
+		09C639511B3A9F5E00510F00 /* pay_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_03.png; sourceTree = "<group>"; };
+		09C639551B3AA77400510F00 /* pay_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_02.png; sourceTree = "<group>"; };
 		09C832A31B25AC4700E72163 /* ActivityContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityContentCell.h; sourceTree = "<group>"; };
 		09C832A41B25AC4700E72163 /* ActivityContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityContentCell.m; sourceTree = "<group>"; };
 		09C832A61B25BB0100E72163 /* otherRequireCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = otherRequireCell.h; sourceTree = "<group>"; };
@@ -272,7 +286,6 @@
 		09DB2DB71B1322800078AAF5 /* nav_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_back.png; sourceTree = "<group>"; };
 		09DB2DB81B1322800078AAF5 /* s_phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s_phone.png; sourceTree = "<group>"; };
 		09DB2DBC1B13228B0078AAF5 /* join_05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = join_05.png; sourceTree = "<group>"; };
-		09DB2DBD1B13228B0078AAF5 /* join_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = join_06.png; sourceTree = "<group>"; };
 		09DB2DC11B1322980078AAF5 /* icon_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_time.png; sourceTree = "<group>"; };
 		09DB2DC21B1322980078AAF5 /* join_07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = join_07.png; sourceTree = "<group>"; };
 		09DB2DC61B1322A30078AAF5 /* mybgpic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mybgpic@2x.png"; sourceTree = "<group>"; };
@@ -460,6 +473,7 @@
 		0980856B1B32C35A00BE9336 /* CourseIntroductionVC */ = {
 			isa = PBXGroup;
 			children = (
+				09C639451B3A915D00510F00 /* PayCourseVC */,
 				0980856C1B32C37500BE9336 /* AllCoursesVC.h */,
 				0980856D1B32C37500BE9336 /* AllCoursesVC.m */,
 				09DC56FD1B390DEB00636C70 /* SingleCourseVC.h */,
@@ -474,6 +488,19 @@
 				09C639431B3A69D400510F00 /* BuyCourseVC.m */,
 			);
 			path = CourseIntroductionVC;
+			sourceTree = "<group>";
+		};
+		09C639451B3A915D00510F00 /* PayCourseVC */ = {
+			isa = PBXGroup;
+			children = (
+				09C639461B3A917400510F00 /* PayCourseVC.h */,
+				09C639471B3A917400510F00 /* PayCourseVC.m */,
+				09C639491B3A935100510F00 /* PaymoneyCell.h */,
+				09C6394A1B3A935100510F00 /* PaymoneyCell.m */,
+				09C6394C1B3A957F00510F00 /* PayMethodCell.h */,
+				09C6394D1B3A957F00510F00 /* PayMethodCell.m */,
+			);
+			path = PayCourseVC;
 			sourceTree = "<group>";
 		};
 		09C9C0E81B22E059001BBA1C /* SchedulePlace */ = {
@@ -535,10 +562,12 @@
 		09DB2DBB1B13228B0078AAF5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				09C639551B3AA77400510F00 /* pay_02.png */,
+				09C6394F1B3A9F5E00510F00 /* pay_01.png */,
+				09C639511B3A9F5E00510F00 /* pay_03.png */,
 				094DD25F1B3954830045EF2C /* arrow_right_gray.png */,
 				A6647CBF1B270E9B00D2DC57 /* course7.png */,
 				09DB2DBC1B13228B0078AAF5 /* join_05.png */,
-				09DB2DBD1B13228B0078AAF5 /* join_06.png */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1131,6 +1160,7 @@
 				A6B1CEE21B1C62D400100E9F /* SettingSignatureVC.xib in Resources */,
 				09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */,
 				A6284CD81B10592100EFF820 /* Main.storyboard in Resources */,
+				09C639541B3A9F5E00510F00 /* pay_03.png in Resources */,
 				09DB2DCE1B1322AF0078AAF5 /* accountDetail04@2x.png in Resources */,
 				09DB2DC31B1322980078AAF5 /* icon_time.png in Resources */,
 				09DB2DD21B1322CC0078AAF5 /* star_select.png in Resources */,
@@ -1149,12 +1179,13 @@
 				A6284D9D1B1067C100EFF820 /* LoginVC.xib in Resources */,
 				09DB2DC91B1322A30078AAF5 /* people_ayb.png in Resources */,
 				094DD2601B3954830045EF2C /* arrow_right_gray.png in Resources */,
-				09DB2DBF1B13228B0078AAF5 /* join_06.png in Resources */,
 				09C9C0F71B22FA19001BBA1C /* no.png in Resources */,
+				09C639561B3AA77400510F00 /* pay_02.png in Resources */,
 				09C9C0E21B22C890001BBA1C /* STintegral.png in Resources */,
 				A63A0A821B2D1BFF003D3852 /* chekbox_select.png in Resources */,
 				09C95EC21B2806FA000972D8 /* school_unselected.png in Resources */,
 				09C9C0E01B22C890001BBA1C /* STcoupon.png in Resources */,
+				09C639521B3A9F5E00510F00 /* pay_01.png in Resources */,
 				09C9C0F81B22FA19001BBA1C /* yes.png in Resources */,
 				A6284CDA1B10592100EFF820 /* Images.xcassets in Resources */,
 				090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */,
@@ -1197,8 +1228,10 @@
 				A6284D4B1B105E5600EFF820 /* AFURLRequestSerialization.m in Sources */,
 				A6284D4A1B105E5600EFF820 /* AFURLConnectionOperation.m in Sources */,
 				094DD26C1B3978ED0045EF2C /* ListeningCourseInfoCell.m in Sources */,
+				09C6394B1B3A935100510F00 /* PaymoneyCell.m in Sources */,
 				09D560401B26809400ADF334 /* DatePickerCell.m in Sources */,
 				A6B1CEF21B1D909800100E9F /* WebServiceOpration.m in Sources */,
+				09C639481B3A917400510F00 /* PayCourseVC.m in Sources */,
 				A6284D8F1B10668300EFF820 /* HomeVC.m in Sources */,
 				09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */,
 				A6284D921B10669200EFF820 /* CourseVC.m in Sources */,
@@ -1273,6 +1306,7 @@
 				A6A9442D1B2E74B500AF304F /* JSDropDownMenu.m in Sources */,
 				A6284D5C1B105E5600EFF820 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				090604701B140A5E0038BAC4 /* FeedBackVC.m in Sources */,
+				09C6394E1B3A957F00510F00 /* PayMethodCell.m in Sources */,
 				A6B1CEDB1B1C62D400100E9F /* NeTNameAndDomicileVC.m in Sources */,
 				09C3285C1B30135F009F0BAB /* CourseCell.m in Sources */,
 				09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */,

@@ -10,6 +10,8 @@
 #import "BaseTVC.h"
 #import "ListeningCourseInfoCell.h"
 
+#import "PayCourseVC.h"
+
 @interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -101,6 +103,8 @@
 
 - (void)buyBtnClicked{
     
+    PayCourseVC *vc = [[PayCourseVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableView DataSource
