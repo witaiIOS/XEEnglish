@@ -138,13 +138,13 @@
             case 0:
             {
                 cell.myLabel.text = @"免费到校试听";
-                cell.selectedImageView.image = [UIImage imageNamed:@"school_selected.png"];
+                //cell.selectedImageView.image = [UIImage imageNamed:@"school_selected.png"];
                 break;
             }
             case 1:
             {
                 cell.myLabel.text = @"有偿上门试听";
-                cell.selectedImageView.image = [UIImage imageNamed:@"school_unselected.png"];
+               // cell.selectedImageView.image = [UIImage imageNamed:@"school_unselected.png"];
                 break;
             }
                 
@@ -169,16 +169,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 0) {
-        
-    }
-    else if(indexPath.section == 1){
+    
+    if (indexPath.section == 1) {
         
     }
     else{
-        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 

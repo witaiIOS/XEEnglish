@@ -15,6 +15,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
+        self.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
+        
         self.myLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 6, 100, 30)];
         self.myLabel.textColor = [UIColor blackColor];
         self.myLabel.font = [UIFont systemFontOfSize:14];
@@ -27,6 +30,13 @@
     }
     
     return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    NSString *imageName =  self.selected ? @"school_selected.png" : @"school_unselected.png";
+    self.selectedImageView.image = [UIImage imageNamed:imageName];
 }
 
 @end
