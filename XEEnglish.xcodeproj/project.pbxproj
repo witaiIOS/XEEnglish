@@ -33,6 +33,7 @@
 		09C639521B3A9F5E00510F00 /* pay_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C6394F1B3A9F5E00510F00 /* pay_01.png */; };
 		09C639541B3A9F5E00510F00 /* pay_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C639511B3A9F5E00510F00 /* pay_03.png */; };
 		09C639561B3AA77400510F00 /* pay_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C639551B3AA77400510F00 /* pay_02.png */; };
+		09C639591B3AADA700510F00 /* PayProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C639581B3AADA700510F00 /* PayProtocolVC.m */; };
 		09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A41B25AC4700E72163 /* ActivityContentCell.m */; };
 		09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A71B25BB0100E72163 /* otherRequireCell.m */; };
 		09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */; };
@@ -219,6 +220,8 @@
 		09C6394F1B3A9F5E00510F00 /* pay_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_01.png; sourceTree = "<group>"; };
 		09C639511B3A9F5E00510F00 /* pay_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_03.png; sourceTree = "<group>"; };
 		09C639551B3AA77400510F00 /* pay_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_02.png; sourceTree = "<group>"; };
+		09C639571B3AADA700510F00 /* PayProtocolVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayProtocolVC.h; sourceTree = "<group>"; };
+		09C639581B3AADA700510F00 /* PayProtocolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayProtocolVC.m; sourceTree = "<group>"; };
 		09C832A31B25AC4700E72163 /* ActivityContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityContentCell.h; sourceTree = "<group>"; };
 		09C832A41B25AC4700E72163 /* ActivityContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityContentCell.m; sourceTree = "<group>"; };
 		09C832A61B25BB0100E72163 /* otherRequireCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = otherRequireCell.h; sourceTree = "<group>"; };
@@ -499,6 +502,8 @@
 				09C6394A1B3A935100510F00 /* PaymoneyCell.m */,
 				09C6394C1B3A957F00510F00 /* PayMethodCell.h */,
 				09C6394D1B3A957F00510F00 /* PayMethodCell.m */,
+				09C639571B3AADA700510F00 /* PayProtocolVC.h */,
+				09C639581B3AADA700510F00 /* PayProtocolVC.m */,
 			);
 			path = PayCourseVC;
 			sourceTree = "<group>";
@@ -1250,6 +1255,7 @@
 				A6B1CEDD1B1C62D400100E9F /* PersonImageTVC.m in Sources */,
 				A6284D601B105E5600EFF820 /* UIImageView+AFNetworking.m in Sources */,
 				A6284D501B105E5600EFF820 /* DDXMLDocument.m in Sources */,
+				09C639591B3AADA700510F00 /* PayProtocolVC.m in Sources */,
 				A6284D521B105E5600EFF820 /* DDXMLNode.m in Sources */,
 				A6284D9C1B1067C100EFF820 /* LoginVC.m in Sources */,
 				A6B1CEEA1B1D8C7200100E9F /* HomeBtnCell.m in Sources */,

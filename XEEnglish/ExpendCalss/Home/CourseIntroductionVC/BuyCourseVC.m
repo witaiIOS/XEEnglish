@@ -11,6 +11,7 @@
 #import "ListeningCourseInfoCell.h"
 
 #import "PayCourseVC.h"
+#import "PayProtocolVC.h"
 
 @interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -98,6 +99,8 @@
 
 - (void)protocolBtnClicked{
     
+    PayProtocolVC *vc = [[PayProtocolVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
