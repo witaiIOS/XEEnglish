@@ -36,6 +36,8 @@
 		09C639591B3AADA700510F00 /* PayProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C639581B3AADA700510F00 /* PayProtocolVC.m */; };
 		09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A41B25AC4700E72163 /* ActivityContentCell.m */; };
 		09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A71B25BB0100E72163 /* otherRequireCell.m */; };
+		09C87F291B3BEFB900D7C913 /* SubCourseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F281B3BEFB900D7C913 /* SubCourseListVC.m */; };
+		09C87F2C1B3BF06600D7C913 /* SubCourseListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F2B1B3BF06600D7C913 /* SubCourseListCell.m */; };
 		09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */; };
 		09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */; };
 		09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDB1B1EDD3E00ABC885 /* select_flag.png */; };
@@ -226,6 +228,10 @@
 		09C832A41B25AC4700E72163 /* ActivityContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityContentCell.m; sourceTree = "<group>"; };
 		09C832A61B25BB0100E72163 /* otherRequireCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = otherRequireCell.h; sourceTree = "<group>"; };
 		09C832A71B25BB0100E72163 /* otherRequireCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = otherRequireCell.m; sourceTree = "<group>"; };
+		09C87F271B3BEFB900D7C913 /* SubCourseListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubCourseListVC.h; sourceTree = "<group>"; };
+		09C87F281B3BEFB900D7C913 /* SubCourseListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubCourseListVC.m; sourceTree = "<group>"; };
+		09C87F2A1B3BF06600D7C913 /* SubCourseListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubCourseListCell.h; sourceTree = "<group>"; };
+		09C87F2B1B3BF06600D7C913 /* SubCourseListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubCourseListCell.m; sourceTree = "<group>"; };
 		09C95CD71B1EDD2800ABC885 /* LXSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSegmentView.h; sourceTree = "<group>"; };
 		09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegmentView.m; sourceTree = "<group>"; };
 		09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_tab_selected.png; sourceTree = "<group>"; };
@@ -476,6 +482,7 @@
 		0980856B1B32C35A00BE9336 /* CourseIntroductionVC */ = {
 			isa = PBXGroup;
 			children = (
+				09C87F261B3BEF6400D7C913 /* OtherList */,
 				09C639451B3A915D00510F00 /* PayCourseVC */,
 				0980856C1B32C37500BE9336 /* AllCoursesVC.h */,
 				0980856D1B32C37500BE9336 /* AllCoursesVC.m */,
@@ -506,6 +513,17 @@
 				09C639581B3AADA700510F00 /* PayProtocolVC.m */,
 			);
 			path = PayCourseVC;
+			sourceTree = "<group>";
+		};
+		09C87F261B3BEF6400D7C913 /* OtherList */ = {
+			isa = PBXGroup;
+			children = (
+				09C87F271B3BEFB900D7C913 /* SubCourseListVC.h */,
+				09C87F281B3BEFB900D7C913 /* SubCourseListVC.m */,
+				09C87F2A1B3BF06600D7C913 /* SubCourseListCell.h */,
+				09C87F2B1B3BF06600D7C913 /* SubCourseListCell.m */,
+			);
+			path = OtherList;
 			sourceTree = "<group>";
 		};
 		09C9C0E81B22E059001BBA1C /* SchedulePlace */ = {
@@ -1233,6 +1251,7 @@
 				A6284D4B1B105E5600EFF820 /* AFURLRequestSerialization.m in Sources */,
 				A6284D4A1B105E5600EFF820 /* AFURLConnectionOperation.m in Sources */,
 				094DD26C1B3978ED0045EF2C /* ListeningCourseInfoCell.m in Sources */,
+				09C87F291B3BEFB900D7C913 /* SubCourseListVC.m in Sources */,
 				09C6394B1B3A935100510F00 /* PaymoneyCell.m in Sources */,
 				09D560401B26809400ADF334 /* DatePickerCell.m in Sources */,
 				A6B1CEF21B1D909800100E9F /* WebServiceOpration.m in Sources */,
@@ -1310,6 +1329,7 @@
 				09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */,
 				A6284CCF1B10592100EFF820 /* main.m in Sources */,
 				A6A9442D1B2E74B500AF304F /* JSDropDownMenu.m in Sources */,
+				09C87F2C1B3BF06600D7C913 /* SubCourseListCell.m in Sources */,
 				A6284D5C1B105E5600EFF820 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				090604701B140A5E0038BAC4 /* FeedBackVC.m in Sources */,
 				09C6394E1B3A957F00510F00 /* PayMethodCell.m in Sources */,

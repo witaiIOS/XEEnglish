@@ -12,6 +12,8 @@
 #import "ListenZoneCell.h"
 #import "ListeningCourseInfoCell.h"
 
+#import "SubCourseListVC.h"
+
 @interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -178,6 +180,18 @@
     }
     else{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        switch (indexPath.row) {
+            case 1:
+            {
+                SubCourseListVC *vc = [[SubCourseListVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+                
+            default:
+                break;
+        }
     }
 }
 
