@@ -122,7 +122,7 @@
 /**
  查询所有校区
  */
-- (void)getSchoolWithBlock:(void(^)(NSDictionary *result,NSError *error))block;
+- (void)getSchoolWithParentId:(NSString *)parent_id andBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
 
 #pragma mark - 我的

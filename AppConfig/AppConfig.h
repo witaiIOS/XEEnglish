@@ -32,6 +32,7 @@
 #define uIslogin               @"uIslogin" //0登陆 1未登录
 #define uUserInfoKey           @"uUserInfoKey"
 
+#define uUserId                @"uUserId"
 #define uUserName              @"uUserName"
 #define uPassword              @"uPassword"
 #define uPhoneNumber           @"uPhoneNumber"

@@ -145,8 +145,8 @@
 /**
  查询所有校区
  */
-+ (AFHTTPRequestOperation *)getSchool{
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchool/>"]];
++ (AFHTTPRequestOperation *)getSchoolWithParentId:(NSString *)parent_id{
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchool><web:json>{\"parent_id\":%@}</web:json></web:GetSchool>",parent_id]];
 }
 
 #pragma mark - 我的

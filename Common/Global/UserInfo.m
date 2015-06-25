@@ -50,7 +50,7 @@
 
 - (void)setUserInfoDicWithWebServiceResult:(NSDictionary *)result {
     NSDictionary *resultInfo = result[@"resultInfo"];
-    NSDictionary *userDic = @{uIslogin:result[@"result"], uUserInfoKey:@{uUserName:resultInfo[@"name"], uPhoneNumber:resultInfo[@"mobile"], uPassword:resultInfo[@"password"]}};
+    NSDictionary *userDic = @{uIslogin:result[@"result"], uUserInfoKey:@{uUserId:resultInfo[@"parent_id"], uUserName:resultInfo[@"name"], uPhoneNumber:resultInfo[@"mobile"], uPassword:resultInfo[@"password"]}};
     [self setUserInfoDic:userDic];
 }
 

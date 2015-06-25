@@ -84,11 +84,12 @@
     
         [[XeeService sharedInstance] loginWithPhoneNumber:self.phoneTextField.text andPassword:self.codeTextField.text andBlock:^(NSDictionary *result, NSError *error) {
             if (!error) {
+                
                 NSNumber *r = result[@"result"];
+                //NSLog(@"result:%@",result);
                 if (r.integerValue == 0) {
                     
                     [[UserInfo sharedUser] setUserInfoDicWithWebServiceResult:result];//本地化存储用户信息
-                    
                     if ([self.delegate respondsToSelector:@selector(loginVCloginSuccess)]) {
                         [self.delegate loginVCloginSuccess];
                     }
