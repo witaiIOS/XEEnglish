@@ -9,6 +9,8 @@
 #import "SubCourseListVC.h"
 #import "SubCourseListCell.h"
 
+#import "XeeService.h"
+
 @interface SubCourseListVC ()
 
 @end
@@ -25,13 +27,16 @@
     
     [super initUI];
     
+    [self getCourseListByParentCourseId];
+    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
     [self.view addSubview:self.tableView];
     
-    self.courseArray = [[NSMutableArray alloc] initWithObjects:@"CP",@"CK",@"CL", nil];
+    //self.courseArray = [[NSMutableArray alloc] initWithObjects:@"CP",@"CK",@"CL", nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,9 +44,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)getCourseListByParentCourseId{
+    
+    [[XeeService sharedInstance] getCourseListByParentCourseId:@"1124" andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            //NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                NSDictionary *subCoursesDic = result[@"resultInfo"];
+                self.courseArray = subCoursesDic[@"listCourse"];
+    
+                [self.tableView reloadData];
+            }
+        }
+    }];
+}
+
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
+    //NSLog(@"result:%li",self.courseArray.count);
     return self.courseArray.count;
 }
 
@@ -60,7 +82,8 @@
         cell = [[SubCourseListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
     }
     cell.cellEdge = 10;
-    cell.courseName.text = self.courseArray[indexPath.section];
+    NSDictionary *subCourseDic = self.courseArray[indexPath.section];
+    cell.courseName.text = subCourseDic[@"title"];
     //NSLog(@"%@",self.selectedCourse);
     if ([self.selectedCourse isEqualToString:cell.courseName.text]) {
         cell.selectedImageView.highlighted = YES;
@@ -74,8 +97,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    [self.delegate SelectedCourse:self.courseArray[indexPath.section]];
+    NSDictionary *subCourseDic = self.courseArray[indexPath.section];
+    [self.delegate SelectedCourse:subCourseDic[@"title"]];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
