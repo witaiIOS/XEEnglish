@@ -10,13 +10,17 @@
 #import "BaseTVC.h"
 #import "ListeningCourseInfoCell.h"
 
+#import "SubCourseListVC.h"
+
 #import "PayCourseVC.h"
 #import "PayProtocolVC.h"
 
-@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate>
+@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *selectedBtn;
+
+@property (nonatomic, strong) NSString *subCoursename;
 
 @end
 
@@ -160,6 +164,7 @@
             
             cell.textLabel.text = @"课程分类";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.detailTextLabel.text = self.subCoursename;
             return cell;
         }
         else if (indexPath.row == 2){
@@ -207,6 +212,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 1:
+            {
+                SubCourseListVC *vc = [[SubCourseListVC alloc] init];
+                vc.delegate = self;
+                vc.selectedCourse = self.subCoursename;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+                
+            default:
+                break;
+        }
+    }
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -228,6 +249,14 @@
     
     return 44.0f;
 }
+#pragma mark - SelectedCourseDelegate
+
+- (void)SelectedCourse:(id)sender{
+    
+    self.subCoursename = sender;
+    [self.tableView reloadData];
+}
+
 
 #pragma mark - changeSelectedBtnDelegate
 
