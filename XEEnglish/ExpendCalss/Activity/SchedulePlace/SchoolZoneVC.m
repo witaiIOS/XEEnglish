@@ -45,7 +45,7 @@
 
 - (void)getSchoolInfo{
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
-    NSString *userId = userDic[uUserId];
+    NSString *userId = [userDic[uUserInfoKey] objectForKey:uUserId];
     NSLog(@"userId:%@",userId);
     [[XeeService sharedInstance] getSchoolWithParentId:userId andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
