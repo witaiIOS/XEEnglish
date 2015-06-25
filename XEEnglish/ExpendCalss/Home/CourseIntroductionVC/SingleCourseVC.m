@@ -14,11 +14,18 @@
 
 
 #import "XeeService.h"
+#import "MBProgressHUD.h"
 
-@interface SingleCourseVC ()
+@interface SingleCourseVC ()<UIWebViewDelegate>
 
 @property (nonatomic, strong) UILabel *ageLabel;
 @property (nonatomic, strong) UILabel *priceLabel;
+
+@property (nonatomic, strong) UIWebView *courseWeb;
+//@property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+
+@property (nonatomic, strong) NSString *webString;
 @end
 
 @implementation SingleCourseVC
@@ -34,6 +41,8 @@
 - (void)initUI{
     
     [super initUI];
+    
+    [self getCourseDetailByCourseId];
     
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 60)];
     headView.backgroundColor = [UIColor whiteColor];
@@ -68,6 +77,11 @@
     
     [headView addSubview:self.priceLabel];
     
+    self.courseWeb = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64+60, kScreenWidth, kScreenHeight-64-60-60)];
+    self.courseWeb.delegate = self;
+    self.courseWeb.scalesPageToFit = YES;
+    
+    [self.view addSubview:self.courseWeb];
     
     UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight-60, kScreenWidth, 60)];
     footView.backgroundColor = [UIColor whiteColor];
@@ -96,7 +110,6 @@
     
     [footView addSubview:buyBtn];
     
-    [self getCourseDetailByCourseId];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -141,6 +154,13 @@
 - (void)setSingleCourseValue:(NSDictionary *)courseInfo{
     
     self.ageLabel.text = [NSString stringWithFormat:@"%@ ~ %@",courseInfo[@"min_age"],courseInfo[@"max_age"]];
+    self.webString = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,courseInfo[@"website"]];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.webString]];
+    NSLog(@"webString:%@",self.webString);
+    
+    [self.courseWeb loadRequest:request];
+
+    //NSLog(@"%@",self.webString);
     if ([courseInfo[@"total_price"] isKindOfClass:[NSNull class]]) {
         self.priceLabel.text = [NSString stringWithFormat:@"%@元/课",courseInfo[@"price"]];
     }
@@ -150,6 +170,35 @@
     
 }
 
+#pragma mark - UIWebView Delegate
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    view.tag = 108;
+    view.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:view];
+    
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    self.activityIndicator.center = self.view.center;
+    
+    [view addSubview:self.activityIndicator];
+    
+    [self.activityIndicator startAnimating];
+    
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    [self.activityIndicator stopAnimating];
+    UIView *view = (UIView *)[self.view viewWithTag:108];
+    [view removeFromSuperview];
+    
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+    [self.activityIndicator stopAnimating];
+    UIView *view = (UIView *)[self.view viewWithTag:108];
+    [view removeFromSuperview];
+}
 /*
 #pragma mark - Navigation
 
