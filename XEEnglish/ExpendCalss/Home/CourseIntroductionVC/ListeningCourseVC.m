@@ -188,6 +188,7 @@
                 SubCourseListVC *vc = [[SubCourseListVC alloc] init];
                 vc.delegate = self;
                 vc.selectedCourse = self.subCoursename;
+                vc.parentCourseId = self.parentCourseId;//传递父课程id
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }

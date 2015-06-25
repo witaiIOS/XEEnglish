@@ -13,10 +13,9 @@
 - (void)SelectedCourse:(id) sender;
 
 @end
-@interface SubCourseListVC : BaseVC<UITableViewDataSource,UITableViewDelegate>
+@interface SubCourseListVC : BaseVC
 
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *courseArray;
+@property (nonatomic, strong) NSString *parentCourseId;//父课程id
 @property (nonatomic, strong) NSString *selectedCourse;
 
 @property (nonatomic, strong) id<SelectedCourseDelegate>delegate;

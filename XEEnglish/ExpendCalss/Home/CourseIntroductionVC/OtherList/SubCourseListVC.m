@@ -11,7 +11,10 @@
 
 #import "XeeService.h"
 
-@interface SubCourseListVC ()
+@interface SubCourseListVC ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *courseArray;
 
 @end
 
@@ -45,7 +48,7 @@
 }
 
 - (void)getCourseListByParentCourseId{
-    
+    //应用时将@"1124" 假数据换成 self.parentCourseId
     [[XeeService sharedInstance] getCourseListByParentCourseId:@"1124" andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             //NSLog(@"result:%@",result);

@@ -123,6 +123,7 @@
 - (void)listenBtnClicked{
     ListeningCourseVC *vc = [[ListeningCourseVC alloc] init];
     vc.courseName = self.title;
+    vc.parentCourseId = self.courseId;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
