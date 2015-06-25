@@ -221,7 +221,7 @@
 
 #pragma mark - SelectedCourseDelegate
 
-- (void)SelectedCourse:(id)sender{
+- (void)selectedCourse:(id)sender{
     
     self.subCoursename = sender;
     [self.tableView reloadData];

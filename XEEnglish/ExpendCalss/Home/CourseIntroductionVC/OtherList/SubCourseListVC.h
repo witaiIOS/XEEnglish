@@ -10,13 +10,14 @@
 @protocol SelectedCourseDelegate <NSObject>
 
 @optional
-- (void)SelectedCourse:(id) sender;
+- (void)selectedCourse:(id) sender;
 
 @end
+
 @interface SubCourseListVC : BaseVC
 
 @property (nonatomic, strong) NSString *parentCourseId;//父课程id
-@property (nonatomic, strong) NSString *selectedCourse;
+@property (nonatomic, strong) NSString *selectedCourse;//选择的子课程
 
 @property (nonatomic, strong) id<SelectedCourseDelegate>delegate;
 @end

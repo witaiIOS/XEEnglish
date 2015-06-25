@@ -10,6 +10,9 @@
 
 @interface BuyCourseVC : BaseVC
 
-@property (nonatomic, strong) NSString *courseName;
+@property (nonatomic, strong) NSString *courseName;//课程名
+
+@property (nonatomic, strong) NSString *priceHour;//课时单价
+@property (nonatomic, strong) NSString *priceTotal;//整套价格；
 
 @end
