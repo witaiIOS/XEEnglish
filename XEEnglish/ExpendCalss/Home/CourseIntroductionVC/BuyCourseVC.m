@@ -254,7 +254,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view =[[UIView alloc] init];
     view.backgroundColor = [UIColor clearColor];
-    if (section == 1) {
+    if (section == 1 && self.subCoursename != nil) {
         view.frame = CGRectMake(0, 0, kScreenWidth, 40);
         view.backgroundColor = [UIColor clearColor];
         
