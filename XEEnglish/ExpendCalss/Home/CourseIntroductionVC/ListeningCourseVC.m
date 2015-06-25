@@ -223,7 +223,8 @@
 
 - (void)selectedCourse:(id)sender{
     
-    self.subCoursename = sender;
+    NSDictionary *subCourseDic = sender;
+    self.subCoursename = subCourseDic[@"title"];
     [self.tableView reloadData];
 }
 
