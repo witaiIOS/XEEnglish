@@ -14,9 +14,9 @@
 
 #import "SubCourseListVC.h"
 
-@interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate>
 @property (nonatomic, strong) UITableView *tableView;
-
+@property (nonatomic, strong) NSString *subCoursename;//子课程名
 @end
 
 @implementation ListeningCourseVC
@@ -107,6 +107,7 @@
         {
             cell.textLabel.text = @"课程分类";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.detailTextLabel.text = self.subCoursename;
             return cell;
         }
         else if (indexPath.row == 2)
@@ -185,6 +186,7 @@
             case 1:
             {
                 SubCourseListVC *vc = [[SubCourseListVC alloc] init];
+                vc.delegate = self;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
@@ -213,6 +215,14 @@
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return 44.0f;
+}
+
+#pragma mark - SelectedCourseDelegate
+
+- (void)SelectedCourse:(id)sender{
+    
+    self.subCoursename = sender;
+    [self.tableView reloadData];
 }
 
 /*

@@ -7,7 +7,17 @@
 //
 
 #import "BaseVC.h"
+@protocol SelectedCourseDelegate <NSObject>
 
-@interface SubCourseListVC : BaseVC
+@optional
+- (void)SelectedCourse:(id) sender;
 
+@end
+@interface SubCourseListVC : BaseVC<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *courseArray;
+//@property (nonatomic, strong) NSString *selectedCourse;
+
+@property (nonatomic, strong) id<SelectedCourseDelegate>delegate;
 @end

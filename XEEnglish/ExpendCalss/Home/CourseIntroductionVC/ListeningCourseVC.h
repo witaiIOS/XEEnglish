@@ -10,7 +10,7 @@
 
 @interface ListeningCourseVC : BaseVC
 
-@property (nonatomic, strong) NSString *courseName;
+@property (nonatomic, strong) NSString *courseName;//课程名
 
 
 @end
