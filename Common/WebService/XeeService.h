@@ -89,6 +89,12 @@
 - (void)getCourseCategoryAgeAndBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
 
+/**
+ 通过课程id，查询课程详情
+ @param course_id 注册id
+ */
+- (void)getCourseDetailByCourseId:(NSString *)course_id andBlock:(void(^)(NSDictionary *result, NSError *error))block;
+
 #pragma mark - 课程
 /**
  通过家长id，查找学生选课关系简介列表

@@ -187,6 +187,7 @@
         SingleCourseVC *vc = [[SingleCourseVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         vc.title = [serviceDic objectForKey:@"title"];
+        vc.courseId = courseIdStr;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

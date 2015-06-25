@@ -12,6 +12,9 @@
 #import "ListeningCourseVC.h"
 #import "BuyCourseVC.h"
 
+
+#import "XeeService.h"
+
 @interface SingleCourseVC ()
 
 @property (nonatomic, strong) UILabel *ageLabel;
@@ -37,14 +40,15 @@
     
     [self.view addSubview:headView];
     
-    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 20)];
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 80, 20)];
     label1.text = @"适用年龄段：";
     label1.textColor = [UIColor blackColor];
     label1.font = [UIFont systemFontOfSize:12];
     
     [headView addSubview:label1];
     
-    self.ageLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 10, 20, 20)];
+    self.ageLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 100, 20)];
+    //self.ageLabel.textAlignment = NSTextAlignmentLeft;
     self.ageLabel.textColor = [UIColor blackColor];
     self.ageLabel.font = [UIFont systemFontOfSize:12];
     
@@ -57,7 +61,8 @@
     
     [headView addSubview:label3];
     
-    self.priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 35, 20, 20)];
+    self.priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 35, 200, 20)];
+    //self.priceLabel.textAlignment = NSTextAlignmentLeft;
     self.priceLabel.textColor = [UIColor blackColor];
     self.priceLabel.font = [UIFont systemFontOfSize:12];
     
@@ -91,6 +96,7 @@
     
     [footView addSubview:buyBtn];
     
+    [self getCourseDetailByCourseId];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,6 +118,36 @@
     BuyCourseVC *vc = [[BuyCourseVC alloc] init];
     vc.courseName = self.title;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - Web
+- (void)getCourseDetailByCourseId{
+    
+    [[XeeService sharedInstance] getCourseDetailByCourseId:self.courseId andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                NSDictionary *courseInfo = result[@"resultInfo"];
+//                NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+//                NSString *minAge = [numberFormatter stringFromNumber:courseInfo[@"min_age"]];
+//                NSString *maxAge = [numberFormatter stringFromNumber:courseInfo[@"max_age"]];;
+                [self setSingleCourseValue:courseInfo];
+            }
+        }
+    }];
+}
+
+- (void)setSingleCourseValue:(NSDictionary *)courseInfo{
+    
+    self.ageLabel.text = [NSString stringWithFormat:@"%@ ~ %@",courseInfo[@"min_age"],courseInfo[@"max_age"]];
+    if ([courseInfo[@"total_price"] isKindOfClass:[NSNull class]]) {
+        self.priceLabel.text = [NSString stringWithFormat:@"%@元/课",courseInfo[@"price"]];
+    }
+    else{
+        self.priceLabel.text = [NSString stringWithFormat:@"%@元   %@元／课",courseInfo[@"total_price"],courseInfo[@"price"]];
+    }
+    
 }
 
 /*

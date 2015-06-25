@@ -226,6 +226,20 @@
     }];
 }
 
+/**
+ 通过课程id，查询课程详情
+ @param course_id 注册id
+ */
+- (void)getCourseDetailByCourseId:(NSString *)course_id andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getCourseDetailByCourseId:course_id];
+    [self getResponseWithOpration:operation andXmlKey:@"GetCourseDetailByCourseIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 #pragma mark - 课程
 /**
  通过家长id，查找学生选课关系简介列表
