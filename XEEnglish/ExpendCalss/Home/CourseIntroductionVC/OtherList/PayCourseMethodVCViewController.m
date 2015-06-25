@@ -12,7 +12,7 @@
 @interface PayCourseMethodVCViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-
+@property (nonatomic, strong) NSArray *methodArray;
 @end
 
 @implementation PayCourseMethodVCViewController
@@ -26,6 +26,8 @@
 - (void)initUI{
     
     [super initUI];
+    
+    self.methodArray = [NSArray arrayWithObjects:@"按全套",@"按课时", nil];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
@@ -41,7 +43,7 @@
 
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return self.methodArray.count;
 }
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -60,19 +62,9 @@
     }
     cell.cellEdge = 10;
     
-    switch (indexPath.row) {
-        case 0:
-        {
-            cell.courseName.text = @"按全套";
-            break;
-        }
-        case 1:
-        {
-            cell.courseName.text = @"按课时";
-            break;
-        }
-        default:
-            break;
+    cell.courseName.text = self.methodArray[indexPath.section];
+    if ([cell.courseName.text isEqualToString:self.selectedMethod]) {
+        cell.selectedImageView.highlighted = YES;
     }
     return cell;
     
@@ -83,6 +75,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self.delegate selectedPayCourseMethod:self.methodArray[indexPath.section]];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

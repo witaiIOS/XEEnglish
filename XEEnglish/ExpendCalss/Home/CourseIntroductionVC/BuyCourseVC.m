@@ -16,13 +16,13 @@
 #import "PayCourseVC.h"
 #import "PayProtocolVC.h"
 
-@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate>
+@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate,SelectedPayCourseMethodDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) UIButton *selectedBtn;
+@property (nonatomic, strong) UIButton *selectedBtn;//是否同意了协议
 
-@property (nonatomic, strong) NSString *subCoursename;
-
+@property (nonatomic, strong) NSString *subCoursename;//子课程名
+@property (nonatomic, strong) NSString *payCourseMethod;//付款方式
 @end
 
 @implementation BuyCourseVC
@@ -184,6 +184,7 @@
 //            
 //            return cell2;
             cell.textLabel.text = @"付款方式";
+            cell.detailTextLabel.text = self.payCourseMethod;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
             return cell;
@@ -231,8 +232,8 @@
             case 3:
             {
                 PayCourseMethodVCViewController *vc = [[PayCourseMethodVCViewController alloc] init];
-                //vc.delegate = self;
-                //vc.selectedCourse = self.subCoursename;
+                vc.delegate = self;
+                vc.selectedMethod = self.payCourseMethod;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
@@ -316,6 +317,13 @@
     [self.tableView reloadData];
 }
 
+
+#pragma mark - SelectedPayCourseMethodDelegate
+- (void)selectedPayCourseMethod:(id)sender{
+    
+    self.payCourseMethod = sender;
+    [self.tableView reloadData];
+}
 
 #pragma mark - changeSelectedBtnDelegate
 

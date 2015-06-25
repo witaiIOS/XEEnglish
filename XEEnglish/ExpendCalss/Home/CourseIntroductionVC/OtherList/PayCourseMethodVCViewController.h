@@ -7,7 +7,13 @@
 //
 
 #import "BaseVC.h"
+@protocol SelectedPayCourseMethodDelegate <NSObject>
 
+@optional
+- (void)selectedPayCourseMethod:(id) sender;
+
+@end
 @interface PayCourseMethodVCViewController : BaseVC
-
+@property (nonatomic, strong) NSString *selectedMethod;//选择购买课程方式的标记
+@property (nonatomic, strong) id<SelectedPayCourseMethodDelegate>delegate;
 @end
