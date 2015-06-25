@@ -44,10 +44,11 @@
 #pragma mark - My Action
 
 - (void)getSchoolInfo{
-    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
-    NSString *userId = [userDic[uUserInfoKey] objectForKey:uUserId];
-    NSLog(@"userId:%@",userId);
-    [[XeeService sharedInstance] getSchoolWithParentId:userId andBlock:^(NSDictionary *result, NSError *error) {
+    //需要传真参数时再用
+//    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+//    NSString *userId = [userDic[uUserInfoKey] objectForKey:uUserId];
+    
+    [[XeeService sharedInstance] getSchoolWithParentId:@"3" andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
