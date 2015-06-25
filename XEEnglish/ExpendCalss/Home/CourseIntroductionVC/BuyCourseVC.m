@@ -11,6 +11,7 @@
 #import "ListeningCourseInfoCell.h"
 
 #import "SubCourseListVC.h"
+#import "PayCourseMethodVCViewController.h"
 
 #import "PayCourseVC.h"
 #import "PayProtocolVC.h"
@@ -174,14 +175,18 @@
             return cell;
         }
         else{
-            ListeningCourseInfoCell *cell2 = [tableView dequeueReusableCellWithIdentifier:reuse2];
-            if (cell2 == nil) {
-                cell2 = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
-            }
-            cell2.cellEdge = 10;
-            cell2.myLabel.text = @"购买课时";
+//            ListeningCourseInfoCell *cell2 = [tableView dequeueReusableCellWithIdentifier:reuse2];
+//            if (cell2 == nil) {
+//                cell2 = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
+//            }
+//            cell2.cellEdge = 10;
+//            cell2.myLabel.text = @"购买课时";
+//            
+//            return cell2;
+            cell.textLabel.text = @"付款方式";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
-            return cell2;
+            return cell;
             
         }
     }
@@ -223,7 +228,14 @@
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
-                
+            case 3:
+            {
+                PayCourseMethodVCViewController *vc = [[PayCourseMethodVCViewController alloc] init];
+                //vc.delegate = self;
+                //vc.selectedCourse = self.subCoursename;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
             default:
                 break;
         }
