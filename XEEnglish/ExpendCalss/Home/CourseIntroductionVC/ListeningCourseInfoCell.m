@@ -27,6 +27,7 @@
         self.myPriceTF.font = [UIFont systemFontOfSize:14];
         self.myPriceTF.textAlignment = NSTextAlignmentRight;
         self.myPriceTF.keyboardType = UIKeyboardTypeDefault;
+        self.myPriceTF.delegate = self;
         
         [self.contentView addSubview:self.myPriceTF];
         
