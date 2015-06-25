@@ -155,6 +155,15 @@
     
 }
 
+/**
+ 预定场馆
+ @param jsonParam 预定场馆的相关参数组成的JSON
+ */
++ (AFHTTPRequestOperation *)AddBookSiteWithParameter:(NSString *)jsonParam{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddBookSite><web:json>%@</web:json></web:AddBookSite>",jsonParam]];
+}
+
 #pragma mark - 我的
 /**
  登录后修改密码

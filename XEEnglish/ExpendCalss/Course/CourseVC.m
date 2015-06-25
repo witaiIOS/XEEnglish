@@ -358,7 +358,7 @@
 #pragma mark - UITableView DataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    NSLog(@"count:%li",[self.studentCoursesArray count]);
+    //NSLog(@"count:%li",[self.studentCoursesArray count]);
     return [self.studentCoursesArray count];
 }
 

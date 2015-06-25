@@ -289,6 +289,22 @@
     }];
 }
 
+/**
+ 预定场馆
+ @param jsonParam 预定场馆的相关参数组成的JSON
+ */
+- (void)AddBookSiteWithParameter:(NSString *)jsonParam andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration AddBookSiteWithParameter:jsonParam];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"AddBookSiteResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        //NSLog(@"result:%@",result);
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 #pragma mark - 我的
 /**
  登录后修改密码

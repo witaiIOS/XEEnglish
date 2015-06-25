@@ -123,9 +123,16 @@
 
 /**
  查询所有校区
+ @param parent_id 用户Id
+ @param course_id 课程Id
  */
 + (AFHTTPRequestOperation *)getSchoolWithParentId:(NSString *)parent_id andCourseId:(NSString *)course_id;
 
+/**
+ 预定场馆
+ @param jsonParam 预定场馆的相关参数组成的JSON
+ */
++ (AFHTTPRequestOperation *)AddBookSiteWithParameter:(NSString *)jsonParam;
 
 
 #pragma mark - 我的

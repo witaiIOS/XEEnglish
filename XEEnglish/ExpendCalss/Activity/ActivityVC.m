@@ -88,7 +88,7 @@
 #pragma mark - getActivityInfo
 - (void)getActivityInfo{
     [[XeeService sharedInstance] getActivityInfoWithPageSize:5 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         
         if (!error) {
             

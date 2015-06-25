@@ -15,6 +15,8 @@
 #import "otherRequireCell.h"
 #import "SchoolZoneVC.h"
 
+#import "XeeService.h"
+
 @interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate,SchoolZoneDelegate,UITextFieldDelegate,UITextViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 //@property (nonatomic, strong) NSString *dateStart;
