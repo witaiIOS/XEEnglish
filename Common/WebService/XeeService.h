@@ -95,6 +95,12 @@
  */
 - (void)getCourseDetailByCourseId:(NSString *)course_id andBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 通过课程获取详情，及子课程列表
+ @param course_id 注册id
+ */
+- (void)getCourseListByParentCourseId:(NSString *)course_id andBlock:(void(^)(NSDictionary *result, NSError *error))block;
+
 #pragma mark - 课程
 /**
  通过家长id，查找学生选课关系简介列表
