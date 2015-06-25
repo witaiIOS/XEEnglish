@@ -48,9 +48,9 @@
 //    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
 //    NSString *userId = [userDic[uUserInfoKey] objectForKey:uUserId];
     
-    [[XeeService sharedInstance] getSchoolWithParentId:@"3" andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getSchoolWithParentId:@"3" andCourseId:(NSString *)nil andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
-            NSLog(@"result:%@",result);
+            //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 self.schoolZoneArray= result[@"resultInfo"];

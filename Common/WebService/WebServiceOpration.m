@@ -145,8 +145,14 @@
 /**
  查询所有校区
  */
-+ (AFHTTPRequestOperation *)getSchoolWithParentId:(NSString *)parent_id{
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchool><web:json>{\"parent_id\":%@}</web:json></web:GetSchool>",parent_id]];
++ (AFHTTPRequestOperation *)getSchoolWithParentId:(NSString *)parent_id andCourseId:(NSString *)course_id{
+    if (course_id == nil) {
+        return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchool><web:json>{\"parent_id\":%@}</web:json></web:GetSchool>",parent_id]];
+    }
+    else{
+        return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchool><web:json>{\"parent_id\":%@,\"course_id\":%@}</web:json></web:GetSchool>",parent_id,course_id]];
+    }
+    
 }
 
 #pragma mark - 我的

@@ -124,7 +124,7 @@
 /**
  查询所有校区
  */
-+ (AFHTTPRequestOperation *)getSchoolWithParentId:(NSString *)parent_id;
++ (AFHTTPRequestOperation *)getSchoolWithParentId:(NSString *)parent_id andCourseId:(NSString *)course_id;
 
 
 
