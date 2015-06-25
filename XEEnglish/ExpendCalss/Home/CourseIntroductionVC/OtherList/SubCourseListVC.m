@@ -61,6 +61,10 @@
     }
     cell.cellEdge = 10;
     cell.courseName.text = self.courseArray[indexPath.section];
+    //NSLog(@"%@",self.selectedCourse);
+    if ([self.selectedCourse isEqualToString:cell.courseName.text]) {
+        cell.selectedImageView.highlighted = YES;
+    }
     
     return cell;
 }

@@ -187,6 +187,7 @@
             {
                 SubCourseListVC *vc = [[SubCourseListVC alloc] init];
                 vc.delegate = self;
+                vc.selectedCourse = self.subCoursename;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }

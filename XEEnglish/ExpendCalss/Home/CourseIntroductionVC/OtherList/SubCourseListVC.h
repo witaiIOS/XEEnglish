@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *courseArray;
-//@property (nonatomic, strong) NSString *selectedCourse;
+@property (nonatomic, strong) NSString *selectedCourse;
 
 @property (nonatomic, strong) id<SelectedCourseDelegate>delegate;
 @end
