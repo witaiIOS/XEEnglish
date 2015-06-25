@@ -9,6 +9,7 @@
 #import "BuyCourseVC.h"
 #import "BaseTVC.h"
 #import "ListeningCourseInfoCell.h"
+#import "BuyCoursePaymentAmountCell.h"
 
 #import "SubCourseListVC.h"
 #import "PayCourseMethodVCViewController.h"
@@ -143,7 +144,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *reuse1 = @"BaseCell";
-    static NSString *reuse2 = @"ListeningCourseInfoCell";
+    //static NSString *reuse2 = @"ListeningCourseInfoCell";
+    static NSString *reuse3 = @"BuyCoursePaymentAmountCell";
     
     if (indexPath.section == 0) {
         BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
@@ -193,13 +195,22 @@
     }
     else if (indexPath.section == 1){
         
-        ListeningCourseInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
+//        ListeningCourseInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
+//        if (cell == nil) {
+//            cell = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
+//        }
+//        cell.cellEdge = 10;
+//        cell.myLabel.text = @"缴费金额";
+//        
+//        return cell;
+        BuyCoursePaymentAmountCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse3];
+        
         if (cell == nil) {
-            cell = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
+            cell = [[BuyCoursePaymentAmountCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
         }
         cell.cellEdge = 10;
         cell.myLabel.text = @"缴费金额";
-        
+        cell.myPriceLabel.text = self.priceTotal;
         return cell;
     }
     else{
