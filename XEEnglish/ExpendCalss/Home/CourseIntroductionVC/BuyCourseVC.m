@@ -33,6 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"课程购买";
+    
 }
 
 - (void)initUI{
@@ -44,6 +45,8 @@
     self.tableView.delegate = self;
     self.tableView.tableFooterView = [self footView];
     [self.view addSubview:self.tableView];
+    
+    self.payCourseMethod = @"按全套";//默认情况，按全套购买方式
 }
 
 - (void)didReceiveMemoryWarning {
@@ -377,12 +380,12 @@
 #pragma mark - ListeningCorseInfoCellDelegate
 - (void)listeningCourseInfoCellInputCourseHours:(NSString *)sender {
     self.inputCourseHours = sender;
-    NSLog(@"self.inputCourseHours:%@",self.inputCourseHours);
+    self.priceTotal =[NSString stringWithFormat:@"%d", [self.inputCourseHours intValue] *[self.priceHour intValue]];//按课时计算需要缴费金额
+    
+    [self.tableView reloadData];
+    //NSLog(@"self.inputCourseHours:%@",self.inputCourseHours);
 }
-//- (void)inputCourseHours:(id)sender{
-//    
-//    self.inputCourseHours = sender;
-//}
+
 
 #pragma mark - changeSelectedBtnDelegate
 
