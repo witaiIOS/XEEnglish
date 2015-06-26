@@ -12,7 +12,7 @@
 #import "XeeService.h"
 
 @interface AllCoursesVC ()<JSDropDownMenuDataSource,JSDropDownMenuDelegate>
-@property (nonatomic, strong) NSMutableArray *allCourseInfo;
+//@property (nonatomic, strong) NSMutableArray *allCourseInfo;
 @property (nonatomic, strong) NSMutableArray *coursesArray;
 @property (nonatomic, strong) NSMutableArray *ageGroupArray;
 
@@ -40,7 +40,7 @@
     self.coursesArray = [[NSMutableArray alloc] init];
     self.ageGroupArray = [[NSMutableArray alloc] init];
     
-    [self getCourseCategoryAge];
+    [self getCourseCategoryAge];//请求课程和年龄段数据
 //    self.menu.dataSource = self;
 //    self.menu.delegate = self;
 }
@@ -64,6 +64,7 @@
 
 //待做
 #pragma mark - Web
+//请求课程和年龄段数据
 - (void)getCourseCategoryAge{
     
     [[XeeService sharedInstance] getCourseCategoryAgeAndBlock:^(NSDictionary *result, NSError *error) {
@@ -71,10 +72,14 @@
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
-                self.allCourseInfo = result[@"resultInfo"];
+                //self.allCourseInfo = result[@"resultInfo"];
+                
+                //请求到数据后设置两个列表的数据信息
                 [self getCoursesAndAgesInfo:result[@"resultInfo"]];
                 //NSLog(@"course:%@",self.coursesArray);
                 //NSLog(@"age:%@",self.ageGroupArray);
+                
+                //请求完数据之后才设置列表的数据源和代理方法
                 self.menu.dataSource = self;
                 self.menu.delegate = self;
             }
@@ -87,19 +92,21 @@
     }];
 }
 
+//请求到数据后设置两个列表的数据信息
 - (void)getCoursesAndAgesInfo:(NSArray *)resultInfo{
     //NSLog(@"resultInfo:%li",resultInfo.count);
     for (NSDictionary *info in resultInfo) {
         NSNumber *minAge = info[@"min_age"];
         NSNumber *maxAge = info[@"max_age"];
         if ( minAge.integerValue == 0 && maxAge.integerValue == 0) {
-            NSDictionary *courseIdAndName = @{@"course_category_id":info[@"course_category_id"],@"name":info[@"name"]};
-            [self.coursesArray addObject:courseIdAndName];
+            NSDictionary *courseIdAndNameDic = @{@"course_category_id":info[@"course_category_id"],@"name":info[@"name"]};
+            [self.coursesArray addObject:courseIdAndNameDic];
             
         }
         else{
-            NSString *ageGroup = [NSString stringWithFormat:@"%@~%@",info[@"min_age"],info[@"max_age"]];
-            [self.ageGroupArray addObject:ageGroup];
+//            NSString *ageGroup = [NSString stringWithFormat:@"%@~%@",info[@"min_age"],info[@"max_age"]];
+            NSDictionary *ageGroupDic = @{@"min_age":info[@"min_age"],@"max_age":info[@"max_age"]};
+            [self.ageGroupArray addObject:ageGroupDic];
         }
     }
 }
@@ -157,12 +164,13 @@
 - (NSString *)menu:(JSDropDownMenu *)menu titleForColumn:(NSInteger)column{
     
     if (column == 0) {
-        NSDictionary *courseIdAndName = self.coursesArray[self.currentCourseIndex];
-        return courseIdAndName[@"name"];
+        NSDictionary *courseIdAndNameDic = self.coursesArray[self.currentCourseIndex];
+        return courseIdAndNameDic[@"name"];
     }
     else if (column == 1){
-        
-        return self.ageGroupArray[self.currentAgeGroupIndex];
+        NSDictionary *ageGroupDic = self.ageGroupArray[self.currentAgeGroupIndex];
+        NSString *ageGroupString = [NSString stringWithFormat:@"%@~%@",ageGroupDic[@"min_age"],ageGroupDic[@"max_age"]];
+        return ageGroupString;
     }
     return nil;
 }
@@ -174,8 +182,9 @@
         return courseIdAndName[@"name"];
     }
     else if(indexPath.column == 1){
-        
-        return self.ageGroupArray[indexPath.row];
+        NSDictionary *ageGroupDic = self.ageGroupArray[indexPath.row];
+        NSString *ageGroupString = [NSString stringWithFormat:@"%@~%@",ageGroupDic[@"min_age"],ageGroupDic[@"max_age"]];
+        return ageGroupString;
     }
     return nil;
 }
