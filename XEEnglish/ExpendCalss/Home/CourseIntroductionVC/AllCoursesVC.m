@@ -12,7 +12,7 @@
 #import "XeeService.h"
 
 @interface AllCoursesVC ()<JSDropDownMenuDataSource,JSDropDownMenuDelegate>
-
+@property (nonatomic, strong) NSMutableArray *allCourseInfo;
 @property (nonatomic, strong) NSMutableArray *coursesArray;
 @property (nonatomic, strong) NSMutableArray *ageGroupArray;
 
@@ -31,14 +31,18 @@
     // Do any additional setup after loading the view.
     //self.title = @"所有课程";
     
-    self.coursesArray = [NSMutableArray arrayWithObjects:@"英语课", @"艺术课",@"趣味课",nil];
-    self.ageGroupArray = [NSMutableArray arrayWithObjects:@"1013~1011", @"1021~1020",@"1022~1020",nil];
+    //self.coursesArray = [NSMutableArray arrayWithObjects:@"英语课", @"艺术课",@"趣味课",nil];
+    //self.ageGroupArray = [NSMutableArray arrayWithObjects:@"1013~1011", @"1021~1020",@"1022~1020",nil];
     
     self.currentCourseIndex = 0;
     self.currentAgeGroupIndex = 0;
     
-    self.menu.dataSource = self;
-    self.menu.delegate = self;
+    self.coursesArray = [[NSMutableArray alloc] init];
+    self.ageGroupArray = [[NSMutableArray alloc] init];
+    
+    [self getCourseCategoryAge];
+//    self.menu.dataSource = self;
+//    self.menu.delegate = self;
 }
 
 - (void)initUI{
@@ -62,17 +66,43 @@
 #pragma mark - Web
 - (void)getCourseCategoryAge{
     
-    [[XeeService sharedInstance] getCourseListAppHomeAndBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getCourseCategoryAgeAndBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
-            NSLog(@"result:%@",result);
+            //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
-                
+                self.allCourseInfo = result[@"resultInfo"];
+                [self getCoursesAndAgesInfo:result[@"resultInfo"]];
+                //NSLog(@"course:%@",self.coursesArray);
+                //NSLog(@"age:%@",self.ageGroupArray);
+                self.menu.dataSource = self;
+                self.menu.delegate = self;
             }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
         }
     }];
 }
 
+- (void)getCoursesAndAgesInfo:(NSArray *)resultInfo{
+    //NSLog(@"resultInfo:%li",resultInfo.count);
+    for (NSDictionary *info in resultInfo) {
+        NSNumber *minAge = info[@"min_age"];
+        NSNumber *maxAge = info[@"max_age"];
+        if ( minAge.integerValue == 0 && maxAge.integerValue == 0) {
+            NSDictionary *courseIdAndName = @{@"course_category_id":info[@"course_category_id"],@"name":info[@"name"]};
+            [self.coursesArray addObject:courseIdAndName];
+            
+        }
+        else{
+            NSString *ageGroup = [NSString stringWithFormat:@"%@~%@",info[@"min_age"],info[@"max_age"]];
+            [self.ageGroupArray addObject:ageGroup];
+        }
+    }
+}
 
 #pragma mark - JSDropDownMenu DataSource
 //default value is 1
@@ -115,11 +145,9 @@
 - (NSInteger)menu:(JSDropDownMenu *)menu numberOfRowsInColumn:(NSInteger)column leftOrRight:(NSInteger)leftOrRight leftRow:(NSInteger)leftRow{
     
     if (column == 0) {
-        
         return [self.coursesArray count];
     }
     else if (column == 1){
-        
         return [self.ageGroupArray count];
     }
     else
@@ -129,8 +157,8 @@
 - (NSString *)menu:(JSDropDownMenu *)menu titleForColumn:(NSInteger)column{
     
     if (column == 0) {
-        
-        return self.coursesArray[self.currentCourseIndex];
+        NSDictionary *courseIdAndName = self.coursesArray[self.currentCourseIndex];
+        return courseIdAndName[@"name"];
     }
     else if (column == 1){
         
@@ -142,8 +170,8 @@
 - (NSString *)menu:(JSDropDownMenu *)menu titleForRowAtIndexPath:(JSIndexPath *)indexPath{
     
     if (indexPath.column == 0) {
-        
-        return self.coursesArray[indexPath.row];
+        NSDictionary *courseIdAndName = self.coursesArray[indexPath.row];
+        return courseIdAndName[@"name"];
     }
     else if(indexPath.column == 1){
         
