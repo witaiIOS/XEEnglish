@@ -12,6 +12,8 @@
 
 #import "XeeService.h"
 
+#import "SingleCourseVC.h"
+
 @interface AllCoursesVC ()<JSDropDownMenuDataSource,JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate,HomeBtnCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *coursesArray;
@@ -281,7 +283,12 @@
 #pragma mark - HomeBtnCell delegate
 - (void)HomeBtnCellButtonPressed:(id)sender andServiceInfo:(NSDictionary *)serviceDic{
     
+    NSString *courseIdStr = [NSString stringWithFormat:@"%@",serviceDic[@"course_id"]];
     
+    SingleCourseVC *vc = [[SingleCourseVC alloc] init];
+    vc.title = [serviceDic objectForKey:@"title"];
+    vc.courseId = courseIdStr;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
