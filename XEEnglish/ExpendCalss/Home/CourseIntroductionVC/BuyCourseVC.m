@@ -134,7 +134,12 @@
         return 4;
     }
     else if(section == 1){
-        return 1;
+        if ([self.payCourseMethod isEqualToString:@"按课时"]){
+            return 2;
+        }
+        else{
+            return 1;
+        }
     }
     else{
         return 0;
@@ -144,7 +149,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *reuse1 = @"BaseCell";
-    //static NSString *reuse2 = @"ListeningCourseInfoCell";
+    static NSString *reuse2 = @"ListeningCourseInfoCell";
     static NSString *reuse3 = @"BuyCoursePaymentAmountCell";
     
     if (indexPath.section == 0) {
@@ -161,20 +166,20 @@
         if (indexPath.row == 0) {
             cell.textLabel.text = @"课程名";
             cell.detailTextLabel.text = self.courseName;
-            return cell;
+            //return cell;
         }
         else if (indexPath.row == 1){
             
             cell.textLabel.text = @"课程分类";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.detailTextLabel.text = self.subCoursename;
-            return cell;
+            //return cell;
         }
         else if (indexPath.row == 2){
             
             cell.textLabel.text = @"校区选择";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            return cell;
+            //return cell;
         }
         else{
 //            ListeningCourseInfoCell *cell2 = [tableView dequeueReusableCellWithIdentifier:reuse2];
@@ -189,29 +194,51 @@
             cell.detailTextLabel.text = self.payCourseMethod;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
-            return cell;
-            
+            //return cell;
         }
+        
+        return cell;
     }
     else if (indexPath.section == 1){
         
-//        ListeningCourseInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
-//        if (cell == nil) {
-//            cell = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
-//        }
-//        cell.cellEdge = 10;
-//        cell.myLabel.text = @"缴费金额";
-//        
-//        return cell;
-        BuyCoursePaymentAmountCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse3];
         
-        if (cell == nil) {
-            cell = [[BuyCoursePaymentAmountCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+        if ([self.payCourseMethod isEqualToString:@"按课时"]) {
+            if(indexPath.row == 0) {
+                
+                ListeningCourseInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
+                if (cell == nil) {
+                    cell = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
+                }
+                cell.cellEdge = 10;
+                cell.myLabel.text = @"购买课时";
+                
+                return cell;
+            }
+            else{
+                
+                BuyCoursePaymentAmountCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse3];
+                
+                if (cell == nil) {
+                    cell = [[BuyCoursePaymentAmountCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+                }
+                cell.cellEdge = 10;
+                cell.myLabel.text = @"缴费金额";
+                cell.myPriceLabel.text = self.priceTotal;
+                
+                return cell;
+            }
         }
-        cell.cellEdge = 10;
-        cell.myLabel.text = @"缴费金额";
-        cell.myPriceLabel.text = self.priceTotal;
-        return cell;
+        else{
+            BuyCoursePaymentAmountCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse3];
+            
+            if (cell == nil) {
+                cell = [[BuyCoursePaymentAmountCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+            }
+            cell.cellEdge = 10;
+            cell.myLabel.text = @"缴费金额";
+            cell.myPriceLabel.text = self.priceTotal;
+            return cell;
+        }
     }
     else{
         BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];

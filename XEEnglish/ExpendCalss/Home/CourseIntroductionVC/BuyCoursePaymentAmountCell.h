@@ -10,7 +10,7 @@
 
 @interface BuyCoursePaymentAmountCell : BaseTVC
 @property (nonatomic, strong) UILabel *myLabel;
-@property (nonatomic, strong) UITextField *myPriceLabel;
+@property (nonatomic, strong) UILabel *myPriceLabel;
 
 @property (nonatomic, strong) UILabel *myLineLabel;
 @end

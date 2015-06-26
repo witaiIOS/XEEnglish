@@ -22,14 +22,14 @@
         [self.contentView addSubview:self.myLabel];
         
         
-        self.myPriceLabel = [[UITextField alloc] initWithFrame:CGRectMake(kScreenWidth-100, 6, 60, 30)];
+        self.myPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-100, 6, 60, 30)];
         self.myPriceLabel.textColor = [UIColor grayColor];
         self.myPriceLabel.font = [UIFont systemFontOfSize:14];
         self.myPriceLabel.textAlignment = NSTextAlignmentCenter;
         
         [self.contentView addSubview:self.myPriceLabel];
         
-        self.myLineLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-100, 39, 60, 1)];
+        self.myLineLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-100, 32, 60, 1)];
         self.myLineLabel.backgroundColor = [UIColor lightGrayColor];
         
         [self.contentView addSubview:self.myLineLabel];
