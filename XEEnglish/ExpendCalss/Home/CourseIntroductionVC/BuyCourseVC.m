@@ -119,6 +119,7 @@
 - (void)buyBtnClicked{
     if (self.selectedBtn.selected) {
         PayCourseVC *vc = [[PayCourseVC alloc] init];
+        vc.payMoney = self.priceTotal;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else{
