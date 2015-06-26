@@ -62,8 +62,8 @@
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 110, kScreenWidth, kScreenHeight-110) style:UITableViewStylePlain];
     
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+//    self.tableView.dataSource = self;
+//    self.tableView.delegate = self;
     
     [self.view addSubview:self.tableView];
 }
@@ -133,6 +133,9 @@
                 NSDictionary *requestCourseDic = result[@"resultInfo"];
                 self.requestCourseInfo = requestCourseDic[@"data"];
                 //NSLog(@"11111:%@",self.requestCourseInfo);
+                
+                self.tableView.dataSource = self;
+                self.tableView.delegate = self;
                 
                 [self.tableView reloadData];
             }

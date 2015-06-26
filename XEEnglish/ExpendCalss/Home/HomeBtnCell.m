@@ -80,6 +80,7 @@
     
     NSString *imageUrl1 = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[_serviceDic1 objectForKey:@"photo"]];
     NSLog(@"title:%@",self.button1.titleLabel.text);
+    //NSLog(@"frame:%@",NSStringFromCGRect(self.button1.titleLabel.frame));
 
     [self.button1 setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl1] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
     
