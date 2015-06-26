@@ -17,13 +17,14 @@
 #import "PayCourseVC.h"
 #import "PayProtocolVC.h"
 
-@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate,SelectedPayCourseMethodDelegate>
+@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate,SelectedPayCourseMethodDelegate,InputCourseHoursDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *selectedBtn;//是否同意了协议
 
 @property (nonatomic, strong) NSString *subCoursename;//子课程名
 @property (nonatomic, strong) NSString *payCourseMethod;//付款方式
+@property (nonatomic, strong) NSString *inputCourseHours;//按课时购买时，输入的课时数
 @end
 
 @implementation BuyCourseVC
@@ -279,6 +280,15 @@
                 break;
         }
     }
+    else{
+        if ([self.payCourseMethod isEqualToString:@"按课时"]) {
+            
+            ListeningCourseInfoCell *cell = [[ListeningCourseInfoCell alloc] init];
+            cell.delegate = self;
+            NSLog(@"hours:%@",self.inputCourseHours);
+            
+        }
+    }
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -361,6 +371,12 @@
     
     self.payCourseMethod = sender;
     [self.tableView reloadData];
+}
+
+#pragma mark - InputCourseHoursDelegate
+- (void)inputCourseHours:(id)sender{
+    
+    self.inputCourseHours = sender;
 }
 
 #pragma mark - changeSelectedBtnDelegate
