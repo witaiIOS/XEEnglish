@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString *subCoursename;//子课程名
 @property (nonatomic, strong) NSString *payCourseMethod;//付款方式
 @property (nonatomic, strong) NSString *inputCourseHours;//按课时购买时，输入的课时数
+@property (nonatomic, strong) NSString *priceTotal;//缴费金额
 @end
 
 @implementation BuyCourseVC
@@ -324,7 +325,7 @@
         view.backgroundColor = [UIColor clearColor];
         
         UILabel *priceHourTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 60, 20)];
-        priceHourTipLabel.text = @"课时单价:";
+        priceHourTipLabel.text = @"课时单价:";//课时价格
         priceHourTipLabel.font = [UIFont systemFontOfSize:12];
         priceHourTipLabel.textColor = [UIColor grayColor];
         
@@ -345,7 +346,7 @@
         [view addSubview:priceTotalTipLabel];
         
         UILabel *priceTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(170, 10, 60, 20)];
-        priceTotalLabel.text = self.priceTotal;
+        priceTotalLabel.text = self.priceSeries;//整套价格
         priceTotalLabel.font = [UIFont systemFontOfSize:12];
         priceTotalLabel.textColor = [UIColor grayColor];
         
@@ -364,8 +365,9 @@
 - (void)selectedCourse:(id)sender{
     NSDictionary *subCourseDic = sender;
     self.subCoursename = subCourseDic[@"title"];
-    self.priceHour = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];
-    self.priceTotal = [NSString stringWithFormat:@"%@",subCourseDic[@"total_price"]];
+    self.priceHour = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];//获取课时价格
+    self.priceSeries = [NSString stringWithFormat:@"%@",subCourseDic[@"total_price"]];//获取整套价格
+    self.priceTotal = self.priceSeries;//获取整套价格时，改写缴费金额为整套价格，因为默认情况为按整套购买
     [self.tableView reloadData];
 }
 
@@ -374,6 +376,10 @@
 - (void)selectedPayCourseMethod:(id)sender{
     
     self.payCourseMethod = sender;
+    //返回的“按课时”购买时，清除“缴费金额”，此时还不知道缴费金额，有待计算
+    if ([self.payCourseMethod isEqualToString:@"按课时"]){
+        self.priceTotal = @"";
+    }
     [self.tableView reloadData];
 }
 
