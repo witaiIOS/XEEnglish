@@ -17,6 +17,6 @@
 
 @interface PayProtocolVC : BaseVC
 
-@property (nonatomic, strong) id<changeSelectedBtnDelegate> delegate;
+@property (nonatomic, assign) id<changeSelectedBtnDelegate> delegate;
 
 @end

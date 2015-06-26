@@ -20,6 +20,6 @@
 @property (nonatomic, strong) NSMutableArray *schoolZoneArray;//校区数组
 @property (nonatomic, strong) NSString *selectedSchool;
 
-@property (nonatomic, strong) id<SchoolZoneDelegate> delegate;
+@property (nonatomic, assign) id<SchoolZoneDelegate> delegate;
 
 @end

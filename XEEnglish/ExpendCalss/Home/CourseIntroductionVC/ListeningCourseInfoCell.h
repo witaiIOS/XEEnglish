@@ -20,5 +20,5 @@
 
 @property (nonatomic, strong) UILabel *myLineLabel;
 
-@property (nonatomic, strong) id<ListeningCourseInfoCellDelegate>delegate;
+@property (nonatomic, assign) id<ListeningCourseInfoCellDelegate>delegate;
 @end

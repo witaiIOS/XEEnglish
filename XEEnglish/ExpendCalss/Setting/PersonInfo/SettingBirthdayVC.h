@@ -17,6 +17,6 @@
 
 @interface SettingBirthdayVC : BaseVC
 
-@property (nonatomic,strong) id<SettingBirthdayDelegate> delegate;
+@property (nonatomic,assign) id<SettingBirthdayDelegate> delegate;
 
 @end

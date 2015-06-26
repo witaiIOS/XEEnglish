@@ -19,5 +19,5 @@
 @property (nonatomic, strong) NSString *parentCourseId;//父课程id
 @property (nonatomic, strong) NSString *selectedCourse;//选择的子课程标记
 
-@property (nonatomic, strong) id<SelectedCourseDelegate>delegate;
+@property (nonatomic, assign) id<SelectedCourseDelegate>delegate;
 @end

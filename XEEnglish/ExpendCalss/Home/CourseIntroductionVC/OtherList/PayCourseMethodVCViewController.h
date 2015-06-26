@@ -15,5 +15,5 @@
 @end
 @interface PayCourseMethodVCViewController : BaseVC
 @property (nonatomic, strong) NSString *selectedMethod;//选择购买课程方式的标记
-@property (nonatomic, strong) id<SelectedPayCourseMethodDelegate>delegate;
+@property (nonatomic, assign) id<SelectedPayCourseMethodDelegate>delegate;
 @end

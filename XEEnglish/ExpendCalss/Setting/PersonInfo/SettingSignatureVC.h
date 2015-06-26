@@ -17,6 +17,6 @@
 
 @interface SettingSignatureVC : BaseVC
 
-@property (nonatomic, strong) id<SettingSignatureDelegate> delegate;
+@property (nonatomic, assign) id<SettingSignatureDelegate> delegate;
 
 @end

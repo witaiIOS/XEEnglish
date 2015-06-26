@@ -19,6 +19,6 @@
 @property (nonatomic, strong) NSArray *citiesArray;//城市数组
 @property (nonatomic, strong) NSString *selectedCity;
 
-@property (nonatomic, strong) id<SelectedCityDelegate> delegate;
+@property (nonatomic, assign) id<SelectedCityDelegate> delegate;
 
 @end
