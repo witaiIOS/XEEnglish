@@ -8,11 +8,12 @@
 
 #import "AllCoursesVC.h"
 #import "JSDropDownMenu.h"
+#import "HomeBtnCell.h"
 
 #import "XeeService.h"
 
-@interface AllCoursesVC ()<JSDropDownMenuDataSource,JSDropDownMenuDelegate>
-//@property (nonatomic, strong) NSMutableArray *allCourseInfo;
+@interface AllCoursesVC ()<JSDropDownMenuDataSource,JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate,HomeBtnCellDelegate>
+
 @property (nonatomic, strong) NSMutableArray *coursesArray;
 @property (nonatomic, strong) NSMutableArray *ageGroupArray;
 
@@ -21,7 +22,8 @@
 
 @property (nonatomic, strong) JSDropDownMenu *menu;
 
-
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *requestCourseInfo;
 @end
 
 @implementation AllCoursesVC
@@ -39,8 +41,10 @@
     
     self.coursesArray = [[NSMutableArray alloc] init];
     self.ageGroupArray = [[NSMutableArray alloc] init];
-    
+    self.requestCourseInfo = [[NSMutableArray alloc] init];
     [self getCourseCategoryAge];//请求课程和年龄段数据
+    
+    [self getCourseListByFilter];
 //    self.menu.dataSource = self;
 //    self.menu.delegate = self;
 }
@@ -55,6 +59,13 @@
     self.menu.textColor = RGBCOLOR(83, 83, 83);
     
     [self.view addSubview:self.menu];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 110, kScreenWidth, kScreenHeight-110) style:UITableViewStylePlain];
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self.view addSubview:self.tableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,7 +83,6 @@
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
-                //self.allCourseInfo = result[@"resultInfo"];
                 
                 //请求到数据后设置两个列表的数据信息
                 [self getCoursesAndAgesInfo:result[@"resultInfo"]];
@@ -107,8 +117,27 @@
 //            NSString *ageGroup = [NSString stringWithFormat:@"%@~%@",info[@"min_age"],info[@"max_age"]];
             NSDictionary *ageGroupDic = @{@"min_age":info[@"min_age"],@"max_age":info[@"max_age"]};
             [self.ageGroupArray addObject:ageGroupDic];
+            
         }
     }
+}
+
+#pragma mark - Web2
+- (void)getCourseListByFilter{
+    
+    [[XeeService sharedInstance] getCourseListByFilterWithMinAge:@"" andMaxAge:@"" andCourseCategoryId:@"" andSort:@"" andOrder:@"" andPageSize:10 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
+        
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                NSDictionary *requestCourseDic = result[@"resultInfo"];
+                self.requestCourseInfo = requestCourseDic[@"data"];
+                //NSLog(@"11111:%@",self.requestCourseInfo);
+                
+                [self.tableView reloadData];
+            }
+        }
+    }];
 }
 
 #pragma mark - JSDropDownMenu DataSource
@@ -206,20 +235,51 @@
         
 }
 
-
-
-
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - UITableView DataSource
+- (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return 1;
 }
-*/
+
+- (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return (self.requestCourseInfo.count+1)/2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *reuse = @"HomeBntCell_Identifier";
+    
+    HomeBtnCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
+    
+    if (cell == nil) {
+        cell = [[HomeBtnCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+    }
+    
+    cell.delegate = self;
+    //NSLog(@"1111111111:%@",[self.requestCourseInfo objectAtIndex:2*(indexPath.row)]);
+    cell.serviceDic1 = [self.requestCourseInfo objectAtIndex:2*(indexPath.row)];
+    //NSLog(@"11111:%@",cell.serviceDic1);
+    if ((2*(indexPath.row)+1) < self.requestCourseInfo.count) {
+        cell.serviceDic2 = [self.requestCourseInfo objectAtIndex:(2*(indexPath.row)+1)];
+    }
+    else{
+        cell.serviceDic2 = nil;
+    }
+    return cell;
+}
+
+#pragma mark - UITableView Delegate
+- (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 120;
+}
+
+#pragma mark - HomeBtnCell delegate
+- (void)HomeBtnCellButtonPressed:(id)sender andServiceInfo:(NSDictionary *)serviceDic{
+    
+    
+}
+
 
 @end

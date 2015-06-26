@@ -56,9 +56,10 @@
     
     HomeButton *button1 = (HomeButton *)[self viewWithTag:1];
     [button1 setTitle:[_serviceDic1 objectForKey:@"title"] forState:UIControlStateNormal];
-    
+    NSLog(@"title:%@",[_serviceDic1 objectForKey:@"title"]);
     NSString *imageUrl1 = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[_serviceDic1 objectForKey:@"photo"]];
-    
+    NSLog(@"title:%@",button1.titleLabel.text);
+    NSLog(@"title:%@",[_serviceDic1 objectForKey:@"photo"]);
     [button1 setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl1] placeholderImage:[UIImage imageNamed:@""]];
     
     ///
