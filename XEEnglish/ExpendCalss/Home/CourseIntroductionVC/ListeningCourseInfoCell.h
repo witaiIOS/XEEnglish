@@ -7,10 +7,10 @@
 //
 
 #import "BaseTVC.h"
-@protocol InputCourseHoursDelegate <NSObject>
+@protocol ListeningCourseInfoCellDelegate <NSObject>
 
 @optional
-- (void)inputCourseHours:(id) sender;
+- (void)listeningCourseInfoCellInputCourseHours:(NSString *) sender;
 
 @end
 
@@ -20,5 +20,5 @@
 
 @property (nonatomic, strong) UILabel *myLineLabel;
 
-@property (nonatomic, strong) id<InputCourseHoursDelegate>delegate;
+@property (nonatomic, strong) id<ListeningCourseInfoCellDelegate>delegate;
 @end

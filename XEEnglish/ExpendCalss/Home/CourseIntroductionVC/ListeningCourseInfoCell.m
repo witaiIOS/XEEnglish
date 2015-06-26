@@ -42,19 +42,30 @@
 }
 
 #pragma mark - UITextField Delegate
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
-    
-    [textField becomeFirstResponder];
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
-    if ([string isEqualToString:@"\n"]) {
-        [self.delegate inputCourseHours:textField.text];
-        [textField resignFirstResponder];
-        return NO;
-    }
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
     return YES;
+}
+//- (void)textFieldDidBeginEditing:(UITextField *)textField{
+//    
+//    [textField becomeFirstResponder];
+//}
+
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+//    
+//    if ([string isEqualToString:@"\n"]) {
+//        [self.delegate inputCourseHours:textField.text];
+//        [textField resignFirstResponder];
+//        return NO;
+//    }
+//    return YES;
+//}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if ([self.delegate respondsToSelector:@selector(listeningCourseInfoCellInputCourseHours:)]) {
+        [self.delegate listeningCourseInfoCellInputCourseHours:textField.text];
+    }
 }
 
 @end

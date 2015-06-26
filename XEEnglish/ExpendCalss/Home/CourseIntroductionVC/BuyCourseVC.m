@@ -17,7 +17,7 @@
 #import "PayCourseVC.h"
 #import "PayProtocolVC.h"
 
-@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate,SelectedPayCourseMethodDelegate,InputCourseHoursDelegate>
+@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate,SelectedPayCourseMethodDelegate,ListeningCourseInfoCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *selectedBtn;//是否同意了协议
@@ -211,6 +211,7 @@
                     cell = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
                 }
                 cell.cellEdge = 10;
+                cell.delegate = self;
                 cell.myLabel.text = @"购买课时";
                 
                 return cell;
@@ -283,9 +284,9 @@
     else{
         if ([self.payCourseMethod isEqualToString:@"按课时"]) {
             
-            ListeningCourseInfoCell *cell = [[ListeningCourseInfoCell alloc] init];
-            cell.delegate = self;
-            NSLog(@"hours:%@",self.inputCourseHours);
+//            ListeningCourseInfoCell *cell = [[ListeningCourseInfoCell alloc] init];
+//            cell.delegate = self;
+//            NSLog(@"hours:%@",self.inputCourseHours);
             
         }
     }
@@ -373,11 +374,15 @@
     [self.tableView reloadData];
 }
 
-#pragma mark - InputCourseHoursDelegate
-- (void)inputCourseHours:(id)sender{
-    
+#pragma mark - ListeningCorseInfoCellDelegate
+- (void)listeningCourseInfoCellInputCourseHours:(NSString *)sender {
     self.inputCourseHours = sender;
+    NSLog(@"self.inputCourseHours:%@",self.inputCourseHours);
 }
+//- (void)inputCourseHours:(id)sender{
+//    
+//    self.inputCourseHours = sender;
+//}
 
 #pragma mark - changeSelectedBtnDelegate
 
