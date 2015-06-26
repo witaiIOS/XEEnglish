@@ -118,6 +118,15 @@
 }
 
 /**
+ 首页进入的筛选课程
+ 获取首页所有课程页的课程年龄列表
+ */
++ (AFHTTPRequestOperation *)getCourseListByFilterWithMinAge:(NSString *)min_age andMaxAge:(NSString *)max_age andCourseCategoryId:(NSString *)course_category_id andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseListByFilter><web:json>{\"min_age\":\"%@\",\"max_age\":\"%@\",\"course_category_id\":\"%@\",\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetCourseListByFilter>",min_age,max_age,course_category_id,sort,order,pageSize,pageIndex]];
+}
+
+/**
  通过课程id，查询课程详情
  @param course_id 注册id
  */

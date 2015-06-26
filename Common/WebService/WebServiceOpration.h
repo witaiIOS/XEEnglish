@@ -88,10 +88,24 @@
 + (AFHTTPRequestOperation *)getCourseListAppHome;
 
 /**
- 获取首页课程列表
+ 获取课程大类和课程年龄段
+ 获取首页所有课程页的课程年龄列表
  @param {}
  */
 + (AFHTTPRequestOperation *)getCourseCategoryAge;
+
+/**
+ 首页进入的筛选课程
+ 获取首页所有课程页的课程年龄列表
+ @param MinAge 最小年龄
+ @param MaxAge 最大年龄
+ @param CourseCategoryId  课程分类id
+ @param Sort      排序字段(可选)
+ @param Order     desc/asc（可选）
+ @param PageSize  每页最大条数
+ @param PageIndex 从1开始的索引
+ */
++ (AFHTTPRequestOperation *)getCourseListByFilterWithMinAge:(NSString *)min_age andMaxAge:(NSString *)max_age andCourseCategoryId:(NSString *)course_category_id andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex;
 
 /**
  通过课程id，查询课程详情

@@ -88,6 +88,18 @@
  */
 - (void)getCourseCategoryAgeAndBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 首页进入的筛选课程
+ 获取首页所有课程页的课程年龄列表
+ @param MinAge 最小年龄
+ @param MaxAge 最大年龄
+ @param CourseCategoryId  课程分类id
+ @param Sort      排序字段(可选)
+ @param Order     desc/asc（可选）
+ @param PageSize  每页最大条数
+ @param PageIndex 从1开始的索引
+ */
+- (void)getCourseListByFilterWithMinAge:(NSString *)min_age andMaxAge:(NSString *)max_age andCourseCategoryId:(NSString *)course_category_id andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
 /**
  通过课程id，查询课程详情
