@@ -34,6 +34,7 @@
 		09C639541B3A9F5E00510F00 /* pay_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C639511B3A9F5E00510F00 /* pay_03.png */; };
 		09C639561B3AA77400510F00 /* pay_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C639551B3AA77400510F00 /* pay_02.png */; };
 		09C639591B3AADA700510F00 /* PayProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C639581B3AADA700510F00 /* PayProtocolVC.m */; };
+		09C6B6181B3D76D300221974 /* image_loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C6B6171B3D76D300221974 /* image_loading.png */; };
 		09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A41B25AC4700E72163 /* ActivityContentCell.m */; };
 		09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A71B25BB0100E72163 /* otherRequireCell.m */; };
 		09C87F291B3BEFB900D7C913 /* SubCourseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F281B3BEFB900D7C913 /* SubCourseListVC.m */; };
@@ -226,6 +227,7 @@
 		09C639551B3AA77400510F00 /* pay_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_02.png; sourceTree = "<group>"; };
 		09C639571B3AADA700510F00 /* PayProtocolVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayProtocolVC.h; sourceTree = "<group>"; };
 		09C639581B3AADA700510F00 /* PayProtocolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayProtocolVC.m; sourceTree = "<group>"; };
+		09C6B6171B3D76D300221974 /* image_loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_loading.png; path = Home/image_loading.png; sourceTree = "<group>"; };
 		09C832A31B25AC4700E72163 /* ActivityContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityContentCell.h; sourceTree = "<group>"; };
 		09C832A41B25AC4700E72163 /* ActivityContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityContentCell.m; sourceTree = "<group>"; };
 		09C832A61B25BB0100E72163 /* otherRequireCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = otherRequireCell.h; sourceTree = "<group>"; };
@@ -1033,6 +1035,7 @@
 		A6284D6E1B105EC300EFF820 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				09C6B6171B3D76D300221974 /* image_loading.png */,
 				09DB2DCF1B1322CC0078AAF5 /* Course */,
 				09DB2DCA1B1322AF0078AAF5 /* Activity */,
 				09DB2DC51B1322A30078AAF5 /* Setting */,
@@ -1228,6 +1231,7 @@
 				09DB2DC81B1322A30078AAF5 /* mybgpic@2x.png in Resources */,
 				09C9C0E11B22C890001BBA1C /* STexpense.png in Resources */,
 				09C9DE3C1B2A670C00A07544 /* MyActivityCell.xib in Resources */,
+				09C6B6181B3D76D300221974 /* image_loading.png in Resources */,
 				A6647CC01B270E9B00D2DC57 /* course7.png in Resources */,
 				09C9C0E41B22C890001BBA1C /* STreserve.png in Resources */,
 				09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */,

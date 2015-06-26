@@ -22,6 +22,9 @@
 @property (strong, nonatomic) NSDictionary *serviceDic2;
 @property (assign, nonatomic) id<HomeBtnCellDelegate>delegate;
 
+@property (nonatomic, strong) HomeButton *button1;
+@property (nonatomic, strong) HomeButton *button2;
+
 
 - (IBAction)buttonPressed:(id)sender;
 

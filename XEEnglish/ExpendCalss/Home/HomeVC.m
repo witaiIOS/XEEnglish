@@ -131,19 +131,21 @@
         
     }
     else if (indexPath.section == 1){//bnt
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
-        
-        ((HomeBtnCell *)cell).delegate = self;
-        ((HomeBtnCell *)cell).serviceDic1 = [_serviceInfos objectAtIndex:2*(indexPath.row)];
+        HomeBtnCell *cell2 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
+        if(cell2 == nil){
+            cell2 = [[HomeBtnCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier2];
+        }
+        cell2.delegate = self;
+        cell2.serviceDic1 = [_serviceInfos objectAtIndex:2*(indexPath.row)];
         
         if ( (2*(indexPath.row)+1) < _serviceInfos.count) {
-            ((HomeBtnCell *)cell).serviceDic2 = [_serviceInfos objectAtIndex:2*(indexPath.row)+1];
+            cell2.serviceDic2 = [_serviceInfos objectAtIndex:2*(indexPath.row)+1];
         }
         else{
-            ((HomeBtnCell *)cell).serviceDic2 = nil;
+            cell2.serviceDic2 = nil;
         }
 
-        return cell;
+        return cell2;
     }
     else{
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
