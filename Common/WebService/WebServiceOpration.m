@@ -202,8 +202,8 @@
 /**
  获取我的预定中的活动
  */
-+ (AFHTTPRequestOperation *)GetActivityInfoByParentIdWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSInteger )parentId{
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetActivityInfoByParentId><web:pageSize>%li</web:pageSize><web:pageIndex>%li</web:pageIndex><web:parentId>%li</web:parentId></web:GetActivityInfoByParentId>",pageSize,pageIndex,parentId]];
++ (AFHTTPRequestOperation *)GetActivityInfoByParentIdWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSString *)parentId andToken:(NSString *)token{
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetActivityInfoByParentId><web:json>{\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetActivityInfoByParentId>",(long)pageSize,(long)pageIndex,parentId,token]];
 }
 /**
  获取城市

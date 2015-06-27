@@ -172,7 +172,7 @@
  @param pageIndex 当前页码
  @param parentId 表示当前登录人id
  */
-- (void)GetActivityInfoByParentIdWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSInteger )parentId andBlock:(void(^)(NSDictionary *result, NSError *error))block;
+- (void)GetActivityInfoByParentIdWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId:(NSString *)parentId andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
 /**
  获取城市

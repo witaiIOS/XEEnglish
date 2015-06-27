@@ -66,7 +66,7 @@
 
 - (void)getMyActivityInfo{
     
-    [[XeeService sharedInstance] GetActivityInfoByParentIdWithPageSize:10 andPageIndex:1 andParentId:3 andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] GetActivityInfoByParentIdWithPageSize:10 andPageIndex:1 andParentId:@"3" andToken:@"yEqHDenWZHDAXdipP3TMEISdQsdJkTChcIl8dvShblTO/6NHlBMlpAdbxhGG+f3FpYwgN3u7f4dgphB2iYJfbw==" andBlock:^(NSDictionary *result, NSError *error) {
         
         NSLog(@"result:%@",result);
         
@@ -75,7 +75,7 @@
             NSNumber *isResult = result[@"result"];
             
             if (isResult.integerValue == 0) {
-                
+                NSLog(@"info:%@",result[@"resultInfo"]);
                 self.activityArray = result[@"resultInfo"];
                 [self.activityTableView reloadData];
                 
