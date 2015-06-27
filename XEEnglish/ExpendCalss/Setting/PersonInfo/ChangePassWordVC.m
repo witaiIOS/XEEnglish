@@ -50,7 +50,10 @@
         [UIFactory showAlert:@"确认密码错误"];
     }
     else{
-        [[XeeService sharedInstance] modifyPwdWithNewPassword:self.myNewPasswordField.text andOldPassword:self.orgainPasswordField.text andId:1 andBlock:^(NSDictionary *result, NSError *error) {
+        NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+        NSDictionary *uUserInfoDic = userDic[uUserInfoKey];
+        //NSLog(@"token:%@",uUserInfoDic[uUserToken]);
+        [[XeeService sharedInstance] modifyPwdWithNewPassword:self.myNewPasswordField.text andOldPassword:self.orgainPasswordField.text andParentId:uUserInfoDic[uUserId] andToken:uUserInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
             
             if (!error) {
                 NSNumber *r = result[@"result"];

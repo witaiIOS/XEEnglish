@@ -88,7 +88,8 @@
                 NSNumber *r = result[@"result"];
                 //NSLog(@"result:%@",result);
                 if (r.integerValue == 0) {
-                    
+//                    NSDictionary *userDic = result[@"resultInfo"];
+//                    NSLog(@"token:%@",userDic[@"token"]);
                     [[UserInfo sharedUser] setUserInfoDicWithWebServiceResult:result];//本地化存储用户信息
                     if ([self.delegate respondsToSelector:@selector(loginVCloginSuccess)]) {
                         [self.delegate loginVCloginSuccess];

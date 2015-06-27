@@ -33,6 +33,7 @@
 #define uUserInfoKey           @"uUserInfoKey"
 
 #define uUserId                @"uUserId"
+#define uUserToken             @"uUserToken"
 #define uUserName              @"uUserName"
 #define uPassword              @"uPassword"
 #define uPhoneNumber           @"uPhoneNumber"

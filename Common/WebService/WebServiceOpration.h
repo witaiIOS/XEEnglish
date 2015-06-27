@@ -169,7 +169,7 @@
  @param oldPassword 旧密码
  @param parent_id 注册id
  */
-+ (AFHTTPRequestOperation *)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andId:(NSInteger )parent_id;
++ (AFHTTPRequestOperation *)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andParentId:(NSString *)parent_id andToken:(NSString *)token;
 
 /**
  获取我的预定中的活动
