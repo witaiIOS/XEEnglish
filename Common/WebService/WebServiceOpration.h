@@ -153,7 +153,7 @@
  @param parent_id 用户Id
  @param course_id 课程Id
  */
-+ (AFHTTPRequestOperation *)getSchoolWithParentId:(NSString *)parent_id andCourseId:(NSString *)course_id;
++ (AFHTTPRequestOperation *)getSchoolWithParentId:(NSString *)parent_id andCourseId:(NSString *)course_id andToken:(NSString *)token;
 
 /**
  预定场馆

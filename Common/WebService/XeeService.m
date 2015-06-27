@@ -320,9 +320,9 @@
 /**
  查询所有校区
  */
-- (void)getSchoolWithParentId:(NSString *)parent_id andCourseId:(NSString *)course_id andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+- (void)getSchoolWithParentId:(NSString *)parent_id andCourseId:(NSString *)course_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
     
-    AFHTTPRequestOperation *operation = [WebServiceOpration getSchoolWithParentId :parent_id andCourseId:(NSString *)course_id];
+    AFHTTPRequestOperation *operation = [WebServiceOpration getSchoolWithParentId :parent_id andCourseId:(NSString *)course_id andToken:(NSString *)token];
     
     [self getResponseWithOpration:operation andXmlKey:@"GetSchoolResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         //NSLog(@"result:%@",result);

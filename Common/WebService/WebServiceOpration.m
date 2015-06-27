@@ -82,7 +82,7 @@
 }
 
 + (AFHTTPRequestOperation *)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andSign:(NSString *)sign {
-    return [self XEEWebService:[NSString stringWithFormat:@" <web:checkCode><web:json>{\"sign\":%@,\"mobile\":\"%@\",\"code\":\"%@\"}</web:json></web:checkCode>", sign, phoneNumber, code]];
+    return [self XEEWebService:[NSString stringWithFormat:@" <web:checkCode><web:json>{\"sign\":\"%@\",\"mobile\":\"%@\",\"code\":\"%@\"}</web:json></web:checkCode>", sign, phoneNumber, code]];
 }
 
 
@@ -149,7 +149,7 @@
  @param parent_id 注册id
  */
 + (AFHTTPRequestOperation *)getVStudentCourseByParentId:(NSInteger )parent_id{
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentCourseByParentId><web:parent_id>%li</web:parent_id></web:GetVStudentCourseByParentId>",(long)parent_id]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentCourseByParentId><web:parent_id>\"%li\"</web:parent_id></web:GetVStudentCourseByParentId>",(long)parent_id]];
 }
 
 /**
@@ -157,7 +157,7 @@
  */
 + (AFHTTPRequestOperation *)getVStudentSourseScheduleSignWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andCourseId:(NSString *)course_id andSignon:(NSString *)is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentSourseScheduleSign><web:json>{\"parent_id\":%@,\"student_id\":%@,\"course_id\":%@, \"is_signon\":%@,\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":%li,\"pageIndex\":%li}</web:json></web:GetVStudentSourseScheduleSign>",parent_id,student_id,course_id,is_signon,sort,order,(long)pageSize,(long)pageIndex]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentSourseScheduleSign><web:json>{\"parent_id\":\"%@\",\"student_id\":\"%@\",\"course_id\":\"%@\", \"is_signon\":\"%@\",\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetVStudentSourseScheduleSign>",parent_id,student_id,course_id,is_signon,sort,order,(long)pageSize,(long)pageIndex]];
 }
 
 
@@ -171,12 +171,12 @@
 /**
  查询所有校区
  */
-+ (AFHTTPRequestOperation *)getSchoolWithParentId:(NSString *)parent_id andCourseId:(NSString *)course_id{
++ (AFHTTPRequestOperation *)getSchoolWithParentId:(NSString *)parent_id andCourseId:(NSString *)course_id andToken:(NSString *)token{
     if (course_id == nil) {
-        return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchool><web:json>{\"parent_id\":%@}</web:json></web:GetSchool>",parent_id]];
+        return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchool><web:json>{\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetSchool>",parent_id,token]];
     }
     else{
-        return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchool><web:json>{\"parent_id\":%@,\"course_id\":%@}</web:json></web:GetSchool>",parent_id,course_id]];
+        return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchool><web:json>{\"parent_id\":\"%@\",\"course_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetSchool>",parent_id,course_id,token]];
     }
     
 }
