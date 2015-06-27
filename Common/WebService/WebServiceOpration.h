@@ -125,7 +125,7 @@
  通过家长id，查找学生选课关系简介列表
  @param parent_id 注册id
  */
-+ (AFHTTPRequestOperation *)getVStudentCourseByParentId:(NSInteger )parent_id;
++ (AFHTTPRequestOperation *)getVStudentCourseByParentId:(NSString *)parent_id andToken:(NSString *)token;
 
 /**
  通过student_id学员id，获取课程计划签到信息分页(获取请假/缺课列表 共用)
@@ -138,7 +138,7 @@
  @param PageSize  每页最大条数
  @param PageIndex 从1开始的索引
  */
-+ (AFHTTPRequestOperation *)getVStudentSourseScheduleSignWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andCourseId:(NSString *)course_id andSignon:(NSString *)is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex;
++ (AFHTTPRequestOperation *)getVStudentSourseScheduleSignWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andCourseId:(NSString *)course_id andSignon:(NSString *)is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token;
 
 #pragma mark - 活动
 /**

@@ -190,7 +190,7 @@
 }
 #pragma mark - Web
 - (void)getVStudentCourseByParentId{
-    [[XeeService sharedInstance] getVStudentCourseByParentId:17 andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getVStudentCourseByParentId:@"17" andToken:@"yEqHDenWZHCMVH2DMbUL8GFj2gtCsq8rhW6MpigV11lBVj2ZNEhbKCRdy6wAVkubzoluiOHJEz2h/SOgGRiv4A==" andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
@@ -225,7 +225,7 @@
     //NSLog(@"courseId:%@",courseId);
     
     
-    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:@"17" andStudentId:studentId andCourseId:courseId andSignon:@"0" andSort:@"" andOrder:@"" andPageSize:100 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:@"17" andStudentId:studentId andCourseId:courseId andSignon:@"0" andSort:@"" andOrder:@"" andPageSize:100 andPageIndex:1 andToken:@"yEqHDenWZHCMVH2DMbUL8GFj2gtCsq8rhW6MpigV11lBVj2ZNEhbKCRdy6wAVkubzoluiOHJEz2h/SOgGRiv4A==" andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             
             //NSLog(@"getVStudentSourseScheduleSign result:%@",result);
