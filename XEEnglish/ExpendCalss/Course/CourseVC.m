@@ -217,15 +217,15 @@
     NSDictionary *studentDic = self.students[self.currentStudentsIndex];
     NSString *studentId = studentDic[@"student_id"];
     //NSLog(@"studentId:%@",studentId);
-    
+    //现在用的假数据，用真数据时再解除courseid的注释
     //NSDictionary *courseDic = self.courseList[self.currentCouseListIndex];
-    NSMutableArray *courseArray = studentDic[@"listCourse"];
-    NSDictionary *courseDic = courseArray[_currentCouseListIndex];
-    NSString *courseId = courseDic[@"course_id"];
+    //NSMutableArray *courseArray = studentDic[@"listCourse"];
+    //NSDictionary *courseDic = courseArray[_currentCouseListIndex];
+    //NSString *courseId = courseDic[@"course_id"];
     //NSLog(@"courseId:%@",courseId);
     
     
-    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:@"17" andStudentId:studentId andCourseId:courseId andSignon:@"0" andSort:@"" andOrder:@"" andPageSize:100 andPageIndex:1 andToken:@"yEqHDenWZHCMVH2DMbUL8GFj2gtCsq8rhW6MpigV11lBVj2ZNEhbKCRdy6wAVkubzoluiOHJEz2h/SOgGRiv4A==" andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:@"17" andStudentId:studentId andCourseId:@"1" andSignon:@"0" andSort:@"" andOrder:@"" andPageSize:100 andPageIndex:1 andToken:@"yEqHDenWZHCMVH2DMbUL8GFj2gtCsq8rhW6MpigV11lBVj2ZNEhbKCRdy6wAVkubzoluiOHJEz2h/SOgGRiv4A==" andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             
             //NSLog(@"getVStudentSourseScheduleSign result:%@",result);
