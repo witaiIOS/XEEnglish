@@ -158,6 +158,15 @@
 
 
 #pragma mark - 我的
+
+/**
+ 登录后修改密码
+ @param parent_id 注册id
+ @param token
+ */
+- (void)getMyInfoWithParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block;
+
+#pragma mark - 我的 个人信息
 /**
  登录后修改密码
  @param newPassword 新密码

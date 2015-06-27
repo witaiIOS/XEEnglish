@@ -165,9 +165,18 @@
 #pragma mark - 我的
 /**
  登录后修改密码
+ @param parent_id 注册id
+ @param token
+ */
++ (AFHTTPRequestOperation *)getMyInfoWithParentId:(NSString *)parent_id andToken:(NSString *)token;
+
+#pragma mark - 我的 个人信息
+/**
+ 登录后修改密码
  @param newPassword 新密码
  @param oldPassword 旧密码
  @param parent_id 注册id
+ @param token
  */
 + (AFHTTPRequestOperation *)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andParentId:(NSString *)parent_id andToken:(NSString *)token;
 

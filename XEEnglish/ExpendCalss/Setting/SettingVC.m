@@ -18,6 +18,8 @@
 #import "CitiesVC.h"
 #import "MoreSettingVC.h"
 
+#import "XeeService.h"
+
 @interface SettingVC ()<UITableViewDataSource, UITableViewDelegate,SelectedCityDelegate, UIAlertViewDelegate, LoginVCDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *loginBtn;
@@ -25,6 +27,8 @@
 @property (nonatomic, strong) UILabel *userPhoneNumber;
 
 @property (nonatomic, strong) NSString *selectCity;
+
+@property (nonatomic, strong) NSDictionary *myInfoDic;
 
 @end
 
@@ -39,14 +43,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.selectCity = @"武汉市";
+    self.selectCity = self.myInfoDic[@"city"];
     
     [self updateUserLoginUI];
+    
+    [self getMyInfoFromWeb];
 
 }
 
 - (void)initUI{
     [super initUI];
+    
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -79,6 +86,8 @@
         self.userPhoneNumber.text = [[[[UserInfo sharedUser] getUserInfoDic] objectForKey:uUserInfoKey] objectForKey:uPhoneNumber];
         
         _exitBtn.hidden = NO;
+        //登陆之后，请求“我的”信息
+        [self getMyInfoFromWeb];
     }
     else {
         self.userPhoneNumber.hidden = YES;
@@ -160,6 +169,30 @@
     alert.tag = 99;
     [alert show];
 }
+#pragma mark - Web
+
+- (void)getMyInfoFromWeb{
+    
+    [[XeeService sharedInstance] getMyInfoWithParentId:@"17" andToken:@"yEqHDenWZHBlDIlSPE983NPkCkQsz4yU/K9ZLVS8G+RcUG0HSXerMEH2rpacH5aH53d6XsNRPWnpS/Uocat+xA==" andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSLog(@"result:%@",result);
+            
+            NSNumber *isResult = result[@"result"];
+            
+            if (isResult.integerValue == 0) {
+                self.myInfoDic = result[@"resultInfo"];
+                
+                [self.tableView reloadData];
+            }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }
+        else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
 
 
 
@@ -195,6 +228,7 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NSString *str = nil;
     UIImage *image = nil;
+    NSString *detailStr = nil;
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
@@ -213,6 +247,7 @@
             {
                 str =@"积分";
                 image = [UIImage imageNamed:@"STintegral.png"];
+                detailStr = [NSString stringWithFormat:@"%@",self.myInfoDic[@"points"]];
                 break;
             }
 //            case 1:
@@ -224,6 +259,7 @@
             case 1:
                 str =@"我的预定";
                 image = [UIImage imageNamed:@"STreserve.png"];
+                detailStr = [NSString stringWithFormat:@"%@/%@/%@",self.myInfoDic[@"course"],self.myInfoDic[@"activity"],self.myInfoDic[@"booksite"]];
                 break;
             case 2:
                 str = @"消费记录";
@@ -242,7 +278,7 @@
             {
                 str = @"城市";
                 image = [UIImage imageNamed:@"STcity.png"];
-                cell.mydetailLabel.text = self.selectCity;
+                detailStr = self.myInfoDic[@"city"];
                 break;
             }
                 
@@ -259,6 +295,7 @@
     }
     cell.myLabel.text = str;
     cell.myImageView.image = image;
+    cell.mydetailLabel.text = detailStr;
     
     
     return cell;

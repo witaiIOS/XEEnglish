@@ -191,6 +191,18 @@
 }
 
 #pragma mark - 我的
+
+/**
+ 登录后修改密码
+ @param parent_id 注册id
+ @param token
+ */
++ (AFHTTPRequestOperation *)getMyInfoWithParentId:(NSString *)parent_id andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetMyInfo><web:json>{\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetMyInfo>",parent_id,token]];
+}
+
+
 /**
  登录后修改密码
  */

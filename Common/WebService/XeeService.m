@@ -349,6 +349,22 @@
 }
 
 #pragma mark - 我的
+
+/**
+ 登录后修改密码
+ */
+- (void)getMyInfoWithParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *oparetion = [WebServiceOpration getMyInfoWithParentId:parent_id andToken:token];
+    
+    [self getResponseWithOpration:oparetion andXmlKey:@"GetMyInfoResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
+#pragma mark - 我的 个人信息
 /**
  登录后修改密码
  */

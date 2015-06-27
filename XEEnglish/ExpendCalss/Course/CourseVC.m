@@ -217,6 +217,7 @@
     NSDictionary *studentDic = self.students[self.currentStudentsIndex];
     NSString *studentId = studentDic[@"student_id"];
     //NSLog(@"studentId:%@",studentId);
+    
     //现在用的假数据，用真数据时再解除courseid的注释
     //NSDictionary *courseDic = self.courseList[self.currentCouseListIndex];
     //NSMutableArray *courseArray = studentDic[@"listCourse"];
