@@ -146,7 +146,7 @@
  @param pageSize 一次请求显示多少个活动
  @param pageIndex 当前页码
  */
-+ (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex;
++ (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId:(NSString *)parent_id andToken:(NSString *)token;
 
 /**
  查询所有校区

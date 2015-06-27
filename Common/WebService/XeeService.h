@@ -141,7 +141,7 @@
  @param pageIndex 当前页码
  @param block  (result 解析出来的结果, error 请求的错误信息)
  */
-- (void)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void (^)(NSDictionary *result, NSError *error))block;
+- (void)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result, NSError *error))block;
 
 /**
  查询所有校区
