@@ -66,7 +66,7 @@
 
 - (void)getMyActivityInfo{
     
-    [[XeeService sharedInstance] GetActivityInfoByParentIdWithPageSize:10 andPageIndex:1 andParentId:@"3" andToken:@"yEqHDenWZHDAXdipP3TMEISdQsdJkTChcIl8dvShblTO/6NHlBMlpAdbxhGG+f3FpYwgN3u7f4dgphB2iYJfbw==" andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] GetActivityInfoByParentIdWithPageSize:10 andPageIndex:1 andParentId:ceShiId andToken:ceShiToken andBlock:^(NSDictionary *result, NSError *error) {
         
         NSLog(@"result:%@",result);
         

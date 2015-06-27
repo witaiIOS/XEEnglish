@@ -278,7 +278,7 @@
             {
                 str = @"城市";
                 image = [UIImage imageNamed:@"STcity.png"];
-                detailStr = self.myInfoDic[@"city"];
+                detailStr = self.selectCity;
                 break;
             }
                 
