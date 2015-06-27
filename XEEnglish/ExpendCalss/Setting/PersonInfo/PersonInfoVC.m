@@ -312,6 +312,16 @@
     
 }
 
+- (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 0) {
+        return 70.0f;
+    }
+    else{
+        return 44.0f;
+    }
+}
+
 //用UIActionSheet控件来选择相片的来源
 - (void)changeImage{
     
