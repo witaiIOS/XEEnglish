@@ -24,9 +24,14 @@
 
 
 - (IBAction)submitBtnClicked:(id)sender {
+    if ([self.feedTV.text isEqualToString:@"请输入您的宝贵意见"]) {
+        [UIFactory showAlert:@"请填写意见"];
+    }
+    else{
+        [self addFeedback];
+        self.feedTV.text = @"请输入您的宝贵意见";
+    }
     
-    [self addFeedback];
-    self.feedTV.text = @"请输入您的宝贵意见";
 }
 
 #pragma mark -Web

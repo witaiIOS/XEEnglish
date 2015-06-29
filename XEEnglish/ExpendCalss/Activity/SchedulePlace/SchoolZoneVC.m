@@ -49,7 +49,7 @@
 //    NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //NSLog(@"token:%@",userToken);
     
-    [[XeeService sharedInstance] getSchoolWithParentId:@"17" andCourseId:(NSString *)nil andToken:@"yEqHDenWZHCMVH2DMbUL8GFj2gtCsq8rhW6MpigV11lBVj2ZNEhbKCRdy6wAVkubzoluiOHJEz2h/SOgGRiv4A==" andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getSchoolWithParentId:@"17" andCourseId:nil andToken:@"yEqHDenWZHCMVH2DMbUL8GFj2gtCsq8rhW6MpigV11lBVj2ZNEhbKCRdy6wAVkubzoluiOHJEz2h/SOgGRiv4A==" andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];

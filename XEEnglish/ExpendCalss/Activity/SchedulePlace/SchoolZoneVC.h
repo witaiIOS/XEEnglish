@@ -21,5 +21,6 @@
 @property (nonatomic, strong) NSString *selectedSchool;
 
 @property (nonatomic, assign) id<SchoolZoneDelegate> delegate;
+//@property (nonatomic, strong) NSString *superCourseId;
 
 @end
