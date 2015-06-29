@@ -105,8 +105,29 @@
 
 - (void)ScheduleBtnAction{
     
-    if ([self.schoolZone[@"department"] isEqualToString:@""]) {
+    if (self.schoolZone[@"department"] == nil) {
         [UIFactory showAlert:@"请选择校区"];
+    }
+    else if (self.stateTime == nil) {
+        [UIFactory showAlert:@"请选择开始时间"];
+    }
+    else if (self.endTime == nil) {
+        [UIFactory showAlert:@"请选择结束时间"];
+    }
+    else if (self.personNum == nil) {
+        [UIFactory showAlert:@"请输入预计人数"];
+    }
+    else if (self.area == nil) {
+        [UIFactory showAlert:@"请输入预定场馆面积"];
+    }
+    else if (self.needProjector == nil) {
+        [UIFactory showAlert:@"请选择是否需要投影仪"];
+    }
+    else if (self.needTeacher == nil) {
+        [UIFactory showAlert:@"请选择是否需要老师"];
+    }
+    else if (self.activityContent == nil) {
+        [UIFactory showAlert:@"请输入活动内容"];
     }
     else{
         [self addBookSite];
