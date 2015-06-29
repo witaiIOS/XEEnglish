@@ -10,6 +10,12 @@
 //#import "RadioBox.h"
 //#import "RadioGroup.h"
 //#import "TNCheckBoxGroup.h"
+@protocol HardwareDemandCellSetNeedProjectorAndTeacherDelegate <NSObject>
+
+@optional
+- (void)setNeedProjectorAndTeacher:(id) sender;
+
+@end
 
 @interface HardwareDemandCell : BaseTVC
 
@@ -28,7 +34,7 @@
 //@property (nonatomic, strong) TNCircularCheckBox *strawberry;
 //@property (nonatomic, strong) TNCheckBoxGroup *tnCheckBoxGroup;
 
-@property (nonatomic, strong) NSString *valueStr;//提供给外部的值。
-
+//@property (nonatomic, strong) NSString *valueStr;//提供给外部的值。
+@property (nonatomic, assign) id<HardwareDemandCellSetNeedProjectorAndTeacherDelegate>delegate;
 
 @end

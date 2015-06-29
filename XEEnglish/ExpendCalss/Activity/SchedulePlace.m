@@ -17,7 +17,7 @@
 
 #import "XeeService.h"
 
-@interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,SchoolZoneDelegate,DatePickerCellChangeDateMarkDelegate,PlaceDemandCellSetPersonNumAndAreaDelegate>
+@interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,SchoolZoneDelegate,DatePickerCellChangeDateMarkDelegate,PlaceDemandCellSetPersonNumAndAreaDelegate,HardwareDemandCellSetNeedProjectorAndTeacherDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 //@property (nonatomic, strong) NSString *dateStart;
 //@property (nonatomic, strong) NSMutableArray *schoolArray;
@@ -28,10 +28,16 @@
 @property (nonatomic, assign) NSInteger changeDateMark;
 @property (nonatomic, strong) NSString *stateTime;  //开始时间
 @property (nonatomic, strong) NSString *endTime;    //结束时间
+
 //设置代理方法的标记，setNumberMark为0设置人数，为1设置面积
 @property (nonatomic, assign) NSInteger setNumberMark;
 @property (nonatomic, strong) NSString *personNum;  //活动人数
 @property (nonatomic, strong) NSString *area;    //活动所需场馆面积
+
+//设置代理方法的标记，setNeedMark为0设置是否需要投影仪，为1是否需要老师
+@property (nonatomic, assign) NSInteger setNeedMark;
+@property (nonatomic, strong) NSString *needProjector;  //是否需要投影仪
+@property (nonatomic, strong) NSString *needTeacher;    //是否需要老师
 
 
 @property (nonatomic, strong) NSString *activityContent;//活动内容
@@ -113,7 +119,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //NSLog(@"content:%@",self.activityContent);
-    [[XeeService sharedInstance] AddBookSiteWithKeyId:@"0" andRoomId:@"0" andAddTime:nil andParentId:userInfoDic[uUserId] andSchoolId:self.schoolZone[@"department_id"] andStartTime:self.stateTime andeEndTime:self.endTime andPersonNum:@"10" andArea:@"20" andProjector:@"1" andTeacher:@"1" andActivityContent:self.activityContent andMemo:self.otherMemo andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] AddBookSiteWithKeyId:@"0" andRoomId:@"0" andAddTime:nil andParentId:userInfoDic[uUserId] andSchoolId:self.schoolZone[@"department_id"] andStartTime:self.stateTime andeEndTime:self.endTime andPersonNum:self.personNum andArea:self.area andProjector:self.needProjector andTeacher:self.needTeacher andActivityContent:self.activityContent andMemo:self.otherMemo andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
@@ -197,15 +203,13 @@
         switch (indexPath.row) {
             case 0:{
                 cell.dateLabel.text = @"预定起始时间";
-                //设置修改标记
-                self.changeDateMark = 0;
+                
                 cell.delegate = self;
                 break;
             }
             case 1:{
                 cell.dateLabel.text = @"预定结束时间";
-                //设置修改标记
-                self.changeDateMark = 1;
+               
                 cell.delegate = self;
                 break;
             }
@@ -226,16 +230,14 @@
                 cell.tipInfoLabel.text = @"预计人数";
                 cell.peopleAndPlaceTF.text = @"";
                 cell.delegate = self;
-                //设置修改标记
-                self.setNumberMark = 0;
+                
                 break;
             }
             case 1:{
                 cell.tipInfoLabel.text = @"所需面积";
                 cell.peopleAndPlaceTF.text = @"";
                 cell.delegate = self;
-                //设置修改标记
-                self.setNumberMark = 1;
+                
                 break;
             }
   
@@ -257,6 +259,8 @@
                 cell.noLabel.text = @"没有";
                 //cell.boxNeed.text = @"有";
                 //cell.boxUnNeed.text = @"没有";
+                cell.delegate = self;
+                
                 break;
             }
             case 1:{
@@ -265,6 +269,8 @@
                 cell.noLabel.text = @"不要";
                 //cell.boxNeed.text = @"要";
                 //cell.boxUnNeed.text = @"不要";
+                cell.delegate = self;
+                
                 break;
             }
                 
@@ -313,6 +319,66 @@
         //vc.schoolZoneArray =self.schoolArray;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (indexPath.section == 1){
+        switch (indexPath.row) {
+            case 0:
+            {
+                //设置修改标记 为0设置开始时间
+                self.changeDateMark = 0;
+                break;
+            }
+            case 1:
+            {
+                //设置修改标记 为1设置结束时间
+                self.changeDateMark = 1;
+                break;
+            }
+    
+            default:
+                break;
+        }
+    }
+    else if (indexPath.section == 2){
+        switch (indexPath.row) {
+            case 0:
+            {
+                //设置修改标记 为0设置人数
+                self.setNumberMark = 0;
+                break;
+            }
+            case 1:
+            {
+                //设置修改标记 为1设置所需面积
+                self.setNumberMark = 1;
+                break;
+            }
+                
+            default:
+                break;
+        }
+    }
+    else if (indexPath.section == 2){
+        switch (indexPath.row) {
+            case 0:
+            {
+                //设置修改标记 为0设置是否需要投影仪
+                self.setNeedMark = 0;
+                break;
+            }
+            case 1:
+            {
+                //设置修改标记 为1设置是否需要老师
+                self.setNeedMark = 1;
+                break;
+            }
+                
+            default:
+                break;
+        }
+    }
+    else{
+        
     }
 }
 
@@ -385,6 +451,18 @@
     else{
         self.area = sender;
         //NSLog(@"area:%@",self.area);
+    }
+}
+
+#pragma mark - HardwareDemandCellSetNeedProjectorAndTeacherDelegate
+- (void)setNeedProjectorAndTeacher:(id)sender{
+    if (self.setNeedMark == 0) {
+        self.needProjector = sender;
+        //NSLog(@"needProjector:%@",self.needProjector);
+    }
+    else{
+        self.needTeacher = sender;
+        //NSLog(@"needTeacher:%@",self.needTeacher);
     }
 }
 

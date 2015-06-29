@@ -121,13 +121,34 @@
 
 #pragma mark - My Action
 - (void)YesAtion {
-    self.yesButton.selected = !self.yesButton.selected;
-    self.noButton.selected = !self.yesButton.selected;
+    if (self.yesButton.selected == YES) {
+        //1代表需要，0代表不需要
+        [self.delegate setNeedProjectorAndTeacher:@"1"];
+    }
+    else{
+        self.yesButton.selected = YES;
+        self.noButton.selected = NO;
+        //1代表需要，0代表不需要
+        [self.delegate setNeedProjectorAndTeacher:@"1"];
+    }
+    
+//    self.yesButton.selected = !self.yesButton.selected;
+//    self.noButton.selected = !self.yesButton.selected;
 }
 
 - (void)NOAtion {
-    self.noButton.selected = !self.noButton.selected;
-    self.yesButton.selected = !self.noButton.selected;
+    if (self.noButton.selected == YES) {
+        //1代表需要，0代表不需要
+        [self.delegate setNeedProjectorAndTeacher:@"0"];
+    }
+    else{
+        self.yesButton.selected = NO;
+        self.noButton.selected = YES;
+        [self.delegate setNeedProjectorAndTeacher:@"0"];
+    }
+    
+//    self.noButton.selected = !self.noButton.selected;
+//    self.yesButton.selected = !self.noButton.selected;
 }
 
 
