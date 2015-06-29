@@ -197,6 +197,15 @@
 - (void)setCityWithDepartmentId:(NSString *)department_id andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result,NSError *error))block;
 
 #pragma mark - 我的 更多设置
+
+/**
+ 分享
+ @param:share_content  表示内容
+ @param:parent_id      表示当前登录用户的id
+ @param:token
+ */
+- (void)tellFriendWithShareContent:(NSString *)share_content andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block;
+
 /**
  意见反馈
  @param:bug_info       表示城市提交的意见

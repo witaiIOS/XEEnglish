@@ -423,6 +423,23 @@
 }
 
 #pragma mark - 我的 更多设置
+
+/**
+ 分享
+ @param:share_content  表示内容
+ @param:parent_id      表示当前登录用户的id
+ @param:token
+ */
+- (void)tellFriendWithShareContent:(NSString *)share_content andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration tellFriendWithShareContent:share_content andParentId:parent_id andToken:token];
+    [self getResponseWithOpration:operation andXmlKey:@"TellFriendResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 /**
  意见反馈
  */

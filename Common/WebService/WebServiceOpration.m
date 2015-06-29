@@ -234,6 +234,14 @@
 
 #pragma mark - 我的 更多设置
 /**
+ 分享
+ */
++ (AFHTTPRequestOperation *)tellFriendWithShareContent:(NSString *)share_content andParentId:(NSString *)parent_id andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:TellFriend><web:json>{\"share_content\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:TellFriend>",share_content,parent_id,token]];
+}
+
+/**
  意见反馈
  */
 + (AFHTTPRequestOperation *)addFeedbackWithBugInfo:(NSString *)bug_info andParentId:(NSString *)parent_id andToken:(NSString *)token{
