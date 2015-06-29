@@ -224,4 +224,12 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCity/>"]];
 }
 
+/**
+ 修改城市
+ */
++ (AFHTTPRequestOperation *)setCityWithDepartmentId:(NSString *)department_id andParentId:(NSString *)parent_id andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:SetCity><web:json>{\"department_id\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:SetCity>",department_id,parent_id,token]];
+}
+
 @end

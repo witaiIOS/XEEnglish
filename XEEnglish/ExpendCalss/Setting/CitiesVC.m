@@ -34,7 +34,13 @@
     
     [self.view addSubview:self.tableView];
 }
-#pragma mark - My Action
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Web
 - (void)getCityInfo{
     
     [[XeeService sharedInstance] getCityWithBlock:^(NSDictionary *result, NSError *error) {
@@ -48,6 +54,27 @@
             }
             else{
                 [UIFactory showAlert:@"未知错误"];
+            }
+        }
+        else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
+
+- (void)setCityInfoWithDepartmentId:(NSString *)department_id{
+    
+    NSDictionary *userInfo = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userDetialInfo = [userInfo objectForKey:uUserInfoKey];
+    [[XeeService sharedInstance] setCityWithDepartmentId:department_id andParentId:userDetialInfo[@"parent_id"] andToken:userDetialInfo[@"token"] andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            
+            if (isResult.integerValue == 0) {
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
             }
         }
         else{
@@ -94,7 +121,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSDictionary *cityInfo = self.citiesArray[indexPath.row];
+    
+    [self setCityInfoWithDepartmentId:cityInfo[@"department_id"]];
+    
     [self.delegate SelectedCity:cityInfo[@"department"]];
+    
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -106,10 +137,7 @@
 
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 /*
 #pragma mark - Navigation

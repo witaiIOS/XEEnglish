@@ -188,4 +188,12 @@
  */
 - (void)getCityWithBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 修改城市
+ @param:department_id  表示城市id
+ @param:parent_id      表示当前登录用户的id
+ @param:token
+ */
+- (void)setCityWithDepartmentId:(NSString *)department_id andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result,NSError *error))block;
+
 @end

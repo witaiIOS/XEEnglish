@@ -193,4 +193,12 @@
  */
 + (AFHTTPRequestOperation *)getCity;
 
+/**
+ 修改城市
+ @param:department_id  表示城市id
+ @param:parent_id      表示当前登录用户的id
+ @param:token
+ */
++ (AFHTTPRequestOperation *)setCityWithDepartmentId:(NSString *)department_id andParentId:(NSString *)parent_id andToken:(NSString *)token;
+
 @end
