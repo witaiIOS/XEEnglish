@@ -8,6 +8,7 @@
 
 #import "BaseTVC.h"
 
+
 @interface ActivityContentCell : BaseTVC<UITextViewDelegate>
 
 @property (nonatomic, strong) UITextView *activityContent;

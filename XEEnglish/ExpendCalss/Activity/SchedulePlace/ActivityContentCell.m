@@ -38,7 +38,7 @@
     return self;
 }
 
-//#pragma mark - UITextView Delegate
+#pragma mark - UITextView Delegate
 //- (void)textViewDidBeginEditing:(UITextView *)textView{
 //    
 //    [textView becomeFirstResponder];
@@ -51,6 +51,7 @@
 //- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
 //    
 //    if ([text isEqualToString:@"\n"]) {
+//        [self.delegate setActivityContent:self.activityContent.text];
 //        [textView resignFirstResponder];
 //        return NO;
 //    }
