@@ -55,6 +55,8 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm"];
     self.datePickerTF.text = [dateFormatter stringFromDate:self.datePicker.date];
+    //
+    [self.delegate changeDateMark:self.datePickerTF.text];
 }
 
 - (void)cancelBtnActon:(id)sender{

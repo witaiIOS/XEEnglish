@@ -17,14 +17,19 @@
 
 #import "XeeService.h"
 
-@interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,SchoolZoneDelegate>
+@interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,SchoolZoneDelegate,DatePickerCellChangeDateMarkDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 //@property (nonatomic, strong) NSString *dateStart;
 //@property (nonatomic, strong) NSMutableArray *schoolArray;
 
 @property (nonatomic, strong) NSDictionary *schoolZone;//校区
+
+//改变预定场馆界面的开始时间和结束时间的标记和代理，changeDateMark为0改变开始时间，为1改变结束时间
+@property (nonatomic, assign) NSInteger changeDateMark;
 @property (nonatomic, strong) NSString *stateTime;  //开始时间
 @property (nonatomic, strong) NSString *endTime;    //结束时间
+
+
 
 @property (nonatomic, strong) NSString *activityContent;//活动内容
 @property (nonatomic, strong) NSString *otherMemo;//其他备注
@@ -105,7 +110,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //NSLog(@"content:%@",self.activityContent);
-    [[XeeService sharedInstance] AddBookSiteWithKeyId:@"0" andRoomId:@"0" andAddTime:nil andParentId:userInfoDic[uUserId] andSchoolId:self.schoolZone[@"department_id"] andStartTime:@"2015-06-02 19:08" andeEndTime:@"2015-06-02 21:08" andPersonNum:@"10" andArea:@"20" andProjector:@"1" andTeacher:@"1" andActivityContent:self.activityContent andMemo:self.otherMemo andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] AddBookSiteWithKeyId:@"0" andRoomId:@"0" andAddTime:nil andParentId:userInfoDic[uUserId] andSchoolId:self.schoolZone[@"department_id"] andStartTime:self.stateTime andeEndTime:self.endTime andPersonNum:@"10" andArea:@"20" andProjector:@"1" andTeacher:@"1" andActivityContent:self.activityContent andMemo:self.otherMemo andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
@@ -189,10 +194,14 @@
         switch (indexPath.row) {
             case 0:{
                 cell.dateLabel.text = @"预定起始时间";
+                self.changeDateMark = 0;
+                cell.delegate = self;
                 break;
             }
             case 1:{
                 cell.dateLabel.text = @"预定结束时间";
+                self.changeDateMark = 1;
+                cell.delegate = self;
                 break;
             }
                 
@@ -345,6 +354,16 @@
 #pragma mark - SchoolZone Delegate
 - (void)SelectedSchoolZone:(id)sender{
     self.schoolZone = sender;
+}
+#pragma mark - DatePickerCellChangeDateMarkDelegate
+- (void)changeDateMark:(id)sender{
+    if (self.changeDateMark == 0) {
+        self.stateTime = sender;
+    }
+    else{
+        self.endTime = sender;
+        //NSLog(@"endtime:%@",self.endTime);
+    }
 }
 
 //增加“其他”输入框的代理，使在cell中的UITextView在键盘出现时，上移。
