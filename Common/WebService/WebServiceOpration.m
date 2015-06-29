@@ -168,6 +168,7 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetActivityInfo><web:json>{\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetActivityInfo>",(long)pageSize, (long)pageIndex,parent_id,token]];
 }
 
+#pragma mark - 活动 我的预定
 /**
  查询所有校区
  */
@@ -185,9 +186,9 @@
  预定场馆
  @param jsonParam 预定场馆的相关参数组成的JSON
  */
-+ (AFHTTPRequestOperation *)AddBookSiteWithParameter:(NSString *)jsonParam{
++ (AFHTTPRequestOperation *)AddBookSiteWithKeyId:(NSString *)keyId andRoomId:(NSString *)room_id andAddTime:(NSString *)add_time andParentId:(NSString *)parent_id andSchoolId:(NSString *)school_id andStartTime:(NSString *)start_time andeEndTime:(NSString *)end_time andPersonNum:(NSString *)personNum andArea:(NSString *)area andProjector:(NSString *)projector andTeacher:(NSString *)teacher andActivityContent:(NSString *)activity_content andMemo:(NSString *)memo andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddBookSite><web:json>%@</web:json></web:AddBookSite>",jsonParam]];
+    return [self XEEWebService:[NSString stringWithFormat:@" <web:AddBookSite><web:json>{\"id\":\"%@\",\"room_id\":\"%@\",\"add_time\":\"%@\",\"parent_id\":\"%@\",\"department_id\":\"%@\",\"start_time\":\"%@\",\"end_time\":\"%@\",\"sum\":\"%@\",\"area\":\"%@\",\"use_projector\":\"%@\",\"teacher\":\"%@\",\"activity_content\":\"%@\",\"memo\":\"%@\",\"token\":\"%@\"}</web:json></web:AddBookSite>",keyId,room_id,add_time,parent_id,school_id,start_time,end_time,personNum,area,projector,teacher,activity_content,memo,token]];
 }
 
 #pragma mark - 我的

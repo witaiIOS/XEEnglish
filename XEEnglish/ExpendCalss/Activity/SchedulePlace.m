@@ -90,6 +90,11 @@
     [alert show];
 }
 
+#pragma mark - Web
+- (void)addBookSite{
+    
+}
+
 
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{

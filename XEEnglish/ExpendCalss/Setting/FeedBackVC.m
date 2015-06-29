@@ -25,7 +25,7 @@
 
 - (IBAction)submitBtnClicked:(id)sender {
     if ([self.feedTV.text isEqualToString:@"请输入您的宝贵意见"]) {
-        [UIFactory showAlert:@"请填写意见"];
+        [UIFactory showAlert:@"意见不能为空"];
     }
     else{
         [self addFeedback];

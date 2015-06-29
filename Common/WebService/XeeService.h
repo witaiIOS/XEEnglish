@@ -152,9 +152,23 @@
 
 /**
  预定场馆
- @param jsonParam 预定场馆的相关参数组成的JSON
+ @param id    主键0
+ @param room_id      教室id
+ @param add_time     添加时间
+ @param parent_id    用户id
+ @param school_id   校区id
+ @param start_time      开始日期时间
+ @param end_time        预计结束时间
+ @param personNum       sum预计人数
+ @param area            面积需求多大
+ @param use_projector  是否需要投影仪
+ @param teacher     是否需要老师
+ @param activity_content  活动内容
+ @param memo              其他备注
+ @param token    //
+ 
  */
-- (void)AddBookSiteWithParameter:(NSString *)jsonParam andBlock:(void(^)(NSDictionary *result,NSError *error))block;
+- (void)AddBookSiteWithKeyId:(NSString *)keyId andRoomId:(NSString *)room_id andAddTime:(NSString *)add_time andParentId:(NSString *)parent_id andSchoolId:(NSString *)department_id andStartTime:(NSString *)start_time andeEndTime:(NSString *)end_time andPersonNum:(NSString *)personNum andArea:(NSString *)area andProjector:(NSString *)projector andTeacher:(NSString *)teacher andActivityContent:(NSString *)activity_content andMemo:(NSString *)memo andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
 
 #pragma mark - 我的

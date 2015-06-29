@@ -334,14 +334,11 @@
 
 /**
  预定场馆
- @param jsonParam 预定场馆的相关参数组成的JSON
  */
-- (void)AddBookSiteWithParameter:(NSString *)jsonParam andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+- (void)AddBookSiteWithKeyId:(NSString *)keyId andRoomId:(NSString *)room_id andAddTime:(NSString *)add_time andParentId:(NSString *)parent_id andSchoolId:(NSString *)school_id andStartTime:(NSString *)start_time andeEndTime:(NSString *)end_time andPersonNum:(NSString *)personNum andArea:(NSString *)area andProjector:(NSString *)projector andTeacher:(NSString *)teacher andActivityContent:(NSString *)activity_content andMemo:(NSString *)memo andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block{
     
-    AFHTTPRequestOperation *operation = [WebServiceOpration AddBookSiteWithParameter:jsonParam];
-    
+    AFHTTPRequestOperation *operation = [WebServiceOpration AddBookSiteWithKeyId:keyId andRoomId:room_id andAddTime:add_time andParentId:parent_id andSchoolId:school_id andStartTime:start_time andeEndTime:end_time andPersonNum:personNum andArea:area andProjector:projector andTeacher:teacher andActivityContent:activity_content andMemo:memo andToken:token];
     [self getResponseWithOpration:operation andXmlKey:@"AddBookSiteResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
-        //NSLog(@"result:%@",result);
         if (block) {
             block(result,error);
         }
