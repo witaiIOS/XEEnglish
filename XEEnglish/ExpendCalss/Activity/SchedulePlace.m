@@ -27,6 +27,7 @@
 @property (nonatomic, strong) NSString *endTime;    //结束时间
 
 @property (nonatomic, strong) NSString *activityContent;//活动内容
+@property (nonatomic, strong) NSString *otherMemo;//其他备注
 @end
 
 @implementation SchedulePlace
@@ -104,7 +105,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //NSLog(@"content:%@",self.activityContent);
-    [[XeeService sharedInstance] AddBookSiteWithKeyId:@"0" andRoomId:@"0" andAddTime:nil andParentId:userInfoDic[uUserId] andSchoolId:self.schoolZone[@"department_id"] andStartTime:@"2015-06-02 19:08" andeEndTime:@"2015-06-02 21:08" andPersonNum:@"10" andArea:@"20" andProjector:@"1" andTeacher:@"1" andActivityContent:self.activityContent andMemo:@"" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] AddBookSiteWithKeyId:@"0" andRoomId:@"0" andAddTime:nil andParentId:userInfoDic[uUserId] andSchoolId:self.schoolZone[@"department_id"] andStartTime:@"2015-06-02 19:08" andeEndTime:@"2015-06-02 21:08" andPersonNum:@"10" andArea:@"20" andProjector:@"1" andTeacher:@"1" andActivityContent:self.activityContent andMemo:self.otherMemo andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
@@ -457,6 +458,10 @@
 //该方法为点击虚拟键盘Return，要调用的代理方法：隐藏虚拟键盘
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    //获取备注信息
+    self.otherMemo = textField.text;
+    //NSLog(@"Memo:%@",self.otherMemo);
 
     [textField resignFirstResponder];
 
