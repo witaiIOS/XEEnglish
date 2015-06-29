@@ -107,7 +107,8 @@
     //[self.delegate SelectedSchoolZone:self.schoolZoneArray[indexPath.row]];
     NSDictionary *singleSchoolInfo =self.schoolZoneArray[indexPath.row];
     self.selectedSchool = singleSchoolInfo[@"department"];
-    [self.delegate SelectedSchoolZone:singleSchoolInfo[@"department"]];
+    NSDictionary *schoolDic = @{@"department_id":singleSchoolInfo[@"department_id"],@"department":singleSchoolInfo[@"department"]};
+    [self.delegate SelectedSchoolZone:schoolDic];
     
     [self.navigationController popViewControllerAnimated:YES];
     

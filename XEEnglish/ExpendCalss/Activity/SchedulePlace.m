@@ -21,7 +21,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 //@property (nonatomic, strong) NSString *dateStart;
 //@property (nonatomic, strong) NSMutableArray *schoolArray;
-@property (nonatomic, strong) NSString *schoolZone;//校区
+@property (nonatomic, strong) NSDictionary *schoolZone;//校区
 
 @end
 
@@ -150,7 +150,7 @@
             cell.cellEdge = 10;
         }
         cell.textLabel.text = @"校区选择";
-        cell.detailTextLabel.text = self.schoolZone;
+        cell.detailTextLabel.text = self.schoolZone[@"department"];
         
         return cell;
     }
@@ -264,7 +264,7 @@
     
     if (indexPath.section == 0) {
         SchoolZoneVC *vc = [[SchoolZoneVC alloc] init];
-        vc.selectedSchool = self.schoolZone;
+        vc.selectedSchool = self.schoolZone[@"department"];
         //vc.schoolZoneArray =self.schoolArray;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
@@ -321,6 +321,8 @@
 - (void)SelectedSchoolZone:(id)sender{
     self.schoolZone = sender;
 }
+
+
 //增加“其他”输入框的代理，使在cell中的UITextView在键盘出现时，上移。
 #pragma mark - UITextView Delegate
 - (void)textViewDidBeginEditing:(UITextView *)textView{
@@ -405,11 +407,11 @@
 //        [UIView commitAnimations];
     UITableViewCell *cell = (UITableViewCell *)[textField superview];
     //[self.view convertPoint:cell.frame.origin fromView:self.tableView];
-    NSLog(@"cell:%.2f",cell.frame.origin.y);
+    //NSLog(@"cell:%.2f",cell.frame.origin.y);
     if (self.tableView.frame.size.height - keyboardHeight <= (cell.frame.origin.y + 44.0)) {
         CGFloat y = cell.frame.origin.y - (self.tableView.frame.size.height - keyboardHeight - cell.frame.size.height - 40);
-        NSLog(@"cell:%.2f",cell.frame.origin.y);
-        NSLog(@"y:%.2f",y);
+        //NSLog(@"cell:%.2f",cell.frame.origin.y);
+        //NSLog(@"y:%.2f",y);
         
         [UIView beginAnimations:@"tableView" context:nil];
         
