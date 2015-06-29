@@ -21,7 +21,10 @@
 @property (nonatomic, strong) UITableView *tableView;
 //@property (nonatomic, strong) NSString *dateStart;
 //@property (nonatomic, strong) NSMutableArray *schoolArray;
+
 @property (nonatomic, strong) NSDictionary *schoolZone;//校区
+@property (nonatomic, strong) NSString *stateTime;  //开始时间
+@property (nonatomic, strong) NSString *endTime;    //结束时间
 
 @end
 
@@ -86,13 +89,33 @@
 
 - (void)ScheduleBtnAction{
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"预定成功" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-    [alert show];
+    if ([self.schoolZone[@"department"] isEqualToString:@""]) {
+        [UIFactory showAlert:@"请选择校区"];
+    }
+    else{
+        [self addBookSite];
+    }
 }
 
 #pragma mark - Web
 - (void)addBookSite{
     
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [[XeeService sharedInstance] AddBookSiteWithKeyId:@"0" andRoomId:@"0" andAddTime:nil andParentId:userInfoDic[uUserId] andSchoolId:self.schoolZone[@"department_id"] andStartTime:@"2015-06-02 19:08" andeEndTime:@"2015-06-02 21:08" andPersonNum:@"10" andArea:@"20" andProjector:@"1" andTeacher:@"1" andActivityContent:@"123423423423" andMemo:@"" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
 }
 
 
