@@ -212,12 +212,27 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:modifyPwd><web:json>{\"password\":\"%@\",\"old_password\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:modifyPwd>",newPassword,oldPassword,parent_id,token]];
 }
 
+#pragma mark - 我的 我的预定
 /**
  获取我的预定中的活动
  */
 + (AFHTTPRequestOperation *)GetActivityInfoByParentIdWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSString *)parentId andToken:(NSString *)token{
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetActivityInfoByParentId><web:json>{\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetActivityInfoByParentId>",(long)pageSize,(long)pageIndex,parentId,token]];
 }
+
+/**
+ 获取我的预定中的场馆
+ @param pageSize 一次请求显示多少个活动
+ @param pageIndex 当前页码
+ @param parentId 表示当前登录人id
+ @param token
+ */
++ (AFHTTPRequestOperation *)getBookSiteByParent_idWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSString *)parentId andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetBookSiteByParentId><web:json>{\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetBookSiteByParentId>",pageSize,pageIndex,parentId,token]];
+}
+
+
 /**
  获取城市
  */

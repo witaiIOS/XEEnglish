@@ -378,6 +378,8 @@
 
 }
 
+#pragma mark - 我的 我的预定
+
 /**
  获取我的预定中的活动
  */
@@ -391,6 +393,26 @@
         }
     }];
 }
+
+
+/**
+ 获取我的预定中的场馆
+ @param pageSize 一次请求显示多少个活动
+ @param pageIndex 当前页码
+ @param parentId 表示当前登录人id
+ */
+- (void)getBookSiteByParent_idWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSString *)parentId andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getBookSiteByParent_idWithPageSize:pageSize andPageIndex:pageIndex andParentId:parentId andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetBookSiteByParentIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
+#pragma mark - 我的 城市
 
 /**
  获取城市
