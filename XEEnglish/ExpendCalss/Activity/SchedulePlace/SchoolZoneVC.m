@@ -46,26 +46,25 @@
 - (void)getSchoolInfo{
     //需要传真参数时再用
 //    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
-//    NSString *userId = [userDic[uUserInfoKey] objectForKey:uUserId];
-//    NSString *userToken = [userDic[uUserInfoKey] objectForKey:uUserToken];
-//    //NSLog(@"token:%@",userToken);
+//    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    //NSLog(@"token:%@",userToken);
     
-//    [[XeeService sharedInstance] getSchoolWithParentId:@"3" andCourseId:(NSString *)nil andToken:userToken andBlock:^(NSDictionary *result, NSError *error) {
-//        if (!error) {
-//            //NSLog(@"result:%@",result);
-//            NSNumber *isResult = result[@"result"];
-//            if (isResult.integerValue == 0) {
-//                self.schoolZoneArray= result[@"resultInfo"];
-//                [self.tableView reloadData];
-//            }
-//            else{
-//                [UIFactory showAlert:@"未知错误"];
-//            }
-//        }
-//        else{
-//            [UIFactory showAlert:@"网络错误"];
-//        }
-//    }];
+    [[XeeService sharedInstance] getSchoolWithParentId:@"17" andCourseId:(NSString *)nil andToken:@"yEqHDenWZHCMVH2DMbUL8GFj2gtCsq8rhW6MpigV11lBVj2ZNEhbKCRdy6wAVkubzoluiOHJEz2h/SOgGRiv4A==" andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            //NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                self.schoolZoneArray= result[@"resultInfo"];
+                [self.tableView reloadData];
+            }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }
+        else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
 }
 
 
