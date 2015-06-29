@@ -232,4 +232,13 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:SetCity><web:json>{\"department_id\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:SetCity>",department_id,parent_id,token]];
 }
 
+#pragma mark - 我的 更多设置
+/**
+ 意见反馈
+ */
++ (AFHTTPRequestOperation *)addFeedbackWithBugInfo:(NSString *)bug_info andParentId:(NSString *)parent_id andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddFeedback><web:json>{\"bug_info\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:AddFeedback>",bug_info,parent_id,token]];
+}
+
 @end

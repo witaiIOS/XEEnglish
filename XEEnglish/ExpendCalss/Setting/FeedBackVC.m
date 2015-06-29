@@ -7,6 +7,7 @@
 //
 
 #import "FeedBackVC.h"
+#import "XeeService.h"
 
 @interface FeedBackVC ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *feedTV;
@@ -24,11 +25,29 @@
 
 - (IBAction)submitBtnClicked:(id)sender {
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"建议已提交成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-    [alert show];
+    [self addFeedback];
+    self.feedTV.text = @"请输入您的宝贵意见";
 }
 
-
+#pragma mark -Web
+- (void)addFeedback{
+    
+    NSDictionary *userInfo = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userDetailInfo = userInfo[uUserInfoKey];
+    [[XeeService sharedInstance] addFeedbackWithBugInfo:self.feedTV.text andParentId:userDetailInfo[uUserId] andToken:userDetailInfo[uUserToken] andBolck:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
 
 #pragma mark - UITextViewDelegate
 

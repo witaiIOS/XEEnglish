@@ -422,4 +422,18 @@
     }];
 }
 
+#pragma mark - 我的 更多设置
+/**
+ 意见反馈
+ */
+- (void)addFeedbackWithBugInfo:(NSString *)bug_info andParentId:(NSString *)parent_id andToken:(NSString *)token andBolck:(void(^)(NSDictionary *result, NSError *error))block {
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration addFeedbackWithBugInfo:bug_info andParentId:parent_id andToken:token];
+    [self getResponseWithOpration:operation andXmlKey:@"AddFeedbackResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 @end

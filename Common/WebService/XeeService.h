@@ -196,4 +196,13 @@
  */
 - (void)setCityWithDepartmentId:(NSString *)department_id andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result,NSError *error))block;
 
+#pragma mark - 我的 更多设置
+/**
+ 意见反馈
+ @param:bug_info       表示城市提交的意见
+ @param:parent_id      表示当前登录用户的id
+ @param:token
+ */
+- (void)addFeedbackWithBugInfo:(NSString *)bug_info andParentId:(NSString *)parent_id andToken:(NSString *)token andBolck:(void(^)(NSDictionary *result, NSError *error))block;
+
 @end
