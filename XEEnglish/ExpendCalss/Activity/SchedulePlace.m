@@ -17,7 +17,7 @@
 
 #import "XeeService.h"
 
-@interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,SchoolZoneDelegate,DatePickerCellChangeDateMarkDelegate>
+@interface SchedulePlace ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,SchoolZoneDelegate,DatePickerCellChangeDateMarkDelegate,PlaceDemandCellSetPersonNumAndAreaDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 //@property (nonatomic, strong) NSString *dateStart;
 //@property (nonatomic, strong) NSMutableArray *schoolArray;
@@ -28,7 +28,10 @@
 @property (nonatomic, assign) NSInteger changeDateMark;
 @property (nonatomic, strong) NSString *stateTime;  //开始时间
 @property (nonatomic, strong) NSString *endTime;    //结束时间
-
+//设置代理方法的标记，setNumberMark为0设置人数，为1设置面积
+@property (nonatomic, assign) NSInteger setNumberMark;
+@property (nonatomic, strong) NSString *personNum;  //活动人数
+@property (nonatomic, strong) NSString *area;    //活动所需场馆面积
 
 
 @property (nonatomic, strong) NSString *activityContent;//活动内容
@@ -194,12 +197,14 @@
         switch (indexPath.row) {
             case 0:{
                 cell.dateLabel.text = @"预定起始时间";
+                //设置修改标记
                 self.changeDateMark = 0;
                 cell.delegate = self;
                 break;
             }
             case 1:{
                 cell.dateLabel.text = @"预定结束时间";
+                //设置修改标记
                 self.changeDateMark = 1;
                 cell.delegate = self;
                 break;
@@ -220,11 +225,17 @@
             case 0:{
                 cell.tipInfoLabel.text = @"预计人数";
                 cell.peopleAndPlaceTF.text = @"";
+                cell.delegate = self;
+                //设置修改标记
+                self.setNumberMark = 0;
                 break;
             }
             case 1:{
                 cell.tipInfoLabel.text = @"所需面积";
                 cell.peopleAndPlaceTF.text = @"";
+                cell.delegate = self;
+                //设置修改标记
+                self.setNumberMark = 1;
                 break;
             }
   
@@ -363,6 +374,17 @@
     else{
         self.endTime = sender;
         //NSLog(@"endtime:%@",self.endTime);
+    }
+}
+
+#pragma mark - PlaceDemandCellSetPersonNumAndAreaDelegate
+- (void)setPersonNumAndArea:(id)sender{
+    if (self.setNumberMark == 0) {
+        self.personNum = sender;
+    }
+    else{
+        self.area = sender;
+        //NSLog(@"area:%@",self.area);
     }
 }
 

@@ -54,6 +54,8 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
     if ([string isEqualToString:@"\n"]) {
+        //设置代理方法，修改场馆预定的人数和面积的值
+        [self.delegate setPersonNumAndArea:self.peopleAndPlaceTF.text];
         [textField resignFirstResponder];
         return NO;
     }
