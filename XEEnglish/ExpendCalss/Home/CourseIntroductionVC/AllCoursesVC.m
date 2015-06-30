@@ -41,12 +41,18 @@
     self.currentCourseIndex = 0;
     self.currentAgeGroupIndex = 0;
     
+    NSDictionary *courseIdAndNameDic = @{@"course_category_id":@"",@"name":@""};
     self.coursesArray = [[NSMutableArray alloc] init];
+    [self.coursesArray addObject:courseIdAndNameDic];
+    
+    NSDictionary *ageGroupDic = @{@"min_age":@"",@"max_age":@""};
     self.ageGroupArray = [[NSMutableArray alloc] init];
+    [self.ageGroupArray addObject:ageGroupDic];
+    
     self.requestCourseInfo = [[NSMutableArray alloc] init];
     [self getCourseCategoryAge];//请求课程和年龄段数据
     
-    [self getCourseListByFilter];
+    //[self getCourseListByFilter];
 //    self.menu.dataSource = self;
 //    self.menu.delegate = self;
 }
@@ -94,6 +100,7 @@
                 //请求完数据之后才设置列表的数据源和代理方法
                 self.menu.dataSource = self;
                 self.menu.delegate = self;
+                [self getCourseListByFilter];
             }
             else{
                 [UIFactory showAlert:@"未知错误"];
@@ -127,7 +134,7 @@
 #pragma mark - Web2
 - (void)getCourseListByFilter{
     
-    [[XeeService sharedInstance] getCourseListByFilterWithMinAge:@"" andMaxAge:@"" andCourseCategoryId:@"" andSort:@"" andOrder:@"" andPageSize:10 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getCourseListByFilterWithMinAge:self.ageGroupArray[self.currentAgeGroupIndex][@"min_age"] andMaxAge:self.ageGroupArray[self.currentAgeGroupIndex][@"max_age"] andCourseCategoryId:self.coursesArray[self.currentCourseIndex][@"course_category_id"] andSort:@"" andOrder:@"" andPageSize:10 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
         
         if (!error) {
             NSNumber *isResult = result[@"result"];
@@ -198,13 +205,26 @@
 - (NSString *)menu:(JSDropDownMenu *)menu titleForColumn:(NSInteger)column{
     
     if (column == 0) {
-        NSDictionary *courseIdAndNameDic = self.coursesArray[self.currentCourseIndex];
-        return courseIdAndNameDic[@"name"];
+        
+        if (self.currentCourseIndex == 0) {
+            NSString *courseStr = @"所有课程";
+            return courseStr;
+        }
+        else{
+            NSDictionary *courseIdAndNameDic = self.coursesArray[self.currentCourseIndex];
+            return courseIdAndNameDic[@"name"];
+        }
+        
     }
     else if (column == 1){
         NSDictionary *ageGroupDic = self.ageGroupArray[self.currentAgeGroupIndex];
         NSString *ageGroupString = [NSString stringWithFormat:@"%@~%@",ageGroupDic[@"min_age"],ageGroupDic[@"max_age"]];
-        return ageGroupString;
+        if (self.currentAgeGroupIndex == 0) {
+            return ageGroupString = @"所有年龄段";
+        }
+        else{
+            return ageGroupString;
+        }
     }
     return nil;
 }
@@ -212,13 +232,29 @@
 - (NSString *)menu:(JSDropDownMenu *)menu titleForRowAtIndexPath:(JSIndexPath *)indexPath{
     
     if (indexPath.column == 0) {
-        NSDictionary *courseIdAndName = self.coursesArray[indexPath.row];
-        return courseIdAndName[@"name"];
+        if (indexPath.row == 0) {
+            NSString *courseStr = @"所有课程";
+            return courseStr;
+        }
+        else{
+            NSDictionary *courseIdAndNameDic = self.coursesArray[indexPath.row];
+            return courseIdAndNameDic[@"name"];
+        }
+//        NSDictionary *courseIdAndName = self.coursesArray[indexPath.row];
+//        return courseIdAndName[@"name"];
     }
     else if(indexPath.column == 1){
         NSDictionary *ageGroupDic = self.ageGroupArray[indexPath.row];
         NSString *ageGroupString = [NSString stringWithFormat:@"%@~%@",ageGroupDic[@"min_age"],ageGroupDic[@"max_age"]];
-        return ageGroupString;
+        if (indexPath.row == 0) {
+            return ageGroupString = @"所有年龄段";
+        }
+        else{
+            return ageGroupString;
+        }
+//        NSDictionary *ageGroupDic = self.ageGroupArray[indexPath.row];
+//        NSString *ageGroupString = [NSString stringWithFormat:@"%@~%@",ageGroupDic[@"min_age"],ageGroupDic[@"max_age"]];
+//        return ageGroupString;
     }
     return nil;
 }
@@ -229,10 +265,12 @@
     if (indexPath.column == 0) {
         
         self.currentCourseIndex = indexPath.row;
+        [self getCourseListByFilter];
     }
     else if(indexPath.column == 1){
         
         self.currentAgeGroupIndex =indexPath.row;
+        [self getCourseListByFilter];
     }
     else{
         
