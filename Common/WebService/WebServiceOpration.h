@@ -195,6 +195,13 @@
  */
 + (AFHTTPRequestOperation *)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andParentId:(NSString *)parent_id andToken:(NSString *)token;
 
+#pragma mark - 我的 我的积分
+/**
+ 获取我的积分中所有的礼品
+*/
++ (AFHTTPRequestOperation *)getGift;
+
+
 #pragma mark - 我的 我的预定
 /**
  获取我的预定中的活动

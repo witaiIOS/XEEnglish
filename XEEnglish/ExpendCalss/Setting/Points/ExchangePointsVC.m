@@ -9,6 +9,8 @@
 #import "ExchangePointsVC.h"
 #import "ExchangePointsCell.h"
 
+#import "XeeService.h"
+
 @interface ExchangePointsVC ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -34,6 +36,8 @@
     self.tableView.delegate = self;
     
     [self.view addSubview:self.tableView];
+    
+    [self getGiftInfo];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,10 +45,36 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Web
+- (void)getGiftInfo{
+    
+    [[XeeService sharedInstance] getGiftAndBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            //NSLog(@"result:%@",result);
+            
+            NSNumber *isResult = result[@"result"];
+            
+            if (isResult.integerValue == 0) {
+                
+                self.giftArray = result[@"resultInfo"];
+                
+                //NSLog(@"giftArray:%@",self.giftArray);
+                [self.tableView reloadData];
+            }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
+
+
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 10;
+    return [self.giftArray count];
 }
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -64,6 +94,7 @@
         cell = [[ExchangePointsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
     }
     cell.cellEdge = 10;
+    cell.giftInfoDic = self.giftArray[indexPath.section];
     
     return cell;
     

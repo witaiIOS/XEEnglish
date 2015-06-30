@@ -377,6 +377,21 @@
     }];
 
 }
+#pragma mark - 我的 我的积分
+/**
+ 获取我的积分中所有的礼品
+ */
+- (void)getGiftAndBlock:(void (^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getGift];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetGiftResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 
 #pragma mark - 我的 我的预定
 

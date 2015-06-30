@@ -203,13 +203,22 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetMyInfo><web:json>{\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetMyInfo>",parent_id,token]];
 }
 
-
+#pragma mark - 我的 个人信息
 /**
  登录后修改密码
  */
 + (AFHTTPRequestOperation *)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andParentId:(NSString *)parent_id andToken:(NSString *)token{
     
     return [self XEEWebService:[NSString stringWithFormat:@"<web:modifyPwd><web:json>{\"password\":\"%@\",\"old_password\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:modifyPwd>",newPassword,oldPassword,parent_id,token]];
+}
+
+#pragma mark - 我的 我的积分
+/**
+ 获取我的积分中所有的礼品
+ */
++ (AFHTTPRequestOperation *)getGift{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetGift/>"]];
 }
 
 #pragma mark - 我的 我的预定

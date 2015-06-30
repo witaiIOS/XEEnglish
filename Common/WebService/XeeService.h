@@ -189,6 +189,12 @@
  */
 - (void)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result, NSError *error))block;
 
+#pragma mark - 我的 我的积分
+/**
+ 获取我的积分中所有的礼品
+ */
+- (void)getGiftAndBlock:(void (^)(NSDictionary *result, NSError *error))block;
+
 
 #pragma mark - 我的 我的预定
 
