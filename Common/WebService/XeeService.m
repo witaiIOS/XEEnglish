@@ -392,6 +392,18 @@
     }];
 }
 
+/**
+ 用积分兑换礼品
+ */
+- (void)buyGiftWithParentId:(NSString *)parent_id andPlatformTypeId:(NSString *)platform_type_Id andGiftId: (NSString *)gift_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration buyGiftWithParentId:parent_id andPlatformTypeId:platform_type_Id andGiftId:gift_id andToken:token];
+    [self getResponseWithOpration:operation andXmlKey:@"BuyGiftResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
 
 #pragma mark - 我的 我的预定
 

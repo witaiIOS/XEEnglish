@@ -221,6 +221,14 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetGift/>"]];
 }
 
+/**
+ 用积分兑换礼品
+ */
++ (AFHTTPRequestOperation *)buyGiftWithParentId:(NSString *)parent_id andPlatformTypeId:(NSString *)platform_type_Id andGiftId: (NSString *)gift_id andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:BuyGift><web:json>{\"parent_id\":\"%@\",\"trade_type\":\"%@\",\"gift_id\":\"%@\",\"token\":\"%@\"}</web:json></web:BuyGift>",parent_id,platform_type_Id,gift_id,token]];
+}
+
 #pragma mark - 我的 我的预定
 /**
  获取我的预定中的活动

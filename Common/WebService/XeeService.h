@@ -195,6 +195,14 @@
  */
 - (void)getGiftAndBlock:(void (^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 用积分兑换礼品
+ @param parentId 表示当前登录人id
+ @param platform_type_Id    //Android传201,IOS传202
+ @param gift_id   //礼品的id
+ @param token
+ */
+- (void)buyGiftWithParentId:(NSString *)parent_id andPlatformTypeId:(NSString *)platform_type_Id andGiftId: (NSString *)gift_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
 #pragma mark - 我的 我的预定
 
