@@ -32,13 +32,13 @@
     
     self.ruleArray = [NSMutableArray array];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
     [self.view addSubview: self.tableView];
     
-    [self getPoingtConfig];
+    [self getPointConfig];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,10 +48,10 @@
 
 #pragma mark - Web
 
-- (void)getPoingtConfig{
+- (void)getPointConfig{
     
-    [[XeeService sharedInstance] getPoingtConfigAndBlock:^(NSDictionary *result, NSError *error) {
-        NSLog(@"result:%@",result);
+    [[XeeService sharedInstance] getPointConfigAndBlock:^(NSDictionary *result, NSError *error) {
+        //NSLog(@"result:%@",result);
         if (!error) {
             
             //NSLog(@"result:%@",result);

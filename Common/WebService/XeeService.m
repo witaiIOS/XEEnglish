@@ -393,11 +393,11 @@
 /**
  查询积分策略
  */
-- (void)getPoingtConfigAndBlock:(void(^)(NSDictionary *result,NSError *error))block{
+- (void)getPointConfigAndBlock:(void(^)(NSDictionary *result,NSError *error))block{
     
-    AFHTTPRequestOperation *operation = [WebServiceOpration getPoingtConfig];
+    AFHTTPRequestOperation *operation = [WebServiceOpration getPointConfig];
     
-    [self getResponseWithOpration:operation andXmlKey:@"GetPoingtConfigResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+    [self getResponseWithOpration:operation andXmlKey:@"GetPointConfigResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         if (block) {
             block(result,error);
         }

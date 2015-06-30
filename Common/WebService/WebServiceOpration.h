@@ -207,7 +207,7 @@
 /**
  查询积分策略
  */
-+ (AFHTTPRequestOperation *)getPoingtConfig;
++ (AFHTTPRequestOperation *)getPointConfig;
 
 /**
  获取我的积分中所有的礼品

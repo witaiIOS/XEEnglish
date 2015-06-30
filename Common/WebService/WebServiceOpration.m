@@ -224,9 +224,9 @@
 /**
  查询积分策略
  */
-+ (AFHTTPRequestOperation *)getPoingtConfig{
++ (AFHTTPRequestOperation *)getPointConfig{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPoingtConfig/>"]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPointConfig/>"]];
 }
 
 /**

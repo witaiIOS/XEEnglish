@@ -201,7 +201,7 @@
 /**
  查询积分策略
  */
-- (void)getPoingtConfigAndBlock:(void(^)(NSDictionary *result,NSError *error))block;
+- (void)getPointConfigAndBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
 /**
  获取我的积分中所有的礼品
