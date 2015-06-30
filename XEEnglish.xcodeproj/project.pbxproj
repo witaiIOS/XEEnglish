@@ -78,6 +78,7 @@
 		09D23C481B424526008B6085 /* ExchangePointsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C471B424526008B6085 /* ExchangePointsCell.m */; };
 		09D23C4C1B424546008B6085 /* ExchangePointsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D23C4B1B424546008B6085 /* ExchangePointsCell.xib */; };
 		09D23C4E1B4252F0008B6085 /* gift-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 09D23C4D1B4252F0008B6085 /* gift-01.png */; };
+		09D23C511B4276A4008B6085 /* PointSRuleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C501B4276A4008B6085 /* PointSRuleVC.m */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		09D560401B26809400ADF334 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5603F1B26809400ADF334 /* DatePickerCell.m */; };
@@ -300,6 +301,8 @@
 		09D23C471B424526008B6085 /* ExchangePointsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangePointsCell.m; sourceTree = "<group>"; };
 		09D23C4B1B424546008B6085 /* ExchangePointsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangePointsCell.xib; sourceTree = "<group>"; };
 		09D23C4D1B4252F0008B6085 /* gift-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-01.png"; sourceTree = "<group>"; };
+		09D23C4F1B4276A3008B6085 /* PointSRuleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointSRuleVC.h; sourceTree = "<group>"; };
+		09D23C501B4276A4008B6085 /* PointSRuleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointSRuleVC.m; sourceTree = "<group>"; };
 		09D450AC1B10786800B39B4A /* MyAccountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTVC.h; sourceTree = "<group>"; };
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
@@ -616,6 +619,8 @@
 				09D23C461B424526008B6085 /* ExchangePointsCell.h */,
 				09D23C471B424526008B6085 /* ExchangePointsCell.m */,
 				09D23C4B1B424546008B6085 /* ExchangePointsCell.xib */,
+				09D23C4F1B4276A3008B6085 /* PointSRuleVC.h */,
+				09D23C501B4276A4008B6085 /* PointSRuleVC.m */,
 			);
 			path = Points;
 			sourceTree = "<group>";
@@ -1334,6 +1339,7 @@
 				A6284D9C1B1067C100EFF820 /* LoginVC.m in Sources */,
 				A6B1CEEA1B1D8C7200100E9F /* HomeBtnCell.m in Sources */,
 				A6B1CEDE1B1C62D400100E9F /* PersonInfoVC.m in Sources */,
+				09D23C511B4276A4008B6085 /* PointSRuleVC.m in Sources */,
 				09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */,
 				A6284D5B1B105E5600EFF820 /* UIView+MJExtension.m in Sources */,
 				A6C3CF2C1B285ECD0039C951 /* UserInfo.m in Sources */,
