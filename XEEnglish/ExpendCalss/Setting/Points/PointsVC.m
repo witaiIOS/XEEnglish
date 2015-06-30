@@ -7,6 +7,7 @@
 //
 
 #import "PointsVC.h"
+#import "ExchangePointsVC.h"
 
 @interface PointsVC ()
 
@@ -43,6 +44,8 @@
 #pragma mark - My Action
 - (void)exchangePointsBtnClicked{
     
+    ExchangePointsVC *vc = [[ExchangePointsVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*

@@ -74,6 +74,10 @@
 		09CA69211B201F2500A31E0E /* coupons1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69201B201F2500A31E0E /* coupons1.png */; };
 		09CA69231B20213800A31E0E /* couponstime.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69221B20213800A31E0E /* couponstime.png */; };
 		09D23C421B42403E008B6085 /* PointsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C411B42403E008B6085 /* PointsVC.m */; };
+		09D23C451B424417008B6085 /* ExchangePointsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C441B424417008B6085 /* ExchangePointsVC.m */; };
+		09D23C481B424526008B6085 /* ExchangePointsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C471B424526008B6085 /* ExchangePointsCell.m */; };
+		09D23C4C1B424546008B6085 /* ExchangePointsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D23C4B1B424546008B6085 /* ExchangePointsCell.xib */; };
+		09D23C4E1B4252F0008B6085 /* gift-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 09D23C4D1B4252F0008B6085 /* gift-01.png */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		09D560401B26809400ADF334 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5603F1B26809400ADF334 /* DatePickerCell.m */; };
@@ -290,6 +294,12 @@
 		09CA69221B20213800A31E0E /* couponstime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couponstime.png; sourceTree = "<group>"; };
 		09D23C401B42403E008B6085 /* PointsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsVC.h; sourceTree = "<group>"; };
 		09D23C411B42403E008B6085 /* PointsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsVC.m; sourceTree = "<group>"; };
+		09D23C431B424417008B6085 /* ExchangePointsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangePointsVC.h; sourceTree = "<group>"; };
+		09D23C441B424417008B6085 /* ExchangePointsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangePointsVC.m; sourceTree = "<group>"; };
+		09D23C461B424526008B6085 /* ExchangePointsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangePointsCell.h; sourceTree = "<group>"; };
+		09D23C471B424526008B6085 /* ExchangePointsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangePointsCell.m; sourceTree = "<group>"; };
+		09D23C4B1B424546008B6085 /* ExchangePointsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangePointsCell.xib; sourceTree = "<group>"; };
+		09D23C4D1B4252F0008B6085 /* gift-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-01.png"; sourceTree = "<group>"; };
 		09D450AC1B10786800B39B4A /* MyAccountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTVC.h; sourceTree = "<group>"; };
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
@@ -601,6 +611,11 @@
 			children = (
 				09D23C401B42403E008B6085 /* PointsVC.h */,
 				09D23C411B42403E008B6085 /* PointsVC.m */,
+				09D23C431B424417008B6085 /* ExchangePointsVC.h */,
+				09D23C441B424417008B6085 /* ExchangePointsVC.m */,
+				09D23C461B424526008B6085 /* ExchangePointsCell.h */,
+				09D23C471B424526008B6085 /* ExchangePointsCell.m */,
+				09D23C4B1B424546008B6085 /* ExchangePointsCell.xib */,
 			);
 			path = Points;
 			sourceTree = "<group>";
@@ -639,6 +654,7 @@
 		09DB2DC51B1322A30078AAF5 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				09D23C4D1B4252F0008B6085 /* gift-01.png */,
 				09C9C0E61B22D252001BBA1C /* SThead.png */,
 				09C9C0D81B22C890001BBA1C /* STcity.png */,
 				09C9C0D91B22C890001BBA1C /* STcoupon.png */,
@@ -1238,9 +1254,11 @@
 				09DB2DC91B1322A30078AAF5 /* people_ayb.png in Resources */,
 				094DD2601B3954830045EF2C /* arrow_right_gray.png in Resources */,
 				09C9C0F71B22FA19001BBA1C /* no.png in Resources */,
+				09D23C4E1B4252F0008B6085 /* gift-01.png in Resources */,
 				09C639561B3AA77400510F00 /* pay_02.png in Resources */,
 				09C9C0E21B22C890001BBA1C /* STintegral.png in Resources */,
 				A63A0A821B2D1BFF003D3852 /* chekbox_select.png in Resources */,
+				09D23C4C1B424546008B6085 /* ExchangePointsCell.xib in Resources */,
 				09C95EC21B2806FA000972D8 /* school_unselected.png in Resources */,
 				09C9C0E01B22C890001BBA1C /* STcoupon.png in Resources */,
 				09C639521B3A9F5E00510F00 /* pay_01.png in Resources */,
@@ -1323,6 +1341,7 @@
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,
 				09C87F321B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m in Sources */,
 				09C87F2F1B3C24E700D7C913 /* PayCourseMethodVCViewController.m in Sources */,
+				09D23C451B424417008B6085 /* ExchangePointsVC.m in Sources */,
 				09CA691B1B1FFCCA00A31E0E /* CouponsCell.m in Sources */,
 				09D560441B26D3E700ADF334 /* ForgetPassWordVC.m in Sources */,
 				A6284D591B105E5600EFF820 /* UIScrollView+MJExtension.m in Sources */,
@@ -1356,6 +1375,7 @@
 				A6284D471B105E5600EFF820 /* AFHTTPSessionManager.m in Sources */,
 				09C328641B301E24009F0BAB /* CourseAbsentVC.m in Sources */,
 				0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */,
+				09D23C481B424526008B6085 /* ExchangePointsCell.m in Sources */,
 				A6284D5A1B105E5600EFF820 /* UIScrollView+MJRefresh.m in Sources */,
 				A6284D621B105E5600EFF820 /* UIRefreshControl+AFNetworking.m in Sources */,
 				09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */,
