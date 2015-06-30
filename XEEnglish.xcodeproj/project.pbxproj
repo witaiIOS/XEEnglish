@@ -73,6 +73,7 @@
 		09CA691D1B1FFCE300A31E0E /* CouponsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */; };
 		09CA69211B201F2500A31E0E /* coupons1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69201B201F2500A31E0E /* coupons1.png */; };
 		09CA69231B20213800A31E0E /* couponstime.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69221B20213800A31E0E /* couponstime.png */; };
+		09D23C421B42403E008B6085 /* PointsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C411B42403E008B6085 /* PointsVC.m */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		09D560401B26809400ADF334 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5603F1B26809400ADF334 /* DatePickerCell.m */; };
@@ -287,6 +288,8 @@
 		09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponsCell.xib; sourceTree = "<group>"; };
 		09CA69201B201F2500A31E0E /* coupons1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupons1.png; sourceTree = "<group>"; };
 		09CA69221B20213800A31E0E /* couponstime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couponstime.png; sourceTree = "<group>"; };
+		09D23C401B42403E008B6085 /* PointsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsVC.h; sourceTree = "<group>"; };
+		09D23C411B42403E008B6085 /* PointsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsVC.m; sourceTree = "<group>"; };
 		09D450AC1B10786800B39B4A /* MyAccountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTVC.h; sourceTree = "<group>"; };
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
@@ -591,6 +594,15 @@
 				09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */,
 			);
 			path = Coupons;
+			sourceTree = "<group>";
+		};
+		09D23C3F1B42401E008B6085 /* Points */ = {
+			isa = PBXGroup;
+			children = (
+				09D23C401B42403E008B6085 /* PointsVC.h */,
+				09D23C411B42403E008B6085 /* PointsVC.m */,
+			);
+			path = Points;
 			sourceTree = "<group>";
 		};
 		09DB2DB61B1322800078AAF5 /* Common */ = {
@@ -1021,6 +1033,7 @@
 		A6284D6C1B105E6600EFF820 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				09D23C3F1B42401E008B6085 /* Points */,
 				09C9C3921B29A78E00B1F902 /* Schedule */,
 				09C95ECC1B284225000972D8 /* CitiesVC.h */,
 				09C95ECD1B284225000972D8 /* CitiesVC.m */,
@@ -1298,6 +1311,7 @@
 				A6284D601B105E5600EFF820 /* UIImageView+AFNetworking.m in Sources */,
 				A6284D501B105E5600EFF820 /* DDXMLDocument.m in Sources */,
 				09C639591B3AADA700510F00 /* PayProtocolVC.m in Sources */,
+				09D23C421B42403E008B6085 /* PointsVC.m in Sources */,
 				A6284D521B105E5600EFF820 /* DDXMLNode.m in Sources */,
 				A6284D9C1B1067C100EFF820 /* LoginVC.m in Sources */,
 				A6B1CEEA1B1D8C7200100E9F /* HomeBtnCell.m in Sources */,
