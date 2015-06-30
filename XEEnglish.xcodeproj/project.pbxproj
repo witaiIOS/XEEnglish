@@ -79,6 +79,8 @@
 		09D23C4C1B424546008B6085 /* ExchangePointsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D23C4B1B424546008B6085 /* ExchangePointsCell.xib */; };
 		09D23C4E1B4252F0008B6085 /* gift-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 09D23C4D1B4252F0008B6085 /* gift-01.png */; };
 		09D23C511B4276A4008B6085 /* PointSRuleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C501B4276A4008B6085 /* PointSRuleVC.m */; };
+		09D23C541B427DDF008B6085 /* PointsRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C531B427DDF008B6085 /* PointsRecordCell.m */; };
+		09D23C561B427E03008B6085 /* PointsRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D23C551B427E03008B6085 /* PointsRecordCell.xib */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		09D560401B26809400ADF334 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5603F1B26809400ADF334 /* DatePickerCell.m */; };
@@ -303,6 +305,9 @@
 		09D23C4D1B4252F0008B6085 /* gift-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-01.png"; sourceTree = "<group>"; };
 		09D23C4F1B4276A3008B6085 /* PointSRuleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointSRuleVC.h; sourceTree = "<group>"; };
 		09D23C501B4276A4008B6085 /* PointSRuleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointSRuleVC.m; sourceTree = "<group>"; };
+		09D23C521B427DDF008B6085 /* PointsRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsRecordCell.h; sourceTree = "<group>"; };
+		09D23C531B427DDF008B6085 /* PointsRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsRecordCell.m; sourceTree = "<group>"; };
+		09D23C551B427E03008B6085 /* PointsRecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PointsRecordCell.xib; sourceTree = "<group>"; };
 		09D450AC1B10786800B39B4A /* MyAccountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTVC.h; sourceTree = "<group>"; };
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
@@ -614,6 +619,9 @@
 			children = (
 				09D23C401B42403E008B6085 /* PointsVC.h */,
 				09D23C411B42403E008B6085 /* PointsVC.m */,
+				09D23C521B427DDF008B6085 /* PointsRecordCell.h */,
+				09D23C531B427DDF008B6085 /* PointsRecordCell.m */,
+				09D23C551B427E03008B6085 /* PointsRecordCell.xib */,
 				09D23C431B424417008B6085 /* ExchangePointsVC.h */,
 				09D23C441B424417008B6085 /* ExchangePointsVC.m */,
 				09D23C461B424526008B6085 /* ExchangePointsCell.h */,
@@ -1262,6 +1270,7 @@
 				09D23C4E1B4252F0008B6085 /* gift-01.png in Resources */,
 				09C639561B3AA77400510F00 /* pay_02.png in Resources */,
 				09C9C0E21B22C890001BBA1C /* STintegral.png in Resources */,
+				09D23C561B427E03008B6085 /* PointsRecordCell.xib in Resources */,
 				A63A0A821B2D1BFF003D3852 /* chekbox_select.png in Resources */,
 				09D23C4C1B424546008B6085 /* ExchangePointsCell.xib in Resources */,
 				09C95EC21B2806FA000972D8 /* school_unselected.png in Resources */,
@@ -1322,6 +1331,7 @@
 				A6284D5F1B105E5600EFF820 /* UIButton+AFNetworking.m in Sources */,
 				A6284D491B105E5600EFF820 /* AFSecurityPolicy.m in Sources */,
 				097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */,
+				09D23C541B427DDF008B6085 /* PointsRecordCell.m in Sources */,
 				09C9C0F41B22E409001BBA1C /* HardwareDemandCell.m in Sources */,
 				A6284D631B105E5600EFF820 /* UIWebView+AFNetworking.m in Sources */,
 				A6284D611B105E5600EFF820 /* UIProgressView+AFNetworking.m in Sources */,

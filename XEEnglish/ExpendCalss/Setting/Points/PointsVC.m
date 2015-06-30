@@ -7,11 +7,16 @@
 //
 
 #import "PointsVC.h"
+#import "PointsRecordCell.h"
+
 #import "ExchangePointsVC.h"
 #import "PointSRuleVC.h"
 
-@interface PointsVC ()
+#import "XeeService.h"
 
+@interface PointsVC ()<UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *exchangeRecordArray;//兑换纪录数组
 @end
 
 @implementation PointsVC
@@ -26,7 +31,13 @@
     
     [super initUI];
     
+    self.exchangeRecordArray = [NSMutableArray array];
     
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+40+1, kScreenWidth, kScreenHeight-64-40-1) style:UITableViewStyleGrouped];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self.view addSubview:self.tableView];
     
     //增加一个“积分规则”的按钮
     UIButton *pointsRuleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -48,6 +59,9 @@
     
     UIBarButtonItem *exchangePointsBarBtn = [[UIBarButtonItem alloc] initWithCustomView:exchangePointsBtn];
     self.navigationItem.rightBarButtonItem = exchangePointsBarBtn;
+    
+    //获取网络数据
+    [self getPointsRecord];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,6 +81,86 @@
     PointSRuleVC *vc = [[PointSRuleVC alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+#pragma mark - Web
+- (void)getPointsRecord{
+    
+//    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+//    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [[XeeService sharedInstance] getPointsWithPageSize:10 andPageIndex:1 andParentId:ceShiId andToken:ceShiToken andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            //NSLog(@"result:%@",result);
+            
+            NSNumber *isResult = result[@"result"];
+            
+            if (isResult.integerValue == 0) {
+                
+                self.exchangeRecordArray = result[@"resultInfo"];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络问题"];
+        }
+    }];
+    
+}
+
+#pragma mark - UITableView DataSource
+- (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return [self.exchangeRecordArray count];
+}
+
+- (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *reuse = @"PointsVCCell";
+    
+    [tableView registerNib:[UINib nibWithNibName:@"PointsRecordCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse];
+    
+    PointsRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
+    
+    if (cell == nil) {
+        cell = [[PointsRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+    }
+    cell.cellEdge = 10;
+    cell.pointRecordInfoDic = self.exchangeRecordArray[indexPath.section];
+    
+    return cell;
+}
+
+
+#pragma mark - UITableView Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    if (section == 0) {
+        return 10.0f;
+    }
+    else{
+        return 2.0f;
+    }
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 2.0f;
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 140.0f;
+}
+
 
 /*
 #pragma mark - Navigation
