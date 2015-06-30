@@ -12,6 +12,8 @@
 #import "PhoneLoginVC.h"
 #import "ForgetPassWordVC.h"
 
+//#import <CommonCrypto/CommonDigest.h>加密密码，写在总文件中
+
 @interface LoginVC ()<UITextFieldDelegate, PhoneLoginVCDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
@@ -81,8 +83,10 @@
         return;
         
     }else{
+        //密码加密之后上传
+        NSString *md5String = [self md5:self.codeTextField.text];
     
-        [[XeeService sharedInstance] loginWithPhoneNumber:self.phoneTextField.text andPassword:self.codeTextField.text andBlock:^(NSDictionary *result, NSError *error) {
+        [[XeeService sharedInstance] loginWithPhoneNumber:self.phoneTextField.text andPassword:md5String andBlock:^(NSDictionary *result, NSError *error) {
             if (!error) {
                 
                 NSNumber *r = result[@"result"];
@@ -105,6 +109,20 @@
         }];
     
     }
+}
+
+- (NSString *)md5:(NSString *)str
+{
+    const char *cStr = [str UTF8String];
+    unsigned char result[16];
+    CC_MD5(cStr,strlen(cStr), result); // This is the md5 call
+    return [NSString stringWithFormat:
+            @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+            result[0], result[1], result[2], result[3],
+            result[4], result[5], result[6], result[7],
+            result[8], result[9], result[10], result[11],
+            result[12], result[13], result[14], result[15]
+            ]; 
 }
 
 - (IBAction)forgetPasswordAction:(id)sender {

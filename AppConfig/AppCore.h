@@ -20,8 +20,8 @@
 #import "UIFactory.h"
 #import "UserInfo.h"
 
-
-
+//密码加密
+#import <CommonCrypto/CommonDigest.h>
 
 
 
