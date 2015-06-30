@@ -205,6 +205,11 @@
 + (AFHTTPRequestOperation *)getPointsWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSString *)parent_id andToken:(NSString *)token;
 
 /**
+ 查询积分策略
+ */
++ (AFHTTPRequestOperation *)getPoingtConfig;
+
+/**
  获取我的积分中所有的礼品
 */
 + (AFHTTPRequestOperation *)getGift;

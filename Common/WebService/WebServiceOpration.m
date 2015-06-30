@@ -222,6 +222,14 @@
 }
 
 /**
+ 查询积分策略
+ */
++ (AFHTTPRequestOperation *)getPoingtConfig{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPoingtConfig/>"]];
+}
+
+/**
  获取我的积分中所有的礼品
  */
 + (AFHTTPRequestOperation *)getGift{

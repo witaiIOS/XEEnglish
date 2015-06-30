@@ -389,6 +389,21 @@
         }
     }];
 }
+
+/**
+ 查询积分策略
+ */
+- (void)getPoingtConfigAndBlock:(void(^)(NSDictionary *result,NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getPoingtConfig];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetPoingtConfigResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 /**
  获取我的积分中所有的礼品
  */

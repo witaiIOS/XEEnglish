@@ -81,6 +81,8 @@
 		09D23C511B4276A4008B6085 /* PointSRuleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C501B4276A4008B6085 /* PointSRuleVC.m */; };
 		09D23C541B427DDF008B6085 /* PointsRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C531B427DDF008B6085 /* PointsRecordCell.m */; };
 		09D23C561B427E03008B6085 /* PointsRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D23C551B427E03008B6085 /* PointsRecordCell.xib */; };
+		09D23C591B42ADC0008B6085 /* PointSRuleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C581B42ADC0008B6085 /* PointSRuleCell.m */; };
+		09D23C5B1B42B0F1008B6085 /* PointSRuleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D23C5A1B42B0F1008B6085 /* PointSRuleCell.xib */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
 		09D560401B26809400ADF334 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5603F1B26809400ADF334 /* DatePickerCell.m */; };
@@ -308,6 +310,9 @@
 		09D23C521B427DDF008B6085 /* PointsRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsRecordCell.h; sourceTree = "<group>"; };
 		09D23C531B427DDF008B6085 /* PointsRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsRecordCell.m; sourceTree = "<group>"; };
 		09D23C551B427E03008B6085 /* PointsRecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PointsRecordCell.xib; sourceTree = "<group>"; };
+		09D23C571B42ADC0008B6085 /* PointSRuleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointSRuleCell.h; sourceTree = "<group>"; };
+		09D23C581B42ADC0008B6085 /* PointSRuleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointSRuleCell.m; sourceTree = "<group>"; };
+		09D23C5A1B42B0F1008B6085 /* PointSRuleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PointSRuleCell.xib; sourceTree = "<group>"; };
 		09D450AC1B10786800B39B4A /* MyAccountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTVC.h; sourceTree = "<group>"; };
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
@@ -629,6 +634,9 @@
 				09D23C4B1B424546008B6085 /* ExchangePointsCell.xib */,
 				09D23C4F1B4276A3008B6085 /* PointSRuleVC.h */,
 				09D23C501B4276A4008B6085 /* PointSRuleVC.m */,
+				09D23C571B42ADC0008B6085 /* PointSRuleCell.h */,
+				09D23C581B42ADC0008B6085 /* PointSRuleCell.m */,
+				09D23C5A1B42B0F1008B6085 /* PointSRuleCell.xib */,
 			);
 			path = Points;
 			sourceTree = "<group>";
@@ -1244,6 +1252,7 @@
 				09CA691D1B1FFCE300A31E0E /* CouponsCell.xib in Resources */,
 				09D560451B26D3E700ADF334 /* ForgetPassWordVC.xib in Resources */,
 				A6B1CEDA1B1C62D400100E9F /* ChangePassWordVC.xib in Resources */,
+				09D23C5B1B42B0F1008B6085 /* PointSRuleCell.xib in Resources */,
 				A6B1CEE21B1C62D400100E9F /* SettingSignatureVC.xib in Resources */,
 				09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */,
 				A6284CD81B10592100EFF820 /* Main.storyboard in Resources */,
@@ -1314,6 +1323,7 @@
 				A6284D791B105F9500EFF820 /* UIFactory.m in Sources */,
 				0906047B1B14218A0038BAC4 /* UserProtocolVC.m in Sources */,
 				09C95EC51B280738000972D8 /* SchoolZoneCell.m in Sources */,
+				09D23C591B42ADC0008B6085 /* PointSRuleCell.m in Sources */,
 				09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */,
 				09D560491B26DB8F00ADF334 /* RegisterVC.m in Sources */,
 				A6284D4B1B105E5600EFF820 /* AFURLRequestSerialization.m in Sources */,

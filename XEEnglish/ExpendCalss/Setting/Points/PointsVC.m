@@ -33,7 +33,7 @@
     
     self.exchangeRecordArray = [NSMutableArray array];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+40+1, kScreenWidth, kScreenHeight-64-40-1) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, kScreenWidth, kScreenHeight-40) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -97,6 +97,7 @@
             if (isResult.integerValue == 0) {
                 
                 self.exchangeRecordArray = result[@"resultInfo"];
+                [self.tableView reloadData];
             }
             else{
                 [UIFactory showAlert:result[@"resultInfo"]];
@@ -145,7 +146,7 @@
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
     if (section == 0) {
-        return 10.0f;
+        return 5.0f;
     }
     else{
         return 2.0f;

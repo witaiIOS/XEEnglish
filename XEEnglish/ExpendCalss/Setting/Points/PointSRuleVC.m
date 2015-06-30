@@ -7,8 +7,14 @@
 //
 
 #import "PointSRuleVC.h"
+#import "PointSRuleCell.h"
 
-@interface PointSRuleVC ()
+#import "XeeService.h"
+
+@interface PointSRuleVC ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *ruleArray;
 
 @end
 
@@ -20,10 +26,104 @@
     self.title = @"积分规则";
 }
 
+- (void)initUI{
+    
+    [super initUI];
+    
+    self.ruleArray = [NSMutableArray array];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self.view addSubview: self.tableView];
+    
+    [self getPoingtConfig];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Web
+
+- (void)getPoingtConfig{
+    
+    [[XeeService sharedInstance] getPoingtConfigAndBlock:^(NSDictionary *result, NSError *error) {
+        NSLog(@"result:%@",result);
+        if (!error) {
+            
+            //NSLog(@"result:%@",result);
+            
+            NSNumber *isResult = result[@"result"];
+            
+            if (isResult.integerValue == 0) {
+                self.ruleArray = result[@"resultInfo"];
+                [self.tableView reloadData];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
+
+
+#pragma mark - UITableView DataSource
+- (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
+    return [self.ruleArray count];
+}
+
+- (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *reuse = @"PointSRuleVCCell";
+    
+    [tableView registerNib:[UINib nibWithNibName:@"PointSRuleCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse];
+    
+    PointSRuleCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
+    
+    if (cell == nil) {
+        cell = [[PointSRuleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+    }
+    cell.cellEdge = 10;
+    cell.ruleInfoDic = self.ruleArray[indexPath.section];
+    
+    return cell;
+    
+}
+
+#pragma mark - UITableView Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    if (section == 0) {
+        return 5.0f;
+    }
+    else{
+        return 2.0f;
+    }
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 2.0f;
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 44.0f;
+}
+
 
 /*
 #pragma mark - Navigation
