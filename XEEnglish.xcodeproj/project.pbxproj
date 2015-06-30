@@ -94,6 +94,8 @@
 		09DB2DD21B1322CC0078AAF5 /* star_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DD01B1322CC0078AAF5 /* star_select.png */; };
 		09DB2DD31B1322CC0078AAF5 /* yue.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DD11B1322CC0078AAF5 /* yue.png */; };
 		09DC56FF1B390DEB00636C70 /* SingleCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DC56FE1B390DEB00636C70 /* SingleCourseVC.m */; };
+		09E24B201B41710200F762BD /* MyBookSiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E24B1F1B41710200F762BD /* MyBookSiteCell.m */; };
+		09E24B221B41711700F762BD /* MyBookSiteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E24B211B41711700F762BD /* MyBookSiteCell.xib */; };
 		A6284CCF1B10592100EFF820 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6284CCE1B10592100EFF820 /* main.m */; };
 		A6284CD21B10592100EFF820 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6284CD11B10592100EFF820 /* AppDelegate.m */; };
 		A6284CD81B10592100EFF820 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6284CD61B10592100EFF820 /* Main.storyboard */; };
@@ -313,6 +315,9 @@
 		09DB2DD11B1322CC0078AAF5 /* yue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yue.png; sourceTree = "<group>"; };
 		09DC56FD1B390DEB00636C70 /* SingleCourseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCourseVC.h; sourceTree = "<group>"; };
 		09DC56FE1B390DEB00636C70 /* SingleCourseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCourseVC.m; sourceTree = "<group>"; };
+		09E24B1E1B41710200F762BD /* MyBookSiteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBookSiteCell.h; sourceTree = "<group>"; };
+		09E24B1F1B41710200F762BD /* MyBookSiteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBookSiteCell.m; sourceTree = "<group>"; };
+		09E24B211B41711700F762BD /* MyBookSiteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyBookSiteCell.xib; sourceTree = "<group>"; };
 		A6284CC91B10592100EFF820 /* XEEnglish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XEEnglish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6284CCD1B10592100EFF820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6284CCE1B10592100EFF820 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -569,6 +574,9 @@
 				09C9DE381B2A66F600A07544 /* MyActivityCell.h */,
 				09C9DE391B2A66F600A07544 /* MyActivityCell.m */,
 				09C9DE3B1B2A670C00A07544 /* MyActivityCell.xib */,
+				09E24B1E1B41710200F762BD /* MyBookSiteCell.h */,
+				09E24B1F1B41710200F762BD /* MyBookSiteCell.m */,
+				09E24B211B41711700F762BD /* MyBookSiteCell.xib */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -1186,6 +1194,7 @@
 				09DB2DBA1B1322800078AAF5 /* s_phone.png in Resources */,
 				A6284D891B10652700EFF820 /* tab_home@2x.png in Resources */,
 				09CA69211B201F2500A31E0E /* coupons1.png in Resources */,
+				09E24B221B41711700F762BD /* MyBookSiteCell.xib in Resources */,
 				A6B1CEE01B1C62D400100E9F /* SettingBirthdayVC.xib in Resources */,
 				09DB2DC41B1322980078AAF5 /* join_07.png in Resources */,
 				09D5604A1B26DB8F00ADF334 /* RegisterVC.xib in Resources */,
@@ -1303,6 +1312,7 @@
 				09CA691B1B1FFCCA00A31E0E /* CouponsCell.m in Sources */,
 				09D560441B26D3E700ADF334 /* ForgetPassWordVC.m in Sources */,
 				A6284D591B105E5600EFF820 /* UIScrollView+MJExtension.m in Sources */,
+				09E24B201B41710200F762BD /* MyBookSiteCell.m in Sources */,
 				09C9DE3A1B2A66F600A07544 /* MyActivityCell.m in Sources */,
 				A6284D981B1066DE00EFF820 /* SettingVC.m in Sources */,
 				09C328611B301D8E009F0BAB /* CourseLeaveVC.m in Sources */,

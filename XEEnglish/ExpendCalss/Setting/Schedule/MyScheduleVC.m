@@ -10,6 +10,7 @@
 #import "LXSegmentViewThree.h"
 
 #import "MyActivityCell.h"
+#import "MyBookSiteCell.h"
 
 #import "XeeService.h"
 
@@ -17,8 +18,10 @@
 @property (nonatomic, strong) LXSegmentViewThree *mySegmentView;
 
 @property (nonatomic, strong) UITableView *activityTableView;//我预定的活动。
-
 @property (nonatomic, strong) NSMutableArray *activityArray;
+
+@property (nonatomic, strong) UITableView *bookSiteTableView;//我预定的场馆
+@property (nonatomic, strong) NSMutableArray *bookSiteArray;
 
 @end
 
@@ -39,6 +42,10 @@
     self.activityArray = [NSMutableArray array];
     [self getMyActivityInfo];
     
+    self.bookSiteArray = [NSMutableArray array];
+    [self getMyBookSiteInfo];
+    
+    
     self.mySegmentView = [[LXSegmentViewThree alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
     self.mySegmentView.tabBgImageView.image = [UIImage imageNamed:@"bg_tab_selected.png"];
     self.mySegmentView.tabButtonSeclectImageView.image = [UIImage imageNamed:@"select_flag.png"];
@@ -57,6 +64,14 @@
     
     [self.mySegmentView.mainScrollView addSubview:self.activityTableView];
     
+    self.bookSiteTableView = [[UITableView alloc] initWithFrame:CGRectMake(2*kScreenWidth, 0, kScreenWidth, kScreenHeight-64-44) style:UITableViewStyleGrouped];
+    self.bookSiteTableView.backgroundColor = [UIColor clearColor];
+    self.bookSiteTableView.dataSource = self;
+    self.bookSiteTableView.delegate = self;
+    
+    [self.mySegmentView.mainScrollView addSubview:self.bookSiteTableView];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,15 +83,16 @@
     
     [[XeeService sharedInstance] GetActivityInfoByParentIdWithPageSize:10 andPageIndex:1 andParentId:ceShiId andToken:ceShiToken andBlock:^(NSDictionary *result, NSError *error) {
         
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         
         if (!error) {
             
             NSNumber *isResult = result[@"result"];
             
             if (isResult.integerValue == 0) {
-                NSLog(@"info:%@",result[@"resultInfo"]);
+                //NSLog(@"info:%@",result[@"resultInfo"]);
                 self.activityArray = result[@"resultInfo"];
+                //NSLog(@"activityArray:%@",self.activityArray);
                 [self.activityTableView reloadData];
                 
             }
@@ -92,12 +108,41 @@
     }];
 }
 
+- (void)getMyBookSiteInfo{
+    
+    [[XeeService sharedInstance] getBookSiteByParent_idWithPageSize:10 andPageIndex:1 andParentId:ceShiId andToken:ceShiToken andBlock:^(NSDictionary *result, NSError *error) {
+        //NSLog(@"result:%@",result);
+        
+        if (!error) {
+            NSLog(@"result:%@",result);
+            
+            NSNumber *isResult = result[@"result"];
+            
+            if (isResult.integerValue == 0) {
+                //NSLog(@"info:%@",result[@"resultInfo"]);
+                self.bookSiteArray = result[@"resultInfo"];
+                //NSLog(@"bookSiteArray:%@",self.bookSiteArray);
+                [self.bookSiteTableView reloadData];
+            }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }else{
+            [UIFactory showAlert:@"未知错误"];
+        }
+    }];
+}
 
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
     if (tableView == self.activityTableView) {
+        NSLog(@"activityArray:%li",self.activityArray.count);
         return [self.activityArray count];
+    }
+    else if (tableView == self.bookSiteTableView){
+        NSLog(@"bookSiteArray:%li",self.bookSiteArray.count);
+        return [self.bookSiteArray count];
     }
     else{
         return 0;
@@ -112,20 +157,36 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *reuse1 = @"MyActivityVCCell";
+    static NSString *reuse2 = @"MyActivityVCCell";
+    static NSString *reuse3 = @"MyBookSiteVCCell";
     static NSString *reuse4 = @"MyCell";
     
     if (tableView == self.activityTableView) {
         
-        [tableView registerNib:[UINib nibWithNibName:@"MyActivityCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse1];
+        [tableView registerNib:[UINib nibWithNibName:@"MyActivityCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse2];
         
-        MyActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
+        MyActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
         
         if (cell == nil) {
-            cell = [[MyActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse1];
+            cell = [[MyActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
         }
         cell.cellEdge = 10;
         cell.activityinfo = self.activityArray[indexPath.section];
+        
+        return cell;
+        
+    }
+    else if (tableView == self.bookSiteTableView){
+        
+        [tableView registerNib:[UINib nibWithNibName:@"MyBookSiteCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse3];
+        
+        MyBookSiteCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse3];
+        
+        if (cell == nil) {
+            cell = [[MyBookSiteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+        }
+        cell.cellEdge = 10;
+        cell.bookSiteInfoDic = self.bookSiteArray[indexPath.section];
         
         return cell;
         
@@ -147,6 +208,9 @@
     
     if (tableView == self.activityTableView) {
         return 280.0f;
+    }
+    else if (tableView == self.bookSiteTableView){
+        return 140.0f;
     }
     else{
         return 44.0;
