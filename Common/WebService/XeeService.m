@@ -379,6 +379,17 @@
 }
 #pragma mark - 我的 我的积分
 /**
+ 我的积分交易记录
+ */
+- (void)getPointsWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSString *)parent_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+    AFHTTPRequestOperation *operation = [WebServiceOpration getPointsWithPageSize:pageSize andPageIndex:pageIndex andParentId:parent_id andToken:token];
+    [self getResponseWithOpration:operation andXmlKey:@"GetPointsResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+/**
  获取我的积分中所有的礼品
  */
 - (void)getGiftAndBlock:(void (^)(NSDictionary *result, NSError *error))block{

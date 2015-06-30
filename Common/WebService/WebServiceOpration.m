@@ -214,6 +214,14 @@
 
 #pragma mark - 我的 我的积分
 /**
+ 我的积分交易记录
+ */
++ (AFHTTPRequestOperation *)getPointsWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSString *)parent_id andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPoints><web:json>{\"parent_id\":\"%@\", \"pageSize\":\"%li\", \"pageIndex\":\"%li\", \"token\":\"%@\"}</web:json></web:GetPoints>",parent_id,pageSize,pageIndex,token]];
+}
+
+/**
  获取我的积分中所有的礼品
  */
 + (AFHTTPRequestOperation *)getGift{
