@@ -24,7 +24,21 @@
 }
 */
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (id)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        //设置文字
+        [self setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+        self.titleLabel.textAlignment=NSTextAlignmentCenter;
+        self.titleLabel.font=[UIFont systemFontOfSize:KFont];
+        //设置图片
+        self.imageView.contentMode=UIViewContentModeScaleAspectFit;
+    }
+    return self;
+
+}
+
+/*- (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
         //设置文字
@@ -36,7 +50,7 @@
         self.imageView.contentMode=UIViewContentModeScaleAspectFit;
     }
     return self;
-}
+}*/
 
 -(CGRect)titleRectForContentRect:(CGRect)contentRect{
     

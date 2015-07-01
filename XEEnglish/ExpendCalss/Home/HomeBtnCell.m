@@ -13,21 +13,21 @@
 
 @implementation HomeBtnCell
 
-- (void)awakeFromNib {
-    // Initialization code
-    
-}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         self.button1 = [HomeButton buttonWithType:UIButtonTypeCustom];
         [self.button1 setFrame:CGRectMake(10, 10, 145, 110)];
         self.button1.tag = 1;
         [self.button1 addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.button1];
+        
         self.button2 =[HomeButton buttonWithType:UIButtonTypeCustom];
         [self.button2 setFrame:CGRectMake(165, 10, 145, 110)];
         self.button2.tag = 2;
@@ -76,6 +76,7 @@
 //    }
     
     //self.button1 = (HomeButton *)[self viewWithTag:1];
+    NSLog(@"title:%@",[_serviceDic1 objectForKey:@"title"]);
     [self.button1 setTitle:[_serviceDic1 objectForKey:@"title"] forState:UIControlStateNormal];
     
     NSString *imageUrl1 = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[_serviceDic1 objectForKey:@"photo"]];
