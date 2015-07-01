@@ -40,6 +40,8 @@
     }
     else if ([signonStr isEqualToString:@"2"]){
         judgeState = @"请假";
+        [self.courseButton setTitle:@"补课" forState:UIControlStateNormal];
+        [self.courseButton setBackgroundColor:[UIColor orangeColor]];
     }
     else if ([signonStr isEqualToString:@"3"]){
         judgeState = @"缺课";
@@ -59,5 +61,20 @@
 }
 
 - (IBAction)leaveButtonClicked:(id)sender {
+    
+    NSString *signonStr =[NSString stringWithFormat:@"%@",self.courseInfo[@"is_signon"]];
+    
+    if ([signonStr isEqualToString:@"0"]) {
+        
+    }
+    else if ([signonStr isEqualToString:@"1"]){
+        
+    }
+    else if ([signonStr isEqualToString:@"2"]){
+        
+    }
+    else{
+        
+    }
 }
 @end
