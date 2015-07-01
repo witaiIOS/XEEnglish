@@ -14,7 +14,7 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     
-    NSLog(@"self.courseInfo:%@",self.courseInfo);
+    //NSLog(@"self.courseInfo:%@",self.courseInfo);
     
     self.courseTitle.text = self.courseInfo[@"title"];
     self.courseTime.text = self.courseInfo[@"create_time"];

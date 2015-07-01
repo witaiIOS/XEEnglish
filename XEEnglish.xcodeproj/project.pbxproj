@@ -15,6 +15,7 @@
 		0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906047D1B1421B60038BAC4 /* AboutVC.m */; };
 		090604841B146B050038BAC4 /* CountdownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 090604831B146B050038BAC4 /* CountdownButton.m */; };
 		093A58751B438BCA006F104D /* CourseLeaveApplyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 093A58741B438BCA006F104D /* CourseLeaveApplyVC.m */; };
+		093A58781B4398F2006F104D /* ApplyProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 093A58771B4398F2006F104D /* ApplyProtocolVC.m */; };
 		093CD67D1B1D692B004F7D11 /* SchedulePlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 093CD67C1B1D692B004F7D11 /* SchedulePlace.m */; };
 		094DD2601B3954830045EF2C /* arrow_right_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 094DD25F1B3954830045EF2C /* arrow_right_gray.png */; };
 		094DD2661B3960CA0045EF2C /* ListeningCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 094DD2651B3960CA0045EF2C /* ListeningCourseVC.m */; };
@@ -208,6 +209,8 @@
 		090604831B146B050038BAC4 /* CountdownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownButton.m; sourceTree = "<group>"; };
 		093A58731B438BCA006F104D /* CourseLeaveApplyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseLeaveApplyVC.h; sourceTree = "<group>"; };
 		093A58741B438BCA006F104D /* CourseLeaveApplyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseLeaveApplyVC.m; sourceTree = "<group>"; };
+		093A58761B4398F2006F104D /* ApplyProtocolVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyProtocolVC.h; sourceTree = "<group>"; };
+		093A58771B4398F2006F104D /* ApplyProtocolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyProtocolVC.m; sourceTree = "<group>"; };
 		093CD67B1B1D692B004F7D11 /* SchedulePlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchedulePlace.h; sourceTree = "<group>"; };
 		093CD67C1B1D692B004F7D11 /* SchedulePlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchedulePlace.m; sourceTree = "<group>"; };
 		094DD25F1B3954830045EF2C /* arrow_right_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right_gray.png; sourceTree = "<group>"; };
@@ -526,6 +529,8 @@
 			children = (
 				093A58731B438BCA006F104D /* CourseLeaveApplyVC.h */,
 				093A58741B438BCA006F104D /* CourseLeaveApplyVC.m */,
+				093A58761B4398F2006F104D /* ApplyProtocolVC.h */,
+				093A58771B4398F2006F104D /* ApplyProtocolVC.m */,
 			);
 			path = CourseOther;
 			sourceTree = "<group>";
@@ -1420,6 +1425,7 @@
 				A6284D621B105E5600EFF820 /* UIRefreshControl+AFNetworking.m in Sources */,
 				09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */,
 				A6284D5E1B105E5600EFF820 /* UIAlertView+AFNetworking.m in Sources */,
+				093A58781B4398F2006F104D /* ApplyProtocolVC.m in Sources */,
 				A6284D4E1B105E5600EFF820 /* DDXMLElementAdditions.m in Sources */,
 				A6284D461B105E5600EFF820 /* AFHTTPRequestOperationManager.m in Sources */,
 				A6284D951B1066CC00EFF820 /* ActivityVC.m in Sources */,
