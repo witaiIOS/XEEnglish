@@ -409,11 +409,12 @@
 }
 
 #pragma mark - CourseCellCourseButtonPressedDelegate
-- (void)courseButtonPressed:(id)sender{
+- (void)courseButtonPressed:(id)sender andCourseInfo:(NSDictionary *)courseInfoDic{
     if ([sender isEqualToString:@"0"]) {
         //为0时，状态时正常的，可以“请假”
         CourseLeaveApplyVC *vc = [[CourseLeaveApplyVC alloc] init];
         vc.title = @"请假申请";
+        vc.courseLeaveInfoDic = courseInfoDic;
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -425,6 +426,7 @@
         //为2时,状态是补课，可以申请“补课”
         CourseLeaveApplyVC *vc = [[CourseLeaveApplyVC alloc] init];
         vc.title = @"补课申请";
+        vc.courseLeaveInfoDic = courseInfoDic;
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }

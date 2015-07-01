@@ -10,7 +10,7 @@
 
 @protocol CourseCellCourseButtonPressedDelegate <NSObject>
 
-- (void)courseButtonPressed:(id)sender;
+- (void)courseButtonPressed:(id)sender andCourseInfo:(NSDictionary *)courseInfoDic;
 
 @end
 

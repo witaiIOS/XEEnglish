@@ -10,4 +10,6 @@
 
 @interface CourseLeaveApplyVC : BaseVC
 
+@property (nonatomic, strong) NSDictionary *courseLeaveInfoDic;
+
 @end

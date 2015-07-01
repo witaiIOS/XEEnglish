@@ -82,6 +82,6 @@
     
     NSString *signonStr =[NSString stringWithFormat:@"%@",self.courseInfo[@"is_signon"]];
     
-    [self.delegate courseButtonPressed:signonStr];
+    [self.delegate courseButtonPressed:signonStr andCourseInfo:self.courseInfo];
 }
 @end
