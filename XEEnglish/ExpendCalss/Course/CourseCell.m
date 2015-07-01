@@ -8,6 +8,7 @@
 
 #import "CourseCell.h"
 
+
 @implementation CourseCell
 
 - (void)layoutSubviews{
@@ -62,19 +63,25 @@
 
 - (IBAction)leaveButtonClicked:(id)sender {
     
+//    NSString *signonStr =[NSString stringWithFormat:@"%@",self.courseInfo[@"is_signon"]];
+//    
+//    if ([signonStr isEqualToString:@"0"]) {
+//        CourseLeaveApplyVC *vc = [[CourseLeaveApplyVC alloc] init];
+//        vc.title = @"请假申请";
+//        
+//    }
+//    else if ([signonStr isEqualToString:@"1"]){
+//        
+//    }
+//    else if ([signonStr isEqualToString:@"2"]){
+//        
+//    }
+//    else{
+//        
+//    }
+    
     NSString *signonStr =[NSString stringWithFormat:@"%@",self.courseInfo[@"is_signon"]];
     
-    if ([signonStr isEqualToString:@"0"]) {
-        
-    }
-    else if ([signonStr isEqualToString:@"1"]){
-        
-    }
-    else if ([signonStr isEqualToString:@"2"]){
-        
-    }
-    else{
-        
-    }
+    [self.delegate courseButtonPressed:signonStr];
 }
 @end

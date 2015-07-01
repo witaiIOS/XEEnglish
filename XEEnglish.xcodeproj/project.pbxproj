@@ -14,6 +14,7 @@
 		0906047B1B14218A0038BAC4 /* UserProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906047A1B14218A0038BAC4 /* UserProtocolVC.m */; };
 		0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906047D1B1421B60038BAC4 /* AboutVC.m */; };
 		090604841B146B050038BAC4 /* CountdownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 090604831B146B050038BAC4 /* CountdownButton.m */; };
+		093A58751B438BCA006F104D /* CourseLeaveApplyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 093A58741B438BCA006F104D /* CourseLeaveApplyVC.m */; };
 		093CD67D1B1D692B004F7D11 /* SchedulePlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 093CD67C1B1D692B004F7D11 /* SchedulePlace.m */; };
 		094DD2601B3954830045EF2C /* arrow_right_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 094DD25F1B3954830045EF2C /* arrow_right_gray.png */; };
 		094DD2661B3960CA0045EF2C /* ListeningCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 094DD2651B3960CA0045EF2C /* ListeningCourseVC.m */; };
@@ -205,6 +206,8 @@
 		0906047D1B1421B60038BAC4 /* AboutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutVC.m; sourceTree = "<group>"; };
 		090604821B146B050038BAC4 /* CountdownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownButton.h; sourceTree = "<group>"; };
 		090604831B146B050038BAC4 /* CountdownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownButton.m; sourceTree = "<group>"; };
+		093A58731B438BCA006F104D /* CourseLeaveApplyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseLeaveApplyVC.h; sourceTree = "<group>"; };
+		093A58741B438BCA006F104D /* CourseLeaveApplyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseLeaveApplyVC.m; sourceTree = "<group>"; };
 		093CD67B1B1D692B004F7D11 /* SchedulePlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchedulePlace.h; sourceTree = "<group>"; };
 		093CD67C1B1D692B004F7D11 /* SchedulePlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchedulePlace.m; sourceTree = "<group>"; };
 		094DD25F1B3954830045EF2C /* arrow_right_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right_gray.png; sourceTree = "<group>"; };
@@ -516,6 +519,15 @@
 				0906047D1B1421B60038BAC4 /* AboutVC.m */,
 			);
 			path = MoreSetting;
+			sourceTree = "<group>";
+		};
+		093A58721B438B11006F104D /* CourseOther */ = {
+			isa = PBXGroup;
+			children = (
+				093A58731B438BCA006F104D /* CourseLeaveApplyVC.h */,
+				093A58741B438BCA006F104D /* CourseLeaveApplyVC.m */,
+			);
+			path = CourseOther;
 			sourceTree = "<group>";
 		};
 		0980856B1B32C35A00BE9336 /* CourseIntroductionVC */ = {
@@ -1014,6 +1026,7 @@
 		A6284D691B105E6600EFF820 /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				093A58721B438B11006F104D /* CourseOther */,
 				A6284D901B10669200EFF820 /* CourseVC.h */,
 				A6284D911B10669200EFF820 /* CourseVC.m */,
 				09C3285A1B30135F009F0BAB /* CourseCell.h */,
@@ -1399,6 +1412,7 @@
 				A6284CD21B10592100EFF820 /* AppDelegate.m in Sources */,
 				A6B1CEDF1B1C62D400100E9F /* SettingBirthdayVC.m in Sources */,
 				A6284D471B105E5600EFF820 /* AFHTTPSessionManager.m in Sources */,
+				093A58751B438BCA006F104D /* CourseLeaveApplyVC.m in Sources */,
 				09C328641B301E24009F0BAB /* CourseAbsentVC.m in Sources */,
 				0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */,
 				09D23C481B424526008B6085 /* ExchangePointsCell.m in Sources */,

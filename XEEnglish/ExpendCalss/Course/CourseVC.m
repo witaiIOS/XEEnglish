@@ -14,11 +14,12 @@
 #import "CourseLeaveVC.h"
 #import "CourseAbsentVC.h"
 
-
 #import "XeeService.h"
 
+#import "CourseLeaveApplyVC.h"  //请假申请页面
 
-@interface CourseVC ()<JSDropDownMenuDataSource, JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate>
+
+@interface CourseVC ()<JSDropDownMenuDataSource, JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate,CourseCellCourseButtonPressedDelegate>
 
 @property (strong, nonatomic) NSMutableArray *students;
 @property (strong, nonatomic) NSMutableArray *courseList;
@@ -381,6 +382,7 @@
     }
     cell.courseInfo = self.studentCoursesArray[indexPath.section];
     cell.cellEdge = 10;
+    cell.delegate = self;
     return cell;
 }
 
@@ -405,6 +407,32 @@
     
     return 1.0f;
 }
+
+#pragma mark - CourseCellCourseButtonPressedDelegate
+- (void)courseButtonPressed:(id)sender{
+    if ([sender isEqualToString:@"0"]) {
+        //为0时，状态时正常的，可以“请假”
+        CourseLeaveApplyVC *vc = [[CourseLeaveApplyVC alloc] init];
+        vc.title = @"请假申请";
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if ([sender isEqualToString:@"1"]){
+        //为1时，状态是已上课，可以“评论”
+
+    }
+    else if ([sender isEqualToString:@"2"]){
+        //为2时,状态是补课，可以申请“补课”
+        CourseLeaveApplyVC *vc = [[CourseLeaveApplyVC alloc] init];
+        vc.title = @"补课申请";
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else{
+        
+    }
+}
+
 
 
 @end
