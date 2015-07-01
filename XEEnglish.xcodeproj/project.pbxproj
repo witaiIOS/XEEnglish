@@ -20,6 +20,7 @@
 		093A587D1B43B543006F104D /* CourseLeaveExplainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093A587B1B43B543006F104D /* CourseLeaveExplainVC.xib */; };
 		093A58801B43E398006F104D /* CourseCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 093A587F1B43E398006F104D /* CourseCommentVC.m */; };
 		093A58831B43ECF0006F104D /* CourseReviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 093A58821B43ECF0006F104D /* CourseReviewVC.m */; };
+		093A58861B43F541006F104D /* CourseForenoticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 093A58851B43F541006F104D /* CourseForenoticeVC.m */; };
 		093CD67D1B1D692B004F7D11 /* SchedulePlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 093CD67C1B1D692B004F7D11 /* SchedulePlace.m */; };
 		094DD2601B3954830045EF2C /* arrow_right_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 094DD25F1B3954830045EF2C /* arrow_right_gray.png */; };
 		094DD2661B3960CA0045EF2C /* ListeningCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 094DD2651B3960CA0045EF2C /* ListeningCourseVC.m */; };
@@ -222,6 +223,8 @@
 		093A587F1B43E398006F104D /* CourseCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCommentVC.m; sourceTree = "<group>"; };
 		093A58811B43ECF0006F104D /* CourseReviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseReviewVC.h; sourceTree = "<group>"; };
 		093A58821B43ECF0006F104D /* CourseReviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseReviewVC.m; sourceTree = "<group>"; };
+		093A58841B43F541006F104D /* CourseForenoticeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseForenoticeVC.h; sourceTree = "<group>"; };
+		093A58851B43F541006F104D /* CourseForenoticeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseForenoticeVC.m; sourceTree = "<group>"; };
 		093CD67B1B1D692B004F7D11 /* SchedulePlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchedulePlace.h; sourceTree = "<group>"; };
 		093CD67C1B1D692B004F7D11 /* SchedulePlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchedulePlace.m; sourceTree = "<group>"; };
 		094DD25F1B3954830045EF2C /* arrow_right_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right_gray.png; sourceTree = "<group>"; };
@@ -549,6 +552,8 @@
 				093A587F1B43E398006F104D /* CourseCommentVC.m */,
 				093A58811B43ECF0006F104D /* CourseReviewVC.h */,
 				093A58821B43ECF0006F104D /* CourseReviewVC.m */,
+				093A58841B43F541006F104D /* CourseForenoticeVC.h */,
+				093A58851B43F541006F104D /* CourseForenoticeVC.m */,
 			);
 			path = CourseOther;
 			sourceTree = "<group>";
@@ -1457,6 +1462,7 @@
 				A6284CCF1B10592100EFF820 /* main.m in Sources */,
 				A6A9442D1B2E74B500AF304F /* JSDropDownMenu.m in Sources */,
 				09C87F2C1B3BF06600D7C913 /* SubCourseListCell.m in Sources */,
+				093A58861B43F541006F104D /* CourseForenoticeVC.m in Sources */,
 				A6284D5C1B105E5600EFF820 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				090604701B140A5E0038BAC4 /* FeedBackVC.m in Sources */,
 				09C6394E1B3A957F00510F00 /* PayMethodCell.m in Sources */,

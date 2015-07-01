@@ -17,7 +17,8 @@
 #import "XeeService.h"
 
 #import "CourseLeaveApplyVC.h"  //请假申请页面
-#import "CourseReviewVC.h"      //cell的课程详情
+#import "CourseReviewVC.h"      //cell中已完成课程跳转到课程回顾
+#import "CourseForenoticeVC.h"  //cell中未完成课程跳转到课程预告
 #import "CourseCommentVC.h"     //评论页面
 
 
@@ -395,13 +396,19 @@
     
     NSDictionary *studentCourseDic = self.studentCoursesArray[indexPath.section];
     NSString *signonStr =[NSString stringWithFormat:@"%@",studentCourseDic[@"is_signon"]];
-    //正常时，显示课程预告
+    //时间没有过： 0正常 4  延迟 5 暂停”时，显示课程预告  1已上课且已签到 2 请假 3 缺课 显示课程回顾
     if ([signonStr isEqualToString:@"0"]) {
+        CourseForenoticeVC *vc = [[CourseForenoticeVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.courseLeaveInfoDic = self.studentCoursesArray[indexPath.section];
+        [self.navigationController pushViewController:vc animated:YES];
         
+    }
+    else{
         CourseReviewVC *vc = [[CourseReviewVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         vc.courseLeaveInfoDic = self.studentCoursesArray[indexPath.section];
-        [self.navigationController pushViewController:vc animated:YES];  
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
 }

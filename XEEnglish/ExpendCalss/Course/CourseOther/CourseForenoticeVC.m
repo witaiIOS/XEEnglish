@@ -1,14 +1,14 @@
 //
-//  CourseReviewVC.m
+//  CourseForenoticeVC.m
 //  XEEnglish
 //
 //  Created by houjing on 15/7/1.
 //  Copyright (c) 2015年 lixiang. All rights reserved.
 //
 
-#import "CourseReviewVC.h"
+#import "CourseForenoticeVC.h"
 
-@interface CourseReviewVC ()<UIWebViewDelegate>
+@interface CourseForenoticeVC ()<UIWebViewDelegate>
 
 @property (nonatomic, strong) UIWebView *courseWeb;
 
@@ -18,12 +18,12 @@
 
 @end
 
-@implementation CourseReviewVC
+@implementation CourseForenoticeVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"课程回顾";
+    self.title = @"课程预告";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,16 +48,16 @@
     
     [self.view addSubview:footView];
     
-    UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [commentBtn setFrame:CGRectMake(kScreenWidth/2+20, 10, kScreenWidth/2-40, 40)];
-    [commentBtn setTitle:@"评论" forState:UIControlStateNormal];
-    [commentBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [commentBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [commentBtn setBackgroundColor:[UIColor orangeColor]];
-    commentBtn.layer.cornerRadius = 4.0f;
-    [commentBtn addTarget:self action:@selector(commentBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *leaveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leaveBtn setFrame:CGRectMake(kScreenWidth/2+20, 10, kScreenWidth/2-40, 40)];
+    [leaveBtn setTitle:@"请假" forState:UIControlStateNormal];
+    [leaveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [leaveBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [leaveBtn setBackgroundColor:[UIColor orangeColor]];
+    leaveBtn.layer.cornerRadius = 4.0f;
+    [leaveBtn addTarget:self action:@selector(leaveBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     
-    [footView addSubview:commentBtn];
+    [footView addSubview:leaveBtn];
     
 }
 
@@ -65,7 +65,7 @@
 
 
 
-- (void)commentBtnClicked{
+- (void)leaveBtnClicked{
     
     //    BuyCourseVC *vc = [[BuyCourseVC alloc] init];
     //    vc.courseName = self.title;
