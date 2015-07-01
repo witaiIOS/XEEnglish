@@ -7,6 +7,9 @@
 //
 
 #import "CourseForenoticeVC.h"
+#import "XeeService.h"
+
+#import "CourseLeaveApplyVC.h"  //请假申请页面
 
 @interface CourseForenoticeVC ()<UIWebViewDelegate>
 
@@ -14,7 +17,7 @@
 
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
-//@property (nonatomic, strong) NSString *webString;
+@property (nonatomic, strong) NSString *webString;
 
 @end
 
@@ -36,6 +39,7 @@
     [super initUI];
     
     //NSLog(@"course:%@",self.courseLeaveInfoDic);
+    [self getCourseDetailByCourseId];
     
     self.courseWeb = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64)];
     self.courseWeb.delegate = self;
@@ -63,13 +67,42 @@
 
 #pragma mark - My Action
 
-
-
 - (void)leaveBtnClicked{
     
-    //    BuyCourseVC *vc = [[BuyCourseVC alloc] init];
-    //    vc.courseName = self.title;
-    //    [self.navigationController pushViewController:vc animated:YES];
+    CourseLeaveApplyVC *vc = [[CourseLeaveApplyVC alloc] init];
+    vc.title = @"请假申请";
+    vc.courseLeaveInfoDic = self.courseLeaveInfoDic;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - Web
+- (void)getCourseDetailByCourseId{
+    
+    [[XeeService sharedInstance] getCourseDetailByCourseId:self.courseLeaveInfoDic[@"course_id"] andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                NSDictionary *courseInfo = result[@"resultInfo"];
+                //                NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+                //                NSString *minAge = [numberFormatter stringFromNumber:courseInfo[@"min_age"]];
+                //                NSString *maxAge = [numberFormatter stringFromNumber:courseInfo[@"max_age"]];;
+                [self setSingleCourseValue:courseInfo];
+            }
+        }
+    }];
+}
+
+- (void)setSingleCourseValue:(NSDictionary *)courseInfo{
+    
+   
+    self.webString = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,courseInfo[@"website"]];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.webString]];
+    //NSLog(@"webString:%@",self.webString);
+    
+    [self.courseWeb loadRequest:request];
+    
 }
 
 #pragma mark - UIWebView Delegate
