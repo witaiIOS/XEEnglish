@@ -17,6 +17,7 @@
 #import "XeeService.h"
 
 #import "CourseLeaveApplyVC.h"  //请假申请页面
+#import "CourseCommentVC.h"     //评论页面
 
 
 @interface CourseVC ()<JSDropDownMenuDataSource, JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate,CourseCellCourseButtonPressedDelegate>
@@ -420,6 +421,10 @@
     }
     else if ([sender isEqualToString:@"1"]){
         //为1时，状态是已上课，可以“评论”
+        CourseCommentVC *vc = [[CourseCommentVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.courseLeaveInfoDic = courseInfoDic;
+        [self.navigationController pushViewController:vc animated:YES];
 
     }
     else if ([sender isEqualToString:@"2"]){
