@@ -165,6 +165,7 @@
 		A6284D9D1B1067C100EFF820 /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6284D9B1B1067C100EFF820 /* LoginVC.xib */; };
 		A63A0A821B2D1BFF003D3852 /* chekbox_select.png in Resources */ = {isa = PBXBuildFile; fileRef = A63A0A801B2D1BFF003D3852 /* chekbox_select.png */; };
 		A63A0A831B2D1BFF003D3852 /* chekbox.png in Resources */ = {isa = PBXBuildFile; fileRef = A63A0A811B2D1BFF003D3852 /* chekbox.png */; };
+		A64F3E4A1B44158300E6E99B /* NSString+md5.m in Sources */ = {isa = PBXBuildFile; fileRef = A64F3E491B44158300E6E99B /* NSString+md5.m */; };
 		A6647CC01B270E9B00D2DC57 /* course7.png in Resources */ = {isa = PBXBuildFile; fileRef = A6647CBF1B270E9B00D2DC57 /* course7.png */; };
 		A6A9442C1B2E74B500AF304F /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A944291B2E74B500AF304F /* ico_make.png */; };
 		A6A9442D1B2E74B500AF304F /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9442B1B2E74B500AF304F /* JSDropDownMenu.m */; };
@@ -466,6 +467,8 @@
 		A6284D9B1B1067C100EFF820 /* LoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
 		A63A0A801B2D1BFF003D3852 /* chekbox_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chekbox_select.png; sourceTree = "<group>"; };
 		A63A0A811B2D1BFF003D3852 /* chekbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chekbox.png; sourceTree = "<group>"; };
+		A64F3E481B44158300E6E99B /* NSString+md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+md5.h"; sourceTree = "<group>"; };
+		A64F3E491B44158300E6E99B /* NSString+md5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+md5.m"; sourceTree = "<group>"; };
 		A6647CBF1B270E9B00D2DC57 /* course7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course7.png; sourceTree = "<group>"; };
 		A6A944291B2E74B500AF304F /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
 		A6A9442A1B2E74B500AF304F /* JSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropDownMenu.h; sourceTree = "<group>"; };
@@ -858,6 +861,7 @@
 		A6284CF81B105E5600EFF820 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A64F3E441B4413C600E6E99B /* NSString(md5) */,
 				A6A944281B2E74B500AF304F /* JSDropDownMenu */,
 			);
 			path = Utils;
@@ -1158,6 +1162,15 @@
 			path = Tab_Nav;
 			sourceTree = "<group>";
 		};
+		A64F3E441B4413C600E6E99B /* NSString(md5) */ = {
+			isa = PBXGroup;
+			children = (
+				A64F3E481B44158300E6E99B /* NSString+md5.h */,
+				A64F3E491B44158300E6E99B /* NSString+md5.m */,
+			);
+			path = "NSString(md5)";
+			sourceTree = "<group>";
+		};
 		A6A944281B2E74B500AF304F /* JSDropDownMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1428,6 +1441,7 @@
 				A6284D531B105E5600EFF820 /* MBProgressHUD.m in Sources */,
 				A6284D4F1B105E5600EFF820 /* NSString+DDXML.m in Sources */,
 				A6284D4C1B105E5600EFF820 /* AFURLResponseSerialization.m in Sources */,
+				A64F3E4A1B44158300E6E99B /* NSString+md5.m in Sources */,
 				A6B1CEE11B1C62D400100E9F /* SettingSignatureVC.m in Sources */,
 				A6B1CED91B1C62D400100E9F /* ChangePassWordVC.m in Sources */,
 				A6B1CEF51B1D90EC00100E9F /* XeeService.m in Sources */,

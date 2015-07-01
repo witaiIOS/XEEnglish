@@ -84,7 +84,7 @@
         
     }else{
         //密码加密之后上传
-        NSString *md5String = [self md5:self.codeTextField.text];
+        NSString *md5String = [NSString md5:self.codeTextField.text];
     
         [[XeeService sharedInstance] loginWithPhoneNumber:self.phoneTextField.text andPassword:md5String andBlock:^(NSDictionary *result, NSError *error) {
             if (!error) {
@@ -111,7 +111,7 @@
     }
 }
 
-- (NSString *)md5:(NSString *)str
+/*- (NSString *)md5:(NSString *)str
 {
     const char *cStr = [str UTF8String];
     unsigned char result[16];
@@ -123,7 +123,7 @@
             result[8], result[9], result[10], result[11],
             result[12], result[13], result[14], result[15]
             ]; 
-}
+}*/
 
 - (IBAction)forgetPasswordAction:(id)sender {
     

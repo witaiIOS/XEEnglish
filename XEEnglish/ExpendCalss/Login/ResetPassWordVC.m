@@ -32,7 +32,7 @@
     if([self.myNewPasswordField.text isEqualToString:self.confirmField.text]){
         
         //密码加密之后上传
-        NSString *md5String = [self md5:self.myNewPasswordField.text];
+        NSString *md5String = [NSString md5:self.myNewPasswordField.text];
         
         [[XeeService sharedInstance] modifyPwdByMobilephoneWithPhoneNumber:@"13797040872" andPassword:md5String andBlock:^(NSDictionary *result, NSError *error) {
             NSNumber *r = result[@"result"];
@@ -55,7 +55,7 @@
     
 }
 
-- (NSString *)md5:(NSString *)str
+/*- (NSString *)md5:(NSString *)str
 {
     const char *cStr = [str UTF8String];
     unsigned char result[16];
@@ -67,7 +67,7 @@
             result[8], result[9], result[10], result[11],
             result[12], result[13], result[14], result[15]
             ];
-}
+}*/
 
 #pragma mark - UITextField Delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
