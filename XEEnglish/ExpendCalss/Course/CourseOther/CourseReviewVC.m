@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"课程回顾";
+    //self.title = @"课程回顾";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +34,8 @@
 - (void)initUI{
     
     [super initUI];
+    
+    //NSLog(@"course:%@",self.courseLeaveInfoDic);
     
     self.courseWeb = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64)];
     self.courseWeb.delegate = self;

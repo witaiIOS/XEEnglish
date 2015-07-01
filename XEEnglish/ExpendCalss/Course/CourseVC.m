@@ -17,6 +17,7 @@
 #import "XeeService.h"
 
 #import "CourseLeaveApplyVC.h"  //请假申请页面
+#import "CourseReviewVC.h"      //cell的课程详情
 #import "CourseCommentVC.h"     //评论页面
 
 
@@ -388,6 +389,22 @@
 }
 
 #pragma mark - UITableView Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSDictionary *studentCourseDic = self.studentCoursesArray[indexPath.section];
+    NSString *signonStr =[NSString stringWithFormat:@"%@",studentCourseDic[@"is_signon"]];
+    //正常时，显示课程预告
+    if ([signonStr isEqualToString:@"0"]) {
+        
+        CourseReviewVC *vc = [[CourseReviewVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.courseLeaveInfoDic = self.studentCoursesArray[indexPath.section];
+        [self.navigationController pushViewController:vc animated:YES];  
+    }
+    
+}
 
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     

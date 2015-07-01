@@ -10,4 +10,5 @@
 
 @interface CourseReviewVC : BaseVC
 @property (nonatomic, strong) NSDictionary *courseLeaveInfoDic;
+
 @end
