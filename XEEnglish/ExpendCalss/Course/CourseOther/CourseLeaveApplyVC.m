@@ -12,6 +12,8 @@
 #import "CourseLeaveExplainVC.h"
 #import "ApplyProtocolVC.h"
 
+#import "XeeService.h"
+
 @interface CourseLeaveApplyVC ()<UITableViewDataSource,UITableViewDelegate,ApplyProtocolChangeSelectedBtnDelegate,CourseLeaveExplainVCSetExplainDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *selectedBtn;//是否同意了章程
@@ -37,6 +39,7 @@
     self.tableView.tableFooterView = [self footView];
     [self.view addSubview:self.tableView];
     
+    self.leaveExplainLabel.text = @"";
     //NSLog(@"dic:%@",self.courseLeaveInfoDic);
 }
 
@@ -117,15 +120,42 @@
 
 
 - (void)ApplyBtnClicked{
-    if (self.selectedBtn.selected) {
-//        PayCourseVC *vc = [[PayCourseVC alloc] init];
-//        vc.payMoney = self.priceTotal;
-//        [self.navigationController pushViewController:vc animated:YES];
-    }
-    else{
+    if (self.selectedBtn.selected == NO) {
         [UIFactory showAlert:@"请阅读并同意协议"];
     }
+    else if ([self.leaveExplainLabel.text isEqualToString:@""]){
+        [UIFactory showAlert:@"请填写请假说明"];
+    }
+    else{
+        [self addSubcourseLeaveApply];
+    }
     
+}
+#pragma mark - Web
+
+- (void)addSubcourseLeaveApply{
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    //NSLog(@"111:%@",self.courseLeaveInfoDic);
+   // NSLog(@"111:%@",userInfoDic[uUserToken]);
+   // NSLog(@"111:%@",self.courseLeaveInfoDic[@"course_id"]);
+    
+    [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseLeaveInfoDic[@"course_id"] andRemark:self.leaveExplainLabel.text andType:@"0" andApplyId:@"" andCreateTime:@"" andStatus:@"" andTeacherId:@"" andCheckTime:@"" andCheckRemark:@"" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
 }
 
 #pragma mark - UITableView DataSource
