@@ -30,8 +30,9 @@
 
 
 - (IBAction)submitBtnClicked:(id)sender {
-    
-    
+    //NSLog(@"text:%@",self.leaveExplainTV.text);
+    [self.delegate setExplain:self.leaveExplainTV.text];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITextViewDelegate

@@ -12,7 +12,7 @@
 #import "CourseLeaveExplainVC.h"
 #import "ApplyProtocolVC.h"
 
-@interface CourseLeaveApplyVC ()<UITableViewDataSource,UITableViewDelegate,ApplyProtocolChangeSelectedBtnDelegate>
+@interface CourseLeaveApplyVC ()<UITableViewDataSource,UITableViewDelegate,ApplyProtocolChangeSelectedBtnDelegate,CourseLeaveExplainVCSetExplainDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *selectedBtn;//是否同意了章程
 @property (nonatomic, strong) UILabel *leaveExplainLabel;//情况说明
@@ -196,6 +196,7 @@
     if (indexPath.section == 2) {
         CourseLeaveExplainVC *vc = [[CourseLeaveExplainVC alloc] init];
         vc.title = @"请假说明";
+        vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
@@ -224,6 +225,12 @@
 
 - (void)changeSelectedBtn:(BOOL)sender{
     self.selectedBtn.selected = sender;
+}
+
+#pragma mark - CourseLeaveExplainVCSetExplainDelegate
+
+- (void)setExplain:(id)sender{
+    self.leaveExplainLabel.text = sender;
 }
 
 /*

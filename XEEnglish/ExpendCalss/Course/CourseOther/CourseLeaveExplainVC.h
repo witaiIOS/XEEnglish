@@ -7,8 +7,15 @@
 //
 
 #import "BaseVC.h"
+@protocol CourseLeaveExplainVCSetExplainDelegate <NSObject>
 
+@optional
+- (void)setExplain:(id)sender;
+
+@end
 @interface CourseLeaveExplainVC : BaseVC
+
+@property (nonatomic, strong) id<CourseLeaveExplainVCSetExplainDelegate>delegate;
 
 - (IBAction)submitBtnClicked:(id)sender;
 
