@@ -13,7 +13,7 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     
-    //NSLog(@"self.courseInfo:%@",self.courseInfo);
+    NSLog(@"self.courseInfo:%@",self.courseInfo);
     
     self.courseTitle.text = self.courseInfo[@"title"];
     self.courseTime.text = self.courseInfo[@"create_time"];
@@ -30,9 +30,13 @@
     NSString *judgeState;
     if ([signonStr isEqualToString:@"0"]) {
         judgeState = @"等待上课";
+        [self.courseButton setTitle:@"请假" forState:UIControlStateNormal];
+        [self.courseButton setBackgroundColor:[UIColor orangeColor]];
     }
     else if ([signonStr isEqualToString:@"1"]){
         judgeState = @"已上课";
+        [self.courseButton setTitle:@"评论" forState:UIControlStateNormal];
+        [self.courseButton setBackgroundColor:[UIColor grayColor]];
     }
     else if ([signonStr isEqualToString:@"2"]){
         judgeState = @"请假";

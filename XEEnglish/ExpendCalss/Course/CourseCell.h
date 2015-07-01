@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSDictionary *courseInfo;
 
+@property (weak, nonatomic) IBOutlet UIButton *courseButton;
 @property (weak, nonatomic) IBOutlet UILabel *courseTitle;
 @property (weak, nonatomic) IBOutlet UILabel *courseTime;
 @property (weak, nonatomic) IBOutlet UILabel *courseState;

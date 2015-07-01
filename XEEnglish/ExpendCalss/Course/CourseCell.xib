@@ -46,10 +46,15 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="第三课：向日葵" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbv-71-9N4">
+                        <rect key="frame" x="10" y="8" width="210" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLV-6U-kai">
                         <rect key="frame" x="240" y="45" width="50" height="30"/>
-                        <color key="backgroundColor" red="1" green="0.48263922009999999" blue="0.1546600128" alpha="1" colorSpace="calibratedRGB"/>
-                        <state key="normal" title="请假">
+                        <state key="normal">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -57,15 +62,10 @@
                             <action selector="leaveButtonClicked:" destination="TSP-cl-aKO" eventType="touchUpInside" id="8H7-wP-LX1"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="第三课：向日葵" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbv-71-9N4">
-                        <rect key="frame" x="10" y="8" width="210" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="courseButton" destination="NLV-6U-kai" id="E4T-Y2-9OE"/>
                 <outlet property="courseState" destination="dvS-C7-fxE" id="b6l-nD-YCa"/>
                 <outlet property="courseTime" destination="sdv-9G-hWh" id="NVO-Gp-D0h"/>
                 <outlet property="courseTitle" destination="Kbv-71-9N4" id="7yT-iM-vNy"/>
