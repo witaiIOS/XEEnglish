@@ -91,11 +91,11 @@
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
-                
+                NSLog(@"resultInfo:%@",result[@"resultInfo"]);
                 //请求到数据后设置两个列表的数据信息
                 [self getCoursesAndAgesInfo:result[@"resultInfo"]];
-                //NSLog(@"course:%@",self.coursesArray);
-                //NSLog(@"age:%@",self.ageGroupArray);
+                NSLog(@"course:%@",self.coursesArray);
+                NSLog(@"age:%@",self.ageGroupArray);
                 
                 //请求完数据之后才设置列表的数据源和代理方法
                 self.menu.dataSource = self;
@@ -115,18 +115,41 @@
 - (void)getCoursesAndAgesInfo:(NSArray *)resultInfo{
     //NSLog(@"resultInfo:%li",resultInfo.count);
     for (NSDictionary *info in resultInfo) {
+        
         NSNumber *minAge = info[@"min_age"];
         NSNumber *maxAge = info[@"max_age"];
-        if ( minAge.integerValue == 0 && maxAge.integerValue == 0) {
+        //NSLog(@"maxAge:%@",info[@"max_age"]);
+//        if (  maxAge.integerValue == 0) {
+//            NSDictionary *courseIdAndNameDic = @{@"course_category_id":info[@"course_category_id"],@"name":info[@"name"]};
+//            [self.coursesArray addObject:courseIdAndNameDic];
+//            
+//        }
+//        else{
+////            NSString *ageGroup = [NSString stringWithFormat:@"%@~%@",info[@"min_age"],info[@"max_age"]];
+//            NSDictionary *ageGroupDic = @{@"min_age":info[@"min_age"],@"max_age":info[@"max_age"]};
+//            [self.ageGroupArray addObject:ageGroupDic];
+//            
+//        }
+//        if ( (![minAge isKindOfClass:[NSNull class]]) && (![maxAge isKindOfClass:[NSNull class]]) && minAge.integerValue == 0 && maxAge.integerValue > 0) {
+//            //            NSString *ageGroup = [NSString stringWithFormat:@"%@~%@",info[@"min_age"],info[@"max_age"]];
+//            NSDictionary *ageGroupDic = @{@"min_age":info[@"min_age"],@"max_age":info[@"max_age"]};
+//            [self.ageGroupArray addObject:ageGroupDic];
+//            
+//        }
+//        else{
+//            NSDictionary *courseIdAndNameDic = @{@"course_category_id":info[@"course_category_id"],@"name":info[@"name"]};
+//            [self.coursesArray addObject:courseIdAndNameDic];
+//        }
+        if ( [minAge isKindOfClass:[NSNull class]] && [maxAge isKindOfClass:[NSNull class]]) {
+            //            NSString *ageGroup = [NSString stringWithFormat:@"%@~%@",info[@"min_age"],info[@"max_age"]];
             NSDictionary *courseIdAndNameDic = @{@"course_category_id":info[@"course_category_id"],@"name":info[@"name"]};
             [self.coursesArray addObject:courseIdAndNameDic];
             
         }
         else{
-//            NSString *ageGroup = [NSString stringWithFormat:@"%@~%@",info[@"min_age"],info[@"max_age"]];
+            
             NSDictionary *ageGroupDic = @{@"min_age":info[@"min_age"],@"max_age":info[@"max_age"]};
             [self.ageGroupArray addObject:ageGroupDic];
-            
         }
     }
 }
@@ -193,9 +216,11 @@
 - (NSInteger)menu:(JSDropDownMenu *)menu numberOfRowsInColumn:(NSInteger)column leftOrRight:(NSInteger)leftOrRight leftRow:(NSInteger)leftRow{
     
     if (column == 0) {
+        //NSLog(@"coursesArray:%li",self.coursesArray.count);
         return [self.coursesArray count];
     }
     else if (column == 1){
+        //NSLog(@"coursesArray:%li",self.ageGroupArray.count);
         return [self.ageGroupArray count];
     }
     else
