@@ -227,7 +227,7 @@
     //NSLog(@"courseId:%@",courseId);
     
     
-    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:@"17" andStudentId:studentId andCourseId:@"1" andSignon:@"0" andSort:@"" andOrder:@"" andPageSize:100 andPageIndex:1 andToken:@"yEqHDenWZHCMVH2DMbUL8GFj2gtCsq8rhW6MpigV11lBVj2ZNEhbKCRdy6wAVkubzoluiOHJEz2h/SOgGRiv4A==" andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:@"17" andStudentId:studentId andCourseId:@"1" andSignon:@"" andSort:@"" andOrder:@"" andPageSize:100 andPageIndex:1 andToken:@"yEqHDenWZHCMVH2DMbUL8GFj2gtCsq8rhW6MpigV11lBVj2ZNEhbKCRdy6wAVkubzoluiOHJEz2h/SOgGRiv4A==" andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             
             //NSLog(@"getVStudentSourseScheduleSign result:%@",result);
@@ -253,7 +253,7 @@
 
 //获取当前学生的当前课程 上课的相关信息
 - (void)getCourseViewInfo:(NSDictionary *)studentCourseDic{
-    
+    //NSLog(@"studentCourseDic:%@",studentCourseDic);
     self.courseTotal.text = studentCourseDic[@"totalCount"];
     self.courseComplete.text = studentCourseDic[@"unit_count_over"];
     [self.courseLeave setTitle:studentCourseDic[@"unit_count_miss"] forState:UIControlStateNormal];

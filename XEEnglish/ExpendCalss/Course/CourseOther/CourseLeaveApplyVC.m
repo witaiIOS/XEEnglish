@@ -98,6 +98,7 @@
     
     ApplyProtocolVC *vc = [[ApplyProtocolVC alloc] init];
     vc.delegate = self;
+    vc.title = @"请假章程";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -176,6 +177,11 @@
 
 
 #pragma mark - UITableView Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
