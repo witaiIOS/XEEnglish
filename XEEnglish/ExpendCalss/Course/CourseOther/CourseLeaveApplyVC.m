@@ -142,7 +142,10 @@
    // NSLog(@"111:%@",userInfoDic[uUserToken]);
    // NSLog(@"111:%@",self.courseLeaveInfoDic[@"course_id"]);
     
-    [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseLeaveInfoDic[@"signon_id"] andRemark:self.leaveExplainLabel.text andType:@"0" andApplyId:nil andCreateTime:nil andStatus:nil andTeacherId:nil andCheckTime:nil andCheckRemark:nil andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseLeaveInfoDic[@"signon_id"] andRemark:self.leaveExplainLabel.text andType:@"0" andApplyId:@"null" andCreateTime:@"null" andStatus:@"null" andTeacherId:@"null" andCheckTime:@"null" andCheckRemark:@"null" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        
+        NSLog(@"result:%@",result);
+        
         if (!error) {
             
             NSNumber *isResult = result[@"result"];

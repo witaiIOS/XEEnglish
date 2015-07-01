@@ -165,7 +165,9 @@
  */
 + (AFHTTPRequestOperation *)addSubcourseLeaveApplyByParentId:(NSString *)parent_id andRelationId:(NSString *)relation_id andRemark:(NSString *)remark andType:(NSString *)type andApplyId:(NSString *)apply_id andCreateTime:(NSString *)create_time andStatus:(NSString *)status andTeacherId:(NSString *)teacher_id andCheckTime:(NSString *)check_time andCheckRemark:(NSString *)check_remark andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddSubcourseLeaveApply><web:json>{\"parent_id\":\"%@\", \"relation_id\":\"%@\", \"remark\":\"%@\", \"type\":\"%@\", \"apply_id\":\"%@\", \"create_time\":\"%@\", \"status\":\"%@\", \"teacher_id\":\"%@\", \"check_time\":\"%@\", \"check_remark\": \"%@\",\"token\":\"%@\"}</web:json></web:AddSubcourseLeaveApply>",parent_id,relation_id,remark,type,apply_id,create_time,status,teacher_id,check_time,check_remark,token]];
+    //@"{\"parent_id\":\"17\", \"relation_id\":\"11\", \"remark\":\"uuu\", \"type\":\"0\", \"apply_id\":null, \"create_time\":%@, \"status\":null, \"teacher_id\":null, \"check_time\":null, \"check_remark\":null,\"token\":\"yEqHDenWZHANQ08W1WF93J+t+ELfkokN0dz9KsI8kALd/GXU1pEykMyOJupHiHATpELTmg8I+XWN1mKJb8Vr+g==\"}"
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddSubcourseLeaveApply><web:json>{\"parent_id\":\"%@\", \"relation_id\":\"%@\", \"remark\":\"%@\", \"type\":\"%@\", \"apply_id\":%@, \"create_time\":%@, \"status\":%@, \"teacher_id\":%@, \"check_time\":%@, \"check_remark\": %@,\"token\":\"%@\"}</web:json></web:AddSubcourseLeaveApply>",parent_id,relation_id,remark,type,apply_id,create_time,status,teacher_id,check_time,check_remark,token]];
 }
 
 #pragma mark - 活动
