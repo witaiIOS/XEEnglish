@@ -13,11 +13,13 @@
 @protocol HardwareDemandCellSetNeedProjectorAndTeacherDelegate <NSObject>
 
 @optional
-- (void)setNeedProjectorAndTeacher:(id) sender;
+- (void)setNeedProjectorAndTeacher:(id) sender andRowOfCell:(NSInteger)row;
 
 @end
 
 @interface HardwareDemandCell : BaseTVC
+//设置代理方法的标记，标记被点击的cell
+@property (nonatomic, assign) NSInteger rowOfCell;
 
 @property (nonatomic, strong) UILabel *tipInfoLabel;
 @property (nonatomic, strong) UILabel *yesLabel;

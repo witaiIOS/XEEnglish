@@ -10,13 +10,14 @@
 @protocol DatePickerCellChangeDateMarkDelegate <NSObject>
 
 @optional
-- (void)changeDateMark:(id) sender;
+- (void)changeDateMark:(id) sender andRowOfCell:(NSInteger)row;
 
 @end
 
 
 @interface DatePickerCell : BaseTVC<UITextFieldDelegate>
-
+//设置代理方法的标记，标记被点击的cell
+@property (nonatomic, assign) NSInteger rowOfCell;
 @property (nonatomic, strong) UITextField *datePickerTF;
 @property (nonatomic, strong) UILabel *dateLabel;
 @property (nonatomic, strong) UIDatePicker *datePicker;

@@ -25,17 +25,17 @@
 @property (nonatomic, strong) NSDictionary *schoolZone;//校区
 
 //改变预定场馆界面的开始时间和结束时间的标记和代理，changeDateMark为0改变开始时间，为1改变结束时间
-@property (nonatomic, assign) NSInteger changeDateMark;
+//@property (nonatomic, assign) NSInteger changeDateMark;
 @property (nonatomic, strong) NSString *stateTime;  //开始时间
 @property (nonatomic, strong) NSString *endTime;    //结束时间
 
 //设置代理方法的标记，setNumberMark为0设置人数，为1设置面积
-@property (nonatomic, assign) NSInteger setNumberMark;
+//@property (nonatomic, assign) NSInteger setNumberMark;
 @property (nonatomic, strong) NSString *personNum;  //活动人数
 @property (nonatomic, strong) NSString *area;    //活动所需场馆面积
 
 //设置代理方法的标记，setNeedMark为0设置是否需要投影仪，为1是否需要老师
-@property (nonatomic, assign) NSInteger setNeedMark;
+//@property (nonatomic, assign) NSInteger setNeedMark;
 @property (nonatomic, strong) NSString *needProjector;  //是否需要投影仪
 @property (nonatomic, strong) NSString *needTeacher;    //是否需要老师
 
@@ -75,6 +75,9 @@
     
     
     [self.view addSubview: self.tableView];
+    //设置是否需要投影仪和老师，默认情况时需要
+    self.needProjector = @"1";
+    self.needTeacher = @"1";
     
 }
 
@@ -224,13 +227,13 @@
         switch (indexPath.row) {
             case 0:{
                 cell.dateLabel.text = @"预定起始时间";
-                
+                cell.rowOfCell = 0;
                 cell.delegate = self;
                 break;
             }
             case 1:{
                 cell.dateLabel.text = @"预定结束时间";
-               
+                cell.rowOfCell = 1;
                 cell.delegate = self;
                 break;
             }
@@ -250,6 +253,7 @@
             case 0:{
                 cell.tipInfoLabel.text = @"预计人数";
                 cell.peopleAndPlaceTF.text = @"";
+                cell.rowOfCell = 0;
                 cell.delegate = self;
                 
                 break;
@@ -257,6 +261,7 @@
             case 1:{
                 cell.tipInfoLabel.text = @"所需面积";
                 cell.peopleAndPlaceTF.text = @"";
+                cell.rowOfCell = 1;
                 cell.delegate = self;
                 
                 break;
@@ -280,6 +285,7 @@
                 cell.noLabel.text = @"没有";
                 //cell.boxNeed.text = @"有";
                 //cell.boxUnNeed.text = @"没有";
+                cell.rowOfCell = 0;
                 cell.delegate = self;
                 
                 break;
@@ -290,6 +296,7 @@
                 cell.noLabel.text = @"不要";
                 //cell.boxNeed.text = @"要";
                 //cell.boxUnNeed.text = @"不要";
+                cell.rowOfCell = 1;
                 cell.delegate = self;
                 
                 break;
@@ -341,66 +348,66 @@
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    else if (indexPath.section == 1){
-        switch (indexPath.row) {
-            case 0:
-            {
-                //设置修改标记 为0设置开始时间
-                self.changeDateMark = 0;
-                break;
-            }
-            case 1:
-            {
-                //设置修改标记 为1设置结束时间
-                self.changeDateMark = 1;
-                break;
-            }
-    
-            default:
-                break;
-        }
-    }
-    else if (indexPath.section == 2){
-        switch (indexPath.row) {
-            case 0:
-            {
-                //设置修改标记 为0设置人数
-                self.setNumberMark = 0;
-                break;
-            }
-            case 1:
-            {
-                //设置修改标记 为1设置所需面积
-                self.setNumberMark = 1;
-                break;
-            }
-                
-            default:
-                break;
-        }
-    }
-    else if (indexPath.section == 2){
-        switch (indexPath.row) {
-            case 0:
-            {
-                //设置修改标记 为0设置是否需要投影仪
-                self.setNeedMark = 0;
-                break;
-            }
-            case 1:
-            {
-                //设置修改标记 为1设置是否需要老师
-                self.setNeedMark = 1;
-                break;
-            }
-                
-            default:
-                break;
-        }
-    }
-    else{
-        
-    }
+//    else if (indexPath.section == 1){
+//        switch (indexPath.row) {
+//            case 0:
+//            {
+//                //设置修改标记 为0设置开始时间
+//                self.changeDateMark = 0;
+//                break;
+//            }
+//            case 1:
+//            {
+//                //设置修改标记 为1设置结束时间
+//                self.changeDateMark = 1;
+//                break;
+//            }
+//    
+//            default:
+//                break;
+//        }
+//    }
+//    else if (indexPath.section == 2){
+//        switch (indexPath.row) {
+//            case 0:
+//            {
+//                //设置修改标记 为0设置人数
+//                self.setNumberMark = 0;
+//                break;
+//            }
+//            case 1:
+//            {
+//                //设置修改标记 为1设置所需面积
+//                self.setNumberMark = 1;
+//                break;
+//            }
+//                
+//            default:
+//                break;
+//        }
+//    }
+//    else if (indexPath.section == 2){
+//        switch (indexPath.row) {
+//            case 0:
+//            {
+//                //设置修改标记 为0设置是否需要投影仪
+//                self.setNeedMark = 0;
+//                break;
+//            }
+//            case 1:
+//            {
+//                //设置修改标记 为1设置是否需要老师
+//                self.setNeedMark = 1;
+//                break;
+//            }
+//                
+//            default:
+//                break;
+//        }
+//    }
+//    else{
+//        
+//    }
 }
 
 
@@ -454,9 +461,10 @@
     self.schoolZone = sender;
 }
 #pragma mark - DatePickerCellChangeDateMarkDelegate
-- (void)changeDateMark:(id)sender{
-    if (self.changeDateMark == 0) {
+- (void)changeDateMark:(id)sender andRowOfCell:(NSInteger)row{
+    if (row == 0) {
         self.stateTime = sender;
+        //NSLog(@"stateTime:%@",self.stateTime);
     }
     else{
         self.endTime = sender;
@@ -465,8 +473,8 @@
 }
 
 #pragma mark - PlaceDemandCellSetPersonNumAndAreaDelegate
-- (void)setPersonNumAndArea:(id)sender{
-    if (self.setNumberMark == 0) {
+- (void)setPersonNumAndArea:(id)sender andRowOfCell:(NSInteger)row{
+    if (row == 0) {
         self.personNum = sender;
     }
     else{
@@ -476,8 +484,8 @@
 }
 
 #pragma mark - HardwareDemandCellSetNeedProjectorAndTeacherDelegate
-- (void)setNeedProjectorAndTeacher:(id)sender{
-    if (self.setNeedMark == 0) {
+- (void)setNeedProjectorAndTeacher:(id)sender andRowOfCell:(NSInteger)row{
+    if (row == 0) {
         self.needProjector = sender;
         //NSLog(@"needProjector:%@",self.needProjector);
     }

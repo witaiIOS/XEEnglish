@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>AA4D5FA4-C3D0-4CCB-8781-9477DBACDEB7</string>
 	<key>IDESourceControlProjectName</key>
-	<string>XEEnglish</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F08B027816DEDAFE82E6091D397B56A7D6C7FFA0</key>
 		<string>github.com:witaiIOS/XEEnglish.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>XEEnglish.xcodeproj</string>
+	<string>XEEnglish.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F08B027816DEDAFE82E6091D397B56A7D6C7FFA0</key>

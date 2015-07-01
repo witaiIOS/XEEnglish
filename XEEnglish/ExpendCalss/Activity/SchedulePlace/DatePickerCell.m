@@ -56,7 +56,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm"];
     self.datePickerTF.text = [dateFormatter stringFromDate:self.datePicker.date];
     //
-    [self.delegate changeDateMark:self.datePickerTF.text];
+    [self.delegate changeDateMark:self.datePickerTF.text andRowOfCell:self.rowOfCell];
 }
 
 - (void)cancelBtnActon:(id)sender{
