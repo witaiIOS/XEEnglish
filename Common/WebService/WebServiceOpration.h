@@ -140,6 +140,23 @@
  */
 + (AFHTTPRequestOperation *)getVStudentSourseScheduleSignWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andCourseId:(NSString *)course_id andSignon:(NSString *)is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token;
 
+
+/**
+ 请假/家长评论   type取值 0 请假 1评论
+ @param parent_id    注册id
+ @param relation_id  课表id
+ @param remark       请假原因
+ @param type         type取值 0 请假 1评论
+ @param apply_id  NULL
+ @param create_time  NULL
+ @param status       NULL
+ @param teacher_id   NULL
+ @param check_time   NULL
+ @param check_remark   NULL
+ @param token
+ */
++ (AFHTTPRequestOperation *)addSubcourseLeaveApplyByParentId:(NSString *)parent_id andRelationId:(NSString *)relation_id andRemark:(NSString *)remark andType:(NSString *)type andApplyId:(NSString *)apply_id andCreateTime:(NSString *)create_time andStatus:(NSString *)status andTeacherId:(NSString *)teacher_id andCheckTime:(NSString *)check_time andCheckRemark:(NSString *)check_remark andToken:(NSString *)token;
+
 #pragma mark - 活动
 /**
  获取当前活动信息

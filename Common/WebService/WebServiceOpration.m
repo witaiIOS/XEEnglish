@@ -160,7 +160,13 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentSourseScheduleSign><web:json>{\"parent_id\":\"%@\",\"student_id\":\"%@\",\"course_id\":\"%@\", \"is_signon\":\"%@\",\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetVStudentSourseScheduleSign>",parent_id,student_id,course_id,is_signon,sort,order,(long)pageSize,(long)pageIndex,token]];
 }
 
-
+/**
+ 请假/家长评论   type取值 0 请假 1评论
+ */
++ (AFHTTPRequestOperation *)addSubcourseLeaveApplyByParentId:(NSString *)parent_id andRelationId:(NSString *)relation_id andRemark:(NSString *)remark andType:(NSString *)type andApplyId:(NSString *)apply_id andCreateTime:(NSString *)create_time andStatus:(NSString *)status andTeacherId:(NSString *)teacher_id andCheckTime:(NSString *)check_time andCheckRemark:(NSString *)check_remark andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddSubcourseLeaveApply><web:json>{\"parent_id\":\"%@\", \"relation_id\":\"%@\", \"remark\":\"%@\", \"type\":\"%@\", \"apply_id\":\"%@\", \"create_time\":\"%@\", \"status\":\"%@\", \"teacher_id\":\"%@\", \"check_time\":\"%@\", \"check_remark\": \"%@\",\"token\":\"%@\"}</web:json></web:AddSubcourseLeaveApply>",parent_id,relation_id,remark,type,apply_id,create_time,status,teacher_id,check_time,check_remark,token]];
+}
 
 #pragma mark - 活动
 + (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId:(NSString *)parent_id andToken:(NSString *)token{

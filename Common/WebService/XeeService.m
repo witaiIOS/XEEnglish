@@ -300,7 +300,19 @@
     }];
 }
 
-
+/**
+ 请假/家长评论   type取值 0 请假 1评论
+ */
+- (void)addSubcourseLeaveApplyByParentId:(NSString *)parent_id andRelationId:(NSString *)relation_id andRemark:(NSString *)remark andType:(NSString *)type andApplyId:(NSString *)apply_id andCreateTime:(NSString *)create_time andStatus:(NSString *)status andTeacherId:(NSString *)teacher_id andCheckTime:(NSString *)check_time andCheckRemark:(NSString *)check_remark andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration addSubcourseLeaveApplyByParentId:parent_id andRelationId:relation_id andRemark:remark andType:type andApplyId:apply_id andCreateTime:create_time andStatus:status andTeacherId:teacher_id andCheckTime:check_time andCheckRemark:check_remark andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"AddSubcourseLeaveApplyResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
 
 
 #pragma mark - 活动

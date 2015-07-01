@@ -170,6 +170,22 @@
  */
 - (void)AddBookSiteWithKeyId:(NSString *)keyId andRoomId:(NSString *)room_id andAddTime:(NSString *)add_time andParentId:(NSString *)parent_id andSchoolId:(NSString *)department_id andStartTime:(NSString *)start_time andeEndTime:(NSString *)end_time andPersonNum:(NSString *)personNum andArea:(NSString *)area andProjector:(NSString *)projector andTeacher:(NSString *)teacher andActivityContent:(NSString *)activity_content andMemo:(NSString *)memo andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 请假/家长评论   type取值 0 请假 1评论
+ @param parent_id    注册id
+ @param relation_id  课表id
+ @param remark       请假原因
+ @param type         type取值 0 请假 1评论
+ @param apply_id  NULL
+ @param create_time  NULL
+ @param status       NULL
+ @param teacher_id   NULL
+ @param check_time   NULL
+ @param check_remark   NULL
+ @param token
+ */
+- (void)addSubcourseLeaveApplyByParentId:(NSString *)parent_id andRelationId:(NSString *)relation_id andRemark:(NSString *)remark andType:(NSString *)type andApplyId:(NSString *)apply_id andCreateTime:(NSString *)create_time andStatus:(NSString *)status andTeacherId:(NSString *)teacher_id andCheckTime:(NSString *)check_time andCheckRemark:(NSString *)check_remark andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block;
+
 
 #pragma mark - 我的
 

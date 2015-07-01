@@ -36,6 +36,8 @@
     self.tableView.delegate = self;
     self.tableView.tableFooterView = [self footView];
     [self.view addSubview:self.tableView];
+    
+    //NSLog(@"dic:%@",self.courseLeaveInfoDic);
 }
 
 - (void)didReceiveMemoryWarning {
