@@ -259,8 +259,8 @@
     //NSLog(@"studentCourseDic:%@",studentCourseDic);
     self.courseTotal.text = studentCourseDic[@"totalCount"];
     self.courseComplete.text = studentCourseDic[@"unit_count_over"];
-    [self.courseLeave setTitle:studentCourseDic[@"unit_count_miss"] forState:UIControlStateNormal];
-    [self.courseAbsent setTitle:studentCourseDic[@"unit_count_leave"] forState:UIControlStateNormal];
+    [self.courseLeave setTitle:studentCourseDic[@"unit_count_leave"] forState:UIControlStateNormal];
+    [self.courseAbsent setTitle:studentCourseDic[@"unit_count_miss"] forState:UIControlStateNormal];
 }
 
 #pragma mark - JSDropDownMenu datasouce delegate

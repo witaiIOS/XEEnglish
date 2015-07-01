@@ -8,7 +8,11 @@
 
 #import "CourseCommentVC.h"
 
-@interface CourseCommentVC ()
+@interface CourseCommentVC ()//<UITableViewDataSource,UITableViewDelegate>
+
+//@property (nonatomic, strong) UITableView *tableView;
+//
+//@property (nonatomic, strong) UILabel *userNameLabel;
 
 
 
@@ -20,6 +24,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"评论";
+}
+
+- (void)initUI{
+    
+//    self.tableView
+//    
+//    self.userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 30)];
+//    self.userNameLabel.text = @"用户名";
+//    self.userNameLabel.font = [UIFont systemFontOfSize:14];
+//    self.userNameLabel.textColor = [UIColor lightGrayColor];
+//    
+//    [self.view addSubview:self.userNameLabel];
 }
 
 - (void)didReceiveMemoryWarning {
