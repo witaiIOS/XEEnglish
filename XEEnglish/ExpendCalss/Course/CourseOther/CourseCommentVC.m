@@ -28,6 +28,8 @@
 
 - (void)initUI{
     
+    [super initUI];
+    
 //    self.tableView
 //    
 //    self.userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 30)];
