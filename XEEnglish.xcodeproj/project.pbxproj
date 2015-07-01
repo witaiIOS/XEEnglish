@@ -19,6 +19,7 @@
 		093A587C1B43B543006F104D /* CourseLeaveExplainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 093A587A1B43B543006F104D /* CourseLeaveExplainVC.m */; };
 		093A587D1B43B543006F104D /* CourseLeaveExplainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093A587B1B43B543006F104D /* CourseLeaveExplainVC.xib */; };
 		093A58801B43E398006F104D /* CourseCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 093A587F1B43E398006F104D /* CourseCommentVC.m */; };
+		093A58831B43ECF0006F104D /* CourseReviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 093A58821B43ECF0006F104D /* CourseReviewVC.m */; };
 		093CD67D1B1D692B004F7D11 /* SchedulePlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 093CD67C1B1D692B004F7D11 /* SchedulePlace.m */; };
 		094DD2601B3954830045EF2C /* arrow_right_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 094DD25F1B3954830045EF2C /* arrow_right_gray.png */; };
 		094DD2661B3960CA0045EF2C /* ListeningCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 094DD2651B3960CA0045EF2C /* ListeningCourseVC.m */; };
@@ -219,6 +220,8 @@
 		093A587B1B43B543006F104D /* CourseLeaveExplainVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseLeaveExplainVC.xib; sourceTree = "<group>"; };
 		093A587E1B43E398006F104D /* CourseCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCommentVC.h; sourceTree = "<group>"; };
 		093A587F1B43E398006F104D /* CourseCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCommentVC.m; sourceTree = "<group>"; };
+		093A58811B43ECF0006F104D /* CourseReviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseReviewVC.h; sourceTree = "<group>"; };
+		093A58821B43ECF0006F104D /* CourseReviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseReviewVC.m; sourceTree = "<group>"; };
 		093CD67B1B1D692B004F7D11 /* SchedulePlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchedulePlace.h; sourceTree = "<group>"; };
 		093CD67C1B1D692B004F7D11 /* SchedulePlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchedulePlace.m; sourceTree = "<group>"; };
 		094DD25F1B3954830045EF2C /* arrow_right_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right_gray.png; sourceTree = "<group>"; };
@@ -544,6 +547,8 @@
 				093A587B1B43B543006F104D /* CourseLeaveExplainVC.xib */,
 				093A587E1B43E398006F104D /* CourseCommentVC.h */,
 				093A587F1B43E398006F104D /* CourseCommentVC.m */,
+				093A58811B43ECF0006F104D /* CourseReviewVC.h */,
+				093A58821B43ECF0006F104D /* CourseReviewVC.m */,
 			);
 			path = CourseOther;
 			sourceTree = "<group>";
@@ -1422,6 +1427,7 @@
 				A6B1CED91B1C62D400100E9F /* ChangePassWordVC.m in Sources */,
 				A6B1CEF51B1D90EC00100E9F /* XeeService.m in Sources */,
 				A6284D571B105E5600EFF820 /* MJRefreshFooterView.m in Sources */,
+				093A58831B43ECF0006F104D /* CourseReviewVC.m in Sources */,
 				A6284D6D1B105E6600EFF820 /* BaseVC.m in Sources */,
 				A6B1CEEF1B1D8D2C00100E9F /* XeeAd.m in Sources */,
 				A6284D511B105E5600EFF820 /* DDXMLElement.m in Sources */,
