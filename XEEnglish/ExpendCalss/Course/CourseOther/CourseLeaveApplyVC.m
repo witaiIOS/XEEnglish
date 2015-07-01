@@ -9,11 +9,13 @@
 #import "CourseLeaveApplyVC.h"
 #import "BaseTVC.h"
 
+#import "CourseLeaveExplainVC.h"
 #import "ApplyProtocolVC.h"
 
 @interface CourseLeaveApplyVC ()<UITableViewDataSource,UITableViewDelegate,ApplyProtocolChangeSelectedBtnDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *selectedBtn;//是否同意了章程
+@property (nonatomic, strong) UILabel *leaveExplainLabel;//情况说明
 
 @end
 
@@ -46,15 +48,24 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, 200)];
     view.backgroundColor = [UIColor clearColor];
     
+    self.leaveExplainLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth-20, 30)];
+    self.leaveExplainLabel.textColor = [UIColor grayColor];
+    self.leaveExplainLabel.font = [UIFont systemFontOfSize:14];
+    //自动折行设置
+    self.leaveExplainLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.leaveExplainLabel.numberOfLines = 0;
+    
+    [view addSubview:self.leaveExplainLabel];
+    
     self.selectedBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.selectedBtn setFrame:CGRectMake(10, 10, 20, 20)];
+    [self.selectedBtn setFrame:CGRectMake(10, 40, 20, 20)];
     [self.selectedBtn setImage:[UIImage imageNamed:@"chekbox.png"] forState:UIControlStateNormal];
     [self.selectedBtn setImage:[UIImage imageNamed:@"chekbox_select.png"] forState:UIControlStateSelected];
     [self.selectedBtn addTarget:self action:@selector(selectedBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     
     [view addSubview:self.selectedBtn];
     
-    UILabel *protocolLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 10, 70, 20)];
+    UILabel *protocolLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 40, 70, 20)];
     protocolLabel.text = @"阅读并同意";
     protocolLabel.textColor = [UIColor blackColor];
     protocolLabel.font = [UIFont systemFontOfSize:14];
@@ -62,7 +73,7 @@
     [view addSubview:protocolLabel];
     
     UIButton *protocolBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [protocolBtn setFrame:CGRectMake(120, 10, 60, 20)];
+    [protocolBtn setFrame:CGRectMake(120, 40, 60, 20)];
     [protocolBtn setTitle:@"《章程》" forState:UIControlStateNormal];
     [protocolBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [protocolBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
@@ -71,7 +82,7 @@
     [view addSubview:protocolBtn];
     
     UIButton *buyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [buyBtn setFrame:CGRectMake(20, 60, kScreenWidth-40, 40)];
+    [buyBtn setFrame:CGRectMake(20, 90, kScreenWidth-40, 40)];
     [buyBtn setTitle:@"立即申请" forState:UIControlStateNormal];
     [buyBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [buyBtn setBackgroundColor:[UIColor orangeColor]];
@@ -181,6 +192,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 2) {
+        CourseLeaveExplainVC *vc = [[CourseLeaveExplainVC alloc] init];
+        vc.title = @"请假说明";
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
