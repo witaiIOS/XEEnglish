@@ -337,6 +337,12 @@
 - (void)makeActivityWithParentId:(NSString *)parent_id andActivityId:(NSString *)activity_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result, NSError *error))block{
     
     AFHTTPRequestOperation *operation = [WebServiceOpration makeActivityWithParentId:parent_id andActivityId:activity_id andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"MakeActivityResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
 }
 
 /**
