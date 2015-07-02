@@ -268,7 +268,7 @@
  */
 + (AFHTTPRequestOperation *)getVOrderByParentIdWithParentId:(NSString *)parentId andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token;
 
-
+#pragma mark - 我的 城市
 /**
  获取城市
  */
@@ -280,7 +280,7 @@
  @param:parent_id      表示当前登录用户的id
  @param:token
  */
-+ (AFHTTPRequestOperation *)setCityWithDepartmentId:(NSString *)department_id andParentId:(NSString *)parent_id andToken:(NSString *)token;
++ (AFHTTPRequestOperation *)setCityWithRegionalId:(NSString *)regional_id andParentId:(NSString *)parent_id andToken:(NSString *)token;
 
 #pragma mark - 我的 更多设置
 /**

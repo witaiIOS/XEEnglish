@@ -275,7 +275,7 @@
  @param:parent_id      表示当前登录用户的id
  @param:token
  */
-- (void)setCityWithDepartmentId:(NSString *)department_id andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result,NSError *error))block;
+- (void)setCityWithRegionalId:(NSString *)regional_id andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result,NSError *error))block;
 
 #pragma mark - 我的 更多设置
 

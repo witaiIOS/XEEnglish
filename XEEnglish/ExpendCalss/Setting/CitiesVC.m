@@ -66,7 +66,7 @@
     
     NSDictionary *userInfo = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userDetialInfo = [userInfo objectForKey:uUserInfoKey];
-    [[XeeService sharedInstance] setCityWithDepartmentId:department_id andParentId:userDetialInfo[uUserId] andToken:userDetialInfo[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] setCityWithRegionalId:department_id andParentId:userDetialInfo[uUserId] andToken:userDetialInfo[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             NSNumber *isResult = result[@"result"];
             

@@ -512,8 +512,8 @@
 /**
  修改城市
  */
-- (void)setCityWithDepartmentId:(NSString *)department_id andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result,NSError *error))block{
-    AFHTTPRequestOperation *operation = [WebServiceOpration setCityWithDepartmentId:department_id andParentId:parent_id andToken:token];
+- (void)setCityWithRegionalId:(NSString *)regional_id andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result,NSError *error))block{
+    AFHTTPRequestOperation *operation = [WebServiceOpration setCityWithRegionalId:regional_id andParentId:parent_id andToken:token];
     [self getResponseWithOpration:operation andXmlKey:@"SetCityResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         if (block) {
             block(result,error);

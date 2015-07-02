@@ -286,19 +286,20 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVOrderByParentId><web:json>{\"parent_id\":\"%@\",\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetVOrderByParentId>",parentId,sort,order,(long)pageSize,(long)pageIndex,token]];
 }
 
+
 /**
  获取城市
  */
 + (AFHTTPRequestOperation *)getCity{
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCity/>"]];
 }
-
+#pragma mark - 我的 城市
 /**
  修改城市
  */
-+ (AFHTTPRequestOperation *)setCityWithDepartmentId:(NSString *)department_id andParentId:(NSString *)parent_id andToken:(NSString *)token{
++ (AFHTTPRequestOperation *)setCityWithRegionalId:(NSString *)regional_id andParentId:(NSString *)parent_id andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:SetCity><web:json>{\"department_id\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:SetCity>",department_id,parent_id,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:SetCity><web:json>{\"regional_id\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:SetCity>",regional_id,parent_id,token]];
 }
 
 #pragma mark - 我的 更多设置
