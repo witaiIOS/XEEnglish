@@ -13,10 +13,12 @@
 #import "ListeningCourseInfoCell.h"
 
 #import "SubCourseListVC.h"
+#import "courseSchoolZoneVC.h"
 
-@interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate>
+@interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate,CourseSchoolZoneDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSString *subCoursename;//子课程名
+@property (nonatomic, strong) NSDictionary *schoolZone;//校区
 @end
 
 @implementation ListeningCourseVC
@@ -113,6 +115,7 @@
         else if (indexPath.row == 2)
         {
             cell.textLabel.text = @"校区选择";
+            cell.detailTextLabel.text = self.schoolZone[@"department"];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return cell;
         }
@@ -192,6 +195,17 @@
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
+            case 2:
+            {
+                courseSchoolZoneVC *vc = [[courseSchoolZoneVC alloc] init];
+                vc.delegate = self;
+                vc.selectedSchool = self.schoolZone[@"department"];
+                //NSLog(@"selectedSchool:%@",vc.selectedSchool);
+                //NSLog(@"parentCourseId:%@",self.parentCourseId);
+                vc.parentCourseId = self.parentCourseId;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
                 
             default:
                 break;
@@ -225,6 +239,12 @@
     
     NSDictionary *subCourseDic = sender;
     self.subCoursename = subCourseDic[@"title"];
+    [self.tableView reloadData];
+}
+
+#pragma mark - CourseSchoolZoneDelegate
+- (void)courseSelectedSchoolZone:(id)sender{
+    self.schoolZone = sender;
     [self.tableView reloadData];
 }
 
