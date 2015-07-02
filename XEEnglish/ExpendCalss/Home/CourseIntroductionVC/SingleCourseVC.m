@@ -26,6 +26,8 @@
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic, strong) NSString *webString;
+
+@property (nonatomic, strong) UIButton *listenBtn;
 @end
 
 @implementation SingleCourseVC
@@ -88,16 +90,16 @@
     
     [self.view addSubview:footView];
     
-    UIButton *listenBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [listenBtn setFrame:CGRectMake(20, 10, kScreenWidth/2-40, 40)];
-    [listenBtn setTitle:@"试听" forState:UIControlStateNormal];
-    [listenBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [listenBtn.titleLabel setFont:[UIFont systemFontOfSize:12]];
-    [listenBtn setBackgroundColor:[UIColor greenColor]];
-    listenBtn.layer.cornerRadius = 4.0f;
-    [listenBtn addTarget:self action:@selector(listenBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.listenBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.listenBtn setFrame:CGRectMake(20, 10, kScreenWidth/2-40, 40)];
+    [self.listenBtn setTitle:@"试听" forState:UIControlStateNormal];
+    [self.listenBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.listenBtn.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    [self.listenBtn setBackgroundColor:[UIColor greenColor]];
+    self.listenBtn.layer.cornerRadius = 4.0f;
+    [self.listenBtn addTarget:self action:@selector(listenBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     
-    [footView addSubview:listenBtn];
+    [footView addSubview:self.listenBtn];
     
     UIButton *buyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [buyBtn setFrame:CGRectMake(kScreenWidth/2+20, 10, kScreenWidth/2-40, 40)];
@@ -139,17 +141,35 @@
     
     [[XeeService sharedInstance] getCourseDetailByCourseId:self.courseId andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
-            NSLog(@"result:%@",result);
+            //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 NSDictionary *courseInfo = result[@"resultInfo"];
 //                NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
 //                NSString *minAge = [numberFormatter stringFromNumber:courseInfo[@"min_age"]];
 //                NSString *maxAge = [numberFormatter stringFromNumber:courseInfo[@"max_age"]];;
+                //获取页面上方适用年龄和价格的各个显示值
                 [self setSingleCourseValue:courseInfo];
+                //判断是否支持试听功能，不能就置灰，不能用
+                [self setListenBtnEnabled:courseInfo];
             }
         }
     }];
+}
+//根据courseInfo[@"is_pay_listen"]字段，判断是否能试听
+//is_pay_listen 取值 0不能试听 1免费试听 2有偿服务 3免费&有偿。
+- (void)setListenBtnEnabled:(NSDictionary *)courseInfo{
+    
+    NSNumber *isPayListen = courseInfo[@"is_pay_listen"];
+    if (isPayListen.integerValue == 0) {
+        [self.listenBtn setBackgroundColor:[UIColor grayColor]];
+        self.listenBtn.enabled = NO;
+    }
+    else{
+        
+    }
+    
+    
 }
 
 - (void)setSingleCourseValue:(NSDictionary *)courseInfo{
