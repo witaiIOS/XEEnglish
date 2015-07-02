@@ -178,7 +178,7 @@
     self.ageLabel.text = [NSString stringWithFormat:@"%@ ~ %@",courseInfo[@"min_age"],courseInfo[@"max_age"]];
     self.webString = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,courseInfo[@"website"]];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.webString]];
-    NSLog(@"webString:%@",self.webString);
+    //NSLog(@"webString:%@",self.webString);
     
     [self.courseWeb loadRequest:request];
 

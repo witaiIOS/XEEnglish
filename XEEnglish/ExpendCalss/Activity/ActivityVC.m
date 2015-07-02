@@ -10,6 +10,8 @@
 #import "ActivityCell.h"
 #import "LXSegmentView.h"
 
+#import "ActivityDetailVC.h"
+
 #import "SchedulePlace.h"
 #import "XeeService.h"
 
@@ -215,7 +217,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    ActivityDetailVC *vc = [[ActivityDetailVC alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.avtivitInfoDic = self.tableList1[indexPath.section];
+    //NSLog(@"avtivitInfoDic:%@",vc.avtivitInfoDic);
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Web
