@@ -241,6 +241,14 @@
  */
 - (void)buyGiftWithParentId:(NSString *)parent_id andPlatformTypeId:(NSString *)platform_type_Id andGiftId: (NSString *)gift_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
+#pragma mark - 我的 我的现金券
+/**
+ 查我的现金卷
+ @param parentId 表示当前登录人id
+ @param token
+ */
+- (void)getMyCouponWithParentId: (NSString *)parent_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block;
+
 #pragma mark - 我的 我的预定
 
 /**

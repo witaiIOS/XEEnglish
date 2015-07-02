@@ -264,6 +264,19 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:BuyGift><web:json>{\"parent_id\":\"%@\",\"trade_type\":\"%@\",\"gift_id\":\"%@\",\"token\":\"%@\"}</web:json></web:BuyGift>",parent_id,platform_type_Id,gift_id,token]];
 }
 
+#pragma mark - 我的 我的现金券
+/**
+ 查我的现金卷
+ @param parentId 表示当前登录人id
+ @param token
+ */
++ (AFHTTPRequestOperation *)getMyCouponWithParentId: (NSString *)parent_id andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetMyCoupon><web:json>{\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetMyCoupon>",parent_id,token]];
+}
+
+
+
 #pragma mark - 我的 我的预定
 /**
  获取我的预定中的活动

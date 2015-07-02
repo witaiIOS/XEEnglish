@@ -248,6 +248,16 @@
  */
 + (AFHTTPRequestOperation *)buyGiftWithParentId:(NSString *)parent_id andPlatformTypeId:(NSString *)platform_type_Id andGiftId: (NSString *)gift_id andToken:(NSString *)token;
 
+#pragma mark - 我的 我的现金券
+/**
+ 查我的现金卷
+ @param parentId 表示当前登录人id
+ @param token
+ */
++ (AFHTTPRequestOperation *)getMyCouponWithParentId: (NSString *)parent_id andToken:(NSString *)token;
+
+
+
 #pragma mark - 我的 我的预定
 /**
  获取我的预定中的活动

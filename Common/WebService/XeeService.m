@@ -461,6 +461,23 @@
     }];
 }
 
+#pragma mark - 我的 我的现金券
+/**
+ 查我的现金卷
+ @param parentId 表示当前登录人id
+ @param token
+ */
+- (void)getMyCouponWithParentId: (NSString *)parent_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getMyCouponWithParentId:parent_id andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetMyCouponResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 #pragma mark - 我的 我的预定
 
 /**
