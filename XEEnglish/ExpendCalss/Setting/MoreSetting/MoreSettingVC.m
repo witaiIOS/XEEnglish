@@ -15,6 +15,8 @@
 
 #import "AboutVC.h"
 
+#import "XeeService.h"
+
 @interface MoreSettingVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -36,6 +38,23 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+}
+
+#pragma mark - share
+- (void)shareAction {
+    
+   // [[XeeService sharedInstance] tellFriendWithShareContent:<#(NSString *)#> andParentId:<#(NSString *)#> andToken:<#(NSString *)#> andBlock:<#^(NSDictionary *result, NSError *error)block#>];
+    
+    NSString *shareText = @"分享得优惠 http://www.idealangel.cn/english.html";
+    
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:kUmengAppkey
+                                      shareText:shareText
+                                     shareImage:[UIImage imageNamed:@"icon-60@2x.png"]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToSms,UMShareToWechatTimeline,nil]
+                                       delegate:nil];
+    [UMSocialConfig setFinishToastIsHidden:YES position:UMSocialiToastPositionCenter];
+
 }
 
 #pragma mark - UITableView Delegate
@@ -148,6 +167,7 @@
         switch (indexPath.row) {
             case 0:
             {
+                [self shareAction];
                 break;
             }
                 

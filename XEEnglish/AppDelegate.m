@@ -15,6 +15,18 @@
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    return  [UMSocialSnsService handleOpenURL:url];
+}
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    return  [UMSocialSnsService handleOpenURL:url];
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -29,6 +41,12 @@
     
     ///初始化UserInfoDic
     [[UserInfo sharedUser] firstInitUserInfoDic];
+    
+    ///友盟分享
+    [UMSocialData setAppKey:kUmengAppkey];
+    //微信分享
+    [UMSocialWechatHandler setWXAppId:kWxAppID appSecret:kWxAppSecret url:@"http://www.idealangel.cn/english.html"];
+
     
     
     return YES;

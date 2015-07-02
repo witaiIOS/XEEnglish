@@ -14,7 +14,8 @@
 #import "DDXML.h"
 #import "MBProgressHUD.h"
 #import "MJRefresh.h"
-
+#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
 
 //Common
 #import "UIFactory.h"

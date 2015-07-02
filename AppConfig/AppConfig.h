@@ -12,6 +12,13 @@
 #define kAPPCommentUrl          @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d"
 #define kAPPUpdateUrl           @"http://itunes.apple.com/lookup?id=%d"
 
+//友盟分享
+#define kUmengAppkey      @"5594990867e58ef22d00449d"
+
+//微信
+#define kWxAppID          @"wx462f32e9fd23eecb"
+#define kWxAppSecret      @"a0be8fb9e9933e48beb1e6eb64258630"
+
 
 //----------屏幕尺寸----------
 #define kScreenWidth          ([UIScreen mainScreen].bounds.size.width)
