@@ -18,4 +18,12 @@
 }
 */
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    [_iconButton setImage:[UIImage imageNamed:@"chekbox.png"] forState:UIControlStateNormal];
+    [_iconButton setImage:[UIImage imageNamed:@"chekbox_select.png"] forState:UIControlStateSelected];
+}
+
+
 @end

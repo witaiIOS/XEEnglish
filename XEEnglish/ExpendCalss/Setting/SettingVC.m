@@ -12,7 +12,7 @@
 
 
 #import "PersonInfoVC.h"
-//#import "CouponsVC.h"
+#import "CouponsVC.h"
 #import "PointsVC.h"
 #import "MyScheduleVC.h"
 #import "ExpendRecordVC.h"
@@ -275,7 +275,7 @@
         return 1;
     }
     else if(section == 1){
-        return 3;
+        return 4;
     }
     else{
         return 2;
@@ -316,18 +316,18 @@
                 detailStr = [NSString stringWithFormat:@"%@",self.myInfoDic[@"points"]];
                 break;
             }
-//            case 1:
-//            {
-//                str =@"优惠券";
-//                image = [UIImage imageNamed:@"STcoupon.png"];
-//                break;
-//            }
             case 1:
+            {
+                str =@"优惠券";
+                image = [UIImage imageNamed:@"STcoupon.png"];
+                break;
+            }
+            case 2:
                 str =@"我的预定";
                 image = [UIImage imageNamed:@"STreserve.png"];
                 detailStr = [NSString stringWithFormat:@"%@/%@/%@",self.myInfoDic[@"course"],self.myInfoDic[@"activity"],self.myInfoDic[@"booksite"]];
                 break;
-            case 2:
+            case 3:
                 str = @"消费记录";
                 detailStr = [NSString stringWithFormat:@"%@",self.myInfoDic[@"coupon"]];
                 image = [UIImage imageNamed:@"STexpense.png"];
@@ -398,22 +398,22 @@
                 break;
             }
                 
-//            case 1:
-//            {
-//                CouponsVC *vc = [[CouponsVC alloc] init];
-//                vc.hidesBottomBarWhenPushed = YES;
-//                [self.navigationController pushViewController:vc animated:YES];
-//                break;
-//            }
-                
             case 1:
+            {
+                CouponsVC *vc = [[CouponsVC alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+                
+            case 2:
             {
                 MyScheduleVC *vc = [[MyScheduleVC alloc] init];
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
-            case 2:
+            case 3:
             {
                 ExpendRecordVC *vc = [[ExpendRecordVC alloc] init];
                 vc.hidesBottomBarWhenPushed = YES;

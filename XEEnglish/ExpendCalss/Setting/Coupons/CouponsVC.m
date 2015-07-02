@@ -24,7 +24,7 @@
 }
 
 - (void)initUI{
-    
+    [super initUI];
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -32,6 +32,11 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"CouponsCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CouponsCellIdentifier"];
     
     [self.view addSubview:self.tableView];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UITableView DataSource
@@ -63,6 +68,11 @@
 - (void )tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    CouponsCell *cell = (CouponsCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    cell.iconButton.selected = !cell.iconButton.selected;
+    
+    
 }
 
 
@@ -86,10 +96,7 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 /*
 #pragma mark - Navigation

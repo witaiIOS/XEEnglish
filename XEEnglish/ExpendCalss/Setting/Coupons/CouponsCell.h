@@ -9,5 +9,6 @@
 #import "BaseTVC.h"
 
 @interface CouponsCell : BaseTVC
+@property (weak, nonatomic) IBOutlet UIButton *iconButton;
 
 @end
