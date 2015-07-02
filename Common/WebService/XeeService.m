@@ -330,6 +330,16 @@
 }
 
 /**
+ 预定活动
+ @param parent_id 用户id
+ @param activity_id 活动Id
+ */
+- (void)makeActivityWithParentId:(NSString *)parent_id andActivityId:(NSString *)activity_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration makeActivityWithParentId:parent_id andActivityId:activity_id andToken:token];
+}
+
+/**
  查询所有校区
  */
 - (void)getSchoolWithParentId:(NSString *)parent_id andCourseId:(NSString *)course_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{

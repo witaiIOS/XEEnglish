@@ -144,6 +144,13 @@
 - (void)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result, NSError *error))block;
 
 /**
+ 预定活动
+ @param parent_id 用户id
+ @param activity_id 活动Id
+ */
+- (void)makeActivityWithParentId:(NSString *)parent_id andActivityId:(NSString *)activity_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result, NSError *error))block;
+
+/**
  查询所有校区
  @param parent_id 用户Id
  @param course_id 课程Id

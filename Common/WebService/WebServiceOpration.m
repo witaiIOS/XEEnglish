@@ -176,6 +176,16 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetActivityInfo><web:json>{\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetActivityInfo>",(long)pageSize, (long)pageIndex,parent_id,token]];
 }
 
+/**
+ 预定活动
+ @param parent_id 用户id
+ @param activity_id 活动Id
+ */
++ (AFHTTPRequestOperation *)makeActivityWithParentId:(NSString *)parent_id andActivityId:(NSString *)activity_id andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:MakeActivity><web:json>{\"parent_id\":\"%@\",\"activity_id\":\"%@\",\"token\":\"%@\"}</web:json></web:MakeActivity>",parent_id,activity_id,token]];
+}
+
 #pragma mark - 活动 我的预定
 /**
  查询所有校区
