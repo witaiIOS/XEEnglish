@@ -15,6 +15,7 @@
 //#import "CouponsVC.h"
 #import "PointsVC.h"
 #import "MyScheduleVC.h"
+#import "ExpendRecordVC.h"
 
 #import "CitiesVC.h"
 #import "MoreSettingVC.h"
@@ -176,7 +177,7 @@
     
     [[XeeService sharedInstance] getMyInfoWithParentId:@"17" andToken:@"yEqHDenWZHBlDIlSPE983NPkCkQsz4yU/K9ZLVS8G+RcUG0HSXerMEH2rpacH5aH53d6XsNRPWnpS/Uocat+xA==" andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
-            NSLog(@"result:%@",result);
+            //NSLog(@"result:%@",result);
             
             NSNumber *isResult = result[@"result"];
             
@@ -349,6 +350,9 @@
             }
             case 2:
             {
+                ExpendRecordVC *vc = [[ExpendRecordVC alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
                 

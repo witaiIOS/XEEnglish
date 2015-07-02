@@ -92,6 +92,9 @@
 		09D23C5B1B42B0F1008B6085 /* PointSRuleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D23C5A1B42B0F1008B6085 /* PointSRuleCell.xib */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
+		09D5459A1B44D5FF00CC5844 /* ExpendRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D545991B44D5FF00CC5844 /* ExpendRecordVC.m */; };
+		09D5459D1B44D6B400CC5844 /* ExpendRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5459C1B44D6B400CC5844 /* ExpendRecordCell.m */; };
+		09D5459F1B44D6DB00CC5844 /* ExpendRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D5459E1B44D6DB00CC5844 /* ExpendRecordCell.xib */; };
 		09D560401B26809400ADF334 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5603F1B26809400ADF334 /* DatePickerCell.m */; };
 		09D560441B26D3E700ADF334 /* ForgetPassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D560421B26D3E700ADF334 /* ForgetPassWordVC.m */; };
 		09D560451B26D3E700ADF334 /* ForgetPassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D560431B26D3E700ADF334 /* ForgetPassWordVC.xib */; };
@@ -338,6 +341,11 @@
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
 		09D450B01B1078AB00B39B4A /* BaseTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTVC.m; sourceTree = "<group>"; };
+		09D545981B44D5FF00CC5844 /* ExpendRecordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpendRecordVC.h; sourceTree = "<group>"; };
+		09D545991B44D5FF00CC5844 /* ExpendRecordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpendRecordVC.m; sourceTree = "<group>"; };
+		09D5459B1B44D6B400CC5844 /* ExpendRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpendRecordCell.h; sourceTree = "<group>"; };
+		09D5459C1B44D6B400CC5844 /* ExpendRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpendRecordCell.m; sourceTree = "<group>"; };
+		09D5459E1B44D6DB00CC5844 /* ExpendRecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpendRecordCell.xib; sourceTree = "<group>"; };
 		09D5603E1B26809400ADF334 /* DatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerCell.h; sourceTree = "<group>"; };
 		09D5603F1B26809400ADF334 /* DatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerCell.m; sourceTree = "<group>"; };
 		09D560411B26D3E700ADF334 /* ForgetPassWordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPassWordVC.h; sourceTree = "<group>"; };
@@ -687,6 +695,11 @@
 		09D545971B44CD4F00CC5844 /* ExpendRecord */ = {
 			isa = PBXGroup;
 			children = (
+				09D545981B44D5FF00CC5844 /* ExpendRecordVC.h */,
+				09D545991B44D5FF00CC5844 /* ExpendRecordVC.m */,
+				09D5459B1B44D6B400CC5844 /* ExpendRecordCell.h */,
+				09D5459C1B44D6B400CC5844 /* ExpendRecordCell.m */,
+				09D5459E1B44D6DB00CC5844 /* ExpendRecordCell.xib */,
 			);
 			path = ExpendRecord;
 			sourceTree = "<group>";
@@ -1351,6 +1364,7 @@
 				09C9C0F81B22FA19001BBA1C /* yes.png in Resources */,
 				A6284CDA1B10592100EFF820 /* Images.xcassets in Resources */,
 				090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */,
+				09D5459F1B44D6DB00CC5844 /* ExpendRecordCell.xib in Resources */,
 				09DB2DBE1B13228B0078AAF5 /* join_05.png in Resources */,
 				097990691B17006600D4A8DC /* ResetPassWordVC.xib in Resources */,
 				09C95EC11B2806FA000972D8 /* school_selected.png in Resources */,
@@ -1429,6 +1443,7 @@
 				A6C3CF2C1B285ECD0039C951 /* UserInfo.m in Sources */,
 				A6B1CEFB1B1D968600100E9F /* MyParser.m in Sources */,
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,
+				09D5459A1B44D5FF00CC5844 /* ExpendRecordVC.m in Sources */,
 				09C87F321B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m in Sources */,
 				09C87F2F1B3C24E700D7C913 /* PayCourseMethodVCViewController.m in Sources */,
 				09D23C451B424417008B6085 /* ExchangePointsVC.m in Sources */,
@@ -1493,6 +1508,7 @@
 				093A58801B43E398006F104D /* CourseCommentVC.m in Sources */,
 				09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */,
 				09CA408F1B1C655000D12796 /* ActivityCell.m in Sources */,
+				09D5459D1B44D6B400CC5844 /* ExpendRecordCell.m in Sources */,
 				090604781B1420FD0038BAC4 /* UserProblemsVC.m in Sources */,
 				094DD2691B3965AD0045EF2C /* ListenZoneCell.m in Sources */,
 				09DC56FF1B390DEB00636C70 /* SingleCourseVC.m in Sources */,
