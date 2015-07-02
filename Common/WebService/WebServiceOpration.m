@@ -202,6 +202,17 @@
 #pragma mark - 我的
 
 /**
+ 每日登录后签到
+ @param parent_id 注册id
+ @param platform_type_id  //Android传201,IOS传202
+ @param token
+ */
++ (AFHTTPRequestOperation *)signWithParentId:(NSString *)parent_id andPlatform_type_id:(NSString *)platform_type_id andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:Sign><web:json>{\"parent_id\":\"%@\",\"platform_type_id\":\"%@\",\"token\":\"%@\"}</web:json></web:Sign>",parent_id,platform_type_id,token]];
+}
+
+/**
  登录后修改密码
  @param parent_id 注册id
  @param token

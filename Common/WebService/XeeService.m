@@ -358,6 +358,24 @@
 }
 
 #pragma mark - 我的
+/**
+ 每日登录后签到
+ @param parent_id 注册id
+ @param platform_type_id  //Android传201,IOS传202
+ @param token
+ */
+- (void)signWithParentId:(NSString *)parent_id andPlatform_type_id:(NSString *)platform_type_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration signWithParentId:parent_id andPlatform_type_id:platform_type_id andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"SignResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+    
+}
+
 
 /**
  登录后修改密码
