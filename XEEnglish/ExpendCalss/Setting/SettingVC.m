@@ -69,6 +69,7 @@
     //签到按钮
     self.signBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.signBtn setFrame:CGRectMake(kScreenWidth-70, 15, 60, 30)];
+    [self.signBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     //reservePlaceBtn.backgroundColor = [UIColor orangeColor];
     [self.signBtn setTitle:@"签到" forState:UIControlStateNormal];
     [self.signBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
