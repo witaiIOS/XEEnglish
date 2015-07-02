@@ -48,6 +48,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //NSLog(@"token:%@",userToken);
+    //NSLog(@"parentCourseId:%@",self.parentCourseId);
     
     [[XeeService sharedInstance] getSchoolWithParentId:userInfoDic[uUserId] andCourseId:self.parentCourseId andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {

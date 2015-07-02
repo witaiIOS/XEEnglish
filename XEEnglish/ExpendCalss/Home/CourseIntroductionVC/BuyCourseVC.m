@@ -282,7 +282,9 @@
                 courseSchoolZoneVC *vc = [[courseSchoolZoneVC alloc] init];
                 vc.delegate = self;
                 vc.selectedSchool = self.schoolZone[@"department"];
-                NSLog(@"selectedSchool:%@",vc.selectedSchool);
+                //NSLog(@"selectedSchool:%@",vc.selectedSchool);
+                //NSLog(@"parentCourseId:%@",self.parentCourseId);
+                vc.parentCourseId = self.parentCourseId;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
