@@ -76,7 +76,7 @@
 //    }
     
     //self.button1 = (HomeButton *)[self viewWithTag:1];
-    NSLog(@"title:%@",[_serviceDic1 objectForKey:@"title"]);
+    //NSLog(@"title:%@",[_serviceDic1 objectForKey:@"title"]);
     [self.button1 setTitle:[_serviceDic1 objectForKey:@"title"] forState:UIControlStateNormal];
     
     NSString *imageUrl1 = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[_serviceDic1 objectForKey:@"photo"]];

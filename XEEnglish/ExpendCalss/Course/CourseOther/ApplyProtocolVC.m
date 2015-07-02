@@ -64,7 +64,7 @@
 }
 
 - (void)refuseBtnClicked{
-    
+    [self.delegate changeSelectedBtn:NO];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
