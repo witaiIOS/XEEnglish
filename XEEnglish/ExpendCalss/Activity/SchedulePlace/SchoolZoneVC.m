@@ -45,11 +45,11 @@
 
 - (void)getSchoolInfo{
     //需要传真参数时再用
-//    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
-//    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //NSLog(@"token:%@",userToken);
     
-    [[XeeService sharedInstance] getSchoolWithParentId:@"17" andCourseId:nil andToken:@"yEqHDenWZHCMVH2DMbUL8GFj2gtCsq8rhW6MpigV11lBVj2ZNEhbKCRdy6wAVkubzoluiOHJEz2h/SOgGRiv4A==" andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getSchoolWithParentId:userInfoDic[uUserId] andCourseId:nil andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
