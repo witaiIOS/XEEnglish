@@ -13,7 +13,7 @@
 #import "SchedulePlace.h"
 #import "XeeService.h"
 
-@interface ActivityVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface ActivityVC ()<UITableViewDataSource,UITableViewDelegate,ActivityCellActivityReserveBtnPressedDelegate,UIAlertViewDelegate>
 
 @property (nonatomic, strong) LXSegmentView *mySegmentView;
 @property (nonatomic, strong) UITableView *tableView1;
@@ -21,6 +21,8 @@
 
 @property (nonatomic, strong) NSMutableArray *tableList1;
 @property (nonatomic, strong) NSMutableArray *tableList2;
+
+@property (nonatomic, strong) NSString *activitId;
 
 @end
 
@@ -34,6 +36,8 @@
     _tableList2 = [NSMutableArray array];
     
     [self getActivityInfo];
+    
+    self.activitId = nil;//活动id初始化
 
 }
 
@@ -160,6 +164,7 @@
         }
         
         cell.cellEdge = 10;
+        cell.delegate = self;
         cell.activityInfo = _tableList1[indexPath.section];
                 
         return cell;
@@ -211,6 +216,55 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Web
+
+- (void)makeActivityAndActivityId:(NSString *)activityId{
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [[XeeService sharedInstance] makeActivityWithParentId:userInfoDic[uUserId] andActivityId:activityId andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
+
+
+#pragma mark - ActivityCellActivityReserveBtnPressedDelegate
+- (void)activityReserveBtnPressed:(id)sender{
+    
+    self.activitId = sender;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您是否预约该活动" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex == 1) {
+        [self makeActivityAndActivityId:self.activitId];
+
+    }
+}
+
+
+- (void)alertViewCancel:(UIAlertView *)alertView{
+    
+    
 }
 
 /*

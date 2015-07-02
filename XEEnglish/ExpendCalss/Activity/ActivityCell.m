@@ -26,6 +26,9 @@
 
 - (IBAction)reserveButtonClicked:(id)sender {
     
+    NSString *activityId = self.activityInfo[@"activity_id"];
+    
+    [self.delegate activityReserveBtnPressed:activityId];
 }
 
 @end

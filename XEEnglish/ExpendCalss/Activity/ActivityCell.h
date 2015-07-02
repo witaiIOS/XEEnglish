@@ -8,6 +8,12 @@
 
 #import "BaseTVC.h"
 
+@protocol ActivityCellActivityReserveBtnPressedDelegate <NSObject>
+
+- (void)activityReserveBtnPressed:(id)sender;
+
+@end
+
 @interface ActivityCell : BaseTVC
 
 @property (strong, nonatomic) NSDictionary *activityInfo;
@@ -18,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *activitySchoolLabel;
 @property (weak, nonatomic) IBOutlet UILabel *activityPeopleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *activityImageView;
+
+@property (nonatomic, assign) id<ActivityCellActivityReserveBtnPressedDelegate>delegate;
 
 - (IBAction)reserveButtonClicked:(id)sender;
 
