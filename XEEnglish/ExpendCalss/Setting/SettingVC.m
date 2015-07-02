@@ -23,6 +23,8 @@
 #import "XeeService.h"
 
 @interface SettingVC ()<UITableViewDataSource, UITableViewDelegate,SelectedCityDelegate, UIAlertViewDelegate, LoginVCDelegate>
+@property (nonatomic, strong) UIButton *signBtn;//签到按钮
+@property (nonatomic, strong) NSString *signMarkStr;//签到返回标记
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *loginBtn;
 @property (nonatomic, strong) UIButton *exitBtn;
@@ -64,12 +66,70 @@
     //[self.tableView registerClass:[MyAccountTVC class] forCellReuseIdentifier:@"MyAccountTVC"];
     [self.view addSubview:self.tableView];
     
+    //签到按钮
+    self.signBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.signBtn setFrame:CGRectMake(kScreenWidth-70, 15, 60, 30)];
+    //reservePlaceBtn.backgroundColor = [UIColor orangeColor];
+    [self.signBtn setTitle:@"签到" forState:UIControlStateNormal];
+    [self.signBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.signBtn.titleLabel setFont: [UIFont systemFontOfSize:16.0]];
+    [self.signBtn addTarget:self action:@selector(signBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *signBarBtn = [[UIBarButtonItem alloc] initWithCustomView:self.signBtn];
+    self.navigationItem.rightBarButtonItem = signBarBtn;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - My Action
+//签到按钮的功能
+- (void)signBtnAction{
+    //签到
+    [self checkSign];
+}
+
+#pragma mark - Web
+
+- (void)checkSign{
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [[XeeService sharedInstance] signWithParentId:userInfoDic[uUserId] andPlatform_type_id:@"202" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                [UIFactory showAlert:result[@"resultInfo"]];
+                self.signMarkStr = result[@"resultInfo"];
+                //NSLog(@"signMarkStr:%@",self.signMarkStr);
+                [self changeSignBtnTitle];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+                self.signMarkStr = result[@"resultInfo"];
+            }
+        }
+        else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
+
+- (void)changeSignBtnTitle{
+    
+    if ([self.signMarkStr isEqualToString:@"操作成功!"]) {
+        [self.signBtn setTitle:@"已签到" forState:UIControlStateNormal];
+        self.signBtn.enabled = NO;
+    }
+}
+
+
+
+
 
 #pragma mark - UserInfo
 - (BOOL)isLogin {
