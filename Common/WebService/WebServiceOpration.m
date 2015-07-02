@@ -273,6 +273,18 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetBookSiteByParentId><web:json>{\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetBookSiteByParentId>",(long)pageSize,(long)pageIndex,parentId,token]];
 }
 
+/**
+ 通过会员id，查询消费订单分页列表
+ @param pageSize 一次请求显示多少个活动
+ @param pageIndex 当前页码
+ @param parentId 表示当前登录人id
+ @param sort
+ @param order
+ */
++ (AFHTTPRequestOperation *)getVOrderByParentIdWithParentId:(NSString *)parentId andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVOrderByParentId><web:json>{\"parent_id\":\"%@\",\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetVOrderByParentId>",parentId,sort,order,(long)pageSize,(long)pageIndex,token]];
+}
 
 /**
  获取城市

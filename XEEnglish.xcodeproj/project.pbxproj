@@ -684,6 +684,13 @@
 			path = Points;
 			sourceTree = "<group>";
 		};
+		09D545971B44CD4F00CC5844 /* ExpendRecord */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExpendRecord;
+			sourceTree = "<group>";
+		};
 		09DB2DB61B1322800078AAF5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1115,6 +1122,7 @@
 		A6284D6C1B105E6600EFF820 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				09D545971B44CD4F00CC5844 /* ExpendRecord */,
 				09D23C3F1B42401E008B6085 /* Points */,
 				09C9C3921B29A78E00B1F902 /* Schedule */,
 				09C95ECC1B284225000972D8 /* CitiesVC.h */,

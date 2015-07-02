@@ -257,6 +257,17 @@
  */
 + (AFHTTPRequestOperation *)getBookSiteByParent_idWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSString *)parentId andToken:(NSString *)token;
 
+#pragma mark - 我的 消费记录
+/**
+ 通过会员id，查询消费订单分页列表
+ @param pageSize 一次请求显示多少个活动
+ @param pageIndex 当前页码
+ @param parentId 表示当前登录人id
+ @param sort
+ @param order
+ */
++ (AFHTTPRequestOperation *)getVOrderByParentIdWithParentId:(NSString *)parentId andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token;
+
 
 /**
  获取城市
