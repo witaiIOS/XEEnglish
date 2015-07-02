@@ -15,4 +15,5 @@
 @property (nonatomic, strong) NSString *priceHour;//课时单价
 @property (nonatomic, strong) NSString *priceSeries;//整套价格；
 
+@property (nonatomic, strong) NSString *parentCourseId;//大课程Id
 @end

@@ -12,17 +12,19 @@
 #import "BuyCoursePaymentAmountCell.h"
 
 #import "SubCourseListVC.h"
+#import "courseSchoolZoneVC.h"
 #import "PayCourseMethodVCViewController.h"
 
 #import "PayCourseVC.h"
 #import "PayProtocolVC.h"
 
-@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate,SelectedPayCourseMethodDelegate,ListeningCourseInfoCellDelegate>
+@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate,SelectedPayCourseMethodDelegate,ListeningCourseInfoCellDelegate,CourseSchoolZoneDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *selectedBtn;//是否同意了协议
 
 @property (nonatomic, strong) NSString *subCoursename;//子课程名
+@property (nonatomic, strong) NSDictionary *schoolZone;//校区
 @property (nonatomic, strong) NSString *payCourseMethod;//付款方式
 @property (nonatomic, strong) NSString *inputCourseHours;//按课时购买时，输入的课时数
 @property (nonatomic, strong) NSString *priceTotal;//缴费金额
@@ -184,6 +186,7 @@
         else if (indexPath.row == 2){
             
             cell.textLabel.text = @"校区选择";
+            cell.detailTextLabel.text = self.schoolZone[@"department"];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             //return cell;
         }
@@ -271,6 +274,15 @@
                 SubCourseListVC *vc = [[SubCourseListVC alloc] init];
                 vc.delegate = self;
                 vc.selectedCourse = self.subCoursename;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+            case 2:
+            {
+                courseSchoolZoneVC *vc = [[courseSchoolZoneVC alloc] init];
+                vc.delegate = self;
+                vc.selectedSchool = self.schoolZone[@"department"];
+                NSLog(@"selectedSchool:%@",vc.selectedSchool);
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
@@ -399,5 +411,12 @@
 - (void)changeSelectedBtn:(BOOL)sender{
     self.selectedBtn.selected = sender;
 }
+
+#pragma mark - CourseSchoolZoneDelegate
+- (void)courseSelectedSchoolZone:(id)sender{
+    self.schoolZone = sender;
+    [self.tableView reloadData];
+}
+
 
 @end

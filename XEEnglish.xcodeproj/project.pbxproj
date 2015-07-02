@@ -95,6 +95,7 @@
 		09D5459A1B44D5FF00CC5844 /* ExpendRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D545991B44D5FF00CC5844 /* ExpendRecordVC.m */; };
 		09D5459D1B44D6B400CC5844 /* ExpendRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5459C1B44D6B400CC5844 /* ExpendRecordCell.m */; };
 		09D5459F1B44D6DB00CC5844 /* ExpendRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D5459E1B44D6DB00CC5844 /* ExpendRecordCell.xib */; };
+		09D545A21B452C4000CC5844 /* courseSchoolZoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D545A11B452C4000CC5844 /* courseSchoolZoneVC.m */; };
 		09D560401B26809400ADF334 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5603F1B26809400ADF334 /* DatePickerCell.m */; };
 		09D560441B26D3E700ADF334 /* ForgetPassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D560421B26D3E700ADF334 /* ForgetPassWordVC.m */; };
 		09D560451B26D3E700ADF334 /* ForgetPassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D560431B26D3E700ADF334 /* ForgetPassWordVC.xib */; };
@@ -359,6 +360,8 @@
 		09D5459B1B44D6B400CC5844 /* ExpendRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpendRecordCell.h; sourceTree = "<group>"; };
 		09D5459C1B44D6B400CC5844 /* ExpendRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpendRecordCell.m; sourceTree = "<group>"; };
 		09D5459E1B44D6DB00CC5844 /* ExpendRecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpendRecordCell.xib; sourceTree = "<group>"; };
+		09D545A01B452C4000CC5844 /* courseSchoolZoneVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = courseSchoolZoneVC.h; sourceTree = "<group>"; };
+		09D545A11B452C4000CC5844 /* courseSchoolZoneVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = courseSchoolZoneVC.m; sourceTree = "<group>"; };
 		09D5603E1B26809400ADF334 /* DatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerCell.h; sourceTree = "<group>"; };
 		09D5603F1B26809400ADF334 /* DatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerCell.m; sourceTree = "<group>"; };
 		09D560411B26D3E700ADF334 /* ForgetPassWordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPassWordVC.h; sourceTree = "<group>"; };
@@ -632,6 +635,8 @@
 				09C639431B3A69D400510F00 /* BuyCourseVC.m */,
 				09C87F301B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.h */,
 				09C87F311B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m */,
+				09D545A01B452C4000CC5844 /* courseSchoolZoneVC.h */,
+				09D545A11B452C4000CC5844 /* courseSchoolZoneVC.m */,
 			);
 			path = CourseIntroductionVC;
 			sourceTree = "<group>";
@@ -1634,6 +1639,7 @@
 				090604781B1420FD0038BAC4 /* UserProblemsVC.m in Sources */,
 				094DD2691B3965AD0045EF2C /* ListenZoneCell.m in Sources */,
 				09DC56FF1B390DEB00636C70 /* SingleCourseVC.m in Sources */,
+				09D545A21B452C4000CC5844 /* courseSchoolZoneVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

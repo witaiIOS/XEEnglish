@@ -48,7 +48,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:YES];
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
     
 }
 
@@ -459,6 +459,7 @@
 #pragma mark - SchoolZone Delegate
 - (void)SelectedSchoolZone:(id)sender{
     self.schoolZone = sender;
+    [self.tableView reloadData];
 }
 #pragma mark - DatePickerCellChangeDateMarkDelegate
 - (void)changeDateMark:(id)sender andRowOfCell:(NSInteger)row{
