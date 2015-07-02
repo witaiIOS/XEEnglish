@@ -7,8 +7,9 @@
 //
 
 #import "ActivityDetailVC.h"
+#import "XeeService.h"
 
-@interface ActivityDetailVC ()<UIWebViewDelegate>
+@interface ActivityDetailVC ()<UIWebViewDelegate,UIAlertViewDelegate>
 
 @property (nonatomic, strong) UIWebView *activityWebView;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
@@ -20,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"课程详情";
+    self.title = @"活动详情";
 }
 
 - (void)initUI{
@@ -41,6 +42,11 @@
     [self.activityWebView loadRequest:request];
     
     [self.view addSubview:self.activityWebView];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)headView{
@@ -111,6 +117,7 @@
     reserveBtn.layer.cornerRadius = 4.0f;
     [reserveBtn addTarget:self action:@selector(reserveBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     
+    //判断，人数满了之后将按钮置灰
     if ([self.avtivitInfoDic[@"sum_current"] isEqualToString:self.avtivitInfoDic[@"sum_max"]]) {
         [reserveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [reserveBtn setBackgroundColor:[UIColor grayColor]];
@@ -127,12 +134,53 @@
 }
 
 - (void)reserveBtnClicked{
+    //self.activitId = sender;
     
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您是否预约该活动" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+#pragma mark - Web
+
+- (void)makeActivityAndActivityId:(NSString *)activityId{
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [[XeeService sharedInstance] makeActivityWithParentId:userInfoDic[uUserId] andActivityId:activityId andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    
+    
+    if (buttonIndex == 1) {
+        [self makeActivityAndActivityId:self.avtivitInfoDic[@"activity_id"]];
+        
+    }
+}
+
+
+- (void)alertViewCancel:(UIAlertView *)alertView{
+    
+    
 }
 
 #pragma mark - UIWebView Delegate

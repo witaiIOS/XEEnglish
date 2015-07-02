@@ -22,6 +22,18 @@
     
     [_activityImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,_activityInfo[@"image_url"]]] placeholderImage:[UIImage imageNamed:@"course7.png"]];
     //NSLog(@"%@",_activityInfo[@"image_url"]);
+    
+    //判断，人数满了之后将按钮置灰
+    if ([self.activityInfo[@"sum_current"] isEqualToString:self.activityInfo[@"sum_max"]]) {
+        [self.reserveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.reserveBtn setBackgroundColor:[UIColor grayColor]];
+        self.reserveBtn.enabled = NO;
+    }
+    else{
+        [self.reserveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.reserveBtn setBackgroundColor:[UIColor orangeColor]];
+        self.reserveBtn.enabled = YES;
+    }
 }
 
 - (IBAction)reserveButtonClicked:(id)sender {

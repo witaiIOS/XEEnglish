@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *activitySchoolLabel;
 @property (weak, nonatomic) IBOutlet UILabel *activityPeopleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *activityImageView;
+@property (weak, nonatomic) IBOutlet UIButton *reserveBtn;
 
 @property (nonatomic, assign) id<ActivityCellActivityReserveBtnPressedDelegate>delegate;
 
