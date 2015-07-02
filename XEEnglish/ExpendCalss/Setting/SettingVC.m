@@ -45,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.selectCity = self.myInfoDic[@"city"];
+//    self.selectCity = self.myInfoDic[@"city"];
     
     [self updateUserLoginUI];
     
@@ -175,7 +175,10 @@
 
 - (void)getMyInfoFromWeb{
     
-    [[XeeService sharedInstance] getMyInfoWithParentId:@"17" andToken:@"yEqHDenWZHBlDIlSPE983NPkCkQsz4yU/K9ZLVS8G+RcUG0HSXerMEH2rpacH5aH53d6XsNRPWnpS/Uocat+xA==" andBlock:^(NSDictionary *result, NSError *error) {
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [[XeeService sharedInstance] getMyInfoWithParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             //NSLog(@"result:%@",result);
             
@@ -183,7 +186,7 @@
             
             if (isResult.integerValue == 0) {
                 self.myInfoDic = result[@"resultInfo"];
-                
+                self.selectCity = self.myInfoDic[@"city"];
                 [self.tableView reloadData];
             }
             else{
@@ -265,6 +268,7 @@
                 break;
             case 2:
                 str = @"消费记录";
+                detailStr = [NSString stringWithFormat:@"%@",self.myInfoDic[@"coupon"]];
                 image = [UIImage imageNamed:@"STexpense.png"];
                 break;
                 
