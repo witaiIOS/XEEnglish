@@ -75,9 +75,9 @@
     
     
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,userInfoDic[uUserPhoto]]]];
-    NSLog(@"imagestr:%@",[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,userInfoDic[uUserPhoto]]);
+    //NSLog(@"imagestr:%@",[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,userInfoDic[uUserPhoto]]);
     self.personImage = [UIImage imageWithData:data];//有图像就用有本地化的图像
-    NSLog(@"phone:%@",self.personImage );
+    //NSLog(@"phone:%@",self.personImage );
     
     
     
@@ -120,7 +120,7 @@
 //    NSLog(@"mySignature:%@",self.mySignature);
 //    NSLog(@"uUserRegionalId:%@",userInfoDic[uUserRegionalId]);
 //    NSLog(@"uUserId:%@",userInfoDic[uUserId]);
-//    NSLog(@"personImageBase64Coder:%@",self.personImageBase64Coder);
+//    //NSLog(@"personImageBase64Coder:%@",self.personImageBase64Coder);
 //    NSLog(@"uUserToken:%@",userInfoDic[uUserToken]);
     NSString *imageWeb = nil;
     if ([self.isPhotoEdit isEqualToString:@"0"]) {
@@ -128,9 +128,10 @@
     }
     else{
         imageWeb = self.personImageBase64Coder;
+        NSLog(@"coder:%@",self.personImageBase64Coder);
     }
     
-    [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:userInfoDic[uUserName] andSex:@"null" andBirthday:self.myBirthday andNationality:@"null" andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:self.cityName andQq:@"null" andEmail:@"null" andMemo:self.mySignature andRegionalId:userInfoDic[uUserRegionalId] andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:userInfoDic[uUserName] andSex:@"null" andBirthday:self.myBirthday andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:self.cityName andQq:@"null" andEmail:@"null" andMemo:self.mySignature andRegionalId:userInfoDic[uUserRegionalId] andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             NSNumber *isResult = result[@"result "];
             
@@ -504,8 +505,8 @@
     NSData *imageData0 = [NSData dataWithContentsOfFile:fullPath];
     NSData *imageData = [GTMBase64 encodeData:imageData0];
     //获取编码后的图片，准备上传时用
-    self.personImageBase64Coder = [NSString stringWithFormat:@"%@",imageData];
-    NSLog(@"coder:%@",self.personImageBase64Coder);
+    self.personImageBase64Coder = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
+    //NSLog(@"coder:%@",self.personImageBase64Coder);
     //self.personImage = myImage;
     //[self.tableView reloadData];
     [picker dismissViewControllerAnimated:YES completion:nil];

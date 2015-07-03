@@ -378,9 +378,9 @@
 /**
  个人信息修改
  */
-- (void)modifyUserWithIsPhotoEdit:(NSString *)is_photo_edit andName:(NSString *)name andSex:(NSString *)sex andBirthday:(NSString *)birthday andNationality:(NSString *)nationality andIdentifyId:(NSString *)identify_id andMobile:(NSString *)mobile andAddr:(NSString *)addr andQq:(NSString *)qq andEmail:(NSString *)email andMemo:(NSString *)memo andRegionalId:(NSString *)regional_id andMobile2:(NSString *)mobile2 andParentId:(NSString *)parent_id andPhoto:(NSString *)photo andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+- (void)modifyUserWithIsPhotoEdit:(NSString *)is_photo_edit andName:(NSString *)name andSex:(NSString *)sex andBirthday:(NSString *)birthday andIdentifyId:(NSString *)identify_id andMobile:(NSString *)mobile andAddr:(NSString *)addr andQq:(NSString *)qq andEmail:(NSString *)email andMemo:(NSString *)memo andRegionalId:(NSString *)regional_id andMobile2:(NSString *)mobile2 andParentId:(NSString *)parent_id andPhoto:(NSString *)photo andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block{
     
-    AFHTTPRequestOperation *operation = [WebServiceOpration modifyUserWithIsPhotoEdit:is_photo_edit andName:name andSex:sex andBirthday:birthday andNationality:nationality andIdentifyId:identify_id andMobile:mobile andAddr:addr andQq:qq andEmail:email andMemo:memo andRegionalId:regional_id andMobile2:mobile2 andParentId:parent_id andPhoto:photo andToken:token];
+    AFHTTPRequestOperation *operation = [WebServiceOpration modifyUserWithIsPhotoEdit:is_photo_edit andName:name andSex:sex andBirthday:birthday andIdentifyId:identify_id andMobile:mobile andAddr:addr andQq:qq andEmail:email andMemo:memo andRegionalId:regional_id andMobile2:mobile2 andParentId:parent_id andPhoto:photo andToken:token];
     
     [self getResponseWithOpration:operation andXmlKey:@"modifyUserResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         if (block) {
