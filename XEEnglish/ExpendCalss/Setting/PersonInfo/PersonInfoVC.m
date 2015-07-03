@@ -19,8 +19,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *keepBtn;
 
-@property (nonatomic, strong) UIImage *personImage;
-
+@property (nonatomic, strong) UIImage *personImage;//个人头像
+@property (nonatomic, strong) NSString *personImageBase64Coder;//上传所需的base64编码。
 @property (nonatomic, strong) NSString *netName;
 @property (nonatomic, strong) NSString *cityName;
 @property (nonatomic, strong) NSString *myBirthday;
@@ -412,7 +412,26 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
     UIImage *myImage = [info objectForKey:UIImagePickerControllerEditedImage];
-    self.personImage = myImage;
+    //设置当前日期时间为图片名字
+    NSDate *imageDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *imageName = [NSString stringWithFormat:@"%@.png",[dateFormatter stringFromDate:imageDate]];
+    
+    //保存图片
+    [self saveImage:myImage withName:imageName];
+    //获取路径，读取图片
+    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imageName];
+    self.personImage = [UIImage imageWithContentsOfFile:fullPath];
+    
+    //NSLog(@"imagePath:%@",fullPath);
+    //对保存的图片转化为NSData，并编码
+    NSData *imageData0 = [NSData dataWithContentsOfFile:fullPath];
+    NSData *imageData = [GTMBase64 encodeData:imageData0];
+    //获取编码后的图片，准备上传时用
+    self.personImageBase64Coder = [NSString stringWithFormat:@"%@",imageData];
+    
+    //self.personImage = myImage;
     //[self.tableView reloadData];
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
@@ -421,6 +440,16 @@
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - saveImage 保存图片至沙盒
+
+- (void)saveImage:(UIImage *)currentImage withName:(NSString *)imageName
+{
+    NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.5);
+    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imageName];
+    [imageData writeToFile:fullPath atomically:NO];
+}
+
 
 #pragma mark - NeTNameAndDomicile Delegate
 - (void)ChangeNeTNameAndDomicile:(id)sender index:(NSInteger)index{

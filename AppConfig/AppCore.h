@@ -22,6 +22,7 @@
 #import "UserInfo.h"
 
 #import "NSString+md5.h"
+#import "GTMBase64.h"
 
 
 
