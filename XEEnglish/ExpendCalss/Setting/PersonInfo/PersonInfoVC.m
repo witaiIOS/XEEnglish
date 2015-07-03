@@ -26,7 +26,8 @@
 @property (nonatomic, strong) NSString *personImageBase64Coder;//上传所需的base64编码。
 @property (nonatomic, strong) NSString *isPhotoEdit;//是否编辑了个人头像
 @property (nonatomic, strong) NSString *netName;    //名字
-@property (nonatomic, strong) NSString *cityName;   //城市名
+@property (nonatomic, strong) NSString *phoneNumber; //手机号
+@property (nonatomic, strong) NSString *myAddr;   //城市名
 @property (nonatomic, strong) NSString *myBirthday; //生日
 @property (nonatomic, strong) NSString *mySignature;//个性签名
 
@@ -60,7 +61,9 @@
     
     self.isPhotoEdit = @"0";
     self.netName = userInfoDic[uUserName];
-    self.cityName = userInfoDic[uUserAddr];
+    //NSLog(@"netName:%@",self.netName);
+    self.phoneNumber = userInfoDic[uPhoneNumber];
+    self.myAddr = userInfoDic[uUserAddr];
     self.myBirthday = userInfoDic[uUserBirthday];
     self.mySignature = userInfoDic[uUserMemo];
     //NSLog(@"phone:%@",userInfoDic[uUserPhoto]);
@@ -116,7 +119,7 @@
 //    NSLog(@"name:%@",userInfoDic[uUserName]);
 //    NSLog(@"myBirthday:%@",self.myBirthday);
 //    NSLog(@"uPhoneNumber:%@",userInfoDic[uPhoneNumber]);
-//    NSLog(@"cityName:%@",self.cityName);
+//    NSLog(@"myAddr:%@",self.myAddr);
 //    NSLog(@"mySignature:%@",self.mySignature);
 //    NSLog(@"uUserRegionalId:%@",userInfoDic[uUserRegionalId]);
 //    NSLog(@"uUserId:%@",userInfoDic[uUserId]);
@@ -128,10 +131,10 @@
     }
     else{
         imageWeb = self.personImageBase64Coder;
-        NSLog(@"coder:%@",self.personImageBase64Coder);
+         //NSLog(@"coder:%@",self.personImageBase64Coder);
     }
-    
-    [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:userInfoDic[uUserName] andSex:@"null" andBirthday:self.myBirthday andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:self.cityName andQq:@"null" andEmail:@"null" andMemo:self.mySignature andRegionalId:userInfoDic[uUserRegionalId] andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    //NSLog(@"addr:%@",self.myAddr );
+    [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:self.netName andSex:@"null" andBirthday:self.myBirthday andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:self.myAddr andQq:@"null" andEmail:@"null" andMemo:self.mySignature andRegionalId:userInfoDic[uUserRegionalId] andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             NSNumber *isResult = result[@"result "];
             
@@ -142,7 +145,9 @@
                 [UIFactory showAlert:@"操作成功"];
                 //userInfoDic[uUserPhoto] = resultInfoDic[@"photo"];
                 self.isPhotoEdit = @"0";
-                [[UserInfo sharedUser] setUserInfoDic:resultInfoDic];
+                //[[UserInfo sharedUser] setUserInfoDicWithWebServiceResult:result];
+                //userInfoDic[uUserPhoto] = resultInfoDic[@"photo"];
+                
             }
             else{
                 [UIFactory showAlert:result[@"resultInfo"]];
@@ -236,7 +241,7 @@
                 case 0:
                 {
                     infoString = @"手机号";
-                    detailInfoString = @"13797066866";
+                    detailInfoString = self.phoneNumber;
                     break;
                 }
             }
@@ -246,7 +251,7 @@
                 case 0:
                 {
                     infoString = @"居住地";
-                    detailInfoString = self.cityName;
+                    detailInfoString = self.myAddr;
                     break;
                 }
                 case 1:
@@ -533,7 +538,7 @@
     if (index == 0) {
         self.netName = sender;
     }else{
-        self.cityName = sender;
+        self.myAddr = sender;
     }
 }
 
