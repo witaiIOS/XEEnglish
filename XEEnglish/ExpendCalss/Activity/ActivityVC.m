@@ -93,14 +93,14 @@
 
 #pragma mark - getActivityInfo
 - (void)getActivityInfo{
-    [[XeeService sharedInstance] getActivityInfoWithPageSize:5 andPageIndex:1 andParentId:0 andToken:@"" andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getActivityInfoWithPageSize:10 andPageIndex:1 andParentId:0 andToken:@"" andBlock:^(NSDictionary *result, NSError *error) {
         //NSLog(@"result:%@",result);
         
         if (!error) {
             
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
-                
+                NSLog(@"info:%@",result[@"resultInfo"]);
                 _tableList1 = result[@"resultInfo"];
                 
                 [self.tableView1 reloadData];
@@ -132,6 +132,7 @@
 #pragma mark - UITableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if (tableView == self.tableView1) {
+        //NSLog(@"count:%li",_tableList1.count);
         return _tableList1.count;
     }
     else if (tableView == self.tableView2){
