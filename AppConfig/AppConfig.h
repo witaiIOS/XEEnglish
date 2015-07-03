@@ -41,6 +41,26 @@
 #define uIslogin               @"uIslogin" //0登陆 1未登录
 #define uUserInfoKey           @"uUserInfoKey"
 
+#define uUserAddr                @"uUserAddr"
+
+
+/*
+//暂时不用的数据
+#define uUserEmail               @"uUserEmail"
+#define uUserIdentifyId          @"uUserIdentifyId"
+#define uUserIsPhotoEdit         @"uUserIsPhotoEdit"
+#define uUserMobile2             @"uUserMobile2"
+#define uUserNationality         @"uUserNationality"
+#define uUserQq                  @"uUserQq"
+#define uUserSex                 @"uUserSex"
+*/
+
+#define uUserRegionalId          @"uUserRegionalId"
+#define uUserBirthday            @"uUserBirthday"
+#define uUserCityName            @"uUserCityName"
+#define uUserInvitationCode      @"uUserInvitationCode"  //推荐码
+#define uUserMemo                @"uUserMemo"            //个性签名
+
 #define uUserId                @"uUserId"
 #define uUserToken             @"uUserToken"
 #define uUserName              @"uUserName"

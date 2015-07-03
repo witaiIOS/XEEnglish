@@ -49,8 +49,9 @@
 }
 
 - (void)setUserInfoDicWithWebServiceResult:(NSDictionary *)result {
+    //NSLog(@"result:%@",result);
     NSDictionary *resultInfo = result[@"resultInfo"];
-    NSDictionary *userDic = @{uIslogin:result[@"result"], uUserInfoKey:@{uUserId:resultInfo[@"parent_id"],uUserToken:resultInfo[@"token"], uUserName:resultInfo[@"name"], uPhoneNumber:resultInfo[@"mobile"], uPassword:resultInfo[@"password"]}};
+    NSDictionary *userDic = @{uIslogin:result[@"result"], uUserInfoKey:@{uUserId:resultInfo[@"parent_id"],uUserToken:resultInfo[@"token"], uUserName:resultInfo[@"name"], uPhoneNumber:resultInfo[@"mobile"], uPassword:resultInfo[@"password"],uUserRegionalId:resultInfo[@"regional_id"],uUserBirthday:resultInfo[@"birthday" ],uUserCityName:resultInfo[@"city_name"],uUserInvitationCode:resultInfo[@"invitation_code"],uUserMemo:resultInfo[@"memo"]}};
     [self setUserInfoDic:userDic];
 }
 
