@@ -219,6 +219,29 @@
 + (AFHTTPRequestOperation *)getMyInfoWithParentId:(NSString *)parent_id andToken:(NSString *)token;
 
 #pragma mark - 我的 个人信息
+
+/**
+ 个人信息修改
+ @param is_photo_edit 是否修改了图像 is_photo_edit 取值 0未修改头像(photo传值***.png) 1修改头像(photo传值base64编码)
+ @param name          名字
+ @param sex           性别
+ @param birthday      生日
+ @param nationality   国家名
+ @param identify_id   身份证
+ @param mobile        手机号
+ @param addr          区名
+ @param qq
+ @param email
+ @param memo           备注
+ @param regional_id    地区名
+ @param mobile2
+ @param parent_id      注册id
+ @param photo          图片
+ @param token
+ */
++ (AFHTTPRequestOperation *)modifyUserWithIsPhotoEdit:(NSString *)is_photo_edit andName:(NSString *)name andSex:(NSString *)sex andBirthday:(NSString *)birthday andNationality:(NSString *)nationality andIdentifyId:(NSString *)identify_id andMobile:(NSString *)mobile andAddr:(NSString *)addr andQq:(NSString *)qq andEmail:(NSString *)email andMemo:(NSString *)memo andRegionalId:(NSString *)regional_id andMobile2:(NSString *)mobile2 andParentId:(NSString *)parent_id andPhoto:(NSString *)photo andToken:(NSString *)token;
+
+
 /**
  登录后修改密码
  @param newPassword 新密码
