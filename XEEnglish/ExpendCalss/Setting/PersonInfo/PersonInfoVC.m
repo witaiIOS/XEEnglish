@@ -15,16 +15,20 @@
 #import "SettingSignatureVC.h"
 #import "ChangePassWordVC.h"
 
+#import "XeeService.h"
+
 @interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeTNameAndDomicileDelegate,SettingBirthdayDelegate,SettingSignatureDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *keepBtn;
 
 @property (nonatomic, strong) UIImage *personImage;//个人头像
+//@property (nonatomic, strong) UIImage *saveImage;//拍照后保存的图像
 @property (nonatomic, strong) NSString *personImageBase64Coder;//上传所需的base64编码。
-@property (nonatomic, strong) NSString *netName;
-@property (nonatomic, strong) NSString *cityName;
-@property (nonatomic, strong) NSString *myBirthday;
-@property (nonatomic, strong) NSString *mySignature;
+@property (nonatomic, strong) NSString *isPhotoEdit;//是否编辑了个人头像
+@property (nonatomic, strong) NSString *netName;    //名字
+@property (nonatomic, strong) NSString *cityName;   //城市名
+@property (nonatomic, strong) NSString *myBirthday; //生日
+@property (nonatomic, strong) NSString *mySignature;//个性签名
 
 @property (nonatomic, assign) BOOL isChangePhoneNuber;//标记是否是修改手机操作启动的UIActionSheet
 
@@ -49,11 +53,33 @@
 {
     [super initUI];
     
-    self.personImage =[UIImage imageNamed:@"people_ayb"];
-    self.netName = @"风哥";
-    self.cityName = @"武汉";
-    self.myBirthday = @"1990-01-01";
-    self.mySignature = @"随风飘扬";
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    
+    
+    self.isPhotoEdit = @"0";
+    self.netName = userInfoDic[uUserName];
+    self.cityName = userInfoDic[uUserAddr];
+    self.myBirthday = userInfoDic[uUserBirthday];
+    self.mySignature = userInfoDic[uUserMemo];
+    //NSLog(@"phone:%@",userInfoDic[uUserPhoto]);
+//    if ([userInfoDic[uUserPhoto] isKindOfClass:[NSNull class]]) {
+//        self.personImage =[UIImage imageNamed:@"people_ayb"];//没有图像就给个磨人图像
+//    }
+//    else{
+//        UIImageView *personImageView = [[UIImageView alloc] init];
+//        [personImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,userInfoDic[uUserPhoto]]]];
+//        self.personImage = personImageView.image;//有图像就用有本地化的图像
+//    }
+    
+    
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,userInfoDic[uUserPhoto]]]];
+    NSLog(@"imagestr:%@",[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,userInfoDic[uUserPhoto]]);
+    self.personImage = [UIImage imageWithData:data];//有图像就用有本地化的图像
+    NSLog(@"phone:%@",self.personImage );
+    
+    
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     
@@ -76,8 +102,56 @@
 
 - (void)keepBtnAction:(id)sender
 {
-    
+    [self modifyUser];
 }
+
+#pragma mark - Web
+- (void)modifyUser{
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    //NSLog(@"userInfoDic:%@",userInfoDic);
+    
+//    NSLog(@"isPhotoEdit:%@",self.isPhotoEdit);
+//    NSLog(@"name:%@",userInfoDic[uUserName]);
+//    NSLog(@"myBirthday:%@",self.myBirthday);
+//    NSLog(@"uPhoneNumber:%@",userInfoDic[uPhoneNumber]);
+//    NSLog(@"cityName:%@",self.cityName);
+//    NSLog(@"mySignature:%@",self.mySignature);
+//    NSLog(@"uUserRegionalId:%@",userInfoDic[uUserRegionalId]);
+//    NSLog(@"uUserId:%@",userInfoDic[uUserId]);
+//    NSLog(@"personImageBase64Coder:%@",self.personImageBase64Coder);
+//    NSLog(@"uUserToken:%@",userInfoDic[uUserToken]);
+    NSString *imageWeb = nil;
+    if ([self.isPhotoEdit isEqualToString:@"0"]) {
+        imageWeb = userInfoDic[uUserPhoto];
+    }
+    else{
+        imageWeb = self.personImageBase64Coder;
+    }
+    
+    [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:userInfoDic[uUserName] andSex:@"null" andBirthday:self.myBirthday andNationality:@"null" andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:self.cityName andQq:@"null" andEmail:@"null" andMemo:self.mySignature andRegionalId:userInfoDic[uUserRegionalId] andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *isResult = result[@"result "];
+            
+            if (isResult.integerValue == 0) {
+                
+                NSDictionary *resultInfoDic = result[@"resultInfo"];
+                NSLog(@"info:%@",resultInfoDic);
+                [UIFactory showAlert:@"操作成功"];
+                //userInfoDic[uUserPhoto] = resultInfoDic[@"photo"];
+                self.isPhotoEdit = @"0";
+                [[UserInfo sharedUser] setUserInfoDic:resultInfoDic];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
+
 
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
@@ -423,14 +497,15 @@
     //获取路径，读取图片
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imageName];
     self.personImage = [UIImage imageWithContentsOfFile:fullPath];
-    
+    //编辑了图像
+    self.isPhotoEdit = @"1";
     //NSLog(@"imagePath:%@",fullPath);
     //对保存的图片转化为NSData，并编码
     NSData *imageData0 = [NSData dataWithContentsOfFile:fullPath];
     NSData *imageData = [GTMBase64 encodeData:imageData0];
     //获取编码后的图片，准备上传时用
     self.personImageBase64Coder = [NSString stringWithFormat:@"%@",imageData];
-    
+    NSLog(@"coder:%@",self.personImageBase64Coder);
     //self.personImage = myImage;
     //[self.tableView reloadData];
     [picker dismissViewControllerAnimated:YES completion:nil];

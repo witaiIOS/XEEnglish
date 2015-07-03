@@ -46,6 +46,7 @@
 
 /*
 //暂时不用的数据
+#define uUserIsPhotoEdit         @"uUserIsPhotoEdit"
 #define uUserEmail               @"uUserEmail"
 #define uUserIdentifyId          @"uUserIdentifyId"
 #define uUserIsPhotoEdit         @"uUserIsPhotoEdit"
@@ -60,6 +61,7 @@
 #define uUserCityName            @"uUserCityName"
 #define uUserInvitationCode      @"uUserInvitationCode"  //推荐码
 #define uUserMemo                @"uUserMemo"            //个性签名
+#define uUserPhoto               @"uUserPhoto"
 
 #define uUserId                @"uUserId"
 #define uUserToken             @"uUserToken"
