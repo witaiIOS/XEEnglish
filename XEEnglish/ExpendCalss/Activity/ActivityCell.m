@@ -23,8 +23,21 @@
     [_activityImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,_activityInfo[@"image_url"]]] placeholderImage:[UIImage imageNamed:@"course7.png"]];
     //NSLog(@"%@",_activityInfo[@"image_url"]);
     
+    //获取结束时间
+    NSString *endDateStr=[NSString stringWithFormat:@"%@",_activityInfo[@"deadline"]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSDate *endDate=[dateFormatter dateFromString:endDateStr];
+    
+    //获取现在时间
+    NSDate *nowDate = [NSDate date];
+    
+    NSDate *earlier_date = [nowDate earlierDate:endDate];
+    
+    BOOL isDateEnd = [earlier_date isEqualToDate:nowDate];
+    
     //判断，人数满了之后将按钮置灰
-    if ([self.activityInfo[@"sum_current"] isEqualToString:self.activityInfo[@"sum_max"]]) {
+    if ([self.activityInfo[@"sum_current"] isEqualToString:self.activityInfo[@"sum_max"]]||isDateEnd) {
         [self.reserveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self.reserveBtn setBackgroundColor:[UIColor grayColor]];
         self.reserveBtn.enabled = NO;
