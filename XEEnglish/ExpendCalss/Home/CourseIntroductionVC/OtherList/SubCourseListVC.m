@@ -89,6 +89,7 @@
     NSDictionary *subCourseDic = self.courseArray[indexPath.section];
     cell.courseName.text = subCourseDic[@"title"];
     //NSLog(@"%@",self.selectedCourse);
+    //NSLog(@"paymethod:%@",subCourseDic[@"pay_type"]);
     if ([self.selectedCourse isEqualToString:cell.courseName.text]) {
         cell.selectedImageView.highlighted = YES;
     }

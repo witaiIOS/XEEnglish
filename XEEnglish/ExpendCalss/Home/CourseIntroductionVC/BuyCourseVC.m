@@ -443,7 +443,7 @@
                 }
                 case 3:
                 {
-                    if(self.payMethodNumber == 2){
+                    if(self.payMethodNumber == 3){
                         PayCourseMethodVCViewController *vc = [[PayCourseMethodVCViewController alloc] init];
                         vc.delegate = self;
                         vc.selectedMethod = self.payCourseMethod;
@@ -582,9 +582,28 @@
 - (void)selectedCourse:(id)sender{
     NSDictionary *subCourseDic = sender;
     self.subCoursename = subCourseDic[@"title"];
-    self.priceHour = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];//获取课时价格
-    self.priceSeries = [NSString stringWithFormat:@"%@",subCourseDic[@"total_price"]];//获取整套价格
-    self.priceTotal = self.priceSeries;//获取整套价格时，改写缴费金额为整套价格，因为默认情况为按整套购买
+    
+    NSNumber *payMethod = subCourseDic[@"pay_type"];
+    self.payMethodNumber = payMethod.integerValue;
+    if (self.payMethodNumber == 1) {
+        self.priceHour = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];//获取课时价格
+    }
+    else if (self.payMethodNumber == 2){
+        
+        self.priceSeries = [NSString stringWithFormat:@"%@",subCourseDic[@"total_price"]];//获取整套价格
+        self.priceTotal = self.priceSeries;//获取整套价格时，改写缴费金额为整套价格，因为默认情况为按整套购买
+    }
+    else if (self.payMethodNumber == 3){
+        
+        self.priceHour = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];//获取课时价格
+        self.priceSeries = [NSString stringWithFormat:@"%@",subCourseDic[@"total_price"]];//获取整套价格
+        self.payCourseMethod = @"课时整套均可";
+        self.priceTotal = self.priceSeries;//获取整套价格时，改写缴费金额为整套价格，因为默认情况为按整套购买
+    }else{
+        
+    }
+    
+    
 //    NSNumber *payMethod = subCourseDic[@"pay_type"];
 //    self.payMethodNumber = payMethod.integerValue;
     [self.tableView reloadData];
@@ -595,9 +614,14 @@
 - (void)selectedPayCourseMethod:(id)sender{
     
     self.payCourseMethod = sender;
+    
     //返回的“按课时”购买时，清除“缴费金额”，此时还不知道缴费金额，有待计算
     if ([self.payCourseMethod isEqualToString:@"按课时"]){
         self.priceTotal = @"";
+        self.payMethodNumber = 1;
+    }
+    else{
+        self.payMethodNumber = 2;
     }
     [self.tableView reloadData];
 }
