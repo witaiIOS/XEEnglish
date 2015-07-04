@@ -23,6 +23,8 @@
 @property (nonatomic, strong) UILabel *priceLabel;//购买的价格
 @property (nonatomic, strong) UILabel *priceTipLabel;//显示“单价”或者“总价”
 
+@property (nonatomic, assign) NSInteger payMethodNum;//付款方式传给购买页
+
 @property (nonatomic, strong) UIWebView *courseWeb;
 //@property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
@@ -166,6 +168,7 @@
     BuyCourseVC *vc = [[BuyCourseVC alloc] init];
     vc.courseName = self.title;
     vc.parentCourseId = self.courseId;
+    vc.payMethodNumber = (NSInteger )self.payMethodNum;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -185,6 +188,9 @@
                 [self setSingleCourseValue:courseInfo];
                 //判断是否支持试听功能，不能就置灰，不能用
                 [self setListenBtnEnabled:courseInfo];
+                
+                NSNumber *payMethod = courseInfo[@"pay_type"];
+                self.payMethodNum = payMethod.integerValue;
             }
         }
     }];
@@ -246,6 +252,13 @@
     }
     
 }
+
+//- (void)setPayMethodNum:(NSDictionary *)courseInfo{
+//    
+//    NSNumber *payMethodNum = courseInfo[@"pay_type"];
+//    
+//}
+
 
 #pragma mark - UIWebView Delegate
 - (void)webViewDidStartLoad:(UIWebView *)webView{

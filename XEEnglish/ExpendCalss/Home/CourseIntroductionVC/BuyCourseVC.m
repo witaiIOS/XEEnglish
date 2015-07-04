@@ -29,6 +29,7 @@
 @property (nonatomic, assign) NSInteger subCourseNumeber;//子课程数量，用于做判断，没有子课程就隐藏那个cell
 @property (nonatomic, strong) NSDictionary *schoolZone;//校区
 @property (nonatomic, strong) NSString *payCourseMethod;//付款方式
+
 @property (nonatomic, strong) NSString *inputCourseHours;//按课时购买时，输入的课时数
 @property (nonatomic, strong) NSString *priceTotal;//缴费金额
 @end
@@ -55,7 +56,7 @@
     self.tableView.tableFooterView = [self footView];
     [self.view addSubview:self.tableView];
     
-    self.payCourseMethod = @"按全套";//默认情况，按全套购买方式
+    //self.payCourseMethod = @"按全套";//默认情况，按全套购买方式
 }
 
 - (void)didReceiveMemoryWarning {
@@ -146,8 +147,12 @@
             if (isResult.integerValue == 0) {
                 NSDictionary *subCoursesDic = result[@"resultInfo"];
                 NSMutableArray *subCourseArray = subCoursesDic[@"listCourse"];
+                //子课程数量，用于做判断，没有子课程就隐藏那个cell
                 self.subCourseNumeber = [subCourseArray count];
                 //NSLog(@"count:%li",self.subCourseNumeber);
+//                //付款方式的判断号，pay_type取值 1按课时价 2按整套价 3两者都可。
+//                NSNumber *payMethed = subCoursesDic[@"pay_type"];
+//                self.payMethodNumber = payMethed.integerValue;
                 
                 [self.tableView reloadData];
             }
@@ -217,9 +222,25 @@
                 //return cell;
             }
             else{
+                //payMethodNumber(pay_type)取值 1按课时价 2按整套价 3两者都可。
+                if (self.payMethodNumber == 1) {
+                    self.payCourseMethod = @"按课时";
+                    cell.detailTextLabel.text = self.payCourseMethod;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
+                else if (self.payMethodNumber == 2){
+                    self.payCourseMethod = @"按整套";
+                    cell.detailTextLabel.text = self.payCourseMethod;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
+                else if(self.payMethodNumber == 3){
+                    self.payCourseMethod = @"课时整套均可";
+                    cell.detailTextLabel.text = self.payCourseMethod;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                }
                 cell.textLabel.text = @"付款方式";
-                cell.detailTextLabel.text = self.payCourseMethod;
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+                
                 
                 //return cell;
             }
@@ -254,9 +275,23 @@
                     //            cell2.myLabel.text = @"购买课时";
                     //
                     //            return cell2;
+                    //payMethodNumber(pay_type)取值 1按课时价 2按整套价 3两者都可。
+                    if (self.payMethodNumber == 1) {
+                        self.payCourseMethod = @"按课时";
+                        cell.detailTextLabel.text = self.payCourseMethod;
+                        cell.accessoryType = UITableViewCellAccessoryNone;
+                    }
+                    else if (self.payMethodNumber == 2){
+                        self.payCourseMethod = @"按整套";
+                        cell.detailTextLabel.text = self.payCourseMethod;
+                        cell.accessoryType = UITableViewCellAccessoryNone;
+                    }
+                    else if(self.payMethodNumber == 3){
+                        self.payCourseMethod = @"课时整套均可";
+                        cell.detailTextLabel.text = self.payCourseMethod;
+                        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    }
                     cell.textLabel.text = @"付款方式";
-                    cell.detailTextLabel.text = self.payCourseMethod;
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     
                     //return cell;
                 }
@@ -343,11 +378,17 @@
                 }
                 case 2:
                 {
-                    PayCourseMethodVCViewController *vc = [[PayCourseMethodVCViewController alloc] init];
-                    vc.delegate = self;
-                    vc.selectedMethod = self.payCourseMethod;
-                    [self.navigationController pushViewController:vc animated:YES];
+                    //pay_type取值 1按课时价 2按整套价 3两者都可。
+                    //self.payMethodNumber取值 为3时才可以去选择付款方式。
+                    //其他情况下，不让点击
+                    if(self.payMethodNumber == 3){
+                        PayCourseMethodVCViewController *vc = [[PayCourseMethodVCViewController alloc] init];
+                        vc.delegate = self;
+                        vc.selectedMethod = self.payCourseMethod;
+                        [self.navigationController pushViewController:vc animated:YES];
+                    }
                     break;
+                    
                 }
                 default:
                     break;
@@ -378,10 +419,12 @@
                 }
                 case 3:
                 {
-                    PayCourseMethodVCViewController *vc = [[PayCourseMethodVCViewController alloc] init];
-                    vc.delegate = self;
-                    vc.selectedMethod = self.payCourseMethod;
-                    [self.navigationController pushViewController:vc animated:YES];
+                    if(self.payMethodNumber == 2){
+                        PayCourseMethodVCViewController *vc = [[PayCourseMethodVCViewController alloc] init];
+                        vc.delegate = self;
+                        vc.selectedMethod = self.payCourseMethod;
+                        [self.navigationController pushViewController:vc animated:YES];
+                    }
                     break;
                 }
                 default:
