@@ -49,9 +49,10 @@
 
 - (void)getCourseListByParentCourseId{
     //应用时将@"1124" 假数据换成 self.parentCourseId
-    [[XeeService sharedInstance] getCourseListByParentCourseId:@"1124" andBlock:^(NSDictionary *result, NSError *error) {
+    //NSLog(@"parentCourseId:%@",self.parentCourseId);
+    [[XeeService sharedInstance] getCourseListByParentCourseId:self.parentCourseId andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
-            NSLog(@"result:%@",result);
+            //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 NSDictionary *subCoursesDic = result[@"resultInfo"];

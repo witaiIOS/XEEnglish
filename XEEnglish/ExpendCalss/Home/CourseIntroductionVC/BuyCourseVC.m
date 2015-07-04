@@ -18,12 +18,15 @@
 #import "PayCourseVC.h"
 #import "PayProtocolVC.h"
 
+#import "XeeService.h"
+
 @interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate,SelectedPayCourseMethodDelegate,ListeningCourseInfoCellDelegate,CourseSchoolZoneDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *selectedBtn;//是否同意了协议
 
 @property (nonatomic, strong) NSString *subCoursename;//子课程名
+@property (nonatomic, assign) NSInteger subCourseNumeber;//子课程数量，用于做判断，没有子课程就隐藏那个cell
 @property (nonatomic, strong) NSDictionary *schoolZone;//校区
 @property (nonatomic, strong) NSString *payCourseMethod;//付款方式
 @property (nonatomic, strong) NSString *inputCourseHours;//按课时购买时，输入的课时数
@@ -42,6 +45,9 @@
 - (void)initUI{
     
     [super initUI];
+    
+    //网络请求查看子课程，如果没有子课程就隐藏课程分类的cell
+    [self getCourseListByParentCourseId];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
@@ -130,6 +136,25 @@
     
 }
 
+#pragma mark -Web
+- (void)getCourseListByParentCourseId{
+    //应用时将@"1124" 假数据换成 self.parentCourseId
+    [[XeeService sharedInstance] getCourseListByParentCourseId:self.parentCourseId andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            //NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                NSDictionary *subCoursesDic = result[@"resultInfo"];
+                NSMutableArray *subCourseArray = subCoursesDic[@"listCourse"];
+                self.subCourseNumeber = [subCourseArray count];
+                //NSLog(@"count:%li",self.subCourseNumeber);
+                
+                [self.tableView reloadData];
+            }
+        }
+    }];
+}
+
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
@@ -139,7 +164,13 @@
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (section == 0) {
-        return 4;
+        if (self.subCourseNumeber == 0) {
+            return 3;
+        }
+        else{
+            return 4;
+        }
+        
     }
     else if(section == 1){
         if ([self.payCourseMethod isEqualToString:@"按课时"]){
@@ -160,6 +191,7 @@
     static NSString *reuse2 = @"ListeningCourseInfoCell";
     static NSString *reuse3 = @"BuyCoursePaymentAmountCell";
     
+    //判断有没有子课程，没有就隐藏
     if (indexPath.section == 0) {
         BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
         
@@ -171,43 +203,70 @@
             cell.cellEdge = 10;
         }
         
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"课程名";
-            cell.detailTextLabel.text = self.courseName;
-            //return cell;
-        }
-        else if (indexPath.row == 1){
-            
-            cell.textLabel.text = @"课程分类";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.detailTextLabel.text = self.subCoursename;
-            //return cell;
-        }
-        else if (indexPath.row == 2){
-            
-            cell.textLabel.text = @"校区选择";
-            cell.detailTextLabel.text = self.schoolZone[@"department"];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            //return cell;
+        if (self.subCourseNumeber == 0) {
+            if (indexPath.row == 0) {
+                cell.textLabel.text = @"课程名";
+                cell.detailTextLabel.text = self.courseName;
+                //return cell;
+            }
+            else if (indexPath.row == 1){
+                
+                cell.textLabel.text = @"校区选择";
+                cell.detailTextLabel.text = self.schoolZone[@"department"];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                //return cell;
+            }
+            else{
+                cell.textLabel.text = @"付款方式";
+                cell.detailTextLabel.text = self.payCourseMethod;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+                //return cell;
+            }
         }
         else{
-//            ListeningCourseInfoCell *cell2 = [tableView dequeueReusableCellWithIdentifier:reuse2];
-//            if (cell2 == nil) {
-//                cell2 = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
-//            }
-//            cell2.cellEdge = 10;
-//            cell2.myLabel.text = @"购买课时";
-//            
-//            return cell2;
-            cell.textLabel.text = @"付款方式";
-            cell.detailTextLabel.text = self.payCourseMethod;
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            
-            //return cell;
+            //判断有没有子课程，有就显示
+                if (indexPath.row == 0) {
+                    cell.textLabel.text = @"课程名";
+                    cell.detailTextLabel.text = self.courseName;
+                    //return cell;
+                }
+                else if (indexPath.row == 1){
+                    
+                    cell.textLabel.text = @"课程分类";
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.detailTextLabel.text = self.subCoursename;
+                    //return cell;
+                }
+                else if (indexPath.row == 2){
+                    
+                    cell.textLabel.text = @"校区选择";
+                    cell.detailTextLabel.text = self.schoolZone[@"department"];
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    //return cell;
+                }
+                else{
+                    //            ListeningCourseInfoCell *cell2 = [tableView dequeueReusableCellWithIdentifier:reuse2];
+                    //            if (cell2 == nil) {
+                    //                cell2 = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
+                    //            }
+                    //            cell2.cellEdge = 10;
+                    //            cell2.myLabel.text = @"购买课时";
+                    //
+                    //            return cell2;
+                    cell.textLabel.text = @"付款方式";
+                    cell.detailTextLabel.text = self.payCourseMethod;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    
+                    //return cell;
+                }
+
+            }
+            return cell;
+        
         }
         
-        return cell;
-    }
+        
     else if (indexPath.section == 1){
         
         
@@ -274,6 +333,7 @@
                 SubCourseListVC *vc = [[SubCourseListVC alloc] init];
                 vc.delegate = self;
                 vc.selectedCourse = self.subCoursename;
+                vc.parentCourseId = self.parentCourseId;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
