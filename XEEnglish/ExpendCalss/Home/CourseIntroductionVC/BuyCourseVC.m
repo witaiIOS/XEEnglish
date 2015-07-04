@@ -468,37 +468,82 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view =[[UIView alloc] init];
     view.backgroundColor = [UIColor clearColor];
-    if (section == 1 && self.subCoursename != nil) {
-        view.frame = CGRectMake(0, 0, kScreenWidth, 40);
-        view.backgroundColor = [UIColor clearColor];
+    if (section == 1) {
         
-        UILabel *priceHourTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 60, 20)];
-        priceHourTipLabel.text = @"课时单价:";//课时价格
-        priceHourTipLabel.font = [UIFont systemFontOfSize:12];
-        priceHourTipLabel.textColor = [UIColor grayColor];
-        
-        [view addSubview:priceHourTipLabel];
-        
-        UILabel *priceHourLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 30, 20)];
-        priceHourLabel.text = [NSString stringWithFormat:@"%@;",self.priceHour];
-        priceHourLabel.font = [UIFont systemFontOfSize:12];
-        priceHourLabel.textColor = [UIColor grayColor];
-        
-        [view addSubview:priceHourLabel];
-        
-        UILabel *priceTotalTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 10, 60, 20)];
-        priceTotalTipLabel.text = @"整套价格:";
-        priceTotalTipLabel.font = [UIFont systemFontOfSize:12];
-        priceTotalTipLabel.textColor = [UIColor grayColor];
-        
-        [view addSubview:priceTotalTipLabel];
-        
-        UILabel *priceTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(170, 10, 60, 20)];
-        priceTotalLabel.text = self.priceSeries;//整套价格
-        priceTotalLabel.font = [UIFont systemFontOfSize:12];
-        priceTotalLabel.textColor = [UIColor grayColor];
-        
-        [view addSubview:priceTotalLabel];
+        if (self.payMethodNumber == 1) {
+            view.frame = CGRectMake(0, 0, kScreenWidth, 40);
+            view.backgroundColor = [UIColor clearColor];
+            
+            UILabel *priceHourTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 60, 20)];
+            priceHourTipLabel.text = @"课时单价:";//课时价格
+            priceHourTipLabel.font = [UIFont systemFontOfSize:12];
+            priceHourTipLabel.textColor = [UIColor grayColor];
+            
+            [view addSubview:priceHourTipLabel];
+            
+            UILabel *priceHourLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 30, 20)];
+            priceHourLabel.text = [NSString stringWithFormat:@"%@;",self.priceHour];
+            priceHourLabel.font = [UIFont systemFontOfSize:12];
+            priceHourLabel.textColor = [UIColor grayColor];
+            
+            [view addSubview:priceHourLabel];
+        }
+        else if (self.payMethodNumber == 2){
+            
+            view.frame = CGRectMake(0, 0, kScreenWidth, 40);
+            view.backgroundColor = [UIColor clearColor];
+            
+            UILabel *priceTotalTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 60, 20)];
+            priceTotalTipLabel.text = @"整套价格:";
+            priceTotalTipLabel.font = [UIFont systemFontOfSize:12];
+            priceTotalTipLabel.textColor = [UIColor grayColor];
+            
+            [view addSubview:priceTotalTipLabel];
+            
+            UILabel *priceTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 60, 20)];
+            priceTotalLabel.text = self.priceSeries;//整套价格
+            priceTotalLabel.font = [UIFont systemFontOfSize:12];
+            priceTotalLabel.textColor = [UIColor grayColor];
+            
+            [view addSubview:priceTotalLabel];
+        }
+        else if (self.payMethodNumber == 3){
+            
+            view.frame = CGRectMake(0, 0, kScreenWidth, 40);
+            view.backgroundColor = [UIColor clearColor];
+            
+            UILabel *priceHourTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 60, 20)];
+            priceHourTipLabel.text = @"课时单价:";//课时价格
+            priceHourTipLabel.font = [UIFont systemFontOfSize:12];
+            priceHourTipLabel.textColor = [UIColor grayColor];
+            
+            [view addSubview:priceHourTipLabel];
+            
+            UILabel *priceHourLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 30, 20)];
+            priceHourLabel.text = [NSString stringWithFormat:@"%@;",self.priceHour];
+            priceHourLabel.font = [UIFont systemFontOfSize:12];
+            priceHourLabel.textColor = [UIColor grayColor];
+            
+            [view addSubview:priceHourLabel];
+            
+            UILabel *priceTotalTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 10, 60, 20)];
+            priceTotalTipLabel.text = @"整套价格:";
+            priceTotalTipLabel.font = [UIFont systemFontOfSize:12];
+            priceTotalTipLabel.textColor = [UIColor grayColor];
+            
+            [view addSubview:priceTotalTipLabel];
+            
+            UILabel *priceTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(170, 10, 60, 20)];
+            priceTotalLabel.text = self.priceSeries;//整套价格
+            priceTotalLabel.font = [UIFont systemFontOfSize:12];
+            priceTotalLabel.textColor = [UIColor grayColor];
+            
+            [view addSubview:priceTotalLabel];
+            
+        }
+        else{
+            
+        }
 
     }else{
 
