@@ -29,6 +29,14 @@
         
         [self.contentView addSubview:self.myPriceLabel];
         
+        UILabel *unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-40, 6, 20, 30)];
+        unitLabel.text = @"元";
+        unitLabel.textColor = [UIColor grayColor];
+        unitLabel.font = [UIFont systemFontOfSize:14];
+        
+        [self.contentView addSubview:unitLabel];
+        
+        
         self.myLineLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-100, 32, 60, 1)];
         self.myLineLabel.backgroundColor = [UIColor lightGrayColor];
         

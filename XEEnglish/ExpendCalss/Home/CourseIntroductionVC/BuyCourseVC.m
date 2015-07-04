@@ -47,6 +47,9 @@
     
     [super initUI];
     
+    [self initCourseValue];
+    
+    
     //网络请求查看子课程，如果没有子课程就隐藏课程分类的cell
     [self getCourseListByParentCourseId];
     
@@ -57,6 +60,27 @@
     [self.view addSubview:self.tableView];
     
     //self.payCourseMethod = @"按全套";//默认情况，按全套购买方式
+}
+
+- (void)initCourseValue{
+    
+    if (self.payMethodNumber == 1) {
+        self.priceHour = [NSString stringWithFormat:@"%@",self.courseInfoDic[@"price"]];
+        //NSLog(@"self.priceHour:%@",self.priceHour);
+    }
+    else if (self.payMethodNumber == 2){
+        self.priceSeries = [NSString stringWithFormat:@"%@",self.courseInfoDic[@"total_price"]];
+        //整套价格不是动态生成的，必须赋值
+        self.priceTotal = self.priceSeries;
+        //NSLog(@"self.priceSeries:%@",self.priceSeries);
+    }
+    else if(self.payMethodNumber == 3){
+        self.priceHour = [NSString stringWithFormat:@"%@",self.courseInfoDic[@"price"]];
+        self.priceSeries = [NSString stringWithFormat:@"%@",self.courseInfoDic[@"total_price"]];
+    }
+    else{
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -481,8 +505,8 @@
             
             [view addSubview:priceHourTipLabel];
             
-            UILabel *priceHourLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 30, 20)];
-            priceHourLabel.text = [NSString stringWithFormat:@"%@;",self.priceHour];
+            UILabel *priceHourLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 100, 20)];
+            priceHourLabel.text = [NSString stringWithFormat:@"%@元/课",self.priceHour];
             priceHourLabel.font = [UIFont systemFontOfSize:12];
             priceHourLabel.textColor = [UIColor grayColor];
             
@@ -500,8 +524,8 @@
             
             [view addSubview:priceTotalTipLabel];
             
-            UILabel *priceTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 60, 20)];
-            priceTotalLabel.text = self.priceSeries;//整套价格
+            UILabel *priceTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 100, 20)];
+            priceTotalLabel.text = [NSString stringWithFormat:@"%@元/套",self.priceSeries];//整套价格
             priceTotalLabel.font = [UIFont systemFontOfSize:12];
             priceTotalLabel.textColor = [UIColor grayColor];
             
@@ -519,22 +543,22 @@
             
             [view addSubview:priceHourTipLabel];
             
-            UILabel *priceHourLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 30, 20)];
-            priceHourLabel.text = [NSString stringWithFormat:@"%@;",self.priceHour];
+            UILabel *priceHourLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 80, 20)];
+            priceHourLabel.text = [NSString stringWithFormat:@"%@元/课",self.priceHour];;
             priceHourLabel.font = [UIFont systemFontOfSize:12];
             priceHourLabel.textColor = [UIColor grayColor];
             
             [view addSubview:priceHourLabel];
             
-            UILabel *priceTotalTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 10, 60, 20)];
+            UILabel *priceTotalTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 10, 60, 20)];
             priceTotalTipLabel.text = @"整套价格:";
             priceTotalTipLabel.font = [UIFont systemFontOfSize:12];
             priceTotalTipLabel.textColor = [UIColor grayColor];
             
             [view addSubview:priceTotalTipLabel];
             
-            UILabel *priceTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(170, 10, 60, 20)];
-            priceTotalLabel.text = self.priceSeries;//整套价格
+            UILabel *priceTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 10, 90, 20)];
+            priceTotalLabel.text = [NSString stringWithFormat:@"%@元/套",self.priceSeries];//整套价格
             priceTotalLabel.font = [UIFont systemFontOfSize:12];
             priceTotalLabel.textColor = [UIColor grayColor];
             

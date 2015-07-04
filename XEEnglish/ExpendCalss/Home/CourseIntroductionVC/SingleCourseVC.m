@@ -25,6 +25,8 @@
 
 @property (nonatomic, assign) NSInteger payMethodNum;//付款方式传给购买页
 
+@property (nonatomic, strong) NSDictionary *courseInfo;
+
 @property (nonatomic, strong) UIWebView *courseWeb;
 //@property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
@@ -168,7 +170,8 @@
     BuyCourseVC *vc = [[BuyCourseVC alloc] init];
     vc.courseName = self.title;
     vc.parentCourseId = self.courseId;
-    vc.payMethodNumber = (NSInteger )self.payMethodNum;
+    vc.payMethodNumber = self.payMethodNum;
+    vc.courseInfoDic = self.courseInfo;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -180,16 +183,16 @@
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
-                NSDictionary *courseInfo = result[@"resultInfo"];
+                self.courseInfo = result[@"resultInfo"];
 //                NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
 //                NSString *minAge = [numberFormatter stringFromNumber:courseInfo[@"min_age"]];
 //                NSString *maxAge = [numberFormatter stringFromNumber:courseInfo[@"max_age"]];;
                 //获取页面上方适用年龄和价格的各个显示值
-                [self setSingleCourseValue:courseInfo];
+                [self setSingleCourseValue:self.courseInfo];
                 //判断是否支持试听功能，不能就置灰，不能用
-                [self setListenBtnEnabled:courseInfo];
+                [self setListenBtnEnabled:self.courseInfo];
                 
-                NSNumber *payMethod = courseInfo[@"pay_type"];
+                NSNumber *payMethod = self.courseInfo[@"pay_type"];
                 self.payMethodNum = payMethod.integerValue;
             }
         }
