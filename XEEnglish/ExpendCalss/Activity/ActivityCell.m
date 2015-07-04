@@ -26,13 +26,15 @@
     //获取结束时间
     NSString *endDateStr=[NSString stringWithFormat:@"%@",_activityInfo[@"deadline"]];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSDate *endDate=[dateFormatter dateFromString:endDateStr];
-    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *deadline=[dateFormatter dateFromString:endDateStr];
+    //NSLog(@"endDate:%@",deadline);
     //获取现在时间
     NSDate *nowDate = [NSDate date];
+    //NSLog(@"date:%@",nowDate);
     
-    NSDate *earlier_date = [nowDate earlierDate:endDate];
+    NSDate *earlier_date = [nowDate earlierDate:deadline];
+    //NSLog(@"earlier_date:%@",earlier_date);
     
     BOOL isDateEnd = [earlier_date isEqualToDate:nowDate];
     
