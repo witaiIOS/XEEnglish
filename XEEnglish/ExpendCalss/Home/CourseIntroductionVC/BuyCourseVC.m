@@ -327,38 +327,68 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0) {
-        switch (indexPath.row) {
-            case 1:
-            {
-                SubCourseListVC *vc = [[SubCourseListVC alloc] init];
-                vc.delegate = self;
-                vc.selectedCourse = self.subCoursename;
-                vc.parentCourseId = self.parentCourseId;
-                [self.navigationController pushViewController:vc animated:YES];
-                break;
+        //判断有没有子课程，没有就隐藏
+        if(self.subCourseNumeber == 0){
+            switch (indexPath.row) {
+                case 1:
+                {
+                    courseSchoolZoneVC *vc = [[courseSchoolZoneVC alloc] init];
+                    vc.delegate = self;
+                    vc.selectedSchool = self.schoolZone[@"department"];
+                    //NSLog(@"selectedSchool:%@",vc.selectedSchool);
+                    //NSLog(@"parentCourseId:%@",self.parentCourseId);
+                    vc.parentCourseId = self.parentCourseId;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                case 2:
+                {
+                    PayCourseMethodVCViewController *vc = [[PayCourseMethodVCViewController alloc] init];
+                    vc.delegate = self;
+                    vc.selectedMethod = self.payCourseMethod;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                default:
+                    break;
             }
-            case 2:
-            {
-                courseSchoolZoneVC *vc = [[courseSchoolZoneVC alloc] init];
-                vc.delegate = self;
-                vc.selectedSchool = self.schoolZone[@"department"];
-                //NSLog(@"selectedSchool:%@",vc.selectedSchool);
-                //NSLog(@"parentCourseId:%@",self.parentCourseId);
-                vc.parentCourseId = self.parentCourseId;
-                [self.navigationController pushViewController:vc animated:YES];
-                break;
-            }
-            case 3:
-            {
-                PayCourseMethodVCViewController *vc = [[PayCourseMethodVCViewController alloc] init];
-                vc.delegate = self;
-                vc.selectedMethod = self.payCourseMethod;
-                [self.navigationController pushViewController:vc animated:YES];
-                break;
-            }
-            default:
-                break;
         }
+        else{
+            //判断有没有子课程，有就显示
+            switch (indexPath.row) {
+                case 1:
+                {
+                    SubCourseListVC *vc = [[SubCourseListVC alloc] init];
+                    vc.delegate = self;
+                    vc.selectedCourse = self.subCoursename;
+                    vc.parentCourseId = self.parentCourseId;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                case 2:
+                {
+                    courseSchoolZoneVC *vc = [[courseSchoolZoneVC alloc] init];
+                    vc.delegate = self;
+                    vc.selectedSchool = self.schoolZone[@"department"];
+                    //NSLog(@"selectedSchool:%@",vc.selectedSchool);
+                    //NSLog(@"parentCourseId:%@",self.parentCourseId);
+                    vc.parentCourseId = self.parentCourseId;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                case 3:
+                {
+                    PayCourseMethodVCViewController *vc = [[PayCourseMethodVCViewController alloc] init];
+                    vc.delegate = self;
+                    vc.selectedMethod = self.payCourseMethod;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+        
     }
     else{
         if ([self.payCourseMethod isEqualToString:@"按课时"]) {
