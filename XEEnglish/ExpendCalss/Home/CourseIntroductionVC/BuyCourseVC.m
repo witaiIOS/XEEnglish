@@ -516,6 +516,8 @@
     self.priceHour = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];//获取课时价格
     self.priceSeries = [NSString stringWithFormat:@"%@",subCourseDic[@"total_price"]];//获取整套价格
     self.priceTotal = self.priceSeries;//获取整套价格时，改写缴费金额为整套价格，因为默认情况为按整套购买
+    NSNumber *payMethod = subCourseDic[@"pay_type"];
+    self.payMethodNumber = payMethod.integerValue;
     [self.tableView reloadData];
 }
 
