@@ -24,4 +24,13 @@
  */
 - (void)backButtonClicked:(id)sender;
 
+
+/**
+ *	@brief	MBProgressHUD
+ */
+-(void)showHud;
+-(void)hideHud;
+-(void)showHudOnlyMsg:(NSString*)msg;
+-(void)showHudWithMsg:(NSString*)msg;
+
 @end

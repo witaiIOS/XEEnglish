@@ -10,6 +10,8 @@
 
 @interface BaseVC ()
 
+@property (strong, nonatomic) MBProgressHUD *hud;
+
 @end
 
 @implementation BaseVC
@@ -23,6 +25,11 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_backButton];
     
     _backButton.hidden = (self.navigationController.viewControllers.count == 1) ? YES : NO;
+    
+    ///hud
+    _hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:_hud];
+
     
    
     
@@ -48,6 +55,38 @@
     LOG_SELF_METHOD;
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark - MBProgressHUD
+- (void)showHud{
+    [self.view bringSubviewToFront:self.hud];
+    //self.hud.mode = MBProgressHUDModeIndeterminate;
+    //self.hud.labelText = @"";
+    self.hud.dimBackground = YES;
+    [self.hud show:YES];
+}
+
+-(void)showHudWithMsg:(NSString*)msg
+{
+    [self.view bringSubviewToFront:self.hud];
+    self.hud.dimBackground = YES;
+    self.hud.labelText  = msg;
+    [self.hud show:YES];
+}
+
+-(void)showHudOnlyMsg:(NSString*)msg
+{
+    [self.view bringSubviewToFront:self.hud];
+    self.hud.mode       = MBProgressHUDModeText;
+    self.hud.labelText  = msg;
+    [self.hud show:YES];
+    [self.hud hide:YES afterDelay:2.0];
+}
+
+-(void)hideHud
+{
+    [self.hud hide:YES];
+}
+
 
 
 @end
