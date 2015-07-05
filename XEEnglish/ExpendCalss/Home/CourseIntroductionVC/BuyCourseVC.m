@@ -53,7 +53,7 @@
     //网络请求查看子课程，如果没有子课程就隐藏课程分类的cell
     [self getCourseListByParentCourseId];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.tableFooterView = [self footView];
