@@ -137,11 +137,11 @@
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
     if (tableView == self.activityTableView) {
-        NSLog(@"activityArray:%li",self.activityArray.count);
+        NSLog(@"activityArray:%li",(unsigned long)self.activityArray.count);
         return [self.activityArray count];
     }
     else if (tableView == self.bookSiteTableView){
-        NSLog(@"bookSiteArray:%li",self.bookSiteArray.count);
+        NSLog(@"bookSiteArray:%li",(unsigned long)self.bookSiteArray.count);
         return [self.bookSiteArray count];
     }
     else{

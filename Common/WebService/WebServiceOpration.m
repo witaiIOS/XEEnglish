@@ -123,7 +123,7 @@
  */
 + (AFHTTPRequestOperation *)getCourseListByFilterWithMinAge:(NSString *)min_age andMaxAge:(NSString *)max_age andCourseCategoryId:(NSString *)course_category_id andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseListByFilter><web:json>{\"min_age\":\"%@\",\"max_age\":\"%@\",\"course_category_id\":\"%@\",\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetCourseListByFilter>",min_age,max_age,course_category_id,sort,order,pageSize,pageIndex]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseListByFilter><web:json>{\"min_age\":\"%@\",\"max_age\":\"%@\",\"course_category_id\":\"%@\",\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetCourseListByFilter>",min_age,max_age,course_category_id,sort,order,(long)pageSize,(long)pageIndex]];
 }
 
 /**
@@ -255,7 +255,7 @@
  */
 + (AFHTTPRequestOperation *)getPointsWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSString *)parent_id andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPoints><web:json>{\"parent_id\":\"%@\", \"pageSize\":\"%li\", \"pageIndex\":\"%li\", \"token\":\"%@\"}</web:json></web:GetPoints>",parent_id,pageSize,pageIndex,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPoints><web:json>{\"parent_id\":\"%@\", \"pageSize\":\"%li\", \"pageIndex\":\"%li\", \"token\":\"%@\"}</web:json></web:GetPoints>",parent_id,(long)pageSize,(long)pageIndex,token]];
 }
 
 /**

@@ -17,7 +17,7 @@
 
 #import "XeeService.h"
 
-@interface MoreSettingVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface MoreSettingVC ()<UITableViewDelegate,UITableViewDataSource, UMSocialUIDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
@@ -34,11 +34,17 @@
 - (void)initUI
 {
     [super initUI];
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 #pragma mark - share
 - (void)shareAction {
@@ -53,7 +59,7 @@
                                      shareImage:[UIImage imageNamed:@"icon-60@2x.png"]
                                 shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToSms,UMShareToWechatTimeline,nil]
                                        delegate:nil];
-    [UMSocialConfig setFinishToastIsHidden:YES position:UMSocialiToastPositionCenter];
+    //[UMSocialConfig setFinishToastIsHidden:YES position:UMSocialiToastPositionCenter];
 
 }
 
@@ -249,19 +255,8 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
+#pragma mark - UMSocial delegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
