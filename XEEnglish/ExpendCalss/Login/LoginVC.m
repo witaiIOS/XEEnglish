@@ -85,8 +85,11 @@
     }else{
         //密码加密之后上传
         NSString *md5String = [NSString md5:self.codeTextField.text];
-    
+        
+        [self showHudWithMsg:@"登陆中..."];
         [[XeeService sharedInstance] loginWithPhoneNumber:self.phoneTextField.text andPassword:md5String andBlock:^(NSDictionary *result, NSError *error) {
+            [self hideHud];
+            
             if (!error) {
                 
                 NSNumber *r = result[@"result"];
