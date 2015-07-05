@@ -101,7 +101,9 @@
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 NSLog(@"info:%@",result[@"resultInfo"]);
-                _tableList1 = result[@"resultInfo"];
+                NSDictionary *resultInfoDic = result[@"resultInfo"];
+                _tableList1 = resultInfoDic[@"data"];
+                //NSLog(@"list:%@",_tableList1);
                 
                 [self.tableView1 reloadData];
             }
