@@ -85,10 +85,33 @@
  
 }
 
+- (void)initUI{
+    
+    [super initUI];
+    
+    UIButton *servicePhoneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [servicePhoneBtn setFrame:CGRectMake(kScreenWidth-40, 17, 30, 30)];
+    [servicePhoneBtn setImage:[UIImage imageNamed:@"s_phone.png"] forState:UIControlStateNormal];
+    [servicePhoneBtn addTarget:self action:@selector(servicePhoneBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *servicePhoneBarBtn = [[UIBarButtonItem alloc] initWithCustomView:servicePhoneBtn];
+    self.navigationItem.rightBarButtonItem = servicePhoneBarBtn;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - MyAction
+
+- (void)servicePhoneBtnClicked{
+    
+    //呼叫
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://8008808888"]];
+}
+
+
 
 #pragma mark - Table view data source
 
