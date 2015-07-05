@@ -33,12 +33,22 @@
     self.tableView.delegate = self;
     self.tableView.tableFooterView = [self footView];
     [self.view addSubview:self.tableView];
+    
+    //默认选中支付宝支付
+    NSIndexPath *ip=[NSIndexPath indexPathForRow:0 inSection:1];
+    [self.tableView selectRowAtIndexPath:ip animated:YES scrollPosition:UITableViewScrollPositionBottom];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - IBAction
+- (void)nextBtnClicked:(id)sender {
+    
+}
+
+#pragma mark - tableView footView
 
 - (UIView *)footView{
     
@@ -51,6 +61,8 @@
     [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [nextBtn setBackgroundColor:[UIColor orangeColor]];
     [nextBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    
+    [nextBtn addTarget:self action:@selector(nextBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     [view addSubview:nextBtn];
     
