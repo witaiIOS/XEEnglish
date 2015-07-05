@@ -173,6 +173,7 @@
 		A63A0A831B2D1BFF003D3852 /* chekbox.png in Resources */ = {isa = PBXBuildFile; fileRef = A63A0A811B2D1BFF003D3852 /* chekbox.png */; };
 		A64F3E4A1B44158300E6E99B /* NSString+md5.m in Sources */ = {isa = PBXBuildFile; fileRef = A64F3E491B44158300E6E99B /* NSString+md5.m */; };
 		A6647CC01B270E9B00D2DC57 /* course7.png in Resources */ = {isa = PBXBuildFile; fileRef = A6647CBF1B270E9B00D2DC57 /* course7.png */; };
+		A68C52DD1B4918CA00FCC916 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68C52DC1B4918CA00FCC916 /* AssetsLibrary.framework */; };
 		A6A9442C1B2E74B500AF304F /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A944291B2E74B500AF304F /* ico_make.png */; };
 		A6A9442D1B2E74B500AF304F /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9442B1B2E74B500AF304F /* JSDropDownMenu.m */; };
 		A6B1CED91B1C62D400100E9F /* ChangePassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CECA1B1C62D400100E9F /* ChangePassWordVC.m */; };
@@ -501,6 +502,7 @@
 		A64F3E481B44158300E6E99B /* NSString+md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+md5.h"; sourceTree = "<group>"; };
 		A64F3E491B44158300E6E99B /* NSString+md5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+md5.m"; sourceTree = "<group>"; };
 		A6647CBF1B270E9B00D2DC57 /* course7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course7.png; sourceTree = "<group>"; };
+		A68C52DC1B4918CA00FCC916 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		A6A944291B2E74B500AF304F /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
 		A6A9442A1B2E74B500AF304F /* JSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropDownMenu.h; sourceTree = "<group>"; };
 		A6A9442B1B2E74B500AF304F /* JSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropDownMenu.m; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A68C52DD1B4918CA00FCC916 /* AssetsLibrary.framework in Frameworks */,
 				A6284D761B105F0100EFF820 /* libxml2.dylib in Frameworks */,
 				A6DA3E2A1B44D919005850EB /* libSocialWechat.a in Frameworks */,
 				A6DA3E2B1B44D919005850EB /* libWeChatSDK.a in Frameworks */,
@@ -850,6 +853,7 @@
 		A6284CC01B10592100EFF820 = {
 			isa = PBXGroup;
 			children = (
+				A68C52DC1B4918CA00FCC916 /* AssetsLibrary.framework */,
 				A6284D751B105F0100EFF820 /* libxml2.dylib */,
 				A6284CF21B105E5600EFF820 /* AppConfig */,
 				A6284CF61B105E5600EFF820 /* Common */,

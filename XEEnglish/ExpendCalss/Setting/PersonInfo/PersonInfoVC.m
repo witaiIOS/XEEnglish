@@ -17,6 +17,8 @@
 
 #import "XeeService.h"
 
+#import <AssetsLibrary/AssetsLibrary.h>
+
 @interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeTNameAndDomicileDelegate,SettingBirthdayDelegate,SettingSignatureDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *keepBtn;
@@ -103,6 +105,8 @@
     [self.tableView addSubview:self.keepBtn];
 }
 
+#pragma mark - action
+
 - (void)keepBtnAction:(id)sender
 {
     [self modifyUser];
@@ -133,7 +137,10 @@
         imageWeb = self.personImageBase64Coder;
          //NSLog(@"coder:%@",self.personImageBase64Coder);
     }
+    
     //NSLog(@"addr:%@",self.myAddr );
+#warning   nickName
+    //NSString *nickName = [self.netName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:self.netName andSex:@"null" andBirthday:self.myBirthday andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:self.myAddr andQq:@"null" andEmail:@"null" andMemo:self.mySignature andRegionalId:userInfoDic[uUserRegionalId] andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             NSNumber *isResult = result[@"result "];
@@ -491,7 +498,7 @@
 #pragma mark - UIImagePickerController Delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
-    UIImage *myImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    /*UIImage *myImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     //设置当前日期时间为图片名字
     NSDate *imageDate = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -514,7 +521,41 @@
     //NSLog(@"coder:%@",self.personImageBase64Coder);
     //self.personImage = myImage;
     //[self.tableView reloadData];
+    [picker dismissViewControllerAnimated:YES completion:nil];*/
+    
+    
+    
+   /* NSURL *imageURL = [info valueForKey:UIImagePickerControllerReferenceURL];
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    [library assetForURL:imageURL resultBlock:^(ALAsset *asset) {
+        
+        NSString *imageName = asset.defaultRepresentation.filename;
+        
+        if (!imageName) {
+            
+            NSDate *imageDate = [NSDate date];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            imageName = [NSString stringWithFormat:@"%@.png",[dateFormatter stringFromDate:imageDate]];
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];*/
+    
     [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    self.personImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    
+    NSData *imageData = UIImageJPEGRepresentation(self.personImage, 0.2);
+    
+    NSData *imageBase64Data = [GTMBase64 encodeData:imageData];
+    //获取编码后的图片，准备上传时用
+    self.personImageBase64Coder = [[NSString alloc] initWithData:imageBase64Data encoding:NSUTF8StringEncoding];
+    //编辑了图像
+    self.isPhotoEdit = @"1";
+    
+    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
@@ -526,7 +567,7 @@
 
 - (void)saveImage:(UIImage *)currentImage withName:(NSString *)imageName
 {
-    NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.5);
+    NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.2);
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imageName];
     [imageData writeToFile:fullPath atomically:NO];
 }
