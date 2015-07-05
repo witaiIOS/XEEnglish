@@ -27,7 +27,7 @@
 - (void)initUI
 {
     [super initUI];
-    self.myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    self.myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
     self.myWebView.delegate = self;
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:@"http://www.hao123.com"]];

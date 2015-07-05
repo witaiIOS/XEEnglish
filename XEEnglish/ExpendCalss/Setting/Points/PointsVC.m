@@ -33,7 +33,7 @@
     
     self.exchangeRecordArray = [NSMutableArray array];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, kScreenWidth, kScreenHeight-40) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40+64, kScreenWidth, kScreenHeight-40-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
