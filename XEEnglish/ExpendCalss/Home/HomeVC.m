@@ -108,10 +108,8 @@
 - (void)servicePhoneBtnClicked{
     
     //呼叫
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://8008808888"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt://4000999027"]];
 }
-
-
 
 #pragma mark - Table view data source
 
