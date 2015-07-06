@@ -38,8 +38,11 @@
     
     BOOL isDateEnd = [earlier_date isEqualToDate:nowDate];
     
+    NSString *current_sum = [NSString stringWithFormat:@"%@",self.activityInfo[@"sum_current"]];
+    NSString *max_sum = [NSString stringWithFormat:@"%@",self.activityInfo[@"sum_max"]];
+    
     //判断，人数满了之后将按钮置灰
-    if ([self.activityInfo[@"sum_current"] isEqualToString:self.activityInfo[@"sum_max"]]||isDateEnd) {
+    if ([current_sum isEqualToString:max_sum]||isDateEnd) {
         [self.reserveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self.reserveBtn setBackgroundColor:[UIColor grayColor]];
         self.reserveBtn.enabled = NO;

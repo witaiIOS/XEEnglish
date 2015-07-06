@@ -100,7 +100,7 @@
             
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
-                NSLog(@"info:%@",result[@"resultInfo"]);
+                //NSLog(@"info:%@",result[@"resultInfo"]);
                 NSDictionary *resultInfoDic = result[@"resultInfo"];
                 _tableList1 = resultInfoDic[@"data"];
                 //NSLog(@"list:%@",_tableList1);
@@ -171,6 +171,8 @@
         cell.cellEdge = 10;
         cell.delegate = self;
         cell.activityInfo = _tableList1[indexPath.section];
+        //NSLog(@"list:%@",self.tableList1);
+        //NSLog(@"info:%@",cell.activityInfo);
                 
         return cell;
         
