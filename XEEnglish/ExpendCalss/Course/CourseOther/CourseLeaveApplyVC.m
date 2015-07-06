@@ -144,7 +144,7 @@
     
     [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseLeaveInfoDic[@"signon_id"] andRemark:self.leaveExplainLabel.text andType:@"0" andApplyId:@"null" andCreateTime:@"null" andStatus:@"null" andTeacherId:@"null" andCheckTime:@"null" andCheckRemark:@"null" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         
         if (!error) {
             

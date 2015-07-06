@@ -148,7 +148,7 @@
             if (isResult.integerValue == 0) {
                 
                 NSDictionary *resultInfoDic = result[@"resultInfo"];
-                NSLog(@"info:%@",resultInfoDic);
+                //NSLog(@"info:%@",resultInfoDic);
                 [UIFactory showAlert:@"操作成功"];
                 //userInfoDic[uUserPhoto] = resultInfoDic[@"photo"];
                 self.isPhotoEdit = @"0";

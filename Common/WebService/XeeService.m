@@ -219,7 +219,7 @@
     AFHTTPRequestOperation *operation = [WebServiceOpration getCourseCategoryAge];
     
     [self getResponseWithOpration:operation andXmlKey:@"GetCourseCategoryAgeResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
-        NSLog(@"result:%@",result);
+        //NSLog(@"result:%@",result);
         if (block) {
             block(result,error);
         }

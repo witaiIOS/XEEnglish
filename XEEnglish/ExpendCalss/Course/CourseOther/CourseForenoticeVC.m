@@ -81,7 +81,7 @@
     
     [[XeeService sharedInstance] getCourseDetailByCourseId:self.courseLeaveInfoDic[@"course_id"] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
-            NSLog(@"result:%@",result);
+            //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 NSDictionary *courseInfo = result[@"resultInfo"];

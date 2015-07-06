@@ -14,7 +14,7 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    NSLog(@"giftInfoDic:%@",self.giftInfoDic);
+    //NSLog(@"giftInfoDic:%@",self.giftInfoDic);
     [self.giftImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,self.giftInfoDic[@"pic_url"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
     
     self.giftName.text = self.giftInfoDic[@"name"];

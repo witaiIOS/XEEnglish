@@ -114,7 +114,7 @@
         //NSLog(@"result:%@",result);
         
         if (!error) {
-            NSLog(@"result:%@",result);
+            //NSLog(@"result:%@",result);
             
             NSNumber *isResult = result[@"result"];
             
@@ -137,11 +137,11 @@
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
     if (tableView == self.activityTableView) {
-        NSLog(@"activityArray:%li",(unsigned long)self.activityArray.count);
+        //NSLog(@"activityArray:%li",(unsigned long)self.activityArray.count);
         return [self.activityArray count];
     }
     else if (tableView == self.bookSiteTableView){
-        NSLog(@"bookSiteArray:%li",(unsigned long)self.bookSiteArray.count);
+        //NSLog(@"bookSiteArray:%li",(unsigned long)self.bookSiteArray.count);
         return [self.bookSiteArray count];
     }
     else{

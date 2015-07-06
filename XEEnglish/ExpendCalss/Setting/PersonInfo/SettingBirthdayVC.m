@@ -31,7 +31,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
      self.myDate =  [dateFormatter stringFromDate:select];
     
-    NSLog(@"%@",self.myDate);
+    //NSLog(@"%@",self.myDate);
 }
 
 

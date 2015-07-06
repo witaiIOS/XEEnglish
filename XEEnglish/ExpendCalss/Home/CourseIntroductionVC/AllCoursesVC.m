@@ -91,11 +91,11 @@
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
-                NSLog(@"resultInfo:%@",result[@"resultInfo"]);
+                //NSLog(@"resultInfo:%@",result[@"resultInfo"]);
                 //请求到数据后设置两个列表的数据信息
                 [self getCoursesAndAgesInfo:result[@"resultInfo"]];
-                NSLog(@"course:%@",self.coursesArray);
-                NSLog(@"age:%@",self.ageGroupArray);
+                //NSLog(@"course:%@",self.coursesArray);
+                //NSLog(@"age:%@",self.ageGroupArray);
                 
                 //请求完数据之后才设置列表的数据源和代理方法
                 self.menu.dataSource = self;
