@@ -139,7 +139,7 @@
     }
     
     //NSLog(@"addr:%@",self.myAddr );
-#warning   nickName
+//#warning   nickName
     //NSString *nickName = [self.netName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:self.netName andSex:@"null" andBirthday:self.myBirthday andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:self.myAddr andQq:@"null" andEmail:@"null" andMemo:self.mySignature andRegionalId:userInfoDic[uUserRegionalId] andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
@@ -147,7 +147,7 @@
             
             if (isResult.integerValue == 0) {
                 
-                NSDictionary *resultInfoDic = result[@"resultInfo"];
+                //NSDictionary *resultInfoDic = result[@"resultInfo"];
                 //NSLog(@"info:%@",resultInfoDic);
                 [UIFactory showAlert:@"操作成功"];
                 //userInfoDic[uUserPhoto] = resultInfoDic[@"photo"];
