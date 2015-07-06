@@ -91,7 +91,8 @@
             
             if (isResult.integerValue == 0) {
                 //NSLog(@"info:%@",result[@"resultInfo"]);
-                self.activityArray = result[@"resultInfo"];
+                NSDictionary *activityDic = result[@"resultInfo"];
+                self.activityArray = activityDic[@"data"];
                 //NSLog(@"activityArray:%@",self.activityArray);
                 [self.activityTableView reloadData];
                 
