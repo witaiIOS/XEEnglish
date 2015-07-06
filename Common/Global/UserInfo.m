@@ -50,13 +50,26 @@
 
 - (void)setUserInfoDicWithWebServiceResult:(NSDictionary *)result {
     //NSLog(@"result:%@",result);
-    NSDictionary *resultInfo = result[@"resultInfo"];
+    NSDictionary *resultInfoDic = result[@"resultInfo"];
+    NSDictionary *resultInfo = [self filterNullForDictionary:resultInfoDic];
     NSDictionary *userDic = @{uIslogin:result[@"result"], uUserInfoKey:@{uUserId:resultInfo[@"parent_id"],uUserToken:resultInfo[@"token"], uUserName:resultInfo[@"name"], uPhoneNumber:resultInfo[@"mobile"], uPassword:resultInfo[@"password"],uUserRegionalId:resultInfo[@"regional_id"],uUserBirthday:resultInfo[@"birthday" ],uUserAddr:resultInfo[@"addr"],uUserInvitationCode:resultInfo[@"invitation_code"],uUserMemo:resultInfo[@"memo"],uUserPhoto:resultInfo[@"photo"]}};
     //NSLog(@"photo:%@",resultInfo[@"photo"]);
     [self setUserInfoDic:userDic];
 }
 
-
+- (NSDictionary *)filterNullForDictionary:(NSDictionary *)dic {
+    
+    NSMutableDictionary *filterDic = [dic mutableCopy];
+    NSArray *keys = [filterDic allKeys];
+    
+    for (NSString *key in keys) {
+        if ([filterDic[key] isKindOfClass:[NSNull class]]) {
+            [filterDic setObject:@"" forKey:key];
+        } ;
+    }
+    
+    return filterDic;
+}
 
 
 @end
