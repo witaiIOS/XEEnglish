@@ -60,7 +60,7 @@
 - (void)initUI{
     
     [super initUI];
-    
+
     self.menu = [[JSDropDownMenu alloc] initWithOrigin:CGPointMake(0, 64) andHeight:45];
     self.menu.indicatorColor = RGBCOLOR(175, 175, 175);
     self.menu.separatorColor = RGBCOLOR(210, 210, 210);
@@ -68,7 +68,7 @@
     
     [self.view addSubview:self.menu];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 110, kScreenWidth, kScreenHeight-110) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 110, kScreenWidth, kScreenHeight-110) style:UITableViewStyleGrouped];
     
 //    self.tableView.dataSource = self;
 //    self.tableView.delegate = self;
@@ -306,12 +306,20 @@
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 1;
+    //NSLog(@"count:%li",self.requestCourseInfo.count);
+    
+    if((self.requestCourseInfo.count)%2 == 0){
+        return (self.requestCourseInfo.count)/2;
+    }
+    else{
+        return (self.requestCourseInfo.count)/2 +1;
+    }
+    
 }
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return (self.requestCourseInfo.count+1)/2;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -326,10 +334,10 @@
     
     cell.delegate = self;
     //NSLog(@"1111111111:%@",[self.requestCourseInfo objectAtIndex:2*(indexPath.row)]);
-    cell.serviceDic1 = [self.requestCourseInfo objectAtIndex:2*(indexPath.row)];
+    cell.serviceDic1 = [self.requestCourseInfo objectAtIndex:2*(indexPath.section)];
     //NSLog(@"11111:%@",cell.serviceDic1);
-    if ((2*(indexPath.row)+1) < self.requestCourseInfo.count) {
-        cell.serviceDic2 = [self.requestCourseInfo objectAtIndex:(2*(indexPath.row)+1)];
+    if ((2*(indexPath.section)+1) < self.requestCourseInfo.count) {
+        cell.serviceDic2 = [self.requestCourseInfo objectAtIndex:(2*(indexPath.section)+1)];
     }
     else{
         cell.serviceDic2 = nil;
@@ -340,7 +348,22 @@
 #pragma mark - UITableView Delegate
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 120;
+    return 120.0f;
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    if (section == 0) {
+        return 5.0f;
+    }
+    else{
+        return 1.0f;
+    }
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return 1.0f;
 }
 
 #pragma mark - HomeBtnCell delegate
