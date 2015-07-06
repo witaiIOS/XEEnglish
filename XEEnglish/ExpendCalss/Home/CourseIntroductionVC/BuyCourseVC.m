@@ -27,8 +27,11 @@
 
 @property (nonatomic, strong) NSString *subCoursename;//子课程名
 @property (nonatomic, assign) NSInteger subCourseNumeber;//子课程数量，用于做判断，没有子课程就隐藏那个cell
+@property (nonatomic, strong) NSDictionary *subCourseInfoDic;//子课程的信息；
+
 @property (nonatomic, strong) NSDictionary *schoolZone;//校区
 @property (nonatomic, strong) NSString *payCourseMethod;//付款方式
+
 
 @property (nonatomic, strong) NSString *inputCourseHours;//按课时购买时，输入的课时数
 @property (nonatomic, strong) NSString *priceTotal;//缴费金额
@@ -49,7 +52,7 @@
     
     [self initCourseValue];
     
-    
+    self.subCourseInfoDic = [[NSDictionary alloc] init];
     //网络请求查看子课程，如果没有子课程就隐藏课程分类的cell
     [self getCourseListByParentCourseId];
     
@@ -443,7 +446,7 @@
                 }
                 case 3:
                 {
-                    if(self.payMethodNumber == 3){
+                    if(self.superPayMethodNumber == 3){
                         PayCourseMethodVCViewController *vc = [[PayCourseMethodVCViewController alloc] init];
                         vc.delegate = self;
                         vc.selectedMethod = self.payCourseMethod;
@@ -580,11 +583,16 @@
 #pragma mark - SelectedCourseDelegate
 
 - (void)selectedCourse:(id)sender{
+    
+    self.subCourseInfoDic = sender;
+    
     NSDictionary *subCourseDic = sender;
     self.subCoursename = subCourseDic[@"title"];
     
     NSNumber *payMethod = subCourseDic[@"pay_type"];
-    self.payMethodNumber = payMethod.integerValue;
+    
+    self.superPayMethodNumber = payMethod.integerValue;//选定子课程就将子课程的付款方式来修改superPayMethodNumber
+    self.payMethodNumber = self.superPayMethodNumber;//将付款方式传给payMethodNumber
     if (self.payMethodNumber == 1) {
         self.priceHour = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];//获取课时价格
     }
@@ -617,11 +625,17 @@
     
     //返回的“按课时”购买时，清除“缴费金额”，此时还不知道缴费金额，有待计算
     if ([self.payCourseMethod isEqualToString:@"按课时"]){
-        self.priceTotal = @"";
+        
         self.payMethodNumber = 1;
+        //选定支付方式后，修改各个付款的值
+        self.priceHour = [NSString stringWithFormat:@"%@",self.subCourseInfoDic[@"price"]];//获取课时价格
+        self.priceTotal = @"";
     }
     else{
         self.payMethodNumber = 2;
+        //选定支付方式后，修改各个付款的值
+        self.priceSeries = [NSString stringWithFormat:@"%@",self.subCourseInfoDic[@"total_price"]];//获取整套价格
+        self.priceTotal = self.priceSeries;//获取整套价格时，改写缴费金额为整套价格，因为默认情况为按整套购买
     }
     [self.tableView reloadData];
 }

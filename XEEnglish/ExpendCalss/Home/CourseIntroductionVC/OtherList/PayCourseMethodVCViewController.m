@@ -27,7 +27,7 @@
     
     [super initUI];
     
-    self.methodArray = [NSArray arrayWithObjects:@"按全套",@"按课时", nil];
+    self.methodArray = [NSArray arrayWithObjects:@"按课时",@"按全套", nil];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;

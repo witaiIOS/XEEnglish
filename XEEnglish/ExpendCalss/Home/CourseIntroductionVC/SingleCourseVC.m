@@ -171,6 +171,7 @@
     vc.courseName = self.title;
     vc.parentCourseId = self.courseId;
     vc.payMethodNumber = self.payMethodNum;
+    vc.superPayMethodNumber = self.payMethodNum;
     vc.courseInfoDic = self.courseInfo;
     [self.navigationController pushViewController:vc animated:YES];
 }
