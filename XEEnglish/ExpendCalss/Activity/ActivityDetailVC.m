@@ -100,7 +100,7 @@
     footView.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:footView];
-    
+    NSLog(@"dic:%@",self.avtivitInfoDic);
     UILabel *personNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 100,20)];
     personNumLabel.font = [UIFont systemFontOfSize:12];
     personNumLabel.textAlignment = NSTextAlignmentLeft;
@@ -118,7 +118,9 @@
     [reserveBtn addTarget:self action:@selector(reserveBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     
     //判断，人数满了之后将按钮置灰
-    if ([self.avtivitInfoDic[@"sum_current"] isEqualToString:self.avtivitInfoDic[@"sum_max"]]) {
+    NSString *current_sum = [NSString stringWithFormat:@"%@",self.avtivitInfoDic[@"sum_current"]];
+    NSString *max_sum = [NSString stringWithFormat:@"%@",self.avtivitInfoDic[@"sum_max"]];
+    if ([current_sum isEqualToString:max_sum]) {
         [reserveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [reserveBtn setBackgroundColor:[UIColor grayColor]];
         reserveBtn.enabled = NO;
