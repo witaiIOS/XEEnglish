@@ -230,13 +230,13 @@
     
     //现在用的假数据，用真数据时再解除courseid的注释
     //NSDictionary *courseDic = self.courseList[self.currentCouseListIndex];
-    NSMutableArray *courseArray = studentDic[@"listCourse"];
-    NSDictionary *courseDic = courseArray[_currentCouseListIndex];
-    NSString *courseId = courseDic[@"course_id"];
+    //NSMutableArray *courseArray = studentDic[@"listCourse"];
+    //NSDictionary *courseDic = courseArray[_currentCouseListIndex];
+    //NSString *courseId = courseDic[@"course_id"];
     //NSLog(@"courseId:%@",courseId);
     
     
-    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:userInfoDic[uUserId] andStudentId:studentId andCourseId:courseId andSignon:@"" andSort:@"" andOrder:@"" andPageSize:200 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:userInfoDic[uUserId] andStudentId:studentId andCourseId:@"1" andSignon:@"" andSort:@"" andOrder:@"" andPageSize:200 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             
             //NSLog(@"getVStudentSourseScheduleSign result:%@",result);
