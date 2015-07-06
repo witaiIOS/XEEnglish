@@ -223,7 +223,7 @@
     static NSString *reuse2 = @"ListeningCourseInfoCell";
     static NSString *reuse3 = @"BuyCoursePaymentAmountCell";
     
-    //判断有没有子课程，没有就隐藏
+    
     if (indexPath.section == 0) {
         BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
         
@@ -234,7 +234,7 @@
             cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
             cell.cellEdge = 10;
         }
-        
+        //判断有没有子课程，没有就隐藏
         if (self.subCourseNumeber == 0) {
             if (indexPath.row == 0) {
                 cell.textLabel.text = @"课程名";

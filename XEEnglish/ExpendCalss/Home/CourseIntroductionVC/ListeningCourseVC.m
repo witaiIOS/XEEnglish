@@ -15,9 +15,14 @@
 #import "SubCourseListVC.h"
 #import "courseSchoolZoneVC.h"
 
+#import "XeeService.h"
+
 @interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate,CourseSchoolZoneDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSString *subCoursename;//子课程名
+@property (nonatomic, assign) NSInteger subCourseNumeber;//子课程数量，用于做判断，没有子课程就隐藏那个cell
+
+
 @property (nonatomic, strong) NSDictionary *schoolZone;//校区
 @end
 
@@ -67,6 +72,29 @@
     
 }
 
+#pragma mark -Web
+- (void)getCourseListByParentCourseId{
+    //应用时将@"1124" 假数据换成 self.parentCourseId
+    [[XeeService sharedInstance] getCourseListByParentCourseId:self.parentCourseId andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            //NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                NSDictionary *subCoursesDic = result[@"resultInfo"];
+                NSMutableArray *subCourseArray = subCoursesDic[@"listCourse"];
+                //子课程数量，用于做判断，没有子课程就隐藏那个cell
+                self.subCourseNumeber = [subCourseArray count];
+                //NSLog(@"count:%li",self.subCourseNumeber);
+                //                //付款方式的判断号，pay_type取值 1按课时价 2按整套价 3两者都可。
+                //                NSNumber *payMethed = subCoursesDic[@"pay_type"];
+                //                self.payMethodNumber = payMethed.integerValue;
+                
+                [self.tableView reloadData];
+            }
+        }
+    }];
+}
+
 
 #pragma mark - UITableView DataSource
 
@@ -78,7 +106,12 @@
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (section == 0) {
-        return 4;
+        if (self.subCourseNumeber == 0) {
+            return 3;
+        }
+        else{
+            return 4;
+        }   
     }
     else{
         return 2;
@@ -100,38 +133,70 @@
             cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
             cell.cellEdge = 10;
         }
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"课程名";
-            cell.detailTextLabel.text = self.courseName;
-            return cell;
-        }
-        else if (indexPath.row == 1)
-        {
-            cell.textLabel.text = @"课程分类";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.detailTextLabel.text = self.subCoursename;
-            return cell;
-        }
-        else if (indexPath.row == 2)
-        {
-            cell.textLabel.text = @"校区选择";
-            cell.detailTextLabel.text = self.schoolZone[@"department"];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            return cell;
-        }
-        else
-        {
-            ListeningCourseInfoCell *cell2 = [tableView dequeueReusableCellWithIdentifier:reuse2];
+        //判断有没有子课程，没有就隐藏
+        if (self.subCourseNumeber == 0){
             
-            if (cell2 == nil) {
-                cell2 = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse2];
-                cell2.cellEdge = 10;
+            if (indexPath.row == 0) {
+                cell.textLabel.text = @"课程名";
+                cell.detailTextLabel.text = self.courseName;
+                return cell;
             }
-
-            cell2.myLabel.text = @"购买课时";
-            return cell2;
+            else if (indexPath.row == 1)
+            {
+                cell.textLabel.text = @"校区选择";
+                cell.detailTextLabel.text = self.schoolZone[@"department"];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                return cell;
+            }
+            else
+            {
+                ListeningCourseInfoCell *cell2 = [tableView dequeueReusableCellWithIdentifier:reuse2];
+                
+                if (cell2 == nil) {
+                    cell2 = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse2];
+                    cell2.cellEdge = 10;
+                }
+                
+                cell2.myLabel.text = @"购买课时";
+                return cell2;
+            }
+            
         }
-        
+        else{
+            
+            if (indexPath.row == 0) {
+                cell.textLabel.text = @"课程名";
+                cell.detailTextLabel.text = self.courseName;
+                return cell;
+            }
+            else if (indexPath.row == 1)
+            {
+                cell.textLabel.text = @"课程分类";
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.detailTextLabel.text = self.subCoursename;
+                return cell;
+            }
+            else if (indexPath.row == 2)
+            {
+                cell.textLabel.text = @"校区选择";
+                cell.detailTextLabel.text = self.schoolZone[@"department"];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                return cell;
+            }
+            else
+            {
+                ListeningCourseInfoCell *cell2 = [tableView dequeueReusableCellWithIdentifier:reuse2];
+                
+                if (cell2 == nil) {
+                    cell2 = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse2];
+                    cell2.cellEdge = 10;
+                }
+                
+                cell2.myLabel.text = @"购买课时";
+                return cell2;
+            }
+            
+        }
         
     }
     else if (indexPath.section == 1){
@@ -188,11 +253,14 @@
         switch (indexPath.row) {
             case 1:
             {
-                SubCourseListVC *vc = [[SubCourseListVC alloc] init];
-                vc.delegate = self;
-                vc.selectedCourse = self.subCoursename;
-                vc.parentCourseId = self.parentCourseId;//传递父课程id
-                [self.navigationController pushViewController:vc animated:YES];
+                //有课程分类的就实现跳转
+                if (self.subCourseNumeber != 0) {
+                    SubCourseListVC *vc = [[SubCourseListVC alloc] init];
+                    vc.delegate = self;
+                    vc.selectedCourse = self.subCoursename;
+                    vc.parentCourseId = self.parentCourseId;//传递父课程id
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
                 break;
             }
             case 2:
