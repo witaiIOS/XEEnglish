@@ -106,7 +106,7 @@
     
     [self.courseView addSubview:cStringTotal];
     
-    self.courseTotal = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 20, 30)];
+    self.courseTotal = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 30, 30)];
     self.courseTotal.font = [UIFont systemFontOfSize:12];
     //self.courseTotal.text = @"48";
     self.courseTotal.textColor = [UIColor blackColor];
@@ -275,13 +275,13 @@
     
     //现在用的假数据，用真数据时再解除courseid的注释
     //NSDictionary *courseDic = self.courseList[self.currentCouseListIndex];
-    //NSMutableArray *courseArray = studentDic[@"listCourse"];
-    //NSDictionary *courseDic = courseArray[_currentCouseListIndex];
-    //NSString *courseId = courseDic[@"course_id"];
+    NSMutableArray *courseArray = studentDic[@"listCourse"];
+    NSDictionary *courseDic = courseArray[_currentCouseListIndex];
+    NSString *courseId = courseDic[@"course_id"];
     //NSLog(@"courseId:%@",courseId);
     
     [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:userInfoDic[uUserId] andStudentId:studentId andCourseId:@"1" andSignon:self.courseIsSignon andSort:@"" andOrder:@"" andPageSize:200 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:userInfoDic[uUserId] andStudentId:studentId andCourseId:courseId andSignon:self.courseIsSignon andSort:@"" andOrder:@"" andPageSize:200 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         if (!error) {
             
