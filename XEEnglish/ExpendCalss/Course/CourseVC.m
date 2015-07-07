@@ -35,8 +35,8 @@
 @property (strong, nonatomic) UIView *courseView;//上课信息的View
 @property (strong, nonatomic) UILabel *courseTotal;//总课时
 @property (strong, nonatomic) UILabel *courseComplete;//已完成课时
-@property (strong, nonatomic) UIButton *courseLeave;//请假次数，需完成页面跳转
-@property (strong, nonatomic) UIButton *courseAbsent;//缺课次数，需完成跳转
+@property (strong, nonatomic) UILabel *courseLeave;//请假次数，需完成页面跳转
+@property (strong, nonatomic) UILabel *courseAbsent;//缺课次数，需完成跳转
 //is_signon取值 “时间已经过了： 1已上课且已签到 2 请假 3 缺课  时间没有过： 0正常 4  延迟 5 暂停”
 @property (strong, nonatomic) NSString *courseIsSignon;//课程状态
 
@@ -44,8 +44,8 @@
 @property (strong, nonatomic) NSMutableArray *studentCoursesArray;
 @property (strong, nonatomic) UITableView *courseTableView;//课表
 
-- (void)courseLeaveToLeaveVC;//跳转到请假界面
-- (void)courseAbsentToAbsentVC;//跳转到缺课界面
+//- (void)courseLeaveToLeaveVC;//跳转到请假界面
+//- (void)courseAbsentToAbsentVC;//跳转到缺课界面
 
 @end
 
@@ -146,14 +146,18 @@
     
     [self.courseView addSubview:cStringLeave];
     
-    self.courseLeave = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.courseLeave setFrame:CGRectMake(200, 9, 30, 20)];
-    //[self.courseLeave setTitle:@"0" forState:UIControlStateNormal];
-    [self.courseLeave setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    [self.courseLeave.titleLabel setFont:[UIFont systemFontOfSize:12]];
-    [self.courseLeave addTarget:self action:@selector(courseLeaveToLeaveVC) forControlEvents:UIControlEventTouchUpInside];
+    self.courseLeave = [[UILabel alloc] initWithFrame:CGRectMake(200, 9, 30, 20)];;
+    self.courseLeave.font = [UIFont systemFontOfSize:12];
+    self.courseLeave.textAlignment = NSTextAlignmentCenter;
+    self.courseLeave.textColor = [UIColor orangeColor];
     
     [self.courseView addSubview:self.courseLeave];
+    
+    UIButton *courseLeaveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [courseLeaveBtn setFrame:CGRectMake(160, 0, 60, 40)];
+    [courseLeaveBtn setBackgroundColor:[UIColor clearColor]];
+    [courseLeaveBtn addTarget:self action:@selector(courseLeaveBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.courseView addSubview:courseLeaveBtn];
     
     UILabel *cLeaveLine = [[UILabel alloc] initWithFrame:CGRectMake(210, 30, 10, 1)];
     cLeaveLine.backgroundColor = [UIColor grayColor];
@@ -167,14 +171,18 @@
     
     [self.courseView addSubview:cStringAbsent];
     
-    self.courseAbsent = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.courseAbsent setFrame:CGRectMake(270, 9, 30, 20)];
-    //[self.courseAbsent setTitle:@"0" forState:UIControlStateNormal];
-    [self.courseAbsent setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    [self.courseAbsent.titleLabel setFont:[UIFont systemFontOfSize:12]];
-    [self.courseAbsent addTarget:self action:@selector(courseAbsentToAbsentVC) forControlEvents:UIControlEventTouchUpInside];
+    self.courseAbsent = [[UILabel alloc] initWithFrame:CGRectMake(270, 9, 30, 20)];;
+    self.courseAbsent.font = [UIFont systemFontOfSize:12];
+    self.courseAbsent.textAlignment = NSTextAlignmentCenter;
+    self.courseAbsent.textColor = [UIColor orangeColor];
     
     [self.courseView addSubview:self.courseAbsent];
+    
+    UIButton *courseAbsentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [courseAbsentBtn setFrame:CGRectMake(240, 0, 60, 40)];
+    [courseAbsentBtn setBackgroundColor:[UIColor clearColor]];
+    [courseAbsentBtn addTarget:self action:@selector(courseAbsentBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.courseView addSubview:courseAbsentBtn];
     
     UILabel *cAbsentLine = [[UILabel alloc] initWithFrame:CGRectMake(280, 30, 10, 1)];
     cAbsentLine.backgroundColor = [UIColor grayColor];
@@ -193,34 +201,34 @@
 - (void)courseTotalBtnClicked{
     //IsSignon传空，查询所有的值
     self.courseIsSignon = @"";
-    [self getVStudentSourseScheduleSign];
+    [self getVStudentSourseScheduleSign:2];
 }
 //已完成课程
 - (void)courseCompleteBtnClicked{
 #warning change @"1"
     //IsSignon传过时的标记，查询已完成的课程
     self.courseIsSignon = @"1";
-    [self getVStudentSourseScheduleSign];
+    [self getVStudentSourseScheduleSign:2];
 }
 
 //跳转到请假界面
-- (void)courseLeaveToLeaveVC{
+- (void)courseLeaveBtnClicked{
 //    CourseLeaveVC *vc = [[CourseLeaveVC alloc] init];
 //    vc.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:vc animated:YES];
     //IsSignon传2，查询请假
     self.courseIsSignon = @"2";
-    [self getVStudentSourseScheduleSign];
+    [self getVStudentSourseScheduleSign:2];
 }
 
 //跳转到缺课界面
-- (void)courseAbsentToAbsentVC{
+- (void)courseAbsentBtnClicked{
 //    CourseAbsentVC *vc = [[CourseAbsentVC alloc] init];
 //    vc.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:vc animated:YES];
     //IsSignon传3，查询缺课
     self.courseIsSignon = @"3";
-    [self getVStudentSourseScheduleSign];
+    [self getVStudentSourseScheduleSign:2];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -242,7 +250,7 @@
                 self.students = result[@"resultInfo"];
                 _menu.dataSource = self;
                 _menu.delegate = self;
-                [self getVStudentSourseScheduleSign];
+                [self getVStudentSourseScheduleSign:1];
             }
             else{
                 [UIFactory showAlert:@"未知错误"];
@@ -254,7 +262,8 @@
     }];
 }
 
-- (void)getVStudentSourseScheduleSign{
+//changeTitleMark为1时修改courseView中的值，为2时不修改
+- (void)getVStudentSourseScheduleSign:(NSInteger )changeTitleMark{
     //NSString *studentId = self.students[self.currentStudentsIndex][@"student_id"];
     //NSString *courseId = self.courseList[self.currentCouseListIndex][@"course_id"];
     NSDictionary *studentDic = self.students[self.currentStudentsIndex];
@@ -286,8 +295,11 @@
                 //NSLog(@"aaaaaaa:%@",studentCourseDic[@"student_id"]);
                 //NSLog(@"aaaaaaa:%@",studentCourseDic[@"data"]);
                 
-                //获取当前学生的当前课程 上课的相关信息
-                [self getCourseViewInfo:studentCourseDic];
+                //changeTitleMark为1时修改courseView中的值，为2时不修改
+                if (changeTitleMark == 1) {
+                    //获取当前学生的当前课程 上课的相关信息
+                    [self getCourseViewInfo:studentCourseDic];
+                }
                 //获取当前学生当前课程 课表的信息数据，并刷新课表
                 self.studentCoursesArray = studentCourseDic[@"data"];
                 //NSLog(@"aaaaaaa:%li",[self.studentCoursesArray count]);
@@ -302,8 +314,8 @@
     //NSLog(@"studentCourseDic:%@",studentCourseDic);
     self.courseTotal.text = studentCourseDic[@"totalCount"];
     self.courseComplete.text = studentCourseDic[@"unit_count_over"];
-    [self.courseLeave setTitle:studentCourseDic[@"unit_count_leave"] forState:UIControlStateNormal];
-    [self.courseAbsent setTitle:studentCourseDic[@"unit_count_miss"] forState:UIControlStateNormal];
+    self.courseLeave.text = studentCourseDic[@"unit_count_leave"];
+    self.courseAbsent.text = studentCourseDic[@"unit_count_miss"];
 }
 
 #pragma mark - JSDropDownMenu datasouce delegate
@@ -393,12 +405,12 @@
     if (indexPath.column == 0) {
         _currentStudentsIndex = indexPath.row;
         //点击更换学生后，重新发送请求刷新课表信息。
-        [self getVStudentSourseScheduleSign];
+        [self getVStudentSourseScheduleSign:1];
     }
     else if (indexPath.column == 1) {
         _currentCouseListIndex = indexPath.row;
         //点击更换课表后，中心发送请求刷新课表信息。
-        [self getVStudentSourseScheduleSign];
+        [self getVStudentSourseScheduleSign:1];
     }
 }
 
