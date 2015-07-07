@@ -166,6 +166,10 @@
                 NSMutableDictionary *tempUserDic = [userDic mutableCopy];
                 [tempUserDic setObject:tempUserInfoDic forKey:uUserInfoKey];
                 [[UserInfo sharedUser] setUserInfoDic:tempUserDic];
+                
+                //返回的isPhotoEdit，为空，必须重新赋0，表示没有编辑
+                self.isPhotoEdit = @"0";
+                
                 /*//userInfoDic[uUserPhoto] = resultInfoDic[@"photo"];
                 
                 //保存自己的token，因为返回的没有token；
