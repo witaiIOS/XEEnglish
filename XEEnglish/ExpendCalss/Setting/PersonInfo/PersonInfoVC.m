@@ -147,10 +147,24 @@
             
             if (isResult.integerValue == 0) {
                 
+                [UIFactory showAlert:@"操作成功"];
+                //////////////////////////////////////////////
                 NSDictionary *resultInfoDic = result[@"resultInfo"];
                 //NSLog(@"info:%@",resultInfoDic);
-                [UIFactory showAlert:@"操作成功"];
-                //userInfoDic[uUserPhoto] = resultInfoDic[@"photo"];
+                ////////////////////////////////////////////////////////
+            
+                NSMutableDictionary *tempUserInfoDic = [userInfoDic mutableCopy];
+                
+                [tempUserInfoDic setObject:resultInfoDic[@"photo"] forKey:uUserPhoto];
+                [tempUserInfoDic setObject:resultInfoDic[@"name"] forKey:uUserName];
+                [tempUserInfoDic setObject:resultInfoDic[@"addr"] forKey:uUserAddr];
+                [tempUserInfoDic setObject:resultInfoDic[@"birthday"] forKey:uUserBirthday];
+                [tempUserInfoDic setObject:resultInfoDic[@"memo"] forKey:uUserMemo];
+                
+                NSMutableDictionary *tempUserDic = [userDic mutableCopy];
+                [tempUserDic setObject:tempUserInfoDic forKey:uUserInfoKey];
+                [[UserInfo sharedUser] setUserInfoDic:tempUserDic];
+                /*//userInfoDic[uUserPhoto] = resultInfoDic[@"photo"];
                 
                 //保存自己的token，因为返回的没有token；
                 NSString *myToken = userInfoDic[uUserToken];
@@ -169,7 +183,7 @@
                 //NSLog(@"myInfo:%@",[[UserInfo sharedUser] getUserInfoDic]);
 //                NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,userInfoDic[uUserPhoto]]]];
 //                //NSLog(@"imagestr:%@",[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,userInfoDic[uUserPhoto]]);
-//                self.personImage = [UIImage imageWithData:data];//有图像就用有本地化的图像
+//                self.personImage = [UIImage imageWithData:data];//有图像就用有本地化的图像*/
                 
             }
             else{
