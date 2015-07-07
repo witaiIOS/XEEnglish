@@ -68,7 +68,7 @@
     
     [self.view addSubview:self.menu];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,110, kScreenWidth, kScreenHeight-110) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,110, kScreenWidth, kScreenHeight-110) style:UITableViewStylePlain];
     
 //    self.tableView.dataSource = self;
 //    self.tableView.delegate = self;
@@ -355,7 +355,7 @@
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
     if (section == 0) {
-        return 5.0f;
+        return 1.0f;
     }
     else{
         return 1.0f;
