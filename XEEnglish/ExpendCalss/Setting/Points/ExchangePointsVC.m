@@ -47,8 +47,9 @@
 
 #pragma mark - Web
 - (void)getGiftInfo{
-    
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getGiftAndBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         if (!error) {
             //NSLog(@"result:%@",result);
             

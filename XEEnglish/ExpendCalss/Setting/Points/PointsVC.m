@@ -33,7 +33,7 @@
     
     self.exchangeRecordArray = [NSMutableArray array];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40+64, kScreenWidth, kScreenHeight-40-64) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, kScreenWidth, kScreenHeight-40) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -87,8 +87,9 @@
     
 //    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
 //    NSDictionary *userInfoDic = userDic[uUserInfoKey];
-    
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getPointsWithPageSize:10 andPageIndex:1 andParentId:ceShiId andToken:ceShiToken andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         if (!error) {
             //NSLog(@"result:%@",result);
             

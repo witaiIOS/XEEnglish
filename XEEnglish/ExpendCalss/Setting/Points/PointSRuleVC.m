@@ -32,7 +32,7 @@
     
     self.ruleArray = [NSMutableArray array];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -49,8 +49,9 @@
 #pragma mark - Web
 
 - (void)getPointConfig{
-    
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getPointConfigAndBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         //NSLog(@"result:%@",result);
         if (!error) {
             
