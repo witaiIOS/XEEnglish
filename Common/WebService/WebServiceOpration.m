@@ -170,6 +170,17 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:AddSubcourseLeaveApply><web:json>{\"parent_id\":\"%@\", \"relation_id\":\"%@\", \"remark\":\"%@\", \"type\":\"%@\", \"apply_id\":%@, \"create_time\":%@, \"status\":%@, \"teacher_id\":%@, \"check_time\":%@, \"check_remark\": %@,\"token\":\"%@\"}</web:json></web:AddSubcourseLeaveApply>",parent_id,relation_id,remark,type,apply_id,create_time,status,teacher_id,check_time,check_remark,token]];
 }
 
+/**
+ 课程回顾
+ @param parent_id    注册id
+ @param owner_id   就是course_schedule_id
+ @param token
+ */
++ (AFHTTPRequestOperation *)getPhotoByCourseScheduleIdWithParentId:(NSString *)parent_id  andOwnerId:(NSString *)owner_id andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPhotoByCourseScheduleId><web:json>{\"owner_id\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetPhotoByCourseScheduleId>",owner_id,parent_id,token]];
+}
+
 #pragma mark - 活动
 + (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId:(NSString *)parent_id andToken:(NSString *)token{
     

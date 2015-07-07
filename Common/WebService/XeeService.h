@@ -133,6 +133,13 @@
  */
 - (void)getVStudentSourseScheduleSignWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andCourseId:(NSString *)course_id andSignon:(NSString *)is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
+/**
+ 课程回顾
+ @param parent_id    注册id
+ @param owner_id   就是course_schedule_id
+ @param token
+ */
+- (void)getPhotoByCourseScheduleIdWithParentId:(NSString *)parent_id  andOwnerId:(NSString *)owner_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
 #pragma mark - 活动
 /**

@@ -314,6 +314,22 @@
     }];
 }
 
+/**
+ 课程回顾
+ @param parent_id    注册id
+ @param owner_id   就是course_schedule_id
+ @param token
+ */
+- (void)getPhotoByCourseScheduleIdWithParentId:(NSString *)parent_id  andOwnerId:(NSString *)owner_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getPhotoByCourseScheduleIdWithParentId:parent_id andOwnerId:owner_id andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetPhotoByCourseScheduleIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
 
 #pragma mark - 活动
 - (void)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result, NSError *error))block {

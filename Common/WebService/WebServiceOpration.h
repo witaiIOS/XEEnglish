@@ -157,6 +157,14 @@
  */
 + (AFHTTPRequestOperation *)addSubcourseLeaveApplyByParentId:(NSString *)parent_id andRelationId:(NSString *)relation_id andRemark:(NSString *)remark andType:(NSString *)type andApplyId:(NSString *)apply_id andCreateTime:(NSString *)create_time andStatus:(NSString *)status andTeacherId:(NSString *)teacher_id andCheckTime:(NSString *)check_time andCheckRemark:(NSString *)check_remark andToken:(NSString *)token;
 
+/**
+ 课程回顾
+ @param parent_id    注册id
+ @param owner_id   就是course_schedule_id
+ @param token
+ */
++ (AFHTTPRequestOperation *)getPhotoByCourseScheduleIdWithParentId:(NSString *)parent_id  andOwnerId:(NSString *)owner_id andToken:(NSString *)token;
+
 #pragma mark - 活动
 /**
  获取当前活动信息
