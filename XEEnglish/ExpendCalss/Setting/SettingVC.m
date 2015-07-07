@@ -59,7 +59,7 @@
     [super initUI];
     
     
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-45) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-45) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.tableHeaderView = [self tableHeaderView];
@@ -100,8 +100,9 @@
     
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
-    
+    [self showHud];
     [[XeeService sharedInstance] signWithParentId:userInfoDic[uUserId] andPlatform_type_id:@"202" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         if (!error) {
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
@@ -239,8 +240,9 @@
     
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
-    
+    [self showHudOnlyMsg:@"载入信息..."];
     [[XeeService sharedInstance] getMyInfoWithParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         if (!error) {
             //NSLog(@"result:%@",result);
             
