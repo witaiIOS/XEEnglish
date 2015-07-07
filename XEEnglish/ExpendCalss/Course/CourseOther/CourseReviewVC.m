@@ -7,14 +7,13 @@
 //
 
 #import "CourseReviewVC.h"
+#import "CourseReviewCell.h"
+#import "XeeService.h"
 
-@interface CourseReviewVC ()<UIWebViewDelegate>
+@interface CourseReviewVC ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic, strong) UIWebView *courseWeb;
-
-@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
-
-//@property (nonatomic, strong) NSString *webString;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *coursePhotosArray;
 
 @end
 
@@ -35,13 +34,16 @@
     
     [super initUI];
     
+    [self getPhotoByCourseScheduleId];
+    
     //NSLog(@"course:%@",self.courseLeaveInfoDic);
+    self.coursePhotosArray = [[NSMutableArray alloc] init];
     
-    self.courseWeb = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64)];
-    self.courseWeb.delegate = self;
-    self.courseWeb.scalesPageToFit = YES;
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-60) style:UITableViewStyleGrouped];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
-    [self.view addSubview:self.courseWeb];
+    [self.view addSubview:self.tableView];
     
     UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight-60, kScreenWidth, 60)];
     footView.backgroundColor = [UIColor whiteColor];
@@ -61,9 +63,8 @@
     
 }
 
+
 #pragma mark - My Action
-
-
 
 - (void)commentBtnClicked{
     
@@ -72,44 +73,75 @@
     //    [self.navigationController pushViewController:vc animated:YES];
 }
 
-#pragma mark - UIWebView Delegate
-- (void)webViewDidStartLoad:(UIWebView *)webView{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-    view.tag = 108;
-    view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:view];
+#pragma mark - Web
+- (void)getPhotoByCourseScheduleId{
     
-    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-    self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-    self.activityIndicator.center = self.view.center;
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
-    [view addSubview:self.activityIndicator];
+    //NSLog(@"courseInfo:%@",self.courseLeaveInfoDic);
+    NSString *courseScheduleId = self.courseLeaveInfoDic[@"course_schedule_id"];
+    [self showHudWithMsg:@"载入中..."];
+    [[XeeService sharedInstance] getPhotoByCourseScheduleIdWithParentId:userInfoDic[uUserId] andOwnerId:@"2362" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            
+            if (isResult.integerValue == 0) {
+                self.coursePhotosArray = result[@"resultInfo"];
+                //NSLog(@"info:%@",self.coursePhotosArray);
+                [self.tableView reloadData];
+            }
+        }
+    }];
     
-    [self.activityIndicator startAnimating];
     
-}
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-    
-    [self.activityIndicator stopAnimating];
-    UIView *view = (UIView *)[self.view viewWithTag:108];
-    [view removeFromSuperview];
-    
-}
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    
-    [self.activityIndicator stopAnimating];
-    UIView *view = (UIView *)[self.view viewWithTag:108];
-    [view removeFromSuperview];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+#pragma mark - UITableView DataSource
+- (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return self.coursePhotosArray.count;
 }
-*/
+- (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *reuse = @"CourseReviewVCCell";
+    
+    CourseReviewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
+    
+    if (cell == nil) {
+        cell = [[CourseReviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+    }
+    cell.cellEdge = 10;
+    cell.coursePhotoDic = self.coursePhotosArray[indexPath.section];
+    NSLog(@"dic:%@",cell.coursePhotoDic);
+    return cell;
+}
+
+
+#pragma mark - UITableView Delegate
+- (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 180.0f;
+    
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 5.0f;
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return 5.0f;
+}
+
 
 @end
