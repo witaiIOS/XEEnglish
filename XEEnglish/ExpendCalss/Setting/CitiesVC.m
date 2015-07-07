@@ -28,7 +28,7 @@
 //    self.citiesArray = array;
     [self getCityInfo];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -42,9 +42,9 @@
 
 #pragma mark - Web
 - (void)getCityInfo{
-    
+    [self showHudOnlyMsg:@"载入中..."];
     [[XeeService sharedInstance] getCityWithBlock:^(NSDictionary *result, NSError *error) {
-        
+        [self hideHud];
         if (!error) {
             NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
