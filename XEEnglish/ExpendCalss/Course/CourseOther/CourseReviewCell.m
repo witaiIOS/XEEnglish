@@ -13,10 +13,10 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    NSLog(@"info:%@",self.coursePhotoDic);
+    
     if (self) {
         self.courseimage = [[UIImageView alloc] initWithFrame:self.frame];
-        
+        NSLog(@"info:%@",self.coursePhotoDic);
         [self.courseimage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,self.coursePhotoDic[@"pic_url"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
         
         [self.contentView addSubview:self.courseimage];

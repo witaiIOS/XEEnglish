@@ -37,7 +37,7 @@
     [self getPhotoByCourseScheduleId];
     
     //NSLog(@"course:%@",self.courseLeaveInfoDic);
-    self.coursePhotosArray = [[NSMutableArray alloc] init];
+    //self.coursePhotosArray = [[NSMutableArray alloc] init];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-60) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
@@ -79,8 +79,8 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
-    //NSLog(@"courseInfo:%@",self.courseLeaveInfoDic);
-    NSString *courseScheduleId = self.courseLeaveInfoDic[@"course_schedule_id"];
+    NSLog(@"courseInfo:%@",self.courseLeaveInfoDic);
+    //NSString *courseScheduleId = self.courseLeaveInfoDic[@"course_schedule_id"];
     [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getPhotoByCourseScheduleIdWithParentId:userInfoDic[uUserId] andOwnerId:@"2362" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
@@ -89,9 +89,13 @@
             
             if (isResult.integerValue == 0) {
                 self.coursePhotosArray = result[@"resultInfo"];
-                //NSLog(@"info:%@",self.coursePhotosArray);
+                NSLog(@"info:%@",self.coursePhotosArray);
                 [self.tableView reloadData];
+            }else{
+                [UIFactory showAlert:result[@"resultInfo"]];
             }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
         }
     }];
     
