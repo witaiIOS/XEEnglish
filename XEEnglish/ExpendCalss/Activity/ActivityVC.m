@@ -93,9 +93,10 @@
 
 #pragma mark - getActivityInfo
 - (void)getActivityInfo{
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getActivityInfoWithPageSize:10 andPageIndex:1 andParentId:0 andToken:@"" andBlock:^(NSDictionary *result, NSError *error) {
         //NSLog(@"result:%@",result);
-        
+        [self hideHud];
         if (!error) {
             
             NSNumber *isResult = result[@"result"];
@@ -238,8 +239,9 @@
     
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
-    
+    [self showHudWithMsg:@"上传中..."];
     [[XeeService sharedInstance] makeActivityWithParentId:userInfoDic[uUserId] andActivityId:activityId andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         if (!error) {
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {

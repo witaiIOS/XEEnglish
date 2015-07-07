@@ -48,8 +48,9 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //NSLog(@"token:%@",userToken);
-    
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getSchoolWithParentId:userInfoDic[uUserId] andCourseId:nil andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         if (!error) {
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
