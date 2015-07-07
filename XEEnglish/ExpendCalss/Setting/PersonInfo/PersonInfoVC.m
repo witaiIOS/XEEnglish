@@ -141,19 +141,35 @@
     //NSLog(@"addr:%@",self.myAddr );
 //#warning   nickName
     //NSString *nickName = [self.netName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:self.netName andSex:@"null" andBirthday:self.myBirthday andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:self.myAddr andQq:@"null" andEmail:@"null" andMemo:self.mySignature andRegionalId:userInfoDic[uUserRegionalId] andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:self.netName andSex:@"null" andBirthday:self.myBirthday andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:self.myAddr andQq:@"null" andEmail:@"null" andMemo:self.mySignature andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             NSNumber *isResult = result[@"result "];
             
             if (isResult.integerValue == 0) {
                 
-                //NSDictionary *resultInfoDic = result[@"resultInfo"];
+                NSDictionary *resultInfoDic = result[@"resultInfo"];
                 //NSLog(@"info:%@",resultInfoDic);
                 [UIFactory showAlert:@"操作成功"];
                 //userInfoDic[uUserPhoto] = resultInfoDic[@"photo"];
-                self.isPhotoEdit = @"0";
-                //[[UserInfo sharedUser] setUserInfoDicWithWebServiceResult:result];
+                
+                //保存自己的token，因为返回的没有token；
+                NSString *myToken = userInfoDic[uUserToken];
+                
                 //userInfoDic[uUserPhoto] = resultInfoDic[@"photo"];
+                
+                //返回的isPhotoEdit，为空，必须重新赋0，表示没有编辑
+                self.isPhotoEdit = @"0";
+                //NSLog(@"myToken:%@",myToken);
+                NSMutableDictionary *userInfoMutableDic = [NSMutableDictionary dictionaryWithDictionary:resultInfoDic];
+                //重新将token设置回来。
+                [userInfoMutableDic setObject:myToken forKey:@"token"];
+                NSLog(@"lastInfo:%@",userInfoMutableDic);
+                NSMutableDictionary *lastDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"0",@"result",userInfoMutableDic,@"resultInfo", nil];
+                [[UserInfo sharedUser] setUserInfoDicWithWebServiceResult:lastDic];
+                //NSLog(@"myInfo:%@",[[UserInfo sharedUser] getUserInfoDic]);
+//                NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,userInfoDic[uUserPhoto]]]];
+//                //NSLog(@"imagestr:%@",[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,userInfoDic[uUserPhoto]]);
+//                self.personImage = [UIImage imageWithData:data];//有图像就用有本地化的图像
                 
             }
             else{
