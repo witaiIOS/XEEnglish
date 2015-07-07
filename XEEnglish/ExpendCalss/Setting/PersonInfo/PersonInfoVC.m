@@ -149,7 +149,9 @@
                 
                 [UIFactory showAlert:@"操作成功"];
                 //////////////////////////////////////////////
-                NSDictionary *resultInfoDic = result[@"resultInfo"];
+                NSDictionary *resultInfoDicNull = result[@"resultInfo"];
+                ///过滤NULL
+                NSDictionary *resultInfoDic = [[UserInfo sharedUser] filterNullForDictionary:resultInfoDicNull];
                 //NSLog(@"info:%@",resultInfoDic);
                 ////////////////////////////////////////////////////////
             

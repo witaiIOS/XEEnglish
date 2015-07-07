@@ -23,4 +23,7 @@
 
 - (void)setUserInfoDicWithWebServiceResult:(NSDictionary *)result;
 
+///过滤NULL
+- (NSDictionary *)filterNullForDictionary:(NSDictionary *)dic;
+
 @end
