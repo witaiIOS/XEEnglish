@@ -68,7 +68,7 @@
     
     [self.view addSubview:self.menu];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 110, kScreenWidth, kScreenHeight-110) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,110, kScreenWidth, kScreenHeight-110) style:UITableViewStyleGrouped];
     
 //    self.tableView.dataSource = self;
 //    self.tableView.delegate = self;
@@ -85,8 +85,9 @@
 #pragma mark - Web
 //请求课程和年龄段数据
 - (void)getCourseCategoryAge{
-    
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getCourseCategoryAgeAndBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         if (!error) {
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
@@ -156,9 +157,9 @@
 
 #pragma mark - Web2
 - (void)getCourseListByFilter{
-    
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getCourseListByFilterWithMinAge:self.ageGroupArray[self.currentAgeGroupIndex][@"min_age"] andMaxAge:self.ageGroupArray[self.currentAgeGroupIndex][@"max_age"] andCourseCategoryId:self.coursesArray[self.currentCourseIndex][@"course_category_id"] andSort:@"" andOrder:@"" andPageSize:10 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
-        
+        [self hideHud];
         if (!error) {
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {

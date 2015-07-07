@@ -48,8 +48,9 @@
 //        }
 //
 //    }];
-    
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getHomeAdWithBlock:^(NSNumber *result, NSArray *resultInfo, NSError *error) {
+        [self hideHud];
         if (error) {
             NSLog(@"网络错误");
         }
