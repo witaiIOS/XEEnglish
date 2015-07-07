@@ -78,8 +78,9 @@
 
 #pragma mark - Web
 - (void)getCourseDetailByCourseId{
-    
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getCourseDetailByCourseId:self.courseLeaveInfoDic[@"course_id"] andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         if (!error) {
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];

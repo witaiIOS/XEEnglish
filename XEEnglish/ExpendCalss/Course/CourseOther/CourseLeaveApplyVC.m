@@ -141,11 +141,11 @@
     //NSLog(@"111:%@",self.courseLeaveInfoDic);
    // NSLog(@"111:%@",userInfoDic[uUserToken]);
    // NSLog(@"111:%@",self.courseLeaveInfoDic[@"course_id"]);
-    
+    [self showHudWithMsg:@"上传中..."];
     [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseLeaveInfoDic[@"signon_id"] andRemark:self.leaveExplainLabel.text andType:@"0" andApplyId:@"null" andCreateTime:@"null" andStatus:@"null" andTeacherId:@"null" andCheckTime:@"null" andCheckRemark:@"null" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         
         //NSLog(@"result:%@",result);
-        
+        [self hideHud];
         if (!error) {
             
             NSNumber *isResult = result[@"result"];

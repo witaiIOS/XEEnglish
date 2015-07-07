@@ -196,8 +196,9 @@
 - (void)getVStudentCourseByParentId{
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
-    
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getVStudentCourseByParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         if (!error) {
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
@@ -235,8 +236,9 @@
     //NSString *courseId = courseDic[@"course_id"];
     //NSLog(@"courseId:%@",courseId);
     
-    
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:userInfoDic[uUserId] andStudentId:studentId andCourseId:@"1" andSignon:@"" andSort:@"" andOrder:@"" andPageSize:200 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         if (!error) {
             
             //NSLog(@"getVStudentSourseScheduleSign result:%@",result);
