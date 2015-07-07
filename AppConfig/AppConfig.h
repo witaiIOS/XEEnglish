@@ -33,8 +33,8 @@
 
 
 #define XEEimageURLPrefix @"http://218.244.143.58:604/files/"
-//#define XEEWebURL @"http://218.244.143.58:604/ShaneAppWs.asmx?wsdl"
-#define XEEWebURL @"http://192.168.1.122:625/ShaneAppWs.asmx" //本地测试
+#define XEEWebURL @"http://218.244.143.58:604/ShaneAppWs.asmx?wsdl"
+//#define XEEWebURL @"http://192.168.1.122:625/ShaneAppWs.asmx" //本地测试
 //测试Token
 #define ceShiId                 @"17"
 #define ceShiToken              @"yEqHDenWZHANQ08W1WF93J+t+ELfkokN0dz9KsI8kALd/GXU1pEykMyOJupHiHATpELTmg8I+XWN1mKJb8Vr+g=="
