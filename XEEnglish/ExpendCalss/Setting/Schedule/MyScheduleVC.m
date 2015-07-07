@@ -80,9 +80,9 @@
 }
 
 - (void)getMyActivityInfo{
-    
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] GetActivityInfoByParentIdWithPageSize:10 andPageIndex:1 andParentId:ceShiId andToken:ceShiToken andBlock:^(NSDictionary *result, NSError *error) {
-        
+        [self hideHud];
         //NSLog(@"result:%@",result);
         
         if (!error) {
@@ -110,8 +110,9 @@
 }
 
 - (void)getMyBookSiteInfo{
-    
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getBookSiteByParent_idWithPageSize:10 andPageIndex:1 andParentId:ceShiId andToken:ceShiToken andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         //NSLog(@"result:%@",result);
         
         if (!error) {
