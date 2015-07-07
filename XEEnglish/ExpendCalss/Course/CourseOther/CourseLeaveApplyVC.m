@@ -38,7 +38,7 @@
     self.tableView.delegate = self;
     self.tableView.tableFooterView = [self footView];
     [self.view addSubview:self.tableView];
-    
+    //NSLog(@"info:%@",self.courseLeaveInfoDic);
     self.leaveExplainLabel.text = @"";
     //NSLog(@"dic:%@",self.courseLeaveInfoDic);
 }
@@ -124,7 +124,14 @@
         [UIFactory showAlert:@"请阅读并同意协议"];
     }
     else if ([self.leaveExplainLabel.text isEqualToString:@""]){
-        [UIFactory showAlert:@"请填写请假说明"];
+        NSString *type = [NSString stringWithFormat:@"%@",self.courseLeaveInfoDic[@"is_signon"]];
+        if ([type isEqualToString:@"0"]) {
+            [UIFactory showAlert:@"请填写请假说明"];
+        }
+        else{
+            [UIFactory showAlert:@"请填写补课说明"];
+        }
+        
     }
     else{
         [self addSubcourseLeaveApply];
@@ -142,7 +149,7 @@
    // NSLog(@"111:%@",userInfoDic[uUserToken]);
    // NSLog(@"111:%@",self.courseLeaveInfoDic[@"course_id"]);
     [self showHudWithMsg:@"上传中..."];
-    [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseLeaveInfoDic[@"signon_id"] andRemark:self.leaveExplainLabel.text andType:@"0" andApplyId:@"null" andCreateTime:@"null" andStatus:@"null" andTeacherId:@"null" andCheckTime:@"null" andCheckRemark:@"null" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseLeaveInfoDic[@"signon_id"] andRemark:self.leaveExplainLabel.text andType:self.courseLeaveInfoDic[@"is_signon"] andApplyId:@"null" andCreateTime:@"null" andStatus:@"null" andTeacherId:@"null" andCheckTime:@"null" andCheckRemark:@"null" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         
         //NSLog(@"result:%@",result);
         [self hideHud];
