@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSString *phoneNumber; //手机号
 @property (nonatomic, strong) NSString *myAddr;   //城市名
 @property (nonatomic, strong) NSString *myBirthday; //生日
+@property (nonatomic, strong) NSString *myInvitationCode;//邀请码
 @property (nonatomic, strong) NSString *mySignature;//个性签名
 
 @property (nonatomic, assign) BOOL isChangePhoneNuber;//标记是否是修改手机操作启动的UIActionSheet
@@ -67,6 +68,7 @@
     self.phoneNumber = userInfoDic[uPhoneNumber];
     self.myAddr = userInfoDic[uUserAddr];
     self.myBirthday = userInfoDic[uUserBirthday];
+    self.myInvitationCode = userInfoDic[uUserInvitationCode];
     self.mySignature = userInfoDic[uUserMemo];
     //NSLog(@"phone:%@",userInfoDic[uUserPhoto]);
 //    if ([userInfoDic[uUserPhoto] isKindOfClass:[NSNull class]]) {
@@ -90,11 +92,16 @@
     
     self.tableView.delegate =self;
     self.tableView.dataSource = self;
-    
+    self.tableView.tableFooterView = [self footView];
     [self.view addSubview:self.tableView];
+}
+
+- (UIView *)footView{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 80)];
+    view.backgroundColor = [UIColor clearColor];
     
     self.keepBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.keepBtn setFrame:CGRectMake(20, kScreenHeight-160, kScreenWidth-40, 40)];
+    [self.keepBtn setFrame:CGRectMake(20, 10, kScreenWidth-40, 40)];
     [self.keepBtn setTitle:@"保存" forState:UIControlStateNormal];
     [self.keepBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.keepBtn.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
@@ -102,7 +109,9 @@
     self.keepBtn.layer.cornerRadius = 4.0;
     [self.keepBtn addTarget:self action:@selector(keepBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.tableView addSubview:self.keepBtn];
+    [view addSubview:self.keepBtn];
+    
+    return view;
 }
 
 #pragma mark - action
@@ -207,7 +216,7 @@
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 5;
+    return 6;
 }
 
 
@@ -287,6 +296,7 @@
                 {
                     infoString = @"手机号";
                     detailInfoString = self.phoneNumber;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
                     break;
                 }
             }
@@ -314,7 +324,13 @@
                 default:
                     break;
             }
-        }else {
+        }
+        else if (indexPath.section == 4){
+            infoString = @"我的邀请码";
+            detailInfoString = self.myInvitationCode;
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        else {
             switch (indexPath.row) {
                 case 0:
                 {
@@ -367,7 +383,7 @@
         switch (indexPath.row) {
             case 0:
             {
-                [self changePhoneNumber];
+                //[self changePhoneNumber];
             }
             default:
                 break;
@@ -406,7 +422,7 @@
                 
         }
     }
-    else{
+    else if (indexPath.section == 5){
         switch (indexPath.row) {
             case 0:
             {
