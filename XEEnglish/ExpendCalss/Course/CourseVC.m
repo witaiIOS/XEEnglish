@@ -37,6 +37,8 @@
 @property (strong, nonatomic) UILabel *courseComplete;//已完成课时
 @property (strong, nonatomic) UIButton *courseLeave;//请假次数，需完成页面跳转
 @property (strong, nonatomic) UIButton *courseAbsent;//缺课次数，需完成跳转
+//is_signon取值 “时间已经过了： 1已上课且已签到 2 请假 3 缺课  时间没有过： 0正常 4  延迟 5 暂停”
+@property (strong, nonatomic) NSString *courseIsSignon;//课程状态
 
 
 @property (strong, nonatomic) NSMutableArray *studentCoursesArray;
@@ -90,6 +92,8 @@
     self.courseTableView.dataSource = self;
     
     [self.view addSubview:self.courseTableView];
+    
+    self.courseIsSignon = @"";
    
 }
 
@@ -109,6 +113,12 @@
     
     [self.courseView addSubview:self.courseTotal];
     
+    UIButton *courseTotalBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [courseTotalBtn setFrame:CGRectMake(10, 0, 60, 40)];
+    [courseTotalBtn setBackgroundColor:[UIColor clearColor]];
+    [courseTotalBtn addTarget:self action:@selector(courseTotalBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.courseView addSubview:courseTotalBtn];
+    
     UILabel *cStringComplete = [[UILabel alloc] initWithFrame:CGRectMake(80, 5, 40, 30)];
     cStringComplete.font = [UIFont systemFontOfSize:12];
     cStringComplete.text = @"已完成";
@@ -122,6 +132,12 @@
     self.courseComplete.textColor = [UIColor blackColor];
     
     [self.courseView addSubview:self.courseComplete];
+    
+    UIButton *courseCompleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [courseCompleteBtn setFrame:CGRectMake(80, 0, 60, 40)];
+    [courseCompleteBtn setBackgroundColor:[UIColor clearColor]];
+    [courseCompleteBtn addTarget:self action:@selector(courseCompleteBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.courseView addSubview:courseCompleteBtn];
     
     UILabel *cStringLeave = [[UILabel alloc] initWithFrame:CGRectMake(160, 5, 40, 30)];
     cStringLeave.font = [UIFont systemFontOfSize:12];
@@ -173,19 +189,38 @@
     [self.courseView addSubview:cStringEdge];
     
 }
+//总课程按钮
+- (void)courseTotalBtnClicked{
+    //IsSignon传空，查询所有的值
+    self.courseIsSignon = @"";
+    [self getVStudentSourseScheduleSign];
+}
+//已完成课程
+- (void)courseCompleteBtnClicked{
+#warning change @"1"
+    //IsSignon传过时的标记，查询已完成的课程
+    self.courseIsSignon = @"1";
+    [self getVStudentSourseScheduleSign];
+}
 
 //跳转到请假界面
 - (void)courseLeaveToLeaveVC{
-    CourseLeaveVC *vc = [[CourseLeaveVC alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+//    CourseLeaveVC *vc = [[CourseLeaveVC alloc] init];
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:vc animated:YES];
+    //IsSignon传2，查询请假
+    self.courseIsSignon = @"2";
+    [self getVStudentSourseScheduleSign];
 }
 
 //跳转到缺课界面
 - (void)courseAbsentToAbsentVC{
-    CourseAbsentVC *vc = [[CourseAbsentVC alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+//    CourseAbsentVC *vc = [[CourseAbsentVC alloc] init];
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:vc animated:YES];
+    //IsSignon传3，查询缺课
+    self.courseIsSignon = @"3";
+    [self getVStudentSourseScheduleSign];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -237,7 +272,7 @@
     //NSLog(@"courseId:%@",courseId);
     
     [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:userInfoDic[uUserId] andStudentId:studentId andCourseId:@"1" andSignon:@"" andSort:@"" andOrder:@"" andPageSize:200 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:userInfoDic[uUserId] andStudentId:studentId andCourseId:@"1" andSignon:self.courseIsSignon andSort:@"" andOrder:@"" andPageSize:200 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         if (!error) {
             
