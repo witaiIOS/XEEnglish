@@ -141,7 +141,9 @@
     //NSLog(@"addr:%@",self.myAddr );
 //#warning   nickName
     //NSString *nickName = [self.netName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self showHudWithMsg:@"上传中..."];
     [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:self.netName andSex:@"null" andBirthday:self.myBirthday andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:self.myAddr andQq:@"null" andEmail:@"null" andMemo:self.mySignature andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         if (!error) {
             NSNumber *isResult = result[@"result "];
             

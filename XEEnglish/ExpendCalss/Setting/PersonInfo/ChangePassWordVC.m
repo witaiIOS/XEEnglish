@@ -58,8 +58,9 @@
         NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
         NSDictionary *uUserInfoDic = userDic[uUserInfoKey];
         //NSLog(@"token:%@",uUserInfoDic[uUserToken]);
+        [self showHudWithMsg:@"上传中..."];
         [[XeeService sharedInstance] modifyPwdWithNewPassword:md5NewString andOldPassword:md5OldString andParentId:uUserInfoDic[uUserId] andToken:uUserInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
-            
+            [self hideHud];
             if (!error) {
                 NSNumber *r = result[@"result"];
                 if (r.integerValue == 0) {
