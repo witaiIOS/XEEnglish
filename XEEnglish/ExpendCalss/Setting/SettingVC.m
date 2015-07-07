@@ -331,8 +331,8 @@
                 detailStr = [NSString stringWithFormat:@"%@/%@/%@",self.myInfoDic[@"course"],self.myInfoDic[@"activity"],self.myInfoDic[@"booksite"]];
                 break;
             case 3:
-                str = @"消费记录";
-                detailStr = [NSString stringWithFormat:@"%@",self.myInfoDic[@"coupon"]];
+                str = @"订单";
+                //detailStr = [NSString stringWithFormat:@"%@",self.myInfoDic[@"coupon"]];
                 image = [UIImage imageNamed:@"STexpense.png"];
                 break;
                 
