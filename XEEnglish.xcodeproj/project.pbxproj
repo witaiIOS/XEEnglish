@@ -83,6 +83,7 @@
 		09CA691D1B1FFCE300A31E0E /* CouponsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */; };
 		09CA69211B201F2500A31E0E /* coupons1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69201B201F2500A31E0E /* coupons1.png */; };
 		09CA69231B20213800A31E0E /* couponstime.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69221B20213800A31E0E /* couponstime.png */; };
+		09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */; };
 		09D23C421B42403E008B6085 /* PointsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C411B42403E008B6085 /* PointsVC.m */; };
 		09D23C451B424417008B6085 /* ExchangePointsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C441B424417008B6085 /* ExchangePointsVC.m */; };
 		09D23C481B424526008B6085 /* ExchangePointsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C471B424526008B6085 /* ExchangePointsCell.m */; };
@@ -347,6 +348,8 @@
 		09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponsCell.xib; sourceTree = "<group>"; };
 		09CA69201B201F2500A31E0E /* coupons1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupons1.png; sourceTree = "<group>"; };
 		09CA69221B20213800A31E0E /* couponstime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couponstime.png; sourceTree = "<group>"; };
+		09CFD0061B4CFA17000D9D40 /* payCompleteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payCompleteVC.h; sourceTree = "<group>"; };
+		09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payCompleteVC.m; sourceTree = "<group>"; };
 		09D23C401B42403E008B6085 /* PointsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsVC.h; sourceTree = "<group>"; };
 		09D23C411B42403E008B6085 /* PointsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsVC.m; sourceTree = "<group>"; };
 		09D23C431B424417008B6085 /* ExchangePointsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangePointsVC.h; sourceTree = "<group>"; };
@@ -670,6 +673,8 @@
 				09C6394D1B3A957F00510F00 /* PayMethodCell.m */,
 				09C639571B3AADA700510F00 /* PayProtocolVC.h */,
 				09C639581B3AADA700510F00 /* PayProtocolVC.m */,
+				09CFD0061B4CFA17000D9D40 /* payCompleteVC.h */,
+				09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */,
 			);
 			path = PayCourseVC;
 			sourceTree = "<group>";
@@ -1605,6 +1610,7 @@
 				A6B1CEFB1B1D968600100E9F /* MyParser.m in Sources */,
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,
 				09D5459A1B44D5FF00CC5844 /* ExpendRecordVC.m in Sources */,
+				09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */,
 				09CA16261B467BC80064667D /* GTMBase64.m in Sources */,
 				09C6FEFD1B4BFBF90069156D /* SelectedStudentVC.m in Sources */,
 				09C87F321B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m in Sources */,

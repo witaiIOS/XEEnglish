@@ -16,6 +16,7 @@
 #import "courseSchoolZoneVC.h"
 #import "SelectedStudentVC.h"
 
+#import "payCompleteVC.h"
 #import "PayCourseVC.h"
 
 #import "XeeService.h"
@@ -92,6 +93,8 @@
     else{
         if ([self.payMethod isEqualToString:@"2"]) {
             
+            payCompleteVC *vc = [[payCompleteVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         else if ([self.payMethod isEqualToString:@"3"]){
             PayCourseVC *vc = [[PayCourseVC alloc] init];
@@ -238,6 +241,9 @@
             {
                 cell.myLabel.text = @"免费到校试听";
                 cell.myPriceLabel.text = @"0";
+                if ([self.payMethod isEqualToString:@"2"]) {
+                    cell.selected = YES;
+                }
                 //cell.selectedImageView.image = [UIImage imageNamed:@"school_selected.png"];
                 break;
             }
@@ -245,6 +251,9 @@
             {
                 cell.myLabel.text = @"有偿上门试听";
                 cell.myPriceLabel.text = self.listenPrice;
+                if ([self.payMethod isEqualToString:@"3"]) {
+                    cell.selected = YES;
+                }
                // cell.selectedImageView.image = [UIImage imageNamed:@"school_unselected.png"];
                 break;
             }
