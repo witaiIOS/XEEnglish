@@ -14,16 +14,18 @@
 
 #import "SubCourseListVC.h"
 #import "courseSchoolZoneVC.h"
+#import "SelectedStudentVC.h"
 
 #import "XeeService.h"
 
-@interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate,CourseSchoolZoneDelegate>
+@interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate,CourseSchoolZoneDelegate,SelectedStudentVCselectedStudentDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSString *subCoursename;//子课程名
 @property (nonatomic, assign) NSInteger subCourseNumeber;//子课程数量，用于做判断，没有子课程就隐藏那个cell
 
 
 @property (nonatomic, strong) NSDictionary *schoolZone;//校区
+@property (nonatomic, strong) NSDictionary *selectedStudent;//选择的学生及学生id
 @end
 
 @implementation ListeningCourseVC
@@ -120,7 +122,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *reuse1 = @"BaseCell";
-    static NSString *reuse2 = @"ListeningCourseInfoCell";
+    //static NSString *reuse2 = @"ListeningCourseInfoCell";
     static NSString *reuse3 = @"ListenZoneCell";
     
     if (indexPath.section == 0) {
@@ -150,15 +152,11 @@
             }
             else
             {
-                ListeningCourseInfoCell *cell2 = [tableView dequeueReusableCellWithIdentifier:reuse2];
                 
-                if (cell2 == nil) {
-                    cell2 = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse2];
-                    cell2.cellEdge = 10;
-                }
-                
-                cell2.myLabel.text = @"购买课时";
-                return cell2;
+                cell.textLabel.text = @"选择小孩";
+                cell.detailTextLabel.text = self.selectedStudent[@"name"];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                return cell;
             }
             
         }
@@ -185,15 +183,10 @@
             }
             else
             {
-                ListeningCourseInfoCell *cell2 = [tableView dequeueReusableCellWithIdentifier:reuse2];
-                
-                if (cell2 == nil) {
-                    cell2 = [[ListeningCourseInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse2];
-                    cell2.cellEdge = 10;
-                }
-                
-                cell2.myLabel.text = @"购买课时";
-                return cell2;
+                cell.textLabel.text = @"选择小孩";
+                cell.detailTextLabel.text = self.selectedStudent[@"name"];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                return cell;
             }
             
         }
@@ -250,34 +243,76 @@
     else{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-        switch (indexPath.row) {
-            case 1:
-            {
-                //有课程分类的就实现跳转
-                if (self.subCourseNumeber != 0) {
-                    SubCourseListVC *vc = [[SubCourseListVC alloc] init];
+        //判断有没有子课程，没有就隐藏
+        if (self.subCourseNumeber == 0){
+            
+            switch (indexPath.row) {
+                
+                case 1:
+                {
+                    courseSchoolZoneVC *vc = [[courseSchoolZoneVC alloc] init];
                     vc.delegate = self;
-                    vc.selectedCourse = self.subCoursename;
-                    vc.parentCourseId = self.parentCourseId;//传递父课程id
+                    vc.selectedSchool = self.schoolZone[@"department"];
+                    //NSLog(@"selectedSchool:%@",vc.selectedSchool);
+                    //NSLog(@"parentCourseId:%@",self.parentCourseId);
+                    vc.parentCourseId = self.parentCourseId;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                case 2:
+                {
+                    SelectedStudentVC *vc = [[SelectedStudentVC alloc] init];
+                    vc.delegate = self;
+                    vc.selectedStudent = self.selectedStudent[@"name"];
                     [self.navigationController pushViewController:vc animated:YES];
                 }
-                break;
+                    
+                default:
+                    break;
             }
-            case 2:
-            {
-                courseSchoolZoneVC *vc = [[courseSchoolZoneVC alloc] init];
-                vc.delegate = self;
-                vc.selectedSchool = self.schoolZone[@"department"];
-                //NSLog(@"selectedSchool:%@",vc.selectedSchool);
-                //NSLog(@"parentCourseId:%@",self.parentCourseId);
-                vc.parentCourseId = self.parentCourseId;
-                [self.navigationController pushViewController:vc animated:YES];
-                break;
-            }
-                
-            default:
-                break;
+            
         }
+        else{
+            
+            switch (indexPath.row) {
+                case 1:
+                {
+                    //有课程分类的就实现跳转
+                    if (self.subCourseNumeber != 0) {
+                        SubCourseListVC *vc = [[SubCourseListVC alloc] init];
+                        vc.delegate = self;
+                        vc.selectedCourse = self.subCoursename;
+                        vc.parentCourseId = self.parentCourseId;//传递父课程id
+                        [self.navigationController pushViewController:vc animated:YES];
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    courseSchoolZoneVC *vc = [[courseSchoolZoneVC alloc] init];
+                    vc.delegate = self;
+                    vc.selectedSchool = self.schoolZone[@"department"];
+                    //NSLog(@"selectedSchool:%@",vc.selectedSchool);
+                    //NSLog(@"parentCourseId:%@",self.parentCourseId);
+                    vc.parentCourseId = self.parentCourseId;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                case 3:
+                {
+                    SelectedStudentVC *vc = [[SelectedStudentVC alloc] init];
+                    vc.delegate = self;
+                    vc.selectedStudent = self.selectedStudent[@"name"];
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+                    
+                default:
+                    break;
+            }
+            
+        }
+        
+        
     }
 }
 
@@ -315,6 +350,12 @@
     self.schoolZone = sender;
     [self.tableView reloadData];
 }
+#pragma mark -  SelectedStudentVC selectedStudentDelegate
+- (void)selectedStudent:(id)sender{
+    self.selectedStudent = sender;
+    [self.tableView reloadData];
+}
+
 
 /*
 #pragma mark - Navigation

@@ -43,6 +43,7 @@
 		09C639591B3AADA700510F00 /* PayProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C639581B3AADA700510F00 /* PayProtocolVC.m */; };
 		09C6B6181B3D76D300221974 /* image_loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C6B6171B3D76D300221974 /* image_loading.png */; };
 		09C6FEFA1B4BCEB50069156D /* CourseReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6FEF91B4BCEB50069156D /* CourseReviewCell.m */; };
+		09C6FEFD1B4BFBF90069156D /* SelectedStudentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6FEFC1B4BFBF90069156D /* SelectedStudentVC.m */; };
 		09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A41B25AC4700E72163 /* ActivityContentCell.m */; };
 		09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A71B25BB0100E72163 /* otherRequireCell.m */; };
 		09C87F291B3BEFB900D7C913 /* SubCourseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F281B3BEFB900D7C913 /* SubCourseListVC.m */; };
@@ -284,6 +285,8 @@
 		09C6B6171B3D76D300221974 /* image_loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_loading.png; path = Home/image_loading.png; sourceTree = "<group>"; };
 		09C6FEF81B4BCEB50069156D /* CourseReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseReviewCell.h; sourceTree = "<group>"; };
 		09C6FEF91B4BCEB50069156D /* CourseReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseReviewCell.m; sourceTree = "<group>"; };
+		09C6FEFB1B4BFBF90069156D /* SelectedStudentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedStudentVC.h; sourceTree = "<group>"; };
+		09C6FEFC1B4BFBF90069156D /* SelectedStudentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedStudentVC.m; sourceTree = "<group>"; };
 		09C832A31B25AC4700E72163 /* ActivityContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityContentCell.h; sourceTree = "<group>"; };
 		09C832A41B25AC4700E72163 /* ActivityContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityContentCell.m; sourceTree = "<group>"; };
 		09C832A61B25BB0100E72163 /* otherRequireCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = otherRequireCell.h; sourceTree = "<group>"; };
@@ -680,6 +683,8 @@
 				09C87F2B1B3BF06600D7C913 /* SubCourseListCell.m */,
 				09C87F2D1B3C24E700D7C913 /* PayCourseMethodVCViewController.h */,
 				09C87F2E1B3C24E700D7C913 /* PayCourseMethodVCViewController.m */,
+				09C6FEFB1B4BFBF90069156D /* SelectedStudentVC.h */,
+				09C6FEFC1B4BFBF90069156D /* SelectedStudentVC.m */,
 			);
 			path = OtherList;
 			sourceTree = "<group>";
@@ -1601,6 +1606,7 @@
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,
 				09D5459A1B44D5FF00CC5844 /* ExpendRecordVC.m in Sources */,
 				09CA16261B467BC80064667D /* GTMBase64.m in Sources */,
+				09C6FEFD1B4BFBF90069156D /* SelectedStudentVC.m in Sources */,
 				09C87F321B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m in Sources */,
 				09C87F2F1B3C24E700D7C913 /* PayCourseMethodVCViewController.m in Sources */,
 				09D23C451B424417008B6085 /* ExchangePointsVC.m in Sources */,
