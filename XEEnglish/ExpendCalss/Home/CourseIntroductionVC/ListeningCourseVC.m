@@ -33,6 +33,8 @@
 @property (nonatomic, strong) NSString *listenPrice;//试听价格
 //payMethod为2是免费到校试听，为3是有偿上门试听  type取值 1 选课 2 免费试听 3 有偿试听
 @property (nonatomic, strong) NSString *payMethod;//付款方式
+//购买的完整信息
+@property (nonatomic, strong) NSMutableDictionary *payInfoDic;
 @end
 
 @implementation ListeningCourseVC
@@ -135,6 +137,21 @@
     }];
 }
 
+- (void)addStudentSubCourseWithWeb{
+    
+}
+
+- (void)getPayInfoDictionary{
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    self.payInfoDic = [[NSMutableDictionary alloc] init];
+    [self.payInfoDic setObject:userInfoDic[uUserId] forKey:@"parent_id"];
+    [self.payInfoDic setObject:userInfoDic[uUserToken] forKey:@"token"];
+    [self.payInfoDic setObject:self.selectedStudent[@"student_id"] forKey:@"token"];
+    //[self.payInfoDic setObject:<#(id)#> forKey:@"course_id"];
+}
 
 #pragma mark - UITableView DataSource
 
