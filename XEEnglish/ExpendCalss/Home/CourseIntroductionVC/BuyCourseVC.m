@@ -13,6 +13,7 @@
 
 #import "SubCourseListVC.h"
 #import "courseSchoolZoneVC.h"
+#import "SelectedStudentVC.h"
 #import "PayCourseMethodVCViewController.h"
 
 #import "PayCourseVC.h"
@@ -20,7 +21,7 @@
 
 #import "XeeService.h"
 
-@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate,SelectedPayCourseMethodDelegate,ListeningCourseInfoCellDelegate,CourseSchoolZoneDelegate>
+@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate,SelectedPayCourseMethodDelegate,ListeningCourseInfoCellDelegate,CourseSchoolZoneDelegate,SelectedStudentVCselectedStudentDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *selectedBtn;//是否同意了协议
@@ -30,6 +31,7 @@
 @property (nonatomic, strong) NSDictionary *subCourseInfoDic;//子课程的信息；
 
 @property (nonatomic, strong) NSDictionary *schoolZone;//校区
+@property (nonatomic, strong) NSDictionary *selectedStudent;//选择小孩
 @property (nonatomic, strong) NSString *payCourseMethod;//付款方式
 
 
@@ -197,10 +199,10 @@
     
     if (section == 0) {
         if (self.subCourseNumeber == 0) {
-            return 3;
+            return 4;
         }
         else{
-            return 4;
+            return 5;
         }
         
     }
@@ -248,6 +250,13 @@
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 //return cell;
             }
+            else if (indexPath.row == 2){
+                
+                cell.textLabel.text = @"选择小孩";
+                cell.detailTextLabel.text = self.selectedStudent[@"name"];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                //return cell;
+            }
             else{
                 //payMethodNumber(pay_type)取值 1按课时价 2按整套价 3两者都可。
                 if (self.payMethodNumber == 1) {
@@ -290,6 +299,13 @@
                     
                     cell.textLabel.text = @"校区选择";
                     cell.detailTextLabel.text = self.schoolZone[@"department"];
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    //return cell;
+                }
+                else if (indexPath.row == 3){
+                    
+                    cell.textLabel.text = @"选择小孩";
+                    cell.detailTextLabel.text = self.selectedStudent[@"name"];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     //return cell;
                 }
@@ -405,6 +421,14 @@
                 }
                 case 2:
                 {
+                    SelectedStudentVC *vc = [[SelectedStudentVC alloc] init];
+                    vc.delegate = self;
+                    vc.selectedStudent = self.selectedStudent[@"name"];
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                case 3:
+                {
                     //pay_type取值 1按课时价 2按整套价 3两者都可。
                     //self.payMethodNumber取值 为3时才可以去选择付款方式。
                     //其他情况下，不让点击
@@ -445,6 +469,14 @@
                     break;
                 }
                 case 3:
+                {
+                    SelectedStudentVC *vc = [[SelectedStudentVC alloc] init];
+                    vc.delegate = self;
+                    vc.selectedStudent = self.selectedStudent[@"name"];
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                case 4:
                 {
                     if(self.superPayMethodNumber == 3){
                         PayCourseMethodVCViewController *vc = [[PayCourseMethodVCViewController alloc] init];
@@ -662,5 +694,10 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - SelectedStudentVC selectedStudentDelegate
+- (void)selectedStudent:(id)sender{
+    self.selectedStudent = sender;
+    [self.tableView reloadData];
+}
 
 @end
