@@ -48,6 +48,8 @@
     [super initUI];
     
     [self getCourseListByParentCourseId];
+    //默认是免费试听
+    self.payMethod = @"2";
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;

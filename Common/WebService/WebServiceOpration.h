@@ -126,6 +126,20 @@
  */
 + (AFHTTPRequestOperation *)getVStudentByParentId:(NSString *)parent_id andToken:(NSString *)token;
 
+/**
+ 添加预约试听/购课 
+ @param parent_id 注册id
+ @param course_id 课程id
+ @param department_id 校区id
+ @param student_id 小孩id
+ @param type      type取值 1时student_id必选；2/3时，student_id为空。
+ @param pay_type  pay_type 取值 1课时 2整套 3都可
+ @param numbers   课时数
+ @param order_price 总价格
+ @param platform_type platform_type “操作平台”，取值范围：201 APP for Android   202 APP for IOS  203 微信   204 Web
+ */
++ (AFHTTPRequestOperation *)addStudentSubCourseByParentId:(NSString *)parent_id andCourseId:(NSString *)course_id andDepartmentId:(NSString *)department_id  andStudentId:(NSString *)student_id andType:(NSString *)type andPayType:(NSString *)pay_type andNumbers:(NSString *)numbers andOrderPrice:(NSString *)order_price andPlatformType:(NSString *)platform_type andListCoupon:(NSArray *)listCoupon andToken:(NSString *)token;
+
 #pragma mark - 课程
 /**
  通过家长id，查找学生选课关系简介列表
