@@ -11,4 +11,5 @@
 @interface SingleCourseVC : BaseVC
 
 @property (nonatomic, strong) NSString *courseId;
+
 @end

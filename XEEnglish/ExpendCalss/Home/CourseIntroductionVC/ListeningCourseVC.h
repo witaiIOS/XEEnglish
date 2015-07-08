@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSString *courseName;//课程名
 @property (nonatomic, strong) NSString *parentCourseId;//父课程id
+@property (nonatomic, strong) NSDictionary *parentCourseInfo;//父课程信息
 
 @end

@@ -162,6 +162,7 @@
     ListeningCourseVC *vc = [[ListeningCourseVC alloc] init];
     vc.courseName = self.title;
     vc.parentCourseId = self.courseId;
+    vc.parentCourseInfo = self.courseInfo;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

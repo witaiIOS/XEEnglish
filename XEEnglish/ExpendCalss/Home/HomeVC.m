@@ -200,6 +200,7 @@
     //UIButton *button = (UIButton *)sender;
     //NSLog(@"button.tag:%li",(long)button.tag);
     //NSLog(@"serviceDic:%@",serviceDic);
+    
     NSString *courseIdStr = [NSString stringWithFormat:@"%@",serviceDic[@"course_id"]];
     if([courseIdStr isEqualToString:@"0"]){
         AllCoursesVC *vc = [[AllCoursesVC alloc] init];
