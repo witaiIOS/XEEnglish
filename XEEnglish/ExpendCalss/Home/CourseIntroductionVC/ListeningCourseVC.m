@@ -33,7 +33,7 @@
 
 @property (nonatomic, assign) NSInteger listenPrice;//试听价格
 //payMethod为2是免费到校试听，为3是有偿上门试听  type取值 1 选课 2 免费试听 3 有偿试听
-@property (nonatomic, strong) NSString *payMethod;//付款方式
+@property (nonatomic, assign) NSInteger payMethod;//付款方式
 //购买的完整信息
 @property (nonatomic, strong) NSMutableDictionary *payInfoDic;
 @end
@@ -52,7 +52,7 @@
     
     [self getCourseListByParentCourseId];
     //默认是免费试听
-    self.payMethod = @"2";
+    self.payMethod = 2;
     //初始化为父课程id
     NSNumber *coursenumId =self.parentCourseInfo[@"course_id"];
     self.courseId = coursenumId.integerValue;
@@ -95,16 +95,16 @@
     else if (self.selectedStudent[@"name"] == nil){
         [UIFactory showAlert:@"请选择小孩"];
     }
-    else if (self.payMethod == nil ) {
-        [UIFactory showAlert:@"请选择试听方式"];
-    }
+//    else if (self.payMethod  ) {
+//        [UIFactory showAlert:@"请选择试听方式"];
+//    }
     else{
-        if ([self.payMethod isEqualToString:@"2"]) {
-            
-            payCompleteVC *vc = [[payCompleteVC alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
+        if (self.payMethod == 2) {
+            [self addStudentSubCourseWithWeb];
+//            payCompleteVC *vc = [[payCompleteVC alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
         }
-        else if ([self.payMethod isEqualToString:@"3"]){
+        else if (self.payMethod == 3){
             PayCourseVC *vc = [[PayCourseVC alloc] init];
             vc.payMoney = self.listenPrice;
             [self.navigationController pushViewController:vc animated:YES];
@@ -145,6 +145,24 @@
 
 - (void)addStudentSubCourseWithWeb{
     
+    [self getPayInfoDictionary];
+    NSLog(@"info:%@",self.payInfoDic);
+    
+    [[XeeService sharedInstance] addStudentSubCourseByParentId:(long)self.payInfoDic[@"parent_id"] andCourseId:(long)self.payInfoDic[@"course_id"] andDepartmentId:(long)self.payInfoDic[@"department_id"] andStudentId:(long)self.payInfoDic[@"student_id"] andType:(int)self.payInfoDic[@"type"] andPayType:1 andNumbers:1 andOrderPrice:(long)self.payInfoDic[@"order_price"] andPlatformType:@"202" andListCoupon:self.payInfoDic[@"listCoupon"] andToken:self.payInfoDic[@"token"] andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                payCompleteVC *vc = [[payCompleteVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+                //[UIFactory showAlert:result[@"resultInfo"]];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
 }
 
 #pragma mark - payInfo
@@ -167,6 +185,12 @@
     
     NSNumber *price = [NSNumber numberWithInt:(int)self.listenPrice];
     [self.payInfoDic setObject:price forKey:@"order_price"];
+    
+    NSNumber *type = [NSNumber numberWithInt:(int)self.payMethod];
+    [self.payInfoDic setObject:type forKey:@"type"];
+    
+    NSMutableArray *listCoupon = [NSMutableArray array];
+    [self.payInfoDic setObject:listCoupon forKey:@"listCoupon"];
 }
 
 #pragma mark - UITableView DataSource
@@ -276,7 +300,7 @@
             {
                 cell.myLabel.text = @"免费到校试听";
                 cell.myPriceLabel.text = @"0";
-                if ([self.payMethod isEqualToString:@"2"]) {
+                if (self.payMethod == 2) {
                     cell.selected = YES;
                 }
                 //cell.selectedImageView.image = [UIImage imageNamed:@"school_selected.png"];
@@ -286,7 +310,7 @@
             {
                 cell.myLabel.text = @"有偿上门试听";
                 cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.listenPrice];
-                if ([self.payMethod isEqualToString:@"3"]) {
+                if (self.payMethod == 3) {
                     cell.selected = YES;
                 }
                // cell.selectedImageView.image = [UIImage imageNamed:@"school_unselected.png"];
@@ -320,12 +344,12 @@
         switch (indexPath.row) {
             case 0:
             {
-                self.payMethod = @"2";
+                self.payMethod = 2;
                 break;
             }
             case 1:
             {
-                self.payMethod = @"3";
+                self.payMethod = 3;
                 break;
             }
                 

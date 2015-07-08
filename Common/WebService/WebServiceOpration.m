@@ -165,9 +165,9 @@
  @param order_price 总价格
  @param platform_type platform_type “操作平台”，取值范围：201 APP for Android   202 APP for IOS  203 微信   204 Web
  */
-+ (AFHTTPRequestOperation *)addStudentSubCourseByParentId:(NSString *)parent_id andCourseId:(NSString *)course_id andDepartmentId:(NSString *)department_id  andStudentId:(NSString *)student_id andType:(NSString *)type andPayType:(NSString *)pay_type andNumbers:(NSString *)numbers andOrderPrice:(NSString *)order_price andPlatformType:(NSString *)platform_type andListCoupon:(NSArray *)listCoupon andToken:(NSString *)token{
++ (AFHTTPRequestOperation *)addStudentSubCourseByParentId:(NSInteger )parent_id andCourseId:(NSInteger )course_id andDepartmentId:(NSInteger )department_id  andStudentId:(NSInteger )student_id andType:(NSInteger )type andPayType:(NSInteger )pay_type andNumbers:(NSInteger )numbers andOrderPrice:(NSInteger )order_price andPlatformType:(NSString *)platform_type andListCoupon:(NSArray *)listCoupon andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddStudentSubCourse><web:json>{\"parent_id\":\"%@\",\"course_id\":\"%@\",\"department_id\":\"%@\",\"student_id\":\"%@\",\"type\":\"%@\",\"pay_type\":\"%@\",\"numbers\":\"%@\",\"order_price\":\"%@\",\"platform_type_id\":\"%@\",\"listCoupon\":\"%@\",\"token\":\"%@\"}</web:json></web:AddStudentSubCourse>",parent_id,course_id,department_id,student_id,type,pay_type,numbers,order_price,platform_type,listCoupon,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddStudentSubCourse><web:json>{\"parent_id\":\"%li\",\"course_id\":\"%li\",\"department_id\":\"%li\",\"student_id\":\"%li\",\"type\":\"%li\",\"pay_type\":\"%li\",\"numbers\":\"%li\",\"order_price\":\"%li\",\"platform_type_id\":\"%@\",\"listCoupon\":\"%@\",\"token\":\"%@\"}</web:json></web:AddStudentSubCourse>",(long)parent_id,(long)course_id,(long)department_id,(long)student_id,(long)type,(long)pay_type,(long)numbers,(long)order_price,platform_type,listCoupon,token]];
 }
 
 #pragma mark - 课程
