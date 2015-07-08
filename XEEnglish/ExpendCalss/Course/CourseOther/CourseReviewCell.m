@@ -15,7 +15,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        self.courseimage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 280, 170)];
+        self.courseimage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth-40, 170)];
         [self.contentView addSubview:self.courseimage];
     }
     return self;

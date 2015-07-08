@@ -113,6 +113,12 @@
  */
 - (void)getCourseListByParentCourseId:(NSString *)course_id andBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 通过家长id，查询家长的孩子列表,购买试听用
+ @param parent_id 注册id
+ */
+- (void)getVStudentByParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block;
+
 #pragma mark - 课程
 /**
  通过家长id，查找学生选课关系简介列表

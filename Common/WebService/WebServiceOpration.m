@@ -143,6 +143,16 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseListByParentCourseId><web:json>{\"course_id\":\"%@\"}</web:json></web:GetCourseListByParentCourseId>",course_id]];
 }
 
+
+/**
+ 通过家长id，查询家长的孩子列表,购买试听用
+ @param parent_id 注册id
+ */
++ (AFHTTPRequestOperation *)getVStudentByParentId:(NSString *)parent_id andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentByParentId><web:json>{\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetVStudentByParentId>",parent_id,token]];
+}
+
 #pragma mark - 课程
 /**
  通过家长id，查找学生选课关系简介列表

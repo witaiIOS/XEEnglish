@@ -8,7 +8,6 @@
 
 #import "SelectedStudentVC.h"
 #import "SchoolZoneCell.h"
-
 #import "XeeService.h"
 
 @interface SelectedStudentVC ()<UITableViewDataSource, UITableViewDelegate>
@@ -37,7 +36,7 @@
     
     [self.view addSubview:self.tableView];
     
-    [self getVStudentCourseByParentId];
+    [self getVStudentByParentId];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,11 +45,11 @@
 }
 #pragma mark - Web
 
-- (void)getVStudentCourseByParentId{
+- (void)getVStudentByParentId{
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getVStudentCourseByParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error){
+    [[XeeService sharedInstance] getVStudentByParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error){
         [self hideHud];
         if(!error){
             //NSLog(@"result:%@",result);
