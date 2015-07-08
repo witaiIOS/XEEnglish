@@ -11,6 +11,7 @@
 @interface ListenZoneCell : BaseTVC
 
 @property (nonatomic, strong) UILabel *myLabel;
+@property (nonatomic, strong) UILabel *myPriceLabel;
 @property (nonatomic, strong) UIImageView *selectedImageView;
 
 

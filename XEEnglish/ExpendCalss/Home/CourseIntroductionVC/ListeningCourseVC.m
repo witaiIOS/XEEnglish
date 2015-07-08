@@ -26,6 +26,8 @@
 
 @property (nonatomic, strong) NSDictionary *schoolZone;//校区
 @property (nonatomic, strong) NSDictionary *selectedStudent;//选择的学生及学生id
+
+@property (nonatomic, strong) NSString *listenPrice;//试听价格
 @end
 
 @implementation ListeningCourseVC
@@ -92,6 +94,10 @@
                 //                //付款方式的判断号，pay_type取值 1按课时价 2按整套价 3两者都可。
                 //                NSNumber *payMethed = subCoursesDic[@"pay_type"];
                 //                self.payMethodNumber = payMethed.integerValue;
+                
+                //初始化上门试听价格。没有子课程，按父课程的价格，有子课程按子课程的价格
+                NSString *price = [NSString stringWithFormat:@"%@",subCoursesDic[@"price"]];
+                self.listenPrice = price;
                 
                 [self.tableView reloadData];
             }
@@ -206,12 +212,14 @@
             case 0:
             {
                 cell.myLabel.text = @"免费到校试听";
+                cell.myPriceLabel.text = @"0";
                 //cell.selectedImageView.image = [UIImage imageNamed:@"school_selected.png"];
                 break;
             }
             case 1:
             {
                 cell.myLabel.text = @"有偿上门试听";
+                cell.myPriceLabel.text = self.listenPrice;
                // cell.selectedImageView.image = [UIImage imageNamed:@"school_unselected.png"];
                 break;
             }
@@ -343,7 +351,10 @@
 - (void)selectedCourse:(id)sender{
     
     NSDictionary *subCourseDic = sender;
+    //NSLog(@"dic:%@",subCourseDic);
     self.subCoursename = subCourseDic[@"title"];
+    NSString *price = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];
+    self.listenPrice = price;
     [self.tableView reloadData];
 }
 
