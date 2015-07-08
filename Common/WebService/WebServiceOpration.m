@@ -168,6 +168,13 @@
 + (AFHTTPRequestOperation *)addStudentSubCourseByParentId:(NSInteger )parent_id andCourseId:(NSInteger )course_id andDepartmentId:(NSInteger )department_id  andStudentId:(NSInteger )student_id andType:(NSInteger )type andPayType:(NSInteger )pay_type andNumbers:(NSInteger )numbers andOrderPrice:(NSInteger )order_price andPlatformType:(NSString *)platform_type andListCoupon:(NSArray *)listCoupon andToken:(NSString *)token{
     
     return [self XEEWebService:[NSString stringWithFormat:@"<web:AddStudentSubCourse><web:json>{\"parent_id\":%li,\"course_id\":%li,\"department_id\":%li,\"student_id\":%li,\"type\":%li,\"pay_type\":%li,\"numbers\":%li,\"order_price\":%li,\"platform_type_id\":\"%@\",\"listCoupon\":\"%@\",\"token\":\"%@\"}</web:json></web:AddStudentSubCourse>",(long)parent_id,(long)course_id,(long)department_id,(long)student_id,(long)type,(long)pay_type,(long)numbers,(long)order_price,platform_type,listCoupon,token]];
+    
+    }
+
++ (AFHTTPRequestOperation *)addStudentSubCourseWithDepartmentId:(NSString *)departmentId andStudentId:(NSString *)studentId andType:(NSString *)type andOrderPrice:(NSInteger)orderPrice andPlatFormTypeId:(NSString *)platFormTypeId andListCoupon:(NSString *)listCoupon andToken:(NSString *)token andPayType:(NSString *)payType andNumbers:(NSInteger)numbers andCourseId:(NSInteger)courseId andParentId:(NSString *)parentId {
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"{\"department_id\":\"%@\",\"student_id\":\"%@\",\"type\":\"%@\",\"order_price\":%li,\"platform_type_id\":\"%@\",\"listCoupon\":%@,\"token\":\"%@\",\"pay_type\":\"%@\",\"numbers\":%li,\"course_id\":%li,\"parent_id\":\"%@\"}",departmentId,studentId,type,(long)orderPrice,platFormTypeId,listCoupon,token,payType,(long)numbers,(long)courseId,parentId]];
+
 }
 
 #pragma mark - 课程

@@ -145,7 +145,7 @@
 
 - (void)addStudentSubCourseWithWeb{
     
-    [self getPayInfoDictionary];
+    /*[self getPayInfoDictionary];
     NSLog(@"info:%@",self.payInfoDic);
     
     [[XeeService sharedInstance] addStudentSubCourseByParentId:(long)self.payInfoDic[@"parent_id"] andCourseId:(long)self.payInfoDic[@"course_id"] andDepartmentId:(long)self.payInfoDic[@"department_id"] andStudentId:(long)self.payInfoDic[@"student_id"] andType:(int)self.payInfoDic[@"type"] andPayType:1 andNumbers:1 andOrderPrice:(long)self.payInfoDic[@"order_price"] andPlatformType:@"202" andListCoupon:self.payInfoDic[@"listCoupon"] andToken:self.payInfoDic[@"token"] andBlock:^(NSDictionary *result, NSError *error) {
@@ -162,6 +162,26 @@
         }else{
             [UIFactory showAlert:@"网络错误"];
         }
+    }];*/
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolZone[@"department_id"] andStudentId:self.selectedStudent[@"student_id"] andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.listenPrice andPlatFormTypeId:@"202" andListCoupon:@"[]" andToken:userInfoDic[uUserToken] andPayType:@"1" andNumbers:1 andCourseId:self.courseId andParentId:userInfoDic[uUserId] andBlock:^(NSDictionary *result, NSError *error) {
+        
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                payCompleteVC *vc = [[payCompleteVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+                //[UIFactory showAlert:result[@"resultInfo"]];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+
     }];
 }
 

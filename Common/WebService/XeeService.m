@@ -306,6 +306,20 @@
     }];
 }
 
+- (void)addStudentSubCourseWithDepartmentId:(NSString *)departmentId andStudentId:(NSString *)studentId andType:(NSString *)type andOrderPrice:(NSInteger)orderPrice andPlatFormTypeId:(NSString *)platFormTypeId andListCoupon:(NSString *)listCoupon andToken:(NSString *)token andPayType:(NSString *)payType andNumbers:(NSInteger)numbers andCourseId:(NSInteger)courseId andParentId:(NSString *)parentId andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration addStudentSubCourseWithDepartmentId:departmentId andStudentId:studentId andType:type andOrderPrice:orderPrice andPlatFormTypeId:platFormTypeId andListCoupon:listCoupon andToken:token andPayType:payType andNumbers:numbers andCourseId:courseId andParentId:parentId];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"AddStudentSubCourseResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+
+    
+    
+}
+
 #pragma mark - 课程
 /**
  通过家长id，查找学生选课关系简介列表
