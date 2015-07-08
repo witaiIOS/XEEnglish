@@ -49,6 +49,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     [self showHudWithMsg:@"载入中..."];
+    
     [[XeeService sharedInstance] getVStudentByParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error){
         [self hideHud];
         if(!error){

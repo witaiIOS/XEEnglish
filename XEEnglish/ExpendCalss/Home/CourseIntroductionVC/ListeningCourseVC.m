@@ -16,6 +16,8 @@
 #import "courseSchoolZoneVC.h"
 #import "SelectedStudentVC.h"
 
+#import "PayCourseVC.h"
+
 #import "XeeService.h"
 
 @interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate,CourseSchoolZoneDelegate,SelectedStudentVCselectedStudentDelegate>
@@ -28,6 +30,8 @@
 @property (nonatomic, strong) NSDictionary *selectedStudent;//选择的学生及学生id
 
 @property (nonatomic, strong) NSString *listenPrice;//试听价格
+//payMethod为2是免费到校试听，为3是有偿上门试听  type取值 1 选课 2 免费试听 3 有偿试听
+@property (nonatomic, strong) NSString *payMethod;//付款方式
 @end
 
 @implementation ListeningCourseVC
@@ -76,6 +80,27 @@
 
 - (void)applyBtnClicked{
     
+    if (self.schoolZone[@"department"] == nil) {
+        [UIFactory showAlert:@"请选择校区"];
+    }
+    else if (self.selectedStudent[@"name"] == nil){
+        [UIFactory showAlert:@"请选择小孩"];
+    }
+    else if (self.payMethod == nil ) {
+        [UIFactory showAlert:@"请选择试听方式"];
+    }
+    else{
+        if ([self.payMethod isEqualToString:@"2"]) {
+            
+        }
+        else if ([self.payMethod isEqualToString:@"3"]){
+            PayCourseVC *vc = [[PayCourseVC alloc] init];
+            vc.payMoney = self.listenPrice;
+            [self.navigationController pushViewController:vc animated:YES];
+        }else{
+            
+        }
+    }
 }
 
 #pragma mark -Web
@@ -248,7 +273,21 @@
     
     
     if (indexPath.section == 1) {
-        
+        switch (indexPath.row) {
+            case 0:
+            {
+                self.payMethod = @"2";
+                break;
+            }
+            case 1:
+            {
+                self.payMethod = @"3";
+                break;
+            }
+                
+            default:
+                break;
+        }
     }
     else{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
