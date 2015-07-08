@@ -16,12 +16,17 @@
     
     if (self) {
         self.courseimage = [[UIImageView alloc] initWithFrame:self.frame];
-        NSLog(@"info:%@",self.coursePhotoDic);
-        [self.courseimage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,self.coursePhotoDic[@"pic_url"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
+       
         
         [self.contentView addSubview:self.courseimage];
     }
     return self;
+}
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    NSLog(@"info:%@",self.coursePhotoDic);
+    [self.courseimage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,self.coursePhotoDic[@"pic_url"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
 }
 
 @end
