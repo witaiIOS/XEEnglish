@@ -89,7 +89,7 @@
             
             if (isResult.integerValue == 0) {
                 self.coursePhotosArray = result[@"resultInfo"];
-                NSLog(@"info:%@",self.coursePhotosArray);
+                //NSLog(@"info:%@",self.coursePhotosArray);
                 [self.tableView reloadData];
             }else{
                 [UIFactory showAlert:result[@"resultInfo"]];
@@ -125,7 +125,7 @@
     }
     cell.cellEdge = 10;
     cell.coursePhotoDic = self.coursePhotosArray[indexPath.section];
-    NSLog(@"dic:%@",cell.coursePhotoDic);
+    //NSLog(@"dic:%@",cell.coursePhotoDic);
     return cell;
 }
 
@@ -146,6 +146,10 @@
     
     return 5.0f;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
 
 @end
