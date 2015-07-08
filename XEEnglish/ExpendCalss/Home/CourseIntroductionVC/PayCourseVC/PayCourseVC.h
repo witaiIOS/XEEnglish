@@ -10,5 +10,5 @@
 
 @interface PayCourseVC : BaseVC
 
-@property (nonatomic, strong) NSString *payMoney;
+@property (nonatomic, assign) NSInteger payMoney;
 @end

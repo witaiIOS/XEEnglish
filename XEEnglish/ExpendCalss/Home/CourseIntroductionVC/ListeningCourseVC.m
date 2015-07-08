@@ -23,14 +23,15 @@
 
 @interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate,CourseSchoolZoneDelegate,SelectedStudentVCselectedStudentDelegate>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSString *subCoursename;//子课程名
+@property (nonatomic, assign) NSInteger courseId;//课程id
+@property (nonatomic, strong) NSDictionary *subCourse;//子课程名
 @property (nonatomic, assign) NSInteger subCourseNumeber;//子课程数量，用于做判断，没有子课程就隐藏那个cell
 
 
 @property (nonatomic, strong) NSDictionary *schoolZone;//校区
 @property (nonatomic, strong) NSDictionary *selectedStudent;//选择的学生及学生id
 
-@property (nonatomic, strong) NSString *listenPrice;//试听价格
+@property (nonatomic, assign) NSInteger listenPrice;//试听价格
 //payMethod为2是免费到校试听，为3是有偿上门试听  type取值 1 选课 2 免费试听 3 有偿试听
 @property (nonatomic, strong) NSString *payMethod;//付款方式
 //购买的完整信息
@@ -128,8 +129,8 @@
                 //                self.payMethodNumber = payMethed.integerValue;
                 
                 //初始化上门试听价格。没有子课程，按父课程的价格，有子课程按子课程的价格
-                NSString *price = [NSString stringWithFormat:@"%@",subCoursesDic[@"price"]];
-                self.listenPrice = price;
+                //NSString *price = [NSString stringWithFormat:@"%@",subCoursesDic[@"price"]];
+                self.listenPrice = (int)subCoursesDic[@"price"];
                 
                 [self.tableView reloadData];
             }
@@ -149,8 +150,11 @@
     self.payInfoDic = [[NSMutableDictionary alloc] init];
     [self.payInfoDic setObject:userInfoDic[uUserId] forKey:@"parent_id"];
     [self.payInfoDic setObject:userInfoDic[uUserToken] forKey:@"token"];
-    [self.payInfoDic setObject:self.selectedStudent[@"student_id"] forKey:@"token"];
-    //[self.payInfoDic setObject:<#(id)#> forKey:@"course_id"];
+    [self.payInfoDic setObject:self.selectedStudent[@"student_id"] forKey:@"student_id"];
+    //[self.payInfoDic setObject:self.subCourse[@"course_id"] forKey:@"course_id"];
+    [self.payInfoDic setObject:self.schoolZone[@"department_id"] forKey:@"department_id"];
+    NSNumber *price = [NSNumber numberWithInt:(int)self.listenPrice];
+    [self.payInfoDic setObject:price forKey:@"order_price"];
 }
 
 #pragma mark - UITableView DataSource
@@ -226,7 +230,7 @@
             {
                 cell.textLabel.text = @"课程分类";
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                cell.detailTextLabel.text = self.subCoursename;
+                cell.detailTextLabel.text = self.subCourse[@"title"];
                 return cell;
             }
             else if (indexPath.row == 2)
@@ -269,7 +273,7 @@
             case 1:
             {
                 cell.myLabel.text = @"有偿上门试听";
-                cell.myPriceLabel.text = self.listenPrice;
+                cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.listenPrice];
                 if ([self.payMethod isEqualToString:@"3"]) {
                     cell.selected = YES;
                 }
@@ -358,7 +362,7 @@
                     if (self.subCourseNumeber != 0) {
                         SubCourseListVC *vc = [[SubCourseListVC alloc] init];
                         vc.delegate = self;
-                        vc.selectedCourse = self.subCoursename;
+                        vc.selectedCourse = self.subCourse[@"title"];
                         vc.parentCourseId = self.parentCourseId;//传递父课程id
                         [self.navigationController pushViewController:vc animated:YES];
                     }
@@ -419,9 +423,9 @@
     
     NSDictionary *subCourseDic = sender;
     //NSLog(@"dic:%@",subCourseDic);
-    self.subCoursename = subCourseDic[@"title"];
-    NSString *price = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];
-    self.listenPrice = price;
+    self.subCourse = subCourseDic[@"title"];
+    //NSString *price = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];
+    self.listenPrice = (int)subCourseDic[@"price"];
     [self.tableView reloadData];
 }
 
