@@ -122,7 +122,8 @@
             
             if (isResult.integerValue == 0) {
                 //NSLog(@"info:%@",result[@"resultInfo"]);
-                self.bookSiteArray = result[@"resultInfo"];
+                NSDictionary *mybookSiteDic= result[@"resultInfo"];
+                self.bookSiteArray = mybookSiteDic[@"data"];
                 //NSLog(@"bookSiteArray:%@",self.bookSiteArray);
                 [self.bookSiteTableView reloadData];
             }
