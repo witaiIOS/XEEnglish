@@ -105,6 +105,10 @@
 //    }
     else{
         if (self.payMethod == 2) {
+            
+            //免费试听的price为0
+            self.listenPrice = 0;
+            
             [self addStudentSubCourseWithWeb];
 //            payCompleteVC *vc = [[payCompleteVC alloc] init];
 //            [self.navigationController pushViewController:vc animated:YES];
@@ -115,9 +119,16 @@
             if ([self.subCourseName length] != 0) {
                 self.listenPrice = self.subCoursePrice;
             }
-            
+            //NSLog(@"price:%li",self.listenPrice);
             PayCourseVC *vc = [[PayCourseVC alloc] init];
             vc.payMoney = self.listenPrice;
+            vc.courseId = self.courseId;
+            vc.studentId = self.selectedStudent[@"student_id"];
+            vc.schoolId = self.schoolZone[@"department_id"];
+            vc.payMethod = self.payMethod;
+            vc.payType = @"1";
+            vc.number = 1;
+            vc.listCoupon = @"[]";
             [self.navigationController pushViewController:vc animated:YES];
         }else{
             
@@ -150,6 +161,11 @@
                 
                 [self.tableView reloadData];
             }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
         }
     }];
 }
@@ -174,8 +190,6 @@
             [UIFactory showAlert:@"网络错误"];
         }
     }];*/
-    //免费试听的price为0
-    self.listenPrice = 0;
     
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
@@ -345,7 +359,14 @@
             case 1:
             {
                 cell.myLabel.text = @"有偿上门试听";
-                cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.listenPrice];
+                //没有选择子课程时是父课程的price，选择了子课程是子课程的price
+                if ([self.subCourseName length] == 0) {
+                    cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.listenPrice];
+                }
+                else{
+                    cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.subCoursePrice];
+                }
+                
                 if (self.payMethod == 3) {
                     cell.selected = YES;
                 }

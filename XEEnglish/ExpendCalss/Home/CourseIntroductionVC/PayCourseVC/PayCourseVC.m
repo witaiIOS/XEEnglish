@@ -10,10 +10,13 @@
 #import "PaymoneyCell.h"
 #import "PayMethodCell.h"
 
+#import "payCompleteVC.h"
+
+#import "XeeService.h"
+
 @interface PayCourseVC ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-
 @end
 
 @implementation PayCourseVC
@@ -46,6 +49,23 @@
 #pragma mark - IBAction
 - (void)nextBtnClicked:(id)sender {
     
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolId andStudentId:self.studentId andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.payMoney andPlatFormTypeId:@"202" andListCoupon:self.listCoupon andToken:userInfoDic[uUserToken] andPayType:self.payType andNumbers:self.number andCourseId:self.courseId andParentId:userInfoDic[uUserId] andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                payCompleteVC *vc = [[payCompleteVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
 }
 
 #pragma mark - tableView footView
