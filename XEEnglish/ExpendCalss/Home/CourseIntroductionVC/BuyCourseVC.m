@@ -26,6 +26,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *selectedBtn;//是否同意了协议
 
+@property (nonatomic, assign) NSInteger buyCourseId;//购买的课程id
+
 @property (nonatomic, strong) NSString *subCoursename;//子课程名
 @property (nonatomic, assign) NSInteger subCourseNumeber;//子课程数量，用于做判断，没有子课程就隐藏那个cell
 @property (nonatomic, strong) NSDictionary *subCourseInfoDic;//子课程的信息；
@@ -57,6 +59,10 @@
     self.subCourseInfoDic = [[NSDictionary alloc] init];
     //网络请求查看子课程，如果没有子课程就隐藏课程分类的cell
     [self getCourseListByParentCourseId];
+    
+    //进入页面时，将父课程的id设置为购买的课程id
+    NSNumber *initCourseId = self.courseInfoDic[@"course_id"];
+    self.buyCourseId = initCourseId.integerValue;
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
@@ -159,13 +165,31 @@
 
 
 - (void)buyBtnClicked{
-    if (self.selectedBtn.selected) {
-        PayCourseVC *vc = [[PayCourseVC alloc] init];
-        vc.payMoney = self.priceTotal;
-        [self.navigationController pushViewController:vc animated:YES];
+    if (self.schoolZone[@"department"] == nil) {
+        [UIFactory showAlert:@"请选择校区"];
+    }
+    else if (self.selectedStudent[@"name"] == nil){
+        [UIFactory showAlert:@"请选择小孩"];
+    }
+    else if (!self.selectedBtn.selected) {
+        [UIFactory showAlert:@"请阅读并同意协议"];
     }
     else{
-        [UIFactory showAlert:@"请阅读并同意协议"];
+        PayCourseVC *vc = [[PayCourseVC alloc] init];
+        vc.payMoney = self.priceTotal;
+        vc.studentId = self.selectedStudent[@"student_id"];
+        vc.schoolId = self.schoolZone[@"department_id"];
+        vc.payMethod = 1;
+        vc.payType = [NSString stringWithFormat:@"%li",self.payMethodNumber];
+        vc.listCoupon = @"[]";
+        vc.courseId = self.buyCourseId;
+        if (self.payMethodNumber == 2) {
+            vc.number = 1;
+        }
+        else{
+            vc.number = [self.inputCourseHours intValue];
+        }
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
 }
@@ -633,8 +657,11 @@
     NSDictionary *subCourseDic = sender;
     self.subCoursename = subCourseDic[@"title"];
     
-    NSNumber *payMethod = subCourseDic[@"pay_type"];
+    //选择了子课程，就将他的课程id，赋值给购买课程id
+    NSNumber *courseNumId = subCourseDic[@"course_id"];
+    self.buyCourseId = courseNumId.integerValue;
     
+    NSNumber *payMethod = subCourseDic[@"pay_type"];
     self.superPayMethodNumber = payMethod.integerValue;//选定子课程就将子课程的付款方式来修改superPayMethodNumber
     self.payMethodNumber = self.superPayMethodNumber;//将付款方式传给payMethodNumber
     if (self.superPayMethodNumber == 1) {
