@@ -96,8 +96,8 @@
             NSNumber *isResult = result[@"result"];
             
             if (isResult.integerValue == 0) {
-                
-                self.exchangeRecordArray = result[@"resultInfo"];
+                NSDictionary *pointDic = result[@"resultInfo"];
+                self.exchangeRecordArray = pointDic[@"data"];
                 [self.tableView reloadData];
             }
             else{
