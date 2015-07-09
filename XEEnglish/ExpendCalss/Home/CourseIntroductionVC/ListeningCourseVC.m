@@ -26,7 +26,7 @@
 @property (nonatomic, assign) NSInteger courseId;//课程id
 @property (nonatomic, strong) NSString *subCourseName;//子课程名
 @property (nonatomic, assign) NSInteger subCourseNumeber;//子课程数量，用于做判断，没有子课程就隐藏那个cell
-
+@property (nonatomic, assign) NSInteger subCoursePrice;//子课程价格
 
 @property (nonatomic, strong) NSDictionary *schoolZone;//校区
 @property (nonatomic, strong) NSDictionary *selectedStudent;//选择的学生及学生id
@@ -35,7 +35,7 @@
 //payMethod为2是免费到校试听，为3是有偿上门试听  type取值 1 选课 2 免费试听 3 有偿试听
 @property (nonatomic, assign) NSInteger payMethod;//付款方式
 //购买的完整信息
-@property (nonatomic, strong) NSMutableDictionary *payInfoDic;
+//@property (nonatomic, strong) NSMutableDictionary *payInfoDic;
 @end
 
 @implementation ListeningCourseVC
@@ -53,6 +53,11 @@
     [self getCourseListByParentCourseId];
     //默认是免费试听
     self.payMethod = 2;
+    //默认情况下付款价格是父课程价格
+    NSLog(@"%@",self.parentCourseInfo);
+    NSNumber *price = self.parentCourseInfo[@"price"];
+    self.listenPrice = price.integerValue;
+    //NSLog(@"%li",self.listenPrice);
     //初始化为父课程id
     NSNumber *coursenumId =self.parentCourseInfo[@"course_id"];
     self.courseId = coursenumId.integerValue;
@@ -105,6 +110,12 @@
 //            [self.navigationController pushViewController:vc animated:YES];
         }
         else if (self.payMethod == 3){
+            
+            //有偿付款中，如果选择了子课程，用子课程价格，没有选就还是用父课程价格
+            if ([self.subCourseName length] != 0) {
+                self.listenPrice = self.subCoursePrice;
+            }
+            
             PayCourseVC *vc = [[PayCourseVC alloc] init];
             vc.payMoney = self.listenPrice;
             [self.navigationController pushViewController:vc animated:YES];
@@ -134,8 +145,8 @@
                 //初始化上门试听价格。没有子课程，按父课程的价格，有子课程按子课程的价格
                 //NSString *price = [NSString stringWithFormat:@"%@",subCoursesDic[@"price"]];
                 
-                NSNumber *price = subCoursesDic[@"price"];
-                self.listenPrice = price.integerValue;
+//                NSNumber *price = subCoursesDic[@"price"];
+//                self.listenPrice = price.integerValue;
                 
                 [self.tableView reloadData];
             }
@@ -163,6 +174,9 @@
             [UIFactory showAlert:@"网络错误"];
         }
     }];*/
+    //免费试听的price为0
+    self.listenPrice = 0;
+    
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
@@ -187,7 +201,7 @@
     }];
 }
 
-#pragma mark - payInfo
+/*#pragma mark - payInfo
 - (void)getPayInfoDictionary{
     
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
@@ -213,7 +227,7 @@
     
     //NSMutableArray *listCoupon = [NSMutableArray array];
     [self.payInfoDic setObject:@[] forKey:@"listCoupon"];
-}
+}*/
 
 #pragma mark - UITableView DataSource
 
@@ -378,6 +392,7 @@
             default:
                 break;
         }
+        
     }
     else{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -486,8 +501,9 @@
     //NSLog(@"dic:%li",self.courseId);
     self.subCourseName = subCourseDic[@"title"];
     //NSString *price = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];
+    //选择了子课程，就获取子课程的价格
     NSNumber *price = subCourseDic[@"price"];
-    self.listenPrice = price.integerValue;
+    self.subCoursePrice = price.integerValue;
     [self.tableView reloadData];
 }
 
