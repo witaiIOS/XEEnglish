@@ -36,7 +36,7 @@
 
 
 @property (nonatomic, strong) NSString *inputCourseHours;//按课时购买时，输入的课时数
-@property (nonatomic, strong) NSString *priceTotal;//缴费金额
+@property (nonatomic, assign) NSInteger priceTotal;//缴费金额
 @end
 
 @implementation BuyCourseVC
@@ -74,14 +74,18 @@
         //NSLog(@"self.priceHour:%@",self.priceHour);
     }
     else if (self.payMethodNumber == 2){
-        self.priceSeries = [NSString stringWithFormat:@"%@",self.courseInfoDic[@"total_price"]];
+        NSNumber *price = self.courseInfoDic[@"total_price"];
+        self.priceSeries = price.integerValue;
+        //self.priceSeries = [NSString stringWithFormat:@"%@",self.courseInfoDic[@"total_price"]];
         //整套价格不是动态生成的，必须赋值
         self.priceTotal = self.priceSeries;
         //NSLog(@"self.priceSeries:%@",self.priceSeries);
     }
     else if(self.payMethodNumber == 3){
         self.priceHour = [NSString stringWithFormat:@"%@",self.courseInfoDic[@"price"]];
-        self.priceSeries = [NSString stringWithFormat:@"%@",self.courseInfoDic[@"total_price"]];
+        NSNumber *price = self.courseInfoDic[@"total_price"];
+        self.priceSeries = price.integerValue;
+        //self.priceSeries = [NSString stringWithFormat:@"%@",self.courseInfoDic[@"total_price"]];
     }
     else{
         
@@ -370,7 +374,7 @@
                 }
                 cell.cellEdge = 10;
                 cell.myLabel.text = @"缴费金额";
-                cell.myPriceLabel.text = self.priceTotal;
+                cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.priceTotal];
                 
                 return cell;
             }
@@ -383,7 +387,7 @@
             }
             cell.cellEdge = 10;
             cell.myLabel.text = @"缴费金额";
-            cell.myPriceLabel.text = self.priceTotal;
+            cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.priceTotal];
             return cell;
         }
     }
@@ -560,7 +564,7 @@
             [view addSubview:priceTotalTipLabel];
             
             UILabel *priceTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 100, 20)];
-            priceTotalLabel.text = [NSString stringWithFormat:@"%@元/套",self.priceSeries];//整套价格
+            priceTotalLabel.text = [NSString stringWithFormat:@"%li元/套",self.priceSeries];//整套价格
             priceTotalLabel.font = [UIFont systemFontOfSize:12];
             priceTotalLabel.textColor = [UIColor grayColor];
             
@@ -593,7 +597,7 @@
             [view addSubview:priceTotalTipLabel];
             
             UILabel *priceTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 10, 90, 20)];
-            priceTotalLabel.text = [NSString stringWithFormat:@"%@元/套",self.priceSeries];//整套价格
+            priceTotalLabel.text = [NSString stringWithFormat:@"%li元/套",self.priceSeries];//整套价格
             priceTotalLabel.font = [UIFont systemFontOfSize:12];
             priceTotalLabel.textColor = [UIColor grayColor];
             
@@ -627,16 +631,20 @@
     self.payMethodNumber = self.superPayMethodNumber;//将付款方式传给payMethodNumber
     if (self.superPayMethodNumber == 1) {
         self.priceHour = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];//获取课时价格
+        //NSLog(@"hour:%li",(long)[self.priceHour intValue]);
     }
     else if (self.superPayMethodNumber == 2){
-        
-        self.priceSeries = [NSString stringWithFormat:@"%@",subCourseDic[@"total_price"]];//获取整套价格
+        NSNumber *price = subCourseDic[@"total_price"];
+        self.priceSeries = price.integerValue;
+        //self.priceSeries = [NSString stringWithFormat:@"%@",subCourseDic[@"total_price"]];//获取整套价格
         self.priceTotal = self.priceSeries;//获取整套价格时，改写缴费金额为整套价格，因为默认情况为按整套购买
     }
     else if (self.superPayMethodNumber == 3){
         
         self.priceHour = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];//获取课时价格
-        self.priceSeries = [NSString stringWithFormat:@"%@",subCourseDic[@"total_price"]];//获取整套价格
+        NSNumber *price = subCourseDic[@"total_price"];
+        self.priceSeries = price.integerValue;
+        //self.priceSeries = [NSString stringWithFormat:@"%@",subCourseDic[@"total_price"]];//获取整套价格
         self.payCourseMethod = @"课时整套均可";
         self.priceTotal = self.priceSeries;//获取整套价格时，改写缴费金额为整套价格，因为默认情况为按整套购买
     }else{
@@ -661,7 +669,8 @@
         self.payMethodNumber = 1;
         //选定支付方式后，修改各个付款的值
 //        self.priceHour = [NSString stringWithFormat:@"%@",self.subCourseInfoDic[@"price"]];//获取课时价格
-        self.priceTotal = @"";
+        self.priceTotal = 0;
+        //self.priceTotal = @"";
     }
     else{
         self.payMethodNumber = 2;
@@ -675,7 +684,8 @@
 #pragma mark - ListeningCorseInfoCellDelegate
 - (void)listeningCourseInfoCellInputCourseHours:(NSString *)sender {
     self.inputCourseHours = sender;
-    self.priceTotal =[NSString stringWithFormat:@"%d", [self.inputCourseHours intValue] *[self.priceHour intValue]];//按课时计算需要缴费金额
+    self.priceTotal = [self.inputCourseHours intValue] *[self.priceHour intValue];
+    //self.priceTotal =[NSString stringWithFormat:@"%d", [self.inputCourseHours intValue] *[self.priceHour intValue]];//按课时计算需要缴费金额
     
     [self.tableView reloadData];
     //NSLog(@"self.inputCourseHours:%@",self.inputCourseHours);
