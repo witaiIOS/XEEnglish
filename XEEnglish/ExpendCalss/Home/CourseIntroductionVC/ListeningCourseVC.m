@@ -179,6 +179,8 @@
                 [UIFactory showAlert:result[@"resultInfo"]];
             }
         }else{
+            //NSLog(@"%@",[error description]);
+            
             [UIFactory showAlert:@"网络错误"];
         }
 
@@ -209,8 +211,8 @@
     NSNumber *type = [NSNumber numberWithInt:(int)self.payMethod];
     [self.payInfoDic setObject:type forKey:@"type"];
     
-    NSMutableArray *listCoupon = [NSMutableArray array];
-    [self.payInfoDic setObject:listCoupon forKey:@"listCoupon"];
+    //NSMutableArray *listCoupon = [NSMutableArray array];
+    [self.payInfoDic setObject:@[] forKey:@"listCoupon"];
 }
 
 #pragma mark - UITableView DataSource
