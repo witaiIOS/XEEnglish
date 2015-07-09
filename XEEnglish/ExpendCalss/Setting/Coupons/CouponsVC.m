@@ -29,6 +29,17 @@
 - (void)initUI{
     [super initUI];
     
+    UIButton *completeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [completeBtn setFrame:CGRectMake(kScreenWidth-60, 17, 40, 30)];
+    [completeBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [completeBtn setTitle:@"完成" forState:UIControlStateNormal];
+    [completeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [completeBtn setBackgroundColor:[UIColor clearColor]];
+    [completeBtn addTarget:self action:@selector(completeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *completeBarBtn = [[UIBarButtonItem alloc] initWithCustomView:completeBtn];
+    self.navigationItem.rightBarButtonItem = completeBarBtn;
+    
     [self  getMyCouponWithWeb];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
@@ -41,6 +52,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - MyAction
+- (void)completeBtnClicked{
+    
 }
 
 #pragma mark - Web
@@ -111,7 +127,7 @@
 
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 120.0f;
+    return 100.0f;
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
