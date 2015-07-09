@@ -51,7 +51,7 @@
 - (void)initUI{
     
     [super initUI];
-    
+    //显示课程的相关信息，单价，套价
     [self initCourseValue];
     
     self.subCourseInfoDic = [[NSDictionary alloc] init];
@@ -374,7 +374,13 @@
                 }
                 cell.cellEdge = 10;
                 cell.myLabel.text = @"缴费金额";
-                cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.priceTotal];
+                //选择课时时，对缴费金额清零
+                if (self.priceTotal == 0) {
+                    cell.myPriceLabel.text = @"";
+                }
+                else{
+                    cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.priceTotal];
+                }
                 
                 return cell;
             }
@@ -387,7 +393,9 @@
             }
             cell.cellEdge = 10;
             cell.myLabel.text = @"缴费金额";
+            
             cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.priceTotal];
+            
             return cell;
         }
     }
@@ -669,6 +677,7 @@
         self.payMethodNumber = 1;
         //选定支付方式后，修改各个付款的值
 //        self.priceHour = [NSString stringWithFormat:@"%@",self.subCourseInfoDic[@"price"]];//获取课时价格
+        //按课时购买时，要将缴费金额清零
         self.priceTotal = 0;
         //self.priceTotal = @"";
     }
