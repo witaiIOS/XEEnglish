@@ -85,10 +85,10 @@
 #pragma mark - Web
 - (void)getPointsRecord{
     
-//    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
-//    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
     [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getPointsWithPageSize:10 andPageIndex:1 andParentId:ceShiId andToken:ceShiToken andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getPointsWithPageSize:10 andPageIndex:1 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         if (!error) {
             //NSLog(@"result:%@",result);

@@ -23,6 +23,23 @@
     
     [_iconButton setImage:[UIImage imageNamed:@"chekbox.png"] forState:UIControlStateNormal];
     [_iconButton setImage:[UIImage imageNamed:@"chekbox_select.png"] forState:UIControlStateSelected];
+    //NSLog(@"info:%@",self.couponsInfoDic);
+    //获取现金券状态
+    [self getMyCouponsStatus];
+    
+    self.couponsDescription.text = self.couponsInfoDic[@"name"];
+    self.couponsEndTime.text = self.couponsInfoDic[@"validity"];
+    
+}
+
+- (void)getMyCouponsStatus{
+    
+    if ((long)self.couponsInfoDic[@"status"] == 0) {
+        self.couponsStatus.text = @"未使用";
+    }
+    else if ((long)self.couponsInfoDic[@"status"] == 1){
+        self.couponsStatus.text = @"已使用";
+    }
 }
 
 

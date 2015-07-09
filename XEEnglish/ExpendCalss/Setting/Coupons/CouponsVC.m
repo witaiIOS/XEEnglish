@@ -9,8 +9,11 @@
 #import "CouponsVC.h"
 #import "CouponsCell.h"
 
+#import "XeeService.h"
+
 @interface CouponsVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *couponsArray;
 
 @end
 
@@ -25,11 +28,12 @@
 
 - (void)initUI{
     [super initUI];
+    
+    [self  getMyCouponWithWeb];
+    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
-    [self.tableView registerNib:[UINib nibWithNibName:@"CouponsCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CouponsCellIdentifier"];
     
     [self.view addSubview:self.tableView];
 }
@@ -39,10 +43,36 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Web
+- (void)getMyCouponWithWeb{
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [[XeeService sharedInstance] getMyCouponWithParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            //NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                self.couponsArray = result[@"resultInfo"];
+                [self.tableView reloadData];
+            }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }
+        else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+    
+}
+
+
 #pragma mark - UITableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 10;
+    return [self.couponsArray count];
 }
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -54,12 +84,15 @@
     
     static NSString *reuse = @"CouponsCellIdentifier";
     
+    [self.tableView registerNib:[UINib nibWithNibName:@"CouponsCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse];
+    
     CouponsCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
     
     if (cell == nil) {
         cell = [[CouponsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
     }
     cell.cellEdge = 10;
+    cell.couponsInfoDic = self.couponsArray[indexPath.section];
     
     return cell;
 }
