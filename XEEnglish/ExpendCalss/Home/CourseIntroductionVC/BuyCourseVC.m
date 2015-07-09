@@ -16,6 +16,8 @@
 #import "SelectedStudentVC.h"
 #import "PayCourseMethodVCViewController.h"
 
+#import "CouponsVC.h"
+
 #import "PayCourseVC.h"
 #import "PayProtocolVC.h"
 
@@ -133,7 +135,7 @@
     [view addSubview:protocolBtn];
     
     UIButton *buyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [buyBtn setFrame:CGRectMake(20, 60, kScreenWidth-40, 40)];
+    [buyBtn setFrame:CGRectMake(20, 40, kScreenWidth-40, 40)];
     [buyBtn setTitle:@"立即购买" forState:UIControlStateNormal];
     [buyBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [buyBtn setBackgroundColor:[UIColor orangeColor]];
@@ -220,7 +222,7 @@
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 2;
+    return 3;
 }
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -241,6 +243,9 @@
         else{
             return 1;
         }
+    }
+    else if(section == 2){
+        return 1;
     }
     else{
         return 0;
@@ -423,6 +428,20 @@
             return cell;
         }
     }
+    else if (indexPath.section == 2){
+        BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
+        if (cell == nil) {
+            cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
+            cell.cellEdge = 10;
+        }
+        cell.textLabel.text = @"使用现金券";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.textLabel.textColor = [UIColor blackColor];
+        
+        return cell;
+    }
+    
     else{
         BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
         
@@ -528,6 +547,10 @@
         }
         
     }
+    else if (indexPath.section == 2){
+        CouponsVC *vc = [[CouponsVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     else{
         if ([self.payCourseMethod isEqualToString:@"按课时"]) {
             
@@ -537,6 +560,7 @@
             
         }
     }
+    
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -544,8 +568,10 @@
     if (section == 0) {
         return 10.0f;
     }
-    else{
+    else if(section == 1){
         return 30.0f;
+    }else{
+        return 3.0f;
     }
 }
 
