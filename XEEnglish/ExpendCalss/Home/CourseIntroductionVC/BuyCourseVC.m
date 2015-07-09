@@ -368,7 +368,7 @@
                         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     }
                     cell.textLabel.text = @"付款方式";
-                    
+                    cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
                     //return cell;
                 }
 
