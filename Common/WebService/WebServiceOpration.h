@@ -191,8 +191,9 @@
  获取当前活动信息
  @param pageSize 一次请求显示多少个活动
  @param pageIndex 当前页码
+ @param activity_status 活动de状态：activity_status的值为0当前活动,1历史
  */
-+ (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId:(NSString *)parent_id andToken:(NSString *)token;
++ (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andActivityStatus:(NSInteger )activity_status andParentId:(NSString *)parent_id andToken:(NSString *)token;
 
 /**
  预定活动

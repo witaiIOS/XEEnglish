@@ -218,9 +218,9 @@
 }
 
 #pragma mark - 活动
-+ (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId:(NSString *)parent_id andToken:(NSString *)token{
++ (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andActivityStatus:(NSInteger )activity_status andParentId:(NSString *)parent_id andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetActivityInfo><web:json>{\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetActivityInfo>",(long)pageSize, (long)pageIndex,parent_id,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetActivityInfo><web:json>{\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"activity_status\":\"%li\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetActivityInfo>",(long)pageSize, (long)pageIndex,(long)activity_status,parent_id,token]];
 }
 
 /**

@@ -23,26 +23,29 @@
     [_activityImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,_activityInfo[@"image_url"]]] placeholderImage:[UIImage imageNamed:@"course7.png"]];
     //NSLog(@"%@",_activityInfo[@"image_url"]);
     
-    //获取结束时间
-    NSString *endDateStr=[NSString stringWithFormat:@"%@",_activityInfo[@"deadline"]];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSDate *deadline=[dateFormatter dateFromString:endDateStr];
-    //NSLog(@"endDate:%@",deadline);
-    //获取现在时间
-    NSDate *nowDate = [NSDate date];
-    //NSLog(@"date:%@",nowDate);
+//    //获取结束时间
+//    NSString *endDateStr=[NSString stringWithFormat:@"%@",_activityInfo[@"deadline"]];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//    NSDate *deadline=[dateFormatter dateFromString:endDateStr];
+//    //NSLog(@"endDate:%@",deadline);
+//    //获取现在时间
+//    NSDate *nowDate = [NSDate date];
+//    //NSLog(@"date:%@",nowDate);
+//    
+//    NSDate *earlier_date = [nowDate earlierDate:deadline];
+//    //NSLog(@"earlier_date:%@",earlier_date);
+//    
+//    BOOL isDateEnd = [earlier_date isEqualToDate:nowDate];
     
-    NSDate *earlier_date = [nowDate earlierDate:deadline];
-    //NSLog(@"earlier_date:%@",earlier_date);
+    NSLog(@"dic:%@",self.activityInfo);
     
-    BOOL isDateEnd = [earlier_date isEqualToDate:nowDate];
     
     NSString *current_sum = [NSString stringWithFormat:@"%@",self.activityInfo[@"sum_current"]];
     NSString *max_sum = [NSString stringWithFormat:@"%@",self.activityInfo[@"sum_max"]];
     
-    //判断，人数满了之后将按钮置灰
-    if ([current_sum isEqualToString:max_sum]||isDateEnd) {
+    //判断，人数满了之后将按钮置灰,或者状态为1，代表历史活动
+    if ([current_sum isEqualToString:max_sum]) {
         [self.reserveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self.reserveBtn setBackgroundColor:[UIColor grayColor]];
         self.reserveBtn.enabled = NO;

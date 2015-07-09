@@ -26,6 +26,8 @@
 
 @property (nonatomic, strong) NSString *activitId;
 
+@property (nonatomic, assign) NSInteger activityStatus;
+
 @end
 
 @implementation ActivityVC
@@ -37,6 +39,8 @@
     _tableList1 = [NSMutableArray array];
     _tableList2 = [NSMutableArray array];
     
+    //self.activityStatus = self.mySegmentView.currentIndex;
+    //NSLog(@"%li",self.activityStatus);
     [self getActivityInfo];
     
     self.activitId = nil;//活动id初始化
@@ -93,8 +97,12 @@
 
 #pragma mark - getActivityInfo
 - (void)getActivityInfo{
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    //NSLog(@"%li",self.mySegmentView.currentIndex);
     [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getActivityInfoWithPageSize:10 andPageIndex:1 andParentId:0 andToken:@"" andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getActivityInfoWithPageSize:10 andPageIndex:1 andActivityStatus:0 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         //NSLog(@"result:%@",result);
         [self hideHud];
         if (!error) {
@@ -112,6 +120,30 @@
                 [UIFactory showAlert:@"未知错误"];
             }
 
+        }
+        else {
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+    
+    [[XeeService sharedInstance] getActivityInfoWithPageSize:10 andPageIndex:1 andActivityStatus:1 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        //NSLog(@"result:%@",result);
+        [self hideHud];
+        if (!error) {
+            
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                //NSLog(@"info:%@",result[@"resultInfo"]);
+                NSDictionary *resultInfoDic = result[@"resultInfo"];
+                _tableList2 = resultInfoDic[@"data"];
+                //NSLog(@"list:%@",_tableList1);
+                
+                [self.tableView2 reloadData];
+            }
+            else {
+                [UIFactory showAlert:@"未知错误"];
+            }
+            
         }
         else {
             [UIFactory showAlert:@"网络错误"];
@@ -139,7 +171,7 @@
         return _tableList1.count;
     }
     else if (tableView == self.tableView2){
-        return 6;
+        return _tableList2.count;
     }
     else{
         return 0;
@@ -189,7 +221,8 @@
             cell = [[ActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
             
         }
-        
+        cell.delegate = self;
+        cell.activityInfo = _tableList2[indexPath.section];
         return cell;
     }
     else{
