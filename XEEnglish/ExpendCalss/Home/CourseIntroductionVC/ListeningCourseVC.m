@@ -528,7 +528,7 @@
     
     
     
-    if (indexPath.section == 1) {
+    if (indexPath.section == 2) {
         switch (indexPath.row) {
             case 0:
             {
@@ -545,6 +545,17 @@
                 break;
         }
         
+    }
+    else if(indexPath.section == 1){
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        //is_select_student为1，选择小孩，0为填写小孩
+        if ([self.is_select_student intValue] == 1){
+            SelectedStudentVC *vc = [[SelectedStudentVC alloc] init];
+            vc.delegate = self;
+            vc.selectedStudent = self.selectedStudent[@"name"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
     else{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -565,13 +576,13 @@
                     [self.navigationController pushViewController:vc animated:YES];
                     break;
                 }
-                case 2:
-                {
-                    SelectedStudentVC *vc = [[SelectedStudentVC alloc] init];
-                    vc.delegate = self;
-                    vc.selectedStudent = self.selectedStudent[@"name"];
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
+//                case 2:
+//                {
+//                    SelectedStudentVC *vc = [[SelectedStudentVC alloc] init];
+//                    vc.delegate = self;
+//                    vc.selectedStudent = self.selectedStudent[@"name"];
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
                     
                 default:
                     break;
@@ -604,13 +615,13 @@
                     [self.navigationController pushViewController:vc animated:YES];
                     break;
                 }
-                case 3:
-                {
-                    SelectedStudentVC *vc = [[SelectedStudentVC alloc] init];
-                    vc.delegate = self;
-                    vc.selectedStudent = self.selectedStudent[@"name"];
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
+//                case 3:
+//                {
+//                    SelectedStudentVC *vc = [[SelectedStudentVC alloc] init];
+//                    vc.delegate = self;
+//                    vc.selectedStudent = self.selectedStudent[@"name"];
+//                    [self.navigationController pushViewController:vc animated:YES];
+//                }
                     
                 default:
                     break;

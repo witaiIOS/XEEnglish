@@ -22,5 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *myDetailLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *mySwtichBtn;
 
+@property (nonatomic, assign) id<SwitchButtonCellSwitchBtnValueChangeDelegate>delegate;
+
 - (IBAction)mySwitchBtnValueChange:(id)sender;
 @end

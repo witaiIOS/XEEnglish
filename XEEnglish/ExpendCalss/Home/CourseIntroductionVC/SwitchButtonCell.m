@@ -17,6 +17,6 @@
 
 - (IBAction)mySwitchBtnValueChange:(id)sender {
     
-    //self.mySwtichBtn.on = !self.mySwtichBtn.on;
+    [self.delegate SwitchBtnValueChange:sender andRowOfCell:self.rowOfCell];
 }
 @end
