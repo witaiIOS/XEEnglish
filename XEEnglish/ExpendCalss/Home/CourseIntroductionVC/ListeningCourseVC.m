@@ -20,13 +20,14 @@
 #import "SelectedStudentVC.h"
 
 #import "ListenStudentNameVC.h"
+#import "SettingBirthdayVC.h"
 
 #import "payCompleteVC.h"
 #import "PayCourseVC.h"
 
 #import "XeeService.h"
 
-@interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate,CourseSchoolZoneDelegate,SelectedStudentVCselectedStudentDelegate,SwitchButtonCellSwitchBtnValueChangeDelegate,ListenStudentNameVCGetStudentNameDelegate>
+@interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate,CourseSchoolZoneDelegate,SelectedStudentVCselectedStudentDelegate,SwitchButtonCellSwitchBtnValueChangeDelegate,ListenStudentNameVCGetStudentNameDelegate,SettingBirthdayDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) NSInteger courseId;//课程id
 @property (nonatomic, strong) NSString *subCourseName;//子课程名
@@ -71,11 +72,15 @@
     //初始化为父课程id
     NSNumber *coursenumId =self.parentCourseInfo[@"course_id"];
     self.courseId = coursenumId.integerValue;
+    
+    
     //默认情况下is_select_student为1，选择小孩，0为填写小孩
     self.is_select_student = @"1";
-    
     //sex(0女1男)
     self.sex = @"1";
+    //默认情况下is_select_student为1，选择小孩,输入的学生姓名和生日为空
+    self.studentName = @"";
+    self.birthday = @"";
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
@@ -109,44 +114,98 @@
 
 - (void)applyBtnClicked{
     
-    if (self.schoolZone[@"department"] == nil) {
-        [UIFactory showAlert:@"请选择校区"];
-    }
-    else if (self.selectedStudent[@"name"] == nil){
-        [UIFactory showAlert:@"请选择小孩"];
-    }
-//    else if (self.payMethod  ) {
-//        [UIFactory showAlert:@"请选择试听方式"];
-//    }
-    else{
-        if (self.payMethod == 2) {
-            
-            //免费试听的price为0
-            self.listenPrice = 0;
-            
-            [self addStudentSubCourseWithWeb];
-//            payCompleteVC *vc = [[payCompleteVC alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
+    if ([self.is_select_student intValue] == 1){
+        if (self.schoolZone[@"department"] == nil) {
+            [UIFactory showAlert:@"请选择校区"];
         }
-        else if (self.payMethod == 3){
+        else if (self.selectedStudent[@"name"] == nil){
+            [UIFactory showAlert:@"请选择小孩"];
+        }
+        else{
             
-            //有偿付款中，如果选择了子课程，用子课程价格，没有选就还是用父课程价格
-            if ([self.subCourseName length] != 0) {
-                self.listenPrice = self.subCoursePrice;
+            //is_select_student为1时，是选择现有小孩，需要将studentName，birthday，sex置空
+            self.studentName = @"";
+            self.birthday = @"";
+            self.sex = @"";
+            
+            
+            if (self.payMethod == 2) {
+                
+                //免费试听的price为0
+                self.listenPrice = 0;
+                
+                [self addStudentSubCourseWithWeb];
+                //            payCompleteVC *vc = [[payCompleteVC alloc] init];
+                //            [self.navigationController pushViewController:vc animated:YES];
             }
-            //NSLog(@"price:%li",self.listenPrice);
-            PayCourseVC *vc = [[PayCourseVC alloc] init];
-            vc.payMoney = self.listenPrice;
-            vc.courseId = self.courseId;
-            vc.studentId = self.selectedStudent[@"student_id"];
-            vc.schoolId = self.schoolZone[@"department_id"];
-            vc.payMethod = self.payMethod;
-            vc.payType = @"1";
-            vc.number = 1;
-            vc.listCoupon = @"[]";
-            [self.navigationController pushViewController:vc animated:YES];
-        }else{
-            
+            else if (self.payMethod == 3){
+                
+                //有偿付款中，如果选择了子课程，用子课程价格，没有选就还是用父课程价格
+                if ([self.subCourseName length] != 0) {
+                    self.listenPrice = self.subCoursePrice;
+                }
+                //NSLog(@"price:%li",self.listenPrice);
+                PayCourseVC *vc = [[PayCourseVC alloc] init];
+                vc.payMoney = self.listenPrice;
+                vc.courseId = self.courseId;
+                vc.studentId = self.selectedStudent[@"student_id"];
+                vc.schoolId = self.schoolZone[@"department_id"];
+                vc.payMethod = self.payMethod;
+                vc.payType = @"1";
+                vc.number = 1;
+                vc.listCoupon = @"[]";
+                vc.is_select_student = self.is_select_student;
+                vc.name = self.studentName;
+                vc.sex = self.sex;
+                vc.birthday = self.birthday;
+                [self.navigationController pushViewController:vc animated:YES];
+            }else{
+                
+            }
+        }
+    }
+    else{
+        if (self.schoolZone[@"department"] == nil) {
+            [UIFactory showAlert:@"请选择校区"];
+        }
+        //is_select_student为0，填写小孩时：name(姓名不能为空)
+        else if ([self.studentName isEqualToString:@""]) {
+            [UIFactory showAlert:@"学生姓名不能为空"];
+        }
+        else{
+            if (self.payMethod == 2) {
+                
+                //免费试听的price为0
+                self.listenPrice = 0;
+                
+                [self addStudentSubCourseWithWeb];
+                //            payCompleteVC *vc = [[payCompleteVC alloc] init];
+                //            [self.navigationController pushViewController:vc animated:YES];
+            }
+            else if (self.payMethod == 3){
+                
+                //有偿付款中，如果选择了子课程，用子课程价格，没有选就还是用父课程价格
+                if ([self.subCourseName length] != 0) {
+                    self.listenPrice = self.subCoursePrice;
+                }
+                //NSLog(@"price:%li",self.listenPrice);
+                PayCourseVC *vc = [[PayCourseVC alloc] init];
+                vc.payMoney = self.listenPrice;
+                vc.courseId = self.courseId;
+                vc.studentId = self.selectedStudent[@"student_id"];
+                vc.schoolId = self.schoolZone[@"department_id"];
+                vc.payMethod = self.payMethod;
+                vc.payType = @"1";
+                vc.number = 1;
+                vc.listCoupon = @"[]";
+                vc.is_select_student = self.is_select_student;
+                vc.name = self.studentName;
+                vc.sex = self.sex;
+                vc.birthday = self.birthday;
+                [self.navigationController pushViewController:vc animated:YES];
+            }else{
+                
+            }
         }
     }
 }
@@ -226,13 +285,14 @@
             
             [UIFactory showAlert:@"网络错误"];
         }
-
+        
     }];
+    
 }
 
 /*#pragma mark - payInfo
 - (void)getPayInfoDictionary{
-    
+ 
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
@@ -458,7 +518,7 @@
                     cell.cellEdge = 10;
                 }
                 cell.textLabel.text = @"小孩生日";
-                //cell.detailTextLabel.text = self.selectedStudent[@"name"];
+                cell.detailTextLabel.text = self.birthday;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 
                 return cell;
@@ -592,6 +652,9 @@
                 }
                 case 2:
                 {
+                    SettingBirthdayVC *vc = [[SettingBirthdayVC alloc] init];
+                    vc.delegate = self;
+                    [self.navigationController pushViewController:vc animated:YES];
                     break;
                 }
                     
@@ -744,7 +807,12 @@
     self.studentName = sender;
     [self.tableView reloadData];
 }
-
+#pragma mark - SettingBirthdayDelegate
+- (void)ChangeBirthday:(id)sender{
+    
+    self.birthday = sender;
+    [self.tableView reloadData];
+}
 
 /*
 #pragma mark - Navigation
