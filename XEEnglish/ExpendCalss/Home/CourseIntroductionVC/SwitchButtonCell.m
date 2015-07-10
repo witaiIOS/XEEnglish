@@ -13,10 +13,24 @@
 - (void)layoutSubviews{
     
     [super layoutSubviews];
+    
 }
 
 - (IBAction)mySwitchBtnValueChange:(id)sender {
-    
-    [self.delegate SwitchBtnValueChange:sender andRowOfCell:self.rowOfCell];
+    if (self.rowOfCell == 0) {
+        NSString *status = [NSString stringWithFormat:@"%li",(long)!self.mySwtichBtn.on];
+        //NSLog(@"status:%@",status);
+        [self.delegate SwitchBtnValueChange:status andRowOfCell:self.rowOfCell];
+    }
+    else if (self.rowOfCell ==3){
+        NSString *status = [NSString stringWithFormat:@"%li",(long)self.mySwtichBtn.on];
+        //NSLog(@"status:%@",status);
+        [self.delegate SwitchBtnValueChange:status andRowOfCell:self.rowOfCell];
+    }
+//    NSString *status = [NSString stringWithFormat:@"%li",(long)!self.mySwtichBtn.on];
+//    //NSLog(@"status:%@",status);
+//    [self.delegate SwitchBtnValueChange:status andRowOfCell:self.rowOfCell];
+ 
 }
+
 @end

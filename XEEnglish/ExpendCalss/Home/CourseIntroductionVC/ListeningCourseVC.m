@@ -24,7 +24,7 @@
 
 #import "XeeService.h"
 
-@interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate,CourseSchoolZoneDelegate,SelectedStudentVCselectedStudentDelegate>
+@interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate,CourseSchoolZoneDelegate,SelectedStudentVCselectedStudentDelegate,SwitchButtonCellSwitchBtnValueChangeDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) NSInteger courseId;//课程id
 @property (nonatomic, strong) NSString *subCourseName;//子课程名
@@ -71,6 +71,9 @@
     self.courseId = coursenumId.integerValue;
     //默认情况下is_select_student为1，选择小孩，0为填写小孩
     self.is_select_student = @"1";
+    
+    //sex(0女1男)
+    self.sex = @"1";
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
@@ -377,7 +380,13 @@
                 cell.myTipLabel.text = @"输入或者选择小孩";
                 cell.rowOfCell = 0;
                 cell.mySwtichBtn.on = NO;
-                cell.myDetailLabel.text = @"选择";
+                cell.delegate = self;
+                if (cell.mySwtichBtn.on == NO) {
+                    cell.myDetailLabel.text = @"选择";
+                }else{
+                    cell.myDetailLabel.text = @"输入";
+                }
+                
                 
                 return cell;
             }
@@ -412,8 +421,13 @@
                 cell.cellEdge = 10;
                 cell.myTipLabel.text = @"输入或者选择小孩";
                 cell.rowOfCell = 0;
-                cell.mySwtichBtn.on = NO;
-                cell.myDetailLabel.text = @"选择";
+                cell.mySwtichBtn.on = YES;
+                cell.delegate = self;
+                if (cell.mySwtichBtn.on == NO) {
+                    cell.myDetailLabel.text = @"选择";
+                }else{
+                    cell.myDetailLabel.text = @"输入";
+                }
                 
                 return cell;
             }
@@ -459,7 +473,15 @@
                 cell.myTipLabel.text = @"小孩性别";
                 cell.rowOfCell = 3;
                 cell.mySwtichBtn.on = YES;
-                cell.myDetailLabel.text = @"男";
+                cell.delegate = self;
+                if ([self.sex intValue] == 1) {
+                    cell.mySwtichBtn.on = YES;
+                    cell.myDetailLabel.text = @"男";
+                }
+                else{
+                    cell.mySwtichBtn.on = NO;
+                    cell.myDetailLabel.text = @"女";
+                }
                 
                 return cell;
             }
@@ -680,7 +702,20 @@
     self.selectedStudent = sender;
     [self.tableView reloadData];
 }
-
+#pragma mark - SwitchButtonCellSwitchBtnValueChangeDelegate
+- (void)SwitchBtnValueChange:(id)sender andRowOfCell:(NSInteger)rowOfCell{
+    if (rowOfCell == 0) {
+        self.is_select_student = sender;
+        NSLog(@"is_select_student:%@",self.is_select_student);
+        [self.tableView reloadData];
+    }
+    if (rowOfCell == 3) {
+        //self.sex = [NSString stringWithFormat:@"%li",(long)![sender integerValue]];
+        self.sex = sender;
+        NSLog(@"sex:%@",self.sex);
+        [self.tableView reloadData];
+    }
+}
 
 /*
 #pragma mark - Navigation
