@@ -183,9 +183,7 @@
         [UIFactory showAlert:@"请阅读并同意协议"];
     }
     else{
-        //最终价格需要减去优惠券的价格
-        [self TotalPriceAftercouponsUsed];
-        NSLog(@"price:%li",self.priceTotal);
+        
         //传值
         PayCourseVC *vc = [[PayCourseVC alloc] init];
         vc.payMoney = self.priceTotal;
@@ -210,16 +208,7 @@
     
 }
 
-- (void)TotalPriceAftercouponsUsed{
-    
-    if ([self.listCouponsArray count] != 0) {
-        for (id indexDic in self.listCouponsArray) {
-            NSNumber *price = indexDic[@"price"];
-            
-            self.priceTotal = self.priceTotal - price.integerValue;
-        }
-    }
-}
+
 
 #pragma mark -Web
 - (void)getCourseListByParentCourseId{
@@ -802,6 +791,22 @@
 - (void)couponsUsed:(id)sender andCouponsArray:(NSMutableArray *)couponsArray{
     self.listCouponsString = sender;
     self.listCouponsArray = couponsArray;
+    //最终价格需要减去优惠券的价格
+    [self TotalPriceAftercouponsUsed];
+    NSLog(@"price:%li",self.priceTotal);
+    [self.tableView reloadData];
+}
+
+//使用优惠券后修改付款价格
+- (void)TotalPriceAftercouponsUsed{
+    
+    if ([self.listCouponsArray count] != 0) {
+        for (id indexDic in self.listCouponsArray) {
+            NSNumber *price = indexDic[@"price"];
+            
+            self.priceTotal = self.priceTotal - price.integerValue;
+        }
+    }
 }
 
 @end
