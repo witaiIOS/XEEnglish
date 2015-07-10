@@ -58,6 +58,24 @@
     // Configure the view for the selected state
 }
 
+//- (void)layoutThatImages:(NSArray *)imageArray
+//{
+//    _pageControl.numberOfPages = imageArray.count;
+//    _pageControl.currentPage = 0;
+//    
+//    _imageScrollView.contentSize = CGSizeMake(imageArray.count*320, 160);
+//    
+//    CGFloat x=0;
+//    for (int i = 0 ; i < imageArray.count; i++,x+=320) {
+//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, 0, 320, 160)];
+//        NSDictionary *infoDic = [imageArray objectAtIndex:i];
+//        
+//          NSString *imageUrl = [NSString stringWithFormat:@"%@%@",MZBimageURLPrefix,[infoDic objectForKey:@"imageUrl"]];
+//        [imageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@""]];
+//        
+//        [_imageScrollView addSubview:imageView];
+//    }
+//}
 - (void)layoutThatImages:(NSArray *)imageArray
 {
     _pageControl.numberOfPages = imageArray.count;
@@ -70,7 +88,7 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, 0, 320, 160)];
         NSDictionary *infoDic = [imageArray objectAtIndex:i];
         
-          NSString *imageUrl = [NSString stringWithFormat:@"%@%@",MZBimageURLPrefix,[infoDic objectForKey:@"imageUrl"]];
+        NSString *imageUrl = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[infoDic objectForKey:@"image_url"]];
         [imageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@""]];
         
         [_imageScrollView addSubview:imageView];

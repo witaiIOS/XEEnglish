@@ -48,26 +48,48 @@
 //        }
 //
 //    }];
+//    [self showHudWithMsg:@"载入中..."];
+//    [[XeeService sharedInstance] getHomeAdWithBlock:^(NSNumber *result, NSArray *resultInfo, NSError *error) {
+//        [self hideHud];
+//        if (error) {
+//            NSLog(@"网络错误");
+//        }
+//        else{
+//            if ([result integerValue] == 0) {
+//                _adInfos = [resultInfo mutableCopy];
+//                [self.tableView reloadData];
+//            }
+//            else{
+//                NSLog(@"resultInfo = 1");
+//            }
+//            
+//        }
+//
+//    }];
     [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getHomeAdWithBlock:^(NSNumber *result, NSArray *resultInfo, NSError *error) {
+    [[XeeService sharedInstance] getAdAndBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
-        if (error) {
-            NSLog(@"网络错误");
-        }
-        else{
-            if ([result integerValue] == 0) {
-                _adInfos = [resultInfo mutableCopy];
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            //NSLog(@"result:%@",result);
+            if (isResult.integerValue == 0) {
+                self.adInfos = result[@"resultInfo"];
                 [self.tableView reloadData];
             }
             else{
-                NSLog(@"resultInfo = 1");
+                [UIFactory showAlert:@"未知错误"];
             }
-            
         }
-
+        else{
+            [UIFactory showAlert:@"网络错误"];
+        }
     }];
+        
     
+    
+    [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getCourseListAppHomeAndBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
         if (!error) {
             NSNumber *isResult = result[@"result"];
             //NSLog(@"result:%@",result);
