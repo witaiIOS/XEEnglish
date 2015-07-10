@@ -42,7 +42,8 @@
 @property (nonatomic, strong) NSString *inputCourseHours;//按课时购买时，输入的课时数
 @property (nonatomic, assign) NSInteger priceTotal;//缴费金额
 
-@property (nonatomic, strong) NSString *listCoupons;//序列化后的现金券数组
+@property (nonatomic, strong) NSString *listCouponsString;//序列化后的现金券数组
+@property (nonatomic, strong) NSMutableArray *listCouponsArray;//现金券数组
 @end
 
 @implementation BuyCourseVC
@@ -69,7 +70,7 @@
     self.buyCourseId = initCourseId.integerValue;
     
     //初始化经过序列化的现金券数组的NSString
-    self.listCoupons = @"[]";
+    self.listCouponsString = @"[]";
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
@@ -182,13 +183,17 @@
         [UIFactory showAlert:@"请阅读并同意协议"];
     }
     else{
+        //最终价格需要减去优惠券的价格
+        [self TotalPriceAftercouponsUsed];
+        NSLog(@"price:%li",self.priceTotal);
+        //传值
         PayCourseVC *vc = [[PayCourseVC alloc] init];
         vc.payMoney = self.priceTotal;
         vc.studentId = self.selectedStudent[@"student_id"];
         vc.schoolId = self.schoolZone[@"department_id"];
         vc.payMethod = 1;
         vc.payType = [NSString stringWithFormat:@"%li",self.payMethodNumber];
-        vc.listCoupon = self.listCoupons;
+        vc.listCoupon = self.listCouponsString;
         vc.courseId = self.buyCourseId;
         vc.is_select_student = @"";
         vc.sex = @"";
@@ -203,6 +208,17 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     
+}
+
+- (void)TotalPriceAftercouponsUsed{
+    
+    if ([self.listCouponsArray count] != 0) {
+        for (id indexDic in self.listCouponsArray) {
+            NSNumber *price = indexDic[@"price"];
+            
+            self.priceTotal = self.priceTotal - price.integerValue;
+        }
+    }
 }
 
 #pragma mark -Web
@@ -783,8 +799,9 @@
 }
 //获取现金券
 #pragma mark - CouponsVCCouponsUsedDelegate
-- (void)couponsUsed:(id)sender{
-    self.listCoupons = sender;
+- (void)couponsUsed:(id)sender andCouponsArray:(NSMutableArray *)couponsArray{
+    self.listCouponsString = sender;
+    self.listCouponsArray = couponsArray;
 }
 
 @end

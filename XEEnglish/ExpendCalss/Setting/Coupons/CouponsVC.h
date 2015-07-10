@@ -10,7 +10,7 @@
 @protocol CouponsVCCouponsUsedDelegate <NSObject>
 
 @optional
-- (void)couponsUsed:(id) sender;
+- (void)couponsUsed:(id) sender andCouponsArray:(NSMutableArray *)couponsArray;
 
 @end
 

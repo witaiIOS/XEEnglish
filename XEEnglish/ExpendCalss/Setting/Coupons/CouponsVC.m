@@ -65,7 +65,7 @@
     NSData *data = [NSJSONSerialization dataWithJSONObject:self.couponsUsedArray options:NSJSONWritingPrettyPrinted error:nil];
     NSString *text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     //将序列化的现金券数组，传给购买页
-    [self.delegate couponsUsed:text];
+    [self.delegate couponsUsed:text andCouponsArray:self.couponsUsedArray];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
