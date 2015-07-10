@@ -14,6 +14,9 @@
 
 #import "SubCourseListVC.h"
 #import "courseSchoolZoneVC.h"
+
+#import "SwitchButtonCell.h"
+
 #import "SelectedStudentVC.h"
 
 #import "payCompleteVC.h"
@@ -66,6 +69,8 @@
     //初始化为父课程id
     NSNumber *coursenumId =self.parentCourseInfo[@"course_id"];
     self.courseId = coursenumId.integerValue;
+    //默认情况下is_select_student为1，选择小孩，0为填写小孩
+    self.is_select_student = @"1";
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
@@ -252,27 +257,40 @@
 
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 2;
+    return 3;
 }
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (section == 0) {
         if (self.subCourseNumeber == 0) {
+            return 2;
+        }
+        else{
             return 3;
+        }   
+    }
+    else if (section == 1){
+        //is_select_student为1，选择小孩，0为填写小孩
+        if ([self.is_select_student intValue] == 1) {
+            return 2;
         }
         else{
             return 4;
-        }   
+        }
+    }
+    else if (section == 2){
+        return 2;
     }
     else{
-        return 2;
+        return 0;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *reuse1 = @"BaseCell";
     //static NSString *reuse2 = @"ListeningCourseInfoCell";
+    static NSString *reuse2 = @"SwitchBtnCell";
     static NSString *reuse3 = @"ListenZoneCell";
     
     if (indexPath.section == 0) {
@@ -293,21 +311,21 @@
                 cell.detailTextLabel.text = self.courseName;
                 return cell;
             }
-            else if (indexPath.row == 1)
+            else
             {
                 cell.textLabel.text = @"校区选择";
                 cell.detailTextLabel.text = self.schoolZone[@"department"];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 return cell;
             }
-            else
-            {
-                
-                cell.textLabel.text = @"选择小孩";
-                cell.detailTextLabel.text = self.selectedStudent[@"name"];
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                return cell;
-            }
+//            else
+//            {
+//                
+//                cell.textLabel.text = @"选择小孩";
+//                cell.detailTextLabel.text = self.selectedStudent[@"name"];
+//                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//                return cell;
+//            }
             
         }
         else{
@@ -324,25 +342,133 @@
                 cell.detailTextLabel.text = self.subCourseName;
                 return cell;
             }
-            else if (indexPath.row == 2)
+            else
             {
                 cell.textLabel.text = @"校区选择";
                 cell.detailTextLabel.text = self.schoolZone[@"department"];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 return cell;
             }
-            else
-            {
-                cell.textLabel.text = @"选择小孩";
-                cell.detailTextLabel.text = self.selectedStudent[@"name"];
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                return cell;
-            }
+//            else
+//            {
+//                cell.textLabel.text = @"选择小孩";
+//                cell.detailTextLabel.text = self.selectedStudent[@"name"];
+//                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//                return cell;
+//            }
             
         }
         
     }
     else if (indexPath.section == 1){
+        //is_select_student为1，选择小孩，0为填写小孩
+        if ([self.is_select_student intValue] == 1) {
+
+            if (indexPath.row == 0) {
+                
+                [self.tableView registerNib:[UINib nibWithNibName:@"SwitchButtonCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse2];
+                
+                SwitchButtonCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
+                
+//                if (cell == nil) {
+//                    cell = [[SwitchButtonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
+//                }
+                cell.cellEdge = 10;
+                cell.myTipLabel.text = @"输入或者选择小孩";
+                cell.rowOfCell = 0;
+                cell.mySwtichBtn.on = NO;
+                cell.myDetailLabel.text = @"选择";
+                
+                return cell;
+            }
+            else{
+                BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
+                
+                if (cell == nil) {
+                    cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
+                    cell.textLabel.font = [UIFont systemFontOfSize:14];
+                    cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+                    cell.cellEdge = 10;
+                }
+                cell.textLabel.text = @"选择小孩";
+                cell.detailTextLabel.text = self.selectedStudent[@"name"];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+                return cell;
+            }
+ 
+        }
+        else{
+            
+            if (indexPath.row == 0) {
+                
+                [self.tableView registerNib:[UINib nibWithNibName:@"SwitchButtonCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse2];
+                
+                SwitchButtonCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
+                
+                //                if (cell == nil) {
+                //                    cell = [[SwitchButtonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
+                //                }
+                cell.cellEdge = 10;
+                cell.myTipLabel.text = @"输入或者选择小孩";
+                cell.rowOfCell = 0;
+                cell.mySwtichBtn.on = NO;
+                cell.myDetailLabel.text = @"选择";
+                
+                return cell;
+            }
+            else if(indexPath.row == 1){
+                BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
+                
+                if (cell == nil) {
+                    cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
+                    cell.textLabel.font = [UIFont systemFontOfSize:14];
+                    cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+                    cell.cellEdge = 10;
+                }
+                cell.textLabel.text = @"小孩姓名";
+                //cell.detailTextLabel.text = self.selectedStudent[@"name"];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+                return cell;
+            }
+            else if(indexPath.row == 2){
+                BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
+                
+                if (cell == nil) {
+                    cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
+                    cell.textLabel.font = [UIFont systemFontOfSize:14];
+                    cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+                    cell.cellEdge = 10;
+                }
+                cell.textLabel.text = @"小孩生日";
+                //cell.detailTextLabel.text = self.selectedStudent[@"name"];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+                return cell;
+            }
+            else{
+                [self.tableView registerNib:[UINib nibWithNibName:@"SwitchButtonCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse2];
+                
+                SwitchButtonCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
+                
+                //                if (cell == nil) {
+                //                    cell = [[SwitchButtonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
+                //                }
+                cell.cellEdge = 10;
+                cell.myTipLabel.text = @"小孩性别";
+                cell.rowOfCell = 3;
+                cell.mySwtichBtn.on = YES;
+                cell.myDetailLabel.text = @"男";
+                
+                return cell;
+            }
+            
+        }
+        
+        
+    }
+    else if (indexPath.section == 2){
         
         ListenZoneCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse3];
         

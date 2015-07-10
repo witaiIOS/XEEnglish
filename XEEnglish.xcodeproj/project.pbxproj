@@ -33,6 +33,8 @@
 		09C3285E1B301370009F0BAB /* CourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C3285D1B301370009F0BAB /* CourseCell.xib */; };
 		09C328611B301D8E009F0BAB /* CourseLeaveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C328601B301D8E009F0BAB /* CourseLeaveVC.m */; };
 		09C328641B301E24009F0BAB /* CourseAbsentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C328631B301E24009F0BAB /* CourseAbsentVC.m */; };
+		09C5431F1B4F938000BD750C /* SwitchButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C5431E1B4F938000BD750C /* SwitchButtonCell.m */; };
+		09C543231B4F93C900BD750C /* SwitchButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C543221B4F93C900BD750C /* SwitchButtonCell.xib */; };
 		09C639441B3A69D400510F00 /* BuyCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C639431B3A69D400510F00 /* BuyCourseVC.m */; };
 		09C639481B3A917400510F00 /* PayCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C639471B3A917400510F00 /* PayCourseVC.m */; };
 		09C6394B1B3A935100510F00 /* PaymoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6394A1B3A935100510F00 /* PaymoneyCell.m */; };
@@ -270,6 +272,9 @@
 		09C328601B301D8E009F0BAB /* CourseLeaveVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseLeaveVC.m; sourceTree = "<group>"; };
 		09C328621B301E24009F0BAB /* CourseAbsentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseAbsentVC.h; sourceTree = "<group>"; };
 		09C328631B301E24009F0BAB /* CourseAbsentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseAbsentVC.m; sourceTree = "<group>"; };
+		09C5431D1B4F938000BD750C /* SwitchButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchButtonCell.h; sourceTree = "<group>"; };
+		09C5431E1B4F938000BD750C /* SwitchButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchButtonCell.m; sourceTree = "<group>"; };
+		09C543221B4F93C900BD750C /* SwitchButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchButtonCell.xib; sourceTree = "<group>"; };
 		09C639421B3A69D400510F00 /* BuyCourseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyCourseVC.h; sourceTree = "<group>"; };
 		09C639431B3A69D400510F00 /* BuyCourseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyCourseVC.m; sourceTree = "<group>"; };
 		09C639461B3A917400510F00 /* PayCourseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayCourseVC.h; sourceTree = "<group>"; };
@@ -658,6 +663,9 @@
 				09C87F311B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m */,
 				09D545A01B452C4000CC5844 /* courseSchoolZoneVC.h */,
 				09D545A11B452C4000CC5844 /* courseSchoolZoneVC.m */,
+				09C5431D1B4F938000BD750C /* SwitchButtonCell.h */,
+				09C5431E1B4F938000BD750C /* SwitchButtonCell.m */,
+				09C543221B4F93C900BD750C /* SwitchButtonCell.xib */,
 			);
 			path = CourseIntroductionVC;
 			sourceTree = "<group>";
@@ -1485,6 +1493,7 @@
 				09D560451B26D3E700ADF334 /* ForgetPassWordVC.xib in Resources */,
 				A6B1CEDA1B1C62D400100E9F /* ChangePassWordVC.xib in Resources */,
 				09D23C5B1B42B0F1008B6085 /* PointSRuleCell.xib in Resources */,
+				09C543231B4F93C900BD750C /* SwitchButtonCell.xib in Resources */,
 				A6B1CEE21B1C62D400100E9F /* SettingSignatureVC.xib in Resources */,
 				09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */,
 				A6284CD81B10592100EFF820 /* Main.storyboard in Resources */,
@@ -1585,6 +1594,7 @@
 				A6284D5F1B105E5600EFF820 /* UIButton+AFNetworking.m in Sources */,
 				A6284D491B105E5600EFF820 /* AFSecurityPolicy.m in Sources */,
 				097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */,
+				09C5431F1B4F938000BD750C /* SwitchButtonCell.m in Sources */,
 				09D23C541B427DDF008B6085 /* PointsRecordCell.m in Sources */,
 				09C9C0F41B22E409001BBA1C /* HardwareDemandCell.m in Sources */,
 				A6284D631B105E5600EFF820 /* UIWebView+AFNetworking.m in Sources */,
