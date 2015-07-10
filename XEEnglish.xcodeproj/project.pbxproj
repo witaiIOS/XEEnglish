@@ -35,6 +35,8 @@
 		09C328641B301E24009F0BAB /* CourseAbsentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C328631B301E24009F0BAB /* CourseAbsentVC.m */; };
 		09C5431F1B4F938000BD750C /* SwitchButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C5431E1B4F938000BD750C /* SwitchButtonCell.m */; };
 		09C543231B4F93C900BD750C /* SwitchButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C543221B4F93C900BD750C /* SwitchButtonCell.xib */; };
+		09C543261B4FB67500BD750C /* ListenStudentNameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C543251B4FB67500BD750C /* ListenStudentNameVC.m */; };
+		09C543281B4FB6E000BD750C /* ListenStudentNameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C543271B4FB6E000BD750C /* ListenStudentNameVC.xib */; };
 		09C639441B3A69D400510F00 /* BuyCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C639431B3A69D400510F00 /* BuyCourseVC.m */; };
 		09C639481B3A917400510F00 /* PayCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C639471B3A917400510F00 /* PayCourseVC.m */; };
 		09C6394B1B3A935100510F00 /* PaymoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6394A1B3A935100510F00 /* PaymoneyCell.m */; };
@@ -275,6 +277,9 @@
 		09C5431D1B4F938000BD750C /* SwitchButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchButtonCell.h; sourceTree = "<group>"; };
 		09C5431E1B4F938000BD750C /* SwitchButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchButtonCell.m; sourceTree = "<group>"; };
 		09C543221B4F93C900BD750C /* SwitchButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchButtonCell.xib; sourceTree = "<group>"; };
+		09C543241B4FB67500BD750C /* ListenStudentNameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListenStudentNameVC.h; sourceTree = "<group>"; };
+		09C543251B4FB67500BD750C /* ListenStudentNameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListenStudentNameVC.m; sourceTree = "<group>"; };
+		09C543271B4FB6E000BD750C /* ListenStudentNameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListenStudentNameVC.xib; sourceTree = "<group>"; };
 		09C639421B3A69D400510F00 /* BuyCourseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyCourseVC.h; sourceTree = "<group>"; };
 		09C639431B3A69D400510F00 /* BuyCourseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyCourseVC.m; sourceTree = "<group>"; };
 		09C639461B3A917400510F00 /* PayCourseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayCourseVC.h; sourceTree = "<group>"; };
@@ -666,6 +671,9 @@
 				09C5431D1B4F938000BD750C /* SwitchButtonCell.h */,
 				09C5431E1B4F938000BD750C /* SwitchButtonCell.m */,
 				09C543221B4F93C900BD750C /* SwitchButtonCell.xib */,
+				09C543241B4FB67500BD750C /* ListenStudentNameVC.h */,
+				09C543251B4FB67500BD750C /* ListenStudentNameVC.m */,
+				09C543271B4FB6E000BD750C /* ListenStudentNameVC.xib */,
 			);
 			path = CourseIntroductionVC;
 			sourceTree = "<group>";
@@ -1478,6 +1486,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09C543281B4FB6E000BD750C /* ListenStudentNameVC.xib in Resources */,
 				A6DA3E281B44D919005850EB /* UMSShareListController.xib in Resources */,
 				A6284D8A1B10652700EFF820 /* tab_activity@2x.png in Resources */,
 				A6284D8C1B10652700EFF820 /* tab_setting@2x.png in Resources */,
@@ -1611,6 +1620,7 @@
 				09D23C421B42403E008B6085 /* PointsVC.m in Sources */,
 				A6284D521B105E5600EFF820 /* DDXMLNode.m in Sources */,
 				A6284D9C1B1067C100EFF820 /* LoginVC.m in Sources */,
+				09C543261B4FB67500BD750C /* ListenStudentNameVC.m in Sources */,
 				A6B1CEEA1B1D8C7200100E9F /* HomeBtnCell.m in Sources */,
 				A6B1CEDE1B1C62D400100E9F /* PersonInfoVC.m in Sources */,
 				09D23C511B4276A4008B6085 /* PointSRuleVC.m in Sources */,

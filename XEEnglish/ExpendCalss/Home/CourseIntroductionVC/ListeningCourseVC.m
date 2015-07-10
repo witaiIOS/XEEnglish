@@ -19,12 +19,14 @@
 
 #import "SelectedStudentVC.h"
 
+#import "ListenStudentNameVC.h"
+
 #import "payCompleteVC.h"
 #import "PayCourseVC.h"
 
 #import "XeeService.h"
 
-@interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate,CourseSchoolZoneDelegate,SelectedStudentVCselectedStudentDelegate,SwitchButtonCellSwitchBtnValueChangeDelegate>
+@interface ListeningCourseVC ()<UITableViewDataSource,UITableViewDelegate,SelectedCourseDelegate,CourseSchoolZoneDelegate,SelectedStudentVCselectedStudentDelegate,SwitchButtonCellSwitchBtnValueChangeDelegate,ListenStudentNameVCGetStudentNameDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) NSInteger courseId;//课程id
 @property (nonatomic, strong) NSString *subCourseName;//子课程名
@@ -43,7 +45,7 @@
 @property (nonatomic, strong) NSString *is_select_student;//is_select_student 是否是选择孩子取值 1选孩子 0填写孩子
 @property (nonatomic, strong) NSString *sex;//sex(0女1男)
 @property (nonatomic, strong) NSString *birthday;//小孩生日
-@property (nonatomic, strong) NSString *name;//is_select_student为0填写孩子，name(姓名不能为空)
+@property (nonatomic, strong) NSString *studentName;//is_select_student为0填写孩子，name(姓名不能为空)
 @end
 
 @implementation ListeningCourseVC
@@ -207,7 +209,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
-    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolZone[@"department_id"] andStudentId:self.selectedStudent[@"student_id"] andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.listenPrice andPlatFormTypeId:@"202" andListCoupon:@"[]" andToken:userInfoDic[uUserToken] andPayType:@"1" andNumbers:1 andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:self.name andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolZone[@"department_id"] andStudentId:self.selectedStudent[@"student_id"] andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.listenPrice andPlatFormTypeId:@"202" andListCoupon:@"[]" andToken:userInfoDic[uUserToken] andPayType:@"1" andNumbers:1 andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:self.studentName andBlock:^(NSDictionary *result, NSError *error) {
         
         if (!error) {
             NSNumber *isResult = result[@"result"];
@@ -441,7 +443,7 @@
                     cell.cellEdge = 10;
                 }
                 cell.textLabel.text = @"小孩姓名";
-                //cell.detailTextLabel.text = self.selectedStudent[@"name"];
+                cell.detailTextLabel.text = self.studentName;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 
                 return cell;
@@ -577,6 +579,25 @@
             vc.delegate = self;
             vc.selectedStudent = self.selectedStudent[@"name"];
             [self.navigationController pushViewController:vc animated:YES];
+        }
+        else{
+            switch (indexPath.row) {
+                case 1:
+                {
+                    //输入学生姓名
+                    ListenStudentNameVC *vc = [[ListenStudentNameVC alloc] init];
+                    vc.delegate = self;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                case 2:
+                {
+                    break;
+                }
+                    
+                default:
+                    break;
+            }
         }
     }
     else{
@@ -716,6 +737,14 @@
         [self.tableView reloadData];
     }
 }
+
+#pragma mark - ListenStudentNameVCGetStudentNameDelegate
+- (void)getStudentName:(id)sender{
+    //is_select_student为0时，输入小孩名字
+    self.studentName = sender;
+    [self.tableView reloadData];
+}
+
 
 /*
 #pragma mark - Navigation
