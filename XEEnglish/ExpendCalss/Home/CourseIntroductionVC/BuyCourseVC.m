@@ -562,6 +562,8 @@
         
     }
     else if (indexPath.section == 2){
+        //点击了使用优惠券，在支付页面没支付，又返回购买页面去选择优惠券时，需要还原原来的支付金额
+        [self usedCouponsButNotCompletePayAndGoBackToContinueChoiceCouopnsNeedRestoreTotalPrice];
         CouponsVC *vc = [[CouponsVC alloc] init];
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
@@ -792,19 +794,31 @@
     self.listCouponsString = sender;
     self.listCouponsArray = couponsArray;
     //最终价格需要减去优惠券的价格
-    [self TotalPriceAftercouponsUsed];
+    [self usedCouponsToChangeTotalPrice];
     NSLog(@"price:%li",self.priceTotal);
     [self.tableView reloadData];
 }
 
 //使用优惠券后修改付款价格
-- (void)TotalPriceAftercouponsUsed{
+- (void)usedCouponsToChangeTotalPrice{
     
     if ([self.listCouponsArray count] != 0) {
         for (id indexDic in self.listCouponsArray) {
             NSNumber *price = indexDic[@"price"];
             
             self.priceTotal = self.priceTotal - price.integerValue;
+        }
+    }
+}
+
+//点击了使用优惠券，在支付页面没支付，又返回购买页面去选择优惠券时，需要还原原来的支付金额
+- (void)usedCouponsButNotCompletePayAndGoBackToContinueChoiceCouopnsNeedRestoreTotalPrice{
+    
+    if ([self.listCouponsArray count] != 0) {
+        for (id indexDic in self.listCouponsArray) {
+            NSNumber *price = indexDic[@"price"];
+            
+            self.priceTotal = self.priceTotal + price.integerValue;
         }
     }
 }
