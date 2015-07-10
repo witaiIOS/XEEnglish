@@ -18,4 +18,9 @@
 @property (nonatomic, strong) NSString *payType;//pay_type 取值 1课时 2整套 3都可
 @property (nonatomic, strong) NSString *listCoupon;//listCoupon为现金券List，主要存放现金券id。
 @property (nonatomic, assign) NSInteger number;//为课时
+
+@property (nonatomic, strong) NSString *is_select_student;//is_select_student 是否是选择孩子取值 1选孩子 0填写孩子
+@property (nonatomic, strong) NSString *sex;//sex(0女1男)
+@property (nonatomic, strong) NSString *birthday;//小孩生日
+@property (nonatomic, strong) NSString *name;//is_select_student为0填写孩子，name(姓名不能为空)
 @end

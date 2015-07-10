@@ -68,6 +68,9 @@
     NSNumber *initCourseId = self.courseInfoDic[@"course_id"];
     self.buyCourseId = initCourseId.integerValue;
     
+    //初始化经过序列化的现金券数组的NSString
+    self.listCoupons = @"[]";
+    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -185,8 +188,12 @@
         vc.schoolId = self.schoolZone[@"department_id"];
         vc.payMethod = 1;
         vc.payType = [NSString stringWithFormat:@"%li",self.payMethodNumber];
-        vc.listCoupon = @"[]";
+        vc.listCoupon = self.listCoupons;
         vc.courseId = self.buyCourseId;
+        vc.is_select_student = @"";
+        vc.sex = @"";
+        vc.birthday = @"";
+        vc.name = @"";
         if (self.payMethodNumber == 2) {
             vc.number = 1;
         }

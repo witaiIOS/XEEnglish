@@ -306,9 +306,9 @@
     }];
 }
 
-- (void)addStudentSubCourseWithDepartmentId:(NSString *)departmentId andStudentId:(NSString *)studentId andType:(NSString *)type andOrderPrice:(NSInteger)orderPrice andPlatFormTypeId:(NSString *)platFormTypeId andListCoupon:(NSString *)listCoupon andToken:(NSString *)token andPayType:(NSString *)payType andNumbers:(NSInteger)numbers andCourseId:(NSInteger)courseId andParentId:(NSString *)parentId andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+- (void)addStudentSubCourseWithDepartmentId:(NSString *)departmentId andStudentId:(NSString *)studentId andType:(NSString *)type andOrderPrice:(NSInteger)orderPrice andPlatFormTypeId:(NSString *)platFormTypeId andListCoupon:(NSString *)listCoupon andToken:(NSString *)token andPayType:(NSString *)payType andNumbers:(NSInteger)numbers andCourseId:(NSInteger)courseId andParentId:(NSString *)parentId andIsSelectStudent:(NSString *)is_select_student andSex:(NSString *)sex andBirthday:(NSString *)birthday andName:(NSString *)name andBlock:(void(^)(NSDictionary *result, NSError *error))block{
     
-    AFHTTPRequestOperation *operation = [WebServiceOpration addStudentSubCourseWithDepartmentId:departmentId andStudentId:studentId andType:type andOrderPrice:orderPrice andPlatFormTypeId:platFormTypeId andListCoupon:listCoupon andToken:token andPayType:payType andNumbers:numbers andCourseId:courseId andParentId:parentId];
+    AFHTTPRequestOperation *operation = [WebServiceOpration addStudentSubCourseWithDepartmentId:departmentId andStudentId:studentId andType:type andOrderPrice:orderPrice andPlatFormTypeId:platFormTypeId andListCoupon:listCoupon andToken:token andPayType:payType andNumbers:numbers andCourseId:courseId andParentId:parentId andIsSelectStudent:is_select_student andSex:sex andBirthday:birthday andName:name];
     
     [self getResponseWithOpration:operation andXmlKey:@"AddStudentSubCourseResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         if (block) {

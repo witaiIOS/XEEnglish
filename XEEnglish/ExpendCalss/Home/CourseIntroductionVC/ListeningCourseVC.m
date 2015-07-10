@@ -36,6 +36,11 @@
 @property (nonatomic, assign) NSInteger payMethod;//付款方式
 //购买的完整信息
 //@property (nonatomic, strong) NSMutableDictionary *payInfoDic;
+
+@property (nonatomic, strong) NSString *is_select_student;//is_select_student 是否是选择孩子取值 1选孩子 0填写孩子
+@property (nonatomic, strong) NSString *sex;//sex(0女1男)
+@property (nonatomic, strong) NSString *birthday;//小孩生日
+@property (nonatomic, strong) NSString *name;//is_select_student为0填写孩子，name(姓名不能为空)
 @end
 
 @implementation ListeningCourseVC
@@ -194,7 +199,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
-    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolZone[@"department_id"] andStudentId:self.selectedStudent[@"student_id"] andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.listenPrice andPlatFormTypeId:@"202" andListCoupon:@"[]" andToken:userInfoDic[uUserToken] andPayType:@"1" andNumbers:1 andCourseId:self.courseId andParentId:userInfoDic[uUserId] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolZone[@"department_id"] andStudentId:self.selectedStudent[@"student_id"] andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.listenPrice andPlatFormTypeId:@"202" andListCoupon:@"[]" andToken:userInfoDic[uUserToken] andPayType:@"1" andNumbers:1 andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:self.name andBlock:^(NSDictionary *result, NSError *error) {
         
         if (!error) {
             NSNumber *isResult = result[@"result"];

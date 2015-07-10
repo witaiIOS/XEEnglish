@@ -66,6 +66,7 @@
     NSString *text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     //将序列化的现金券数组，传给购买页
     [self.delegate couponsUsed:text];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Web
