@@ -194,6 +194,22 @@
 }
 
 #pragma mark - 首页
+
+/**
+ 获取首页广告信息
+ @param {}
+ */
+- (void)getAdAndBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getAd];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetAdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 /**
  获取首页课程列表
  @param {}

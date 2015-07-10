@@ -100,6 +100,16 @@
 
 #pragma mark - 首页
 /**
+ 获取首页广告信息
+ @param {}
+ */
++ (AFHTTPRequestOperation *)getAd{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetAd/>"]];
+}
+
+
+/**
  获取首页课程列表
  @param {}
  */
