@@ -13,7 +13,8 @@
 
 @interface CouponsVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *couponsArray;
+@property (nonatomic, strong) NSMutableArray *couponsArray;//所有现金券
+@property (nonatomic, strong) NSMutableArray *couponsUsedArray;//使用现金券数组
 
 @end
 
@@ -42,6 +43,10 @@
     
     [self  getMyCouponWithWeb];
     
+    self.couponsArray = [[NSMutableArray alloc] init];//接受网络请求的所有的现金券
+    
+    self.couponsUsedArray = [[NSMutableArray alloc] init];//使用现金券，初始化
+    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -56,7 +61,11 @@
 
 #pragma mark - MyAction
 - (void)completeBtnClicked{
-    
+    //将现金券数字序列化
+    NSData *data = [NSJSONSerialization dataWithJSONObject:self.couponsUsedArray options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    //将序列化的现金券数组，传给购买页
+    [self.delegate couponsUsed:text];
 }
 
 #pragma mark - Web
@@ -122,6 +131,16 @@
     cell.iconButton.selected = !cell.iconButton.selected;
     
     
+    
+    if (cell.iconButton.selected == YES) {
+        [self.couponsUsedArray addObject:self.couponsArray[indexPath.section]];
+    }
+    else{
+        [self.couponsUsedArray removeObject:self.couponsArray[indexPath.section]];
+    }
+//    NSData *data = [NSJSONSerialization dataWithJSONObject:self.couponsUsedArray options:NSJSONWritingPrettyPrinted error:nil];
+//    NSString *text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",text);
 }
 
 

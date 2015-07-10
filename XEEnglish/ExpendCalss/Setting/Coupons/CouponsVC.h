@@ -7,7 +7,15 @@
 //
 
 #import "BaseVC.h"
+@protocol CouponsVCCouponsUsedDelegate <NSObject>
+
+@optional
+- (void)couponsUsed:(id) sender;
+
+@end
+
 
 @interface CouponsVC : BaseVC
 
+@property (nonatomic, assign) id<CouponsVCCouponsUsedDelegate>delegate;
 @end

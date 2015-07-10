@@ -23,7 +23,7 @@
     
     [_iconButton setImage:[UIImage imageNamed:@"chekbox.png"] forState:UIControlStateNormal];
     [_iconButton setImage:[UIImage imageNamed:@"chekbox_select.png"] forState:UIControlStateSelected];
-    NSLog(@"info:%@",self.couponsInfoDic);
+    //NSLog(@"info:%@",self.couponsInfoDic);
     //获取现金券状态
     [self getMyCouponsStatus];
     

@@ -23,7 +23,7 @@
 
 #import "XeeService.h"
 
-@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate,SelectedPayCourseMethodDelegate,ListeningCourseInfoCellDelegate,CourseSchoolZoneDelegate,SelectedStudentVCselectedStudentDelegate>
+@interface BuyCourseVC ()<UITableViewDataSource,UITableViewDelegate,changeSelectedBtnDelegate,SelectedCourseDelegate,SelectedPayCourseMethodDelegate,ListeningCourseInfoCellDelegate,CourseSchoolZoneDelegate,SelectedStudentVCselectedStudentDelegate,CouponsVCCouponsUsedDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *selectedBtn;//是否同意了协议
@@ -41,6 +41,8 @@
 
 @property (nonatomic, strong) NSString *inputCourseHours;//按课时购买时，输入的课时数
 @property (nonatomic, assign) NSInteger priceTotal;//缴费金额
+
+@property (nonatomic, strong) NSString *listCoupons;//序列化后的现金券数组
 @end
 
 @implementation BuyCourseVC
@@ -549,6 +551,7 @@
     }
     else if (indexPath.section == 2){
         CouponsVC *vc = [[CouponsVC alloc] init];
+        vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else{
@@ -770,6 +773,11 @@
 - (void)selectedStudent:(id)sender{
     self.selectedStudent = sender;
     [self.tableView reloadData];
+}
+//获取现金券
+#pragma mark - CouponsVCCouponsUsedDelegate
+- (void)couponsUsed:(id)sender{
+    self.listCoupons = sender;
 }
 
 @end
