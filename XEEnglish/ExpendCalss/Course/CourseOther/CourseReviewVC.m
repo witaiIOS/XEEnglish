@@ -8,6 +8,9 @@
 
 #import "CourseReviewVC.h"
 #import "CourseReviewCell.h"
+
+#import "CourseCommentVC.h"
+
 #import "XeeService.h"
 
 @interface CourseReviewVC ()<UITableViewDataSource,UITableViewDelegate>
@@ -68,9 +71,9 @@
 
 - (void)commentBtnClicked{
     
-    //    BuyCourseVC *vc = [[BuyCourseVC alloc] init];
-    //    vc.courseName = self.title;
-    //    [self.navigationController pushViewController:vc animated:YES];
+    CourseCommentVC *vc = [[CourseCommentVC alloc] init];
+    vc.courseLeaveInfoDic = self.courseLeaveInfoDic;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Web

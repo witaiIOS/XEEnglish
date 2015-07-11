@@ -35,7 +35,7 @@
         [self.courseButton setBackgroundColor:[UIColor orangeColor]];
     }
     else if ([signonStr isEqualToString:@"1"]){
-        judgeState = @"已上课";
+        judgeState = @"已签到";
         [self.courseButton setTitle:@"评论" forState:UIControlStateNormal];
         [self.courseButton setBackgroundColor:[UIColor grayColor]];
     }

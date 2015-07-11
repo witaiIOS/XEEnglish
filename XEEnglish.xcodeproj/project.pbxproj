@@ -33,6 +33,10 @@
 		09C3285E1B301370009F0BAB /* CourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C3285D1B301370009F0BAB /* CourseCell.xib */; };
 		09C328611B301D8E009F0BAB /* CourseLeaveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C328601B301D8E009F0BAB /* CourseLeaveVC.m */; };
 		09C328641B301E24009F0BAB /* CourseAbsentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C328631B301E24009F0BAB /* CourseAbsentVC.m */; };
+		09C532111B50A5EE00D6A07E /* CourseCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C532101B50A5EE00D6A07E /* CourseCommentCell.m */; };
+		09C532131B50A60A00D6A07E /* CourseCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C532121B50A60A00D6A07E /* CourseCommentCell.xib */; };
+		09C532161B50A6FD00D6A07E /* star_0_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C532141B50A6FD00D6A07E /* star_0_pressed.png */; };
+		09C532171B50A6FD00D6A07E /* star_1_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C532151B50A6FD00D6A07E /* star_1_normal.png */; };
 		09C5431F1B4F938000BD750C /* SwitchButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C5431E1B4F938000BD750C /* SwitchButtonCell.m */; };
 		09C543231B4F93C900BD750C /* SwitchButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C543221B4F93C900BD750C /* SwitchButtonCell.xib */; };
 		09C543261B4FB67500BD750C /* ListenStudentNameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C543251B4FB67500BD750C /* ListenStudentNameVC.m */; };
@@ -274,6 +278,11 @@
 		09C328601B301D8E009F0BAB /* CourseLeaveVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseLeaveVC.m; sourceTree = "<group>"; };
 		09C328621B301E24009F0BAB /* CourseAbsentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseAbsentVC.h; sourceTree = "<group>"; };
 		09C328631B301E24009F0BAB /* CourseAbsentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseAbsentVC.m; sourceTree = "<group>"; };
+		09C5320F1B50A5EE00D6A07E /* CourseCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCommentCell.h; sourceTree = "<group>"; };
+		09C532101B50A5EE00D6A07E /* CourseCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCommentCell.m; sourceTree = "<group>"; };
+		09C532121B50A60A00D6A07E /* CourseCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseCommentCell.xib; sourceTree = "<group>"; };
+		09C532141B50A6FD00D6A07E /* star_0_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_0_pressed.png; sourceTree = "<group>"; };
+		09C532151B50A6FD00D6A07E /* star_1_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_1_normal.png; sourceTree = "<group>"; };
 		09C5431D1B4F938000BD750C /* SwitchButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchButtonCell.h; sourceTree = "<group>"; };
 		09C5431E1B4F938000BD750C /* SwitchButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchButtonCell.m; sourceTree = "<group>"; };
 		09C543221B4F93C900BD750C /* SwitchButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchButtonCell.xib; sourceTree = "<group>"; };
@@ -637,6 +646,9 @@
 				093A587B1B43B543006F104D /* CourseLeaveExplainVC.xib */,
 				093A587E1B43E398006F104D /* CourseCommentVC.h */,
 				093A587F1B43E398006F104D /* CourseCommentVC.m */,
+				09C5320F1B50A5EE00D6A07E /* CourseCommentCell.h */,
+				09C532101B50A5EE00D6A07E /* CourseCommentCell.m */,
+				09C532121B50A60A00D6A07E /* CourseCommentCell.xib */,
 				093A58811B43ECF0006F104D /* CourseReviewVC.h */,
 				093A58821B43ECF0006F104D /* CourseReviewVC.m */,
 				09C6FEF81B4BCEB50069156D /* CourseReviewCell.h */,
@@ -875,6 +887,8 @@
 		09DB2DCF1B1322CC0078AAF5 /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				09C532141B50A6FD00D6A07E /* star_0_pressed.png */,
+				09C532151B50A6FD00D6A07E /* star_1_normal.png */,
 				09DB2DD01B1322CC0078AAF5 /* star_select.png */,
 				09DB2DD11B1322CC0078AAF5 /* yue.png */,
 			);
@@ -1492,6 +1506,7 @@
 				A6284D8C1B10652700EFF820 /* tab_setting@2x.png in Resources */,
 				09DB2DBA1B1322800078AAF5 /* s_phone.png in Resources */,
 				A6284D891B10652700EFF820 /* tab_home@2x.png in Resources */,
+				09C532171B50A6FD00D6A07E /* star_1_normal.png in Resources */,
 				09CA69211B201F2500A31E0E /* coupons1.png in Resources */,
 				09E24B221B41711700F762BD /* MyBookSiteCell.xib in Resources */,
 				A6B1CEE01B1C62D400100E9F /* SettingBirthdayVC.xib in Resources */,
@@ -1546,6 +1561,7 @@
 				09C639521B3A9F5E00510F00 /* pay_01.png in Resources */,
 				A6DA3E211B44D919005850EB /* UMSCommentDetailController.xib in Resources */,
 				09C9C0F81B22FA19001BBA1C /* yes.png in Resources */,
+				09C532131B50A60A00D6A07E /* CourseCommentCell.xib in Resources */,
 				A6284CDA1B10592100EFF820 /* Images.xcassets in Resources */,
 				090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */,
 				09D5459F1B44D6DB00CC5844 /* ExpendRecordCell.xib in Resources */,
@@ -1555,6 +1571,7 @@
 				09DB2DC81B1322A30078AAF5 /* mybgpic@2x.png in Resources */,
 				09C9C0E11B22C890001BBA1C /* STexpense.png in Resources */,
 				09C9DE3C1B2A670C00A07544 /* MyActivityCell.xib in Resources */,
+				09C532161B50A6FD00D6A07E /* star_0_pressed.png in Resources */,
 				09C6B6181B3D76D300221974 /* image_loading.png in Resources */,
 				A6647CC01B270E9B00D2DC57 /* course7.png in Resources */,
 				09C9C0E41B22C890001BBA1C /* STreserve.png in Resources */,
@@ -1602,6 +1619,7 @@
 				09C9C0F11B22E3E5001BBA1C /* PlaceDemandCell.m in Sources */,
 				A6284D5F1B105E5600EFF820 /* UIButton+AFNetworking.m in Sources */,
 				A6284D491B105E5600EFF820 /* AFSecurityPolicy.m in Sources */,
+				09C532111B50A5EE00D6A07E /* CourseCommentCell.m in Sources */,
 				097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */,
 				09C5431F1B4F938000BD750C /* SwitchButtonCell.m in Sources */,
 				09D23C541B427DDF008B6085 /* PointsRecordCell.m in Sources */,
