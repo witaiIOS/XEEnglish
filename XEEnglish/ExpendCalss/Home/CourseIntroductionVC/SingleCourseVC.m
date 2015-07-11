@@ -12,6 +12,7 @@
 #import "ListeningCourseVC.h"
 #import "BuyCourseVC.h"
 
+#import "SingleCourseCommentVC.h"
 
 #import "XeeService.h"
 #import "MBProgressHUD.h"
@@ -51,6 +52,8 @@
     [super initUI];
     
     [self getCourseDetailByCourseId];
+    //右上角加上评价接口
+    [self addCommentBtn];
     
     //加入页面的头，显示适用年龄段，购买方式，价格
     [self headView];
@@ -70,6 +73,25 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+//加一个评价的右上角按钮
+- (void)addCommentBtn{
+    
+    UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [commentBtn setFrame:CGRectMake(kScreenWidth-50, 6, 40, 30)];
+    [commentBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [commentBtn setTitle:@"评论" forState:UIControlStateNormal];
+    [commentBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [commentBtn addTarget:self action:@selector(commentBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *commentBarBtn = [[UIBarButtonItem alloc] initWithCustomView:commentBtn];
+    self.navigationItem.rightBarButtonItem = commentBarBtn;
+}
+//该课程的评论
+- (void)commentBtnClicked{
+    SingleCourseCommentVC *vc = [[SingleCourseCommentVC alloc] init];
+    vc.courseInfoDic = self.courseInfo;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //加入页面的头，显示适用年龄段，购买方式，价格

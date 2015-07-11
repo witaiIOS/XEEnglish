@@ -94,6 +94,7 @@
 		09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */; };
 		09D231991B50EEA70055758A /* CourseMyCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D231971B50EEA70055758A /* CourseMyCommentVC.m */; };
 		09D2319A1B50EEA70055758A /* CourseMyCommentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D231981B50EEA70055758A /* CourseMyCommentVC.xib */; };
+		09D2319D1B511DEB0055758A /* SingleCourseCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D2319C1B511DEB0055758A /* SingleCourseCommentVC.m */; };
 		09D23C421B42403E008B6085 /* PointsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C411B42403E008B6085 /* PointsVC.m */; };
 		09D23C451B424417008B6085 /* ExchangePointsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C441B424417008B6085 /* ExchangePointsVC.m */; };
 		09D23C481B424526008B6085 /* ExchangePointsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C471B424526008B6085 /* ExchangePointsCell.m */; };
@@ -374,6 +375,8 @@
 		09D231961B50EEA70055758A /* CourseMyCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyCommentVC.h; sourceTree = "<group>"; };
 		09D231971B50EEA70055758A /* CourseMyCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMyCommentVC.m; sourceTree = "<group>"; };
 		09D231981B50EEA70055758A /* CourseMyCommentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseMyCommentVC.xib; sourceTree = "<group>"; };
+		09D2319B1B511DEB0055758A /* SingleCourseCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCourseCommentVC.h; sourceTree = "<group>"; };
+		09D2319C1B511DEB0055758A /* SingleCourseCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCourseCommentVC.m; sourceTree = "<group>"; };
 		09D23C401B42403E008B6085 /* PointsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsVC.h; sourceTree = "<group>"; };
 		09D23C411B42403E008B6085 /* PointsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsVC.m; sourceTree = "<group>"; };
 		09D23C431B424417008B6085 /* ExchangePointsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangePointsVC.h; sourceTree = "<group>"; };
@@ -676,6 +679,8 @@
 				0980856D1B32C37500BE9336 /* AllCoursesVC.m */,
 				09DC56FD1B390DEB00636C70 /* SingleCourseVC.h */,
 				09DC56FE1B390DEB00636C70 /* SingleCourseVC.m */,
+				09D2319B1B511DEB0055758A /* SingleCourseCommentVC.h */,
+				09D2319C1B511DEB0055758A /* SingleCourseCommentVC.m */,
 				094DD2641B3960CA0045EF2C /* ListeningCourseVC.h */,
 				094DD2651B3960CA0045EF2C /* ListeningCourseVC.m */,
 				094DD2671B3965AD0045EF2C /* ListenZoneCell.h */,
@@ -1613,6 +1618,7 @@
 				09C95EC51B280738000972D8 /* SchoolZoneCell.m in Sources */,
 				09D23C591B42ADC0008B6085 /* PointSRuleCell.m in Sources */,
 				09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */,
+				09D2319D1B511DEB0055758A /* SingleCourseCommentVC.m in Sources */,
 				09D560491B26DB8F00ADF334 /* RegisterVC.m in Sources */,
 				A6284D4B1B105E5600EFF820 /* AFURLRequestSerialization.m in Sources */,
 				A6284D4A1B105E5600EFF820 /* AFURLConnectionOperation.m in Sources */,
