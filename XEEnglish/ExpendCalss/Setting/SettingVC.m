@@ -100,6 +100,8 @@
     
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    //NSLog(@"id:%@",userInfoDic[uUserId]);
+    //NSLog(@"token:%@",userInfoDic[uUserToken]);
     [self showHud];
     [[XeeService sharedInstance] signWithParentId:userInfoDic[uUserId] andPlatform_type_id:@"202" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];

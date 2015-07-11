@@ -38,7 +38,7 @@
 //    
 //    BOOL isDateEnd = [earlier_date isEqualToDate:nowDate];
     
-    NSLog(@"dic:%@",self.activityInfo);
+    //NSLog(@"dic:%@",self.activityInfo);
     
     
     NSString *current_sum = [NSString stringWithFormat:@"%@",self.activityInfo[@"sum_current"]];

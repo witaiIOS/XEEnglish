@@ -205,10 +205,11 @@
 }
 //已完成课程
 - (void)courseCompleteBtnClicked{
-#warning change @"1"
-    //IsSignon传过时的标记，查询已完成的课程
-    self.courseIsSignon = @"1";
-    [self getVStudentSourseScheduleSign:2];
+//暂时不做已完成的按钮功能
+//#warning change @"1"
+//    //IsSignon传过时的标记，查询已完成的课程
+//    self.courseIsSignon = @"1";
+//    [self getVStudentSourseScheduleSign:2];
 }
 
 //跳转到请假界面
