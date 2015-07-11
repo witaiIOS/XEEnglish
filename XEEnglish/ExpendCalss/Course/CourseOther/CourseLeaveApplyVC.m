@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //self.title = @"补课说明";
+    //self.title = @"请假申请||补课申请";
 }
 
 - (void)initUI{
@@ -114,7 +114,7 @@
     
     ApplyProtocolVC *vc = [[ApplyProtocolVC alloc] init];
     vc.delegate = self;
-    vc.title = @"请假章程";
+    //vc.title = @"请假章程";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
