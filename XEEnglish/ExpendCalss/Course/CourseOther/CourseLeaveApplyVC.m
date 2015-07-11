@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //self.title = @"请假申请";
+    //self.title = @"补课说明";
 }
 
 - (void)initUI{

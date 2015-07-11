@@ -10,6 +10,7 @@
 #import "CourseReviewCell.h"
 
 #import "CourseCommentVC.h"
+#import "CourseLeaveApplyVC.h"
 
 #import "XeeService.h"
 
@@ -17,7 +18,8 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *coursePhotosArray;
-
+@property (nonatomic, strong) UIButton *commentBtn;//评论按钮，需要根据is_signon课程状态，显示不同的title
+//注意：is_signon取值 “时间已经过了： 1已上课且已签到 2 请假 3 缺课   时间没有过： 0正常 4  延迟 5 暂停”
 @end
 
 @implementation CourseReviewVC
@@ -53,17 +55,32 @@
     
     [self.view addSubview:footView];
     
-    UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [commentBtn setFrame:CGRectMake(kScreenWidth/2+20, 10, kScreenWidth/2-40, 40)];
-    [commentBtn setTitle:@"评论" forState:UIControlStateNormal];
-    [commentBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [commentBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [commentBtn setBackgroundColor:[UIColor orangeColor]];
-    commentBtn.layer.cornerRadius = 4.0f;
-    [commentBtn addTarget:self action:@selector(commentBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.commentBtn setFrame:CGRectMake(kScreenWidth/2+20, 10, kScreenWidth/2-40, 40)];
+    //[self.commentBtn setTitle:@"评论" forState:UIControlStateNormal];
+    [self setCommentTitle];
+    [self.commentBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.commentBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [self.commentBtn setBackgroundColor:[UIColor orangeColor]];
+    self.commentBtn.layer.cornerRadius = 4.0f;
+    [self.commentBtn addTarget:self action:@selector(commentBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     
-    [footView addSubview:commentBtn];
+    [footView addSubview:self.commentBtn];
     
+}
+//评论按钮，需要根据is_signon课程状态，显示不同的title
+//注意：is_signon取值 “时间已经过了： 1已上课且已签到 2 请假 3 缺课   时间没有过： 0正常 4  延迟 5 暂停”
+- (void)setCommentTitle{
+    NSNumber *isSignon = self.courseLeaveInfoDic[@"is_signon"];
+    if (isSignon.integerValue == 1) {
+        [self.commentBtn setTitle:@"评论" forState:UIControlStateNormal];
+    }
+    else if((isSignon.integerValue == 2)||(isSignon.integerValue == 3)){
+        [self.commentBtn setTitle:@"补课" forState:UIControlStateNormal];
+    }
+    else{
+        
+    }
 }
 
 
@@ -71,9 +88,21 @@
 
 - (void)commentBtnClicked{
     
-    CourseCommentVC *vc = [[CourseCommentVC alloc] init];
-    vc.courseLeaveInfoDic = self.courseLeaveInfoDic;
-    [self.navigationController pushViewController:vc animated:YES];
+    NSNumber *isSignon = self.courseLeaveInfoDic[@"is_signon"];
+    if (isSignon.integerValue == 1) {
+        CourseCommentVC *vc = [[CourseCommentVC alloc] init];
+        vc.courseLeaveInfoDic = self.courseLeaveInfoDic;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if((isSignon.integerValue == 2)||(isSignon.integerValue == 3)){
+        CourseLeaveApplyVC *vc = [[CourseLeaveApplyVC alloc] init];
+        vc.title = @"补课说明";
+        vc.courseLeaveInfoDic = self.courseLeaveInfoDic;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else{
+        
+    }
 }
 
 #pragma mark - Web
