@@ -8,7 +8,7 @@
 
 #import "CourseMyCommentVC.h"
 
-@interface CourseMyCommentVC ()
+@interface CourseMyCommentVC ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *courseTitle;
 @property (weak, nonatomic) IBOutlet UITextView *commentTV;
 
@@ -27,6 +27,32 @@
     [super initUI];
     
     self.courseTitle.text = self.courseInfoDic[@"title"];
+    //添加键盘上的done按钮
+    [self addKeyboardDone];
+}
+
+#pragma mark - AddKeyboardDone
+- (void)addKeyboardDone{
+    
+    UIToolbar * topView = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+    [topView setBarStyle:UIBarStyleBlack];
+    
+    UIBarButtonItem *btnSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Done"
+                                                                  style:UIBarButtonItemStyleDone
+                                                                 target:self
+                                                                 action:@selector(dismissKeyBoard)];
+    
+    NSArray * buttonsArray = @[btnSpace, doneButton];;
+    [topView setItems:buttonsArray];
+    [self.commentTV setInputAccessoryView:topView];//当文本输入框加上topView
+    topView = nil;
+}
+
+-(IBAction)dismissKeyBoard
+{
+    [self.commentTV resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,9 +60,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+
 - (IBAction)starButtonClicked:(id)sender{
+    //获取点击button的tag，为了得到需要高亮的星星个数
     UIButton *pressBtn = (UIButton *)sender;
     NSInteger num = pressBtn.tag;
+    //一次循环5颗星星，小于tag的星星需要点亮，大于的需要不亮
     for (int i = 0; i<5; i++) {
         UIButton *highLightBtn = (UIButton *)[self.view viewWithTag:i+1];
         if (i<num) {
@@ -50,6 +81,16 @@
     
 }
 - (IBAction)publishCommentBtnClicked:(id)sender {
+    
+    
 }
+
+
+#pragma mark - UITextView Delegate
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    
+    
+}
+
 
 @end
