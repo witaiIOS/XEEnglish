@@ -398,6 +398,25 @@
     }];
 }
 
+/**
+ 通过课程计划id，查询上课家长评论  每节课的评论
+ @param parent_id    注册id
+ @param course_schedule_id
+ @param token
+ */
+- (void)getCourseScheduleSignParentCommentWithParentId:(NSString *)parent_id  andCourseScheduleId:(NSString *)course_schedule_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getCourseScheduleSignParentCommentWithParentId:parent_id andCourseScheduleId:course_schedule_id andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetCourseScheduleSignParentCommentResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
+
+
 #pragma mark - 活动
 - (void)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andActivityStatus:(NSInteger )activity_status andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result, NSError *error))block {
     

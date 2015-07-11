@@ -82,7 +82,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
-    NSLog(@"courseInfo:%@",self.courseLeaveInfoDic);
+    //NSLog(@"courseInfo:%@",self.courseLeaveInfoDic);
     //NSString *courseScheduleId = self.courseLeaveInfoDic[@"course_schedule_id"];
     [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getPhotoByCourseScheduleIdWithParentId:userInfoDic[uUserId] andOwnerId:@"2362" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {

@@ -9,6 +9,8 @@
 #import "CourseCommentVC.h"
 #import "CourseCommentCell.h"
 
+#import "XeeService.h"
+
 @interface CourseCommentVC ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -31,6 +33,10 @@
     [super initUI];
     //设置页面的头和尾
     [self setHeadViewAndFootView];
+    //初始化评论数组
+    self.commentArray = [[NSMutableArray alloc] init];
+    //网络请求评论数据
+    [self getCourseScheduleSignParentCommentWithWeb];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+30, kScreenWidth, kScreenHeight-64-30-30) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
@@ -82,10 +88,38 @@
     
 }
 
+#pragma mark - Web
+- (void)getCourseScheduleSignParentCommentWithWeb{
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    //NSLog(@"courseInfo:%@",self.courseLeaveInfoDic);
+    
+    [self showHudWithMsg:@"载入中..."];
+    [[XeeService sharedInstance] getCourseScheduleSignParentCommentWithParentId:userInfoDic[uUserId] andCourseScheduleId:self.courseLeaveInfoDic[@"course_schedule_id"] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
+        if (!error) {
+            //NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                self.commentArray = result[@"resultInfo"];
+                //NSLog(@"commentArray:%@",self.commentArray);
+                [self.tableView reloadData];
+            }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
+
+
 #pragma mark - UITableViewDataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
-    
-    return 10;
+    //NSLog(@"count:%li",self.commentArray.count);
+    return [self.commentArray count];
 }
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -100,8 +134,12 @@
     
     CourseCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
     
-    cell.cellEdge = 10;
+//    if (cell == nil) {
+//        cell = [[CourseCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+//    }
     
+    cell.cellEdge = 10;
+    cell.commentInfoDic = self.commentArray[indexPath.section];
     return cell;
 }
 

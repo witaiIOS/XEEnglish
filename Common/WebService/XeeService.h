@@ -170,6 +170,14 @@
  */
 - (void)getPhotoByCourseScheduleIdWithParentId:(NSString *)parent_id  andOwnerId:(NSString *)owner_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
+/**
+ 通过课程计划id，查询上课家长评论  每节课的评论
+ @param parent_id    注册id
+ @param course_schedule_id
+ @param token
+ */
+- (void)getCourseScheduleSignParentCommentWithParentId:(NSString *)parent_id  andCourseScheduleId:(NSString *)course_schedule_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block;
+
 #pragma mark - 活动
 /**
  获取当前活动信息

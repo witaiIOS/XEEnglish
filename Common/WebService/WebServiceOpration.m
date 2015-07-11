@@ -227,6 +227,19 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPhotoByCourseScheduleId><web:json>{\"owner_id\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetPhotoByCourseScheduleId>",owner_id,parent_id,token]];
 }
 
+/**
+ 通过课程计划id，查询上课家长评论  每节课的评论
+ @param parent_id    注册id
+ @param course_schedule_id
+ @param token
+ */
++ (AFHTTPRequestOperation *)getCourseScheduleSignParentCommentWithParentId:(NSString *)parent_id  andCourseScheduleId:(NSString *)course_schedule_id andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseScheduleSignParentComment><web:json>{\"parent_id\":\"%@\",\"course_schedule_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetCourseScheduleSignParentComment>",parent_id,course_schedule_id,token]];
+}
+
+
+
 #pragma mark - 活动
 + (AFHTTPRequestOperation *)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andActivityStatus:(NSInteger )activity_status andParentId:(NSString *)parent_id andToken:(NSString *)token{
     
