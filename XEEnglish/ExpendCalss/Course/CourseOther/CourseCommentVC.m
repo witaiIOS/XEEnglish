@@ -9,6 +9,8 @@
 #import "CourseCommentVC.h"
 #import "CourseCommentCell.h"
 
+#import "CourseMyCommentVC.h"
+
 #import "XeeService.h"
 
 @interface CourseCommentVC ()<UITableViewDataSource,UITableViewDelegate>
@@ -25,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"评论";
+    self.title = @"累计评论";
 }
 
 - (void)initUI{
@@ -85,7 +87,9 @@
 }
 
 - (void)commentBtnClicked{
-    
+    CourseMyCommentVC *vc = [[CourseMyCommentVC alloc] init];
+    vc.courseInfoDic = self.courseLeaveInfoDic;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Web

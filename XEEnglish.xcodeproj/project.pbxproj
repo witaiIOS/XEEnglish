@@ -92,6 +92,8 @@
 		09CA69211B201F2500A31E0E /* coupons1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69201B201F2500A31E0E /* coupons1.png */; };
 		09CA69231B20213800A31E0E /* couponstime.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69221B20213800A31E0E /* couponstime.png */; };
 		09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */; };
+		09D231991B50EEA70055758A /* CourseMyCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D231971B50EEA70055758A /* CourseMyCommentVC.m */; };
+		09D2319A1B50EEA70055758A /* CourseMyCommentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D231981B50EEA70055758A /* CourseMyCommentVC.xib */; };
 		09D23C421B42403E008B6085 /* PointsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C411B42403E008B6085 /* PointsVC.m */; };
 		09D23C451B424417008B6085 /* ExchangePointsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C441B424417008B6085 /* ExchangePointsVC.m */; };
 		09D23C481B424526008B6085 /* ExchangePointsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D23C471B424526008B6085 /* ExchangePointsCell.m */; };
@@ -369,6 +371,9 @@
 		09CA69221B20213800A31E0E /* couponstime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couponstime.png; sourceTree = "<group>"; };
 		09CFD0061B4CFA17000D9D40 /* payCompleteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payCompleteVC.h; sourceTree = "<group>"; };
 		09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payCompleteVC.m; sourceTree = "<group>"; };
+		09D231961B50EEA70055758A /* CourseMyCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyCommentVC.h; sourceTree = "<group>"; };
+		09D231971B50EEA70055758A /* CourseMyCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMyCommentVC.m; sourceTree = "<group>"; };
+		09D231981B50EEA70055758A /* CourseMyCommentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseMyCommentVC.xib; sourceTree = "<group>"; };
 		09D23C401B42403E008B6085 /* PointsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsVC.h; sourceTree = "<group>"; };
 		09D23C411B42403E008B6085 /* PointsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsVC.m; sourceTree = "<group>"; };
 		09D23C431B424417008B6085 /* ExchangePointsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangePointsVC.h; sourceTree = "<group>"; };
@@ -649,6 +654,9 @@
 				09C5320F1B50A5EE00D6A07E /* CourseCommentCell.h */,
 				09C532101B50A5EE00D6A07E /* CourseCommentCell.m */,
 				09C532121B50A60A00D6A07E /* CourseCommentCell.xib */,
+				09D231961B50EEA70055758A /* CourseMyCommentVC.h */,
+				09D231971B50EEA70055758A /* CourseMyCommentVC.m */,
+				09D231981B50EEA70055758A /* CourseMyCommentVC.xib */,
 				093A58811B43ECF0006F104D /* CourseReviewVC.h */,
 				093A58821B43ECF0006F104D /* CourseReviewVC.m */,
 				09C6FEF81B4BCEB50069156D /* CourseReviewCell.h */,
@@ -1563,6 +1571,7 @@
 				A6DA3E211B44D919005850EB /* UMSCommentDetailController.xib in Resources */,
 				09C9C0F81B22FA19001BBA1C /* yes.png in Resources */,
 				09C532131B50A60A00D6A07E /* CourseCommentCell.xib in Resources */,
+				09D2319A1B50EEA70055758A /* CourseMyCommentVC.xib in Resources */,
 				A6284CDA1B10592100EFF820 /* Images.xcassets in Resources */,
 				090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */,
 				09D5459F1B44D6DB00CC5844 /* ExpendRecordCell.xib in Resources */,
@@ -1675,6 +1684,7 @@
 				A64F3E4A1B44158300E6E99B /* NSString+md5.m in Sources */,
 				A6B1CEE11B1C62D400100E9F /* SettingSignatureVC.m in Sources */,
 				A6B1CED91B1C62D400100E9F /* ChangePassWordVC.m in Sources */,
+				09D231991B50EEA70055758A /* CourseMyCommentVC.m in Sources */,
 				09C6FEFA1B4BCEB50069156D /* CourseReviewCell.m in Sources */,
 				A6B1CEF51B1D90EC00100E9F /* XeeService.m in Sources */,
 				A6284D571B105E5600EFF820 /* MJRefreshFooterView.m in Sources */,
