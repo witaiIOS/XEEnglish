@@ -46,6 +46,8 @@
     }
     else if ([signonStr isEqualToString:@"3"]){
         judgeState = @"缺课";
+        [self.courseButton setTitle:@"补课" forState:UIControlStateNormal];
+        [self.courseButton setBackgroundColor:[UIColor orangeColor]];
     }
     else if ([signonStr isEqualToString:@"4"]){
         judgeState = @"延迟";

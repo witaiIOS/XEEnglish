@@ -507,8 +507,9 @@
         [self.navigationController pushViewController:vc animated:YES];
 
     }
-    else if ([sender isEqualToString:@"2"]){
-        //为2时,状态是补课，可以申请“补课”
+    else if ([sender isEqualToString:@"2"]||[sender isEqualToString:@"3"]){
+        //为2时,为请假的情况，需要按钮功能实现补课，状态是补课，可以申请“补课”
+        //为3时,为缺课的情况，需要按钮功能实现补课，状态是补课，可以申请“补课”
         CourseLeaveApplyVC *vc = [[CourseLeaveApplyVC alloc] init];
         vc.title = @"补课申请";
         vc.courseLeaveInfoDic = courseInfoDic;
