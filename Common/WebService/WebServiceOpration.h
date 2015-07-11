@@ -115,9 +115,15 @@
 
 /**
  通过课程id，查询课程详情
- @param course_id 注册id
+ @param course_id 课程id
  */
 + (AFHTTPRequestOperation *)getCourseDetailByCourseId:(NSString *)course_id;
+
+/**
+ 查询课程推荐评论
+ @param course_id 课程id
+ */
++ (AFHTTPRequestOperation *)getCourseParentCommentByCourseId:(NSString *)course_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex;
 
 /**
  通过课程获取详情，及子课程列表

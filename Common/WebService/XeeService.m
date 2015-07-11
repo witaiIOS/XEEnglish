@@ -272,6 +272,21 @@
 }
 
 /**
+ 查询课程推荐评论
+ @param course_id 课程id
+ */
+- (void)getCourseParentCommentByCourseId:(NSString *)course_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getCourseParentCommentByCourseId:course_id andPageSize:pageSize andPageIndex:pageIndex];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetCourseParentCommentResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
+/**
  通过课程获取详情，及子课程列表
  @param course_id 注册id
  */

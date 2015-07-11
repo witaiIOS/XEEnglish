@@ -115,6 +115,12 @@
 - (void)getCourseDetailByCourseId:(NSString *)course_id andBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
 /**
+ 查询课程推荐评论
+ @param course_id 课程id
+ */
+- (void)getCourseParentCommentByCourseId:(NSString *)course_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void(^)(NSDictionary *result, NSError *error))block;
+
+/**
  通过课程获取详情，及子课程列表
  @param course_id 注册id
  */
