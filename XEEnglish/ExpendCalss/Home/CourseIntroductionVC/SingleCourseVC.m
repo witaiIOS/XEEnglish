@@ -57,7 +57,7 @@
     
     self.courseWeb = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64+65, kScreenWidth, kScreenHeight-64-65-60)];
     self.courseWeb.delegate = self;
-    self.courseWeb.scalesPageToFit = YES;
+    //self.courseWeb.scalesPageToFit = YES;
     
     [self.view addSubview:self.courseWeb];
     
@@ -283,6 +283,14 @@
     
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    //改变字体大小颜色就:
+//    NSString *jsString = [[NSString alloc] initWithFormat:@"document.body.style.fontSize=%f",20.0f];
+//    [webView stringByEvaluatingJavaScriptFromString:jsString];
+    
+    //改变字体大小
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self.courseWeb stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName_r('body')[0].style.webkitTextSizeAdjust= '200%'"];
     
     [self.activityIndicator stopAnimating];
     UIView *view = (UIView *)[self.view viewWithTag:108];

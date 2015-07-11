@@ -1468,6 +1468,7 @@
 				TargetAttributes = {
 					A6284CC81B10592100EFF820 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = HTZB37YP6L;
 					};
 					A6284CE11B10592100EFF820 = {
 						CreatedOnToolsVersion = 6.2;
@@ -1845,6 +1846,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = XEEnglish/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1855,7 +1858,7 @@
 					"$(PROJECT_DIR)/ThirdPart/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "458da07c-2220-4bb1-b7b6-3075baedd048";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1864,7 +1867,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: WUHAN EREAL SOFTWARE CO.,LTD";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = XEEnglish/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1875,7 +1879,7 @@
 					"$(PROJECT_DIR)/ThirdPart/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "458da07c-2220-4bb1-b7b6-3075baedd048";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
