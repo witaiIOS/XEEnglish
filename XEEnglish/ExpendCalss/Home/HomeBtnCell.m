@@ -84,7 +84,7 @@
     //NSLog(@"frame:%@",NSStringFromCGRect(self.button1.titleLabel.frame));
 
     [self.button1 setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl1] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
-    
+    //[self.button1 setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl1] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
     ///
     //self.button2 = (HomeButton *)[self viewWithTag:2];
     if (_serviceDic2) {
@@ -95,6 +95,7 @@
         NSString *imageUrl2 = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[_serviceDic2 objectForKey:@"photo"]];
         
         [self.button2 setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl2] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
+        //[self.button2 setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl2] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
     }
     else{
         [self.button2 setHidden:YES];

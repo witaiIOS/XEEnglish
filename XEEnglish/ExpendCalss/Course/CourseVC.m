@@ -56,10 +56,13 @@
     // Do any additional setup after loading the view.
 //    _students =[NSMutableArray arrayWithArray:@[@"小明", @"小红", @"小花"]];
 //    _courseList = [NSMutableArray arrayWithArray:@[@"(2-4岁)创意思维课", @"(4-6岁)HABA数学课", @"初级英语"]];
-    [self getVStudentCourseByParentId];
+    //[self getVStudentCourseByParentId];
     _currentStudentsIndex = 0;
     _currentCouseListIndex = 0;
 
+    _students = [NSMutableArray array];
+    _courseList = [NSMutableArray array];
+    _studentCoursesArray = [NSMutableArray array];
 //    _menu.dataSource = self;
 //    _menu.delegate = self;
     
@@ -96,6 +99,21 @@
     self.courseIsSignon = @"";
    
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.students.count == 0) {
+        [self getVStudentCourseByParentId];
+    }
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - 课表
 
 - (void)courseViewLayout{
     
@@ -232,10 +250,7 @@
     [self getVStudentSourseScheduleSign:2];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 #pragma mark - Web
 - (void)getVStudentCourseByParentId{
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
@@ -277,6 +292,10 @@
     //现在用的假数据，用真数据时再解除courseid的注释
     //NSDictionary *courseDic = self.courseList[self.currentCouseListIndex];
     NSMutableArray *courseArray = studentDic[@"listCourse"];
+    
+    if (courseArray.count == 0) {
+        return;
+    }
     NSDictionary *courseDic = courseArray[_currentCouseListIndex];
     NSString *courseId = courseDic[@"course_id"];
     //NSLog(@"courseId:%@",courseId);
