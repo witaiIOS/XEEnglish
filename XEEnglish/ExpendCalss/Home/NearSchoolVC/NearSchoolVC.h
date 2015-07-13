@@ -7,7 +7,6 @@
 //
 
 #import "BaseVC.h"
-
 @interface NearSchoolVC : BaseVC
 
 @end

@@ -59,6 +59,8 @@
 		09C87F2F1B3C24E700D7C913 /* PayCourseMethodVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F2E1B3C24E700D7C913 /* PayCourseMethodVCViewController.m */; };
 		09C87F321B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F311B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m */; };
 		09C8C1CD1B535439000E089F /* NearSchoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C8C1CC1B535439000E089F /* NearSchoolVC.m */; };
+		09C8C1D01B535743000E089F /* NearSchoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C8C1CF1B535743000E089F /* NearSchoolCell.m */; };
+		09C8C1D21B53575C000E089F /* NearSchoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C8C1D11B53575C000E089F /* NearSchoolCell.xib */; };
 		09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */; };
 		09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */; };
 		09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDB1B1EDD3E00ABC885 /* select_flag.png */; };
@@ -325,6 +327,9 @@
 		09C87F311B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyCoursePaymentAmountCell.m; sourceTree = "<group>"; };
 		09C8C1CB1B535439000E089F /* NearSchoolVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearSchoolVC.h; sourceTree = "<group>"; };
 		09C8C1CC1B535439000E089F /* NearSchoolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearSchoolVC.m; sourceTree = "<group>"; };
+		09C8C1CE1B535743000E089F /* NearSchoolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearSchoolCell.h; sourceTree = "<group>"; };
+		09C8C1CF1B535743000E089F /* NearSchoolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearSchoolCell.m; sourceTree = "<group>"; };
+		09C8C1D11B53575C000E089F /* NearSchoolCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearSchoolCell.xib; sourceTree = "<group>"; };
 		09C95CD71B1EDD2800ABC885 /* LXSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSegmentView.h; sourceTree = "<group>"; };
 		09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegmentView.m; sourceTree = "<group>"; };
 		09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_tab_selected.png; sourceTree = "<group>"; };
@@ -743,6 +748,9 @@
 			children = (
 				09C8C1CB1B535439000E089F /* NearSchoolVC.h */,
 				09C8C1CC1B535439000E089F /* NearSchoolVC.m */,
+				09C8C1CE1B535743000E089F /* NearSchoolCell.h */,
+				09C8C1CF1B535743000E089F /* NearSchoolCell.m */,
+				09C8C1D11B53575C000E089F /* NearSchoolCell.xib */,
 			);
 			path = NearSchoolVC;
 			sourceTree = "<group>";
@@ -1606,6 +1614,7 @@
 				09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */,
 				09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */,
 				09C9C0E51B22C890001BBA1C /* STset.png in Resources */,
+				09C8C1D21B53575C000E089F /* NearSchoolCell.xib in Resources */,
 				A6284D541B105E5600EFF820 /* MJRefresh.bundle in Resources */,
 				09DB2DD31B1322CC0078AAF5 /* yue.png in Resources */,
 			);
@@ -1627,6 +1636,7 @@
 			files = (
 				A6B1CEEB1B1D8C7200100E9F /* HomeButton.m in Sources */,
 				A6284D791B105F9500EFF820 /* UIFactory.m in Sources */,
+				09C8C1D01B535743000E089F /* NearSchoolCell.m in Sources */,
 				0906047B1B14218A0038BAC4 /* UserProtocolVC.m in Sources */,
 				09C95EC51B280738000972D8 /* SchoolZoneCell.m in Sources */,
 				09D23C591B42ADC0008B6085 /* PointSRuleCell.m in Sources */,
