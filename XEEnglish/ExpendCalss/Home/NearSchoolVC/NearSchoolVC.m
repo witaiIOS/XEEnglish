@@ -51,7 +51,7 @@
     
     self.schoolArray = [NSMutableArray array];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -135,7 +135,7 @@
     //NSLog(@"location:%f\n%f",location.coordinate.latitude,location.coordinate.longitude);
     
     [[XeeService sharedInstance] getSchoolNearByWithLongitude:location.coordinate.longitude andLatitude:location.coordinate.latitude andPageSize:10 andPageIndex:1 andBolck:^(NSDictionary *result, NSError *error) {
-        NSLog(@"getSchoolNearByResult:%@",result);
+        //NSLog(@"getSchoolNearByResult:%@",result);
         if (!error) {
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
