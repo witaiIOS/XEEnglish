@@ -735,4 +735,19 @@
     }];
 }
 
+/**
+ 查询附近校区
+ */
+- (void)getSchoolNearByWithLongitude:(CGFloat)longitude andLatitude:(CGFloat)latitude andBolck:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getSchoolNearByWithLongitude:longitude andLatitude:latitude];
+    [self getResponseWithOpration:operation andXmlKey:@"GetSchoolNearbyResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+
+    
+}
+
 @end

@@ -401,4 +401,11 @@
  */
 + (AFHTTPRequestOperation *)addFeedbackWithBugInfo:(NSString *)bug_info andParentId:(NSString *)parent_id andToken:(NSString *)token;
 
+/**
+ 查询附近校区
+ @param:longitude
+ @param:latitude
+ */
++ (AFHTTPRequestOperation *)getSchoolNearByWithLongitude:(CGFloat)longitude andLatitude:(CGFloat)latitude;
+
 @end

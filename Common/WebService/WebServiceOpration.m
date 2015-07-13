@@ -440,4 +440,12 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:AddFeedback><web:json>{\"bug_info\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:AddFeedback>",bug_info,parent_id,token]];
 }
 
+/**
+ 查询附近校区
+ */
++ (AFHTTPRequestOperation *)getSchoolNearByWithLongitude:(CGFloat)longitude andLatitude:(CGFloat)latitude {
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchoolNearby><web:json>{\"longitude\":\"%f\",\"latitude\":\"%f\"}</web:json></web:GetSchoolNearby>",longitude, latitude]];
+}
+
+
 @end

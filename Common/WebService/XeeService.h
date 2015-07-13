@@ -390,4 +390,9 @@
  */
 - (void)addFeedbackWithBugInfo:(NSString *)bug_info andParentId:(NSString *)parent_id andToken:(NSString *)token andBolck:(void(^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 查询附近校区
+ */
+- (void)getSchoolNearByWithLongitude:(CGFloat)longitude andLatitude:(CGFloat)latitude andBolck:(void(^)(NSDictionary *result, NSError *error))block;
+
 @end

@@ -8,10 +8,14 @@
 
 #import "NearSchoolVC.h"
 #import "NearSchoolCell.h"
+#import <CoreLocation/CoreLocation.h>
+#import "XeeService.h"
 
-@interface NearSchoolVC ()<UITableViewDataSource, UITableViewDelegate,NearSchoolCellTakePhoneDelegate>
+@interface NearSchoolVC ()<UITableViewDataSource, UITableViewDelegate,NearSchoolCellTakePhoneDelegate, CLLocationManagerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *schoolArray;
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -21,6 +25,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"附近校区";
+    
+    if ([CLLocationManager locationServicesEnabled]) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.distanceFilter = 1000.0f;
+        [_locationManager startUpdatingLocation];
+        [_locationManager requestAlwaysAuthorization];
+        
+    }
+    else {
+        NSLog(@"定位不可用");
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +57,9 @@
     
     [self.view addSubview:self.tableView];
 }
+
+#pragma mark - WebServie
+
 
 
 #pragma mark - UITableView DataSource
@@ -103,6 +123,25 @@
     
     //呼叫
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@",sender]]];
+}
+
+#pragma mark - CLLocation delegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
+    [_locationManager stopUpdatingLocation];
+    
+    // most recent is last in the list
+    CLLocation *location = [locations lastObject];
+    NSLog(@"location:%f\n%f",location.coordinate.latitude,location.coordinate.longitude);
+    
+    [[XeeService sharedInstance] getSchoolNearByWithLongitude:location.coordinate.longitude andLatitude:location.coordinate.latitude andBolck:^(NSDictionary *result, NSError *error) {
+        NSLog(@"getSchoolNearByResult:%@",result);
+    }];
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"error: %@",error);
 }
 
 @end
