@@ -211,6 +211,7 @@
 		A6B1CEF51B1D90EC00100E9F /* XeeService.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEF41B1D90EC00100E9F /* XeeService.m */; };
 		A6B1CEFB1B1D968600100E9F /* MyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1CEFA1B1D968600100E9F /* MyParser.m */; };
 		A6C3CF2C1B285ECD0039C951 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C3CF2B1B285ECD0039C951 /* UserInfo.m */; };
+		A6D4F1C91B53914E001D3D0E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D4F1C81B53914E001D3D0E /* CoreLocation.framework */; };
 		A6DA3E1F1B44D919005850EB /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6DA3DFE1B44D919005850EB /* UMSocialLocalizable.strings */; };
 		A6DA3E201B44D919005850EB /* libUMSocial_Sdk_4.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DA3E0C1B44D919005850EB /* libUMSocial_Sdk_4.2.1.a */; };
 		A6DA3E211B44D919005850EB /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6DA3E0E1B44D919005850EB /* UMSCommentDetailController.xib */; };
@@ -582,6 +583,7 @@
 		A6B1CEFA1B1D968600100E9F /* MyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyParser.m; sourceTree = "<group>"; };
 		A6C3CF2A1B285ECD0039C951 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		A6C3CF2B1B285ECD0039C951 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		A6D4F1C81B53914E001D3D0E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A6DA3DFF1B44D919005850EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		A6DA3E011B44D919005850EB /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		A6DA3E021B44D919005850EB /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -617,6 +619,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6D4F1C91B53914E001D3D0E /* CoreLocation.framework in Frameworks */,
 				A68C52DD1B4918CA00FCC916 /* AssetsLibrary.framework in Frameworks */,
 				A6284D761B105F0100EFF820 /* libxml2.dylib in Frameworks */,
 				A6DA3E2A1B44D919005850EB /* libSocialWechat.a in Frameworks */,
@@ -931,6 +934,7 @@
 		A6284CC01B10592100EFF820 = {
 			isa = PBXGroup;
 			children = (
+				A6D4F1C81B53914E001D3D0E /* CoreLocation.framework */,
 				A68C52DC1B4918CA00FCC916 /* AssetsLibrary.framework */,
 				A6284D751B105F0100EFF820 /* libxml2.dylib */,
 				A6284CF21B105E5600EFF820 /* AppConfig */,

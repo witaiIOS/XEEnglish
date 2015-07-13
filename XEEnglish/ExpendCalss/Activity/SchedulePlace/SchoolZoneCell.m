@@ -22,7 +22,7 @@
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
-    self.schollLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 6, 80, 30)];
+    self.schollLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 6, 200, 30)];
     self.schollLabel.font = [UIFont systemFontOfSize:14];
     self.schollLabel.textColor = [UIColor darkGrayColor];
     
