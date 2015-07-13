@@ -90,18 +90,31 @@
             [UIFactory showAlert:@"网络错误"];
         }
     }];*/
-    [[XeeService sharedInstance] apliyPayWithOutTradeNo:[self generateTradeNO] andTotalFee:@"0.01" andType:self.courseName callback:^(NSDictionary *resultDic) {
+    
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    
+    if (indexPath.row == 2) {//微信支付
         
-        NSString *resultStatus = resultDic [@"resultStatus"];
-        if (9000 == [resultStatus intValue]) {//支付成功
+    }
+    else if (indexPath.row == 1) {//现金支付
+        
+    }
+    else {
+        [[XeeService sharedInstance] apliyPayWithOutTradeNo:[self generateTradeNO] andTotalFee:@"0.01" andType:self.courseName callback:^(NSDictionary *resultDic) {
             
-            payCompleteVC *vc = [[payCompleteVC alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-        else {
-            [UIFactory showAlert:@"支付遇到问题，请重新支付"];
-        }
-    }];
+            NSString *resultStatus = resultDic [@"resultStatus"];
+            if (9000 == [resultStatus intValue]) {//支付成功
+                
+                payCompleteVC *vc = [[payCompleteVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            else {
+                //[UIFactory showAlert:@"支付遇到问题，请重新支付"];
+            }
+        }];
+
+    }
 }
 
 #pragma mark - tableView footView
