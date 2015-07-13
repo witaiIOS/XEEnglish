@@ -358,7 +358,7 @@
  */
 + (AFHTTPRequestOperation *)buyGiftWithParentId:(NSString *)parent_id andPlatformTypeId:(NSString *)platform_type_Id andGiftId: (NSString *)gift_id andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:BuyGift><web:json>{\"parent_id\":\"%@\",\"trade_type\":\"%@\",\"gift_id\":\"%@\",\"token\":\"%@\"}</web:json></web:BuyGift>",parent_id,platform_type_Id,gift_id,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:BuyGift><web:json>{\"parent_id\":\"%@\",\"platform_type_id\":\"%@\",\"gift_id\":\"%@\",\"token\":\"%@\"}</web:json></web:BuyGift>",parent_id,platform_type_Id,gift_id,token]];
 }
 
 #pragma mark - 我的 我的现金券
