@@ -634,7 +634,7 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
         //is_select_student为1，选择小孩，0为填写小孩
-        if ([self.is_select_student intValue] == 1){
+        if (([self.is_select_student intValue] == 1)&&(indexPath.row == 1)){
             SelectedStudentVC *vc = [[SelectedStudentVC alloc] init];
             vc.delegate = self;
             vc.selectedStudent = self.selectedStudent[@"name"];
