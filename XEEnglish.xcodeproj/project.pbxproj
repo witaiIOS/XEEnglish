@@ -58,6 +58,7 @@
 		09C87F2C1B3BF06600D7C913 /* SubCourseListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F2B1B3BF06600D7C913 /* SubCourseListCell.m */; };
 		09C87F2F1B3C24E700D7C913 /* PayCourseMethodVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F2E1B3C24E700D7C913 /* PayCourseMethodVCViewController.m */; };
 		09C87F321B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F311B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m */; };
+		09C8C1CD1B535439000E089F /* NearSchoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C8C1CC1B535439000E089F /* NearSchoolVC.m */; };
 		09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */; };
 		09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */; };
 		09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDB1B1EDD3E00ABC885 /* select_flag.png */; };
@@ -322,6 +323,8 @@
 		09C87F2E1B3C24E700D7C913 /* PayCourseMethodVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayCourseMethodVCViewController.m; sourceTree = "<group>"; };
 		09C87F301B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyCoursePaymentAmountCell.h; sourceTree = "<group>"; };
 		09C87F311B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyCoursePaymentAmountCell.m; sourceTree = "<group>"; };
+		09C8C1CB1B535439000E089F /* NearSchoolVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearSchoolVC.h; sourceTree = "<group>"; };
+		09C8C1CC1B535439000E089F /* NearSchoolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearSchoolVC.m; sourceTree = "<group>"; };
 		09C95CD71B1EDD2800ABC885 /* LXSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSegmentView.h; sourceTree = "<group>"; };
 		09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegmentView.m; sourceTree = "<group>"; };
 		09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_tab_selected.png; sourceTree = "<group>"; };
@@ -733,6 +736,15 @@
 				09C6FEFC1B4BFBF90069156D /* SelectedStudentVC.m */,
 			);
 			path = OtherList;
+			sourceTree = "<group>";
+		};
+		09C8C1CA1B535420000E089F /* NearSchoolVC */ = {
+			isa = PBXGroup;
+			children = (
+				09C8C1CB1B535439000E089F /* NearSchoolVC.h */,
+				09C8C1CC1B535439000E089F /* NearSchoolVC.m */,
+			);
+			path = NearSchoolVC;
 			sourceTree = "<group>";
 		};
 		09C9C0E81B22E059001BBA1C /* SchedulePlace */ = {
@@ -1228,6 +1240,7 @@
 		A6284D6A1B105E6600EFF820 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				09C8C1CA1B535420000E089F /* NearSchoolVC */,
 				0980856B1B32C35A00BE9336 /* CourseIntroductionVC */,
 				A6284D8D1B10668300EFF820 /* HomeVC.h */,
 				A6284D8E1B10668300EFF820 /* HomeVC.m */,
@@ -1660,6 +1673,7 @@
 				09D23C511B4276A4008B6085 /* PointSRuleVC.m in Sources */,
 				09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */,
 				A6284D5B1B105E5600EFF820 /* UIView+MJExtension.m in Sources */,
+				09C8C1CD1B535439000E089F /* NearSchoolVC.m in Sources */,
 				A6C3CF2C1B285ECD0039C951 /* UserInfo.m in Sources */,
 				A6B1CEFB1B1D968600100E9F /* MyParser.m in Sources */,
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,

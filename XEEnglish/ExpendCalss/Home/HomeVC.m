@@ -11,6 +11,8 @@
 #import "HomeAdCell.h"
 #import "XeeService.h"
 
+#import "NearSchoolVC.h"
+
 #import "AllCoursesVC.h"
 #import "SingleCourseVC.h"
 
@@ -112,6 +114,16 @@
     
     [super initUI];
     
+    UIButton *nearSchoolBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [nearSchoolBtn setFrame:CGRectMake(10, 17, 60, 30)];
+    [nearSchoolBtn setTitle:@"附近校区" forState:UIControlStateNormal];
+    [nearSchoolBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [nearSchoolBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [nearSchoolBtn addTarget:self action:@selector(nearSchoolBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *nearSchoolBarBtn = [[UIBarButtonItem alloc] initWithCustomView:nearSchoolBtn];
+    self.navigationItem.leftBarButtonItem = nearSchoolBarBtn;
+    
     UIButton *servicePhoneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [servicePhoneBtn setFrame:CGRectMake(kScreenWidth-40, 17, 30, 30)];
     [servicePhoneBtn setImage:[UIImage imageNamed:@"s_phone.png"] forState:UIControlStateNormal];
@@ -132,6 +144,13 @@
     
     //呼叫
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt://4000999027"]];
+}
+
+- (void)nearSchoolBtnClicked{
+    
+    NearSchoolVC *vc = [[NearSchoolVC alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Table view data source
