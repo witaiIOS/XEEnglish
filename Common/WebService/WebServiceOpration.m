@@ -443,8 +443,8 @@
 /**
  查询附近校区
  */
-+ (AFHTTPRequestOperation *)getSchoolNearByWithLongitude:(CGFloat)longitude andLatitude:(CGFloat)latitude {
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchoolNearby><web:json>{\"longitude\":\"%f\",\"latitude\":\"%f\"}</web:json></web:GetSchoolNearby>",longitude, latitude]];
++ (AFHTTPRequestOperation *)getSchoolNearByWithLongitude:(CGFloat)longitude andLatitude:(CGFloat)latitude andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex {
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchoolNearby><web:json>{\"longitude\":\"%f\",\"latitude\":\"%f\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetSchoolNearby>",longitude, latitude, pageSize, pageIndex]];
 }
 
 

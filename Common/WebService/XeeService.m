@@ -738,9 +738,9 @@
 /**
  查询附近校区
  */
-- (void)getSchoolNearByWithLongitude:(CGFloat)longitude andLatitude:(CGFloat)latitude andBolck:(void(^)(NSDictionary *result, NSError *error))block{
+- (void)getSchoolNearByWithLongitude:(CGFloat)longitude andLatitude:(CGFloat)latitude andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBolck:(void(^)(NSDictionary *result, NSError *error))block{
     
-    AFHTTPRequestOperation *operation = [WebServiceOpration getSchoolNearByWithLongitude:longitude andLatitude:latitude];
+    AFHTTPRequestOperation *operation = [WebServiceOpration getSchoolNearByWithLongitude:longitude andLatitude:latitude andPageSize:pageSize andPageIndex:pageIndex];
     [self getResponseWithOpration:operation andXmlKey:@"GetSchoolNearbyResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         if (block) {
             block(result,error);

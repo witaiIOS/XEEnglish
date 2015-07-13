@@ -65,7 +65,7 @@
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 10;
+    return [self.schoolArray count];
 }
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -83,7 +83,7 @@
     
     cell.cellEdge = 10;
     cell.delegate = self;
-    //cell.schoolInfoDic = self.schoolArray[indexPath.section];//获取学校信息
+    cell.schoolInfoDic = self.schoolArray[indexPath.section];//获取学校信息
     
     return cell;
 }
@@ -132,10 +132,22 @@
     
     // most recent is last in the list
     CLLocation *location = [locations lastObject];
-    NSLog(@"location:%f\n%f",location.coordinate.latitude,location.coordinate.longitude);
+    //NSLog(@"location:%f\n%f",location.coordinate.latitude,location.coordinate.longitude);
     
-    [[XeeService sharedInstance] getSchoolNearByWithLongitude:location.coordinate.longitude andLatitude:location.coordinate.latitude andBolck:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getSchoolNearByWithLongitude:location.coordinate.longitude andLatitude:location.coordinate.latitude andPageSize:10 andPageIndex:1 andBolck:^(NSDictionary *result, NSError *error) {
         NSLog(@"getSchoolNearByResult:%@",result);
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                NSDictionary *schoolDic = result[@"resultInfo"];
+                self.schoolArray = schoolDic[@"data"];
+                [self.tableView reloadData];
+            }else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
     }];
     
 }

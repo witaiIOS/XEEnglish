@@ -393,6 +393,6 @@
 /**
  查询附近校区
  */
-- (void)getSchoolNearByWithLongitude:(CGFloat)longitude andLatitude:(CGFloat)latitude andBolck:(void(^)(NSDictionary *result, NSError *error))block;
+- (void)getSchoolNearByWithLongitude:(CGFloat)longitude andLatitude:(CGFloat)latitude andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBolck:(void(^)(NSDictionary *result, NSError *error))block;
 
 @end
