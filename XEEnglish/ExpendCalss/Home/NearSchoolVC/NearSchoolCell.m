@@ -15,6 +15,8 @@
     [super layoutSubviews];
     
     self.schoolNameLabel.text = self.schoolInfoDic[@"department"];
+    //NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    //NSNumber *dictence = self.schoolInfoDic[@"distance"];
     self.schoolDistanceLabel.text = [NSString stringWithFormat:@"%@km",self.schoolInfoDic[@"distance"]];
     [self.schoolImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,self.schoolInfoDic[@"pic_url"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
     self.schoolAddresslabel.text = [NSString stringWithFormat:@"校区地址：%@",self.schoolInfoDic[@"addr"]];
