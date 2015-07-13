@@ -203,6 +203,8 @@
         else{
             vc.number = [self.inputCourseHours intValue];
         }
+        
+        vc.courseName = self.courseName;
         [self.navigationController pushViewController:vc animated:YES];
     }
     

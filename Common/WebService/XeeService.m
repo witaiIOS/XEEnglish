@@ -8,6 +8,7 @@
 
 #import "XeeService.h"
 #import "MyParser.h"
+#import "AppCore.h"
 
 @implementation XeeService
 
@@ -749,5 +750,21 @@
 
     
 }
+
+#pragma mark - 支付相关
+
+///支付宝支付
+- (void)apliyPayWithOutTradeNo:(NSString *)outTradeNo andTotalFee:(NSString *)totalFee andType:(NSString *)type callback:(CompletionBlock)completionBlock{
+    
+    NSString *subPayInfo = [NSString stringWithFormat:@"partner=\"%@\"&seller_id=\"%@\"&out_trade_no=\"%@\"&subject=\"爱迪天才\"&body=\"%@\"&total_fee=\"%@\"&notify_url=\"%@order/Service/alipayNotify.do\"&service=\"mobile.securitypay.pay\"&payment_type=\"1\"&_input_charset=\"utf-8\"&it_b_pay=\"30m\"&return_url=\"m.alipay.com\"",alipayPARTNER,alipaySELLER,outTradeNo,type,totalFee,XEEHost];
+    
+    id <DataSigner> signer = CreateRSADataSigner(alipayRSA_PRIVATE);
+    NSString *signedString = [signer signString:subPayInfo];
+    
+    NSString *payInfo = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",subPayInfo,signedString,@"RSA"];
+    
+    [[AlipaySDK defaultService] payOrder:payInfo fromScheme:kWxAppID callback:completionBlock];
+}
+
 
 @end

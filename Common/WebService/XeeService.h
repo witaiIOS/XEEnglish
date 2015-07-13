@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "WebServiceOpration.h"
-
+#import <AlipaySDK/AlipaySDK.h>
+#import "DataSigner.h"
 
 @interface XeeService : NSObject
 
@@ -394,5 +395,9 @@
  查询附近校区
  */
 - (void)getSchoolNearByWithLongitude:(CGFloat)longitude andLatitude:(CGFloat)latitude andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBolck:(void(^)(NSDictionary *result, NSError *error))block;
+
+#pragma mark 支付相关
+///支付宝支付
+- (void)apliyPayWithOutTradeNo:(NSString *)outTradeNo andTotalFee:(NSString *)totalFee andType:(NSString *)type callback:(CompletionBlock)completionBlock;
 
 @end

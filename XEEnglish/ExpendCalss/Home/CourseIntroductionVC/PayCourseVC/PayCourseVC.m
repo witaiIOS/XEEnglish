@@ -46,15 +46,39 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark -
+#pragma mark   ==============产生随机订单号==============
+
+
+- (NSString *)generateTradeNO
+{
+    static int kNumber = 15;
+    
+    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    NSMutableString *resultStr = [[NSMutableString alloc] init];
+    srand((int)time(0));
+    for (int i = 0; i < kNumber; i++)
+    {
+        unsigned index = rand() % [sourceStr length];
+        NSString *oneStr = [sourceStr substringWithRange:NSMakeRange(index, 1)];
+        [resultStr appendString:oneStr];
+    }
+    return resultStr;
+}
+
+
 #pragma mark - IBAction
 - (void)nextBtnClicked:(id)sender {
     
-    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
-    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    //NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+   // NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
-    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolId andStudentId:self.studentId andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.payMoney andPlatFormTypeId:@"202" andListCoupon:self.listCoupon andToken:userInfoDic[uUserToken] andPayType:self.payType andNumbers:self.number andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:self.name andBlock:^(NSDictionary *result, NSError *error) {
+    /*[[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolId andStudentId:self.studentId andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.payMoney andPlatFormTypeId:@"202" andListCoupon:self.listCoupon andToken:userInfoDic[uUserToken] andPayType:self.payType andNumbers:self.number andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:self.name andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             NSNumber *isResult = result[@"result"];
+            NSLog(@"result:%@",result);
             if (isResult.integerValue == 0) {
                 payCompleteVC *vc = [[payCompleteVC alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
@@ -64,6 +88,18 @@
             }
         }else{
             [UIFactory showAlert:@"网络错误"];
+        }
+    }];*/
+    [[XeeService sharedInstance] apliyPayWithOutTradeNo:[self generateTradeNO] andTotalFee:@"0.01" andType:self.courseName callback:^(NSDictionary *resultDic) {
+        
+        NSString *resultStatus = resultDic [@"resultStatus"];
+        if (9000 == [resultStatus intValue]) {//支付成功
+            
+            payCompleteVC *vc = [[payCompleteVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else {
+            [UIFactory showAlert:@"支付遇到问题，请重新支付"];
         }
     }];
 }

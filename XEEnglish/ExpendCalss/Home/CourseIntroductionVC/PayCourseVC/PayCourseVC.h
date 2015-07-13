@@ -10,6 +10,8 @@
 
 @interface PayCourseVC : BaseVC
 
+@property (strong, nonatomic) NSString *courseName;//课程名
+
 @property (nonatomic, assign) NSInteger payMoney;//订单最终金额(减去现金券金额等)
 @property (nonatomic, assign) NSInteger courseId;//课程id
 @property (nonatomic, strong) NSString *schoolId;//校区id

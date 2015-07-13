@@ -51,5 +51,9 @@
     [view addSubview:otherLabel];
 }
 
+- (void)backButtonClicked:(id)sender {
+    //[super backButtonClicked:sender];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+}
 
 @end
