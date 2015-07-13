@@ -47,6 +47,7 @@
 @property (nonatomic, strong) NSString *sex;//sex(0女1男)
 @property (nonatomic, strong) NSString *birthday;//小孩生日
 @property (nonatomic, strong) NSString *studentName;//is_select_student为0填写孩子，name(姓名不能为空)
+@property (nonatomic, strong) NSString *studentId;//学生id，is_select_student取值0 填写孩子信息时 学生id置为0
 @end
 
 @implementation ListeningCourseVC
@@ -113,7 +114,7 @@
 }
 
 - (void)applyBtnClicked{
-    
+    //is_select_student为1时，是选择现有小孩，
     if ([self.is_select_student intValue] == 1){
         if (self.schoolZone[@"department"] == nil) {
             [UIFactory showAlert:@"请选择校区"];
@@ -122,6 +123,8 @@
             [UIFactory showAlert:@"请选择小孩"];
         }
         else{
+            //学生id，is_select_student取值1 选择孩子时 学生id置为选择的小孩的信息
+            self.studentId = self.selectedStudent[@"student_id"];
             
             //is_select_student为1时，是选择现有小孩，需要将studentName，birthday，sex置空
             self.studentName = @"";
@@ -148,7 +151,8 @@
                 PayCourseVC *vc = [[PayCourseVC alloc] init];
                 vc.payMoney = self.listenPrice;
                 vc.courseId = self.courseId;
-                vc.studentId = self.selectedStudent[@"student_id"];
+                //vc.studentId = self.selectedStudent[@"student_id"];
+                vc.studentId = self.studentId;
                 vc.schoolId = self.schoolZone[@"department_id"];
                 vc.payMethod = self.payMethod;
                 vc.payType = @"1";
@@ -164,6 +168,7 @@
             }
         }
     }
+    //is_select_student为0时，是填写小孩信息，
     else{
         if (self.schoolZone[@"department"] == nil) {
             [UIFactory showAlert:@"请选择校区"];
@@ -173,6 +178,10 @@
             [UIFactory showAlert:@"学生姓名不能为空"];
         }
         else{
+            
+            //学生id，is_select_student取值0 填写小孩信息时 学生id置为0
+            self.studentId = @"0";
+            
             if (self.payMethod == 2) {
                 
                 //免费试听的price为0
@@ -193,7 +202,9 @@
                 vc.payMoney = self.listenPrice;
                 vc.courseId = self.courseId;
                 vc.studentId = self.selectedStudent[@"student_id"];
-                vc.schoolId = self.schoolZone[@"department_id"];
+                //vc.schoolId = self.schoolZone[@"department_id"];
+                //is_select_student为0时，是填写小孩信息,schoolId为0
+                vc.schoolId = self.studentId;
                 vc.payMethod = self.payMethod;
                 vc.payType = @"1";
                 vc.number = 1;
@@ -268,7 +279,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
-    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolZone[@"department_id"] andStudentId:self.selectedStudent[@"student_id"] andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.listenPrice andPlatFormTypeId:@"202" andListCoupon:@"[]" andToken:userInfoDic[uUserToken] andPayType:@"1" andNumbers:1 andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:self.studentName andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolZone[@"department_id"] andStudentId:self.studentId andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.listenPrice andPlatFormTypeId:@"202" andListCoupon:@"[]" andToken:userInfoDic[uUserToken] andPayType:@"1" andNumbers:1 andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:self.studentName andBlock:^(NSDictionary *result, NSError *error) {
         
         if (!error) {
             NSNumber *isResult = result[@"result"];
