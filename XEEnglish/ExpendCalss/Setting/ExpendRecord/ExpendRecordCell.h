@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *expendRecordPhone;
 @property (weak, nonatomic) IBOutlet UILabel *expendRecordCourseName;
 @property (weak, nonatomic) IBOutlet UILabel *expendRecordCreateTime;
+@property (weak, nonatomic) IBOutlet UILabel *expendRecordCourseHours;
+@property (weak, nonatomic) IBOutlet UILabel *expendRecordCoursePrice;
 
 
 

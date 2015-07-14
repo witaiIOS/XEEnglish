@@ -17,6 +17,10 @@
     self.expendRecordPhone.text = self.expendRecordInfoDic[@"mobile"];
     self.expendRecordCourseName.text = self.expendRecordInfoDic[@"title"];
     self.expendRecordCreateTime.text = self.expendRecordInfoDic[@"order_datetime"];
+    //NSLog(@"info:%@",self.expendRecordInfoDic);
+    self.expendRecordCourseHours.text = [NSString stringWithFormat:@"%@",self.expendRecordInfoDic[@"numbers"]];
+    self.expendRecordCoursePrice.text = [NSString stringWithFormat:@"%@",self.expendRecordInfoDic[@"total_price"]];
+    
 }
 
 - (NSString *)getStatus:(NSNumber *)statusNum{
