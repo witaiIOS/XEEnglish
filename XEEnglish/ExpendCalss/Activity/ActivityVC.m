@@ -205,7 +205,10 @@
                if (isResult.integerValue == 0) {
                    //NSLog(@"info:%@",result[@"resultInfo"]);
                    NSDictionary *resultInfoDic = result[@"resultInfo"];
-                   _tableList1 = resultInfoDic[@"data"];
+                   //用可变的数组接收，防止可变数组被抢转换为不可变的，导致上拉时，往数组里加载数据报错
+                   NSMutableArray *array = [NSMutableArray array];
+                   [array addObjectsFromArray:resultInfoDic[@"data"]];
+                   _tableList1 = array;
                    //NSLog(@"list:%@",_tableList1);
                    
                    NSNumber *totalNum = resultInfoDic[@"totalPage"];
@@ -237,7 +240,10 @@
                 if (isResult.integerValue == 0) {
                     //NSLog(@"info:%@",result[@"resultInfo"]);
                     NSDictionary *resultInfoDic = result[@"resultInfo"];
-                    _tableList2 = resultInfoDic[@"data"];
+                    //用可变的数组接收，防止可变数组被抢转换为不可变的，导致上拉时，往数组里加载数据报错
+                    NSMutableArray *array = [NSMutableArray array];
+                    [array addObjectsFromArray:resultInfoDic[@"data"]];
+                    _tableList2 = array;
                     //NSLog(@"list:%@",_tableList1);
                     
                     NSNumber *totalNum = resultInfoDic[@"totalPage"];

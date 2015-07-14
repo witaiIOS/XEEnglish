@@ -299,8 +299,10 @@
                 NSNumber *isResult = result[@"result"];
                 if (isResult.integerValue == 0) {
                     NSDictionary *courseDic = result[@"resultInfo"];
-                    
-                    self.courseArray = courseDic[@"data"];
+                    //用可变的数组接收，防止可变数组被抢转换为不可变的，导致上拉时，往数组里加载数据报错
+                    NSMutableArray *array = [NSMutableArray array];
+                    [array addObjectsFromArray:courseDic[@"data"]];
+                    self.courseArray = array;
                     //NSLog(@"array:%@",self.courseArray);
                     NSNumber *totalNum = courseDic[@"totalPage"];
                     if (totalNum) {
@@ -326,8 +328,10 @@
                 
                 if (isResult.integerValue == 0) {
                     NSDictionary *activityDic = result[@"resultInfo"];
-                    
-                    self.activityArray = activityDic[@"data"];
+                    //用可变的数组接收，防止可变数组被抢转换为不可变的，导致上拉时，往数组里加载数据报错
+                    NSMutableArray *array = [NSMutableArray array];
+                    [array addObjectsFromArray:activityDic[@"data"]];
+                    self.activityArray = array;
                     [self.activityTableView reloadData];
                     
                     NSNumber *totalNum = activityDic[@"totalPage"];
@@ -351,7 +355,10 @@
                 NSNumber *isResult = result[@"result"];
                 if (isResult.integerValue == 0) {
                     NSDictionary *bookSiteDic = result[@"resultInfo"];
-                    self.bookSiteArray = bookSiteDic[@"data"];
+                    //用可变的数组接收，防止可变数组被抢转换为不可变的，导致上拉时，往数组里加载数据报错
+                    NSMutableArray *array = [NSMutableArray array];
+                    [array addObjectsFromArray:bookSiteDic[@"data"]];
+                    self.bookSiteArray = array;
                     [self.bookSiteTableView reloadData];
                     
                     NSNumber *totleNum = bookSiteDic[@"totalPage"];
@@ -382,7 +389,6 @@
                     if (isResult.integerValue == 0) {
                         NSDictionary *courseDic = result[@"resultInfo"];
                         //NSLog(@"result:%@",result);
-                        
                         [self.courseArray addObjectsFromArray:courseDic[@"data"]];
                         //NSLog(@"array:%@",self.courseArray);
                         [self.courseTableView reloadData];
