@@ -665,9 +665,9 @@
 /**
  通过会员id，查询消费订单分页列表
  */
-- (void)getVOrderByParentIdWithParentId:(NSString *)parentId andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+- (void)getVOrderByParentIdWithParentId:(NSString *)parentId andSort:(NSString *)sort andOrder:(NSString *)order andType:(NSString *)type andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block{
     
-    AFHTTPRequestOperation *operation = [WebServiceOpration getVOrderByParentIdWithParentId:parentId andSort:sort andOrder:order andPageSize:pageSize andPageIndex:pageIndex andToken:token];
+    AFHTTPRequestOperation *operation = [WebServiceOpration getVOrderByParentIdWithParentId:parentId andSort:sort andOrder:order andType:type andPageSize:pageSize andPageIndex:pageIndex andToken:token];
     
     [self getResponseWithOpration:operation andXmlKey:@"GetVOrderByParentIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         if (block) {

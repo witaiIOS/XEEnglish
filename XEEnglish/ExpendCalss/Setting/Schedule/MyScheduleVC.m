@@ -144,7 +144,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
-    [[XeeService sharedInstance] getVOrderByParentIdWithParentId:userInfoDic[uUserId] andSort:@"" andOrder:@"" andPageSize:10 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:block];
+    [[XeeService sharedInstance] getVOrderByParentIdWithParentId:userInfoDic[uUserId] andSort:@"" andOrder:@"" andType:@"2,3" andPageSize:10 andPageIndex:pageIndex andToken:userInfoDic[uUserToken] andBlock:block];
 }
 
 
@@ -184,6 +184,7 @@
 - (void)getMyBookSiteInfo{
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    //NSLog(@"token:%@",userInfoDic[uUserToken]);
     
     [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getBookSiteByParent_idWithPageSize:10 andPageIndex:1 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
@@ -265,6 +266,7 @@
     }
 }
 
+
 - (void)footerRereshing {
     if (_currentIndex == 0){
         if (_currentCoursePageIndex < _totleCoursePageIndex) {//没加载完
@@ -276,6 +278,7 @@
                     NSNumber *isResult = result[@"result"];
                     if (isResult.integerValue == 0) {
                         NSDictionary *courseDic = result[@"resultInfo"];
+                        //NSLog(@"result:%@",result);
                         
                         [self.courseArray addObjectsFromArray:courseDic[@"data"]];
                         //NSLog(@"array:%@",self.courseArray);
