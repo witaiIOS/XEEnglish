@@ -254,7 +254,7 @@
         switch (indexPath.row) {
             case 0:{
                 cell.tipInfoLabel.text = @"预计人数";
-                cell.peopleAndPlaceTF.text = @"";
+                cell.peopleAndPlaceTF.text =self.personNum;
                 cell.rowOfCell = 0;
                 cell.delegate = self;
                 
@@ -262,7 +262,7 @@
             }
             case 1:{
                 cell.tipInfoLabel.text = @"所需面积";
-                cell.peopleAndPlaceTF.text = @"";
+                cell.peopleAndPlaceTF.text = self.area;
                 cell.rowOfCell = 1;
                 cell.delegate = self;
                 
