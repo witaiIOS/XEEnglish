@@ -67,10 +67,10 @@
     //[self getMyCourseInfo];
     
     self.activityArray = [NSMutableArray array];
-    [self getMyActivityInfo];
+    //[self getMyActivityInfo];
     
     self.bookSiteArray = [NSMutableArray array];
-    [self getMyBookSiteInfo];
+    //[self getMyBookSiteInfo];
     
     
     self.mySegmentView = [[LXSegmentViewThree alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
@@ -148,7 +148,7 @@
 }
 
 
-- (void)getMyActivityInfo{
+/*- (void)getMyActivityInfo{
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
@@ -179,9 +179,16 @@
             [UIFactory showAlert:@"网络错误"];
         }
     }];
+}*/
+
+- (void)getMyActivityInfoWithPageIndex:(NSInteger)pageIndex WithBlock:(void (^)(NSDictionary *result, NSError *error))block{
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+
+    [[XeeService sharedInstance] GetActivityInfoByParentIdWithPageSize:10 andPageIndex:1 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:block];
 }
 
-- (void)getMyBookSiteInfo{
+/*- (void)getMyBookSiteInfo{
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //NSLog(@"token:%@",userInfoDic[uUserToken]);
@@ -210,6 +217,13 @@
             [UIFactory showAlert:@"未知错误"];
         }
     }];
+}*/
+
+- (void)getMyBookSiteInfoWithPageIndex:(NSInteger)pageIndex WithBlock:(void (^)(NSDictionary *result, NSError *error))block{
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    //NSLog(@"token:%@",userInfoDic[uUserToken]);
+    [[XeeService sharedInstance] getBookSiteByParent_idWithPageSize:10 andPageIndex:1 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:block];
 }
 
 
@@ -234,6 +248,44 @@
         _courseTableView.footerPullToRefreshText = @"上拉可以加载更多数据";
         _courseTableView.footerReleaseToRefreshText = @"松开马上加载更多数据";
         _courseTableView.footerRefreshingText = @"正在努力帮您加载中,不客气";
+    }
+    else if (_currentIndex == 1) {
+        // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+        // dateKey用于存储刷新时间，可以保证不同界面拥有不同的刷新时间
+        [_activityTableView addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:dateKey];
+        //#warning 自动刷新(一进入程序就下拉刷新)
+        [_activityTableView headerBeginRefreshing];
+        
+        // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+        [_activityTableView addFooterWithTarget:self action:@selector(footerRereshing)];
+        
+        // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
+        _activityTableView.headerPullToRefreshText = @"下拉可以刷新";
+        _activityTableView.headerReleaseToRefreshText = @"松开马上刷新";
+        _activityTableView.headerRefreshingText = @"正在努力帮您刷新中,不客气";
+        
+        _activityTableView.footerPullToRefreshText = @"上拉可以加载更多数据";
+        _activityTableView.footerReleaseToRefreshText = @"松开马上加载更多数据";
+        _activityTableView.footerRefreshingText = @"正在努力帮您加载中,不客气";
+    }
+    else if (_currentIndex == 2) {
+        // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+        // dateKey用于存储刷新时间，可以保证不同界面拥有不同的刷新时间
+        [_bookSiteTableView addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:dateKey];
+        //#warning 自动刷新(一进入程序就下拉刷新)
+        [_bookSiteTableView headerBeginRefreshing];
+        
+        // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+        [_bookSiteTableView addFooterWithTarget:self action:@selector(footerRereshing)];
+        
+        // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
+        _bookSiteTableView.headerPullToRefreshText = @"下拉可以刷新";
+        _bookSiteTableView.headerReleaseToRefreshText = @"松开马上刷新";
+        _bookSiteTableView.headerRefreshingText = @"正在努力帮您刷新中,不客气";
+        
+        _bookSiteTableView.footerPullToRefreshText = @"上拉可以加载更多数据";
+        _bookSiteTableView.footerReleaseToRefreshText = @"松开马上加载更多数据";
+        _bookSiteTableView.footerRefreshingText = @"正在努力帮您加载中,不客气";
     }
 }
 
@@ -260,6 +312,57 @@
                     [self showHudOnlyMsg:@"未知错误"];
                 }
             }else {
+                [self showHudOnlyMsg:@"网络错误"];
+            }
+        }];
+    }
+    else if (_currentIndex == 1){
+        self.currentActivityPageIndex = 1;
+        
+        [self getMyActivityInfoWithPageIndex:_currentActivityPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+            [self.activityTableView headerEndRefreshing];
+            if (!error) {
+                NSNumber *isResult = result[@"result"];
+                
+                if (isResult.integerValue == 0) {
+                    NSDictionary *activityDic = result[@"resultInfo"];
+                    
+                    self.activityArray = activityDic[@"data"];
+                    [self.activityTableView reloadData];
+                    
+                    NSNumber *totalNum = activityDic[@"totalPage"];
+                    if (totalNum) {
+                        self.totleActivityPageIndex = totalNum.integerValue;
+                    }
+                } else {
+                    [self showHudOnlyMsg:@"未知错误"];
+                }
+            }else{
+                [self showHudOnlyMsg:@"网络错误"];
+            }
+        }];
+    }
+    else if (_currentIndex == 2){
+        self.currentBookSitePageIndex = 1;
+        [self getMyBookSiteInfoWithPageIndex:_currentBookSitePageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+            [self.bookSiteTableView headerEndRefreshing];
+            
+            if (!error) {
+                NSNumber *isResult = result[@"result"];
+                if (isResult.integerValue == 0) {
+                    NSDictionary *bookSiteDic = result[@"resultInfo"];
+                    self.bookSiteArray = bookSiteDic[@"data"];
+                    [self.bookSiteTableView reloadData];
+                    
+                    NSNumber *totleNum = bookSiteDic[@"totalPage"];
+                    if (totleNum) {
+                        self.totleBookSitePageIndex = totleNum.integerValue;
+                    }
+                    
+                }else {
+                    [self showHudOnlyMsg:@"未知错误"];
+                }
+            }else{
                 [self showHudOnlyMsg:@"网络错误"];
             }
         }];
@@ -301,6 +404,63 @@
             [self showHudOnlyMsg:@"已全部加载完"];
         }
         
+    }
+    else if (_currentIndex == 1){
+        if (_currentActivityPageIndex < _totleActivityPageIndex) {
+            self.currentActivityPageIndex++;
+            [self getMyActivityInfoWithPageIndex:_currentActivityPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+                [self.activityTableView footerEndRefreshing];
+                
+                if (!error) {
+                    NSNumber *isResult = result[@"result"];
+                    if (isResult.integerValue == 0) {
+                        NSDictionary *activityDic = result[@"resultInfo"];
+                        [self.activityArray addObjectsFromArray:activityDic[@"data"]];
+                        [self.activityTableView reloadData];
+                        
+                        NSNumber *totleNum = activityDic[@"totalPage"];
+                        if (totleNum) {
+                            self.totleActivityPageIndex = totleNum.integerValue;
+                        }
+                    }else{
+                        //[self showHudOnlyMsg:@"未知错误"];
+                    }
+                }else{
+                    //[self showHudOnlyMsg:@"网络错误"];
+                }
+            }];
+        }else{
+            [_activityTableView footerEndRefreshing];
+            [self showHudOnlyMsg:@"已全部加载完"];
+        }
+    }
+    else if (_currentIndex == 2){
+        _currentBookSitePageIndex++;
+        if (_currentBookSitePageIndex < _totleBookSitePageIndex) {
+            [self getMyBookSiteInfoWithPageIndex:_currentBookSitePageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+                [self.bookSiteTableView footerEndRefreshing];
+                if (!error) {
+                    NSNumber *isResult = result[@"result"];
+                    if (isResult.integerValue == 0) {
+                        NSDictionary *bookSiteDic = result[@"resultInfo"];
+                        self.bookSiteArray = bookSiteDic[@"data"];
+                        [self.bookSiteTableView reloadData];
+                        
+                        NSNumber *totleNum = bookSiteDic[@"totalPage"];
+                        if (totleNum) {
+                            self.totleBookSitePageIndex = totleNum.integerValue;
+                        }
+                    }else{
+                        //[self showHudOnlyMsg:@"未知错误"];
+                    }
+                }else{
+                    //[self showHudOnlyMsg:@"网络错误"];
+                }
+            }];
+        }else{
+            [_bookSiteTableView footerEndRefreshing];
+            [self showHudOnlyMsg:@"已全部加载完"];
+        }
     }
 }
 
