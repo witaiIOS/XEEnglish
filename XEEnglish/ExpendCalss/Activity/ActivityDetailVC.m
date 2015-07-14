@@ -106,7 +106,7 @@
     footView.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:footView];
-    NSLog(@"dic:%@",self.avtivitInfoDic);
+    //NSLog(@"dic:%@",self.avtivitInfoDic);
     UILabel *personNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 100,20)];
     personNumLabel.font = [UIFont systemFontOfSize:12];
     personNumLabel.textAlignment = NSTextAlignmentLeft;
