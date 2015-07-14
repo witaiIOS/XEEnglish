@@ -144,6 +144,10 @@
     [self scrolltabButtonSeclectImageViewAndSelectButtonForIndex:_currentIndex];
     
     [_mainScrollView scrollRectToVisible:CGRectMake(_currentIndex*self.frame.size.width, 0, self.frame.size.width, _mainScrollView.frame.size.height) animated:YES];
+    
+    if ([self.delegate respondsToSelector:@selector(lxSegmentViewThreeTurnTabWithCurrentIndex:)]) {
+        [self.delegate lxSegmentViewThreeTurnTabWithCurrentIndex:_currentIndex];
+    }
 }
 
 #pragma mark - UIScrollView delegate

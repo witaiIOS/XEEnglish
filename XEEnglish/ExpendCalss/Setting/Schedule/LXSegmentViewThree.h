@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LXSegmentViewThreeDelegate <NSObject>
+
+- (void) lxSegmentViewThreeTurnTabWithCurrentIndex:(NSInteger)currentIndex;
+
+@end
+
 @interface LXSegmentViewThree : UIView<UIScrollViewDelegate>
+
+@property (assign, nonatomic) id<LXSegmentViewThreeDelegate>delegate;
 
 @property (strong, nonatomic) UIImageView *tabBgImageView;
 @property (strong, nonatomic) UIColor *tabButtonColor;

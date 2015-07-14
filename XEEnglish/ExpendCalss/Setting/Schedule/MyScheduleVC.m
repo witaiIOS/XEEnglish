@@ -15,8 +15,9 @@
 
 #import "XeeService.h"
 
-@interface MyScheduleVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface MyScheduleVC ()<UITableViewDataSource,UITableViewDelegate,LXSegmentViewThreeDelegate>
 @property (nonatomic, strong) LXSegmentViewThree *mySegmentView;
+@property ( nonatomic) NSInteger currentIndex;//当前tableview标示
 
 @property (nonatomic, strong) UITableView *courseTableView;//我预定的课程
 @property (nonatomic, strong) NSMutableArray *courseArray;//
@@ -27,6 +28,15 @@
 @property (nonatomic, strong) UITableView *bookSiteTableView;//我预定的场馆
 @property (nonatomic, strong) NSMutableArray *bookSiteArray;
 
+@property (nonatomic, assign) NSInteger currentCoursePageIndex;//当前课程页
+@property (nonatomic, assign) NSInteger totleCoursePageIndex;//课程页总数
+
+@property (nonatomic, assign) NSInteger currentActivityPageIndex;//当前活动页
+@property (nonatomic, assign) NSInteger totleActivityPageIndex;//活动页总数
+
+@property (nonatomic, assign) NSInteger currentBookSitePageIndex;//当前场馆页
+@property (nonatomic, assign) NSInteger totleBookSitePageIndex;//场馆页总数
+
 @end
 
 @implementation MyScheduleVC
@@ -35,6 +45,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"我的预定";
+    
+    _currentCoursePageIndex = 1;
+    _currentActivityPageIndex = 1;
+    _currentBookSitePageIndex = 1;
+    _totleCoursePageIndex = 0;
+    _totleActivityPageIndex = 0;
+    _totleBookSitePageIndex = 0;
+    
+    _currentIndex = 0;
+    [self setUpRefrash:@"table1"];
 }
 
 - (void)initUI{
@@ -44,7 +64,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.courseArray = [NSMutableArray array];
-    [self getMyCourseInfo];
+    //[self getMyCourseInfo];
     
     self.activityArray = [NSMutableArray array];
     [self getMyActivityInfo];
@@ -60,6 +80,7 @@
     self.mySegmentView.tabButtonSelectCorlor = [UIColor redColor];
     
     [self.mySegmentView setTabButton1Title:@"课程" andButton2Title:@"活动" andButton3Title:@"场馆"];
+    self.mySegmentView.delegate = self;
     
     [self.view addSubview:self.mySegmentView];
     
@@ -92,7 +113,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)getMyCourseInfo{
+/*- (void)getMyCourseInfo{
     
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
@@ -117,6 +138,13 @@
             [UIFactory showAlert:@"网络错误"];
         }
     }];
+}*/
+- (void)getMyCourseInfoWithPageIndex:(NSInteger)pageIndex WithBlock:(void (^)(NSDictionary *result, NSError *error))block{
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [[XeeService sharedInstance] getVOrderByParentIdWithParentId:userInfoDic[uUserId] andSort:@"" andOrder:@"" andPageSize:10 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:block];
 }
 
 
@@ -182,6 +210,97 @@
         }
     }];
 }
+
+
+#pragma mark - MJRefresh
+
+- (void)setUpRefrash:(NSString *)dateKey{
+    if (_currentIndex == 0) {
+        // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+        // dateKey用于存储刷新时间，可以保证不同界面拥有不同的刷新时间
+        [_courseTableView addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:dateKey];
+        //#warning 自动刷新(一进入程序就下拉刷新)
+        [_courseTableView headerBeginRefreshing];
+        
+        // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+        [_courseTableView addFooterWithTarget:self action:@selector(footerRereshing)];
+        
+        // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
+        _courseTableView.headerPullToRefreshText = @"下拉可以刷新";
+        _courseTableView.headerReleaseToRefreshText = @"松开马上刷新";
+        _courseTableView.headerRefreshingText = @"正在努力帮您刷新中,不客气";
+        
+        _courseTableView.footerPullToRefreshText = @"上拉可以加载更多数据";
+        _courseTableView.footerReleaseToRefreshText = @"松开马上加载更多数据";
+        _courseTableView.footerRefreshingText = @"正在努力帮您加载中,不客气";
+    }
+}
+
+
+- (void)headerRereshing{
+    if (_currentIndex == 0){
+        self.currentCoursePageIndex = 1;
+        [self getMyCourseInfoWithPageIndex:_currentCoursePageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+            [self.courseTableView headerEndRefreshing];
+            if (!error) {
+                NSNumber *isResult = result[@"result"];
+                if (isResult.integerValue == 0) {
+                    NSDictionary *courseDic = result[@"resultInfo"];
+                    
+                    self.courseArray = courseDic[@"data"];
+                    //NSLog(@"array:%@",self.courseArray);
+                    NSNumber *totalNum = courseDic[@"totalPage"];
+                    if (totalNum) {
+                        self.totleCoursePageIndex = totalNum.integerValue;
+                    }
+                    
+                    [self.courseTableView reloadData];
+                }else {
+                    [self showHudOnlyMsg:@"未知错误"];
+                }
+            }else {
+                [self showHudOnlyMsg:@"网络错误"];
+            }
+        }];
+    }
+}
+
+- (void)footerRereshing {
+    if (_currentIndex == 0){
+        if (_currentCoursePageIndex < _totleCoursePageIndex) {//没加载完
+            
+            _currentCoursePageIndex++;
+            [self getMyCourseInfoWithPageIndex:_currentCoursePageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+                [self.courseTableView footerEndRefreshing];
+                if (!error) {
+                    NSNumber *isResult = result[@"result"];
+                    if (isResult.integerValue == 0) {
+                        NSDictionary *courseDic = result[@"resultInfo"];
+                        
+                        [self.courseArray addObjectsFromArray:courseDic[@"data"]];
+                        //NSLog(@"array:%@",self.courseArray);
+                        [self.courseTableView reloadData];
+                        
+                        NSNumber *totalNum = courseDic[@"totalPage"];
+                        if (totalNum) {
+                            self.totleCoursePageIndex = totalNum.integerValue;
+                        }
+                    }else {
+                        //[self showHudOnlyMsg:@"未知错误"];
+                    }
+                }else {
+                    //[self showHudOnlyMsg:@"网络错误"];
+                }
+            }];
+        }
+        else {
+            [_courseTableView footerEndRefreshing];
+            [self showHudOnlyMsg:@"已全部加载完"];
+        }
+        
+    }
+}
+
 
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
@@ -308,18 +427,26 @@
 }
 
 
-
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - LXSegmentViewThree delegate
+- (void)lxSegmentViewThreeTurnTabWithCurrentIndex:(NSInteger)currentIndex {
+    
+    _currentIndex = currentIndex;
+    
+    if (currentIndex == 0) {
+        if (_courseArray.count == 0) {
+            [self setUpRefrash:@"table1"];
+        }
+    }
+    else if (currentIndex == 1) {
+        if (_activityArray.count == 0) {
+            [self setUpRefrash:@"table2"];
+        }
+    }
+    else if (currentIndex == 2) {
+        if (_bookSiteArray.count == 0) {
+            [self setUpRefrash:@"table3"];
+        }
+    }
 }
-*/
 
 @end
