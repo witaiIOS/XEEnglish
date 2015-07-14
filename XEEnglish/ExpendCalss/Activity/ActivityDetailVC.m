@@ -30,12 +30,12 @@
     
     [self headView];
     [self footView];
-    
+    //NSLog(@"info:%@",self.avtivitInfoDic);
     self.activityWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64+140+1, kScreenWidth, kScreenHeight-205-60)];
     self.activityWebView.delegate = self;
-    self.activityWebView.scalesPageToFit = YES;
+    //self.activityWebView.scalesPageToFit = YES;
     
-    NSString *webString = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,self.avtivitInfoDic[@"image_url"]];
+    NSString *webString = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,self.avtivitInfoDic[@"html_url"]];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:webString]];
     
@@ -202,6 +202,10 @@
     
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    //改变字体大小
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self.activityWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName_r('body')[0].style.webkitTextSizeAdjust= '200%'"];
     
     [self.activityIndicator stopAnimating];
     UIView *view = (UIView *)[self.view viewWithTag:108];
