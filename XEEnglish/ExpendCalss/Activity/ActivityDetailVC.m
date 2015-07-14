@@ -56,27 +56,33 @@
     
     [self.view addSubview:headView];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth-20,40)];
-    titleLabel.font = [UIFont systemFontOfSize:19];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth-20,50)];
+    titleLabel.font = [UIFont systemFontOfSize:17];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor blackColor];
     titleLabel.text = self.avtivitInfoDic[@"title"];
+    //自动折行设置
+    titleLabel.numberOfLines = 0;
+    titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
     [headView addSubview:titleLabel];
     
-    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, kScreenWidth-20,20)];
+    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, kScreenWidth-20,30)];
     timeLabel.font = [UIFont systemFontOfSize:12];
     timeLabel.textAlignment = NSTextAlignmentCenter;
     timeLabel.textColor = [UIColor blackColor];
     timeLabel.text = [NSString stringWithFormat:@"活动时间：%@至%@",self.avtivitInfoDic[@"start_time"],self.avtivitInfoDic[@"end_time"]];
+    //自动折行设置
+    timeLabel.numberOfLines = 0;
+    timeLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
     [headView addSubview:timeLabel];
     
-    UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, kScreenWidth-20,60)];
-    contentLabel.font = [UIFont systemFontOfSize:15];
+    UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, kScreenWidth-20,50)];
+    contentLabel.font = [UIFont systemFontOfSize:14];
     contentLabel.textAlignment = NSTextAlignmentLeft;
     contentLabel.textColor = [UIColor blueColor];
-    contentLabel.text = self.avtivitInfoDic[@"content"];
+    contentLabel.text = [NSString stringWithFormat:@"活动内容：%@",self.avtivitInfoDic[@"content"]];
     //自动折行设置
     contentLabel.lineBreakMode = NSLineBreakByWordWrapping;
     contentLabel.numberOfLines = 0;
@@ -87,7 +93,7 @@
     schoolZoneLabel.font = [UIFont systemFontOfSize:12];
     schoolZoneLabel.textAlignment = NSTextAlignmentLeft;
     schoolZoneLabel.textColor = [UIColor blackColor];
-    schoolZoneLabel.text = self.avtivitInfoDic[@"address"];
+    schoolZoneLabel.text = [NSString stringWithFormat:@"活动地址：%@",self.avtivitInfoDic[@"address"]];
     
     [headView addSubview:schoolZoneLabel];
     
