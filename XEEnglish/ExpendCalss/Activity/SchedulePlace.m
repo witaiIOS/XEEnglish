@@ -254,6 +254,7 @@
         switch (indexPath.row) {
             case 0:{
                 cell.tipInfoLabel.text = @"预计人数";
+                //NSLog(@"num:%@",self.personNum);
                 cell.peopleAndPlaceTF.text =self.personNum;
                 cell.rowOfCell = 0;
                 cell.delegate = self;

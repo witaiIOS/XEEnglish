@@ -80,8 +80,11 @@
 }
 
 - (void)getMyActivityInfo{
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
     [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] GetActivityInfoByParentIdWithPageSize:10 andPageIndex:1 andParentId:ceShiId andToken:ceShiToken andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] GetActivityInfoByParentIdWithPageSize:10 andPageIndex:1 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         //NSLog(@"result:%@",result);
         
@@ -110,8 +113,11 @@
 }
 
 - (void)getMyBookSiteInfo{
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
     [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getBookSiteByParent_idWithPageSize:10 andPageIndex:1 andParentId:ceShiId andToken:ceShiToken andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getBookSiteByParent_idWithPageSize:10 andPageIndex:1 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         //NSLog(@"result:%@",result);
         
