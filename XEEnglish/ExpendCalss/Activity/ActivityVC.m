@@ -8,6 +8,7 @@
 
 #import "ActivityVC.h"
 #import "ActivityCell.h"
+#import "ActivityHistoryCell.h"
 #import "LXSegmentView.h"
 
 #import "ActivityDetailVC.h"
@@ -197,7 +198,7 @@
            [self.tableView1 headerEndRefreshing];
            if (!error) {
                
-               NSLog(@"result:%@",result);
+               //NSLog(@"result:%@",result);
                
                NSNumber *isResult = result[@"result"];
                if (isResult.integerValue == 0) {
@@ -386,7 +387,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *reuse1 = @"CellActivityIdentifier";
-    static NSString *reuse2 = @"CellActivityIdentifier";
+    static NSString *reuse2 = @"ActivityHistoryVCCell";
     static NSString *reuse3 = @"CellActivityIdentifier";
     
     if (tableView == self.tableView1) {
@@ -409,18 +410,19 @@
         
     }
     else if (tableView == self.tableView2){
+        //NSLog(@"array:%@",self.tableList2);
         
-        [tableView registerNib:[UINib nibWithNibName:@"ActivityCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse2];
-        ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
+        [tableView registerNib:[UINib nibWithNibName:@"ActivityHistoryCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse2];
+        ActivityHistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
         
         cell.cellEdge = 10;
         
         if (cell == nil) {
-            cell = [[ActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
+            cell = [[ActivityHistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
             
         }
-        cell.delegate = self;
-        cell.activityInfo = _tableList2[indexPath.section];
+        //NSLog(@"array:%@",self.tableList2);
+        cell.activityHistoryInfo = _tableList2[indexPath.section];
         return cell;
     }
     else{

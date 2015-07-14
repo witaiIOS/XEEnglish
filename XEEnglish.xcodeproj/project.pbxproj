@@ -110,6 +110,8 @@
 		09D23C5B1B42B0F1008B6085 /* PointSRuleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D23C5A1B42B0F1008B6085 /* PointSRuleCell.xib */; };
 		09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450AD1B10786800B39B4A /* MyAccountTVC.m */; };
 		09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D450B01B1078AB00B39B4A /* BaseTVC.m */; };
+		09D47BA21B54E30400B86CA2 /* ActivityHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D47BA11B54E30400B86CA2 /* ActivityHistoryCell.m */; };
+		09D47BA41B54E31F00B86CA2 /* ActivityHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D47BA31B54E31F00B86CA2 /* ActivityHistoryCell.xib */; };
 		09D5459A1B44D5FF00CC5844 /* ExpendRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D545991B44D5FF00CC5844 /* ExpendRecordVC.m */; };
 		09D5459D1B44D6B400CC5844 /* ExpendRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5459C1B44D6B400CC5844 /* ExpendRecordCell.m */; };
 		09D5459F1B44D6DB00CC5844 /* ExpendRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D5459E1B44D6DB00CC5844 /* ExpendRecordCell.xib */; };
@@ -418,6 +420,9 @@
 		09D450AD1B10786800B39B4A /* MyAccountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTVC.m; sourceTree = "<group>"; };
 		09D450AF1B1078AB00B39B4A /* BaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTVC.h; sourceTree = "<group>"; };
 		09D450B01B1078AB00B39B4A /* BaseTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTVC.m; sourceTree = "<group>"; };
+		09D47BA01B54E30400B86CA2 /* ActivityHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityHistoryCell.h; sourceTree = "<group>"; };
+		09D47BA11B54E30400B86CA2 /* ActivityHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityHistoryCell.m; sourceTree = "<group>"; };
+		09D47BA31B54E31F00B86CA2 /* ActivityHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityHistoryCell.xib; sourceTree = "<group>"; };
 		09D545981B44D5FF00CC5844 /* ExpendRecordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpendRecordVC.h; sourceTree = "<group>"; };
 		09D545991B44D5FF00CC5844 /* ExpendRecordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpendRecordVC.m; sourceTree = "<group>"; };
 		09D5459B1B44D6B400CC5844 /* ExpendRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpendRecordCell.h; sourceTree = "<group>"; };
@@ -1334,6 +1339,9 @@
 				09CA408C1B1C655000D12796 /* ActivityCell.h */,
 				09CA408D1B1C655000D12796 /* ActivityCell.m */,
 				09CA408E1B1C655000D12796 /* ActivityCell.xib */,
+				09D47BA01B54E30400B86CA2 /* ActivityHistoryCell.h */,
+				09D47BA11B54E30400B86CA2 /* ActivityHistoryCell.m */,
+				09D47BA31B54E31F00B86CA2 /* ActivityHistoryCell.xib */,
 				09C95CD71B1EDD2800ABC885 /* LXSegmentView.h */,
 				09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */,
 				093CD67B1B1D692B004F7D11 /* SchedulePlace.h */,
@@ -1809,6 +1817,7 @@
 				A6DA3E221B44D919005850EB /* UMSCommentInputController.xib in Resources */,
 				A6D4F22D1B539D42001D3D0E /* AlipaySDK.bundle in Resources */,
 				09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */,
+				09D47BA41B54E31F00B86CA2 /* ActivityHistoryCell.xib in Resources */,
 				09C9C0E71B22D252001BBA1C /* SThead.png in Resources */,
 				09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */,
 				A6DA3E261B44D919005850EB /* UMSLoginViewController.xib in Resources */,
@@ -1975,6 +1984,7 @@
 				09C328641B301E24009F0BAB /* CourseAbsentVC.m in Sources */,
 				09D545A51B45542700CC5844 /* ActivityDetailVC.m in Sources */,
 				0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */,
+				09D47BA21B54E30400B86CA2 /* ActivityHistoryCell.m in Sources */,
 				09D23C481B424526008B6085 /* ExchangePointsCell.m in Sources */,
 				A6284D5A1B105E5600EFF820 /* UIScrollView+MJRefresh.m in Sources */,
 				A6284D621B105E5600EFF820 /* UIRefreshControl+AFNetworking.m in Sources */,
