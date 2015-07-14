@@ -15,14 +15,21 @@
 #import "SchedulePlace.h"
 #import "XeeService.h"
 
-@interface ActivityVC ()<UITableViewDataSource,UITableViewDelegate,ActivityCellActivityReserveBtnPressedDelegate,UIAlertViewDelegate>
+@interface ActivityVC ()<UITableViewDataSource,UITableViewDelegate,ActivityCellActivityReserveBtnPressedDelegate,UIAlertViewDelegate, LXSegmentViewDelegate>
 
 @property (nonatomic, strong) LXSegmentView *mySegmentView;
+@property ( nonatomic) NSInteger currentIndex;
+
 @property (nonatomic, strong) UITableView *tableView1;
 @property (nonatomic, strong) UITableView *tableView2;
 
 @property (nonatomic, strong) NSMutableArray *tableList1;
 @property (nonatomic, strong) NSMutableArray *tableList2;
+
+@property (nonatomic) NSInteger currentOrderPageIndex;
+@property (nonatomic) NSInteger historyOrderPageIndex;
+@property (nonatomic) NSInteger currentOrderTotalPage;
+@property (nonatomic) NSInteger historyOrderTotalPage;
 
 @property (nonatomic, strong) NSString *activitId;
 
@@ -39,11 +46,20 @@
     _tableList1 = [NSMutableArray array];
     _tableList2 = [NSMutableArray array];
     
+    
+    _currentOrderPageIndex = 1;
+    _historyOrderPageIndex = 1;
+    _currentOrderTotalPage = 0;
+    _historyOrderTotalPage = 0;
+    
     //self.activityStatus = self.mySegmentView.currentIndex;
     //NSLog(@"%li",self.activityStatus);
-    [self getActivityInfo];
+    //[self getActivityInfo];
     
     self.activitId = nil;//活动id初始化
+    
+    _currentIndex = 0;
+    [self setupRefresh:@"table1"];
 
 }
 
@@ -57,7 +73,7 @@
     self.mySegmentView.tabButtonColor = [UIColor blackColor];
     self.mySegmentView.tabButtonSelectCorlor = [UIColor redColor];
     [self.mySegmentView setTabButton1Title:@"当前活动" andButton2Title:@"历史活动"];
-    
+    self.mySegmentView.delegate = self;
     [self.view addSubview:self.mySegmentView];
     
     CGFloat segHeight = self.mySegmentView.frame.size.height;
@@ -96,59 +112,29 @@
 }
 
 #pragma mark - getActivityInfo
-- (void)getActivityInfo{
+- (void)getCurrentActivityInfoWithPageIndex:(NSInteger)pageIndex WithBlock:(void (^)(NSDictionary *result, NSError *error))block{
     
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //NSLog(@"%li",self.mySegmentView.currentIndex);
-    [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getActivityInfoWithPageSize:10 andPageIndex:1 andActivityStatus:0 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    //[self showHudWithMsg:@"载入中..."];
+    [[XeeService sharedInstance] getActivityInfoWithPageSize:10 andPageIndex:pageIndex andActivityStatus:0 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:block];/*^(NSDictionary *result, NSError *error) {
         //NSLog(@"result:%@",result);
-        [self hideHud];
-        if (!error) {
-            
-            NSNumber *isResult = result[@"result"];
-            if (isResult.integerValue == 0) {
-                //NSLog(@"info:%@",result[@"resultInfo"]);
-                NSDictionary *resultInfoDic = result[@"resultInfo"];
-                _tableList1 = resultInfoDic[@"data"];
-                //NSLog(@"list:%@",_tableList1);
-                
-                [self.tableView1 reloadData];
-            }
-            else {
-                [UIFactory showAlert:@"未知错误"];
-            }
-
-        }
-        else {
-            [UIFactory showAlert:@"网络错误"];
-        }
-    }];
+        //[self hideHud];
+        }];*/
     
-    [[XeeService sharedInstance] getActivityInfoWithPageSize:10 andPageIndex:1 andActivityStatus:1 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+   }
+
+- (void)getHistoryActivityInfoWithPageIndex:(NSInteger)pageIndex WithBlock:(void (^)(NSDictionary *result, NSError *error))block {
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [[XeeService sharedInstance] getActivityInfoWithPageSize:10 andPageIndex:pageIndex andActivityStatus:1 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:block];/*^(NSDictionary *result, NSError *error) {
         //NSLog(@"result:%@",result);
-        [self hideHud];
-        if (!error) {
-            
-            NSNumber *isResult = result[@"result"];
-            if (isResult.integerValue == 0) {
-                //NSLog(@"info:%@",result[@"resultInfo"]);
-                NSDictionary *resultInfoDic = result[@"resultInfo"];
-                _tableList2 = resultInfoDic[@"data"];
-                //NSLog(@"list:%@",_tableList1);
-                
-                [self.tableView2 reloadData];
-            }
-            else {
-                [UIFactory showAlert:@"未知错误"];
-            }
-            
-        }
-        else {
-            [UIFactory showAlert:@"网络错误"];
-        }
-    }];
+        //[self hideHud];
+    }];*/
+
 }
 
 #pragma mark - action
@@ -161,6 +147,218 @@
                                          animated:YES];
 }
 
+#pragma mark -
+#pragma mark - MJRefresh
+/**
+ *  集成刷新控件
+ */
+- (void)setupRefresh:(NSString *)dateKey
+{
+    if (_currentIndex == 0) {
+        // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+        // dateKey用于存储刷新时间，可以保证不同界面拥有不同的刷新时间
+        [_tableView1 addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:dateKey];
+        //#warning 自动刷新(一进入程序就下拉刷新)
+        [_tableView1 headerBeginRefreshing];
+        
+        // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+        [_tableView1 addFooterWithTarget:self action:@selector(footerRereshing)];
+        
+        // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
+        _tableView1.headerPullToRefreshText = @"下拉可以刷新";
+        _tableView1.headerReleaseToRefreshText = @"松开马上刷新";
+        _tableView1.headerRefreshingText = @"正在努力帮您刷新中,不客气";
+        
+        _tableView1.footerPullToRefreshText = @"上拉可以加载更多数据";
+        _tableView1.footerReleaseToRefreshText = @"松开马上加载更多数据";
+        _tableView1.footerRefreshingText = @"正在努力帮您加载中,不客气";
+    }
+    else if (_currentIndex == 1) {
+        [_tableView2 addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:dateKey];
+        [_tableView2 headerBeginRefreshing];
+        
+        [_tableView2 addFooterWithTarget:self action:@selector(footerRereshing)];
+        
+        _tableView2.headerPullToRefreshText = @"下拉可以刷新";
+        _tableView2.headerReleaseToRefreshText = @"松开马上刷新";
+        _tableView2.headerRefreshingText = @"正在努力帮您刷新中,不客气";
+        
+        _tableView2.footerPullToRefreshText = @"上拉可以加载更多数据";
+        _tableView2.footerReleaseToRefreshText = @"松开马上加载更多数据";
+        _tableView2.footerRefreshingText = @"正在努力帮您加载中,不客气";
+    }
+}
+
+- (void)headerRereshing
+{
+    if (_currentIndex == 0) {
+        self.currentOrderPageIndex = 1;
+       [self getCurrentActivityInfoWithPageIndex:_currentOrderPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+           [self.tableView1 headerEndRefreshing];
+           if (!error) {
+               
+               NSLog(@"result:%@",result);
+               
+               NSNumber *isResult = result[@"result"];
+               if (isResult.integerValue == 0) {
+                   //NSLog(@"info:%@",result[@"resultInfo"]);
+                   NSDictionary *resultInfoDic = result[@"resultInfo"];
+                   _tableList1 = resultInfoDic[@"data"];
+                   //NSLog(@"list:%@",_tableList1);
+                   
+                   NSNumber *totalNum = resultInfoDic[@"totalPage"];
+                   if (totalNum) {
+                       self.currentOrderTotalPage = totalNum.integerValue;
+                   }
+                   
+                   
+                   [self.tableView1 reloadData];
+               }
+               else {
+                   [self showHudOnlyMsg:@"未知错误"];
+               }
+               
+           }
+           else {
+               [self showHudOnlyMsg:@"网络错误"];
+           }
+
+       }];
+    }
+    else if (_currentIndex == 1) {
+        self.historyOrderPageIndex = 1;
+        [self getHistoryActivityInfoWithPageIndex:_historyOrderPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+            [self.tableView2 headerEndRefreshing];
+            if (!error) {
+                
+                NSNumber *isResult = result[@"result"];
+                if (isResult.integerValue == 0) {
+                    //NSLog(@"info:%@",result[@"resultInfo"]);
+                    NSDictionary *resultInfoDic = result[@"resultInfo"];
+                    _tableList2 = resultInfoDic[@"data"];
+                    //NSLog(@"list:%@",_tableList1);
+                    
+                    NSNumber *totalNum = resultInfoDic[@"totalPage"];
+                    if (totalNum) {
+                        self.historyOrderTotalPage = totalNum.integerValue;
+                    }
+
+                    
+                    [self.tableView2 reloadData];
+                }
+                else {
+                    [self showHudOnlyMsg:@"未知错误"];
+                }
+                
+            }
+            else {
+                [self showHudOnlyMsg:@"网络错误"];
+            }
+
+        }];
+    }
+   
+    // 刷新表格
+    //[self.tableView reloadData];
+    
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    //[self.tableView headerEndRefreshing];
+
+}
+
+- (void)footerRereshing {
+    if (_currentIndex == 0) {
+        
+        if (_currentOrderPageIndex < _currentOrderTotalPage) {//没有加载完
+            
+            _currentOrderPageIndex++;
+            [self getCurrentActivityInfoWithPageIndex:_currentOrderPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+                [_tableView1 footerEndRefreshing];
+                
+                if (!error) {
+                    
+                    NSNumber *isResult = result[@"result"];
+                    if (isResult.integerValue == 0) {
+                        //NSLog(@"info:%@",result[@"resultInfo"]);
+                        NSDictionary *resultInfoDic = result[@"resultInfo"];
+                        //_tableList1 = resultInfoDic[@"data"];
+                        //NSLog(@"list:%@",_tableList1);
+                        [_tableList1 addObjectsFromArray:resultInfoDic[@"data"]];
+                        [self.tableView1 reloadData];
+                        
+                        NSNumber *totalNum = resultInfoDic[@"totalPage"];
+                        if (totalNum) {
+                            self.currentOrderTotalPage = totalNum.integerValue;
+                        }
+                        
+                        
+                        
+                    }
+                    else {
+                        //[self showHudOnlyMsg:@"未知错误"];
+                    }
+                    
+                }
+                else {
+                    //[self showHudOnlyMsg:@"网络错误"];
+                }
+
+                
+            }];
+
+        }
+        else {
+            [_tableView1 footerEndRefreshing];
+            [self showHudOnlyMsg:@"已全部加载完"];
+        }
+        
+    }
+    else if (_currentIndex == 1) {
+        
+        if (_historyOrderPageIndex < _historyOrderTotalPage) {
+            
+            _historyOrderPageIndex++;
+            [self getHistoryActivityInfoWithPageIndex:_historyOrderPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+                
+                [_tableView2 footerEndRefreshing];
+                if (!error) {
+                    
+                    NSNumber *isResult = result[@"result"];
+                    if (isResult.integerValue == 0) {
+                        //NSLog(@"info:%@",result[@"resultInfo"]);
+                        NSDictionary *resultInfoDic = result[@"resultInfo"];
+                        //_tableList2 = resultInfoDic[@"data"];
+                        //NSLog(@"list:%@",_tableList1);
+                        [_tableList2 addObjectsFromArray:resultInfoDic[@"data"]];
+                        [self.tableView2 reloadData];
+                        
+                        NSNumber *totalNum = resultInfoDic[@"totalPage"];
+                        if (totalNum) {
+                            self.historyOrderTotalPage = totalNum.integerValue;
+                        }
+                        
+                        
+                        
+                    }
+                    else {
+                        //[self showHudOnlyMsg:@"未知错误"];
+                    }
+                    
+                }
+                else {
+                    //[self showHudOnlyMsg:@"网络错误"];
+                }
+
+            }];
+
+        }
+        else {
+            [_tableView2 footerEndRefreshing];
+            [self showHudOnlyMsg:@"已全部加载完"];
+        }
+    }
+
+}
 
 
 
@@ -316,14 +514,21 @@
     
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - LXSegmentView delegate
+- (void)lxSegmentViewTurnTabWithCurrentIndex:(NSInteger)currentIndex {
+    
+    _currentIndex = currentIndex;
+    
+    if (currentIndex == 0) {
+        if (_tableList1.count == 0) {
+            [self setupRefresh:@"table1"];
+        }
+    }
+    else if (currentIndex == 1) {
+        if (_tableList2.count == 0) {
+            [self setupRefresh:@"table2"];
+        }
+    }
+}
 
 @end
