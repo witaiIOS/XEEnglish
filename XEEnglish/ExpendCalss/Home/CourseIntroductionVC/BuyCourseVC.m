@@ -454,6 +454,22 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.textLabel.textColor = [UIColor blackColor];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+        cell.detailTextLabel.textColor = [UIColor blackColor];
+        //显示现金券的总值
+        if (self.listCouponsArray.count > 0) {
+            NSInteger coupons = 0;
+            for (int i =0; i<self.listCouponsArray.count; i++) {
+                NSDictionary *couponDic = self.listCouponsArray[i];
+                NSString *nextCoupon = couponDic[@"price"];
+                coupons = coupons + [nextCoupon intValue];
+            }
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%li",coupons];
+            
+        }
+        else{
+            cell.detailTextLabel.text = @"";
+        }
         
         return cell;
     }
