@@ -407,6 +407,7 @@
             {
                 CouponsVC *vc = [[CouponsVC alloc] init];
                 vc.hidesBottomBarWhenPushed = YES;
+                vc.superView = 0;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }

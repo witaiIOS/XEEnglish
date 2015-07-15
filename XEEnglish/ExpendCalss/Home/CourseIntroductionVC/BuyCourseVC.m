@@ -587,6 +587,7 @@
         CouponsVC *vc = [[CouponsVC alloc] init];
         vc.delegate = self;
         vc.coursePrice = self.priceTotal;
+        vc.superView = 1;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else{

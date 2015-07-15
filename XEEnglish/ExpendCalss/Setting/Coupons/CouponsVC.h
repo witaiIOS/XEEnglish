@@ -6,6 +6,10 @@
 //  Copyright (c) 2015年 lixiang. All rights reserved.
 //
 
+#define SuperViewIsBuyView  1
+#define SuperViewIsSettingVC 0
+
+
 #import "BaseVC.h"
 @protocol CouponsVCCouponsUsedDelegate <NSObject>
 
@@ -16,6 +20,8 @@
 
 
 @interface CouponsVC : BaseVC
+@property (nonatomic, assign) NSInteger superView;
+
 @property (nonatomic, assign) NSInteger coursePrice;
 @property (nonatomic, assign) id<CouponsVCCouponsUsedDelegate>delegate;
 @end

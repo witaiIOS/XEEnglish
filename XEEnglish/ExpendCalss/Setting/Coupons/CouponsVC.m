@@ -8,6 +8,7 @@
 
 #import "CouponsVC.h"
 #import "CouponsCell.h"
+#import "SettingVC.h"
 
 #import "XeeService.h"
 
@@ -31,13 +32,19 @@
     [super initUI];
     
     UIButton *completeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
     [completeBtn setFrame:CGRectMake(kScreenWidth-60, 17, 40, 30)];
     [completeBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [completeBtn setTitle:@"完成" forState:UIControlStateNormal];
     [completeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [completeBtn setBackgroundColor:[UIColor clearColor]];
     [completeBtn addTarget:self action:@selector(completeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    
+    //父视图是我的界面时隐藏完成按钮
+    if (self.superView == SuperViewIsSettingVC) {
+        completeBtn.selected = NO;
+        completeBtn.hidden = YES;
+    }
+
     UIBarButtonItem *completeBarBtn = [[UIBarButtonItem alloc] initWithCustomView:completeBtn];
     self.navigationItem.rightBarButtonItem = completeBarBtn;
     
@@ -130,35 +137,41 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (self.coursePrice == 0) {
-        [UIFactory showAlert:@"您还未选择课程"];
-    }
-    else{
+    //父视图为购买页时，需要能够勾选现金券，是“我的”页面时，不能选择
+    if (self.superView == SuperViewIsBuyView){
         
-        NSDictionary *selectedCoupon = self.couponsArray[indexPath.section];
-        NSNumber *statusNum = selectedCoupon[@"status"];
-        //获取加入这个新的现金券之后的总额
-        NSInteger addOtherCouponTotalPrice = [self getCurrentTotalcouponsPriceAddOtherCoupon:self.couponsArray[indexPath.section]];
-        if (addOtherCouponTotalPrice > self.coursePrice) {
-            [UIFactory showAlert:@"使用该现金券将使现金券额度大于应付款总额，不被允许"];
+        if (self.coursePrice == 0) {
+            [UIFactory showAlert:@"您还未选择课程"];
         }
         else{
             
-            if (statusNum.integerValue == 0) {
-                CouponsCell *cell = (CouponsCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-                cell.iconButton.selected = !cell.iconButton.selected;
+            NSDictionary *selectedCoupon = self.couponsArray[indexPath.section];
+            NSNumber *statusNum = selectedCoupon[@"status"];
+            //获取加入这个新的现金券之后的总额
+            NSInteger addOtherCouponTotalPrice = [self getCurrentTotalcouponsPriceAddOtherCoupon:self.couponsArray[indexPath.section]];
+            if (addOtherCouponTotalPrice > self.coursePrice) {
+                [UIFactory showAlert:@"使用该现金券将使现金券额度大于应付款总额，不被允许"];
+            }
+            else{
                 
-                if (cell.iconButton.selected == YES) {
-                    [self.couponsUsedArray addObject:self.couponsArray[indexPath.section]];
+                if (statusNum.integerValue == 0) {
+                    CouponsCell *cell = (CouponsCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+                    cell.iconButton.selected = !cell.iconButton.selected;
+                    
+                    if (cell.iconButton.selected == YES) {
+                        [self.couponsUsedArray addObject:self.couponsArray[indexPath.section]];
+                    }
+                    else{
+                        [self.couponsUsedArray removeObject:self.couponsArray[indexPath.section]];
+                    }
                 }
-                else{
-                    [self.couponsUsedArray removeObject:self.couponsArray[indexPath.section]];
-                }
+                
             }
             
         }
         
     }
+    
     
     
 }
