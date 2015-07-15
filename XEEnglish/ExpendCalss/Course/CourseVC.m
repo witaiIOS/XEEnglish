@@ -391,8 +391,14 @@
     else if (column ==1) {
         NSDictionary *studentDic = _students[_currentStudentsIndex];
         NSMutableArray *courseArray = studentDic[@"listCourse"];
-        NSDictionary *courseDic = courseArray[_currentCouseListIndex];
-        return courseDic[@"title"];
+        if (courseArray.count>0) {
+            NSDictionary *courseDic = courseArray[_currentCouseListIndex];
+            return courseDic[@"title"];
+        }
+        else {
+            return @"无课程";
+        }
+        
         //return _courseList[_currentCouseListIndex];
     }
     

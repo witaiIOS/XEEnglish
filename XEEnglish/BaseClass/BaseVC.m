@@ -73,8 +73,8 @@
 -(void)showHudOnlyMsg:(NSString*)msg
 {
     [self.view bringSubviewToFront:self.hud];
-    self.hud.mode       = MBProgressHUDModeText;
-    self.hud.labelText  = msg;
+    self.hud.mode      = MBProgressHUDModeText;
+    self.hud.labelText = msg;
     [self.hud show:YES];
     [self.hud hide:YES afterDelay:2.0];
 }

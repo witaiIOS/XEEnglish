@@ -27,8 +27,8 @@
 
 
 
-#define MZBimageURLPrefix @"http://www.mrchabo.com/mrchabo/"
-#define MZBWebURL @"http://www.mrchabo.com/houseWs/ws/houseWs?wsdl"
+#define MZBimageURLPrefix @"http: //www.mrchabo.com/mrchabo/"
+#define MZBWebURL         @"http: //www.mrchabo.com/houseWs/ws/houseWs?wsdl"
 
 //#define XEEimageURLPrefix @"http://218.244.143.58:604"
 
@@ -81,7 +81,7 @@
 /*============================================================================*/
 
 // 商户PID
-#define alipayPARTNER  @"2088911830109459"
+#define alipayPARTNER @"2088911830109459"
 // 商户收款账号
 #define alipaySELLER  @"info@idealangel.cn"
 
