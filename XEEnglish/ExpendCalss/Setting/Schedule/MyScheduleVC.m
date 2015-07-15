@@ -185,7 +185,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
 
-    [[XeeService sharedInstance] GetActivityInfoByParentIdWithPageSize:10 andPageIndex:1 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:block];
+    [[XeeService sharedInstance] GetActivityInfoByParentIdWithPageSize:10 andPageIndex:pageIndex andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:block];
 }
 
 /*- (void)getMyBookSiteInfo{
@@ -223,7 +223,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //NSLog(@"token:%@",userInfoDic[uUserToken]);
-    [[XeeService sharedInstance] getBookSiteByParent_idWithPageSize:10 andPageIndex:1 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:block];
+    [[XeeService sharedInstance] getBookSiteByParent_idWithPageSize:10 andPageIndex:pageIndex andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:block];
 }
 
 

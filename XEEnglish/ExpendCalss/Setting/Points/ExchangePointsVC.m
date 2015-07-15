@@ -15,6 +15,9 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *giftArray;
+
+@property (nonatomic, assign) NSInteger currentGiftPageIndex;//当前礼品页
+@property (nonatomic, assign) NSInteger totleGiftPageIndex;//总的页数
 @end
 
 @implementation ExchangePointsVC

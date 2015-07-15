@@ -29,6 +29,9 @@
     // Do any additional setup after loading the view.
     self.title = @"积分交易记录";
     
+    _currentPointPageIndex = 1;
+    _totlePointPageIndex = 0;
+    
     [self setupRefresh:@"table"];
 }
 
@@ -120,7 +123,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //[self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getPointsWithPageSize:10 andPageIndex:1 andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:block];
+    [[XeeService sharedInstance] getPointsWithPageSize:10 andPageIndex:pageIndex andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:block];
     
 }
 
