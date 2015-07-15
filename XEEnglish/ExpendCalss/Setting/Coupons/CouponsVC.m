@@ -128,17 +128,21 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    CouponsCell *cell = (CouponsCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    cell.iconButton.selected = !cell.iconButton.selected;
+    NSDictionary *selectedCoupon = self.couponsArray[indexPath.section];
+    NSNumber *statusNum = selectedCoupon[@"status"];
     
-    
-    
-    if (cell.iconButton.selected == YES) {
-        [self.couponsUsedArray addObject:self.couponsArray[indexPath.section]];
+    if (statusNum.integerValue == 0) {
+        CouponsCell *cell = (CouponsCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        cell.iconButton.selected = !cell.iconButton.selected;
+        
+        if (cell.iconButton.selected == YES) {
+            [self.couponsUsedArray addObject:self.couponsArray[indexPath.section]];
+        }
+        else{
+            [self.couponsUsedArray removeObject:self.couponsArray[indexPath.section]];
+        }
     }
-    else{
-        [self.couponsUsedArray removeObject:self.couponsArray[indexPath.section]];
-    }
+    
 //    NSData *data = [NSJSONSerialization dataWithJSONObject:self.couponsUsedArray options:NSJSONWritingPrettyPrinted error:nil];
 //    NSString *text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 //    NSLog(@"%@",text);
