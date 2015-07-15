@@ -143,10 +143,9 @@
 }
 
 - (void)footerRereshing{
-    _currentExpendRecordPageIndex++;
     
     if (_currentExpendRecordPageIndex < _totleExpendRecordPageIndex) {
-        
+        _currentExpendRecordPageIndex++;
         [self getVOrderByParentIdWithPageIndex:_currentExpendRecordPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
             [self.tableView footerEndRefreshing];
             

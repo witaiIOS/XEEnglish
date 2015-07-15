@@ -190,9 +190,9 @@
 
 - (void)footerRereshing{
     
-    _currentPointPageIndex++;
+    
     if (_currentPointPageIndex < _totlePointPageIndex) {
-        
+        _currentPointPageIndex++;
         [self getPointsRecordWithPageIndex:_currentPointPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
             [self.tableView footerEndRefreshing];
             if (!error) {
