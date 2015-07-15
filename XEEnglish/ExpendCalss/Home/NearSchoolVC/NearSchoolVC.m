@@ -35,7 +35,11 @@
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         _locationManager.distanceFilter = 1000.0f;
         [_locationManager startUpdatingLocation];
-        [_locationManager requestAlwaysAuthorization];
+        
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+            [_locationManager requestAlwaysAuthorization];
+        }
+        
         
     }
     else {
