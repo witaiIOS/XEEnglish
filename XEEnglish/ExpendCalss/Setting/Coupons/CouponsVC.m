@@ -130,22 +130,36 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSDictionary *selectedCoupon = self.couponsArray[indexPath.section];
-    NSNumber *statusNum = selectedCoupon[@"status"];
-    //获取加入这个新的现金券之后的总额
-    NSInteger addOtherCouponTotalPrice = [self getCurrentTotalcouponsPriceAddOtherCoupon:self.couponsArray[indexPath.section]];
-    
-    if ((statusNum.integerValue == 0) &&(addOtherCouponTotalPrice < self.coursePrice)) {
-        CouponsCell *cell = (CouponsCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-        cell.iconButton.selected = !cell.iconButton.selected;
+    if (self.coursePrice == 0) {
+        [UIFactory showAlert:@"您还未选择课程"];
+    }
+    else{
         
-        if (cell.iconButton.selected == YES) {
-            [self.couponsUsedArray addObject:self.couponsArray[indexPath.section]];
+        NSDictionary *selectedCoupon = self.couponsArray[indexPath.section];
+        NSNumber *statusNum = selectedCoupon[@"status"];
+        //获取加入这个新的现金券之后的总额
+        NSInteger addOtherCouponTotalPrice = [self getCurrentTotalcouponsPriceAddOtherCoupon:self.couponsArray[indexPath.section]];
+        if (addOtherCouponTotalPrice > self.coursePrice) {
+            [UIFactory showAlert:@"使用该现金券将使现金券额度大于应付款总额，不被允许"];
         }
         else{
-            [self.couponsUsedArray removeObject:self.couponsArray[indexPath.section]];
+            
+            if (statusNum.integerValue == 0) {
+                CouponsCell *cell = (CouponsCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+                cell.iconButton.selected = !cell.iconButton.selected;
+                
+                if (cell.iconButton.selected == YES) {
+                    [self.couponsUsedArray addObject:self.couponsArray[indexPath.section]];
+                }
+                else{
+                    [self.couponsUsedArray removeObject:self.couponsArray[indexPath.section]];
+                }
+            }
+            
         }
+        
     }
+    
     
 }
 
