@@ -43,7 +43,7 @@
     //获取网络评价
     //[self getCourseParentCommentWithWeb];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -80,7 +80,7 @@
 
 - (void)getCourseParentCommentWithPageIndex:(NSInteger)pageIndex WithBlock:(void (^)(NSDictionary *result, NSError *error))block{
     
-    [self showHudWithMsg:@"载入中..."];
+    //[self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getCourseParentCommentByCourseId:self.courseInfoDic[@"course_id"] andPageSize:10 andPageIndex:pageIndex andBlock:block];
 }
 
