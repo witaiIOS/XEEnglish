@@ -123,6 +123,8 @@
     return cell;
 }
 
+
+
 #pragma mark - UITableView Delegate
 - (void )tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -130,8 +132,10 @@
     
     NSDictionary *selectedCoupon = self.couponsArray[indexPath.section];
     NSNumber *statusNum = selectedCoupon[@"status"];
+    //获取加入这个新的现金券之后的总额
+    NSInteger addOtherCouponTotalPrice = [self getCurrentTotalcouponsPriceAddOtherCoupon:self.couponsArray[indexPath.section]];
     
-    if (statusNum.integerValue == 0) {
+    if ((statusNum.integerValue == 0) &&(addOtherCouponTotalPrice < self.coursePrice)) {
         CouponsCell *cell = (CouponsCell *)[self.tableView cellForRowAtIndexPath:indexPath];
         cell.iconButton.selected = !cell.iconButton.selected;
         
@@ -143,9 +147,6 @@
         }
     }
     
-//    NSData *data = [NSJSONSerialization dataWithJSONObject:self.couponsUsedArray options:NSJSONWritingPrettyPrinted error:nil];
-//    NSString *text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@",text);
 }
 
 
@@ -170,15 +171,26 @@
 
 
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - My Action
+//获取加入这个新的现金券之后的总额
+-(NSInteger)getCurrentTotalcouponsPriceAddOtherCoupon:(NSDictionary *)addCouponDic{
+    
+    NSInteger currentTotalcouponsPrice = 0;//当前已选的现金券的总额
+    
+    for (int i = 0; i<self.couponsUsedArray.count; i++) {
+        NSDictionary *couponDic = self.couponsUsedArray[i];
+        NSString *couponPrice = [NSString stringWithFormat:@"%@",couponDic[@"price"]];
+        currentTotalcouponsPrice = currentTotalcouponsPrice + [couponPrice intValue];
+    }
+    
+    NSInteger addCouponPrice = 0;//新增的现金券额度
+    NSString *addCouponPriceStr = [NSString stringWithFormat:@"%@",addCouponDic[@"price"]];
+    addCouponPrice = [addCouponPriceStr intValue];
+    
+    NSInteger addCouponTotalPrice = 0;//新增了现金券之后的总额
+    addCouponTotalPrice = currentTotalcouponsPrice + addCouponPrice;
+    
+    return addCouponTotalPrice;
 }
-*/
 
 @end

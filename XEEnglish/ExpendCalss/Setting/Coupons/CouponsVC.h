@@ -16,6 +16,6 @@
 
 
 @interface CouponsVC : BaseVC
-
+@property (nonatomic, assign) NSInteger coursePrice;
 @property (nonatomic, assign) id<CouponsVCCouponsUsedDelegate>delegate;
 @end
