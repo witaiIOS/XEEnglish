@@ -149,9 +149,11 @@
     
     //NSLog(@"addr:%@",self.myAddr );
 //#warning   nickName
-    //NSString *nickName = [self.netName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *nickName = [self.netName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *niceAddr = [self.myAddr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *niceSignature = [self.mySignature stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self showHudWithMsg:@"上传中..."];
-    [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:self.netName andSex:@"null" andBirthday:self.myBirthday andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:self.myAddr andQq:@"null" andEmail:@"null" andMemo:self.mySignature andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:nickName andSex:@"null" andBirthday:self.myBirthday andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:niceAddr andQq:@"null" andEmail:@"null" andMemo:niceSignature andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         if (!error) {
             NSNumber *isResult = result[@"result "];
