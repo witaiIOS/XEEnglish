@@ -28,6 +28,7 @@
 		094DD26C1B3978ED0045EF2C /* ListeningCourseInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 094DD26B1B3978ED0045EF2C /* ListeningCourseInfoCell.m */; };
 		097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 097990661B17006600D4A8DC /* ResetPassWordVC.m */; };
 		097990691B17006600D4A8DC /* ResetPassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 097990671B17006600D4A8DC /* ResetPassWordVC.xib */; };
+		097C14F31B574782004AC794 /* NearSchoolDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 097C14F21B574782004AC794 /* NearSchoolDetailVC.m */; };
 		0980856E1B32C37500BE9336 /* AllCoursesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0980856D1B32C37500BE9336 /* AllCoursesVC.m */; };
 		09C3285C1B30135F009F0BAB /* CourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C3285B1B30135F009F0BAB /* CourseCell.m */; };
 		09C3285E1B301370009F0BAB /* CourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C3285D1B301370009F0BAB /* CourseCell.xib */; };
@@ -291,6 +292,8 @@
 		097990651B17006600D4A8DC /* ResetPassWordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPassWordVC.h; sourceTree = "<group>"; };
 		097990661B17006600D4A8DC /* ResetPassWordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPassWordVC.m; sourceTree = "<group>"; };
 		097990671B17006600D4A8DC /* ResetPassWordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPassWordVC.xib; sourceTree = "<group>"; };
+		097C14F11B574782004AC794 /* NearSchoolDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearSchoolDetailVC.h; sourceTree = "<group>"; };
+		097C14F21B574782004AC794 /* NearSchoolDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearSchoolDetailVC.m; sourceTree = "<group>"; };
 		0980856C1B32C37500BE9336 /* AllCoursesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllCoursesVC.h; sourceTree = "<group>"; };
 		0980856D1B32C37500BE9336 /* AllCoursesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCoursesVC.m; sourceTree = "<group>"; };
 		09C3285A1B30135F009F0BAB /* CourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCell.h; sourceTree = "<group>"; };
@@ -873,6 +876,8 @@
 				09C8C1CE1B535743000E089F /* NearSchoolCell.h */,
 				09C8C1CF1B535743000E089F /* NearSchoolCell.m */,
 				09C8C1D11B53575C000E089F /* NearSchoolCell.xib */,
+				097C14F11B574782004AC794 /* NearSchoolDetailVC.h */,
+				097C14F21B574782004AC794 /* NearSchoolDetailVC.m */,
 			);
 			path = NearSchoolVC;
 			sourceTree = "<group>";
@@ -1885,6 +1890,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6B1CEEB1B1D8C7200100E9F /* HomeButton.m in Sources */,
+				097C14F31B574782004AC794 /* NearSchoolDetailVC.m in Sources */,
 				A6284D791B105F9500EFF820 /* UIFactory.m in Sources */,
 				A6D4F2371B539D43001D3D0E /* RSADataSigner.m in Sources */,
 				09C8C1D01B535743000E089F /* NearSchoolCell.m in Sources */,

@@ -11,6 +11,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "XeeService.h"
 
+#import "NearSchoolDetailVC.h"
+
 @interface NearSchoolVC ()<UITableViewDataSource, UITableViewDelegate,NearSchoolCellTakePhoneDelegate, CLLocationManagerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *schoolArray;
@@ -146,6 +148,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NearSchoolDetailVC *vc = [[NearSchoolDetailVC alloc] init];
+    vc.schoolInfoDic = self.schoolArray[indexPath.section];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
