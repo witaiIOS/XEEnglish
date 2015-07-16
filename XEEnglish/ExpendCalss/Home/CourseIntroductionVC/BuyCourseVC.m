@@ -72,7 +72,7 @@
     //初始化经过序列化的现金券数组的NSString
     self.listCouponsString = @"[]";
     
-    self.priceTotal = 0;
+    //self.priceTotal = 0;
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
