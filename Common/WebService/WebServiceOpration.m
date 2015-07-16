@@ -28,7 +28,7 @@
     [req setHTTPBody:postbody];
     
     
-   // NSString *requestURL = [[NSString alloc]initWithData:postbody encoding:NSUTF8StringEncoding];
+    //NSString *requestURL = [[NSString alloc]initWithData:postbody encoding:NSUTF8StringEncoding];
     //NSLog(@"requestURL:%@",requestURL);
     
     AFHTTPRequestOperation *opration = [[AFHTTPRequestOperation alloc] initWithRequest:req];
@@ -67,6 +67,7 @@
     [postbody appendData:[[NSString stringWithFormat:@"</soapenv:Body></soapenv:Envelope>"] dataUsingEncoding:NSUTF8StringEncoding]];
     [req setHTTPBody:postbody];
     
+    //NSLog(@"requestURL:%@",postbody);
     
     //NSString *requestURL = [[NSString alloc]initWithData:postbody encoding:NSUTF8StringEncoding];
     //NSLog(@"requestURL:%@",requestURL);
@@ -74,6 +75,34 @@
     AFHTTPRequestOperation *opration = [[AFHTTPRequestOperation alloc] initWithRequest:req];
     return opration;
 }
+
+/*+ (AFHTTPRequestOperation *)XEEWebService:(NSString *)body {
+    
+    NSURL* WebURL = [NSURL URLWithString:XEEWebURL];
+    NSMutableURLRequest* req = [[NSMutableURLRequest alloc] init];
+    [req setURL:WebURL];
+    [req setHTTPMethod:@"POST"];
+    
+    unsigned long encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    
+    [req addValue:@"text/xml" forHTTPHeaderField:@"Content-Type"];
+    NSMutableData* postbody = [[NSMutableData alloc] init];
+    [postbody appendData:[[NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://webservice.ereal.com/\"><soapenv:Header/><soapenv:Body>"] dataUsingEncoding:encode]];
+    
+    [postbody appendData:[[NSString stringWithFormat:@"%@",body] dataUsingEncoding:encode]];
+    
+    [postbody appendData:[[NSString stringWithFormat:@"</soapenv:Body></soapenv:Envelope>"] dataUsingEncoding:encode]];
+    [req setHTTPBody:postbody];
+    
+    NSLog(@"requestURL:%@",postbody);
+    
+    NSString *requestURL = [[NSString alloc]initWithData:postbody encoding:encode];
+    NSLog(@"requestURL:%@",requestURL);
+    
+    AFHTTPRequestOperation *opration = [[AFHTTPRequestOperation alloc] initWithRequest:req];
+    return opration;
+}*/
+
 
 #pragma mark - 登陆相关
 

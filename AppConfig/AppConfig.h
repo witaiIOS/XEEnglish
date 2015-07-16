@@ -35,6 +35,7 @@
 #define XEEHost  @"http://218.244.143.58:604/" //支付时试用
 #define XEEimageURLPrefix [NSString stringWithFormat:@"%@files/",XEEHost]
 #define XEEWebURL [NSString stringWithFormat:@"%@ShaneAppWs.asmx?wsdl",XEEHost]
+//#define XEEWebURL [NSString stringWithFormat:@"%@ShaneAppWs.asmx",XEEHost] //本地测试
 //#define XEEimageURLPrefix @"http://218.244.143.58:604/files/"
 //#define XEEWebURL @"http://218.244.143.58:604/ShaneAppWs.asmx?wsdl"
 //#define XEEWebURL @"http://192.168.1.122:625/ShaneAppWs.asmx" //本地测试
