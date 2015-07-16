@@ -31,6 +31,9 @@
     
     [super initUI];
     
+    NSString *niceName = [self.name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    self.name = niceName;
+    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -55,9 +58,10 @@
 - (NSString *)generateTradeNO
 {
     static int kNumber = 15;
-    
+    //对名字进行编码
     NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     NSMutableString *resultStr = [[NSMutableString alloc] init];
+    
     srand((int)time(0));
     for (int i = 0; i < kNumber; i++)
     {
