@@ -263,6 +263,7 @@
             }
             case 1:{
                 cell.tipInfoLabel.text = @"所需面积";
+                //NSLog(@"area:%@",self.area);
                 cell.peopleAndPlaceTF.text = self.area;
                 cell.rowOfCell = 1;
                 cell.delegate = self;

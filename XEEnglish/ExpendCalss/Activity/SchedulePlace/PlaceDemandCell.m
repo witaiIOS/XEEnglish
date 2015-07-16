@@ -62,4 +62,10 @@
     return YES;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    //设置代理方法，修改场馆预定的人数和面积的值
+    [self.delegate setPersonNumAndArea:self.peopleAndPlaceTF.text andRowOfCell:self.rowOfCell];
+    [textField resignFirstResponder];
+}
+
 @end
