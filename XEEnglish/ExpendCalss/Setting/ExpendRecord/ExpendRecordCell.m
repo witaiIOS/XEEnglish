@@ -35,12 +35,19 @@
     NSMutableArray *couponsArray = self.expendRecordInfoDic[@"listCoupon"];
     self.expendRecordCoupons.text = [self getCoupons:couponsArray];
     
-    id payMode = self.expendRecordInfoDic[@"pay_mode"];
-    if (payMode == [NSNull class]) {
+//    id payMode = self.expendRecordInfoDic[@"pay_mode"];
+//    if (payMode == [NSNull class]) {
+//        self.expendRecordPayMode.text = @"还未支付";
+//    }
+//    else{
+//        self.expendRecordPayMode.text = [self getPayMode:(int)payMode];
+//    }
+    NSString *payMode = [NSString stringWithFormat:@"%@",self.expendRecordInfoDic[@"pay_mode"]];
+    if ([payMode isEqual:@"<null>"]) {
         self.expendRecordPayMode.text = @"还未支付";
     }
     else{
-        self.expendRecordPayMode.text = [self getPayMode:(int)payMode];
+        self.expendRecordPayMode.text = [self getPayMode:payMode.intValue];
     }
     
 //    self.expendRecordPayMode.text = [NSString stringWithFormat:@"%@",self.expendRecordInfoDic[@"pay_mode"]];
