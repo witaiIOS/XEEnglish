@@ -241,7 +241,7 @@
  */
 + (AFHTTPRequestOperation *)getVStudentSourseScheduleSignWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andCourseId:(NSString *)course_id andSignon:(NSString *)is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentSourseScheduleSign><web:json>{\"parent_id\":\"%@\",\"student_id\":\"%@\",\"course_id\":\"%@\", \"is_signon\":\"%@\",\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetVStudentSourseScheduleSign>",parent_id,student_id,course_id,is_signon,sort,order,(long)pageSize,(long)pageIndex,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentSourseScheduleSign><web:json>{\"parent_id\":\"%@\",\"student_id\":\"%@\",\"student_subcourse_id\":\"%@\", \"is_signon\":\"%@\",\"sort\":\"%@\",\"order\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetVStudentSourseScheduleSign>",parent_id,student_id,course_id,is_signon,sort,order,(long)pageSize,(long)pageIndex,token]];
 }
 
 /**
