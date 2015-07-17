@@ -38,14 +38,14 @@
     self.scrollView.alwaysBounceVertical = YES;//纵向滑动
     self.scrollView.alwaysBounceHorizontal = NO;
 
-    [self headView];
+    [self createHeaderView];
     
     self.scrollView.contentSize = CGSizeMake(kScreenWidth, kScreenWidth + self.headView.frame.size.height);
     
     
 }
 
-- (void)headView{
+- (void)createHeaderView{
     //校区名
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, kScreenWidth-20, 20)];
     titleLabel.text = self.schoolInfoDic[@"department"];
