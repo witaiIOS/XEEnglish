@@ -28,7 +28,7 @@
     NSString *statusStr = nil;
     
     if (statusNum.integerValue == 0) {
-        statusStr = @"未审核";
+        statusStr = @"待审核";
     }
     else if (statusNum.integerValue == 1){
         statusStr = @"审核通过";

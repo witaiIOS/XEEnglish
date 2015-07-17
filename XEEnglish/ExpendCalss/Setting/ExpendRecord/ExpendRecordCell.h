@@ -10,15 +10,25 @@
 
 @interface ExpendRecordCell : BaseTVC
 @property (nonatomic, strong) NSDictionary *expendRecordInfoDic;
-@property (weak, nonatomic) IBOutlet UILabel *expendRecordStatue;
-@property (weak, nonatomic) IBOutlet UILabel *expendRecordName;
-@property (weak, nonatomic) IBOutlet UILabel *expendRecordPhone;
-@property (weak, nonatomic) IBOutlet UILabel *expendRecordCourseName;
-@property (weak, nonatomic) IBOutlet UILabel *expendRecordCreateTime;
-@property (weak, nonatomic) IBOutlet UILabel *expendRecordCourseHours;
-@property (weak, nonatomic) IBOutlet UILabel *expendRecordCoursePrice;
+@property (weak, nonatomic) IBOutlet UILabel *expendRecordStatue;//订单状态
+@property (weak, nonatomic) IBOutlet UILabel *expendRecordName;//用户昵称
+@property (weak, nonatomic) IBOutlet UILabel *expendRecordPhone;//用户账号
 
+@property (weak, nonatomic) IBOutlet UILabel *expendRecordTradeNo;//订单号*
 
+@property (weak, nonatomic) IBOutlet UILabel *expendRecordCourseName;//课程名
+
+@property (weak, nonatomic) IBOutlet UILabel *expendRecordTradeType;//订单类型*
+
+@property (weak, nonatomic) IBOutlet UILabel *expendRecordCreateTime;//订单时间
+
+@property (weak, nonatomic) IBOutlet UILabel *expendRecordPayType;//购买详情*，是整套还是课时
+
+@property (weak, nonatomic) IBOutlet UILabel *expendRecordCoursePrice;//费用
+
+@property (weak, nonatomic) IBOutlet UILabel *expendRecordCoupons;//使用现金券情况***
+
+@property (weak, nonatomic) IBOutlet UILabel *expendRecordPayMode;//支付平台***
 
 
 @end
