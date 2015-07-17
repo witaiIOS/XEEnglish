@@ -184,6 +184,9 @@
     else if (!self.selectedBtn.selected) {
         [UIFactory showAlert:@"请阅读并同意协议"];
     }
+    else if(self.priceTotal == 0){
+        [UIFactory showAlert:@"请输入课时"];
+    }
     else{
         
         //传值
@@ -409,6 +412,7 @@
                 cell.cellEdge = 10;
                 cell.delegate = self;
                 cell.myLabel.text = @"购买课时";
+                cell.myPriceTF.text = self.inputCourseHours;
                 
                 return cell;
             }
@@ -752,6 +756,13 @@
     if (self.superPayMethodNumber == 1) {
         self.priceHour = [NSString stringWithFormat:@"%@",subCourseDic[@"price"]];//获取课时价格
         //NSLog(@"hour:%li",(long)[self.priceHour intValue]);
+        
+        //选择的支付方式是1时，将payCourseMethod重新设置为"按课时"，避免tableView在“按套数”跳转为按课时时，section为2的地方只有一个cell
+        self.payCourseMethod = @"按课时";
+        
+        //选择子课程后清空输入的课时和总价
+        self.inputCourseHours = @"";
+        self.priceTotal = 0;
     }
     else if (self.superPayMethodNumber == 2){
         NSNumber *price = subCourseDic[@"total_price"];
@@ -789,6 +800,8 @@
         self.payMethodNumber = 1;
         //选定支付方式后，修改各个付款的值
 //        self.priceHour = [NSString stringWithFormat:@"%@",self.subCourseInfoDic[@"price"]];//获取课时价格
+        //按课时购买时，要将输入课时清空
+        self.inputCourseHours = @"";
         //按课时购买时，要将缴费金额清零
         self.priceTotal = 0;
         //self.priceTotal = @"";
@@ -805,12 +818,25 @@
 #pragma mark - ListeningCorseInfoCellDelegate
 - (void)listeningCourseInfoCellInputCourseHours:(NSString *)sender {
     
-    self.inputCourseHours = sender;
-    self.priceTotal = [self.inputCourseHours intValue] *[self.priceHour intValue];
-    //self.priceTotal =[NSString stringWithFormat:@"%d", [self.inputCourseHours intValue] *[self.priceHour intValue]];//按课时计算需要缴费金额
+    if(self.subCoursename == nil){
+        [UIFactory showAlert:@"请选择子课程"];
+    }
+    else{
+        NSString *totalHours = self.subCourseInfoDic[@"total_unit_count"];
+        if([totalHours intValue] < [sender intValue]){
+            [UIFactory showAlert:@"输入课时大于总课时数，请重新输入"];
+        }
+        else{
+            self.inputCourseHours = sender;
+            self.priceTotal = [self.inputCourseHours intValue] *[self.priceHour intValue];
+            //self.priceTotal =[NSString stringWithFormat:@"%d", [self.inputCourseHours intValue] *[self.priceHour intValue]];//按课时计算需要缴费金额
+            
+            [self.tableView reloadData];
+            //NSLog(@"self.inputCourseHours:%@",self.inputCourseHours);
+        }
+    }
     
-    [self.tableView reloadData];
-    //NSLog(@"self.inputCourseHours:%@",self.inputCourseHours);
+    
 }
 
 
