@@ -8,6 +8,12 @@
 
 #import "BaseTVC.h"
 
+@protocol ExpendRecordCellCannelBtnPressedDelegate <NSObject>
+
+- (void)cannelBtnPressed:(id)sender;
+
+@end
+
 @interface ExpendRecordCell : BaseTVC
 @property (nonatomic, strong) NSDictionary *expendRecordInfoDic;
 @property (weak, nonatomic) IBOutlet UILabel *expendRecordStatue;//订单状态
@@ -29,6 +35,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *expendRecordCoupons;//使用现金券情况***
 
 @property (weak, nonatomic) IBOutlet UILabel *expendRecordPayMode;//支付平台***
+
+
+@property (nonatomic, assign) id<ExpendRecordCellCannelBtnPressedDelegate>delegate;
 
 
 

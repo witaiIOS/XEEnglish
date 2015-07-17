@@ -127,7 +127,12 @@
 #pragma mark - UITextView Delegate
 - (void)textViewDidBeginEditing:(UITextView *)textView{
     
+    [textView becomeFirstResponder];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView{
     
+    [textView resignFirstResponder];
 }
 
 

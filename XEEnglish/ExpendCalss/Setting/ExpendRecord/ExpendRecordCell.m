@@ -205,7 +205,7 @@
 
 #pragma mark - Button Action
 - (void)cannelBtnClicked{
-    
+    [self.delegate cannelBtnPressed:self.expendRecordInfoDic];
 }
 
 - (void)payBtnClicked{

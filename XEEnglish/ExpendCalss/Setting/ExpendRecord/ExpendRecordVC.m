@@ -9,9 +9,10 @@
 #import "ExpendRecordVC.h"
 #import "ExpendRecordCell.h"
 
+#import "CannelOrderExplainVC.h"
 #import "XeeService.h"
 
-@interface ExpendRecordVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface ExpendRecordVC ()<UITableViewDataSource,UITableViewDelegate,ExpendRecordCellCannelBtnPressedDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *expendRecordsArray;
@@ -203,6 +204,7 @@
     
     cell.cellEdge = 10;
     cell.expendRecordInfoDic = self.expendRecordsArray[indexPath.section];
+    cell.delegate = self;
     
     return cell;
     
@@ -235,14 +237,14 @@
     return 3.0f;
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - ExpendRecordCellCannelBtnPressedDelegate
+
+- (void)cannelBtnPressed:(id)sender{
+    
+    CannelOrderExplainVC *vc = [[CannelOrderExplainVC alloc] init];
+    vc.expendRecordInfoDic = sender;
+    [self.navigationController pushViewController:vc animated:YES];
 }
-*/
 
 @end

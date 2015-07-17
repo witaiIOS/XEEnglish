@@ -55,6 +55,8 @@
 		09C6FEFD1B4BFBF90069156D /* SelectedStudentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6FEFC1B4BFBF90069156D /* SelectedStudentVC.m */; };
 		09C7682D1B58AEE900012A33 /* MyCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7682C1B58AEE900012A33 /* MyCourseCell.m */; };
 		09C7682F1B58AF0100012A33 /* MyCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C7682E1B58AF0100012A33 /* MyCourseCell.xib */; };
+		09C768331B592B1400012A33 /* CannelOrderExplainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C768311B592B1400012A33 /* CannelOrderExplainVC.m */; };
+		09C768341B592B1400012A33 /* CannelOrderExplainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C768321B592B1400012A33 /* CannelOrderExplainVC.xib */; };
 		09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A41B25AC4700E72163 /* ActivityContentCell.m */; };
 		09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A71B25BB0100E72163 /* otherRequireCell.m */; };
 		09C87F291B3BEFB900D7C913 /* SubCourseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F281B3BEFB900D7C913 /* SubCourseListVC.m */; };
@@ -337,6 +339,9 @@
 		09C7682B1B58AEE900012A33 /* MyCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCourseCell.h; sourceTree = "<group>"; };
 		09C7682C1B58AEE900012A33 /* MyCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCourseCell.m; sourceTree = "<group>"; };
 		09C7682E1B58AF0100012A33 /* MyCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCourseCell.xib; sourceTree = "<group>"; };
+		09C768301B592B1400012A33 /* CannelOrderExplainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CannelOrderExplainVC.h; sourceTree = "<group>"; };
+		09C768311B592B1400012A33 /* CannelOrderExplainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CannelOrderExplainVC.m; sourceTree = "<group>"; };
+		09C768321B592B1400012A33 /* CannelOrderExplainVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CannelOrderExplainVC.xib; sourceTree = "<group>"; };
 		09C832A31B25AC4700E72163 /* ActivityContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityContentCell.h; sourceTree = "<group>"; };
 		09C832A41B25AC4700E72163 /* ActivityContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityContentCell.m; sourceTree = "<group>"; };
 		09C832A61B25BB0100E72163 /* otherRequireCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = otherRequireCell.h; sourceTree = "<group>"; };
@@ -980,6 +985,9 @@
 				09D5459B1B44D6B400CC5844 /* ExpendRecordCell.h */,
 				09D5459C1B44D6B400CC5844 /* ExpendRecordCell.m */,
 				09D5459E1B44D6DB00CC5844 /* ExpendRecordCell.xib */,
+				09C768301B592B1400012A33 /* CannelOrderExplainVC.h */,
+				09C768311B592B1400012A33 /* CannelOrderExplainVC.m */,
+				09C768321B592B1400012A33 /* CannelOrderExplainVC.xib */,
 			);
 			path = ExpendRecord;
 			sourceTree = "<group>";
@@ -1814,6 +1822,7 @@
 				A6B1CEDA1B1C62D400100E9F /* ChangePassWordVC.xib in Resources */,
 				09D23C5B1B42B0F1008B6085 /* PointSRuleCell.xib in Resources */,
 				09C543231B4F93C900BD750C /* SwitchButtonCell.xib in Resources */,
+				09C768341B592B1400012A33 /* CannelOrderExplainVC.xib in Resources */,
 				A6B1CEE21B1C62D400100E9F /* SettingSignatureVC.xib in Resources */,
 				09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */,
 				A6284CD81B10592100EFF820 /* Main.storyboard in Resources */,
@@ -2032,6 +2041,7 @@
 				A6B1CEDB1B1C62D400100E9F /* NeTNameAndDomicileVC.m in Sources */,
 				09C3285C1B30135F009F0BAB /* CourseCell.m in Sources */,
 				093A58801B43E398006F104D /* CourseCommentVC.m in Sources */,
+				09C768331B592B1400012A33 /* CannelOrderExplainVC.m in Sources */,
 				09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */,
 				09CA408F1B1C655000D12796 /* ActivityCell.m in Sources */,
 				09D5459D1B44D6B400CC5844 /* ExpendRecordCell.m in Sources */,
