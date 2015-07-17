@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *myCourseUserPhone;//用户手机号
 @property (weak, nonatomic) IBOutlet UILabel *myCourseCourseName;//课程名
 @property (weak, nonatomic) IBOutlet UILabel *myCourseCreateTime;//创建时间
-@property (weak, nonatomic) IBOutlet UILabel *myCourseCourseHours;//购买课时
-@property (weak, nonatomic) IBOutlet UILabel *myCourseCoursePrice;//购买价格
+@property (weak, nonatomic) IBOutlet UILabel *myCourseTradeNO;//订单号
+
 
 @end

@@ -566,7 +566,7 @@
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (tableView == self.courseTableView) {
-        return 190.0f;
+        return 165.0f;
     }
     else if (tableView == self.activityTableView) {
         return 280.0f;

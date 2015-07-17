@@ -20,9 +20,7 @@
     self.myCourseCourseName.text = self.myCourseInfoDic[@"title"];
     self.myCourseCreateTime.text = self.myCourseInfoDic[@"order_datetime"];
     //NSLog(@"info:%@",self.expendRecordInfoDic);
-    self.myCourseCourseHours.text = [NSString stringWithFormat:@"%@",self.myCourseInfoDic[@"numbers"]];
-    self.myCourseCoursePrice.text = [NSString stringWithFormat:@"%@",self.myCourseInfoDic[@"total_price"]];
-    
+    self.myCourseTradeNO.text = [NSString stringWithFormat:@"%@",self.myCourseInfoDic[@"out_trade_no"]];  
 }
 
 - (NSString *)getStatus:(NSNumber *)statusNum{
