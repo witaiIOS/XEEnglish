@@ -59,13 +59,26 @@
     NSString *statusStr = nil;
     
     if (statusNum.integerValue == 0) {
-        statusStr = @"未审核";
+        self.expendRecordStatue.textColor = [UIColor redColor];
+        statusStr = @"未支付";
     }
     else if (statusNum.integerValue == 1){
+        self.expendRecordStatue.textColor = [UIColor blueColor];
         statusStr = @"审核通过";
     }
     else if (statusNum.integerValue == -1){
-        statusStr = @"审核不通过";
+        self.expendRecordStatue.textColor = [UIColor redColor];
+        statusStr = @"审核未通过";
+    }
+    else if (statusNum.integerValue == 2){
+        self.expendRecordStatue.textColor = [UIColor blueColor];
+        statusStr = @"已支付";
+    }
+    else if (statusNum.integerValue == 4){
+        statusStr = @"取消待审核";
+    }
+    else if (statusNum.integerValue == 5){
+        statusStr = @"已取消";
     }
     else{
         
