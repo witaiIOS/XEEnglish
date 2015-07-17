@@ -200,6 +200,7 @@
     if (cell == nil) {
         cell = [[ExpendRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
     }
+    
     cell.cellEdge = 10;
     cell.expendRecordInfoDic = self.expendRecordsArray[indexPath.section];
     
