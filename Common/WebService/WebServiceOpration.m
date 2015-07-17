@@ -423,6 +423,8 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetBookSiteByParentId><web:json>{\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetBookSiteByParentId>",(long)pageSize,(long)pageIndex,parentId,token]];
 }
 
+#pragma mark - 我的 订单
+
 /**
  通过会员id，查询消费订单分页列表
  @param pageSize 一次请求显示多少个活动
@@ -434,6 +436,19 @@
 + (AFHTTPRequestOperation *)getVOrderByParentIdWithParentId:(NSString *)parentId andSort:(NSString *)sort andOrder:(NSString *)order andType:(NSString *)type andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token{
     
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVOrderByParentId><web:json>{\"parent_id\":\"%@\",\"sort\":\"%@\",\"order\":\"%@\",\"type\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetVOrderByParentId>",parentId,sort,order,type,(long)pageSize,(long)pageIndex,token]];
+}
+
+/**
+ 通过会员id，查询消费订单分页列表
+ @param relation_id   订单的order_id
+ @param remark        取消原因
+ @param parentId 表示当前登录人id
+ @param type          type为4，取消操作
+ @param token
+ */
++ (AFHTTPRequestOperation *)cancelOrderWithParentId:(NSString *)parentId andRelationId:(NSString *)relation_id andRemark:(NSString *)remark andType:(NSString *)type andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:CancelOrder><web:json>{\"parent_id\":\"%@\",\"relation_id\":\"%@\", \"remark\":\"%@\", \"type\":\"%@\",\"token\":\"%@\"}</web:json></web:CancelOrder>",parentId,relation_id,remark,type,token]];
 }
 
 

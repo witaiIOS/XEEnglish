@@ -661,7 +661,7 @@
     }];
 }
 
-#pragma mark - 我的 消费记录
+#pragma mark - 我的 订单
 /**
  通过会员id，查询消费订单分页列表
  */
@@ -672,6 +672,25 @@
     [self getResponseWithOpration:operation andXmlKey:@"GetVOrderByParentIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         if (block) {
             block(result,error);
+        }
+    }];
+}
+
+/**
+ 通过会员id，查询消费订单分页列表
+ @param relation_id   订单的order_id
+ @param remark        取消原因
+ @param parentId 表示当前登录人id
+ @param type          type为4，取消操作
+ @param token
+ */
+- (void)cancelOrderWithParentId:(NSString *)parentId andRelationId:(NSString *)relation_id andRemark:(NSString *)remark andType:(NSString *)type andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration cancelOrderWithParentId:parentId andRelationId:relation_id andRemark:remark andType:type andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"CancelOrderResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result, error);
         }
     }];
 }

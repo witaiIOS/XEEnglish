@@ -360,7 +360,7 @@
  */
 + (AFHTTPRequestOperation *)getBookSiteByParent_idWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andParentId: (NSString *)parentId andToken:(NSString *)token;
 
-#pragma mark - 我的 消费记录
+#pragma mark - 我的 订单
 /**
  通过会员id，查询消费订单分页列表
  @param pageSize 一次请求显示多少个活动
@@ -370,6 +370,16 @@
  @param order
  */
 + (AFHTTPRequestOperation *)getVOrderByParentIdWithParentId:(NSString *)parentId andSort:(NSString *)sort andOrder:(NSString *)order andType:(NSString *)type andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token;
+
+/**
+ 通过会员id，查询消费订单分页列表
+ @param relation_id   订单的order_id
+ @param remark        取消原因
+ @param parentId 表示当前登录人id
+ @param type          type为4，取消操作
+ @param token
+ */
++ (AFHTTPRequestOperation *)cancelOrderWithParentId:(NSString *)parentId andRelationId:(NSString *)relation_id andRemark:(NSString *)remark andType:(NSString *)type andToken:(NSString *)token;
 
 #pragma mark - 我的 城市
 /**
