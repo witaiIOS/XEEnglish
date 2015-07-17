@@ -81,7 +81,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //[self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getVOrderByParentIdWithParentId:userInfoDic[uUserId] andSort:@"" andOrder:@"" andType:@"1" andPageSize:10 andPageIndex:pageIndex andToken:userInfoDic[uUserToken] andBlock:block];
+    [[XeeService sharedInstance] getVOrderByParentIdWithParentId:userInfoDic[uUserId] andSort:@"" andOrder:@"" andType:@"1,3" andPageSize:10 andPageIndex:pageIndex andToken:userInfoDic[uUserToken] andBlock:block];
 }
 
 

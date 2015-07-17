@@ -53,6 +53,8 @@
 		09C6B6181B3D76D300221974 /* image_loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C6B6171B3D76D300221974 /* image_loading.png */; };
 		09C6FEFA1B4BCEB50069156D /* CourseReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6FEF91B4BCEB50069156D /* CourseReviewCell.m */; };
 		09C6FEFD1B4BFBF90069156D /* SelectedStudentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6FEFC1B4BFBF90069156D /* SelectedStudentVC.m */; };
+		09C7682D1B58AEE900012A33 /* MyCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7682C1B58AEE900012A33 /* MyCourseCell.m */; };
+		09C7682F1B58AF0100012A33 /* MyCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C7682E1B58AF0100012A33 /* MyCourseCell.xib */; };
 		09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A41B25AC4700E72163 /* ActivityContentCell.m */; };
 		09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A71B25BB0100E72163 /* otherRequireCell.m */; };
 		09C87F291B3BEFB900D7C913 /* SubCourseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F281B3BEFB900D7C913 /* SubCourseListVC.m */; };
@@ -332,6 +334,9 @@
 		09C6FEF91B4BCEB50069156D /* CourseReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseReviewCell.m; sourceTree = "<group>"; };
 		09C6FEFB1B4BFBF90069156D /* SelectedStudentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedStudentVC.h; sourceTree = "<group>"; };
 		09C6FEFC1B4BFBF90069156D /* SelectedStudentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedStudentVC.m; sourceTree = "<group>"; };
+		09C7682B1B58AEE900012A33 /* MyCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCourseCell.h; sourceTree = "<group>"; };
+		09C7682C1B58AEE900012A33 /* MyCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCourseCell.m; sourceTree = "<group>"; };
+		09C7682E1B58AF0100012A33 /* MyCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCourseCell.xib; sourceTree = "<group>"; };
 		09C832A31B25AC4700E72163 /* ActivityContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityContentCell.h; sourceTree = "<group>"; };
 		09C832A41B25AC4700E72163 /* ActivityContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityContentCell.m; sourceTree = "<group>"; };
 		09C832A61B25BB0100E72163 /* otherRequireCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = otherRequireCell.h; sourceTree = "<group>"; };
@@ -916,6 +921,9 @@
 				09E24B1E1B41710200F762BD /* MyBookSiteCell.h */,
 				09E24B1F1B41710200F762BD /* MyBookSiteCell.m */,
 				09E24B211B41711700F762BD /* MyBookSiteCell.xib */,
+				09C7682B1B58AEE900012A33 /* MyCourseCell.h */,
+				09C7682C1B58AEE900012A33 /* MyCourseCell.m */,
+				09C7682E1B58AF0100012A33 /* MyCourseCell.xib */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -1853,6 +1861,7 @@
 				09C9C0F81B22FA19001BBA1C /* yes.png in Resources */,
 				09C532131B50A60A00D6A07E /* CourseCommentCell.xib in Resources */,
 				09D2319A1B50EEA70055758A /* CourseMyCommentVC.xib in Resources */,
+				09C7682F1B58AF0100012A33 /* MyCourseCell.xib in Resources */,
 				A6284CDA1B10592100EFF820 /* Images.xcassets in Resources */,
 				090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */,
 				09D5459F1B44D6DB00CC5844 /* ExpendRecordCell.xib in Resources */,
@@ -1991,6 +2000,7 @@
 				A6284CD21B10592100EFF820 /* AppDelegate.m in Sources */,
 				A6B1CEDF1B1C62D400100E9F /* SettingBirthdayVC.m in Sources */,
 				A6D4F2341B539D43001D3D0E /* MD5DataSigner.m in Sources */,
+				09C7682D1B58AEE900012A33 /* MyCourseCell.m in Sources */,
 				A6284D471B105E5600EFF820 /* AFHTTPSessionManager.m in Sources */,
 				093A58751B438BCA006F104D /* CourseLeaveApplyVC.m in Sources */,
 				09C328641B301E24009F0BAB /* CourseAbsentVC.m in Sources */,

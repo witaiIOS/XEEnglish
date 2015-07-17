@@ -9,7 +9,7 @@
 #import "MyScheduleVC.h"
 #import "LXSegmentViewThree.h"
 
-#import "ExpendRecordCell.h"
+#import "MyCourseCell.h"
 #import "MyActivityCell.h"
 #import "MyBookSiteCell.h"
 
@@ -144,7 +144,7 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
-    [[XeeService sharedInstance] getVOrderByParentIdWithParentId:userInfoDic[uUserId] andSort:@"" andOrder:@"" andType:@"2,3" andPageSize:10 andPageIndex:pageIndex andToken:userInfoDic[uUserToken] andBlock:block];
+    [[XeeService sharedInstance] getVOrderByParentIdWithParentId:userInfoDic[uUserId] andSort:@"" andOrder:@"" andType:@"2" andPageSize:10 andPageIndex:pageIndex andToken:userInfoDic[uUserToken] andBlock:block];
 }
 
 
@@ -499,22 +499,22 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *reuse1 = @"ExpendRecordVCCell";
+    static NSString *reuse1 = @"MyCourseVCCell";
     static NSString *reuse2 = @"MyActivityVCCell";
     static NSString *reuse3 = @"MyBookSiteVCCell";
     static NSString *reuse4 = @"MyCell";
     
     if (tableView == self.courseTableView) {
         
-        [tableView registerNib:[UINib nibWithNibName:@"ExpendRecordCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse1];
+        [tableView registerNib:[UINib nibWithNibName:@"MyCourseCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse1];
         
-        ExpendRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
+        MyCourseCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
         
         if (cell == nil) {
-            cell = [[ExpendRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse1];
+            cell = [[MyCourseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse1];
         }
         cell.cellEdge = 10;
-        cell.expendRecordInfoDic = self.courseArray[indexPath.section];
+        cell.myCourseInfoDic = self.courseArray[indexPath.section];
         
         return cell;
         
