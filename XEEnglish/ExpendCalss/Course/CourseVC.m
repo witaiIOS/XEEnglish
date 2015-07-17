@@ -297,11 +297,11 @@
         return;
     }
     NSDictionary *courseDic = courseArray[_currentCouseListIndex];
-    NSString *courseId = courseDic[@"course_id"];
-    //NSLog(@"courseId:%@",courseId);
+    NSString *studentSubcourseId = courseDic[@"student_subcourse_id"];
+    //NSLog(@"courseDic:%@",courseDic);
     
     [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:userInfoDic[uUserId] andStudentId:studentId andCourseId:courseId andSignon:self.courseIsSignon andSort:@"" andOrder:@"" andPageSize:200 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:userInfoDic[uUserId] andStudentId:studentId andCourseId:studentSubcourseId andSignon:self.courseIsSignon andSort:@"" andOrder:@"" andPageSize:200 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         if (!error) {
             
