@@ -97,8 +97,11 @@
     else{
         NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
         NSDictionary *userInfoDic = userDic[uUserInfoKey];
+        //对汉字进行编码
+        NSString *commentStr = [self.commentTV.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
         [self showHudWithMsg:@"上传中"];
-        [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseInfoDic[@"signon_id"] andRemark:self.commentTV.text andStar:[NSString stringWithFormat:@"%li",(long)self.starNum] andType:@"1" andApplyId:@"null" andCreateTime:@"null" andStatus:@"null" andTeacherId:@"null" andCheckTime:@"null" andCheckRemark:@"null" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseInfoDic[@"signon_id"] andRemark:commentStr andStar:[NSString stringWithFormat:@"%li",(long)self.starNum] andType:@"1" andApplyId:@"null" andCreateTime:@"null" andStatus:@"null" andTeacherId:@"null" andCheckTime:@"null" andCheckRemark:@"null" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
             [self hideHud];
             if (!error) {
                 NSNumber *isResult = result[@"result"];

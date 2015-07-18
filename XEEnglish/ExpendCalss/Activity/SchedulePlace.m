@@ -143,8 +143,13 @@
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //NSLog(@"content:%@",self.activityContent);
+    
+    //对汉字进行编码
+    NSString *activityContentStr = [self.activityContent stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *otherMemoStr = [self.otherMemo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     [self showHudWithMsg:@"上传中..."];
-    [[XeeService sharedInstance] AddBookSiteWithKeyId:@"0" andRoomId:@"0" andAddTime:nil andParentId:userInfoDic[uUserId] andSchoolId:self.schoolZone[@"department_id"] andStartTime:self.stateTime andeEndTime:self.endTime andPersonNum:self.personNum andArea:self.area andProjector:self.needProjector andTeacher:self.needTeacher andActivityContent:self.activityContent andMemo:self.otherMemo andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] AddBookSiteWithKeyId:@"0" andRoomId:@"0" andAddTime:nil andParentId:userInfoDic[uUserId] andSchoolId:self.schoolZone[@"department_id"] andStartTime:self.stateTime andeEndTime:self.endTime andPersonNum:self.personNum andArea:self.area andProjector:self.needProjector andTeacher:self.needTeacher andActivityContent:activityContentStr andMemo:otherMemoStr andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         if (!error) {
             NSNumber *isResult = result[@"result"];
