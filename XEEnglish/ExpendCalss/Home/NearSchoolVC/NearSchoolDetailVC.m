@@ -94,8 +94,8 @@
     phoneLine.backgroundColor = [UIColor lightGrayColor];
     
     //头视图
-    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, historyLabel.frame.origin.y+historySize.height+10 +50+20+10)];
-    headView.backgroundColor = [UIColor clearColor];
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(10, 64, kScreenWidth-20, historyLabel.frame.origin.y+historySize.height+10 +50+20+10)];
+    headView.backgroundColor = [UIColor whiteColor];
     
     //label都加入headView
     [headView addSubview:titleLabel];
@@ -119,7 +119,8 @@
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 self.schoolImageArray = result[@"resultInfo"];
-                NSLog(@"schoolImageArray:%@",self.schoolImageArray);
+                //NSLog(@"schoolImageArray:%@",self.schoolImageArray);
+                [self.tableview reloadData];
             }
             else{
                 [UIFactory showAlert:@"未知错误"];
@@ -182,5 +183,26 @@
     return 140.f;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    if (section == 0) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 0, kScreenWidth-20, 30)];
+        view.backgroundColor = [UIColor whiteColor];
+        
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth-20, 20)];
+        titleLabel.text = @"校区展示";
+        titleLabel.textColor = [UIColor blackColor];
+        titleLabel.font = [UIFont systemFontOfSize:14];
+        
+        [view addSubview:titleLabel];
+        
+        return view;
+    }
+    else{
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        view.backgroundColor = [UIColor clearColor];
+        return view;
+    }
+}
 
 @end

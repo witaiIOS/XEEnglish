@@ -16,6 +16,7 @@
     
     if (self) {
         self.schoolImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth-40, 130)];
+        [self.contentView addSubview:self.schoolImage];
     }
     return self;
 }
