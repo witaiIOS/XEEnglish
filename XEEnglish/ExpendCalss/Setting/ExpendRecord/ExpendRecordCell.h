@@ -35,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *expendRecordCoupons;//使用现金券情况***
 
 @property (weak, nonatomic) IBOutlet UILabel *expendRecordPayMode;//支付平台***
+@property (weak, nonatomic) IBOutlet UIButton *cannelBtn;
+@property (weak, nonatomic) IBOutlet UIButton *payBtn;
 
 
 @property (nonatomic, assign) id<ExpendRecordCellCannelBtnPressedDelegate>delegate;

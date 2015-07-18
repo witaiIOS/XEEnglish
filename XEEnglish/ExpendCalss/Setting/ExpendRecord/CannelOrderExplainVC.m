@@ -67,6 +67,7 @@
     }
     else{
         [self CancelOrderWithWeb];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

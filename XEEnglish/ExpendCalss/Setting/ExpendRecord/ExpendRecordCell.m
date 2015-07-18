@@ -63,27 +63,39 @@
         self.expendRecordStatue.textColor = [UIColor redColor];
         statusStr = @"未支付";
         //操作：未支付：取消，支付
-        [self getButtonWithDonotPay];
+        //[self getButtonWithDonotPay];
+        self.cannelBtn.hidden = NO;
+        self.payBtn.hidden = NO;
     }
     else if (statusNum.integerValue == 1){
         self.expendRecordStatue.textColor = [UIColor blueColor];
         statusStr = @"审核通过";
+        self.cannelBtn.hidden = YES;
+        self.payBtn.hidden = YES;
     }
     else if (statusNum.integerValue == -1){
         self.expendRecordStatue.textColor = [UIColor redColor];
         statusStr = @"审核未通过";
         //操作：审核不通过：支付
-        [self getButtonWithDonotAllowed];
+        //[self getButtonWithDonotAllowed];
+        self.cannelBtn.hidden = YES;
+        self.payBtn.hidden = NO;
     }
     else if (statusNum.integerValue == 2){
         self.expendRecordStatue.textColor = [UIColor blueColor];
         statusStr = @"已支付";
+        self.cannelBtn.hidden = YES;
+        self.payBtn.hidden = YES;
     }
     else if (statusNum.integerValue == 4){
         statusStr = @"取消待审核";
+        self.cannelBtn.hidden = YES;
+        self.payBtn.hidden = YES;
     }
     else if (statusNum.integerValue == 5){
         statusStr = @"已取消";
+        self.cannelBtn.hidden = YES;
+        self.payBtn.hidden = YES;
     }
     else{
         
@@ -167,49 +179,54 @@
     }
     
 }
-#pragma mark - Add Button
-//操作：未支付：取消，支付
-- (void)getButtonWithDonotPay{
-    
-    UIButton *cannelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [cannelBtn setFrame:CGRectMake(kScreenWidth-20-90, 5, 40, 25)];
-    [cannelBtn setTitle:@"取 消" forState:UIControlStateNormal];
-    [cannelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [cannelBtn setBackgroundColor:[UIColor orangeColor]];
-    [cannelBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [cannelBtn addTarget:self action:@selector(cannelBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:cannelBtn];
-    
-    UIButton *payBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [payBtn setFrame:CGRectMake(kScreenWidth-20-45, 5, 40, 25)];
-    [payBtn setTitle:@"支 付" forState:UIControlStateNormal];
-    [payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [payBtn setBackgroundColor:[UIColor orangeColor]];
-    [payBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [payBtn addTarget:self action:@selector(payBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:payBtn];
-    
-}
-//操作：审核不通过：支付
-- (void)getButtonWithDonotAllowed{
-    
-    UIButton *payBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [payBtn setFrame:CGRectMake(kScreenWidth-20-45, 5, 40, 25)];
-    [payBtn setTitle:@"支 付" forState:UIControlStateNormal];
-    [payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [payBtn setBackgroundColor:[UIColor orangeColor]];
-    [payBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [payBtn addTarget:self action:@selector(payBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:payBtn];
-}
+//#pragma mark - Add Button
+////操作：未支付：取消，支付
+//- (void)getButtonWithDonotPay{
+//    
+//    UIButton *cannelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [cannelBtn setFrame:CGRectMake(kScreenWidth-20-90, 5, 40, 25)];
+//    [cannelBtn setTitle:@"取 消" forState:UIControlStateNormal];
+//    [cannelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [cannelBtn setBackgroundColor:[UIColor orangeColor]];
+//    [cannelBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+//    [cannelBtn addTarget:self action:@selector(cannelBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+//    [self.contentView addSubview:cannelBtn];
+//    
+//    UIButton *payBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [payBtn setFrame:CGRectMake(kScreenWidth-20-45, 5, 40, 25)];
+//    [payBtn setTitle:@"支 付" forState:UIControlStateNormal];
+//    [payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [payBtn setBackgroundColor:[UIColor orangeColor]];
+//    [payBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+//    [payBtn addTarget:self action:@selector(payBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+//    [self.contentView addSubview:payBtn];
+//    
+//}
+////操作：审核不通过：支付
+//- (void)getButtonWithDonotAllowed{
+//    
+//    UIButton *payBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [payBtn setFrame:CGRectMake(kScreenWidth-20-45, 5, 40, 25)];
+//    [payBtn setTitle:@"支 付" forState:UIControlStateNormal];
+//    [payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [payBtn setBackgroundColor:[UIColor orangeColor]];
+//    [payBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+//    [payBtn addTarget:self action:@selector(payBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+//    [self.contentView addSubview:payBtn];
+//}
 
 #pragma mark - Button Action
-- (void)cannelBtnClicked{
+//- (void)cannelBtnClicked{
+//    [self.delegate cannelBtnPressed:self.expendRecordInfoDic];
+//}
+//
+//- (void)payBtnClicked{
+//    
+//}
+- (IBAction)cannelBtnClicked:(id)sender {
     [self.delegate cannelBtnPressed:self.expendRecordInfoDic];
 }
-
-- (void)payBtnClicked{
-    
+- (IBAction)payBtnClicked:(id)sender {
 }
 
 @end
