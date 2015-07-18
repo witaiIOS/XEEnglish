@@ -7,6 +7,7 @@
 //
 
 #import "CannelOrderExplainVC.h"
+#import "XeeService.h"
 
 @interface CannelOrderExplainVC ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *explainTextView;
@@ -58,20 +59,52 @@
     [self.explainTextView resignFirstResponder];
 }
 
-
+#pragma mark - My Action
 - (IBAction)submitBtnClicked:(id)sender {
     
+    if ([self.explainTextView.text length] <= 0) {
+        [UIFactory showAlert:@"请填写取消订单说明"];
+    }
+    else{
+        [self CancelOrderWithWeb];
+    }
 }
 
-#pragma mark - UITextViewDelegate
-- (void)textViewDidBeginEditing:(UITextView *)textView{
+#pragma mark - Web
+- (void)CancelOrderWithWeb{
     
-    [textView becomeFirstResponder];
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    NSString *niceExplain = [self.explainTextView.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self showHudWithMsg:@"上传中..."];
+    [[XeeService sharedInstance] cancelOrderWithParentId:userInfoDic[uUserId] andRelationId:self.expendRecordInfoDic[@"order_id"] andRemark:niceExplain andType:@"4" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
+        if (!error) {
+            //NSLog(@"resulr:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }else{
+                [UIFactory showAlert:result[@"未知错误"]];
+            }
+        }else{
+            [UIFactory showAlert:result[@"网络错误"]];
+        }
+    }];
 }
+
+
+#pragma mark - UITextViewDelegate
+//- (void)textViewDidBeginEditing:(UITextView *)textView{
+//    
+//    [textView becomeFirstResponder];
+//}
 
 - (void)textViewDidEndEditing:(UITextView *)textView{
     
     [textView resignFirstResponder];
 }
+
 
 @end
