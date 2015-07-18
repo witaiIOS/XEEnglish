@@ -55,10 +55,10 @@
 
 - (UIView *)createHeaderView{
     //校区名
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, kScreenWidth-20, 20)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,10, kScreenWidth-20, 20)];
     titleLabel.text = self.schoolInfoDic[@"department"];
-    titleLabel.font = [UIFont systemFontOfSize:14];
-    titleLabel.textColor = [UIColor blackColor];
+    titleLabel.font = [UIFont systemFontOfSize:17];
+    titleLabel.textColor = [UIColor orangeColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     
     //历史介绍
@@ -66,10 +66,10 @@
     historyLabel.text = self.schoolInfoDic[@"history"];
     historyLabel.numberOfLines = 0;
     historyLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    
+    //NSLog(@"width:%li",(long)historyLabel.frame.size.width);
     CGSize historySize = [historyLabel sizeThatFits:CGSizeMake(historyLabel.frame.size.width, MAXFLOAT)];
-    historyLabel.frame =CGRectMake(0, 20, kScreenWidth, historySize.height);
-    historyLabel.font = [UIFont systemFontOfSize:12];
+    historyLabel.frame =CGRectMake(20, 20, kScreenWidth-20, historySize.height);
+    historyLabel.font = [UIFont systemFontOfSize:14];
     
     //分割线
     UILabel *historyLine = [[UILabel alloc] initWithFrame:CGRectMake(10, historyLabel.frame.origin.y+historySize.height+5, kScreenWidth-20, 1)];
@@ -80,14 +80,16 @@
     addressLabel.text = [NSString stringWithFormat:@"地址：%@",self.schoolInfoDic[@"addr"]];
     addressLabel.textColor = [UIColor blackColor];
     addressLabel.font = [UIFont systemFontOfSize:14];
-    addressLabel.textAlignment = NSTextAlignmentCenter;
+    addressLabel.textAlignment = NSTextAlignmentLeft;
+    addressLabel.numberOfLines = 0;
+    addressLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
     //电话
     UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, historyLabel.frame.origin.y+historySize.height+10 +50, kScreenWidth-20, 20)];
     phoneLabel.text = [NSString stringWithFormat:@"电话：%@",self.schoolInfoDic[@"mobile"]];
     phoneLabel.textColor = [UIColor blackColor];
     phoneLabel.font = [UIFont systemFontOfSize:14];
-    phoneLabel.textAlignment = NSTextAlignmentCenter;
+    phoneLabel.textAlignment = NSTextAlignmentLeft;
     
     //分割线
     UILabel *phoneLine = [[UILabel alloc] initWithFrame:CGRectMake(10, historyLabel.frame.origin.y+historySize.height+10 +50+20+5, kScreenWidth-20, 1)];
