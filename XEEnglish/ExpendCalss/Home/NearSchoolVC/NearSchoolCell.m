@@ -14,7 +14,7 @@
     
     [super layoutSubviews];
     
-    NSLog(@"schoolInfoDic:%@",self.schoolInfoDic);
+    //NSLog(@"schoolInfoDic:%@",self.schoolInfoDic);
     
     self.schoolNameLabel.text = self.schoolInfoDic[@"department"];
     //NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];

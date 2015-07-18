@@ -62,13 +62,13 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     
     //历史介绍
-    UILabel *historyLabel =  [[UILabel alloc]initWithFrame:CGRectMake(10, 20, kScreenWidth-20, 60)];
+    UILabel *historyLabel =  [[UILabel alloc]initWithFrame:CGRectMake(20, 20, kScreenWidth-40, 60)];
     historyLabel.text = self.schoolInfoDic[@"history"];
     historyLabel.numberOfLines = 0;
     historyLabel.lineBreakMode = NSLineBreakByWordWrapping;
     //NSLog(@"width:%li",(long)historyLabel.frame.size.width);
     CGSize historySize = [historyLabel sizeThatFits:CGSizeMake(historyLabel.frame.size.width, MAXFLOAT)];
-    historyLabel.frame =CGRectMake(20, 20, kScreenWidth-20, historySize.height);
+    historyLabel.frame =CGRectMake(20, 20, kScreenWidth-40, historySize.height);
     historyLabel.font = [UIFont systemFontOfSize:14];
     
     //分割线
