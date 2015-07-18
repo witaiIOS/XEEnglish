@@ -251,7 +251,7 @@
     
     //@"{\"parent_id\":\"17\", \"relation_id\":\"11\", \"remark\":\"uuu\", \"type\":\"0\", \"apply_id\":null, \"create_time\":%@, \"status\":null, \"teacher_id\":null, \"check_time\":null, \"check_remark\":null,\"token\":\"yEqHDenWZHANQ08W1WF93J+t+ELfkokN0dz9KsI8kALd/GXU1pEykMyOJupHiHATpELTmg8I+XWN1mKJb8Vr+g==\"}"
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddSubcourseLeaveApply><web:json>{\"parent_id\":\"%@\", \"relation_id\":\"%@\", \"remark\":\"%@\",\"star\":\"%@\", \"type\":\"%@\", \"apply_id\":%@, \"create_time\":%@, \"status\":%@, \"teacher_id\":%@, \"check_time\":%@, \"check_remark\": %@,\"token\":\"%@\"}</web:json></web:AddSubcourseLeaveApply>",parent_id,relation_id,remark,star,type,apply_id,create_time,status,teacher_id,check_time,check_remark,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddSubcourseLeaveApply><web:json>{\"parent_id\":\"%@\", \"relation_id\":\"%@\", \"remark\":\"%@\",\"star\":\"%@\", \"type\":\"%@\", \"apply_id\":%@, \"create_time\":\"%@\", \"status\":%@, \"teacher_id\":%@, \"check_time\":%@, \"check_remark\": %@,\"token\":\"%@\"}</web:json></web:AddSubcourseLeaveApply>",parent_id,relation_id,remark,star,type,apply_id,create_time,status,teacher_id,check_time,check_remark,token]];
 }
 
 /**

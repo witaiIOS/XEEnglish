@@ -148,8 +148,14 @@
     //NSLog(@"111:%@",self.courseLeaveInfoDic);
    // NSLog(@"111:%@",userInfoDic[uUserToken]);
    // NSLog(@"111:%@",self.courseLeaveInfoDic[@"course_id"]);
+    
+    //对汉字进行编码
+    NSString *niceExplainStr = [self.leaveExplainLabel.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString *createTime = [NSString stringWithFormat:@"%@",self.courseLeaveInfoDic[@"create_time"]];
+    
     [self showHudWithMsg:@"上传中..."];
-    [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseLeaveInfoDic[@"signon_id"] andRemark:self.leaveExplainLabel.text andStar:@"null" andType:self.courseLeaveInfoDic[@"is_signon"] andApplyId:@"null" andCreateTime:@"null" andStatus:@"null" andTeacherId:@"null" andCheckTime:@"null" andCheckRemark:@"null" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseLeaveInfoDic[@"signon_id"] andRemark:niceExplainStr andStar:@"null" andType:self.courseLeaveInfoDic[@"is_signon"] andApplyId:@"null" andCreateTime:createTime andStatus:@"null" andTeacherId:@"null" andCheckTime:@"null" andCheckRemark:@"null" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         
         //NSLog(@"result:%@",result);
         [self hideHud];
