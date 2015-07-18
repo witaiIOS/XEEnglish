@@ -491,5 +491,15 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchoolNearby><web:json>{\"longitude\":\"%f\",\"latitude\":\"%f\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetSchoolNearby>",longitude, latitude, pageSize, pageIndex]];
 }
 
+/**
+ 查询附近校区详情
+ @param:department_id      校区id
+ @param:platform_type_id   "202"ios
+ */
++ (AFHTTPRequestOperation *)getSchoolNearbyPicListWithDepartmentId:(NSString *)department_id andPlatformTypeId:(NSString *)platform_type_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchoolNearbyPicList><web:json>{\"department_id\":\"%@\",\"platform_type_id\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetSchoolNearbyPicList>",department_id,platform_type_id,pageSize,pageIndex]];
+}
+
 
 @end

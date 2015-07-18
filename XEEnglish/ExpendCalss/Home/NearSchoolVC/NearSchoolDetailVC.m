@@ -7,12 +7,16 @@
 //
 
 #import "NearSchoolDetailVC.h"
+#import "NearSchoolDetailCell.h"
 
-@interface NearSchoolDetailVC ()
+#import "XeeService.h"
 
-@property (nonatomic, strong) UIView *headView;
-@property (nonatomic, strong) UIScrollView *scrollView;
+@interface NearSchoolDetailVC ()<UITableViewDataSource,UITableViewDelegate>
+
+//@property (nonatomic, strong) UIView *headView;
+//@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UITableView *tableview;
+@property (nonatomic, strong) NSMutableArray *schoolImageArray;
 
 @end
 
@@ -32,20 +36,24 @@
 - (void)initUI{
     
     [super initUI];
+    //NSLog(@"info:%@",self.schoolInfoDic);
     
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
-    self.scrollView.backgroundColor = [UIColor whiteColor];
-    self.scrollView.alwaysBounceVertical = YES;//纵向滑动
-    self.scrollView.alwaysBounceHorizontal = NO;
-
-    [self createHeaderView];
+    //初始化
+    self.schoolImageArray = [NSMutableArray array];
     
-    self.scrollView.contentSize = CGSizeMake(kScreenWidth, kScreenWidth + self.headView.frame.size.height);
+    [self getSchoolNearbyPicListWithWeb];
+    
+    self.tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
+    self.tableview.dataSource = self;
+    self.tableview.delegate = self;
+    self.tableview.tableHeaderView = [self createHeaderView];
+    
+    [self.view addSubview:self.tableview];
     
     
 }
 
-- (void)createHeaderView{
+- (UIView *)createHeaderView{
     //校区名
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, kScreenWidth-20, 20)];
     titleLabel.text = self.schoolInfoDic[@"department"];
@@ -86,20 +94,93 @@
     phoneLine.backgroundColor = [UIColor lightGrayColor];
     
     //头视图
-    self.headView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, historyLabel.frame.origin.y+historySize.height+10 +50+20+10)];
-    self.headView.backgroundColor = [UIColor clearColor];
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, historyLabel.frame.origin.y+historySize.height+10 +50+20+10)];
+    headView.backgroundColor = [UIColor clearColor];
     
     //label都加入headView
-    [self.headView addSubview:titleLabel];
-    [self.headView addSubview:historyLabel];
-    [self.headView addSubview:historyLine];
-    [self.headView addSubview:addressLabel];
-    [self.headView addSubview:phoneLabel];
-    [self.headView addSubview:phoneLine];
+    [headView addSubview:titleLabel];
+    [headView addSubview:historyLabel];
+    [headView addSubview:historyLine];
+    [headView addSubview:addressLabel];
+    [headView addSubview:phoneLabel];
+    [headView addSubview:phoneLine];
     
-    [self.scrollView addSubview:self.headView];
+    return headView;
 }
 
+#pragma mark - Web
+- (void)getSchoolNearbyPicListWithWeb{
+    
+    [self showHudWithMsg:@"载入中..."];
+    [[XeeService sharedInstance] getSchoolNearbyPicListWithDepartmentId:self.schoolInfoDic[@"department_id"] andPlatformTypeId:@"202" andPageSize:10 andPageIndex:1 andBolck:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
+        if (!error) {
+            //NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                self.schoolImageArray = result[@"resultInfo"];
+                NSLog(@"schoolImageArray:%@",self.schoolImageArray);
+            }
+            else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
+
+#pragma mark - UITableView DataSource
+- (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return [self.schoolImageArray count];
+}
+
+- (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *reuse = @"NearSchoolDetailCell";
+    
+    NearSchoolDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
+    
+    if (cell == nil) {
+        cell = [[NearSchoolDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+    }
+    cell.cellEdge = 10;
+    cell.schoolImageInfoDic = self.schoolImageArray[indexPath.section];
+    
+    return cell;
+}
+
+#pragma mark - UITableView Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    if (section == 0) {
+        return 30.0f;
+    }
+    else{
+        return 5.0f;
+    }
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return 3.0f;
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 140.f;
+}
 
 
 @end

@@ -770,6 +770,22 @@
     
 }
 
+/**
+ 查询附近校区详情
+ @param:department_id      校区id
+ @param:platform_type_id   "202"ios
+ */
+- (void)getSchoolNearbyPicListWithDepartmentId:(NSString *)department_id andPlatformTypeId:(NSString *)platform_type_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBolck:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getSchoolNearbyPicListWithDepartmentId:department_id andPlatformTypeId:platform_type_id andPageSize:pageSize andPageIndex:pageIndex];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetSchoolNearbyPicListResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 #pragma mark - 支付相关
 
 ///支付宝支付

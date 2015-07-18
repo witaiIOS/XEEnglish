@@ -418,4 +418,11 @@
  */
 + (AFHTTPRequestOperation *)getSchoolNearByWithLongitude:(CGFloat)longitude andLatitude:(CGFloat)latitude andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex;
 
+/**
+ 查询附近校区详情
+ @param:department_id      校区id
+ @param:platform_type_id   "202"ios
+ */
++ (AFHTTPRequestOperation *)getSchoolNearbyPicListWithDepartmentId:(NSString *)department_id andPlatformTypeId:(NSString *)platform_type_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex;
+
 @end

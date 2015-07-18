@@ -59,6 +59,7 @@
 		09C768341B592B1400012A33 /* CannelOrderExplainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C768321B592B1400012A33 /* CannelOrderExplainVC.xib */; };
 		09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A41B25AC4700E72163 /* ActivityContentCell.m */; };
 		09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A71B25BB0100E72163 /* otherRequireCell.m */; };
+		09C83EBA1B5A048100E0FEB9 /* NearSchoolDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C83EB91B5A048100E0FEB9 /* NearSchoolDetailCell.m */; };
 		09C87F291B3BEFB900D7C913 /* SubCourseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F281B3BEFB900D7C913 /* SubCourseListVC.m */; };
 		09C87F2C1B3BF06600D7C913 /* SubCourseListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F2B1B3BF06600D7C913 /* SubCourseListCell.m */; };
 		09C87F2F1B3C24E700D7C913 /* PayCourseMethodVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F2E1B3C24E700D7C913 /* PayCourseMethodVCViewController.m */; };
@@ -346,6 +347,8 @@
 		09C832A41B25AC4700E72163 /* ActivityContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityContentCell.m; sourceTree = "<group>"; };
 		09C832A61B25BB0100E72163 /* otherRequireCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = otherRequireCell.h; sourceTree = "<group>"; };
 		09C832A71B25BB0100E72163 /* otherRequireCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = otherRequireCell.m; sourceTree = "<group>"; };
+		09C83EB81B5A048100E0FEB9 /* NearSchoolDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearSchoolDetailCell.h; sourceTree = "<group>"; };
+		09C83EB91B5A048100E0FEB9 /* NearSchoolDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearSchoolDetailCell.m; sourceTree = "<group>"; };
 		09C87F271B3BEFB900D7C913 /* SubCourseListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubCourseListVC.h; sourceTree = "<group>"; };
 		09C87F281B3BEFB900D7C913 /* SubCourseListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubCourseListVC.m; sourceTree = "<group>"; };
 		09C87F2A1B3BF06600D7C913 /* SubCourseListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubCourseListCell.h; sourceTree = "<group>"; };
@@ -888,6 +891,8 @@
 				09C8C1D11B53575C000E089F /* NearSchoolCell.xib */,
 				097C14F11B574782004AC794 /* NearSchoolDetailVC.h */,
 				097C14F21B574782004AC794 /* NearSchoolDetailVC.m */,
+				09C83EB81B5A048100E0FEB9 /* NearSchoolDetailCell.h */,
+				09C83EB91B5A048100E0FEB9 /* NearSchoolDetailCell.m */,
 			);
 			path = NearSchoolVC;
 			sourceTree = "<group>";
@@ -1982,6 +1987,7 @@
 				09C328611B301D8E009F0BAB /* CourseLeaveVC.m in Sources */,
 				09C9DE701B2AD61000A07544 /* CityVCCell.m in Sources */,
 				093CD67D1B1D692B004F7D11 /* SchedulePlace.m in Sources */,
+				09C83EBA1B5A048100E0FEB9 /* NearSchoolDetailCell.m in Sources */,
 				09C639441B3A69D400510F00 /* BuyCourseVC.m in Sources */,
 				090604751B14174F0038BAC4 /* MoreSettingVC.m in Sources */,
 				A6284D4D1B105E5600EFF820 /* AFURLSessionManager.m in Sources */,
