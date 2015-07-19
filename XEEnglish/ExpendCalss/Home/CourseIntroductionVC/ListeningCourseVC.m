@@ -164,6 +164,8 @@
                 vc.sex = self.sex;
                 vc.birthday = self.birthday;
                 [self.navigationController pushViewController:vc animated:YES];
+                
+                
             }else{
                 
             }

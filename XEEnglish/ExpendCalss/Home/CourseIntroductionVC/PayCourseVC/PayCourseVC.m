@@ -98,7 +98,7 @@
                     [controller aliyPay];
                 }
                 else{
-                    [UIFactory showAlert:@"未知错误"];
+                    [UIFactory showAlert:result[@"resultInfo"]];
                 }
             }else{
                 [UIFactory showAlert:@"网络错误"];
