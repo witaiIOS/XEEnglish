@@ -198,6 +198,9 @@
 		A63A0A821B2D1BFF003D3852 /* chekbox_select.png in Resources */ = {isa = PBXBuildFile; fileRef = A63A0A801B2D1BFF003D3852 /* chekbox_select.png */; };
 		A63A0A831B2D1BFF003D3852 /* chekbox.png in Resources */ = {isa = PBXBuildFile; fileRef = A63A0A811B2D1BFF003D3852 /* chekbox.png */; };
 		A64F3E4A1B44158300E6E99B /* NSString+md5.m in Sources */ = {isa = PBXBuildFile; fileRef = A64F3E491B44158300E6E99B /* NSString+md5.m */; };
+		A65B56EB1B5B7F8700F7E40B /* ListeningPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A65B56EA1B5B7F8700F7E40B /* ListeningPayVC.m */; };
+		A65B56EE1B5B80B300F7E40B /* BuyCoursePayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A65B56ED1B5B80B300F7E40B /* BuyCoursePayVC.m */; };
+		A65B56F11B5B818E00F7E40B /* OrderPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A65B56F01B5B818E00F7E40B /* OrderPayVC.m */; };
 		A6647CC01B270E9B00D2DC57 /* course7.png in Resources */ = {isa = PBXBuildFile; fileRef = A6647CBF1B270E9B00D2DC57 /* course7.png */; };
 		A68C52DD1B4918CA00FCC916 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68C52DC1B4918CA00FCC916 /* AssetsLibrary.framework */; };
 		A6A9442C1B2E74B500AF304F /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A944291B2E74B500AF304F /* ico_make.png */; };
@@ -582,6 +585,12 @@
 		A63A0A811B2D1BFF003D3852 /* chekbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chekbox.png; sourceTree = "<group>"; };
 		A64F3E481B44158300E6E99B /* NSString+md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+md5.h"; sourceTree = "<group>"; };
 		A64F3E491B44158300E6E99B /* NSString+md5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+md5.m"; sourceTree = "<group>"; };
+		A65B56E91B5B7F8700F7E40B /* ListeningPayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListeningPayVC.h; sourceTree = "<group>"; };
+		A65B56EA1B5B7F8700F7E40B /* ListeningPayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListeningPayVC.m; sourceTree = "<group>"; };
+		A65B56EC1B5B80B300F7E40B /* BuyCoursePayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyCoursePayVC.h; sourceTree = "<group>"; };
+		A65B56ED1B5B80B300F7E40B /* BuyCoursePayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyCoursePayVC.m; sourceTree = "<group>"; };
+		A65B56EF1B5B818E00F7E40B /* OrderPayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderPayVC.h; sourceTree = "<group>"; };
+		A65B56F01B5B818E00F7E40B /* OrderPayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPayVC.m; sourceTree = "<group>"; };
 		A6647CBF1B270E9B00D2DC57 /* course7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course7.png; sourceTree = "<group>"; };
 		A68C52DC1B4918CA00FCC916 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		A6A944291B2E74B500AF304F /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
@@ -819,6 +828,7 @@
 		0980856B1B32C35A00BE9336 /* CourseIntroductionVC */ = {
 			isa = PBXGroup;
 			children = (
+				A65B56E81B5B7F6400F7E40B /* listeningPay */,
 				09C87F261B3BEF6400D7C913 /* OtherList */,
 				09C639451B3A915D00510F00 /* PayCourseVC */,
 				0980856C1B32C37500BE9336 /* AllCoursesVC.h */,
@@ -835,6 +845,8 @@
 				094DD26B1B3978ED0045EF2C /* ListeningCourseInfoCell.m */,
 				09C639421B3A69D400510F00 /* BuyCourseVC.h */,
 				09C639431B3A69D400510F00 /* BuyCourseVC.m */,
+				A65B56EC1B5B80B300F7E40B /* BuyCoursePayVC.h */,
+				A65B56ED1B5B80B300F7E40B /* BuyCoursePayVC.m */,
 				09C87F301B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.h */,
 				09C87F311B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m */,
 				09D545A01B452C4000CC5844 /* courseSchoolZoneVC.h */,
@@ -987,6 +999,8 @@
 			children = (
 				09D545981B44D5FF00CC5844 /* ExpendRecordVC.h */,
 				09D545991B44D5FF00CC5844 /* ExpendRecordVC.m */,
+				A65B56EF1B5B818E00F7E40B /* OrderPayVC.h */,
+				A65B56F01B5B818E00F7E40B /* OrderPayVC.m */,
 				09D5459B1B44D6B400CC5844 /* ExpendRecordCell.h */,
 				09D5459C1B44D6B400CC5844 /* ExpendRecordCell.m */,
 				09D5459E1B44D6DB00CC5844 /* ExpendRecordCell.xib */,
@@ -1501,6 +1515,15 @@
 			path = "NSString(md5)";
 			sourceTree = "<group>";
 		};
+		A65B56E81B5B7F6400F7E40B /* listeningPay */ = {
+			isa = PBXGroup;
+			children = (
+				A65B56E91B5B7F8700F7E40B /* ListeningPayVC.h */,
+				A65B56EA1B5B7F8700F7E40B /* ListeningPayVC.m */,
+			);
+			path = listeningPay;
+			sourceTree = "<group>";
+		};
 		A6A944281B2E74B500AF304F /* JSDropDownMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1939,8 +1962,10 @@
 				09C9C0F11B22E3E5001BBA1C /* PlaceDemandCell.m in Sources */,
 				A6284D5F1B105E5600EFF820 /* UIButton+AFNetworking.m in Sources */,
 				A6284D491B105E5600EFF820 /* AFSecurityPolicy.m in Sources */,
+				A65B56EB1B5B7F8700F7E40B /* ListeningPayVC.m in Sources */,
 				09C532111B50A5EE00D6A07E /* CourseCommentCell.m in Sources */,
 				097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */,
+				A65B56EE1B5B80B300F7E40B /* BuyCoursePayVC.m in Sources */,
 				09C5431F1B4F938000BD750C /* SwitchButtonCell.m in Sources */,
 				09D23C541B427DDF008B6085 /* PointsRecordCell.m in Sources */,
 				09C9C0F41B22E409001BBA1C /* HardwareDemandCell.m in Sources */,
@@ -1976,6 +2001,7 @@
 				09C6FEFD1B4BFBF90069156D /* SelectedStudentVC.m in Sources */,
 				09C87F321B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m in Sources */,
 				09C87F2F1B3C24E700D7C913 /* PayCourseMethodVCViewController.m in Sources */,
+				A65B56F11B5B818E00F7E40B /* OrderPayVC.m in Sources */,
 				09D23C451B424417008B6085 /* ExchangePointsVC.m in Sources */,
 				09D47BA71B54ECD500B86CA2 /* ActivityHistoryDetailVC.m in Sources */,
 				09CA691B1B1FFCCA00A31E0E /* CouponsCell.m in Sources */,

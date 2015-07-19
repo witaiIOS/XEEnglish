@@ -76,26 +76,6 @@
 #pragma mark - IBAction
 - (void)nextBtnClicked:(id)sender {
     
-    //NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
-   // NSDictionary *userInfoDic = userDic[uUserInfoKey];
-    
-    /*[[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolId andStudentId:self.studentId andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.payMoney andPlatFormTypeId:@"202" andListCoupon:self.listCoupon andToken:userInfoDic[uUserToken] andPayType:self.payType andNumbers:self.number andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:self.name andBlock:^(NSDictionary *result, NSError *error) {
-        if (!error) {
-            NSNumber *isResult = result[@"result"];
-            NSLog(@"result:%@",result);
-            if (isResult.integerValue == 0) {
-                payCompleteVC *vc = [[payCompleteVC alloc] init];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-            else{
-                [UIFactory showAlert:@"未知错误"];
-            }
-        }else{
-            [UIFactory showAlert:@"网络错误"];
-        }
-    }];*/
-    
-    
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
     if (indexPath.row == 2) {//微信支付
@@ -104,21 +84,66 @@
     else if (indexPath.row == 1) {//现金支付
         
     }
-    else {
-        [[XeeService sharedInstance] apliyPayWithOutTradeNo:[self generateTradeNO] andTotalFee:@"0.01" andType:self.courseName callback:^(NSDictionary *resultDic) {
-            
-            NSString *resultStatus = resultDic [@"resultStatus"];
-            if (9000 == [resultStatus intValue]) {//支付成功
-                
-                payCompleteVC *vc = [[payCompleteVC alloc] init];
-                [self.navigationController pushViewController:vc animated:YES];
+    else {//支付宝支付
+        
+        __block PayCourseVC *controller = self;
+        
+        [self addStudentSubCourseWithBlock:^(NSDictionary *result, NSError *error) {
+            if (!error) {
+                NSNumber *isResult = result[@"result"];
+                NSLog(@"result:%@",result);
+                if (isResult.integerValue == 0) {
+                    //payCompleteVC *vc = [[payCompleteVC alloc] init];
+                    //[self.navigationController pushViewController:vc animated:YES];
+                    [controller aliyPay];
+                }
+                else{
+                    [UIFactory showAlert:@"未知错误"];
+                }
+            }else{
+                [UIFactory showAlert:@"网络错误"];
             }
-            else {
-                //[UIFactory showAlert:@"支付遇到问题，请重新支付"];
-            }
-        }];
 
+        }];
     }
+}
+
+#pragma mark - 支付
+- (void)getMak {
+    
+}
+
+- (void)addStudentSubCourseWithBlock:(void(^)(NSDictionary *result, NSError *error))block {
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolId andStudentId:self.studentId andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.payMoney andPlatFormTypeId:@"202" andListCoupon:self.listCoupon andToken:userInfoDic[uUserToken] andPayType:self.payType andNumbers:self.number andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:self.name andBlock:block];
+
+}
+
+
+- (void)aliyPay {//支付宝支付
+    [[XeeService sharedInstance] apliyPayWithOutTradeNo:[self generateTradeNO] andTotalFee:@"0.01" andType:self.courseName callback:^(NSDictionary *resultDic) {
+        
+        NSString *resultStatus = resultDic [@"resultStatus"];
+        if (9000 == [resultStatus intValue]) {//支付成功
+            
+            payCompleteVC *vc = [[payCompleteVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else {
+            //[UIFactory showAlert:@"支付遇到问题，请重新支付"];
+        }
+    }];
+}
+
+- (void)cashPay {//现金支付
+    
+}
+
+- (void)wxPay {//微信支付
+    
 }
 
 #pragma mark - tableView footView

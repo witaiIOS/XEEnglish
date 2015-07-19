@@ -224,9 +224,16 @@
 //    
 //}
 - (IBAction)cannelBtnClicked:(id)sender {
-    [self.delegate cannelBtnPressed:self.expendRecordInfoDic];
+    if ([self.delegate respondsToSelector:@selector(expendRecordCellCannelBtnPressed:)]) {
+        [self.delegate expendRecordCellCannelBtnPressed:self.expendRecordInfoDic];
+    }
+    
 }
 - (IBAction)payBtnClicked:(id)sender {
+    
+    if ([self.delegate respondsToSelector:@selector(expendRecordCellPayBtnClicked)]) {
+        [self.delegate expendRecordCellPayBtnClicked];
+    }
 }
 
 @end

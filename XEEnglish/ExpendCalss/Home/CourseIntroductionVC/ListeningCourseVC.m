@@ -23,7 +23,8 @@
 #import "SettingBirthdayVC.h"
 
 #import "payCompleteVC.h"
-#import "PayCourseVC.h"
+//#import "PayCourseVC.h"
+#import "ListeningPayVC.h"
 
 #import "XeeService.h"
 
@@ -148,7 +149,7 @@
                     self.listenPrice = self.subCoursePrice;
                 }
                 //NSLog(@"price:%li",self.listenPrice);
-                PayCourseVC *vc = [[PayCourseVC alloc] init];
+                ListeningPayVC *vc = [[ListeningPayVC alloc] init];
                 vc.payMoney = self.listenPrice;
                 vc.courseId = self.courseId;
                 //vc.studentId = self.selectedStudent[@"student_id"];

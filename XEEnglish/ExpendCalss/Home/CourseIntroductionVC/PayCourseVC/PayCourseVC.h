@@ -25,4 +25,37 @@
 @property (nonatomic, strong) NSString *sex;//sex(0女1男)
 @property (nonatomic, strong) NSString *birthday;//小孩生日
 @property (nonatomic, strong) NSString *name;//is_select_student为0填写孩子，name(姓名不能为空)
+/**
+ *  通过订单号获取支付宝、微信支付信息
+ */
+- (void)getMak;
+
+/**
+ *  通过购买信息获取支付宝、微信支付信息
+ */
+- (void)addStudentSubCourseWithBlock:(void(^)(NSDictionary *result, NSError *error))block;
+
+/**
+ *  支付宝支付
+ */
+- (void)aliyPay ;
+
+/**
+ *  现金支付
+ */
+- (void)cashPay;
+
+/**
+ *  微信支付
+ */
+- (void)wxPay;
+
+/**
+ *  点击下一步按钮
+ *
+ *  @param sender
+ */
+- (void)nextBtnClicked:(id)sender;
+
+
 @end

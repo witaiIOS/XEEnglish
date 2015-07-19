@@ -12,7 +12,9 @@
 #import "CannelOrderExplainVC.h"
 #import "XeeService.h"
 
-@interface ExpendRecordVC ()<UITableViewDataSource,UITableViewDelegate,ExpendRecordCellCannelBtnPressedDelegate>
+#import "OrderPayVC.h"
+
+@interface ExpendRecordVC ()<UITableViewDataSource,UITableViewDelegate,ExpendRecordCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *expendRecordsArray;
@@ -238,13 +240,19 @@
 }
 
 
-#pragma mark - ExpendRecordCellCannelBtnPressedDelegate
+#pragma mark - ExpendRecordCellDelegate
 
-- (void)cannelBtnPressed:(id)sender{
-    
+- (void)expendRecordCellCannelBtnPressed:(id)sender {
     CannelOrderExplainVC *vc = [[CannelOrderExplainVC alloc] init];
     vc.expendRecordInfoDic = sender;
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+- (void)expendRecordCellPayBtnClicked {
+    OrderPayVC *vc = [[OrderPayVC alloc] init];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 @end

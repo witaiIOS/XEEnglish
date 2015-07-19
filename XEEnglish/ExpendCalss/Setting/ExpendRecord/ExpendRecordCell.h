@@ -8,9 +8,10 @@
 
 #import "BaseTVC.h"
 
-@protocol ExpendRecordCellCannelBtnPressedDelegate <NSObject>
+@protocol ExpendRecordCellDelegate <NSObject>
 
-- (void)cannelBtnPressed:(id)sender;
+- (void)expendRecordCellCannelBtnPressed:(id)sender;
+- (void)expendRecordCellPayBtnClicked;
 
 @end
 
@@ -39,7 +40,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *payBtn;
 
 
-@property (nonatomic, assign) id<ExpendRecordCellCannelBtnPressedDelegate>delegate;
+@property (nonatomic, assign) id<ExpendRecordCellDelegate>delegate;
 
 
 

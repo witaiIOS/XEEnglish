@@ -18,7 +18,8 @@
 
 #import "CouponsVC.h"
 
-#import "PayCourseVC.h"
+//#import "PayCourseVC.h"
+#import "BuyCoursePayVC.h"
 #import "PayProtocolVC.h"
 
 #import "XeeService.h"
@@ -190,7 +191,7 @@
     else{
         
         //传值
-        PayCourseVC *vc = [[PayCourseVC alloc] init];
+        BuyCoursePayVC *vc = [[BuyCoursePayVC alloc] init];
         vc.payMoney = self.priceTotal;
         vc.studentId = self.selectedStudent[@"student_id"];
         vc.schoolId = self.schoolZone[@"department_id"];
