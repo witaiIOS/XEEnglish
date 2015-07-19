@@ -22,6 +22,8 @@
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
+@property (strong, nonatomic) CLLocation *currentLocation;
+
 @end
 
 @implementation NearSchoolVC
@@ -47,6 +49,8 @@
     else {
         NSLog(@"定位不可用");
     }
+    
+    _currentLocation = nil;
     
 //    _currentSchoolPageIndex = 1;
 //    _totalSchoolPageIndex = 0;
@@ -77,43 +81,67 @@
 
 
 
-//#pragma mark -
-//#pragma mark - MJRefresh
-///**
-// *  集成刷新控件
-// */
-//- (void)setupRefresh:(NSString *)dateKey
-//{
-//
-//    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
-//    // dateKey用于存储刷新时间，可以保证不同界面拥有不同的刷新时间
-//    [_tableView addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:dateKey];
-//    //#warning 自动刷新(一进入程序就下拉刷新)
-//    [_tableView headerBeginRefreshing];
-//    
-//    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
-//    [_tableView addFooterWithTarget:self action:@selector(footerRereshing)];
-//    
-//    // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
-//    _tableView.headerPullToRefreshText = @"下拉可以刷新";
-//    _tableView.headerReleaseToRefreshText = @"松开马上刷新";
-//    _tableView.headerRefreshingText = @"正在努力帮您刷新中,不客气";
-//    
-//    _tableView.footerPullToRefreshText = @"上拉可以加载更多数据";
-//    _tableView.footerReleaseToRefreshText = @"松开马上加载更多数据";
-//    _tableView.footerRefreshingText = @"正在努力帮您加载中,不客气";
-//    
-//}
-//
-//- (void)headerRereshing{
-//    
-//    self.currentSchoolPageIndex = 1;
-//    
-//    
-//}
-//- (void)footerRereshing{
-//    
-//}
+#pragma mark -
+#pragma mark - MJRefresh
+/**
+ *  集成刷新控件
+ */
+- (void)setupRefresh:(NSString *)dateKey
+{
+
+    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+    // dateKey用于存储刷新时间，可以保证不同界面拥有不同的刷新时间
+    [_tableView addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:dateKey];
+    //#warning 自动刷新(一进入程序就下拉刷新)
+    [_tableView headerBeginRefreshing];
+    
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [_tableView addFooterWithTarget:self action:@selector(footerRereshing)];
+    
+    // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
+    _tableView.headerPullToRefreshText = @"下拉可以刷新";
+    _tableView.headerReleaseToRefreshText = @"松开马上刷新";
+    _tableView.headerRefreshingText = @"正在努力帮您刷新中,不客气";
+    
+    _tableView.footerPullToRefreshText = @"上拉可以加载更多数据";
+    _tableView.footerReleaseToRefreshText = @"松开马上加载更多数据";
+    _tableView.footerRefreshingText = @"正在努力帮您加载中,不客气";
+    
+}
+
+- (void)headerRereshing{
+    
+    self.currentSchoolPageIndex = 1;
+    
+    if (_currentLocation) {
+         [[XeeService sharedInstance] getSchoolNearByWithLongitude:_currentLocation.coordinate.longitude andLatitude:_currentLocation.coordinate.latitude andPageSize:10 andPageIndex:1 andBolck:^(NSDictionary *result, NSError *error) {
+             
+             [_tableView headerEndRefreshing];
+             
+             
+         }];
+    }
+    else {
+        [_tableView headerEndRefreshing];
+    }
+   
+    
+}
+- (void)footerRereshing{
+    if (_currentLocation) {
+        [[XeeService sharedInstance] getSchoolNearByWithLongitude:_currentLocation.coordinate.longitude andLatitude:_currentLocation.coordinate.latitude andPageSize:10 andPageIndex:1 andBolck:^(NSDictionary *result, NSError *error) {
+            
+            [_tableView footerEndRefreshing];
+            
+            
+        }];
+    }
+    else {
+        [_tableView footerEndRefreshing];
+    }
+
+}
+
 
 #pragma mark - UITableView DataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
@@ -190,6 +218,7 @@
     // most recent is last in the list
     CLLocation *location = [locations lastObject];
     //NSLog(@"location:%f\n%f",location.coordinate.latitude,location.coordinate.longitude);
+    _currentLocation = location;
     
     [[XeeService sharedInstance] getSchoolNearByWithLongitude:location.coordinate.longitude andLatitude:location.coordinate.latitude andPageSize:10 andPageIndex:1 andBolck:^(NSDictionary *result, NSError *error) {
         //NSLog(@"getSchoolNearByResult:%@",result);
