@@ -13,6 +13,8 @@
 
 + (UserInfo *)sharedUser;
 
+- (BOOL)isLogin;
+
 - (void)firstInitUserInfoDic;
 
 - (void)initUserInfoDic;

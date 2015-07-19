@@ -21,6 +21,17 @@
     return sharedUserInfo;
 }
 
+
+- (BOOL)isLogin {
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    
+    NSNumber *ifLogin = userDic[uIslogin];
+    
+    return ifLogin.integerValue == 0 ? YES : NO;
+}
+
+
+
 - (void)firstInitUserInfoDic {//仅AppDelegate didFinishLaunchingWithOptions 中用到
     NSDictionary *userDic = [self getUserInfoDic];
     if (!userDic) {

@@ -137,16 +137,16 @@
 
 
 #pragma mark - UserInfo
-- (BOOL)isLogin {
-    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
-    
-    NSNumber *ifLogin = userDic[uIslogin];
-    
-    return ifLogin.integerValue == 0 ? YES : NO;
-}
-
+//- (BOOL)isLogin {
+//    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+//    
+//    NSNumber *ifLogin = userDic[uIslogin];
+//    
+//    return ifLogin.integerValue == 0 ? YES : NO;
+//}
+//
 - (void)updateUserLoginUI {
-    if ([self isLogin]) {
+    if ([[UserInfo sharedUser] isLogin]) {
         self.userPhoneNumber.hidden = NO;
         self.loginBtn.hidden = YES;
         
