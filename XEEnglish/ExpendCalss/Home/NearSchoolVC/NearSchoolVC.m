@@ -17,12 +17,13 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *schoolArray;
 
-@property (nonatomic, assign) NSInteger currentSchoolPageIndex;//当前校区分页
-@property (nonatomic, assign) NSInteger totalSchoolPageIndex;//校区总的分页
-
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
-@property (strong, nonatomic) CLLocation *currentLocation;
+
+@property (strong, nonatomic) CLLocation *currentLocation;//当前位置坐标
+
+@property (nonatomic, assign) NSInteger currentSchoolPageIndex;//当前校区分页
+@property (nonatomic, assign) NSInteger totalSchoolPageIndex;//校区总的分页
 
 @end
 
@@ -77,7 +78,28 @@
 }
 
 #pragma mark - WebServie
-
+/*- (void)getSchoolNearByWithLongitude:(CGFloat )longitude andLatitude:(CGFloat )latitude andPageIndex:(NSInteger )pageIndex{
+    
+    [[XeeService sharedInstance] getSchoolNearByWithLongitude:longitude andLatitude:latitude andPageSize:10 andPageIndex:pageIndex andBolck:^(NSDictionary *result, NSError *error) {
+        //NSLog(@"getSchoolNearByResult:%@",result);
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                NSDictionary *schoolDic = result[@"resultInfo"];
+                self.schoolArray = schoolDic[@"data"];
+                [self.tableView reloadData];
+            }else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}*/
+//- (void)getSchoolNearByWithLongitude:(CGFloat )longitude andLatitude:(CGFloat )latitude andPageIndex:(NSInteger )pageIndex andBlock:(void (^)(NSDictionary *result, NSError *error))block{
+//    
+//    [[XeeService sharedInstance] getSchoolNearByWithLongitude:longitude andLatitude:latitude andPageSize:10 andPageIndex:pageIndex andBolck:block];
+//}
 
 
 
@@ -114,10 +136,33 @@
     self.currentSchoolPageIndex = 1;
     
     if (_currentLocation) {
-         [[XeeService sharedInstance] getSchoolNearByWithLongitude:_currentLocation.coordinate.longitude andLatitude:_currentLocation.coordinate.latitude andPageSize:10 andPageIndex:1 andBolck:^(NSDictionary *result, NSError *error) {
-             
+         [[XeeService sharedInstance] getSchoolNearByWithLongitude:_currentLocation.coordinate.longitude andLatitude:_currentLocation.coordinate.latitude andPageSize:10 andPageIndex:self.currentSchoolPageIndex andBolck:^(NSDictionary *result, NSError *error) {
              [_tableView headerEndRefreshing];
              
+             if (!error) {
+                 //NSLog(@"result:%@",result);
+                 NSNumber *isResult = result[@"result"];
+                 if (isResult.integerValue == 0) {
+                     NSDictionary *schoolDic = result[@"resultInfo"];
+                     
+                     NSMutableArray *array = [NSMutableArray array];
+                     [array addObjectsFromArray:schoolDic[@"data"]];
+                     
+                     self.schoolArray = array;
+                     
+                     [self.tableView reloadData];
+                     
+                     NSNumber *totalNum = schoolDic[@"totalPage"];
+                     if (totalNum) {
+                         self.totalSchoolPageIndex = totalNum.integerValue;
+                     }
+                     
+                 }else{
+                     [UIFactory showAlert:@"未知错误"];
+                 }
+             }else{
+                 [UIFactory showAlert:@"网络错误"];
+             }
              
          }];
     }
@@ -129,12 +174,39 @@
 }
 - (void)footerRereshing{
     if (_currentLocation) {
-        [[XeeService sharedInstance] getSchoolNearByWithLongitude:_currentLocation.coordinate.longitude andLatitude:_currentLocation.coordinate.latitude andPageSize:10 andPageIndex:1 andBolck:^(NSDictionary *result, NSError *error) {
-            
+        if (_currentSchoolPageIndex < _totalSchoolPageIndex) {
+            _currentSchoolPageIndex++;
+            [[XeeService sharedInstance] getSchoolNearByWithLongitude:_currentLocation.coordinate.longitude andLatitude:_currentLocation.coordinate.latitude andPageSize:10 andPageIndex:_currentSchoolPageIndex andBolck:^(NSDictionary *result, NSError *error) {
+                
+                [_tableView footerEndRefreshing];
+                
+                if (!error) {
+                    //NSLog(@"result:%@",result);
+                    NSNumber *isResult = result[@"result"];
+                    if (isResult.integerValue == 0) {
+                        NSDictionary *schoolDic = result[@"resultInfo"];
+                        
+                        [self.schoolArray addObjectsFromArray:schoolDic[@"data"]];
+                        [self.tableView reloadData];
+                        
+                        NSNumber *totalNum = schoolDic[@"totalPage"];
+                        if (totalNum) {
+                            self.totalSchoolPageIndex = totalNum.integerValue;
+                        }
+                        
+                    }else{
+                        [UIFactory showAlert:@"未知错误"];
+                    }
+                }else{
+                    [UIFactory showAlert:@"网络错误"];
+                }
+                
+            }];
+        }
+        else{
             [_tableView footerEndRefreshing];
-            
-            
-        }];
+            [self showHudOnlyMsg:@"已全部加载完"];
+        }
     }
     else {
         [_tableView footerEndRefreshing];
@@ -220,21 +292,10 @@
     //NSLog(@"location:%f\n%f",location.coordinate.latitude,location.coordinate.longitude);
     _currentLocation = location;
     
-    [[XeeService sharedInstance] getSchoolNearByWithLongitude:location.coordinate.longitude andLatitude:location.coordinate.latitude andPageSize:10 andPageIndex:1 andBolck:^(NSDictionary *result, NSError *error) {
-        //NSLog(@"getSchoolNearByResult:%@",result);
-        if (!error) {
-            NSNumber *isResult = result[@"result"];
-            if (isResult.integerValue == 0) {
-                NSDictionary *schoolDic = result[@"resultInfo"];
-                self.schoolArray = schoolDic[@"data"];
-                [self.tableView reloadData];
-            }else{
-                [UIFactory showAlert:@"未知错误"];
-            }
-        }else{
-            [UIFactory showAlert:@"网络错误"];
-        }
-    }];
+    _currentSchoolPageIndex = 1;
+    _totalSchoolPageIndex = 0;
+    
+    [self setupRefresh:@"table"];
     
 }
 
