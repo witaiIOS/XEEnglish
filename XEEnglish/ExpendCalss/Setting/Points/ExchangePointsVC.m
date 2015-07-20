@@ -13,13 +13,18 @@
 #import "PointSRuleVC.h"
 #import "XeeService.h"
 
-@interface ExchangePointsVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface ExchangePointsVC ()<UITableViewDataSource,UITableViewDelegate,ExchangePointsCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *giftArray;
 
 @property (nonatomic, assign) NSInteger currentGiftPageIndex;//当前礼品页
 @property (nonatomic, assign) NSInteger totleGiftPageIndex;//总的页数
+
+@property (nonatomic, strong) UILabel *pointTotalLabel;//总积分
+@property (nonatomic, strong) UILabel *pointExamLabel;//待审核积分
+@property (nonatomic, strong) UILabel *pointAvailableLabel;//可用积分
+
 @end
 
 @implementation ExchangePointsVC
@@ -50,24 +55,25 @@
     view.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:view];
     
-    UILabel *pointTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 20)];
-    pointTotalLabel.text = [NSString stringWithFormat:@"积分余额:%@",self.pointTotal];
-    pointTotalLabel.font = [UIFont systemFontOfSize:12];
-    [view addSubview:pointTotalLabel];
+    self.pointTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 20)];
+    self.pointTotalLabel.text = [NSString stringWithFormat:@"积分余额:%@",self.pointTotal];
+    self.pointTotalLabel.font = [UIFont systemFontOfSize:12];
+    [view addSubview:self.pointTotalLabel];
     
-    UILabel *pointExamLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 0, 100, 20)];
-    pointExamLabel.text = [NSString stringWithFormat:@"待审核:%@",self.pointExam];
-    pointExamLabel.font = [UIFont systemFontOfSize:12];
-    [view addSubview:pointExamLabel];
+    self.pointExamLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 0, 100, 20)];
+    self.pointExamLabel.text = [NSString stringWithFormat:@"待审核:%@",self.pointExam];
+    self.pointExamLabel.font = [UIFont systemFontOfSize:12];
+    [view addSubview:self.pointExamLabel];
     
-    UILabel *pointResidueLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 100, 20)];
-    NSString *pointResidue = [NSString stringWithFormat:@"%i",(int)([self.pointTotal intValue]-[self.pointExam intValue])];
-    pointResidueLabel.text = [NSString stringWithFormat:@"可用余额:%@",pointResidue];
-    pointResidueLabel.font = [UIFont systemFontOfSize:12];
-    [view addSubview:pointResidueLabel];
+    self.pointAvailableLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 100, 20)];
+    NSString *pointAvailableStr = [NSString stringWithFormat:@"%i",(int)([self.pointTotal intValue]-[self.pointExam intValue])];
+    self.pointAvailableLabel.text = [NSString stringWithFormat:@"可用余额:%@",pointAvailableStr];
+    self.pointAvailableLabel.font = [UIFont systemFontOfSize:12];
+    [view addSubview:self.pointAvailableLabel];
     
     UILabel *pointsRuleLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 0, kScreenWidth-210, 40)];
     pointsRuleLabel.text = @"点击查看积分规则...";
+    pointsRuleLabel.textColor = [UIColor blueColor];
     pointsRuleLabel.font = [UIFont systemFontOfSize:12];
     [view addSubview:pointsRuleLabel];
     
@@ -161,6 +167,7 @@
         cell = [[ExchangePointsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
     }
     cell.cellEdge = 10;
+    cell.delegate = self;
     cell.giftInfoDic = self.giftArray[indexPath.section];
     
     return cell;
@@ -192,14 +199,36 @@
     return 80.0f;
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - ExchangePointsCellDelegate
+- (void)ExchangePointsCellBuyGift:(id)sender{
+    NSDictionary *giftInfoDic = sender;
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [[XeeService sharedInstance] buyGiftWithParentId:userInfoDic[uUserId] andPlatformTypeId:@"202" andGiftId:giftInfoDic[@"id"] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            //NSLog(@"result111:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                //[UIFactory showAlert:result[@"resultInfo"]];
+                [UIFactory showAlert:@"操作成功"];
+                NSDictionary *giftInfoDic = result[@"resultInfo"];
+                self.pointTotalLabel.text = [NSString stringWithFormat:@"积分余额:%@",giftInfoDic[@"points"]];
+                self.pointExamLabel.text = [NSString stringWithFormat:@"待审核:%@",giftInfoDic[@"points_exam"]];
+                NSString *pointAvailableStr = [NSString stringWithFormat:@"%i",(int)([giftInfoDic[@"points"] intValue]-[giftInfoDic[@"points_exam"] intValue])];
+                self.pointAvailableLabel.text = [NSString stringWithFormat:@"可用余额:%@",pointAvailableStr];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }
+        else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
 }
-*/
+
+
 
 @end
