@@ -46,15 +46,40 @@
     
     [self getGiftInfo];
     
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 40)];
+    view.backgroundColor = [UIColor yellowColor];
+    [self.view addSubview:view];
+    
+    UILabel *pointTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 20)];
+    pointTotalLabel.text = [NSString stringWithFormat:@"积分余额:%@",self.pointTotal];
+    pointTotalLabel.font = [UIFont systemFontOfSize:12];
+    [view addSubview:pointTotalLabel];
+    
+    UILabel *pointExamLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 0, 100, 20)];
+    pointExamLabel.text = [NSString stringWithFormat:@"待审核:%@",self.pointExam];
+    pointExamLabel.font = [UIFont systemFontOfSize:12];
+    [view addSubview:pointExamLabel];
+    
+    UILabel *pointResidueLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 100, 20)];
+    NSString *pointResidue = [NSString stringWithFormat:@"%i",(int)([self.pointTotal intValue]-[self.pointExam intValue])];
+    pointResidueLabel.text = [NSString stringWithFormat:@"可用余额:%@",pointResidue];
+    pointResidueLabel.font = [UIFont systemFontOfSize:12];
+    [view addSubview:pointResidueLabel];
+    
+    UILabel *pointsRuleLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 0, kScreenWidth-210, 40)];
+    pointsRuleLabel.text = @"点击查看积分规则...";
+    pointsRuleLabel.font = [UIFont systemFontOfSize:12];
+    [view addSubview:pointsRuleLabel];
+    
     //增加一个“积分规则”的按钮
     UIButton *pointsRuleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [pointsRuleBtn setFrame:CGRectMake(0, 64, kScreenWidth, 40)];
-    [pointsRuleBtn setBackgroundColor:[UIColor grayColor]];
-    [pointsRuleBtn setTitle:@"积分规则..." forState:UIControlStateNormal];
-    [pointsRuleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [pointsRuleBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [pointsRuleBtn setFrame:CGRectMake(0, 0, kScreenWidth, 40)];
+    //[pointsRuleBtn setBackgroundColor:[UIColor grayColor]];
+    //[pointsRuleBtn setTitle:@"积分规则..." forState:UIControlStateNormal];
+    //[pointsRuleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //[pointsRuleBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [pointsRuleBtn addTarget:self action:@selector(pointsRuleBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:pointsRuleBtn];
+    [view addSubview:pointsRuleBtn];
     
     //在导航栏右边增加一个“积分兑换”的按钮
     UIButton *exchangePointsBtn = [UIButton buttonWithType:UIButtonTypeCustom];

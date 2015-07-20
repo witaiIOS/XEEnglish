@@ -415,6 +415,8 @@
                 case 0:
                 {
                     ExchangePointsVC *vc = [[ExchangePointsVC alloc] init];
+                    vc.pointTotal = [NSString stringWithFormat:@"%@",self.myInfoDic[@"points"]];
+                    vc.pointExam = [NSString stringWithFormat:@"%@",self.myInfoDic[@"points_exam"]];
                     vc.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:vc animated:YES];
                     break;
