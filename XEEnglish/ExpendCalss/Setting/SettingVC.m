@@ -526,6 +526,9 @@
         [self updateUserLoginUI];
         //退出后刷新数据
         [self.tableView reloadData];
+//        //发送通知
+//        NSDictionary *dic = [[UserInfo sharedUser] getUserInfoDic];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"SettingVCToReloadCourseVC" object:self userInfo:dic];
     }
 }
 

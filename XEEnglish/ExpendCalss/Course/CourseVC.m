@@ -44,6 +44,8 @@
 @property (strong, nonatomic) NSMutableArray *studentCoursesArray;
 @property (strong, nonatomic) UITableView *courseTableView;//课表
 
+@property (nonatomic, assign) NSInteger isLogin;//登录状态
+
 //- (void)courseLeaveToLeaveVC;//跳转到请假界面
 //- (void)courseAbsentToAbsentVC;//跳转到缺课界面
 
@@ -66,7 +68,13 @@
 //    _menu.dataSource = self;
 //    _menu.delegate = self;
     
+//    //注册一个通知
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingVCToReloadCourseVCWithNotification:) name:@"SettingVCToReloadCourseVC" object:nil];
+    //保留登录状态
+    self.isLogin = [[UserInfo sharedUser] isLogin];
+    
 }
+
 
 - (void)initUI{
     
@@ -102,6 +110,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    //进入页面时先判断当前登录状态是否改变，改变了就刷新列表，并改变当前状态
+    if (self.isLogin != [[UserInfo sharedUser] isLogin]) {
+        //NSLog(@"isLogin:%li",self.isLogin);
+        //NSLog(@"userisLogin:%i",(int)[[UserInfo sharedUser] isLogin]);
+        self.isLogin = [[UserInfo sharedUser] isLogin];
+        [self getVStudentCourseByParentId];
+    }
     
     if (self.students.count == 0) {
         [self getVStudentCourseByParentId];
@@ -563,6 +578,13 @@
     }
 }
 
-
+//#pragma mark - SettingVCToReloadCourseVC
+//- (void)settingVCToReloadCourseVCWithNotification:(NSNotification *)notification{
+//    
+//    //NSDictionary *dic = [notification userInfo];
+//    [self getVStudentCourseByParentId];
+//    
+//    
+//}
 
 @end
