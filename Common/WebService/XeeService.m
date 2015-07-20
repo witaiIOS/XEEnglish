@@ -146,6 +146,19 @@
         
     }];
 }
+- (void)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andSign:(NSString *)sign  andPassword:(NSString *)password  andInvitationCode:(NSString *)invitation_code andBlock:(void (^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration checkCodeWithPhoneNumber:phoneNumber andCode:code andSign:sign andPassword:password andInvitationCode:invitation_code];
+    [self getResponseWithOpration:operation andXmlKey:@"checkCodeResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        
+        //NSLog(@"result:%@",result);
+        
+        if (block) {
+            block(result, error);
+        }
+        
+    }];
+}
 
 
 - (void)registerWithPhoneNumber:(NSString *)phoneNumber andName:(NSString *)name andPassword:(NSString *)password andInvitation_code:(NSString *)invitation_code andBlock:(void (^)(NSDictionary *result, NSError *error))block{

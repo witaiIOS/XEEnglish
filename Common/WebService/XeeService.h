@@ -50,7 +50,7 @@
  @param block  (result 解析出来的结果, error 请求的错误信息)
  */
 - (void)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andSign:(NSString *)sign andBlock:(void (^)(NSDictionary *result, NSError *error))block;
-
+- (void)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andSign:(NSString *)sign  andPassword:(NSString *)password  andInvitationCode:(NSString *)invitation_code andBlock:(void (^)(NSDictionary *result, NSError *error))block;
 
 /**
  注册

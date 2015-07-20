@@ -52,8 +52,11 @@
  @param phoneNumber 手机号
  @param code 验证码
  @param sign 1.忘记密码/2.注册/3.修改手机号
+ @param password 密码为验证码的md5编码
+ @param invitation_code 邀请码
  */
 + (AFHTTPRequestOperation *)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andSign:(NSString *)sign;
++ (AFHTTPRequestOperation *)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andSign:(NSString *)sign  andPassword:(NSString *)password  andInvitationCode:(NSString *)invitation_code;
 
 
 /**

@@ -113,6 +113,10 @@
 + (AFHTTPRequestOperation *)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andSign:(NSString *)sign {
     return [self XEEWebService:[NSString stringWithFormat:@" <web:checkCode><web:json>{\"sign\":\"%@\",\"mobile\":\"%@\",\"code\":\"%@\"}</web:json></web:checkCode>", sign, phoneNumber, code]];
 }
++ (AFHTTPRequestOperation *)checkCodeWithPhoneNumber:(NSString *)phoneNumber andCode:(NSString *)code andSign:(NSString *)sign  andPassword:(NSString *)password  andInvitationCode:(NSString *)invitation_code{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@" <web:checkCode><web:json>{\"sign\":\"%@\",\"mobile\":\"%@\",\"code\":\"%@\",\"password\":\"%@\",\"invitation_code\":\"%@\"}</web:json></web:checkCode>", sign, phoneNumber, code, password, invitation_code]];
+}
 
 
 + (AFHTTPRequestOperation *)registerWithPhoneNumber:(NSString *)phoneNumber andName:(NSString *)name andPassword:(NSString *)password andInvitation_code:(NSString *)invitation_code{

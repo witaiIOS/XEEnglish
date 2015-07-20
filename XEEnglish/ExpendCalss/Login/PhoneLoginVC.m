@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
 @property (strong, nonatomic) CountdownButton *getCodeBtn;
+@property (weak, nonatomic) IBOutlet UITextField *recommendcodeTF;
 
 @end
 
@@ -37,6 +38,9 @@
     
     self.codeTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tab_course@2x.png"]];
     self.codeTextField.leftViewMode = UITextFieldViewModeAlways;
+    
+    self.recommendcodeTF.leftView =[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tab_course@2x.png"]];
+    self.recommendcodeTF.leftViewMode = UITextFieldViewModeAlways;
     
     self.getCodeBtn = [[CountdownButton alloc] initWithFrame:CGRectMake(210, 80, 90, 40) time:60 normal:@"获取验证码" countingTitle:@"重新获取"];
     [self.getCodeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -129,16 +133,20 @@
     }
     else{
         
-        [[XeeService sharedInstance] checkCodeWithPhoneNumber:self.phoneTextField.text andCode:self.codeTextField.text andSign:@"2" andBlock:^(NSDictionary *result, NSError *error) {
+        //密码加密之后上传
+        NSString *passwordIsMd5String = [NSString md5:self.codeTextField.text];
+        
+        [[XeeService sharedInstance] checkCodeWithPhoneNumber:self.phoneTextField.text andCode:self.codeTextField.text andSign:@"2" andPassword:passwordIsMd5String andInvitationCode:self.recommendcodeTF.text andBlock:^(NSDictionary *result, NSError *error) {
             
             if (!error) {
                 NSNumber *r = result[@"result"];
                 if (r.integerValue == 0) {
-                    //用验证码校验完登陆成功后去设置密码
-                    RegisterVC *registerVC = [[RegisterVC alloc] init];
-                    registerVC.phoneNumber = self.phoneTextField.text;
-                    registerVC.delegate = self;
-                    [self.navigationController pushViewController:registerVC animated:YES];
+//                    //用验证码校验完登陆成功后去设置密码
+//                    RegisterVC *registerVC = [[RegisterVC alloc] init];
+//                    registerVC.phoneNumber = self.phoneTextField.text;
+//                    registerVC.delegate = self;
+//                    [self.navigationController pushViewController:registerVC animated:YES];
+                    [self.navigationController popViewControllerAnimated:YES];
                 }
                 else {
                     [UIFactory showAlert:result[@"resultInfo"]];
