@@ -290,7 +290,7 @@
                     [self getVStudentSourseScheduleSign:1];
                 }
                 else{
-                    [UIFactory showAlert:@"未知错误"];
+                    [UIFactory showAlert:result[@"resultInfo"]];
                 }
             }
             else{

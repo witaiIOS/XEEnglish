@@ -32,10 +32,10 @@
         [UIFactory showAlert:@"请输入原始密码"];
         return;
     }
-    else if (![self.orgainPasswordField.text isEqualToString:@"123456"]){
-        [UIFactory showAlert:@"原始密码输入错误"];
-        return;
-    }
+//    else if (![self.orgainPasswordField.text isEqualToString:@"123456"]){
+//        [UIFactory showAlert:@"原始密码输入错误"];
+//        return;
+//    }
     else if (self.myNewPasswordField.text.length <= 0){
         [UIFactory showAlert:@"请填写新密码"];
         return;
