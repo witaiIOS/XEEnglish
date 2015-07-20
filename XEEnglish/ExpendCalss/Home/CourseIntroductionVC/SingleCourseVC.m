@@ -17,6 +17,8 @@
 #import "XeeService.h"
 #import "MBProgressHUD.h"
 
+#import "LoginVC.h"
+
 @interface SingleCourseVC ()<UIWebViewDelegate>
 
 @property (nonatomic, strong) UILabel *ageLabel;//适用年龄段
@@ -181,22 +183,34 @@
 #pragma mark - My Action
 
 - (void)listenBtnClicked{
-    ListeningCourseVC *vc = [[ListeningCourseVC alloc] init];
-    vc.courseName = self.title;
-    vc.parentCourseId = self.courseId;
-    vc.parentCourseInfo = self.courseInfo;
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([[UserInfo sharedUser] isLogin]) {
+        ListeningCourseVC *vc = [[ListeningCourseVC alloc] init];
+        vc.courseName = self.title;
+        vc.parentCourseId = self.courseId;
+        vc.parentCourseInfo = self.courseInfo;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else{
+        LoginVC *vc = [[LoginVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 
 - (void)buyBtnClicked{
+    if ([[UserInfo sharedUser] isLogin]) {
+        BuyCourseVC *vc = [[BuyCourseVC alloc] init];
+        vc.courseName = self.title;
+        vc.parentCourseId = self.courseId;
+        vc.payMethodNumber = self.payMethodNum;
+        vc.superPayMethodNumber = self.payMethodNum;
+        vc.courseInfoDic = self.courseInfo;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        LoginVC *vc = [[LoginVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
-    BuyCourseVC *vc = [[BuyCourseVC alloc] init];
-    vc.courseName = self.title;
-    vc.parentCourseId = self.courseId;
-    vc.payMethodNumber = self.payMethodNum;
-    vc.superPayMethodNumber = self.payMethodNum;
-    vc.courseInfoDic = self.courseInfo;
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Web

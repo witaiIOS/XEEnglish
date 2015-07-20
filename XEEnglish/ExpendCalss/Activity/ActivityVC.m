@@ -17,6 +17,8 @@
 #import "SchedulePlace.h"
 #import "XeeService.h"
 
+#import "LoginVC.h"
+
 @interface ActivityVC ()<UITableViewDataSource,UITableViewDelegate,ActivityCellActivityReserveBtnPressedDelegate,UIAlertViewDelegate, LXSegmentViewDelegate>
 
 @property (nonatomic, strong) LXSegmentView *mySegmentView;
@@ -142,11 +144,16 @@
 #pragma mark - action
 
 - (void)reservePlaceBtnAction{
+    if ([[UserInfo sharedUser] isLogin]){
+        
+        SchedulePlace *vc = [[SchedulePlace alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        LoginVC *vc = [[LoginVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
-    SchedulePlace *vc = [[SchedulePlace alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc
-                                         animated:YES];
 }
 
 #pragma mark -
