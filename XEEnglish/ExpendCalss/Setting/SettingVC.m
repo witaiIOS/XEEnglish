@@ -49,9 +49,13 @@
     // Do any additional setup after loading the view.
 //    self.selectCity = self.myInfoDic[@"city"];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self updateUserLoginUI];
     
     [self getMyInfoFromWeb];
+    
+    
 
 }
 
@@ -59,7 +63,7 @@
     [super initUI];
     
     
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-45) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-45-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.tableHeaderView = [self tableHeaderView];
@@ -239,30 +243,35 @@
 #pragma mark - Web
 
 - (void)getMyInfoFromWeb{
-    
-    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
-    NSDictionary *userInfoDic = userDic[uUserInfoKey];
-    [self showHudOnlyMsg:@"载入信息..."];
-    [[XeeService sharedInstance] getMyInfoWithParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
-        [self hideHud];
-        if (!error) {
-            //NSLog(@"result:%@",result);
-            
-            NSNumber *isResult = result[@"result"];
-            
-            if (isResult.integerValue == 0) {
-                self.myInfoDic = result[@"resultInfo"];
-                self.selectCity = self.myInfoDic[@"city"];
-                [self.tableView reloadData];
+    if ([[UserInfo sharedUser] isLogin]) {
+        NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+        NSDictionary *userInfoDic = userDic[uUserInfoKey];
+        [self showHudOnlyMsg:@"载入信息..."];
+        [[XeeService sharedInstance] getMyInfoWithParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+            [self hideHud];
+            if (!error) {
+                //NSLog(@"result:%@",result);
+                
+                NSNumber *isResult = result[@"result"];
+                
+                if (isResult.integerValue == 0) {
+                    self.myInfoDic = result[@"resultInfo"];
+                    self.selectCity = self.myInfoDic[@"city"];
+                    [self.tableView reloadData];
+                }
+                else{
+                    [UIFactory showAlert:@"未知错误"];
+                }
             }
             else{
-                [UIFactory showAlert:@"未知错误"];
+                [UIFactory showAlert:@"网络错误"];
             }
-        }
-        else{
-            [UIFactory showAlert:@"网络错误"];
-        }
-    }];
+        }];
+    }
+//    else{
+//        [self showHudOnlyMsg:@"请先登录"];
+//    }
+    
 }
 
 
@@ -318,7 +327,9 @@
             {
                 str =@"积分";
                 image = [UIImage imageNamed:@"STintegral.png"];
-                detailStr = [NSString stringWithFormat:@"%@",self.myInfoDic[@"points"]];
+                if ([[UserInfo sharedUser] isLogin]) {
+                    detailStr = [NSString stringWithFormat:@"%@",self.myInfoDic[@"points"]];
+                }
                 break;
             }
             case 1:
@@ -330,7 +341,9 @@
             case 2:
                 str =@"我的预定";
                 image = [UIImage imageNamed:@"STreserve.png"];
-                detailStr = [NSString stringWithFormat:@"%@/%@/%@",self.myInfoDic[@"course"],self.myInfoDic[@"activity"],self.myInfoDic[@"booksite"]];
+                if ([[UserInfo sharedUser] isLogin]){
+                    detailStr = [NSString stringWithFormat:@"%@/%@/%@",self.myInfoDic[@"course"],self.myInfoDic[@"activity"],self.myInfoDic[@"booksite"]];
+                }
                 break;
             case 3:
                 str = @"订单";
@@ -350,7 +363,9 @@
             {
                 str = @"城市";
                 image = [UIImage imageNamed:@"STcity.png"];
-                detailStr = self.selectCity;
+                if ([[UserInfo sharedUser] isLogin]){
+                    detailStr = self.selectCity;
+                }
                 break;
             }
                 
@@ -380,83 +395,92 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 0) {
-        switch (indexPath.row) {
-            case 0:
-            {
-                PersonInfoVC *vc = [[PersonInfoVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-                break;
+    if ([[UserInfo sharedUser] isLogin]) {
+        if (indexPath.section == 0) {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    PersonInfoVC *vc = [[PersonInfoVC alloc] init];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                default:
+                    break;
             }
-             default:
-                break;
         }
-    }
-    else if (indexPath.section == 1) {
-        switch (indexPath.row) {
-            case 0:
-            {
-                PointsVC *vc = [[PointsVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-                break;
+        else if (indexPath.section == 1) {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    PointsVC *vc = [[PointsVC alloc] init];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                    
+                case 1:
+                {
+                    CouponsVC *vc = [[CouponsVC alloc] init];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    vc.superView = 0;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                    
+                case 2:
+                {
+                    MyScheduleVC *vc = [[MyScheduleVC alloc] init];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                case 3:
+                {
+                    ExpendRecordVC *vc = [[ExpendRecordVC alloc] init];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                    
+                    
+                default:
+                    break;
             }
-                
-            case 1:
-            {
-                CouponsVC *vc = [[CouponsVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                vc.superView = 0;
-                [self.navigationController pushViewController:vc animated:YES];
-                break;
-            }
-                
-            case 2:
-            {
-                MyScheduleVC *vc = [[MyScheduleVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-                break;
-            }
-            case 3:
-            {
-                ExpendRecordVC *vc = [[ExpendRecordVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-                break;
-            }
-                
-                
-            default:
-                break;
         }
-    }
-
-    else{
-        switch (indexPath.row) {
-            case 0:
-            {
-                CitiesVC *vc = [[CitiesVC alloc] init];
-                vc.selectedCity = self.selectCity;
-                vc.delegate = self;
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-                break;
+        
+        else{
+            switch (indexPath.row) {
+                case 0:
+                {
+                    CitiesVC *vc = [[CitiesVC alloc] init];
+                    vc.selectedCity = self.selectCity;
+                    vc.delegate = self;
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                    
+                case 1:
+                {
+                    MoreSettingVC *vc = [[MoreSettingVC alloc] init];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    break;
+                }
+                    
+                default:
+                    break;
             }
-                
-            case 1:
-            {
-                MoreSettingVC *vc = [[MoreSettingVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-                break;
-            }
-                
-            default:
-                break;
         }
+    }else{
+//        LoginVC *vc = [[LoginVC alloc] init];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+        [self showHudOnlyMsg:@"请先登录"];
     }
+    
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -499,6 +523,8 @@
     if (alertView.tag == 99 && buttonIndex == 0) {
         [[UserInfo sharedUser] initUserInfoDic];
         [self updateUserLoginUI];
+        //退出后刷新数据
+        [self.tableView reloadData];
     }
 }
 
