@@ -143,9 +143,13 @@
 
 - (void)reserveBtnClicked{
     //self.activitId = sender;
+    if([[UserInfo sharedUser] isLogin]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您是否预约该活动" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
+    }else{
+        [UIFactory showAlert:@"请先登录"];
+    }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您是否预约该活动" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-    [alert show];
 }
 
 

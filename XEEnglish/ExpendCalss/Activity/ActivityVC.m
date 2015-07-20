@@ -17,7 +17,7 @@
 #import "SchedulePlace.h"
 #import "XeeService.h"
 
-#import "LoginVC.h"
+//#import "LoginVC.h"
 
 @interface ActivityVC ()<UITableViewDataSource,UITableViewDelegate,ActivityCellActivityReserveBtnPressedDelegate,UIAlertViewDelegate, LXSegmentViewDelegate>
 
@@ -150,8 +150,10 @@
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }else{
-        LoginVC *vc = [[LoginVC alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
+        [UIFactory showAlert:@"请先登录"];
+        //[self showHudOnlyMsg:@"请先登录"];
+//        LoginVC *vc = [[LoginVC alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
     }
     
 }
@@ -518,9 +520,14 @@
 - (void)activityReserveBtnPressed:(id)sender{
     
     self.activitId = sender;
+    if([[UserInfo sharedUser] isLogin]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您是否预约该活动" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
+    }
+    else{
+        [UIFactory showAlert:@"请先登录"];
+    }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您是否预约该活动" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-    [alert show];
     
 }
 

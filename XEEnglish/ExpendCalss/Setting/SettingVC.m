@@ -477,7 +477,8 @@
 //        LoginVC *vc = [[LoginVC alloc] init];
 //        vc.hidesBottomBarWhenPushed = YES;
 //        [self.navigationController pushViewController:vc animated:YES];
-        [self showHudOnlyMsg:@"请先登录"];
+        //[self showHudOnlyMsg:@"请先登录"];
+        [UIFactory showAlert:@"请先登录"];
     }
     
     

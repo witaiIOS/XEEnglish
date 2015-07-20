@@ -17,7 +17,7 @@
 #import "XeeService.h"
 #import "MBProgressHUD.h"
 
-#import "LoginVC.h"
+//#import "LoginVC.h"
 
 @interface SingleCourseVC ()<UIWebViewDelegate>
 
@@ -191,8 +191,10 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     else{
-        LoginVC *vc = [[LoginVC alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
+        [UIFactory showAlert:@"请先登录"];
+        //[self showHudOnlyMsg:@"请先登录"];
+//        LoginVC *vc = [[LoginVC alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
     }
     
 }
@@ -207,8 +209,10 @@
         vc.courseInfoDic = self.courseInfo;
         [self.navigationController pushViewController:vc animated:YES];
     }else{
-        LoginVC *vc = [[LoginVC alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
+        [UIFactory showAlert:@"请先登录"];
+        //[self showHudOnlyMsg:@"请先登录"];
+//        LoginVC *vc = [[LoginVC alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
     }
     
 }
