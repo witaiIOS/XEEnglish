@@ -12,7 +12,7 @@
 
 - (void)layoutSubviews{
     
-    NSLog(@"info:%@",self.myCourseInfoDic);
+    //NSLog(@"info:%@",self.myCourseInfoDic);
     
     self.myCourseStatue.text = [self getStatus:self.myCourseInfoDic[@"order_statue"]];
     self.myCourseUserName.text = self.myCourseInfoDic[@"name"];
