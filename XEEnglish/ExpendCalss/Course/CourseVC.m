@@ -253,29 +253,46 @@
 
 #pragma mark - Web
 - (void)getVStudentCourseByParentId{
-    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
-    NSDictionary *userInfoDic = userDic[uUserInfoKey];
-    [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getVStudentCourseByParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
-        [self hideHud];
-        if (!error) {
-            //NSLog(@"result:%@",result);
-            NSNumber *isResult = result[@"result"];
-            if (isResult.integerValue == 0) {
-                //NSLog(@"resultInfo1111:%@",result[@"resultInfo"]) ;
-                self.students = result[@"resultInfo"];
-                _menu.dataSource = self;
-                _menu.delegate = self;
-                [self getVStudentSourseScheduleSign:1];
+    if([[UserInfo sharedUser] isLogin]){
+        //隐藏遮羞页
+        UIView *view = (UIView *)[self.view viewWithTag:100];
+        view.hidden = YES;
+        
+        //网路请求
+        NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+        NSDictionary *userInfoDic = userDic[uUserInfoKey];
+        [self showHudWithMsg:@"载入中..."];
+        [[XeeService sharedInstance] getVStudentCourseByParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+            [self hideHud];
+            if (!error) {
+                //NSLog(@"result:%@",result);
+                NSNumber *isResult = result[@"result"];
+                if (isResult.integerValue == 0) {
+                    //NSLog(@"resultInfo1111:%@",result[@"resultInfo"]) ;
+                    self.students = result[@"resultInfo"];
+                    _menu.dataSource = self;
+                    _menu.delegate = self;
+                    [self getVStudentSourseScheduleSign:1];
+                }
+                else{
+                    [UIFactory showAlert:@"未知错误"];
+                }
             }
             else{
-                [UIFactory showAlert:@"未知错误"];
+                [UIFactory showAlert:@"网络错误"];
             }
-        }
-        else{
-            [UIFactory showAlert:@"网络错误"];
-        }
-    }];
+        }];
+    }
+    else{
+        //遮羞页面
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+        view.backgroundColor = [UIColor whiteColor];
+        view.tag = 100;
+        [self.view addSubview:view];
+        
+        [UIFactory showAlert:@"请先登录"];
+    }
+    
 }
 
 //changeTitleMark为1时修改courseView中的值，为2时不修改
