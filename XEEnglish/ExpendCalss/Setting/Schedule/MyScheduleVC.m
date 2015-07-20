@@ -441,15 +441,17 @@
         }
     }
     else if (_currentIndex == 2){
-        _currentBookSitePageIndex++;
+        
         if (_currentBookSitePageIndex < _totleBookSitePageIndex) {
+            _currentBookSitePageIndex++;
+            
             [self getMyBookSiteInfoWithPageIndex:_currentBookSitePageIndex WithBlock:^(NSDictionary *result, NSError *error) {
                 [self.bookSiteTableView footerEndRefreshing];
                 if (!error) {
                     NSNumber *isResult = result[@"result"];
                     if (isResult.integerValue == 0) {
                         NSDictionary *bookSiteDic = result[@"resultInfo"];
-                        self.bookSiteArray = bookSiteDic[@"data"];
+                        [self.bookSiteArray addObjectsFromArray: bookSiteDic[@"data"]];
                         [self.bookSiteTableView reloadData];
                         
                         NSNumber *totleNum = bookSiteDic[@"totalPage"];
