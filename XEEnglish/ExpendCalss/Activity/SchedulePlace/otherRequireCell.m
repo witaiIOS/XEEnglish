@@ -25,6 +25,7 @@
     self.otherRequire = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width-20, self.frame.size.height)];
     self.otherRequire.text = @"请输入－－";
     self.otherRequire.textColor = [UIColor darkGrayColor];
+    self.otherRequire.font = [UIFont systemFontOfSize:14];
     self.otherRequire.backgroundColor = [UIColor whiteColor];
     self.otherRequire.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     //self.otherRequire.delegate =self;//在场馆预定界面设置代理，以便输入时，输入框能上移。
