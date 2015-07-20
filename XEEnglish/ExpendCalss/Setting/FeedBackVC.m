@@ -37,9 +37,12 @@
 #pragma mark -Web
 - (void)addFeedback{
     
+    //对汉字进行编码
+    NSString *niceFeed = [self.feedTV.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     NSDictionary *userInfo = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userDetailInfo = userInfo[uUserInfoKey];
-    [[XeeService sharedInstance] addFeedbackWithBugInfo:self.feedTV.text andParentId:userDetailInfo[uUserId] andToken:userDetailInfo[uUserToken] andBolck:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] addFeedbackWithBugInfo:niceFeed andParentId:userDetailInfo[uUserId] andToken:userDetailInfo[uUserToken] andBolck:^(NSDictionary *result, NSError *error) {
         if (!error) {
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
