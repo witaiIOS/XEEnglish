@@ -56,7 +56,8 @@
     
     [self getMyInfoFromWeb];
     
-    
+    //注册刷新页面的监听者
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingRefresh) name:SettingRefresh object:nil];
 
 }
 
@@ -541,6 +542,14 @@
 #pragma mark - LoginVC Delegate
 - (void)loginVCloginSuccess {
     [self updateUserLoginUI];
+}
+
+#pragma mark - NSNotification 监听刷新页面的通知
+- (void)settingRefresh{
+    
+    //刷新页面
+    [self getMyInfoFromWeb];
+    [self.tableView reloadData];
 }
 
 

@@ -166,6 +166,8 @@
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 [UIFactory showAlert:result[@"resultInfo"]];
+                //发送通知，刷新我的页面
+                [[NSNotificationCenter defaultCenter] postNotificationName:SettingRefresh object:self];
             }
             else{
                 [UIFactory showAlert:result[@"resultInfo"]];

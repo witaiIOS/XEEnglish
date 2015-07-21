@@ -218,6 +218,8 @@
                 self.pointExamLabel.text = [NSString stringWithFormat:@"待审核:%@",giftInfoDic[@"points_exam"]];
                 NSString *pointAvailableStr = [NSString stringWithFormat:@"%i",(int)([giftInfoDic[@"points"] intValue]-[giftInfoDic[@"points_exam"] intValue])];
                 self.pointAvailableLabel.text = [NSString stringWithFormat:@"可用余额:%@",pointAvailableStr];
+                //发送通知，刷新我的页面
+                [[NSNotificationCenter defaultCenter] postNotificationName:SettingRefresh object:self];
             }
             else{
                 [UIFactory showAlert:result[@"resultInfo"]];
