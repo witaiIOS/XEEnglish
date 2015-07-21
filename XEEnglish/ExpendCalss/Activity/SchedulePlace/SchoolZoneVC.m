@@ -59,7 +59,7 @@
                 [self.tableView reloadData];
             }
             else{
-                [UIFactory showAlert:@"未知错误"];
+                [UIFactory showAlert:@"请在“我的页面“设置城市”"];
             }
         }
         else{
