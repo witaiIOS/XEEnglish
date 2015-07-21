@@ -291,6 +291,9 @@
             if (isResult.integerValue == 0) {
                 payCompleteVC *vc = [[payCompleteVC alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
+                
+                //发送通知，刷新我的页面
+                [[NSNotificationCenter defaultCenter] postNotificationName:SettingRefresh object:self];
                 //[UIFactory showAlert:result[@"resultInfo"]];
             }
             else{
