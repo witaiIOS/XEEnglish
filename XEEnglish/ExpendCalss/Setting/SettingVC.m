@@ -134,6 +134,9 @@
     if ([self.signMarkStr isEqualToString:@"操作成功!"]) {
         [self.signBtn setTitle:@"已签到" forState:UIControlStateNormal];
         self.signBtn.enabled = NO;
+        //签到之后刷新页面，改变积分
+        [self getMyInfoFromWeb];
+        [self.tableView reloadData];
     }
 }
 
