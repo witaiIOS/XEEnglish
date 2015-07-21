@@ -19,7 +19,11 @@
     
     self.giftName.text = self.giftInfoDic[@"name"];
     
-    self.giftNeedPoints.text = self.giftInfoDic[@"price"];
+    self.giftNeedPoints.text = [NSString stringWithFormat:@"%@积分",self.giftInfoDic[@"price"]];
+    
+    self.giftDeadLine.text = [NSString stringWithFormat:@"%@过期",self.giftInfoDic[@"deadline"]];
+    
+    self.giftMemo.text = self.giftInfoDic[@"memo"];
     
 }
 

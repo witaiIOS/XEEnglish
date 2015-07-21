@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *giftImageView;
 @property (weak, nonatomic) IBOutlet UILabel *giftName;
 @property (weak, nonatomic) IBOutlet UILabel *giftNeedPoints;
+@property (weak, nonatomic) IBOutlet UILabel *giftDeadLine;//过期时间
+@property (weak, nonatomic) IBOutlet UILabel *giftMemo;//补充说明
 
 @property (nonatomic, assign) id<ExchangePointsCellDelegate>delegate;
 
