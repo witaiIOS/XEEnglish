@@ -485,7 +485,7 @@
  */
 + (AFHTTPRequestOperation *)addFeedbackWithBugInfo:(NSString *)bug_info andParentId:(NSString *)parent_id andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddFeedback><web:json>{\"bug_info\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:AddFeedback>",bug_info,parent_id,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddFeedback><web:json>{\"bugInfo\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:AddFeedback>",bug_info,parent_id,token]];
 }
 
 /**

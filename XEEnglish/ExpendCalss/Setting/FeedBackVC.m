@@ -37,6 +37,8 @@
 #pragma mark -Web
 - (void)addFeedback{
     
+   // NSLog(@"result:%@",self.feedTV.text);
+    
     //对汉字进行编码
     NSString *niceFeed = [self.feedTV.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -76,7 +78,9 @@
     }
     return YES;
 }
-
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    [textView resignFirstResponder];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
