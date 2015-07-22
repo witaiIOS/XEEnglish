@@ -339,6 +339,8 @@
     [self showHudWithMsg:@"载入中..."];
     [[XeeService sharedInstance] getVStudentSourseScheduleSignWithParentId:userInfoDic[uUserId] andStudentId:studentId andCourseId:studentSubcourseId andSignon:self.courseIsSignon andSort:@"" andOrder:@"" andPageSize:200 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
+        //点击了请假或者缺课按钮改变了courseIsSignon时，做了请求就及时设置IsSignon为空，为下一次查询所有的值做准备
+        self.courseIsSignon = @"";
         if (!error) {
             
             //NSLog(@"getVStudentSourseScheduleSign result:%@",result);
