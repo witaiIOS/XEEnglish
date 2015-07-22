@@ -29,8 +29,20 @@
     [super initUI];
     self.myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
     self.myWebView.delegate = self;
+    //self.myWebView.scalesPageToFit = YES;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:@"http://www.hao123.com"]];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:@"http://www.hao123.com"]];
+//    [self.myWebView loadRequest:request];
+    
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"question" ofType:@"html"];
+//    NSLog(@"path:%@",filePath);
+//    NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+//    NSLog(@"html:%@",htmlString);
+//    
+//    [self.myWebView loadHTMLString:htmlString baseURL:[NSURL URLWithString:filePath]];
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"question" ofType:@"html"];
+    NSURL* url = [NSURL fileURLWithPath:path];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url] ;
     [self.myWebView loadRequest:request];
     
     [self.view addSubview:self.myWebView];

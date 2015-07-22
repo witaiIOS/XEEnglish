@@ -28,9 +28,15 @@
     self.myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
     self.myWebView.delegate = self;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:@"http://www.hao123.com"]];
-    [self.view addSubview:self.myWebView];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:@"http://www.hao123.com"]];
+//    [self.myWebView loadRequest:request];
+//    [self.view addSubview:self.myWebView];
+    
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"agreement" ofType:@"html"];
+    NSURL* url = [NSURL fileURLWithPath:path];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url] ;
     [self.myWebView loadRequest:request];
+    [self.view addSubview:self.myWebView];
 }
 
 #pragma mark - UIWebView Delegate
