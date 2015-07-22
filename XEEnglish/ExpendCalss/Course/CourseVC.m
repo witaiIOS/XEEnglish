@@ -278,7 +278,7 @@
         NSDictionary *userInfoDic = userDic[uUserInfoKey];
         [self showHudWithMsg:@"载入中..."];
         [[XeeService sharedInstance] getVStudentCourseByParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
-            [self hideHud];
+            //[self hideHud];
             if (!error) {
                 //NSLog(@"result:%@",result);
                 NSNumber *isResult = result[@"result"];
@@ -290,6 +290,8 @@
                     [self getVStudentSourseScheduleSign:1];
                 }
                 else{
+                    //没添加孩子在这里关闭菊花
+                    [self hideHud];
                     [UIFactory showAlert:result[@"resultInfo"]];
                 }
             }
@@ -326,6 +328,8 @@
     NSMutableArray *courseArray = studentDic[@"listCourse"];
     
     if (courseArray.count == 0) {
+        //有孩子，没添加课程在这里关闭菊花
+        [self hideHud];
         return;
     }
     NSDictionary *courseDic = courseArray[_currentCouseListIndex];
