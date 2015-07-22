@@ -363,7 +363,7 @@
 
 //获取当前学生的当前课程 上课的相关信息
 - (void)getCourseViewInfo:(NSDictionary *)studentCourseDic{
-    //NSLog(@"studentCourseDic:%@",studentCourseDic);
+    NSLog(@"studentCourseDic:%@",studentCourseDic);
     self.courseTotal.text = studentCourseDic[@"totalCount"];
     self.courseComplete.text = studentCourseDic[@"unit_count_over"];
     self.courseLeave.text = studentCourseDic[@"unit_count_leave"];
@@ -510,7 +510,7 @@
     NSDictionary *studentCourseDic = self.studentCoursesArray[indexPath.section];
     NSString *signonStr =[NSString stringWithFormat:@"%@",studentCourseDic[@"is_signon"]];
     //时间没有过： 0正常 4  延迟 5 暂停”时，显示课程预告  1已上课且已签到 2 请假 3 缺课 显示课程回顾
-    if ([signonStr isEqualToString:@"0"]) {
+    if ([signonStr isEqualToString:@"0"]||[signonStr isEqualToString:@"2"]) {
         CourseForenoticeVC *vc = [[CourseForenoticeVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         vc.courseLeaveInfoDic = self.studentCoursesArray[indexPath.section];

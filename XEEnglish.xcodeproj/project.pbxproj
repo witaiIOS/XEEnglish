@@ -92,6 +92,8 @@
 		09C9DE3A1B2A66F600A07544 /* MyActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9DE391B2A66F600A07544 /* MyActivityCell.m */; };
 		09C9DE3C1B2A670C00A07544 /* MyActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C9DE3B1B2A670C00A07544 /* MyActivityCell.xib */; };
 		09C9DE701B2AD61000A07544 /* CityVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9DE6F1B2AD61000A07544 /* CityVCCell.m */; };
+		09C9E4101B5F309100E7429B /* agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 09C9E40E1B5F309100E7429B /* agreement.html */; };
+		09C9E4111B5F309100E7429B /* question.html in Resources */ = {isa = PBXBuildFile; fileRef = 09C9E40F1B5F309100E7429B /* question.html */; };
 		09CA16261B467BC80064667D /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA16241B467BC80064667D /* GTMBase64.m */; };
 		09CA408F1B1C655000D12796 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA408D1B1C655000D12796 /* ActivityCell.m */; };
 		09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA408E1B1C655000D12796 /* ActivityCell.xib */; };
@@ -405,6 +407,8 @@
 		09C9DE3B1B2A670C00A07544 /* MyActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyActivityCell.xib; sourceTree = "<group>"; };
 		09C9DE6E1B2AD61000A07544 /* CityVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityVCCell.h; sourceTree = "<group>"; };
 		09C9DE6F1B2AD61000A07544 /* CityVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityVCCell.m; sourceTree = "<group>"; };
+		09C9E40E1B5F309100E7429B /* agreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = agreement.html; sourceTree = "<group>"; };
+		09C9E40F1B5F309100E7429B /* question.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = question.html; sourceTree = "<group>"; };
 		09CA16231B467BC80064667D /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		09CA16241B467BC80064667D /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		09CA16251B467BC80064667D /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -966,6 +970,15 @@
 			path = Schedule;
 			sourceTree = "<group>";
 		};
+		09C9E40D1B5F309100E7429B /* fileHtml */ = {
+			isa = PBXGroup;
+			children = (
+				09C9E40E1B5F309100E7429B /* agreement.html */,
+				09C9E40F1B5F309100E7429B /* question.html */,
+			);
+			path = fileHtml;
+			sourceTree = "<group>";
+		};
 		09CA16221B467BC80064667D /* GTMBase64 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1187,6 +1200,7 @@
 		A6284CF61B105E5600EFF820 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				09C9E40D1B5F309100E7429B /* fileHtml */,
 				A6B1CEEC1B1D8D1600100E9F /* Modules */,
 				A6284CF71B105E5600EFF820 /* Global */,
 				A6284CF81B105E5600EFF820 /* Utils */,
@@ -1899,6 +1913,7 @@
 				09C9C0DF1B22C890001BBA1C /* STcity.png in Resources */,
 				09CA69231B20213800A31E0E /* couponstime.png in Resources */,
 				A6DA3E241B44D919005850EB /* UMShareEditViewController.xib in Resources */,
+				09C9E4111B5F309100E7429B /* question.html in Resources */,
 				A6A9442C1B2E74B500AF304F /* ico_make.png in Resources */,
 				A6284D8B1B10652700EFF820 /* tab_course@2x.png in Resources */,
 				A6DA3E221B44D919005850EB /* UMSCommentInputController.xib in Resources */,
@@ -1912,6 +1927,7 @@
 				A6284D7C1B10615200EFF820 /* nav_backButtonBg.png in Resources */,
 				09DB2DCD1B1322AF0078AAF5 /* accountDetail03@2x.png in Resources */,
 				09C9C0E31B22C890001BBA1C /* STpersonal.png in Resources */,
+				09C9E4101B5F309100E7429B /* agreement.html in Resources */,
 				A6284D9D1B1067C100EFF820 /* LoginVC.xib in Resources */,
 				09DB2DC91B1322A30078AAF5 /* people_ayb.png in Resources */,
 				094DD2601B3954830045EF2C /* arrow_right_gray.png in Resources */,
