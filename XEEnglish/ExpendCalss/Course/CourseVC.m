@@ -363,8 +363,10 @@
 
 //获取当前学生的当前课程 上课的相关信息
 - (void)getCourseViewInfo:(NSDictionary *)studentCourseDic{
-    NSLog(@"studentCourseDic:%@",studentCourseDic);
-    self.courseTotal.text = studentCourseDic[@"totalCount"];
+    //NSLog(@"studentCourseDic:%@",studentCourseDic);
+    if ([self.courseIsSignon isEqualToString:@""]) {
+        self.courseTotal.text = studentCourseDic[@"totalCount"];
+    }
     self.courseComplete.text = studentCourseDic[@"unit_count_over"];
     self.courseLeave.text = studentCourseDic[@"unit_count_leave"];
     self.courseAbsent.text = studentCourseDic[@"unit_count_miss"];
