@@ -256,7 +256,7 @@
         UIView *viewWhite = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 80)];
         viewWhite.backgroundColor = [UIColor whiteColor];
         [viewBackground addSubview:viewWhite];
-        
+        //妈妈帮Btn
         HomeDetailButton *mamaBangBtn = [HomeDetailButton buttonWithType:UIButtonTypeCustom];
         [mamaBangBtn setFrame:CGRectMake(20, 0, 70, 70)];
         mamaBangBtn.tag = 10;
@@ -264,7 +264,7 @@
         [mamaBangBtn setImage:[UIImage imageNamed:@"image_loading.png" ]forState:UIControlStateNormal];
         [mamaBangBtn addTarget:self action:@selector(HomeDetailButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [viewWhite addSubview:mamaBangBtn];
-        
+        //近期活动Btn
         HomeDetailButton *nearActivityBtn = [HomeDetailButton buttonWithType:UIButtonTypeCustom];
         [nearActivityBtn setFrame:CGRectMake(20+(kScreenWidth/3), 0, 70, 70)];
         nearActivityBtn.tag = 11;
@@ -272,7 +272,7 @@
         [nearActivityBtn setImage:[UIImage imageNamed:@"image_loading.png" ]forState:UIControlStateNormal];
         [nearActivityBtn addTarget:self action:@selector(HomeDetailButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [viewWhite addSubview:nearActivityBtn];
-        
+        //附近校区Btn
         HomeDetailButton *nearSchoolBtn = [HomeDetailButton buttonWithType:UIButtonTypeCustom];
         [nearSchoolBtn setFrame:CGRectMake(20+2*(kScreenWidth/3), 0, 70, 70)];
         nearSchoolBtn.tag = 12;
@@ -280,6 +280,29 @@
         [nearSchoolBtn setImage:[UIImage imageNamed:@"image_loading.png" ]forState:UIControlStateNormal];
         [nearSchoolBtn addTarget:self action:@selector(HomeDetailButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [viewWhite addSubview:nearSchoolBtn];
+        //课程列表Label
+        UILabel *courseListLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 90, 160, 30)];
+        courseListLabel.text = @"课程列表";
+        courseListLabel.textColor = [UIColor blackColor];
+        courseListLabel.font = [UIFont systemFontOfSize:14];
+        [viewBackground addSubview:courseListLabel];
+        
+        //所有课程Label
+        UILabel *allCourseLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-160, 90, 130, 30)];
+        allCourseLabel.text = @"所有课程";
+        allCourseLabel.textColor = [UIColor lightGrayColor];
+        allCourseLabel.textAlignment = NSTextAlignmentRight;
+        allCourseLabel.font = [UIFont systemFontOfSize:12];
+        [viewBackground addSubview:allCourseLabel];
+        //箭头图标
+        UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-20, 95, 8, 15)];
+        arrowImageView.image = [UIImage imageNamed:@"arrow_right_gray.png"];
+        [viewBackground addSubview:arrowImageView];
+        
+        UIButton *allCourseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [allCourseBtn setFrame:CGRectMake(0, 80, kScreenWidth, 40)];
+        [allCourseBtn addTarget:self action:@selector(allCourseBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+        [viewBackground addSubview:allCourseBtn];
         
         return viewBackground;
     }
@@ -294,14 +317,17 @@
 #pragma mark - HomeDetailButton action
 - (void)HomeDetailButtonPressed:(id)sender{
     UIButton *button = (UIButton *)sender;
+    //妈妈帮Btn
     if (button.tag == 10) {
         
     }
+    //近期活动Btn
     else if(button.tag == 11){
         ActivityVC *vc = [[ActivityVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
+    //附近校区Btn
     else if(button.tag == 12){
         NearSchoolVC *vc = [[NearSchoolVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
@@ -312,6 +338,13 @@
     }
     
 }
+#pragma mark - allCourseBtn action
+- (void)allCourseBtnPressed{
+    AllCoursesVC *vc = [[AllCoursesVC alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.title = @"所有课程";
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 #pragma mark - HomeBtnCell delegate
 - (void)HomeBtnCellButtonPressed:(id)sender andServiceInfo:(NSDictionary *)serviceDic{
@@ -321,19 +354,24 @@
     //NSLog(@"serviceDic:%@",serviceDic);
     
     NSString *courseIdStr = [NSString stringWithFormat:@"%@",serviceDic[@"course_id"]];
-    if([courseIdStr isEqualToString:@"0"]){
-        AllCoursesVC *vc = [[AllCoursesVC alloc] init];
-        vc.hidesBottomBarWhenPushed = YES;
-        vc.title = [serviceDic objectForKey:@"title"];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    else{
-        SingleCourseVC *vc = [[SingleCourseVC alloc] init];
-        vc.hidesBottomBarWhenPushed = YES;
-        vc.title = [serviceDic objectForKey:@"title"];
-        vc.courseId = courseIdStr;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
+//    if([courseIdStr isEqualToString:@"0"]){
+//        AllCoursesVC *vc = [[AllCoursesVC alloc] init];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        vc.title = [serviceDic objectForKey:@"title"];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+//    else{
+//        SingleCourseVC *vc = [[SingleCourseVC alloc] init];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        vc.title = [serviceDic objectForKey:@"title"];
+//        vc.courseId = courseIdStr;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+    SingleCourseVC *vc = [[SingleCourseVC alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.title = [serviceDic objectForKey:@"title"];
+    vc.courseId = courseIdStr;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
