@@ -103,6 +103,7 @@
 		09CA69211B201F2500A31E0E /* coupons1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69201B201F2500A31E0E /* coupons1.png */; };
 		09CA69231B20213800A31E0E /* couponstime.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69221B20213800A31E0E /* couponstime.png */; };
 		09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */; };
+		09D0EE511B60C97200624E9B /* HomeDetailButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0EE501B60C97200624E9B /* HomeDetailButton.m */; };
 		09D231991B50EEA70055758A /* CourseMyCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D231971B50EEA70055758A /* CourseMyCommentVC.m */; };
 		09D2319A1B50EEA70055758A /* CourseMyCommentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D231981B50EEA70055758A /* CourseMyCommentVC.xib */; };
 		09D2319D1B511DEB0055758A /* SingleCourseCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D2319C1B511DEB0055758A /* SingleCourseCommentVC.m */; };
@@ -424,6 +425,8 @@
 		09CA69221B20213800A31E0E /* couponstime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couponstime.png; sourceTree = "<group>"; };
 		09CFD0061B4CFA17000D9D40 /* payCompleteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payCompleteVC.h; sourceTree = "<group>"; };
 		09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payCompleteVC.m; sourceTree = "<group>"; };
+		09D0EE4F1B60C97200624E9B /* HomeDetailButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailButton.h; sourceTree = "<group>"; };
+		09D0EE501B60C97200624E9B /* HomeDetailButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailButton.m; sourceTree = "<group>"; };
 		09D231961B50EEA70055758A /* CourseMyCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyCommentVC.h; sourceTree = "<group>"; };
 		09D231971B50EEA70055758A /* CourseMyCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMyCommentVC.m; sourceTree = "<group>"; };
 		09D231981B50EEA70055758A /* CourseMyCommentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseMyCommentVC.xib; sourceTree = "<group>"; };
@@ -1461,6 +1464,8 @@
 				A6B1CEE61B1D8C7200100E9F /* HomeBtnCell.m */,
 				A6B1CEE71B1D8C7200100E9F /* HomeButton.h */,
 				A6B1CEE81B1D8C7200100E9F /* HomeButton.m */,
+				09D0EE4F1B60C97200624E9B /* HomeDetailButton.h */,
+				09D0EE501B60C97200624E9B /* HomeDetailButton.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2015,6 +2020,7 @@
 				097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */,
 				A65B56EE1B5B80B300F7E40B /* BuyCoursePayVC.m in Sources */,
 				09C5431F1B4F938000BD750C /* SwitchButtonCell.m in Sources */,
+				09D0EE511B60C97200624E9B /* HomeDetailButton.m in Sources */,
 				09D23C541B427DDF008B6085 /* PointsRecordCell.m in Sources */,
 				09C9C0F41B22E409001BBA1C /* HardwareDemandCell.m in Sources */,
 				A6284D631B105E5600EFF820 /* UIWebView+AFNetworking.m in Sources */,

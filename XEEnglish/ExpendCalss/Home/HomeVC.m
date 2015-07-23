@@ -11,6 +11,9 @@
 #import "HomeAdCell.h"
 #import "XeeService.h"
 
+#import "HomeDetailButton.h"
+
+#import "ActivityVC.h"
 #import "NearSchoolVC.h"
 
 #import "AllCoursesVC.h"
@@ -114,23 +117,23 @@
     
     [super initUI];
     
-    UIButton *nearSchoolBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [nearSchoolBtn setFrame:CGRectMake(10, 17, 60, 30)];
-    [nearSchoolBtn setTitle:@"附近校区" forState:UIControlStateNormal];
-    [nearSchoolBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [nearSchoolBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [nearSchoolBtn addTarget:self action:@selector(nearSchoolBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton *nearSchoolBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [nearSchoolBtn setFrame:CGRectMake(10, 17, 60, 30)];
+//    [nearSchoolBtn setTitle:@"附近校区" forState:UIControlStateNormal];
+//    [nearSchoolBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [nearSchoolBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+//    [nearSchoolBtn addTarget:self action:@selector(nearSchoolBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    UIBarButtonItem *nearSchoolBarBtn = [[UIBarButtonItem alloc] initWithCustomView:nearSchoolBtn];
+//    self.navigationItem.leftBarButtonItem = nearSchoolBarBtn;
     
-    UIBarButtonItem *nearSchoolBarBtn = [[UIBarButtonItem alloc] initWithCustomView:nearSchoolBtn];
-    self.navigationItem.leftBarButtonItem = nearSchoolBarBtn;
-    
-    UIButton *servicePhoneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [servicePhoneBtn setFrame:CGRectMake(kScreenWidth-40, 17, 30, 30)];
-    [servicePhoneBtn setImage:[UIImage imageNamed:@"s_phone.png"] forState:UIControlStateNormal];
-    [servicePhoneBtn addTarget:self action:@selector(servicePhoneBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *servicePhoneBarBtn = [[UIBarButtonItem alloc] initWithCustomView:servicePhoneBtn];
-    self.navigationItem.rightBarButtonItem = servicePhoneBarBtn;
+//    UIButton *servicePhoneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [servicePhoneBtn setFrame:CGRectMake(kScreenWidth-40, 17, 30, 30)];
+//    [servicePhoneBtn setImage:[UIImage imageNamed:@"s_phone.png"] forState:UIControlStateNormal];
+//    [servicePhoneBtn addTarget:self action:@selector(servicePhoneBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    UIBarButtonItem *servicePhoneBarBtn = [[UIBarButtonItem alloc] initWithCustomView:servicePhoneBtn];
+//    self.navigationItem.rightBarButtonItem = servicePhoneBarBtn;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -138,20 +141,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - MyAction
-
-- (void)servicePhoneBtnClicked{
-    
-    //呼叫
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt://4000999027"]];
-}
-
-- (void)nearSchoolBtnClicked{
-    
-    NearSchoolVC *vc = [[NearSchoolVC alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-}
+//#pragma mark - MyAction
+//
+//- (void)servicePhoneBtnClicked{
+//    
+//    //呼叫
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt://4000999027"]];
+//}
+//
+//- (void)nearSchoolBtnClicked{
+//    
+//    NearSchoolVC *vc = [[NearSchoolVC alloc] init];
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:vc animated:YES];
+//}
 
 #pragma mark - Table view data source
 
@@ -221,7 +224,7 @@
     
     
 }
-
+#pragma mark - UITableView Delegate
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if(indexPath.section == 0){
@@ -233,6 +236,81 @@
     else{
         return 44;
     }
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    if (section == 1) {
+        return 120.0f;
+    }else{
+        return 1.0f;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    if (section == 1) {
+        UIView *viewBackground =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 120)];
+        viewBackground.backgroundColor = [UIColor clearColor];
+        
+        UIView *viewWhite = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 80)];
+        viewWhite.backgroundColor = [UIColor whiteColor];
+        [viewBackground addSubview:viewWhite];
+        
+        HomeDetailButton *mamaBangBtn = [HomeDetailButton buttonWithType:UIButtonTypeCustom];
+        [mamaBangBtn setFrame:CGRectMake(20, 0, 70, 70)];
+        mamaBangBtn.tag = 10;
+        [mamaBangBtn setTitle:@"妈妈帮" forState:UIControlStateNormal];
+        [mamaBangBtn setImage:[UIImage imageNamed:@"image_loading.png" ]forState:UIControlStateNormal];
+        [mamaBangBtn addTarget:self action:@selector(HomeDetailButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [viewWhite addSubview:mamaBangBtn];
+        
+        HomeDetailButton *nearActivityBtn = [HomeDetailButton buttonWithType:UIButtonTypeCustom];
+        [nearActivityBtn setFrame:CGRectMake(20+(kScreenWidth/3), 0, 70, 70)];
+        nearActivityBtn.tag = 11;
+        [nearActivityBtn setTitle:@"近期活动" forState:UIControlStateNormal];
+        [nearActivityBtn setImage:[UIImage imageNamed:@"image_loading.png" ]forState:UIControlStateNormal];
+        [nearActivityBtn addTarget:self action:@selector(HomeDetailButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [viewWhite addSubview:nearActivityBtn];
+        
+        HomeDetailButton *nearSchoolBtn = [HomeDetailButton buttonWithType:UIButtonTypeCustom];
+        [nearSchoolBtn setFrame:CGRectMake(20+2*(kScreenWidth/3), 0, 70, 70)];
+        nearSchoolBtn.tag = 12;
+        [nearSchoolBtn setTitle:@"附近校区" forState:UIControlStateNormal];
+        [nearSchoolBtn setImage:[UIImage imageNamed:@"image_loading.png" ]forState:UIControlStateNormal];
+        [nearSchoolBtn addTarget:self action:@selector(HomeDetailButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [viewWhite addSubview:nearSchoolBtn];
+        
+        return viewBackground;
+    }
+    else{
+        UIView *viewBackground =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 5)];
+        viewBackground.backgroundColor = [UIColor clearColor];
+        
+        return viewBackground;
+    }
+    
+}
+#pragma mark - HomeDetailButton action
+- (void)HomeDetailButtonPressed:(id)sender{
+    UIButton *button = (UIButton *)sender;
+    if (button.tag == 10) {
+        
+    }
+    else if(button.tag == 11){
+        ActivityVC *vc = [[ActivityVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if(button.tag == 12){
+        NearSchoolVC *vc = [[NearSchoolVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else{
+        
+    }
+    
 }
 
 #pragma mark - HomeBtnCell delegate

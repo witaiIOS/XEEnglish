@@ -23,21 +23,23 @@
     [_activityImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,_activityInfo[@"image_url"]]] placeholderImage:[UIImage imageNamed:@"course7.png"]];
     //NSLog(@"%@",_activityInfo[@"image_url"]);
     
-//    //获取结束时间
+    //获取结束时间
 //    NSString *endDateStr=[NSString stringWithFormat:@"%@",_activityInfo[@"deadline"]];
+//    //NSLog(@"endDateStr:%@",endDateStr);
 //    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
 //    NSDate *deadline=[dateFormatter dateFromString:endDateStr];
-//    //NSLog(@"endDate:%@",deadline);
+//    NSLog(@"endDate:%@",deadline);
+////    NSDate *deadline = (NSDate *)_activityInfo[@"deadline"];
+////    NSLog(@"endDate:%@",deadline);
 //    //获取现在时间
 //    NSDate *nowDate = [NSDate date];
 //    //NSLog(@"date:%@",nowDate);
 //    
 //    NSDate *earlier_date = [nowDate earlierDate:deadline];
-//    //NSLog(@"earlier_date:%@",earlier_date);
+//    NSLog(@"earlier_date:%@",earlier_date);
 //    
 //    BOOL isDateEnd = [earlier_date isEqualToDate:nowDate];
-    
     //NSLog(@"dic:%@",self.activityInfo);
     
     
