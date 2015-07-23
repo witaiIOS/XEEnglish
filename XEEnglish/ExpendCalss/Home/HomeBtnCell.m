@@ -77,6 +77,8 @@
     
     //self.button1 = (HomeButton *)[self viewWithTag:1];
     //NSLog(@"title:%@",[_serviceDic1 objectForKey:@"title"]);
+    self.button1.personNumLabel.text = [NSString stringWithFormat:@"已报名%@人",[_serviceDic1 objectForKey:@"order_parent_count"]];
+    
     [self.button1 setTitle:[_serviceDic1 objectForKey:@"title"] forState:UIControlStateNormal];
     
     NSString *imageUrl1 = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[_serviceDic1 objectForKey:@"photo"]];
@@ -89,6 +91,8 @@
     //self.button2 = (HomeButton *)[self viewWithTag:2];
     if (_serviceDic2) {
         [self.button2 setHidden:NO];
+        
+        self.button2.personNumLabel.text = [NSString stringWithFormat:@"已报名%@人",[_serviceDic2 objectForKey:@"order_parent_count"]];
         
         [self.button2 setTitle:[_serviceDic2 objectForKey:@"title"] forState:UIControlStateNormal];
         //NSLog(@"title:%@",[_serviceDic2 objectForKey:@"title"]);

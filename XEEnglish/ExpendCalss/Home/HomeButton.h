@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeButton : UIButton
-
+@property (nonatomic, strong) UILabel *personNumLabel;//预约人数
 @end

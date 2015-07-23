@@ -33,6 +33,14 @@
         self.titleLabel.font=[UIFont systemFontOfSize:KFont];
         //设置图片
         self.imageView.contentMode=UIViewContentModeScaleAspectFit;
+        
+        //设置报名人数
+        self.personNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10+KImageHeight+8+KTitleHeight, kTitleWith, KTitleHeight)];
+        self.personNumLabel.textColor = [UIColor grayColor];
+        self.personNumLabel.textAlignment=NSTextAlignmentCenter;
+        self.personNumLabel.font=[UIFont systemFontOfSize:KFont-2];
+        [self addSubview:self.personNumLabel];
+        
     }
     return self;
 

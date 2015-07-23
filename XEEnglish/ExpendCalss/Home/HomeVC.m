@@ -231,7 +231,7 @@
         return 160;
     }
     else if (indexPath.section == 1){
-        return 120;
+        return 140;
     }
     else{
         return 44;
