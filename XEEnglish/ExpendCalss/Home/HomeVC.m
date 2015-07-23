@@ -247,9 +247,14 @@
     }
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.1f;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
     if (section == 1) {
+        
         UIView *viewBackground =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 120)];
         viewBackground.backgroundColor = [UIColor clearColor];
         
