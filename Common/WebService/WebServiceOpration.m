@@ -231,6 +231,15 @@
 
 }
 
+/**
+ 获取课程详情和评论列表
+ @param course_id 注册id
+ */
++ (AFHTTPRequestOperation *)getCourseDetailAndTopCommentListByCourseId:(NSString *)course_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseDetailAndTopCommentListByCourseId><web:json>{\"course_id\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetCourseDetailAndTopCommentListByCourseId>",course_id,(long)pageSize,(long)pageIndex]];
+}
+
 #pragma mark - 课程
 /**
  通过家长id，查找学生选课关系简介列表

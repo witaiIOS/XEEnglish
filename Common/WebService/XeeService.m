@@ -360,9 +360,23 @@
             block(result,error);
         }
     }];
+    
+}
 
+
+/**
+ 获取课程详情和评论列表
+ @param course_id 注册id
+ */
+- (void)getCourseDetailAndTopCommentListByCourseId:(NSString *)course_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void(^)(NSDictionary *result, NSError *error))block{
     
+    AFHTTPRequestOperation *operation = [WebServiceOpration getCourseDetailAndTopCommentListByCourseId:course_id andPageSize:pageSize andPageIndex:pageIndex];
     
+    [self getResponseWithOpration:operation andXmlKey:@"GetCourseDetailAndTopCommentListByCourseIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
 }
 
 #pragma mark - 课程

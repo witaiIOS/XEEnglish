@@ -149,6 +149,12 @@
 
 - (void)addStudentSubCourseWithDepartmentId:(NSString *)departmentId andStudentId:(NSString *)studentId andType:(NSString *)type andOrderPrice:(NSInteger)orderPrice andPlatFormTypeId:(NSString *)platFormTypeId andListCoupon:(NSString *)listCoupon andToken:(NSString *)token andPayType:(NSString *)payType andNumbers:(NSInteger)numbers andCourseId:(NSInteger)courseId andParentId:(NSString *)parentId andIsSelectStudent:(NSString *)is_select_student andSex:(NSString *)sex andBirthday:(NSString *)birthday andName:(NSString *)name andBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 获取课程详情和评论列表
+ @param course_id 注册id
+ */
+- (void)getCourseDetailAndTopCommentListByCourseId:(NSString *)course_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void(^)(NSDictionary *result, NSError *error))block;
+
 #pragma mark - 课程
 /**
  通过家长id，查找学生选课关系简介列表
