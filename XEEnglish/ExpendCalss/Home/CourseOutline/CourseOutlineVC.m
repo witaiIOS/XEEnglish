@@ -124,12 +124,20 @@
     
     targetStudentValueLabel.numberOfLines = 0;
     targetStudentValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    CGSize targetStudentValueSize = [targetStudentValueLabel sizeThatFits:CGSizeMake(targetStudentValueLabel.frame.size.width, MAXFLOAT)];
+    CGSize targetStudentValueSize = [targetStudentValueLabel.text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(targetStudentValueLabel.frame.size.width, 2000.0) lineBreakMode:NSLineBreakByWordWrapping];
     if (targetStudentValueSize.height > 30) {
         targetStudentValueLabel.frame = CGRectMake(80, 230, kScreenWidth-80-20, targetStudentValueSize.height);
     }else{
         targetStudentValueLabel.frame = CGRectMake(80, 230, kScreenWidth-80-20, 30);
     }
+
+    
+//    CGSize targetStudentValueSize = [targetStudentValueLabel sizeThatFits:CGSizeMake(targetStudentValueLabel.frame.size.width, MAXFLOAT)];
+//    if (targetStudentValueSize.height > 30) {
+//        targetStudentValueLabel.frame = CGRectMake(80, 230, kScreenWidth-80-20, targetStudentValueSize.height);
+//    }else{
+//        targetStudentValueLabel.frame = CGRectMake(80, 230, kScreenWidth-80-20, 30);
+//    }
     targetStudentValueLabel.font = [UIFont systemFontOfSize:14];
     
 //    //重置课程目标的label
@@ -186,12 +194,14 @@
     //自动换行，自适应高度
     courseFeatureValueLabel.numberOfLines = 0;
     courseFeatureValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    CGSize courseFeatureValueSize = [courseFeatureValueLabel sizeThatFits:CGSizeMake(courseFeatureValueLabel.frame.size.width, MAXFLOAT)];
-    if (courseFeatureValueSize.height > 30) {
-        courseFeatureValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseFeatureValueSize.height);
-    }else{
-        courseFeatureValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40,30);
-    }
+    CGSize courseFeatureValueSize = [courseFeatureValueLabel.text sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(courseFeatureValueLabel.frame.size.width, 2000.0) lineBreakMode:NSLineBreakByWordWrapping];
+    courseFeatureValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseFeatureValueSize.height);
+//    CGSize courseFeatureValueSize = [courseFeatureValueLabel sizeThatFits:CGSizeMake(courseFeatureValueLabel.frame.size.width, MAXFLOAT)];
+//    if (courseFeatureValueSize.height > 30) {
+//        courseFeatureValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseFeatureValueSize.height);
+//    }else{
+//        courseFeatureValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40,30);
+//    }
     
     courseFeatureValueLabel.font = [UIFont systemFontOfSize:12];
     
@@ -231,12 +241,16 @@
     //自动换行，自适应高度
     courseIntroductionValueLabel.numberOfLines = 0;
     courseIntroductionValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    CGSize courseIntroductionValueSize = [courseIntroductionValueLabel sizeThatFits:CGSizeMake(courseIntroductionValueLabel.frame.size.width, MAXFLOAT)];
-    if (courseIntroductionValueSize.height > 30) {
-        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseIntroductionValueSize.height);
-    }else{
-        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40,30);
-    }
+    CGSize courseIntroductionValueSize = [courseIntroductionValueLabel.text sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(courseIntroductionValueLabel.frame.size.width, 2000.0) lineBreakMode:NSLineBreakByWordWrapping];
+    courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseIntroductionValueSize.height);
+//    CGSize courseIntroductionValueSize = [courseIntroductionValueLabel sizeThatFits:CGSizeMake(courseIntroductionValueLabel.frame.size.width, MAXFLOAT)];
+    
+    //[courseIntroductionValueLabel sizeToFit];
+//    if (courseIntroductionValueSize.height > 30) {
+//        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseIntroductionValueSize.height);
+//    }else{
+//        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40,30);
+//    }
     
     courseIntroductionValueLabel.font = [UIFont systemFontOfSize:12];
 //-----------------------------------------------------------------
