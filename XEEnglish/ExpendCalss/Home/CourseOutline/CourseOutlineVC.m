@@ -63,6 +63,7 @@
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 140, kScreenWidth-20, 30)];
     titleLabel.text = self.courseInfo[@"title"];
     titleLabel.textColor = [UIColor blackColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont systemFontOfSize:14];
 
     //分割线
@@ -71,19 +72,25 @@
 //-----------------------------------------------------------------
     //购买方式
     UILabel *buyMethedLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 170, 70, 30)];
-    buyMethedLabel.text = @"购买方式";
-    buyMethedLabel.textColor = [UIColor grayColor];
+    buyMethedLabel.text = @"付费方式";
+    buyMethedLabel.textColor = [UIColor blackColor];
     buyMethedLabel.font = [UIFont systemFontOfSize:14];
     
-    UILabel *buyMethedValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 170, 70, 30)];
+    UILabel *buyMethedValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 170, kScreenWidth-80-10, 30)];
     //buyMethedValueLabel.text = @"";
     buyMethedValueLabel.textColor = [UIColor grayColor];
     buyMethedValueLabel.font = [UIFont systemFontOfSize:14];
+    NSString *payType = [NSString stringWithFormat:@"%@",self.courseInfo[@"pay_type"]];
+    if ([payType intValue] == 1) {
+        buyMethedValueLabel.text = [NSString stringWithFormat:@"课时购买。  课时单价：%@元／时 ",self.courseInfo[@"price"]];
+    }else if ([payType intValue] == 2){
+        buyMethedValueLabel.text = [NSString stringWithFormat:@"整套购买。  整套价：%@元／套 ",self.courseInfo[@"total_price"]];
+    }
     
-    UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 170, 70, 30)];
-    //priceLabel.text = @"";
-    priceLabel.textColor = [UIColor grayColor];
-    priceLabel.font = [UIFont systemFontOfSize:14];
+//    UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 170, 70, 30)];
+//    //priceLabel.text = @"";
+//    priceLabel.textColor = [UIColor grayColor];
+//    priceLabel.font = [UIFont systemFontOfSize:14];
 
     //分割线
     UILabel *buyMethedLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 199, kScreenWidth-20, 1)];
@@ -92,7 +99,7 @@
     //适合人群
     UILabel *ageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 200, 70, 30)];
     ageLabel.text = @"适合人群";
-    ageLabel.textColor = [UIColor grayColor];
+    ageLabel.textColor = [UIColor blackColor];
     ageLabel.font = [UIFont systemFontOfSize:14];
     
     UILabel *ageValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 200, 150, 30)];
@@ -107,20 +114,39 @@
     //课程目标
     UILabel *targetStudentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 230, 70, 30)];
     targetStudentLabel.text = @"课程目标";
-    targetStudentLabel.textColor = [UIColor grayColor];
+    targetStudentLabel.textColor = [UIColor blackColor];
     targetStudentLabel.font = [UIFont systemFontOfSize:14];
     
-    UILabel *targetStudentValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 230, 150, 30)];
+    UILabel *targetStudentValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 230, kScreenWidth-80-10, 30)];
     targetStudentValueLabel.text = [NSString stringWithFormat:@"%@",self.courseInfo[@"target_student"]];
     targetStudentValueLabel.textColor = [UIColor grayColor];
+    
+    targetStudentValueLabel.numberOfLines = 0;
+    targetStudentValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    CGSize targetStudentValueSize = [targetStudentValueLabel sizeThatFits:CGSizeMake(targetStudentValueLabel.frame.size.width, MAXFLOAT)];
+    if (targetStudentValueSize.height > 30) {
+        targetStudentValueLabel.frame = CGRectMake(80, 230, kScreenWidth-80-10, targetStudentValueSize.height);
+    }else{
+        targetStudentValueLabel.frame = CGRectMake(80, 230, kScreenWidth-80-10, 30);
+    }
     targetStudentValueLabel.font = [UIFont systemFontOfSize:14];
+    
+//    //重置课程目标的label
+//    targetStudentLabel.frame = CGRectMake(10, 230, 70, targetStudentValueSize.height);
     
 //    //分割线
 //    UILabel *targetStudentLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(0, 260, kScreenWidth, 10)];
 //    targetStudentLabelLine.backgroundColor = [UIColor lightGrayColor];
 //-----------------------------------------------------------------
     //第一分区视图
-    UIView *firstView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 230+targetStudentValueLabel.frame.size.height)];
+    CGFloat firstViewHeight = 0;
+    if (targetStudentValueLabel.frame.size.height > 30) {
+        firstViewHeight = 230+targetStudentValueLabel.frame.size.height;
+    }else{
+        firstViewHeight = 230+30;
+    }
+    
+    UIView *firstView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, firstViewHeight)];
     firstView.backgroundColor = [UIColor whiteColor];
     
     [firstView addSubview:courseImageView];
@@ -130,7 +156,7 @@
     
     [firstView addSubview:buyMethedLabel];
     [firstView addSubview:buyMethedValueLabel];
-    [firstView addSubview:priceLabel];
+    //[firstView addSubview:priceLabel];
     [firstView addSubview:buyMethedLabelLine];
     
     [firstView addSubview:ageLabel];
@@ -168,9 +194,21 @@
     courseIntroductionValueLabel.numberOfLines = 0;
     courseIntroductionValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
     CGSize courseIntroductionValueSize = [courseIntroductionValueLabel sizeThatFits:CGSizeMake(courseIntroductionValueLabel.frame.size.width, MAXFLOAT)];
-    courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-20, courseIntroductionValueSize.height-30);
+    if (courseIntroductionValueSize.height > 30) {
+        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-20, courseIntroductionValueSize.height);
+    }else{
+        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-20,30);
+    }
+    
     courseIntroductionValueLabel.font = [UIFont systemFontOfSize:12];
 //-----------------------------------------------------------------
+//    CGFloat secondViewHeight = 0;
+//    if (courseIntroductionValueLabel.frame.size.height > 30) {
+//        secondViewHeight = 230+targetStudentValueLabel.frame.size.height;
+//    }else{
+//        secondViewHeight = 230+30;
+//    }
+    
     UIView *secondView = [[UIView alloc] initWithFrame:CGRectMake(0, orignalSecondHeight, kScreenWidth, 30+courseIntroductionValueLabel.frame.size.height)];
     secondView.backgroundColor = [UIColor whiteColor];
     
