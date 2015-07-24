@@ -110,6 +110,9 @@
 		09D0BD441B620C0F0074D1A3 /* PayListeningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD431B620C0F0074D1A3 /* PayListeningVC.m */; };
 		09D0BD481B6220060074D1A3 /* SchoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD471B6220060074D1A3 /* SchoolVC.m */; };
 		09D0BD4B1B6220890074D1A3 /* SchoolVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD4A1B6220890074D1A3 /* SchoolVCCell.m */; };
+		09D0BD4F1B6227D60074D1A3 /* hp_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 09D0BD4C1B6227D60074D1A3 /* hp_active.png */; };
+		09D0BD501B6227D60074D1A3 /* hp_mamabang.png in Resources */ = {isa = PBXBuildFile; fileRef = 09D0BD4D1B6227D60074D1A3 /* hp_mamabang.png */; };
+		09D0BD511B6227D60074D1A3 /* hp_near_schoolsite.png in Resources */ = {isa = PBXBuildFile; fileRef = 09D0BD4E1B6227D60074D1A3 /* hp_near_schoolsite.png */; };
 		09D0EE511B60C97200624E9B /* HomeDetailButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0EE501B60C97200624E9B /* HomeDetailButton.m */; };
 		09D0EE551B61060000624E9B /* CourseOutlineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0EE541B61060000624E9B /* CourseOutlineVC.m */; };
 		09D231991B50EEA70055758A /* CourseMyCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D231971B50EEA70055758A /* CourseMyCommentVC.m */; };
@@ -445,6 +448,9 @@
 		09D0BD471B6220060074D1A3 /* SchoolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolVC.m; sourceTree = "<group>"; };
 		09D0BD491B6220890074D1A3 /* SchoolVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolVCCell.h; sourceTree = "<group>"; };
 		09D0BD4A1B6220890074D1A3 /* SchoolVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolVCCell.m; sourceTree = "<group>"; };
+		09D0BD4C1B6227D60074D1A3 /* hp_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_active.png; sourceTree = "<group>"; };
+		09D0BD4D1B6227D60074D1A3 /* hp_mamabang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_mamabang.png; sourceTree = "<group>"; };
+		09D0BD4E1B6227D60074D1A3 /* hp_near_schoolsite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_near_schoolsite.png; sourceTree = "<group>"; };
 		09D0EE4F1B60C97200624E9B /* HomeDetailButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailButton.h; sourceTree = "<group>"; };
 		09D0EE501B60C97200624E9B /* HomeDetailButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailButton.m; sourceTree = "<group>"; };
 		09D0EE531B61060000624E9B /* CourseOutlineVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseOutlineVC.h; sourceTree = "<group>"; };
@@ -1121,6 +1127,9 @@
 		09DB2DBB1B13228B0078AAF5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				09D0BD4C1B6227D60074D1A3 /* hp_active.png */,
+				09D0BD4D1B6227D60074D1A3 /* hp_mamabang.png */,
+				09D0BD4E1B6227D60074D1A3 /* hp_near_schoolsite.png */,
 				09C639551B3AA77400510F00 /* pay_02.png */,
 				09C6394F1B3A9F5E00510F00 /* pay_01.png */,
 				09C639511B3A9F5E00510F00 /* pay_03.png */,
@@ -2005,6 +2014,7 @@
 				A6284D9D1B1067C100EFF820 /* LoginVC.xib in Resources */,
 				09DB2DC91B1322A30078AAF5 /* people_ayb.png in Resources */,
 				09D0BD411B620A9F0074D1A3 /* PriceCell.xib in Resources */,
+				09D0BD501B6227D60074D1A3 /* hp_mamabang.png in Resources */,
 				094DD2601B3954830045EF2C /* arrow_right_gray.png in Resources */,
 				09C9C0F71B22FA19001BBA1C /* no.png in Resources */,
 				09D23C4E1B4252F0008B6085 /* gift-01.png in Resources */,
@@ -2023,6 +2033,7 @@
 				09D2319A1B50EEA70055758A /* CourseMyCommentVC.xib in Resources */,
 				09C7682F1B58AF0100012A33 /* MyCourseCell.xib in Resources */,
 				A6284CDA1B10592100EFF820 /* Images.xcassets in Resources */,
+				09D0BD511B6227D60074D1A3 /* hp_near_schoolsite.png in Resources */,
 				090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */,
 				09D5459F1B44D6DB00CC5844 /* ExpendRecordCell.xib in Resources */,
 				09DB2DBE1B13228B0078AAF5 /* join_05.png in Resources */,
@@ -2037,6 +2048,7 @@
 				09C9C0E41B22C890001BBA1C /* STreserve.png in Resources */,
 				09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */,
 				09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */,
+				09D0BD4F1B6227D60074D1A3 /* hp_active.png in Resources */,
 				09C9C0E51B22C890001BBA1C /* STset.png in Resources */,
 				09C8C1D21B53575C000E089F /* NearSchoolCell.xib in Resources */,
 				A6284D541B105E5600EFF820 /* MJRefresh.bundle in Resources */,

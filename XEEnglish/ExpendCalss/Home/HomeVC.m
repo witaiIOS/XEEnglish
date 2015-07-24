@@ -267,7 +267,7 @@
         [mamaBangBtn setFrame:CGRectMake(20, 0, 70, 70)];
         mamaBangBtn.tag = 10;
         [mamaBangBtn setTitle:@"妈妈帮" forState:UIControlStateNormal];
-        [mamaBangBtn setImage:[UIImage imageNamed:@"image_loading.png" ]forState:UIControlStateNormal];
+        [mamaBangBtn setImage:[UIImage imageNamed:@"hp_mamabang.png" ]forState:UIControlStateNormal];
         [mamaBangBtn addTarget:self action:@selector(HomeDetailButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [viewWhite addSubview:mamaBangBtn];
         //近期活动Btn
@@ -275,7 +275,7 @@
         [nearActivityBtn setFrame:CGRectMake(20+(kScreenWidth/3), 0, 70, 70)];
         nearActivityBtn.tag = 11;
         [nearActivityBtn setTitle:@"近期活动" forState:UIControlStateNormal];
-        [nearActivityBtn setImage:[UIImage imageNamed:@"image_loading.png" ]forState:UIControlStateNormal];
+        [nearActivityBtn setImage:[UIImage imageNamed:@"hp_active.png" ]forState:UIControlStateNormal];
         [nearActivityBtn addTarget:self action:@selector(HomeDetailButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [viewWhite addSubview:nearActivityBtn];
         //附近校区Btn
@@ -283,7 +283,7 @@
         [nearSchoolBtn setFrame:CGRectMake(20+2*(kScreenWidth/3), 0, 70, 70)];
         nearSchoolBtn.tag = 12;
         [nearSchoolBtn setTitle:@"附近校区" forState:UIControlStateNormal];
-        [nearSchoolBtn setImage:[UIImage imageNamed:@"image_loading.png" ]forState:UIControlStateNormal];
+        [nearSchoolBtn setImage:[UIImage imageNamed:@"hp_near_schoolsite.png" ]forState:UIControlStateNormal];
         [nearSchoolBtn addTarget:self action:@selector(HomeDetailButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [viewWhite addSubview:nearSchoolBtn];
         //课程列表Label
