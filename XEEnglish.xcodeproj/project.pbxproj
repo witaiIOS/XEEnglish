@@ -108,6 +108,8 @@
 		09D0BD3F1B620A8C0074D1A3 /* PriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD3E1B620A8C0074D1A3 /* PriceCell.m */; };
 		09D0BD411B620A9F0074D1A3 /* PriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D0BD401B620A9F0074D1A3 /* PriceCell.xib */; };
 		09D0BD441B620C0F0074D1A3 /* PayListeningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD431B620C0F0074D1A3 /* PayListeningVC.m */; };
+		09D0BD481B6220060074D1A3 /* SchoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD471B6220060074D1A3 /* SchoolVC.m */; };
+		09D0BD4B1B6220890074D1A3 /* SchoolVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD4A1B6220890074D1A3 /* SchoolVCCell.m */; };
 		09D0EE511B60C97200624E9B /* HomeDetailButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0EE501B60C97200624E9B /* HomeDetailButton.m */; };
 		09D0EE551B61060000624E9B /* CourseOutlineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0EE541B61060000624E9B /* CourseOutlineVC.m */; };
 		09D231991B50EEA70055758A /* CourseMyCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D231971B50EEA70055758A /* CourseMyCommentVC.m */; };
@@ -439,6 +441,10 @@
 		09D0BD401B620A9F0074D1A3 /* PriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceCell.xib; sourceTree = "<group>"; };
 		09D0BD421B620C0F0074D1A3 /* PayListeningVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayListeningVC.h; sourceTree = "<group>"; };
 		09D0BD431B620C0F0074D1A3 /* PayListeningVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayListeningVC.m; sourceTree = "<group>"; };
+		09D0BD461B6220060074D1A3 /* SchoolVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolVC.h; sourceTree = "<group>"; };
+		09D0BD471B6220060074D1A3 /* SchoolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolVC.m; sourceTree = "<group>"; };
+		09D0BD491B6220890074D1A3 /* SchoolVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolVCCell.h; sourceTree = "<group>"; };
+		09D0BD4A1B6220890074D1A3 /* SchoolVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolVCCell.m; sourceTree = "<group>"; };
 		09D0EE4F1B60C97200624E9B /* HomeDetailButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailButton.h; sourceTree = "<group>"; };
 		09D0EE501B60C97200624E9B /* HomeDetailButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailButton.m; sourceTree = "<group>"; };
 		09D0EE531B61060000624E9B /* CourseOutlineVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseOutlineVC.h; sourceTree = "<group>"; };
@@ -1023,6 +1029,7 @@
 		09D0BD331B62064E0074D1A3 /* Listening */ = {
 			isa = PBXGroup;
 			children = (
+				09D0BD451B621FE10074D1A3 /* OthersVC */,
 				09D0BD371B62071A0074D1A3 /* ListeningCell */,
 				09D0BD421B620C0F0074D1A3 /* PayListeningVC.h */,
 				09D0BD431B620C0F0074D1A3 /* PayListeningVC.m */,
@@ -1041,6 +1048,17 @@
 				09D0BD401B620A9F0074D1A3 /* PriceCell.xib */,
 			);
 			path = ListeningCell;
+			sourceTree = "<group>";
+		};
+		09D0BD451B621FE10074D1A3 /* OthersVC */ = {
+			isa = PBXGroup;
+			children = (
+				09D0BD461B6220060074D1A3 /* SchoolVC.h */,
+				09D0BD471B6220060074D1A3 /* SchoolVC.m */,
+				09D0BD491B6220890074D1A3 /* SchoolVCCell.h */,
+				09D0BD4A1B6220890074D1A3 /* SchoolVCCell.m */,
+			);
+			path = OthersVC;
 			sourceTree = "<group>";
 		};
 		09D0EE521B6105D900624E9B /* CourseOutline */ = {
@@ -2054,7 +2072,9 @@
 				A6284D4B1B105E5600EFF820 /* AFURLRequestSerialization.m in Sources */,
 				A6284D4A1B105E5600EFF820 /* AFURLConnectionOperation.m in Sources */,
 				A6D4F2361B539D43001D3D0E /* openssl_wrapper.m in Sources */,
+				09D0BD481B6220060074D1A3 /* SchoolVC.m in Sources */,
 				094DD26C1B3978ED0045EF2C /* ListeningCourseInfoCell.m in Sources */,
+				09D0BD4B1B6220890074D1A3 /* SchoolVCCell.m in Sources */,
 				09C87F291B3BEFB900D7C913 /* SubCourseListVC.m in Sources */,
 				093A587C1B43B543006F104D /* CourseLeaveExplainVC.m in Sources */,
 				09C6394B1B3A935100510F00 /* PaymoneyCell.m in Sources */,

@@ -185,6 +185,7 @@
                         cell.rowOfCell = 3;
                         cell.delegate = self;
                         cell.myTipLabel.text = @"选择或输入小孩";
+                        cell.mySwitchBtn.on = [self.sex intValue];
                         if ([self.sex isEqualToString: @"1"]) {
                             cell.myDetailLabel.text = @"男";
                         }
