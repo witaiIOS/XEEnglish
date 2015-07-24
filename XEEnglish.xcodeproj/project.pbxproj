@@ -104,6 +104,7 @@
 		09CA69231B20213800A31E0E /* couponstime.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69221B20213800A31E0E /* couponstime.png */; };
 		09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */; };
 		09D0EE511B60C97200624E9B /* HomeDetailButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0EE501B60C97200624E9B /* HomeDetailButton.m */; };
+		09D0EE551B61060000624E9B /* CourseOutlineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0EE541B61060000624E9B /* CourseOutlineVC.m */; };
 		09D231991B50EEA70055758A /* CourseMyCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D231971B50EEA70055758A /* CourseMyCommentVC.m */; };
 		09D2319A1B50EEA70055758A /* CourseMyCommentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D231981B50EEA70055758A /* CourseMyCommentVC.xib */; };
 		09D2319D1B511DEB0055758A /* SingleCourseCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D2319C1B511DEB0055758A /* SingleCourseCommentVC.m */; };
@@ -427,6 +428,8 @@
 		09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payCompleteVC.m; sourceTree = "<group>"; };
 		09D0EE4F1B60C97200624E9B /* HomeDetailButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailButton.h; sourceTree = "<group>"; };
 		09D0EE501B60C97200624E9B /* HomeDetailButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailButton.m; sourceTree = "<group>"; };
+		09D0EE531B61060000624E9B /* CourseOutlineVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseOutlineVC.h; sourceTree = "<group>"; };
+		09D0EE541B61060000624E9B /* CourseOutlineVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseOutlineVC.m; sourceTree = "<group>"; };
 		09D231961B50EEA70055758A /* CourseMyCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyCommentVC.h; sourceTree = "<group>"; };
 		09D231971B50EEA70055758A /* CourseMyCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMyCommentVC.m; sourceTree = "<group>"; };
 		09D231981B50EEA70055758A /* CourseMyCommentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseMyCommentVC.xib; sourceTree = "<group>"; };
@@ -1004,6 +1007,15 @@
 			path = Coupons;
 			sourceTree = "<group>";
 		};
+		09D0EE521B6105D900624E9B /* CourseOutline */ = {
+			isa = PBXGroup;
+			children = (
+				09D0EE531B61060000624E9B /* CourseOutlineVC.h */,
+				09D0EE541B61060000624E9B /* CourseOutlineVC.m */,
+			);
+			path = CourseOutline;
+			sourceTree = "<group>";
+		};
 		09D23C3F1B42401E008B6085 /* Points */ = {
 			isa = PBXGroup;
 			children = (
@@ -1454,6 +1466,7 @@
 		A6284D6A1B105E6600EFF820 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				09D0EE521B6105D900624E9B /* CourseOutline */,
 				09C8C1CA1B535420000E089F /* NearSchoolVC */,
 				0980856B1B32C35A00BE9336 /* CourseIntroductionVC */,
 				A6284D8D1B10668300EFF820 /* HomeVC.h */,
@@ -2062,6 +2075,7 @@
 				09D560441B26D3E700ADF334 /* ForgetPassWordVC.m in Sources */,
 				A6284D591B105E5600EFF820 /* UIScrollView+MJExtension.m in Sources */,
 				09E24B201B41710200F762BD /* MyBookSiteCell.m in Sources */,
+				09D0EE551B61060000624E9B /* CourseOutlineVC.m in Sources */,
 				09C9DE3A1B2A66F600A07544 /* MyActivityCell.m in Sources */,
 				A6284D981B1066DE00EFF820 /* SettingVC.m in Sources */,
 				09C328611B301D8E009F0BAB /* CourseLeaveVC.m in Sources */,

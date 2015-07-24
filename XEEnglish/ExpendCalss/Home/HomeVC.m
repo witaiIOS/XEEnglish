@@ -18,6 +18,7 @@
 
 #import "AllCoursesVC.h"
 #import "SingleCourseVC.h"
+#import "CourseOutlineVC.h"
 
 @interface HomeVC ()<HomeBtnCellDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -372,9 +373,15 @@
 //        vc.courseId = courseIdStr;
 //        [self.navigationController pushViewController:vc animated:YES];
 //    }
-    SingleCourseVC *vc = [[SingleCourseVC alloc] init];
+    
+//    SingleCourseVC *vc = [[SingleCourseVC alloc] init];
+//    vc.hidesBottomBarWhenPushed = YES;
+//    vc.title = [serviceDic objectForKey:@"title"];
+//    vc.courseId = courseIdStr;
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    CourseOutlineVC *vc = [[CourseOutlineVC alloc] init];
     vc.hidesBottomBarWhenPushed = YES;
-    vc.title = [serviceDic objectForKey:@"title"];
     vc.courseId = courseIdStr;
     [self.navigationController pushViewController:vc animated:YES];
 }
