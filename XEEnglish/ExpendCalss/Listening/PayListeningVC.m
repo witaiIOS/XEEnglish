@@ -32,6 +32,12 @@
 - (void)initUI{
     
     [super initUI];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self.view addSubview:self.tableView];
 }
 
 #pragma mark - UITableView DataSource
@@ -88,13 +94,13 @@
         }
         return cell;
     }
-    else if (indexPath.section == 2){
+    else if (indexPath.section == 1){
         
-        if (indexPath.row) {
+        if (indexPath.row == 0) {
             [tableView registerNib:[UINib nibWithNibName:@"SwicthCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse2];
             
             SwicthCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
-            
+            cell.cellEdge = 10;
             cell.myTipLabel.text = @"选择或输入小孩";
             cell.myDetailLabel.text = @"选择";
             
@@ -120,9 +126,10 @@
         [tableView registerNib:[UINib nibWithNibName:@"PriceCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse3];
         
         PriceCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse3];
+        cell.cellEdge = 10;
         
-        cell.myTipLabel.text = @"选择或输入小孩";
-        cell.myDetailLabel.text = @"选择";
+        cell.myTipLabel.text = @"缴费金额";
+        cell.myDetailLabel.text = @"";
         
         return cell;
     }else{
@@ -144,7 +151,22 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+- (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 44.0f;
+}
 
+- (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return 5.0f;
+    }else{
+        return 1.0f;
+    }
+}
+
+- (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return 5.0f;
+}
 
 
 

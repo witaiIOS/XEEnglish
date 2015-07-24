@@ -58,11 +58,11 @@
             </objects>
             <point key="canvasLocation" x="-223" y="1372"/>
         </scene>
-        <!--活动-->
+        <!--课表-->
         <scene sceneID="coI-YM-KOS">
             <objects>
                 <navigationController id="mJd-rJ-v4M" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="活动" image="tab_activity.png" id="LtT-rF-kXn"/>
+                    <tabBarItem key="tabBarItem" title="课表" image="tab_activity.png" id="LtT-rF-kXn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZvO-OB-GRq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -75,26 +75,26 @@
             </objects>
             <point key="canvasLocation" x="-691" y="646"/>
         </scene>
-        <!--活动-->
+        <!--课表-->
         <scene sceneID="bWa-Y7-5GN">
             <objects>
-                <viewController id="gJI-7l-VqI" customClass="ActivityVC" sceneMemberID="viewController">
+                <viewController id="gJI-7l-VqI" customClass="CourseVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3bp-lk-Hhf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="活动" id="bv2-sJ-PIP"/>
+                    <navigationItem key="navigationItem" title="课表" id="bv2-sJ-PIP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vSz-hk-0wU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-255" y="668"/>
         </scene>
-        <!--课表-->
+        <!--上门送课-->
         <scene sceneID="eFQ-Iu-OdT">
             <objects>
                 <navigationController id="AHn-xM-Neg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="课表" image="tab_course.png" id="Jjd-N2-XMk"/>
+                    <tabBarItem key="tabBarItem" title="上门送课" image="tab_course.png" id="Jjd-N2-XMk"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JhT-Vs-nVh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -107,16 +107,16 @@
             </objects>
             <point key="canvasLocation" x="-697" y="-28"/>
         </scene>
-        <!--课表-->
+        <!--上门送课-->
         <scene sceneID="Mjh-u3-6mH">
             <objects>
-                <viewController id="9bG-Yo-1GE" customClass="CourseVC" sceneMemberID="viewController">
+                <viewController id="9bG-Yo-1GE" customClass="PayListeningVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cgs-kQ-zy5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="课表" id="Gbj-LM-rLU"/>
+                    <navigationItem key="navigationItem" title="上门送课" id="Gbj-LM-rLU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gir-zY-X4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
