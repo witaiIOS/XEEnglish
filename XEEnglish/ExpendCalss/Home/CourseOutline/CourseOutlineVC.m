@@ -12,6 +12,7 @@
 #import "ListeningCourseVC.h"
 #import "BuyCourseVC.h"
 #import "SingleCourseVC.h"
+#import "SingleCourseCommentVC.h"
 
 #import "XeeService.h"
 
@@ -56,18 +57,18 @@
 
 - (UIView *)headView{
     //课程图片
-    UIImageView *courseImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 140)];
+    UIImageView *courseImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, 140)];
     [courseImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,self.courseInfo[@"photo"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
 //-----------------------------------------------------------------
     //课程名
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 140, kScreenWidth-20, 30)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 140, kScreenWidth-40, 30)];
     titleLabel.text = self.courseInfo[@"title"];
     titleLabel.textColor = [UIColor blackColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont systemFontOfSize:14];
 
     //分割线
-    UILabel *titleLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 169, kScreenWidth-20, 1)];
+    UILabel *titleLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 169, kScreenWidth-40, 1)];
     titleLabelLine.backgroundColor = [UIColor lightGrayColor];
 //-----------------------------------------------------------------
     //购买方式
@@ -76,7 +77,7 @@
     buyMethedLabel.textColor = [UIColor blackColor];
     buyMethedLabel.font = [UIFont systemFontOfSize:14];
     
-    UILabel *buyMethedValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 170, kScreenWidth-80-10, 30)];
+    UILabel *buyMethedValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 170, kScreenWidth-80-20, 30)];
     //buyMethedValueLabel.text = @"";
     buyMethedValueLabel.textColor = [UIColor grayColor];
     buyMethedValueLabel.font = [UIFont systemFontOfSize:14];
@@ -93,7 +94,7 @@
 //    priceLabel.font = [UIFont systemFontOfSize:14];
 
     //分割线
-    UILabel *buyMethedLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 199, kScreenWidth-20, 1)];
+    UILabel *buyMethedLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 199, kScreenWidth-40, 1)];
     buyMethedLabelLine.backgroundColor = [UIColor lightGrayColor];
 //-----------------------------------------------------------------
     //适合人群
@@ -108,7 +109,7 @@
     ageValueLabel.font = [UIFont systemFontOfSize:14];
 
     //分割线
-    UILabel *ageLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 229, kScreenWidth-20, 1)];
+    UILabel *ageLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 229, kScreenWidth-40, 1)];
     ageLabelLine.backgroundColor = [UIColor lightGrayColor];
 //-----------------------------------------------------------------    
     //课程目标
@@ -117,7 +118,7 @@
     targetStudentLabel.textColor = [UIColor blackColor];
     targetStudentLabel.font = [UIFont systemFontOfSize:14];
     
-    UILabel *targetStudentValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 230, kScreenWidth-80-10, 30)];
+    UILabel *targetStudentValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 230, kScreenWidth-80-20, 30)];
     targetStudentValueLabel.text = [NSString stringWithFormat:@"%@",self.courseInfo[@"target_student"]];
     targetStudentValueLabel.textColor = [UIColor grayColor];
     
@@ -125,9 +126,9 @@
     targetStudentValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
     CGSize targetStudentValueSize = [targetStudentValueLabel sizeThatFits:CGSizeMake(targetStudentValueLabel.frame.size.width, MAXFLOAT)];
     if (targetStudentValueSize.height > 30) {
-        targetStudentValueLabel.frame = CGRectMake(80, 230, kScreenWidth-80-10, targetStudentValueSize.height);
+        targetStudentValueLabel.frame = CGRectMake(80, 230, kScreenWidth-80-20, targetStudentValueSize.height);
     }else{
-        targetStudentValueLabel.frame = CGRectMake(80, 230, kScreenWidth-80-10, 30);
+        targetStudentValueLabel.frame = CGRectMake(80, 230, kScreenWidth-80-20, 30);
     }
     targetStudentValueLabel.font = [UIFont systemFontOfSize:14];
     
@@ -139,14 +140,14 @@
 //    targetStudentLabelLine.backgroundColor = [UIColor lightGrayColor];
 //-----------------------------------------------------------------
     //第一分区视图
-    CGFloat firstViewHeight = 0;
-    if (targetStudentValueLabel.frame.size.height > 30) {
-        firstViewHeight = 230+targetStudentValueLabel.frame.size.height;
-    }else{
-        firstViewHeight = 230+30;
-    }
-    
-    UIView *firstView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, firstViewHeight)];
+//    CGFloat firstViewHeight = 0;
+//    if (targetStudentValueLabel.frame.size.height > 30) {
+//        firstViewHeight = 230+targetStudentValueLabel.frame.size.height;
+//    }else{
+//        firstViewHeight = 230+30;
+//    }
+    CGFloat firstViewHeight = 230 +targetStudentValueLabel.frame.size.height;
+    UIView *firstView =[[UIView alloc] initWithFrame:CGRectMake(10, 0, kScreenWidth-20, firstViewHeight)];
     firstView.backgroundColor = [UIColor whiteColor];
     
     [firstView addSubview:courseImageView];
@@ -169,25 +170,25 @@
     
 //-------------------------第二部分视图-----------------------------------------------------------
 
-    CGFloat orignalSecondHeight = firstView.frame.size.height+10;
+    CGFloat orignalThirdHeight = firstView.frame.size.height+10;
     //课程简介
     UILabel *courseIntroductionLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 70, 30)];
     courseIntroductionLabel.text = @"课程简介";
     courseIntroductionLabel.textColor = [UIColor blackColor];
     courseIntroductionLabel.font = [UIFont systemFontOfSize:14];
     
-    UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-20, 8, 8, 15)];
+    UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-40, 8, 8, 15)];
     arrowImageView.image = [UIImage imageNamed:@"arrow_right_gray.png"];
     
     UIButton *singleCourseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [singleCourseBtn setFrame:CGRectMake(0, 0, kScreenWidth, 30)];
+    [singleCourseBtn setFrame:CGRectMake(10, 0, kScreenWidth-20, 30)];
     [singleCourseBtn addTarget:self action:@selector(singleCourseBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     
     //分割线
     UILabel *courseIntroductionLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, kScreenWidth-20, 1)];
     courseIntroductionLabelLine.backgroundColor = [UIColor lightGrayColor];
 //-----------------------------------------------------------------
-    UILabel *courseIntroductionValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, kScreenWidth-20, 30)];
+    UILabel *courseIntroductionValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, kScreenWidth-40, 30)];
     courseIntroductionValueLabel.text = self.courseInfo[@"des"];
     courseIntroductionValueLabel.textColor = [UIColor blackColor];
     //自动换行，自适应高度
@@ -195,9 +196,9 @@
     courseIntroductionValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
     CGSize courseIntroductionValueSize = [courseIntroductionValueLabel sizeThatFits:CGSizeMake(courseIntroductionValueLabel.frame.size.width, MAXFLOAT)];
     if (courseIntroductionValueSize.height > 30) {
-        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-20, courseIntroductionValueSize.height);
+        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseIntroductionValueSize.height);
     }else{
-        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-20,30);
+        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40,30);
     }
     
     courseIntroductionValueLabel.font = [UIFont systemFontOfSize:12];
@@ -208,24 +209,51 @@
 //    }else{
 //        secondViewHeight = 230+30;
 //    }
+    CGFloat thirdViewHeight = 30+courseIntroductionValueLabel.frame.size.height;
+    UIView *thirdView = [[UIView alloc] initWithFrame:CGRectMake(10, orignalThirdHeight, kScreenWidth-20, thirdViewHeight)];
+    thirdView.backgroundColor = [UIColor whiteColor];
     
-    UIView *secondView = [[UIView alloc] initWithFrame:CGRectMake(0, orignalSecondHeight, kScreenWidth, 30+courseIntroductionValueLabel.frame.size.height)];
-    secondView.backgroundColor = [UIColor whiteColor];
-    
-    [secondView addSubview:courseIntroductionLabel];
-    [secondView addSubview:arrowImageView];
-    [secondView addSubview:singleCourseBtn];
-    [secondView addSubview:courseIntroductionLabelLine];
-    [secondView addSubview:courseIntroductionValueLabel];
+    [thirdView addSubview:courseIntroductionLabel];
+    [thirdView addSubview:arrowImageView];
+    [thirdView addSubview:singleCourseBtn];
+    [thirdView addSubview:courseIntroductionLabelLine];
+    [thirdView addSubview:courseIntroductionValueLabel];
     
 //----------------------------------------------------------------------------------
-    CGFloat backgroundViewHeight = orignalSecondHeight + secondView.frame.size.height+10;
+    CGFloat orignalFourthHeight = orignalThirdHeight + thirdView.frame.size.height+10;
+    
+    UIView *fourthView = [[UIView alloc] initWithFrame:CGRectMake(10, orignalFourthHeight, kScreenWidth-20, 30)];
+    fourthView.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *courseCommentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 80, 30)];
+    courseCommentLabel.text = @"课程评价";
+    courseCommentLabel.textColor = [UIColor blackColor];
+    courseCommentLabel.font = [UIFont systemFontOfSize:14];
+    
+    UILabel *allCommentLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-30-80, 0, 80, 30)];
+    allCommentLabel.text = @"全部评价";
+    allCommentLabel.textColor = [UIColor blackColor];
+    allCommentLabel.textAlignment = NSTextAlignmentRight;
+    allCommentLabel.font = [UIFont systemFontOfSize:12];
+    
+    UIButton *singleCourseCommentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [singleCourseCommentBtn setFrame:CGRectMake(10, 0, kScreenWidth-20, 30)];
+    [singleCourseCommentBtn addTarget:self action:@selector(singleCourseCommentBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    [fourthView addSubview:courseCommentLabel];
+    [fourthView addSubview:allCommentLabel];
+    [fourthView addSubview:singleCourseCommentBtn];
+    
+    
+//----------------------------------------------------------------------------------
+    CGFloat backgroundViewHeight = orignalFourthHeight + fourthView.frame.size.height;
     
     UIView *backgroundView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, backgroundViewHeight)];
     backgroundView.backgroundColor = [UIColor clearColor];
     //将视图1和视图2加入
     [backgroundView addSubview:firstView];
-    [backgroundView addSubview:secondView];
+    [backgroundView addSubview:thirdView];
+    [backgroundView addSubview:fourthView];
 
     return backgroundView;
 }
@@ -308,6 +336,12 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)singleCourseCommentBtnPressed{
+    SingleCourseCommentVC *vc = [[SingleCourseCommentVC alloc] init];
+    vc.courseInfoDic = self.courseInfo;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - Web
 - (void)getCourseDetailAndTopCommentListByCourseIdWithWeb{
     
@@ -371,7 +405,7 @@
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
     if (section == 0) {
-        return 5.0f;
+        return 1.0f;
     }
     else{
         return 1.0f;
@@ -388,7 +422,36 @@
     return 80.0f;
 }
 
-
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    
+//    UIView *sectionHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 35)];
+//    sectionHeadView.backgroundColor = [UIColor clearColor];
+//    
+//    if (section == 0) {
+//        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 4, kScreenWidth-20, 30)];
+//        view.backgroundColor = [UIColor whiteColor];
+//        
+//        UILabel *courseCommentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 80, 30)];
+//        courseCommentLabel.text = @"课程评价";
+//        courseCommentLabel.textColor = [UIColor blackColor];
+//        courseCommentLabel.font = [UIFont systemFontOfSize:14];
+//        
+//        [view addSubview:courseCommentLabel];
+//        
+//        UILabel *allCommentLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-20-80, 0, 80, 30)];
+//        allCommentLabel.text = @"全部评价";
+//        allCommentLabel.textColor = [UIColor blackColor];
+//        allCommentLabel.textAlignment = NSTextAlignmentRight;
+//        allCommentLabel.font = [UIFont systemFontOfSize:12];
+//        
+//        [view addSubview:allCommentLabel];
+//        
+//        [sectionHeadView addSubview:view];
+//        
+//        
+//    }
+//    return sectionHeadView;
+//}
 
 
 
