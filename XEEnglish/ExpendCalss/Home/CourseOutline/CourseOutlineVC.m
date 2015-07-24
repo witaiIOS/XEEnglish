@@ -195,13 +195,12 @@
     courseFeatureValueLabel.numberOfLines = 0;
     courseFeatureValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
     CGSize courseFeatureValueSize = [courseFeatureValueLabel.text sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(courseFeatureValueLabel.frame.size.width, 2000.0) lineBreakMode:NSLineBreakByWordWrapping];
-    courseFeatureValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseFeatureValueSize.height);
 //    CGSize courseFeatureValueSize = [courseFeatureValueLabel sizeThatFits:CGSizeMake(courseFeatureValueLabel.frame.size.width, MAXFLOAT)];
-//    if (courseFeatureValueSize.height > 30) {
-//        courseFeatureValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseFeatureValueSize.height);
-//    }else{
-//        courseFeatureValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40,30);
-//    }
+    if (courseFeatureValueSize.height > 30) {
+        courseFeatureValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseFeatureValueSize.height);
+    }else{
+        courseFeatureValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40,30);
+    }
     
     courseFeatureValueLabel.font = [UIFont systemFontOfSize:12];
     
@@ -246,11 +245,11 @@
 //    CGSize courseIntroductionValueSize = [courseIntroductionValueLabel sizeThatFits:CGSizeMake(courseIntroductionValueLabel.frame.size.width, MAXFLOAT)];
     
     //[courseIntroductionValueLabel sizeToFit];
-//    if (courseIntroductionValueSize.height > 30) {
-//        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseIntroductionValueSize.height);
-//    }else{
-//        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40,30);
-//    }
+    if (courseIntroductionValueSize.height > 30) {
+        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseIntroductionValueSize.height);
+    }else{
+        courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40,30);
+    }
     
     courseIntroductionValueLabel.font = [UIFont systemFontOfSize:12];
 //-----------------------------------------------------------------
