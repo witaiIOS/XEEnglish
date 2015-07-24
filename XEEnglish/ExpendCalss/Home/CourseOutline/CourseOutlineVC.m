@@ -370,8 +370,9 @@
         BuyCourseVC *vc = [[BuyCourseVC alloc] init];
         vc.courseName = self.title;
         vc.parentCourseId = self.courseId;
-        //vc.payMethodNumber = self.payMethodNum;
-        //vc.superPayMethodNumber = self.payMethodNum;
+        NSString *payMethod = self.courseInfo[@"pay_type"];
+        vc.payMethodNumber = [payMethod intValue];
+        vc.superPayMethodNumber = [payMethod intValue];
         vc.courseInfoDic = self.courseInfo;
         [self.navigationController pushViewController:vc animated:YES];
     }else{
