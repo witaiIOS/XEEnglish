@@ -103,6 +103,11 @@
 		09CA69211B201F2500A31E0E /* coupons1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69201B201F2500A31E0E /* coupons1.png */; };
 		09CA69231B20213800A31E0E /* couponstime.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69221B20213800A31E0E /* couponstime.png */; };
 		09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */; };
+		09D0BD3A1B6207740074D1A3 /* SwicthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD391B6207740074D1A3 /* SwicthCell.m */; };
+		09D0BD3C1B62078E0074D1A3 /* SwicthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D0BD3B1B62078E0074D1A3 /* SwicthCell.xib */; };
+		09D0BD3F1B620A8C0074D1A3 /* PriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD3E1B620A8C0074D1A3 /* PriceCell.m */; };
+		09D0BD411B620A9F0074D1A3 /* PriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D0BD401B620A9F0074D1A3 /* PriceCell.xib */; };
+		09D0BD441B620C0F0074D1A3 /* PayListeningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD431B620C0F0074D1A3 /* PayListeningVC.m */; };
 		09D0EE511B60C97200624E9B /* HomeDetailButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0EE501B60C97200624E9B /* HomeDetailButton.m */; };
 		09D0EE551B61060000624E9B /* CourseOutlineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0EE541B61060000624E9B /* CourseOutlineVC.m */; };
 		09D231991B50EEA70055758A /* CourseMyCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D231971B50EEA70055758A /* CourseMyCommentVC.m */; };
@@ -426,6 +431,14 @@
 		09CA69221B20213800A31E0E /* couponstime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couponstime.png; sourceTree = "<group>"; };
 		09CFD0061B4CFA17000D9D40 /* payCompleteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payCompleteVC.h; sourceTree = "<group>"; };
 		09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payCompleteVC.m; sourceTree = "<group>"; };
+		09D0BD381B6207740074D1A3 /* SwicthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwicthCell.h; sourceTree = "<group>"; };
+		09D0BD391B6207740074D1A3 /* SwicthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwicthCell.m; sourceTree = "<group>"; };
+		09D0BD3B1B62078E0074D1A3 /* SwicthCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwicthCell.xib; sourceTree = "<group>"; };
+		09D0BD3D1B620A8C0074D1A3 /* PriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceCell.h; sourceTree = "<group>"; };
+		09D0BD3E1B620A8C0074D1A3 /* PriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceCell.m; sourceTree = "<group>"; };
+		09D0BD401B620A9F0074D1A3 /* PriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceCell.xib; sourceTree = "<group>"; };
+		09D0BD421B620C0F0074D1A3 /* PayListeningVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayListeningVC.h; sourceTree = "<group>"; };
+		09D0BD431B620C0F0074D1A3 /* PayListeningVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayListeningVC.m; sourceTree = "<group>"; };
 		09D0EE4F1B60C97200624E9B /* HomeDetailButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailButton.h; sourceTree = "<group>"; };
 		09D0EE501B60C97200624E9B /* HomeDetailButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailButton.m; sourceTree = "<group>"; };
 		09D0EE531B61060000624E9B /* CourseOutlineVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseOutlineVC.h; sourceTree = "<group>"; };
@@ -1007,6 +1020,29 @@
 			path = Coupons;
 			sourceTree = "<group>";
 		};
+		09D0BD331B62064E0074D1A3 /* Listening */ = {
+			isa = PBXGroup;
+			children = (
+				09D0BD371B62071A0074D1A3 /* ListeningCell */,
+				09D0BD421B620C0F0074D1A3 /* PayListeningVC.h */,
+				09D0BD431B620C0F0074D1A3 /* PayListeningVC.m */,
+			);
+			path = Listening;
+			sourceTree = "<group>";
+		};
+		09D0BD371B62071A0074D1A3 /* ListeningCell */ = {
+			isa = PBXGroup;
+			children = (
+				09D0BD381B6207740074D1A3 /* SwicthCell.h */,
+				09D0BD391B6207740074D1A3 /* SwicthCell.m */,
+				09D0BD3B1B62078E0074D1A3 /* SwicthCell.xib */,
+				09D0BD3D1B620A8C0074D1A3 /* PriceCell.h */,
+				09D0BD3E1B620A8C0074D1A3 /* PriceCell.m */,
+				09D0BD401B620A9F0074D1A3 /* PriceCell.xib */,
+			);
+			path = ListeningCell;
+			sourceTree = "<group>";
+		};
 		09D0EE521B6105D900624E9B /* CourseOutline */ = {
 			isa = PBXGroup;
 			children = (
@@ -1413,6 +1449,7 @@
 		A6284D671B105E6600EFF820 /* ExpendCalss */ = {
 			isa = PBXGroup;
 			children = (
+				09D0BD331B62064E0074D1A3 /* Listening */,
 				A6284D6B1B105E6600EFF820 /* Login */,
 				A6284D6A1B105E6600EFF820 /* Home */,
 				A6284D691B105E6600EFF820 /* Course */,
@@ -1898,6 +1935,7 @@
 				09C543281B4FB6E000BD750C /* ListenStudentNameVC.xib in Resources */,
 				A6DA3E281B44D919005850EB /* UMSShareListController.xib in Resources */,
 				A6284D8A1B10652700EFF820 /* tab_activity@2x.png in Resources */,
+				09D0BD3C1B62078E0074D1A3 /* SwicthCell.xib in Resources */,
 				A6284D8C1B10652700EFF820 /* tab_setting@2x.png in Resources */,
 				09DB2DBA1B1322800078AAF5 /* s_phone.png in Resources */,
 				A6284D891B10652700EFF820 /* tab_home@2x.png in Resources */,
@@ -1948,6 +1986,7 @@
 				092A8C4C1B5FA45C006F7C6F /* agreement.html in Resources */,
 				A6284D9D1B1067C100EFF820 /* LoginVC.xib in Resources */,
 				09DB2DC91B1322A30078AAF5 /* people_ayb.png in Resources */,
+				09D0BD411B620A9F0074D1A3 /* PriceCell.xib in Resources */,
 				094DD2601B3954830045EF2C /* arrow_right_gray.png in Resources */,
 				09C9C0F71B22FA19001BBA1C /* no.png in Resources */,
 				09D23C4E1B4252F0008B6085 /* gift-01.png in Resources */,
@@ -2066,6 +2105,7 @@
 				09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */,
 				09CA16261B467BC80064667D /* GTMBase64.m in Sources */,
 				09C6FEFD1B4BFBF90069156D /* SelectedStudentVC.m in Sources */,
+				09D0BD3F1B620A8C0074D1A3 /* PriceCell.m in Sources */,
 				09C87F321B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m in Sources */,
 				09C87F2F1B3C24E700D7C913 /* PayCourseMethodVCViewController.m in Sources */,
 				A65B56F11B5B818E00F7E40B /* OrderPayVC.m in Sources */,
@@ -2121,6 +2161,7 @@
 				A6284D621B105E5600EFF820 /* UIRefreshControl+AFNetworking.m in Sources */,
 				A6D4F2351B539D43001D3D0E /* NSDataEx.m in Sources */,
 				09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */,
+				09D0BD441B620C0F0074D1A3 /* PayListeningVC.m in Sources */,
 				A6284D5E1B105E5600EFF820 /* UIAlertView+AFNetworking.m in Sources */,
 				093A58781B4398F2006F104D /* ApplyProtocolVC.m in Sources */,
 				A6284D4E1B105E5600EFF820 /* DDXMLElementAdditions.m in Sources */,
@@ -2141,6 +2182,7 @@
 				A6B1CEDB1B1C62D400100E9F /* NeTNameAndDomicileVC.m in Sources */,
 				09C3285C1B30135F009F0BAB /* CourseCell.m in Sources */,
 				093A58801B43E398006F104D /* CourseCommentVC.m in Sources */,
+				09D0BD3A1B6207740074D1A3 /* SwicthCell.m in Sources */,
 				09C768331B592B1400012A33 /* CannelOrderExplainVC.m in Sources */,
 				09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */,
 				09CA408F1B1C655000D12796 /* ActivityCell.m in Sources */,
