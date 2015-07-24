@@ -11,6 +11,7 @@
 
 #import "ListeningCourseVC.h"
 #import "BuyCourseVC.h"
+#import "SingleCourseVC.h"
 
 #import "XeeService.h"
 
@@ -114,12 +115,12 @@
     targetStudentValueLabel.textColor = [UIColor grayColor];
     targetStudentValueLabel.font = [UIFont systemFontOfSize:14];
     
-    //分割线
-    UILabel *targetStudentLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(0, 260, kScreenWidth, 10)];
-    targetStudentLabelLine.backgroundColor = [UIColor lightGrayColor];
+//    //分割线
+//    UILabel *targetStudentLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(0, 260, kScreenWidth, 10)];
+//    targetStudentLabelLine.backgroundColor = [UIColor lightGrayColor];
 //-----------------------------------------------------------------
     //第一分区视图
-    UIView *firstView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 230+targetStudentLabel.frame.size.height)];
+    UIView *firstView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 230+targetStudentValueLabel.frame.size.height)];
     firstView.backgroundColor = [UIColor whiteColor];
     
     [firstView addSubview:courseImageView];
@@ -138,7 +139,7 @@
     
     [firstView addSubview:targetStudentLabel];
     [firstView addSubview:targetStudentValueLabel];
-    [firstView addSubview:targetStudentLabelLine];
+//    [firstView addSubview:targetStudentLabelLine];
     
 //-------------------------第二部分视图-----------------------------------------------------------
 
@@ -149,11 +150,11 @@
     courseIntroductionLabel.textColor = [UIColor blackColor];
     courseIntroductionLabel.font = [UIFont systemFontOfSize:14];
     
-    UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 0, 8, 15)];
+    UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-20, 8, 8, 15)];
     arrowImageView.image = [UIImage imageNamed:@"arrow_right_gray.png"];
     
     UIButton *singleCourseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [singleCourseBtn setFrame:CGRectMake(0, 30, kScreenWidth, 30)];
+    [singleCourseBtn setFrame:CGRectMake(0, 0, kScreenWidth, 30)];
     [singleCourseBtn addTarget:self action:@selector(singleCourseBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     
     //分割线
@@ -167,7 +168,7 @@
     courseIntroductionValueLabel.numberOfLines = 0;
     courseIntroductionValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
     CGSize courseIntroductionValueSize = [courseIntroductionValueLabel sizeThatFits:CGSizeMake(courseIntroductionValueLabel.frame.size.width, MAXFLOAT)];
-    courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-20, courseIntroductionValueSize.height);
+    courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-20, courseIntroductionValueSize.height-30);
     courseIntroductionValueLabel.font = [UIFont systemFontOfSize:12];
 //-----------------------------------------------------------------
     UIView *secondView = [[UIView alloc] initWithFrame:CGRectMake(0, orignalSecondHeight, kScreenWidth, 30+courseIntroductionValueLabel.frame.size.height)];
@@ -262,7 +263,11 @@
 }
 
 - (void)singleCourseBtnPressed{
-    
+    SingleCourseVC *vc = [[SingleCourseVC alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.title = self.courseInfo[@"title"];
+    vc.courseId = [NSString stringWithFormat:@"%@",self.courseInfo[@"course_id"]];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Web
