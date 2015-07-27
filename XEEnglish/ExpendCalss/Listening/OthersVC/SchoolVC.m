@@ -52,7 +52,7 @@
     //NSLog(@"token:%@",userToken);
     //NSLog(@"parentCourseId:%@",self.parentCourseId);
     
-    [[XeeService sharedInstance] getSchoolWithParentId:userInfoDic[uUserId] andCourseId:@"1" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getSchoolWithParentId:userInfoDic[uUserId] andCourseId:self.courseId andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
             //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];

@@ -286,7 +286,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
@@ -300,11 +300,18 @@
             }
             case 1:
             {
-                SchoolVC *vc = [[SchoolVC alloc] init];
-                vc.hidesBottomBarWhenPushed = YES;
-                vc.selectedSchool = self.selectedSchool;
-                vc.delegate = self;
-                [self.navigationController pushViewController:vc animated:YES];
+                //校区要根据课程的id来查找，当未选择课程时，不让选择校区
+                if (self.selectedCourse == nil) {
+                    
+                    [UIFactory showAlert:@"请选择课程"];
+                }
+                else{
+                    SchoolVC *vc = [[SchoolVC alloc] init];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    vc.selectedSchool = self.selectedSchool;
+                    vc.delegate = self;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
                 break;
             }
                 
@@ -337,7 +344,10 @@
             }
         }
     }
+    
 }
+
+
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 44.0f;
 }
