@@ -16,8 +16,9 @@
 #import "SchoolVC.h"
 
 #import "StudentVC.h"
+#import "AddStudentVC.h"
 
-@interface PayListeningVC ()<UITableViewDataSource,UITableViewDelegate,SwicthCellDelegate,SchoolVCDelegate,StudentVCDelegate>
+@interface PayListeningVC ()<UITableViewDataSource,UITableViewDelegate,SwicthCellDelegate,SchoolVCDelegate,StudentVCDelegate,AddStudentVCDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSString *is_select_student;//is_select_student 是否是选择孩子取值 1选孩子 0填写孩子
@@ -26,8 +27,12 @@
 @property (nonatomic, strong) NSDictionary *schoolInfoDic;//校区信息
 @property (nonatomic, strong) NSString *selectedSchool;//被选择的校区
 
-@property (nonatomic, strong) NSDictionary *studentInfoDic;//选择的学生信息
-@property (nonatomic, strong) NSString *selectedStudent;//选择学生信息
+@property (nonatomic, strong) NSDictionary *selectedStudentInfoDic;//选择的学生及学生id,is_select_student为1选择孩子
+
+@property (nonatomic, strong) NSString *addStudentName;//is_select_student为0填写孩子，name(姓名不能为空)
+@property (nonatomic, strong) NSString *studentId;//学生id，is_select_student取值0 填写孩子信息时 学生id置为0
+
+
 
 @end
 
@@ -171,7 +176,7 @@
                 }
                 cell.cellEdge = 10;
                 cell.textLabel.text = @"选择小孩";
-                cell.detailTextLabel.text = self.studentInfoDic[@"name"];
+                cell.detailTextLabel.text = self.selectedStudentInfoDic[@"name"];
                 return cell;
             }
             
@@ -218,7 +223,7 @@
             else{
                 BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
                 if (cell == nil) {
-                    cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse1];
+                    cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
                     cell.textLabel.textColor = [UIColor blackColor];
                     cell.textLabel.font = [UIFont systemFontOfSize:14];
                     cell.detailTextLabel.textColor = [UIColor grayColor];
@@ -230,6 +235,7 @@
                     case 1:
                     {
                         cell.textLabel.text = @"小孩姓名";
+                        cell.detailTextLabel.text = self.addStudentName;
                         break;
                     }
                     case 2:
@@ -300,7 +306,15 @@
             if (indexPath.row == 1) {
                 StudentVC *vc = [[StudentVC alloc] init];
                 vc.delegate = self;
-                vc.selectedStudent = self.selectedStudent;
+                vc.selectedStudent = self.selectedStudentInfoDic[@"name"];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+        }
+        else{
+            if (indexPath.row == 1) {
+                AddStudentVC *vc = [[AddStudentVC alloc] init];
+                vc.delegate = self;
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             }
@@ -351,8 +365,12 @@
 #pragma mark - StudentVCDelegate
 - (void)studentVCSelectedStudent:(id)sender{
     
-    self.studentInfoDic = sender;
-    self.selectedStudent = self.studentInfoDic[@"name"];
+    self.selectedStudentInfoDic = sender;
+    [self.tableView reloadData];
+}
+#pragma mark - AddStudentVC Delegate
+- (void)addStudentVCGetStudentName:(id)sender{
+    self.addStudentName = sender;
     [self.tableView reloadData];
 }
 

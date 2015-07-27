@@ -104,6 +104,8 @@
 		09CA69231B20213800A31E0E /* couponstime.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69221B20213800A31E0E /* couponstime.png */; };
 		09CB13301B65DDC70012F5E5 /* StudentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB132F1B65DDC70012F5E5 /* StudentVC.m */; };
 		09CB13331B65DDDF0012F5E5 /* StudentVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB13321B65DDDF0012F5E5 /* StudentVCCell.m */; };
+		09CB133B1B65ED040012F5E5 /* AddStudentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB133A1B65ED040012F5E5 /* AddStudentVC.m */; };
+		09CB133D1B65ED140012F5E5 /* AddStudentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CB133C1B65ED140012F5E5 /* AddStudentVC.xib */; };
 		09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */; };
 		09D0BD3A1B6207740074D1A3 /* SwicthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD391B6207740074D1A3 /* SwicthCell.m */; };
 		09D0BD3C1B62078E0074D1A3 /* SwicthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D0BD3B1B62078E0074D1A3 /* SwicthCell.xib */; };
@@ -440,6 +442,9 @@
 		09CB132F1B65DDC70012F5E5 /* StudentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentVC.m; sourceTree = "<group>"; };
 		09CB13311B65DDDF0012F5E5 /* StudentVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentVCCell.h; sourceTree = "<group>"; };
 		09CB13321B65DDDF0012F5E5 /* StudentVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentVCCell.m; sourceTree = "<group>"; };
+		09CB13391B65ED040012F5E5 /* AddStudentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddStudentVC.h; sourceTree = "<group>"; };
+		09CB133A1B65ED040012F5E5 /* AddStudentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddStudentVC.m; sourceTree = "<group>"; };
+		09CB133C1B65ED140012F5E5 /* AddStudentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddStudentVC.xib; sourceTree = "<group>"; };
 		09CFD0061B4CFA17000D9D40 /* payCompleteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payCompleteVC.h; sourceTree = "<group>"; };
 		09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payCompleteVC.m; sourceTree = "<group>"; };
 		09D0BD381B6207740074D1A3 /* SwicthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwicthCell.h; sourceTree = "<group>"; };
@@ -1073,6 +1078,9 @@
 				09CB132F1B65DDC70012F5E5 /* StudentVC.m */,
 				09CB13311B65DDDF0012F5E5 /* StudentVCCell.h */,
 				09CB13321B65DDDF0012F5E5 /* StudentVCCell.m */,
+				09CB13391B65ED040012F5E5 /* AddStudentVC.h */,
+				09CB133A1B65ED040012F5E5 /* AddStudentVC.m */,
+				09CB133C1B65ED140012F5E5 /* AddStudentVC.xib */,
 			);
 			path = OthersVC;
 			sourceTree = "<group>";
@@ -1991,6 +1999,7 @@
 				09C543231B4F93C900BD750C /* SwitchButtonCell.xib in Resources */,
 				09C768341B592B1400012A33 /* CannelOrderExplainVC.xib in Resources */,
 				A6B1CEE21B1C62D400100E9F /* SettingSignatureVC.xib in Resources */,
+				09CB133D1B65ED140012F5E5 /* AddStudentVC.xib in Resources */,
 				09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */,
 				A6284CD81B10592100EFF820 /* Main.storyboard in Resources */,
 				A6DA3E291B44D919005850EB /* UMSocialSDKResourcesNew.bundle in Resources */,
@@ -2186,6 +2195,7 @@
 				A6284D511B105E5600EFF820 /* DDXMLElement.m in Sources */,
 				A6B1CEE91B1D8C7200100E9F /* HomeAdCell.m in Sources */,
 				094DD2661B3960CA0045EF2C /* ListeningCourseVC.m in Sources */,
+				09CB133B1B65ED040012F5E5 /* AddStudentVC.m in Sources */,
 				0980856E1B32C37500BE9336 /* AllCoursesVC.m in Sources */,
 				09C9C3981B29A7CD00B1F902 /* MyScheduleVC.m in Sources */,
 				A6D4F2381B539D43001D3D0E /* RSADataVerifier.m in Sources */,

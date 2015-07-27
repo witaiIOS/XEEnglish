@@ -231,7 +231,7 @@
     [singleCourseBtn addTarget:self action:@selector(singleCourseBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     
     //分割线
-    UILabel *courseIntroductionLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, kScreenWidth-20, 1)];
+    UILabel *courseIntroductionLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, kScreenWidth-40, 1)];
     courseIntroductionLabelLine.backgroundColor = [UIColor lightGrayColor];
 //-----------------------------------------------------------------
     UILabel *courseIntroductionValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, kScreenWidth-40, 30)];
