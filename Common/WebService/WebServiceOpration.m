@@ -284,9 +284,8 @@
  @param course_schedule_id
  @param token
  */
-+ (AFHTTPRequestOperation *)getCourseScheduleSignParentCommentWithParentId:(NSString *)parent_id  andCourseScheduleId:(NSString *)course_schedule_id andToken:(NSString *)token{
-    
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseScheduleSignParentComment><web:json>{\"parent_id\":\"%@\",\"course_schedule_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetCourseScheduleSignParentComment>",parent_id,course_schedule_id,token]];
++ (AFHTTPRequestOperation *)getCourseScheduleSignParentCommentWithParentId:(NSString *)parent_id  andCourseScheduleId:(NSString *)course_schedule_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andSignonId:(NSString *)signon_id andToken:(NSString *)token{
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseScheduleSignParentComment><web:json>{\"parent_id\":\"%@\",\"course_schedule_id\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"signon_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetCourseScheduleSignParentComment>",parent_id,course_schedule_id,pageSize,pageIndex,signon_id,token]];
 }
 
 

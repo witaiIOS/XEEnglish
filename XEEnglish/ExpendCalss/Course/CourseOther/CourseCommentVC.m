@@ -108,7 +108,7 @@
     //NSLog(@"courseInfo:%@",self.courseLeaveInfoDic);
     
     [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getCourseScheduleSignParentCommentWithParentId:userInfoDic[uUserId] andCourseScheduleId:self.courseLeaveInfoDic[@"course_schedule_id"] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getCourseScheduleSignParentCommentWithParentId:userInfoDic[uUserId] andCourseScheduleId:self.courseLeaveInfoDic[@"course_schedule_id"] andPageSize:10 andPageIndex:1 andSignonId:@"" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         if (!error) {
             //NSLog(@"result:%@",result);

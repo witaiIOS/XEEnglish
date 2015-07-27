@@ -447,9 +447,9 @@
  @param course_schedule_id
  @param token
  */
-- (void)getCourseScheduleSignParentCommentWithParentId:(NSString *)parent_id  andCourseScheduleId:(NSString *)course_schedule_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+- (void)getCourseScheduleSignParentCommentWithParentId:(NSString *)parent_id  andCourseScheduleId:(NSString *)course_schedule_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andSignonId:(NSString *)signon_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
     
-    AFHTTPRequestOperation *operation = [WebServiceOpration getCourseScheduleSignParentCommentWithParentId:parent_id andCourseScheduleId:course_schedule_id andToken:token];
+    AFHTTPRequestOperation *operation = [WebServiceOpration getCourseScheduleSignParentCommentWithParentId:parent_id andCourseScheduleId:course_schedule_id andPageSize:pageSize andPageIndex:pageIndex andSignonId:signon_id andToken:token];
     
     [self getResponseWithOpration:operation andXmlKey:@"GetCourseScheduleSignParentCommentResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         if (block) {

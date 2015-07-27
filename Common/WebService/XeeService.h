@@ -206,7 +206,7 @@
  @param course_schedule_id
  @param token
  */
-- (void)getCourseScheduleSignParentCommentWithParentId:(NSString *)parent_id  andCourseScheduleId:(NSString *)course_schedule_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block;
+- (void)getCourseScheduleSignParentCommentWithParentId:(NSString *)parent_id  andCourseScheduleId:(NSString *)course_schedule_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andSignonId:(NSString *)signon_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
 #pragma mark - 活动
 /**
