@@ -111,6 +111,9 @@
 		09CB13451B6606600012F5E5 /* PayListeningCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB13441B6606600012F5E5 /* PayListeningCourseVC.m */; };
 		09CB13481B6606810012F5E5 /* PayListeningCourseVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB13471B6606810012F5E5 /* PayListeningCourseVCCell.m */; };
 		09CB134E1B6617EA0012F5E5 /* ListenPayCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB134D1B6617EA0012F5E5 /* ListenPayCourseVC.m */; };
+		09CB13551B665E620012F5E5 /* photoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB13541B665E620012F5E5 /* photoCell.m */; };
+		09CB13581B665E7D0012F5E5 /* DataIsNullCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB13571B665E7D0012F5E5 /* DataIsNullCell.m */; };
+		09CB135B1B66621D0012F5E5 /* CourseReviewNewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB135A1B66621D0012F5E5 /* CourseReviewNewVC.m */; };
 		09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */; };
 		09D0BD3A1B6207740074D1A3 /* SwicthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD391B6207740074D1A3 /* SwicthCell.m */; };
 		09D0BD3C1B62078E0074D1A3 /* SwicthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D0BD3B1B62078E0074D1A3 /* SwicthCell.xib */; };
@@ -459,6 +462,12 @@
 		09CB13471B6606810012F5E5 /* PayListeningCourseVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayListeningCourseVCCell.m; sourceTree = "<group>"; };
 		09CB134C1B6617EA0012F5E5 /* ListenPayCourseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListenPayCourseVC.h; sourceTree = "<group>"; };
 		09CB134D1B6617EA0012F5E5 /* ListenPayCourseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListenPayCourseVC.m; sourceTree = "<group>"; };
+		09CB13531B665E620012F5E5 /* photoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = photoCell.h; sourceTree = "<group>"; };
+		09CB13541B665E620012F5E5 /* photoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = photoCell.m; sourceTree = "<group>"; };
+		09CB13561B665E7D0012F5E5 /* DataIsNullCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataIsNullCell.h; sourceTree = "<group>"; };
+		09CB13571B665E7D0012F5E5 /* DataIsNullCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataIsNullCell.m; sourceTree = "<group>"; };
+		09CB13591B66621D0012F5E5 /* CourseReviewNewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseReviewNewVC.h; sourceTree = "<group>"; };
+		09CB135A1B66621D0012F5E5 /* CourseReviewNewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseReviewNewVC.m; sourceTree = "<group>"; };
 		09CFD0061B4CFA17000D9D40 /* payCompleteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payCompleteVC.h; sourceTree = "<group>"; };
 		09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payCompleteVC.m; sourceTree = "<group>"; };
 		09D0BD381B6207740074D1A3 /* SwicthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwicthCell.h; sourceTree = "<group>"; };
@@ -876,6 +885,7 @@
 		093A58721B438B11006F104D /* CourseOther */ = {
 			isa = PBXGroup;
 			children = (
+				09CB134F1B665BA80012F5E5 /* CourseReviewVCCell */,
 				093A58731B438BCA006F104D /* CourseLeaveApplyVC.h */,
 				093A58741B438BCA006F104D /* CourseLeaveApplyVC.m */,
 				093A58761B4398F2006F104D /* ApplyProtocolVC.h */,
@@ -897,6 +907,8 @@
 				09C6FEF91B4BCEB50069156D /* CourseReviewCell.m */,
 				093A58841B43F541006F104D /* CourseForenoticeVC.h */,
 				093A58851B43F541006F104D /* CourseForenoticeVC.m */,
+				09CB13591B66621D0012F5E5 /* CourseReviewNewVC.h */,
+				09CB135A1B66621D0012F5E5 /* CourseReviewNewVC.m */,
 			);
 			path = CourseOther;
 			sourceTree = "<group>";
@@ -1055,6 +1067,17 @@
 				09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */,
 			);
 			path = Coupons;
+			sourceTree = "<group>";
+		};
+		09CB134F1B665BA80012F5E5 /* CourseReviewVCCell */ = {
+			isa = PBXGroup;
+			children = (
+				09CB13531B665E620012F5E5 /* photoCell.h */,
+				09CB13541B665E620012F5E5 /* photoCell.m */,
+				09CB13561B665E7D0012F5E5 /* DataIsNullCell.h */,
+				09CB13571B665E7D0012F5E5 /* DataIsNullCell.m */,
+			);
+			path = CourseReviewVCCell;
 			sourceTree = "<group>";
 		};
 		09D0BD331B62064E0074D1A3 /* Listening */ = {
@@ -2115,6 +2138,7 @@
 			files = (
 				A6B1CEEB1B1D8C7200100E9F /* HomeButton.m in Sources */,
 				097C14F31B574782004AC794 /* NearSchoolDetailVC.m in Sources */,
+				09CB135B1B66621D0012F5E5 /* CourseReviewNewVC.m in Sources */,
 				A6284D791B105F9500EFF820 /* UIFactory.m in Sources */,
 				A6D4F2371B539D43001D3D0E /* RSADataSigner.m in Sources */,
 				09C8C1D01B535743000E089F /* NearSchoolCell.m in Sources */,
@@ -2184,6 +2208,7 @@
 				09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */,
 				09CA16261B467BC80064667D /* GTMBase64.m in Sources */,
 				09C6FEFD1B4BFBF90069156D /* SelectedStudentVC.m in Sources */,
+				09CB13551B665E620012F5E5 /* photoCell.m in Sources */,
 				09D0BD3F1B620A8C0074D1A3 /* PriceCell.m in Sources */,
 				09C87F321B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m in Sources */,
 				09C87F2F1B3C24E700D7C913 /* PayCourseMethodVCViewController.m in Sources */,
@@ -2262,6 +2287,7 @@
 				09C6394E1B3A957F00510F00 /* PayMethodCell.m in Sources */,
 				A6B1CEDB1B1C62D400100E9F /* NeTNameAndDomicileVC.m in Sources */,
 				09C3285C1B30135F009F0BAB /* CourseCell.m in Sources */,
+				09CB13581B665E7D0012F5E5 /* DataIsNullCell.m in Sources */,
 				093A58801B43E398006F104D /* CourseCommentVC.m in Sources */,
 				09D0BD3A1B6207740074D1A3 /* SwicthCell.m in Sources */,
 				09C768331B592B1400012A33 /* CannelOrderExplainVC.m in Sources */,
