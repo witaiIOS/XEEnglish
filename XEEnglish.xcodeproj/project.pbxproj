@@ -106,6 +106,8 @@
 		09CB13331B65DDDF0012F5E5 /* StudentVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB13321B65DDDF0012F5E5 /* StudentVCCell.m */; };
 		09CB133B1B65ED040012F5E5 /* AddStudentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB133A1B65ED040012F5E5 /* AddStudentVC.m */; };
 		09CB133D1B65ED140012F5E5 /* AddStudentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CB133C1B65ED140012F5E5 /* AddStudentVC.xib */; };
+		09CB13411B65FF3B0012F5E5 /* addStudentBirthday.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB133F1B65FF3B0012F5E5 /* addStudentBirthday.m */; };
+		09CB13421B65FF3B0012F5E5 /* addStudentBirthday.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CB13401B65FF3B0012F5E5 /* addStudentBirthday.xib */; };
 		09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */; };
 		09D0BD3A1B6207740074D1A3 /* SwicthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD391B6207740074D1A3 /* SwicthCell.m */; };
 		09D0BD3C1B62078E0074D1A3 /* SwicthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D0BD3B1B62078E0074D1A3 /* SwicthCell.xib */; };
@@ -445,6 +447,9 @@
 		09CB13391B65ED040012F5E5 /* AddStudentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddStudentVC.h; sourceTree = "<group>"; };
 		09CB133A1B65ED040012F5E5 /* AddStudentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddStudentVC.m; sourceTree = "<group>"; };
 		09CB133C1B65ED140012F5E5 /* AddStudentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddStudentVC.xib; sourceTree = "<group>"; };
+		09CB133E1B65FF3B0012F5E5 /* addStudentBirthday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addStudentBirthday.h; sourceTree = "<group>"; };
+		09CB133F1B65FF3B0012F5E5 /* addStudentBirthday.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addStudentBirthday.m; sourceTree = "<group>"; };
+		09CB13401B65FF3B0012F5E5 /* addStudentBirthday.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addStudentBirthday.xib; sourceTree = "<group>"; };
 		09CFD0061B4CFA17000D9D40 /* payCompleteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payCompleteVC.h; sourceTree = "<group>"; };
 		09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payCompleteVC.m; sourceTree = "<group>"; };
 		09D0BD381B6207740074D1A3 /* SwicthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwicthCell.h; sourceTree = "<group>"; };
@@ -1081,6 +1086,9 @@
 				09CB13391B65ED040012F5E5 /* AddStudentVC.h */,
 				09CB133A1B65ED040012F5E5 /* AddStudentVC.m */,
 				09CB133C1B65ED140012F5E5 /* AddStudentVC.xib */,
+				09CB133E1B65FF3B0012F5E5 /* addStudentBirthday.h */,
+				09CB133F1B65FF3B0012F5E5 /* addStudentBirthday.m */,
+				09CB13401B65FF3B0012F5E5 /* addStudentBirthday.xib */,
 			);
 			path = OthersVC;
 			sourceTree = "<group>";
@@ -1991,6 +1999,7 @@
 				A6B1CEE01B1C62D400100E9F /* SettingBirthdayVC.xib in Resources */,
 				09DB2DC41B1322980078AAF5 /* join_07.png in Resources */,
 				09D5604A1B26DB8F00ADF334 /* RegisterVC.xib in Resources */,
+				09CB13421B65FF3B0012F5E5 /* addStudentBirthday.xib in Resources */,
 				A6B1CEDC1B1C62D400100E9F /* NeTNameAndDomicileVC.xib in Resources */,
 				09CA691D1B1FFCE300A31E0E /* CouponsCell.xib in Resources */,
 				09D560451B26D3E700ADF334 /* ForgetPassWordVC.xib in Resources */,
@@ -2098,6 +2107,7 @@
 				09C95EC51B280738000972D8 /* SchoolZoneCell.m in Sources */,
 				09D23C591B42ADC0008B6085 /* PointSRuleCell.m in Sources */,
 				09D450AE1B10786800B39B4A /* MyAccountTVC.m in Sources */,
+				09CB13411B65FF3B0012F5E5 /* addStudentBirthday.m in Sources */,
 				09D2319D1B511DEB0055758A /* SingleCourseCommentVC.m in Sources */,
 				09D560491B26DB8F00ADF334 /* RegisterVC.m in Sources */,
 				A6284D4B1B105E5600EFF820 /* AFURLRequestSerialization.m in Sources */,

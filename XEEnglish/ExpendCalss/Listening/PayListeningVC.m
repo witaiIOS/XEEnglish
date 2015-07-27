@@ -17,8 +17,9 @@
 
 #import "StudentVC.h"
 #import "AddStudentVC.h"
+#import "addStudentBirthday.h"
 
-@interface PayListeningVC ()<UITableViewDataSource,UITableViewDelegate,SwicthCellDelegate,SchoolVCDelegate,StudentVCDelegate,AddStudentVCDelegate>
+@interface PayListeningVC ()<UITableViewDataSource,UITableViewDelegate,SwicthCellDelegate,SchoolVCDelegate,StudentVCDelegate,AddStudentVCDelegate,AddStudentBirthdayDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSString *is_select_student;//is_select_student 是否是选择孩子取值 1选孩子 0填写孩子
@@ -32,7 +33,7 @@
 @property (nonatomic, strong) NSString *addStudentName;//is_select_student为0填写孩子，name(姓名不能为空)
 @property (nonatomic, strong) NSString *studentId;//学生id，is_select_student取值0 填写孩子信息时 学生id置为0
 
-
+@property (nonatomic, strong) NSString *addBrithday;//学生id，is_select_student取值0 填写孩子生日
 
 @end
 
@@ -241,6 +242,7 @@
                     case 2:
                     {
                         cell.textLabel.text = @"小孩生日";
+                        cell.detailTextLabel.text = self.addBrithday;
                         break;
                     } 
                     default:
@@ -318,6 +320,12 @@
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             }
+            else{
+                addStudentBirthday *vc = [[addStudentBirthday alloc] init];
+                vc.delegate = self;
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
         }
     }
 }
@@ -371,6 +379,13 @@
 #pragma mark - AddStudentVC Delegate
 - (void)addStudentVCGetStudentName:(id)sender{
     self.addStudentName = sender;
+    [self.tableView reloadData];
+}
+
+#pragma mark - AddStudentBirthdayDelegate
+- (void)addStudentBirthdayGetBirthday:(id)sender{
+    
+    self.addBrithday = sender;
     [self.tableView reloadData];
 }
 
