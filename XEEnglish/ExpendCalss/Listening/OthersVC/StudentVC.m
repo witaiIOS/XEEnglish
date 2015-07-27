@@ -1,27 +1,32 @@
 //
-//  SelectedStudentVC.m
+//  StudentVC.m
 //  XEEnglish
 //
-//  Created by houjing on 15/7/7.
+//  Created by houjing on 15/7/27.
 //  Copyright (c) 2015年 lixiang. All rights reserved.
 //
 
-#import "SelectedStudentVC.h"
-#import "SchoolZoneCell.h"
+#import "StudentVC.h"
+#import "StudentVCCell.h"
+
 #import "XeeService.h"
 
-@interface SelectedStudentVC ()<UITableViewDataSource, UITableViewDelegate>
+@interface StudentVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *studentArray;
+@property (nonatomic, strong) NSMutableArray *studentArray;//学生数组
 
 @end
 
-@implementation SelectedStudentVC
+@implementation StudentVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"选择小孩";
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)initUI{
@@ -39,10 +44,6 @@
     [self getVStudentByParentId];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 #pragma mark - Web
 
 - (void)getVStudentByParentId{
@@ -58,13 +59,13 @@
             if(isResult.integerValue == 0){
                 self.studentArray = result[@"resultInfo"];
                 [self.tableView reloadData];
-            }
-            else{
+            }else{
                 [UIFactory showAlert:@"未知错误"];
             }
         }else{
             [UIFactory showAlert:@"网络错误"];
         }
+        
     }];
 }
 
@@ -80,17 +81,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    static NSString *reuse = @"SchoolZoneCell";
+    static NSString *reuse = @"StudentVCCell";
     
-    SchoolZoneCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
+    StudentVCCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
     
     if (cell == nil) {
-        cell = [[SchoolZoneCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+        cell = [[StudentVCCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
     }
     cell.cellEdge = 10;
     NSDictionary *studentDic = self.studentArray[indexPath.section];
-    cell.schollLabel.text = studentDic[@"name"];
-    if ([self.selectedStudent isEqualToString:cell.schollLabel.text]) {
+    cell.studentNameLabel.text = studentDic[@"name"];
+    if ([self.selectedStudent isEqualToString:cell.studentNameLabel.text]) {
         cell.selectImageView.highlighted = YES;
     }
     
@@ -104,7 +105,7 @@
     NSDictionary *studentDic = self.studentArray[indexPath.section];
     self.selectedStudent = studentDic[@"name"];
     NSDictionary *selectedStudentDic = @{@"student_id":studentDic[@"student_id"],@"name":studentDic[@"name"]};
-    [self.delegate selectedStudent:selectedStudentDic];
+    [self.delegate studentVCSelectedStudent:selectedStudentDic];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -121,16 +122,5 @@
     
     return 1.0f;
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

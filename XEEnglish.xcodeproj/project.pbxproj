@@ -102,6 +102,8 @@
 		09CA691D1B1FFCE300A31E0E /* CouponsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */; };
 		09CA69211B201F2500A31E0E /* coupons1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69201B201F2500A31E0E /* coupons1.png */; };
 		09CA69231B20213800A31E0E /* couponstime.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69221B20213800A31E0E /* couponstime.png */; };
+		09CB13301B65DDC70012F5E5 /* StudentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB132F1B65DDC70012F5E5 /* StudentVC.m */; };
+		09CB13331B65DDDF0012F5E5 /* StudentVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB13321B65DDDF0012F5E5 /* StudentVCCell.m */; };
 		09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */; };
 		09D0BD3A1B6207740074D1A3 /* SwicthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD391B6207740074D1A3 /* SwicthCell.m */; };
 		09D0BD3C1B62078E0074D1A3 /* SwicthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D0BD3B1B62078E0074D1A3 /* SwicthCell.xib */; };
@@ -434,6 +436,10 @@
 		09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponsCell.xib; sourceTree = "<group>"; };
 		09CA69201B201F2500A31E0E /* coupons1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupons1.png; sourceTree = "<group>"; };
 		09CA69221B20213800A31E0E /* couponstime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couponstime.png; sourceTree = "<group>"; };
+		09CB132E1B65DDC70012F5E5 /* StudentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentVC.h; sourceTree = "<group>"; };
+		09CB132F1B65DDC70012F5E5 /* StudentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentVC.m; sourceTree = "<group>"; };
+		09CB13311B65DDDF0012F5E5 /* StudentVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentVCCell.h; sourceTree = "<group>"; };
+		09CB13321B65DDDF0012F5E5 /* StudentVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentVCCell.m; sourceTree = "<group>"; };
 		09CFD0061B4CFA17000D9D40 /* payCompleteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payCompleteVC.h; sourceTree = "<group>"; };
 		09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payCompleteVC.m; sourceTree = "<group>"; };
 		09D0BD381B6207740074D1A3 /* SwicthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwicthCell.h; sourceTree = "<group>"; };
@@ -1063,6 +1069,10 @@
 				09D0BD471B6220060074D1A3 /* SchoolVC.m */,
 				09D0BD491B6220890074D1A3 /* SchoolVCCell.h */,
 				09D0BD4A1B6220890074D1A3 /* SchoolVCCell.m */,
+				09CB132E1B65DDC70012F5E5 /* StudentVC.h */,
+				09CB132F1B65DDC70012F5E5 /* StudentVC.m */,
+				09CB13311B65DDDF0012F5E5 /* StudentVCCell.h */,
+				09CB13321B65DDDF0012F5E5 /* StudentVCCell.m */,
 			);
 			path = OthersVC;
 			sourceTree = "<group>";
@@ -2157,6 +2167,7 @@
 				09C639441B3A69D400510F00 /* BuyCourseVC.m in Sources */,
 				090604751B14174F0038BAC4 /* MoreSettingVC.m in Sources */,
 				A6284D4D1B105E5600EFF820 /* AFURLSessionManager.m in Sources */,
+				09CB13331B65DDDF0012F5E5 /* StudentVCCell.m in Sources */,
 				A6284D581B105E5600EFF820 /* MJRefreshHeaderView.m in Sources */,
 				A6284D5D1B105E5600EFF820 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				A6284D531B105E5600EFF820 /* MBProgressHUD.m in Sources */,
@@ -2222,6 +2233,7 @@
 				090604781B1420FD0038BAC4 /* UserProblemsVC.m in Sources */,
 				094DD2691B3965AD0045EF2C /* ListenZoneCell.m in Sources */,
 				09DC56FF1B390DEB00636C70 /* SingleCourseVC.m in Sources */,
+				09CB13301B65DDC70012F5E5 /* StudentVC.m in Sources */,
 				09D545A21B452C4000CC5844 /* courseSchoolZoneVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

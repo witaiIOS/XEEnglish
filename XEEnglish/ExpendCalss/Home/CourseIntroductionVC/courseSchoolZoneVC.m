@@ -52,7 +52,7 @@
     
     [[XeeService sharedInstance] getSchoolWithParentId:userInfoDic[uUserId] andCourseId:self.parentCourseId andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
-            NSLog(@"result:%@",result);
+            //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 self.schoolZoneArray= result[@"resultInfo"];

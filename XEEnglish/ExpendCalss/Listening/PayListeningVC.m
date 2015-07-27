@@ -15,7 +15,9 @@
 
 #import "SchoolVC.h"
 
-@interface PayListeningVC ()<UITableViewDataSource,UITableViewDelegate,SwicthCellDelegate,SchoolVCDelegate>
+#import "StudentVC.h"
+
+@interface PayListeningVC ()<UITableViewDataSource,UITableViewDelegate,SwicthCellDelegate,SchoolVCDelegate,StudentVCDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSString *is_select_student;//is_select_student 是否是选择孩子取值 1选孩子 0填写孩子
@@ -23,6 +25,9 @@
 
 @property (nonatomic, strong) NSDictionary *schoolInfoDic;//校区信息
 @property (nonatomic, strong) NSString *selectedSchool;//被选择的校区
+
+@property (nonatomic, strong) NSDictionary *studentInfoDic;//选择的学生信息
+@property (nonatomic, strong) NSString *selectedStudent;//选择学生信息
 
 @end
 
@@ -157,7 +162,7 @@
             else{
                 BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
                 if (cell == nil) {
-                    cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse1];
+                    cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
                     cell.textLabel.textColor = [UIColor blackColor];
                     cell.textLabel.font = [UIFont systemFontOfSize:14];
                     cell.detailTextLabel.textColor = [UIColor grayColor];
@@ -166,6 +171,7 @@
                 }
                 cell.cellEdge = 10;
                 cell.textLabel.text = @"选择小孩";
+                cell.detailTextLabel.text = self.studentInfoDic[@"name"];
                 return cell;
             }
             
@@ -279,6 +285,7 @@
             {
                 SchoolVC *vc = [[SchoolVC alloc] init];
                 vc.hidesBottomBarWhenPushed = YES;
+                vc.selectedSchool = self.selectedSchool;
                 vc.delegate = self;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
@@ -286,6 +293,17 @@
                 
             default:
                 break;
+        }
+    }
+    else if (indexPath.section == 1){
+        if ([self.is_select_student isEqual:@"1"]){
+            if (indexPath.row == 1) {
+                StudentVC *vc = [[StudentVC alloc] init];
+                vc.delegate = self;
+                vc.selectedStudent = self.selectedStudent;
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
         }
     }
 }
@@ -326,6 +344,15 @@
 - (void)schoolVCSelectedSchoolZone:(id)sender{
     
     self.schoolInfoDic = sender;
+    self.selectedSchool = self.schoolInfoDic[@"department"];
+    [self.tableView reloadData];
+}
+
+#pragma mark - StudentVCDelegate
+- (void)studentVCSelectedStudent:(id)sender{
+    
+    self.studentInfoDic = sender;
+    self.selectedStudent = self.studentInfoDic[@"name"];
     [self.tableView reloadData];
 }
 
