@@ -27,6 +27,7 @@
 
 @property (nonatomic, strong) NSDictionary *courseInfoDic;//选择的课程信息
 @property (nonatomic, strong) NSString *selectedCourse;//被选择的课程
+@property (nonatomic, strong) NSString *coursePrice;//试听课程单价
 
 @property (nonatomic, strong) NSDictionary *schoolInfoDic;//校区信息
 @property (nonatomic, strong) NSString *selectedSchool;//被选择的校区
@@ -265,7 +266,7 @@
         cell.cellEdge = 10;
         
         cell.myTipLabel.text = @"缴费金额";
-        cell.myDetailLabel.text = @"";
+        cell.myDetailLabel.text = self.coursePrice;
         
         return cell;
     }else{
@@ -386,6 +387,7 @@
     
     self.courseInfoDic = sender;
     self.selectedCourse = self.courseInfoDic[@"title"];
+    self.coursePrice = [NSString stringWithFormat:@"%@",self.courseInfoDic[@"price"]];
     [self.tableView reloadData];
 }
 

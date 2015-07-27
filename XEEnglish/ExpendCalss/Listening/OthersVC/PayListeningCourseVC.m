@@ -103,8 +103,8 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSDictionary *courseInfoDic = @{@"title":[self.courseArray[indexPath.section] objectForKey:@"title"],@"course_id":[self.courseArray[indexPath.section] objectForKey:@"course_id"]};
-    [self.delegate payListeningCourseVCSelectedCourse:courseInfoDic];
+//    NSDictionary *courseInfoDic = @{@"title":[self.courseArray[indexPath.section] objectForKey:@"title"],@"course_id":[self.courseArray[indexPath.section] objectForKey:@"course_id"]};
+    [self.delegate payListeningCourseVCSelectedCourse:self.courseArray[indexPath.section]];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

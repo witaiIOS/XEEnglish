@@ -110,6 +110,7 @@
 		09CB13421B65FF3B0012F5E5 /* addStudentBirthday.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CB13401B65FF3B0012F5E5 /* addStudentBirthday.xib */; };
 		09CB13451B6606600012F5E5 /* PayListeningCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB13441B6606600012F5E5 /* PayListeningCourseVC.m */; };
 		09CB13481B6606810012F5E5 /* PayListeningCourseVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB13471B6606810012F5E5 /* PayListeningCourseVCCell.m */; };
+		09CB134B1B6617510012F5E5 /* ListenPayCourseVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB134A1B6617510012F5E5 /* ListenPayCourseVCViewController.m */; };
 		09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */; };
 		09D0BD3A1B6207740074D1A3 /* SwicthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D0BD391B6207740074D1A3 /* SwicthCell.m */; };
 		09D0BD3C1B62078E0074D1A3 /* SwicthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D0BD3B1B62078E0074D1A3 /* SwicthCell.xib */; };
@@ -456,6 +457,8 @@
 		09CB13441B6606600012F5E5 /* PayListeningCourseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayListeningCourseVC.m; sourceTree = "<group>"; };
 		09CB13461B6606810012F5E5 /* PayListeningCourseVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayListeningCourseVCCell.h; sourceTree = "<group>"; };
 		09CB13471B6606810012F5E5 /* PayListeningCourseVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayListeningCourseVCCell.m; sourceTree = "<group>"; };
+		09CB13491B6617510012F5E5 /* ListenPayCourseVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListenPayCourseVCViewController.h; sourceTree = "<group>"; };
+		09CB134A1B6617510012F5E5 /* ListenPayCourseVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListenPayCourseVCViewController.m; sourceTree = "<group>"; };
 		09CFD0061B4CFA17000D9D40 /* payCompleteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payCompleteVC.h; sourceTree = "<group>"; };
 		09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payCompleteVC.m; sourceTree = "<group>"; };
 		09D0BD381B6207740074D1A3 /* SwicthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwicthCell.h; sourceTree = "<group>"; };
@@ -1061,6 +1064,8 @@
 				09D0BD371B62071A0074D1A3 /* ListeningCell */,
 				09D0BD421B620C0F0074D1A3 /* PayListeningVC.h */,
 				09D0BD431B620C0F0074D1A3 /* PayListeningVC.m */,
+				09CB13491B6617510012F5E5 /* ListenPayCourseVCViewController.h */,
+				09CB134A1B6617510012F5E5 /* ListenPayCourseVCViewController.m */,
 			);
 			path = Listening;
 			sourceTree = "<group>";
@@ -2134,6 +2139,7 @@
 				A6B1CEF21B1D909800100E9F /* WebServiceOpration.m in Sources */,
 				09C639481B3A917400510F00 /* PayCourseVC.m in Sources */,
 				A6284D8F1B10668300EFF820 /* HomeVC.m in Sources */,
+				09CB134B1B6617510012F5E5 /* ListenPayCourseVCViewController.m in Sources */,
 				09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */,
 				A6284D921B10669200EFF820 /* CourseVC.m in Sources */,
 				09C9C0F11B22E3E5001BBA1C /* PlaceDemandCell.m in Sources */,
