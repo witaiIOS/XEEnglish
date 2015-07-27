@@ -1,5 +1,5 @@
 //
-//  ListenPayCourseVCViewController.h
+//  ListenPayCourseVC.h
 //  XEEnglish
 //
 //  Created by houjing on 15/7/27.
@@ -8,6 +8,6 @@
 
 #import "PayCourseVC.h"
 
-@interface ListenPayCourseVCViewController : PayCourseVC
+@interface ListenPayCourseVC : PayCourseVC
 
 @end

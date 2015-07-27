@@ -19,6 +19,8 @@
 #import "AddStudentVC.h"
 #import "addStudentBirthday.h"
 
+#import "ListenPayCourseVC.h"
+
 @interface PayListeningVC ()<UITableViewDataSource,UITableViewDelegate,SwicthCellDelegate,PayListeningCourseVCDelegate,SchoolVCDelegate,StudentVCDelegate,AddStudentVCDelegate,AddStudentBirthdayDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -88,8 +90,77 @@
     return view;
     
 }
+
 #pragma mark -申请试听
 - (void)applyBtnClicked{
+    //is_select_student为1时，是选择现有小孩，
+    //is_select_student为1时，是选择现有小孩，需要将studentName，birthday，sex置空
+    if ([self.is_select_student intValue] == 1) {
+        if (self.selectedCourse == nil) {
+            [UIFactory showAlert:@"请选择课程"];
+        }
+        else if (self.schoolInfoDic[@"department"] == nil) {
+            [UIFactory showAlert:@"请选择校区"];
+        }
+        else if (self.selectedStudentInfoDic[@"name"] == nil){
+            [UIFactory showAlert:@"请选择小孩"];
+        }else{
+            
+            ListenPayCourseVC *vc = [[ListenPayCourseVC alloc] init];
+            vc.payMoney = [self.coursePrice intValue];
+            vc.courseId = [self.courseInfoDic[@"course_id"] intValue];
+            vc.studentId = self.selectedStudentInfoDic[@"student_id"];
+            vc.schoolId = self.schoolInfoDic[@"department_id"];
+            //type取值 1 选课 2 免费试听 3 有偿试听。
+            //type取值 1时student_id必选；2/3时，填写小孩时student_id为0。
+            vc.payMethod = 3;//有偿试听
+            vc.payType = @"1";//按课时
+            vc.number = 1;//一个课时
+            vc.listCoupon = @"[]";//现金券
+            vc.is_select_student = self.is_select_student;//是否选择小孩
+            vc.name = @"";
+            vc.sex = @"";
+            vc.birthday = @"";
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }
+        
+    }
+    //is_select_student为0时，是填写小孩信息，
+    else{
+        if (self.selectedCourse == nil) {
+            [UIFactory showAlert:@"请选择课程"];
+        }
+        else if (self.schoolInfoDic[@"department"] == nil) {
+            [UIFactory showAlert:@"请选择校区"];
+        }
+        else if (self.addStudentName == nil){
+            [UIFactory showAlert:@"请填写小孩名字"];
+        }
+        else if (self.addBrithday == nil){
+            [UIFactory showAlert:@"请填写小孩生日"];
+        }
+        else{
+            ListenPayCourseVC *vc = [[ListenPayCourseVC alloc] init];
+            vc.payMoney = [self.coursePrice intValue];
+            vc.courseId = [self.courseInfoDic[@"course_id"] intValue];
+            //type取值 1时student_id必选；2/3时，填写小孩时student_id为0。
+            vc.studentId = @"0";
+            vc.schoolId = self.schoolInfoDic[@"department_id"];
+            //type取值 1 选课 2 免费试听 3 有偿试听。
+            //type取值 1时student_id必选；2/3时，填写小孩时student_id为0。
+            vc.payMethod = 3;//有偿试听
+            vc.payType = @"1";//按课时
+            vc.number = 1;//一个课时
+            vc.listCoupon = @"[]";//现金券
+            vc.is_select_student = self.is_select_student;//是否选择小孩
+            vc.name = self.addStudentName;
+            vc.sex = self.sex;
+            vc.birthday = self.addBrithday;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+    }
     
 }
 

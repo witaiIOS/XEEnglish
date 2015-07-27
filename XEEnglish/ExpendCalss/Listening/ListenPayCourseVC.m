@@ -1,18 +1,18 @@
 //
-//  ListenPayCourseVCViewController.m
+//  ListenPayCourseVC.m
 //  XEEnglish
 //
 //  Created by houjing on 15/7/27.
 //  Copyright (c) 2015年 lixiang. All rights reserved.
 //
 
-#import "ListenPayCourseVCViewController.h"
+#import "ListenPayCourseVC.h"
 
-@interface ListenPayCourseVCViewController ()
+@interface ListenPayCourseVC ()
 
 @end
 
-@implementation ListenPayCourseVCViewController
+@implementation ListenPayCourseVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
