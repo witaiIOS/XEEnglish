@@ -12,18 +12,21 @@
 #import "SwicthCell.h"
 #import "PriceCell.h"
 
-
+#import "PayListeningCourseVC.h"
 #import "SchoolVC.h"
 
 #import "StudentVC.h"
 #import "AddStudentVC.h"
 #import "addStudentBirthday.h"
 
-@interface PayListeningVC ()<UITableViewDataSource,UITableViewDelegate,SwicthCellDelegate,SchoolVCDelegate,StudentVCDelegate,AddStudentVCDelegate,AddStudentBirthdayDelegate>
+@interface PayListeningVC ()<UITableViewDataSource,UITableViewDelegate,SwicthCellDelegate,PayListeningCourseVCDelegate,SchoolVCDelegate,StudentVCDelegate,AddStudentVCDelegate,AddStudentBirthdayDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSString *is_select_student;//is_select_student 是否是选择孩子取值 1选孩子 0填写孩子
 @property (nonatomic, strong) NSString *sex;//sex(0女1男)
+
+@property (nonatomic, strong) NSDictionary *courseInfoDic;//选择的课程信息
+@property (nonatomic, strong) NSString *selectedCourse;//被选择的课程
 
 @property (nonatomic, strong) NSDictionary *schoolInfoDic;//校区信息
 @property (nonatomic, strong) NSString *selectedSchool;//被选择的校区
@@ -135,6 +138,7 @@
             case 0:
             {
                 cell.textLabel.text = @"课程";
+                cell.detailTextLabel.text = self.selectedCourse;
                 break;
             }
             case 1:
@@ -287,6 +291,11 @@
         switch (indexPath.row) {
             case 0:
             {
+                PayListeningCourseVC *vc = [[PayListeningCourseVC alloc] init];
+                vc.selectCourse = self.selectedCourse;
+                vc.delegate = self;
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
             case 1:
@@ -362,6 +371,14 @@
     }
 }
 
+#pragma mark - PayListeningCourseVCDelegate
+- (void)payListeningCourseVCSelectedCourse:(id)sender{
+    
+    self.courseInfoDic = sender;
+    self.selectedCourse = self.courseInfoDic[@"title"];
+    [self.tableView reloadData];
+}
+
 #pragma mark - SchoolVCDelegate
 - (void)schoolVCSelectedSchoolZone:(id)sender{
     
@@ -388,5 +405,6 @@
     self.addBrithday = sender;
     [self.tableView reloadData];
 }
+
 
 @end
