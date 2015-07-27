@@ -21,10 +21,11 @@
         
         [self.contentView addSubview:self.schoolNameLabel];
         
-        self.selectImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-50, 12, 20, 20)];
         UIImage *unSelectedImage = [UIImage imageNamed:@"school_unselected.png"];
         UIImage *selectedImage = [UIImage imageNamed:@"school_selected.png"];
         self.selectImageView = [[UIImageView alloc] initWithImage:unSelectedImage highlightedImage:selectedImage];
+        
+        [self.selectImageView setFrame:CGRectMake(kScreenWidth-50, 12, 20, 20)];
         
         [self addSubview:self.selectImageView];
         

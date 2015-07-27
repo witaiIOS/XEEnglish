@@ -12,11 +12,17 @@
 #import "SwicthCell.h"
 #import "PriceCell.h"
 
-@interface PayListeningVC ()<UITableViewDataSource,UITableViewDelegate,SwicthCellDelegate>
+
+#import "SchoolVC.h"
+
+@interface PayListeningVC ()<UITableViewDataSource,UITableViewDelegate,SwicthCellDelegate,SchoolVCDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSString *is_select_student;//is_select_student 是否是选择孩子取值 1选孩子 0填写孩子
 @property (nonatomic, strong) NSString *sex;//sex(0女1男)
+
+@property (nonatomic, strong) NSDictionary *schoolInfoDic;//校区信息
+@property (nonatomic, strong) NSString *selectedSchool;//被选择的校区
 
 @end
 
@@ -123,6 +129,9 @@
             case 1:
             {
                 cell.textLabel.text = @"校区选择";
+                NSLog(@"2222:%@",self.schoolInfoDic[@"department"]);
+                cell.detailTextLabel.text = self.schoolInfoDic[@"department"];
+                NSLog(@"1111:%@",cell.detailTextLabel.text);
                 break;
             }
                 
@@ -261,6 +270,26 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                break;
+            }
+            case 1:
+            {
+                SchoolVC *vc = [[SchoolVC alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                vc.delegate = self;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+                
+            default:
+                break;
+        }
+    }
 }
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 44.0f;
@@ -295,6 +324,11 @@
     }
 }
 
-
+#pragma mark - SchoolVCDelegate
+- (void)schoolVCSelectedSchoolZone:(id)sender{
+    
+    self.schoolInfoDic = sender;
+    [self.tableView reloadData];
+}
 
 @end
