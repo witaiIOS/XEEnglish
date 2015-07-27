@@ -123,10 +123,27 @@
     reserveBtn.layer.cornerRadius = 4.0f;
     [reserveBtn addTarget:self action:@selector(reserveBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     
+    //获取结束时间
+    NSString *endDateStr=[NSString stringWithFormat:@"%@",self.avtivitInfoDic[@"deadline"]];
+    //NSLog(@"endDateStr:%@",endDateStr);
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSDate *deadline=[dateFormatter dateFromString:endDateStr];
+    //NSLog(@"endDate:%@",deadline);
+    //获取现在时间
+    NSDate *nowDate = [NSDate date];
+    //NSLog(@"date:%@",nowDate);
+    
+    NSDate *earlier_date = [nowDate earlierDate:deadline];
+    //NSLog(@"earlier_date:%@",earlier_date);
+    
+    BOOL isDateEnd = [earlier_date isEqualToDate:deadline];
+    //NSLog(@"dic:%@",self.activityInfo);
+    
     //判断，人数满了之后将按钮置灰
     NSString *current_sum = [NSString stringWithFormat:@"%@",self.avtivitInfoDic[@"sum_current"]];
     NSString *max_sum = [NSString stringWithFormat:@"%@",self.avtivitInfoDic[@"sum_max"]];
-    if ([current_sum isEqualToString:max_sum]) {
+    if (([current_sum isEqualToString:max_sum])||(isDateEnd == YES)) {
         [reserveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [reserveBtn setBackgroundColor:[UIColor grayColor]];
         reserveBtn.enabled = NO;

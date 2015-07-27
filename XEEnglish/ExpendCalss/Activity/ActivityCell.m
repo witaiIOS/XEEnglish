@@ -24,22 +24,20 @@
     //NSLog(@"%@",_activityInfo[@"image_url"]);
     
     //获取结束时间
-//    NSString *endDateStr=[NSString stringWithFormat:@"%@",_activityInfo[@"deadline"]];
-//    //NSLog(@"endDateStr:%@",endDateStr);
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-//    NSDate *deadline=[dateFormatter dateFromString:endDateStr];
-//    NSLog(@"endDate:%@",deadline);
-////    NSDate *deadline = (NSDate *)_activityInfo[@"deadline"];
-////    NSLog(@"endDate:%@",deadline);
-//    //获取现在时间
-//    NSDate *nowDate = [NSDate date];
-//    //NSLog(@"date:%@",nowDate);
-//    
-//    NSDate *earlier_date = [nowDate earlierDate:deadline];
-//    NSLog(@"earlier_date:%@",earlier_date);
-//    
-//    BOOL isDateEnd = [earlier_date isEqualToDate:nowDate];
+    NSString *endDateStr=[NSString stringWithFormat:@"%@",_activityInfo[@"deadline"]];
+    //NSLog(@"endDateStr:%@",endDateStr);
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSDate *deadline=[dateFormatter dateFromString:endDateStr];
+    //NSLog(@"endDate:%@",deadline);
+    //获取现在时间
+    NSDate *nowDate = [NSDate date];
+    //NSLog(@"date:%@",nowDate);
+    
+    NSDate *earlier_date = [nowDate earlierDate:deadline];
+    //NSLog(@"earlier_date:%@",earlier_date);
+    
+    BOOL isDateEnd = [earlier_date isEqualToDate:deadline];
     //NSLog(@"dic:%@",self.activityInfo);
     
     
@@ -47,7 +45,7 @@
     NSString *max_sum = [NSString stringWithFormat:@"%@",self.activityInfo[@"sum_max"]];
     
     //判断，人数满了之后将按钮置灰,或者状态为1，代表历史活动
-    if ([current_sum isEqualToString:max_sum]) {
+    if (([current_sum isEqualToString:max_sum])||(isDateEnd == YES)) {
         [self.reserveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self.reserveBtn setBackgroundColor:[UIColor grayColor]];
         self.reserveBtn.enabled = NO;
