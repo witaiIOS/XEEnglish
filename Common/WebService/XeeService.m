@@ -442,6 +442,27 @@
 }
 
 /**
+ 通过student_id学员id，获取相册列表分页
+ @param parent_id    注册id
+ @param student_id   学生id
+ @param signon_id    注册id
+ @param create_time  创建时间
+ @param pageSize
+ @param pageIndex
+ @param token
+ */
+- (void)getStudentSignPhotoListWithParentId:(NSString *)parent_id  andStudentId:(NSString *)student_id  andSignonId:(NSString *)signon_id  andCreateTime:(NSString *)create_time andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getStudentSignPhotoListWithParentId:parent_id andStudentId:student_id andSignonId:signon_id andCreateTime:create_time andPageSize:pageSize andPageIndex:pageIndex andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetPhotoByCourseScheduleIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
+/**
  通过课程计划id，查询上课家长评论  每节课的评论
  @param parent_id    注册id
  @param course_schedule_id

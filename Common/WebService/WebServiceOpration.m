@@ -268,7 +268,7 @@
 }
 
 /**
- 课程回顾
+ 课程回顾(通过课表id(course_schedule_id)获取课表相关图片)   //其他图片
  @param parent_id    注册id
  @param owner_id   就是course_schedule_id
  @param token
@@ -276,6 +276,21 @@
 + (AFHTTPRequestOperation *)getPhotoByCourseScheduleIdWithParentId:(NSString *)parent_id  andOwnerId:(NSString *)owner_id andToken:(NSString *)token{
     
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPhotoByCourseScheduleId><web:json>{\"owner_id\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetPhotoByCourseScheduleId>",owner_id,parent_id,token]];
+}
+
+/**
+ 通过student_id学员id，获取相册列表分页
+ @param parent_id    注册id
+ @param student_id   学生id
+ @param signon_id    注册id
+ @param create_time  创建时间
+ @param pageSize
+ @param pageIndex
+ @param token
+ */
++ (AFHTTPRequestOperation *)getStudentSignPhotoListWithParentId:(NSString *)parent_id  andStudentId:(NSString *)student_id  andSignonId:(NSString *)signon_id  andCreateTime:(NSString *)create_time andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPhotoByCourseScheduleId><web:json>{\"parent_id\":\"%@\",\"student_id\":\"%@\", \"signon_id\":\"%@\", \"create_time\": \"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetPhotoByCourseScheduleId>",parent_id,student_id,signon_id,create_time,pageSize,pageIndex,token]];
 }
 
 /**

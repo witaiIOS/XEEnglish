@@ -204,12 +204,25 @@
 + (AFHTTPRequestOperation *)addSubcourseLeaveApplyByParentId:(NSString *)parent_id andRelationId:(NSString *)relation_id andRemark:(NSString *)remark andStar:(NSString *)star andType:(NSString *)type andApplyId:(NSString *)apply_id andCreateTime:(NSString *)create_time andStatus:(NSString *)status andTeacherId:(NSString *)teacher_id andCheckTime:(NSString *)check_time andCheckRemark:(NSString *)check_remark andToken:(NSString *)token;
 
 /**
- 课程回顾
+ 课程回顾(通过课表id(course_schedule_id)获取课表相关图片)   //其他图片
  @param parent_id    注册id
  @param owner_id   就是course_schedule_id
  @param token
  */
 + (AFHTTPRequestOperation *)getPhotoByCourseScheduleIdWithParentId:(NSString *)parent_id  andOwnerId:(NSString *)owner_id andToken:(NSString *)token;
+
+/**
+ 通过student_id学员id，获取相册列表分页
+ @param parent_id    注册id
+ @param student_id   学生id
+ @param signon_id    注册id
+ @param create_time  创建时间
+ @param pageSize
+ @param pageIndex
+ @param token
+ */
++ (AFHTTPRequestOperation *)getStudentSignPhotoListWithParentId:(NSString *)parent_id  andStudentId:(NSString *)student_id  andSignonId:(NSString *)signon_id  andCreateTime:(NSString *)create_time andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token;
+
 
 /**
  通过课程计划id，查询上课家长评论  每节课的评论
