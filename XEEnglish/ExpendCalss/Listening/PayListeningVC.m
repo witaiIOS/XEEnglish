@@ -111,7 +111,7 @@
     if (indexPath.section == 0) {
         BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
         if (cell == nil) {
-            cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse1];
+            cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse1];
             cell.textLabel.textColor = [UIColor blackColor];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
             cell.detailTextLabel.textColor = [UIColor grayColor];
@@ -129,9 +129,7 @@
             case 1:
             {
                 cell.textLabel.text = @"校区选择";
-                NSLog(@"2222:%@",self.schoolInfoDic[@"department"]);
                 cell.detailTextLabel.text = self.schoolInfoDic[@"department"];
-                NSLog(@"1111:%@",cell.detailTextLabel.text);
                 break;
             }
                 
