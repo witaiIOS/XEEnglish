@@ -78,7 +78,12 @@
     [self.signBtn setFrame:CGRectMake(kScreenWidth-70, 15, 60, 30)];
     [self.signBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     //reservePlaceBtn.backgroundColor = [UIColor orangeColor];
-    [self.signBtn setTitle:@"签到" forState:UIControlStateNormal];
+    NSLog(@"sign:%@",self.signMarkStr);
+//    if ([self.signMarkStr isEqualToString:@"0"]) {
+//        [self.signBtn setTitle:@"签到" forState:UIControlStateNormal];
+//    }else{
+//        [self.signBtn setTitle:@"已签到" forState:UIControlStateNormal];
+//    }
     [self.signBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.signBtn.titleLabel setFont: [UIFont systemFontOfSize:16.0]];
     [self.signBtn addTarget:self action:@selector(signBtnAction) forControlEvents:UIControlEventTouchUpInside];
@@ -94,15 +99,28 @@
 }
 
 #pragma mark - My Action
+//检查一下是否已签到
+- (void)checkSign{
+    if ([self.signMarkStr intValue] == 1) {
+        [self.signBtn setTitle:@"已签到" forState:UIControlStateNormal];
+        self.signBtn.enabled = NO;
+    }
+    else{
+        [self.signBtn setTitle:@"签到" forState:UIControlStateNormal];
+        self.signBtn.enabled = YES;
+    }
+}
+
+
 //签到按钮的功能
 - (void)signBtnAction{
     //签到
-    [self checkSign];
+    [self checkSignWithWeb];
 }
 
 #pragma mark - Web
 
-- (void)checkSign{
+- (void)checkSignWithWeb{
     
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
@@ -115,13 +133,13 @@
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 [UIFactory showAlert:result[@"resultInfo"]];
-                self.signMarkStr = result[@"resultInfo"];
+                //self.signMarkStr = result[@"resultInfo"];
                 //NSLog(@"signMarkStr:%@",self.signMarkStr);
                 [self changeSignBtnTitle];
             }
             else{
                 [UIFactory showAlert:result[@"resultInfo"]];
-                self.signMarkStr = result[@"resultInfo"];
+                //self.signMarkStr = result[@"resultInfo"];
             }
         }
         else{
@@ -132,7 +150,7 @@
 
 - (void)changeSignBtnTitle{
     
-    if ([self.signMarkStr isEqualToString:@"操作成功!"]) {
+    if ([self.signMarkStr isEqualToString:@"1"]) {
         [self.signBtn setTitle:@"已签到" forState:UIControlStateNormal];
         self.signBtn.enabled = NO;
         //签到之后刷新页面，改变积分
@@ -262,6 +280,10 @@
                 if (isResult.integerValue == 0) {
                     self.myInfoDic = result[@"resultInfo"];
                     self.selectCity = self.myInfoDic[@"city"];
+                    //获取是否已签到的标记
+                    self.signMarkStr = [NSString stringWithFormat:@"%@",self.myInfoDic[@"sign"]];
+                    //根据标记改变签到按钮title
+                    [self checkSign];
                     [self.tableView reloadData];
                 }
                 else{
