@@ -8,7 +8,10 @@
 
 #import "CommentVC.h"
 
-@interface CommentVC ()
+#import "XeeService.h"
+
+@interface CommentVC ()<UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet UITextView *commentTV;//评论的UITextView
 
 @property (nonatomic, assign) NSInteger starNum;//评价星级，满意度
 
@@ -35,8 +38,39 @@
     [super initUI];
     //初始化
     self.starNum = 0;
+    self.teacherStatusNum = 0;
+    self.teacherAbilityNum = 0;
+    self.studentStatusNum = 0;
     
+    
+    //添加键盘上的done按钮
+    [self addKeyboardDone];
 }
+
+#pragma mark - AddKeyboardDone
+- (void)addKeyboardDone{
+    
+    UIToolbar * topView = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+    [topView setBarStyle:UIBarStyleBlack];
+    
+    UIBarButtonItem *btnSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Done"
+                                                                  style:UIBarButtonItemStyleDone
+                                                                 target:self
+                                                                 action:@selector(dismissKeyBoard)];
+    
+    NSArray * buttonsArray = @[btnSpace, doneButton];;
+    [topView setItems:buttonsArray];
+    [self.commentTV setInputAccessoryView:topView];//当文本输入框加上topView
+    topView = nil;
+}
+
+-(IBAction)dismissKeyBoard
+{
+    [self.commentTV resignFirstResponder];
+}
+
 
 #pragma mark - starComment
 - (IBAction)starButtonClicked:(id)sender {
@@ -113,4 +147,66 @@
     }
 }
 
+#pragma mark - Web
+- (void)addTStarCommentWithWeb{
+    
+    if (self.starNum <= 0) {
+        [UIFactory showAlert:@"您还未评价星级"];
+    }
+    else if (self.teacherStatusNum <= 0) {
+        [UIFactory showAlert:@"您还未评价老师的状态"];
+    }
+    else if (self.teacherAbilityNum <= 0) {
+        [UIFactory showAlert:@"您还未评价老师的点评"];
+    }
+    else if (self.studentStatusNum <= 0) {
+        [UIFactory showAlert:@"您还未评价学生的参与度"];
+    }
+    else if (self.commentTV.text.length <= 0){
+        [UIFactory showAlert:@"您还未填写评价内容"];
+    }
+    else{
+        NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+        NSDictionary *userInfoDic = userDic[uUserInfoKey];
+        //对汉字进行编码
+        NSString *commentStr = [self.commentTV.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        [self showHudWithMsg:@"上传中"];
+        [[XeeService sharedInstance] addTStarCommentWithParentId:userInfoDic[uUserId] andStarCommentNumbers:self.starNum andTeacherTowardsNumbers:self.teacherStatusNum andTeacherCommentNumbers:self.teacherAbilityNum andStudentDegreeNumbers:self.studentStatusNum andRemark:commentStr andRelationId:self.courseInfoDic[@"signon_id"] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+            [self hideHud];
+            if (!error) {
+                NSNumber *isResult = result[@"result"];
+                if (isResult.integerValue == 0) {
+                    [UIFactory showAlert:result[@"resultInfo"]];
+                }
+                else{
+                    [UIFactory showAlert:result[@"resultInfo"]];
+                }
+            }
+            else{
+                [UIFactory showAlert:@"网络错误"];
+            }
+        }];
+    }
+    
+}
+
+#pragma mark - My Action
+- (IBAction)publishCommentBtnClicked:(id)sender {
+    
+    [self addTStarCommentWithWeb];
+}
+
+
+
+#pragma mark - UITextView Delegate
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    
+    [textView becomeFirstResponder];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    
+    [textView resignFirstResponder];
+}
 @end

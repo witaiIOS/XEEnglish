@@ -228,9 +228,23 @@
  通过课程计划id，查询上课家长评论  每节课的评论
  @param parent_id    注册id
  @param course_schedule_id
+ @param signon_id  该节课的id
  @param token
  */
 + (AFHTTPRequestOperation *)getCourseScheduleSignParentCommentWithParentId:(NSString *)parent_id  andCourseScheduleId:(NSString *)course_schedule_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andSignonId:(NSString *)signon_id andToken:(NSString *)token;
+
+/**
+ 通过课程计划id，查询上课家长评论  每节课的评论
+ @param parent_id    注册id
+ @param star_comment_numbers     评论星级
+ @param teacher_towards_numbers  老师状态星级
+ @param teacher_comment_numbers  老师评星级
+ @param student_degree_numbers   学生参与度星级
+ @param remark        评论
+ @param relation_id   该节课的id  relation_id 取值签到表id(signon_id)
+ @param token
+ */
++ (AFHTTPRequestOperation *)addTStarCommentWithParentId:(NSString *)parent_id  andStarCommentNumbers:(NSInteger )star_comment_numbers andTeacherTowardsNumbers:(NSInteger )teacher_towards_numbers andTeacherCommentNumbers:(NSInteger )teacher_comment_numbers andStudentDegreeNumbers:(NSInteger )student_degree_numbers andRemark:(NSString *)remark andRelationId:(NSString *)relation_id andToken:(NSString *)token;
 
 #pragma mark - 活动
 /**

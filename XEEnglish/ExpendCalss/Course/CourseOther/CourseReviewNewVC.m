@@ -80,6 +80,7 @@
 #pragma mark - comment
 - (void)commentBtnClicked{
     CommentVC *vc = [[CommentVC alloc] init];
+    vc.courseInfoDic = self.courseLeaveInfoDic;
     [self.navigationController pushViewController:vc animated:YES];
 //    CourseMyCommentVC *vc = [[CourseMyCommentVC alloc] init];
 //    [self.navigationController pushViewController:vc animated:YES];

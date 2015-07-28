@@ -480,6 +480,28 @@
 }
 
 
+/**
+ 通过课程计划id，查询上课家长评论  每节课的评论
+ @param parent_id    注册id
+ @param star_comment_numbers     评论星级
+ @param teacher_towards_numbers  老师状态星级
+ @param teacher_comment_numbers  老师评星级
+ @param student_degree_numbers   学生参与度星级
+ @param remark        评论
+ @param relation_id   该节课的id  relation_id 取值签到表id(signon_id)
+ @param token
+ */
+- (void)addTStarCommentWithParentId:(NSString *)parent_id  andStarCommentNumbers:(NSInteger )star_comment_numbers andTeacherTowardsNumbers:(NSInteger )teacher_towards_numbers andTeacherCommentNumbers:(NSInteger )teacher_comment_numbers andStudentDegreeNumbers:(NSInteger )student_degree_numbers andRemark:(NSString *)remark andRelationId:(NSString *)relation_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration addTStarCommentWithParentId:parent_id andStarCommentNumbers:star_comment_numbers andTeacherTowardsNumbers:teacher_towards_numbers andTeacherCommentNumbers:teacher_comment_numbers andStudentDegreeNumbers:student_degree_numbers andRemark:remark andRelationId:relation_id andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"AddTStarCommentResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 
 #pragma mark - 活动
 - (void)getActivityInfoWithPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andActivityStatus:(NSInteger )activity_status andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result, NSError *error))block {

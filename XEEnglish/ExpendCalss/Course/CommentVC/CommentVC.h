@@ -9,5 +9,5 @@
 #import "BaseVC.h"
 
 @interface CommentVC : BaseVC
-
+@property (nonatomic, strong) NSDictionary *courseInfoDic;
 @end

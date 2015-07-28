@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommentVC">
             <connections>
+                <outlet property="commentTV" destination="1fa-RK-U7h" id="fXU-7C-r3j"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -287,6 +288,9 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="jiT-r2-Dww"/>
+                    </connections>
                 </textView>
                 <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DaU-aH-rmV">
                     <rect key="frame" x="20" y="500" width="280" height="40"/>
@@ -297,6 +301,9 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="publishCommentBtnClicked:" destination="-1" eventType="touchUpInside" id="VTc-Sf-haF"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="q6C-tD-EXR" customClass="CommentButton">
                     <rect key="frame" x="253" y="70" width="50" height="75"/>
