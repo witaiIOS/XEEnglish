@@ -9,6 +9,8 @@
 #import "BaseTVC.h"
 
 @interface photoCell : BaseTVC
+@property (nonatomic, strong) NSMutableArray *photoArray;
+
 @property (nonatomic, strong) UIImageView *photo1;
 @property (nonatomic, strong) UIImageView *photo2;
 @property (nonatomic, strong) UIImageView *photo3;

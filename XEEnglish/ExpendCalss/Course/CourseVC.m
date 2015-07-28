@@ -17,7 +17,8 @@
 #import "XeeService.h"
 
 #import "CourseLeaveApplyVC.h"  //请假申请页面
-#import "CourseReviewVC.h"      //cell中已完成课程跳转到课程回顾
+//#import "CourseReviewVC.h"      //cell中已完成课程跳转到课程回顾
+#import "CourseReviewNewVC.h"
 #import "CourseForenoticeVC.h"  //cell中未完成课程跳转到课程预告
 #import "CourseCommentVC.h"     //评论页面
 
@@ -526,7 +527,11 @@
         
     }
     else{
-        CourseReviewVC *vc = [[CourseReviewVC alloc] init];
+//        CourseReviewVC *vc = [[CourseReviewVC alloc] init];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        vc.courseLeaveInfoDic = self.studentCoursesArray[indexPath.section];
+//        [self.navigationController pushViewController:vc animated:YES];
+        CourseReviewNewVC *vc = [[CourseReviewNewVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         vc.courseLeaveInfoDic = self.studentCoursesArray[indexPath.section];
         [self.navigationController pushViewController:vc animated:YES];
