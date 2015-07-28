@@ -12,6 +12,9 @@
 #import "CourseCommentCell.h"
 #import "photoCell.h"
 
+#import "CommentVC.h"
+#import "CourseMyCommentVC.h"
+
 #import "XeeService.h"
 
 @interface CourseReviewNewVC ()<UITableViewDataSource,UITableViewDelegate>
@@ -76,7 +79,10 @@
 
 #pragma mark - comment
 - (void)commentBtnClicked{
-    
+    CommentVC *vc = [[CommentVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+//    CourseMyCommentVC *vc = [[CourseMyCommentVC alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Web

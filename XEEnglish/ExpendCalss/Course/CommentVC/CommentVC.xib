@@ -23,7 +23,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bcy-HW-2lR">
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bcy-HW-2lR" customClass="CommentButton">
                     <rect key="frame" x="135" y="70" width="50" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -31,7 +31,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DyQ-Yq-zbZ">
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DyQ-Yq-zbZ" customClass="CommentButton">
                     <rect key="frame" x="195" y="70" width="50" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -39,7 +39,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="q6C-tD-EXR">
+                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="q6C-tD-EXR" customClass="CommentButton">
                     <rect key="frame" x="255" y="70" width="50" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -47,7 +47,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2D2-JM-boa">
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2D2-JM-boa" customClass="CommentButton">
                     <rect key="frame" x="75" y="70" width="50" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -86,41 +86,56 @@
                     <rect key="frame" x="120" y="210" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <state key="normal" title="face1" backgroundImage="takeout_bg_rating_face_normal.png">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="eK5-rx-ujx"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="22" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="H2o-5q-smr">
                     <rect key="frame" x="155" y="210" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <state key="normal" title="face2" backgroundImage="takeout_bg_rating_face_normal.png">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="ocw-mv-OW3"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="23" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8vV-qS-kSX">
                     <rect key="frame" x="190" y="210" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <state key="normal" title="face3" backgroundImage="takeout_bg_rating_face_normal.png">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="r4b-uf-qa6"/>
+                    </connections>
                 </button>
-                <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h7d-ao-tVK">
+                <button opaque="NO" tag="24" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h7d-ao-tVK">
                     <rect key="frame" x="225" y="210" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <state key="normal" title="face4" backgroundImage="takeout_bg_rating_face_normal.png">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="qeT-nK-7gl"/>
+                    </connections>
                 </button>
-                <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Pf-ng-xLl">
+                <button opaque="NO" tag="25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Pf-ng-xLl">
                     <rect key="frame" x="260" y="210" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <state key="normal" title="face5">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="qkH-sB-mVU"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="老师的点评" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Pa-nO-ZQG">
                     <rect key="frame" x="30" y="270" width="80" height="20"/>
@@ -133,33 +148,45 @@
                     <rect key="frame" x="120" y="265" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                    <state key="normal" title="face31" backgroundImage="takeout_bg_rating_face_normal.png">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="zwk-Ij-aiU"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="32" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7eq-vD-xe4">
+                    <rect key="frame" x="155" y="265" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="Njc-30-YIk"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="33" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YS0-lE-TCk">
                     <rect key="frame" x="190" y="264" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                    <state key="normal" title="face33">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                </button>
-                <button opaque="NO" tag="34" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="obg-5L-lkt">
-                    <rect key="frame" x="225" y="265" width="30" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                    <state key="normal" title="face34" backgroundImage="takeout_bg_rating_face_normal.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="GA1-v0-aCg"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="35" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="x9G-oE-NL8">
                     <rect key="frame" x="260" y="265" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                    <state key="normal" title="face35" backgroundImage="takeout_bg_rating_face_normal.png">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="ful-mN-WK3"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="孩子参与度" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hto-oQ-JGO">
                     <rect key="frame" x="30" y="325" width="80" height="20"/>
@@ -172,41 +199,56 @@
                     <rect key="frame" x="120" y="320" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                    <state key="normal" title="face41" backgroundImage="takeout_bg_rating_face_normal.png">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="Yiy-16-Ql8"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="42" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hHA-Ir-HPZ">
                     <rect key="frame" x="155" y="320" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                    <state key="normal" title="face42" backgroundImage="takeout_bg_rating_face_normal.png">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="Cyw-Pf-It0"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="43" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AYj-cC-BDA">
                     <rect key="frame" x="190" y="320" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                    <state key="normal" title="face43" backgroundImage="takeout_bg_rating_face_normal.png">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="97o-do-yqQ"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="44" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tT5-h2-JpD">
                     <rect key="frame" x="225" y="320" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                    <state key="normal" title="face44" backgroundImage="takeout_bg_rating_face_normal.png">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="ZZn-ol-gr9"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="45" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z7d-sB-djQ">
                     <rect key="frame" x="260" y="320" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                    <state key="normal" title="face45" backgroundImage="takeout_bg_rating_face_normal.png">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="X2M-rQ-DTp"/>
+                    </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="1fa-RK-U7h">
                     <rect key="frame" x="20" y="380" width="280" height="80"/>
@@ -225,13 +267,16 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" tag="32" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7eq-vD-xe4">
-                    <rect key="frame" x="155" y="265" width="30" height="30"/>
+                <button opaque="NO" tag="34" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="obg-5L-lkt">
+                    <rect key="frame" x="225" y="265" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                    <state key="normal" title="face32" backgroundImage="takeout_bg_rating_face_normal.png">
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="jbk-ll-7bR"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
