@@ -55,6 +55,11 @@
 
     //获取我的评论
     [self getCourseScheduleSignParentCommentWithCourseScheduleId:@"" andSignonId:self.courseLeaveInfoDic[@"signon_id"]];
+    //获取其他评论
+    [self getCourseScheduleSignParentCommentWithCourseScheduleId:self.courseLeaveInfoDic[@"course_schedule_id"] andSignonId:@""];
+    //查询上这节课的这个学生图片，传值signon_id 课表签到id；create_time、student_id, course_schedule_id不传值。
+    [self getStudentSignPhotoListWithCourseScheduleId:@"" andSignonId:self.courseLeaveInfoDic[@"signon_id"]];
+    //查询上这节课的所有学生图片，传值course_schedule_id 课表id；create_time、student_id, signon_id不传值。
 }
 
 #pragma mark - Web
@@ -87,9 +92,46 @@
     }];
 }
 
+//查询上这节课的这个学生图片，传值signon_id 课表签到id；create_time、student_id, course_schedule_id不传值。
+//查询上这节课的所有学生图片，传值course_schedule_id 课表id；create_time、student_id, signon_id不传值。
+//通过student_id学员id，获取相册列表分页
+- (void)getStudentSignPhotoListWithCourseScheduleId:(NSString *)course_schedule_id andSignonId:(NSString *)signon_id{
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [self showHudWithMsg:@"加载中..."];
+    [[XeeService sharedInstance] getStudentSignPhotoListWithParentId:userInfoDic[uUserId] andStudentId:@"" andSignonId:signon_id andCreateTime:@"" andPageSize:3 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
+        
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                //查询这节课老师和家长的评论，传值signon_id课表签到id，course_schedule_id不传值。
+                if ([course_schedule_id isEqualToString:@""]) {
+                    NSDictionary *photoDic = result[@"resultInfo"];
+                    self.myPhotoArray = photoDic[@"data"];
+                    NSLog(@"array:%@",self.myPhotoArray);
+                    [self.tableview reloadData];
+                }
+                else{
+                    NSDictionary *photoDic = result[@"resultInfo"];
+                    self.otherPhotoArray = photoDic[@"data"];
+                    [self.tableview reloadData];
+                }
+            }else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
+
+
 #pragma mark - UITableViewDelegate
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 4;
 }
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
@@ -100,12 +142,28 @@
             return [self.myCommentArray count];
         }
     }
-    else{
+    else if (section == 1){
         if ([self.otherCommentArray count] == 0) {
             return 1;
         }
         else{
             return [self.otherCommentArray count];
+        }
+    }
+    else if (section == 2){
+        if ([self.myPhotoArray count] == 0) {
+            return 1;
+        }
+        else{
+            return [self.myPhotoArray count];
+        }
+    }
+    else{
+        if ([self.otherPhotoArray count] == 0) {
+            return 1;
+        }
+        else{
+            return [self.otherPhotoArray count];
         }
     }
 }
@@ -114,7 +172,7 @@
     
     static NSString *reuse1 = @"DataIsNullCell";
     static NSString *reuse2 = @"CourseCommentVCCell";
-    //static NSString *reuse3 = @"photoCell";
+    static NSString *reuse3 = @"photoCell";
     
     if (indexPath.section == 0) {
         if ([self.myCommentArray count] == 0) {
@@ -137,7 +195,7 @@
             return cell;
         }
     }
-    else {
+    else if (indexPath.section == 1) {
         if ([self.otherCommentArray count] == 0) {
             DataIsNullCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
             if (cell == nil) {
@@ -157,6 +215,48 @@
             return cell;
         }
     }
+    else if (indexPath.section == 2) {
+        if ([self.myPhotoArray count] == 0) {
+            DataIsNullCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
+            if (cell == nil) {
+                cell = [[DataIsNullCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse1];
+            }
+            cell.cellEdge = 10;
+            cell.tipLabel.text = @"暂无相关照片";
+            return cell;
+        }
+        else{
+            photoCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse3];
+            if (cell == nil) {
+                cell = [[photoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+            }
+            cell.cellEdge = 10;
+            [cell.photoArray addObjectsFromArray:self.otherCommentArray];
+            
+            return cell;
+        }
+    }
+    else{
+        if ([self.otherPhotoArray count] == 0) {
+            DataIsNullCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
+            if (cell == nil) {
+                cell = [[DataIsNullCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse1];
+            }
+            cell.cellEdge = 10;
+            cell.tipLabel.text = @"暂无相关照片";
+            return cell;
+        }
+        else{
+            photoCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse3];
+            if (cell == nil) {
+                cell = [[photoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+            }
+            cell.cellEdge = 10;
+            [cell.photoArray addObjectsFromArray:self.otherCommentArray];
+            
+            return cell;
+        }
+    }
     
 }
 
@@ -172,12 +272,28 @@
             return 80.0f;
         }
     }
-    else{
+    else if (indexPath.section == 1){
         if ([self.otherCommentArray count] == 0) {
             return 44.0f;
         }
         else{
             return 80.0f;
+        }
+    }
+    else if (indexPath.section == 2){
+        if ([self.myPhotoArray count] == 0) {
+            return 44.0f;
+        }
+        else{
+            return 120.0f;
+        }
+    }
+    else{
+        if ([self.otherPhotoArray count] == 0) {
+            return 44.0f;
+        }
+        else{
+            return 120.0f;
         }
     }
 }
@@ -212,9 +328,17 @@
         tipLabel.text = @"我的评论";
         detailLabel.text = @"历史聊天";
     }
-    else{
+    else if (section == 1){
         tipLabel.text = @"其他评论";
         detailLabel.text = @"全部评论";
+    }
+    else if (section == 2){
+        tipLabel.text = @"我的照片";
+        detailLabel.text = @"全部照片";
+    }
+    else{
+        tipLabel.text = @"其他照片";
+        detailLabel.text = @"全部照片";
     }
     
     return view;
