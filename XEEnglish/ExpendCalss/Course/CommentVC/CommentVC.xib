@@ -15,45 +15,65 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5rL-0g-HhS" customClass="CommentButton">
-                    <rect key="frame" x="17" y="70" width="50" height="75"/>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5rL-0g-HhS" customClass="CommentButton">
+                    <rect key="frame" x="15" y="70" width="50" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="不好">
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" title="  不好" image="ic_review_score1_off.png">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted" title="  不好" image="ic_review_score1_on.png">
+                        <color key="titleColor" red="1" green="0.48263922009999999" blue="0.1546600128" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="starButtonClicked:" destination="-1" eventType="touchUpInside" id="Zlp-G6-REP"/>
+                    </connections>
                 </button>
-                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bcy-HW-2lR" customClass="CommentButton">
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Bcy-HW-2lR" customClass="CommentButton">
                     <rect key="frame" x="135" y="70" width="50" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="还不错">
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" title="还不错" image="ic_review_score3_off.png">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted" title="还不错" image="ic_review_score3_on.png">
+                        <color key="titleColor" red="1" green="0.48263922009999999" blue="0.1546600128" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="starButtonClicked:" destination="-1" eventType="touchUpInside" id="AEQ-ty-CAD"/>
+                    </connections>
                 </button>
-                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DyQ-Yq-zbZ" customClass="CommentButton">
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DyQ-Yq-zbZ" customClass="CommentButton">
                     <rect key="frame" x="195" y="70" width="50" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="很喜欢">
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" title="很喜欢" image="ic_review_score4_off.png">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                </button>
-                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="q6C-tD-EXR" customClass="CommentButton">
-                    <rect key="frame" x="255" y="70" width="50" height="75"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="非常满意">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="highlighted" title="很喜欢" image="ic_review_score4_on.png">
+                        <color key="titleColor" red="1" green="0.48263922009999999" blue="0.1546600128" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="starButtonClicked:" destination="-1" eventType="touchUpInside" id="RtN-ud-SZP"/>
+                    </connections>
                 </button>
-                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2D2-JM-boa" customClass="CommentButton">
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2D2-JM-boa" customClass="CommentButton">
                     <rect key="frame" x="75" y="70" width="50" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="一般">
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" title="  一般" image="ic_review_score2_off.png">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted" title="  一般" image="ic_review_score2_on.png">
+                        <color key="titleColor" red="1" green="0.48263922009999999" blue="0.1546600128" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="starButtonClicked:" destination="-1" eventType="touchUpInside" id="cha-6p-Aay"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" tag="11" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_0_pressed.png" highlightedImage="star_1_normal.png" id="fK5-st-Mpg">
                     <rect key="frame" x="65" y="160" width="30" height="30"/>
@@ -177,6 +197,17 @@
                         <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="GA1-v0-aCg"/>
                     </connections>
                 </button>
+                <button opaque="NO" tag="34" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="obg-5L-lkt">
+                    <rect key="frame" x="225" y="265" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="jbk-ll-7bR"/>
+                    </connections>
+                </button>
                 <button opaque="NO" tag="35" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="x9G-oE-NL8">
                     <rect key="frame" x="260" y="265" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -267,15 +298,19 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" tag="34" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="obg-5L-lkt">
-                    <rect key="frame" x="225" y="265" width="30" height="30"/>
+                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="q6C-tD-EXR" customClass="CommentButton">
+                    <rect key="frame" x="253" y="70" width="50" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                    <state key="normal" backgroundImage="takeout_bg_rating_face_normal.png">
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" title="非常满意" image="ic_review_score5_off.png">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted" title="非常满意" image="ic_review_score5_on.png">
+                        <color key="titleColor" red="1" green="0.48263922009999999" blue="0.1546600128" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
-                        <action selector="faceButtonClicked:" destination="-1" eventType="touchUpInside" id="jbk-ll-7bR"/>
+                        <action selector="starButtonClicked:" destination="-1" eventType="touchUpInside" id="aLH-Yq-hBZ"/>
                     </connections>
                 </button>
             </subviews>
@@ -284,6 +319,16 @@
         </view>
     </objects>
     <resources>
+        <image name="ic_review_score1_off.png" width="90" height="90"/>
+        <image name="ic_review_score1_on.png" width="90" height="90"/>
+        <image name="ic_review_score2_off.png" width="90" height="90"/>
+        <image name="ic_review_score2_on.png" width="90" height="90"/>
+        <image name="ic_review_score3_off.png" width="90" height="90"/>
+        <image name="ic_review_score3_on.png" width="90" height="90"/>
+        <image name="ic_review_score4_off.png" width="90" height="90"/>
+        <image name="ic_review_score4_on.png" width="90" height="90"/>
+        <image name="ic_review_score5_off.png" width="90" height="90"/>
+        <image name="ic_review_score5_on.png" width="90" height="90"/>
         <image name="star_0_pressed.png" width="80" height="80"/>
         <image name="star_1_normal.png" width="80" height="80"/>
         <image name="takeout_bg_rating_face_normal.png" width="56" height="56"/>
