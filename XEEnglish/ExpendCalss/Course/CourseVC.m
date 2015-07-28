@@ -20,7 +20,8 @@
 //#import "CourseReviewVC.h"      //cell中已完成课程跳转到课程回顾
 #import "CourseReviewNewVC.h"
 #import "CourseForenoticeVC.h"  //cell中未完成课程跳转到课程预告
-#import "CourseCommentVC.h"     //评论页面
+//#import "CourseCommentVC.h"     //评论页面
+#import "CommentVC.h"     //评论页面
 
 
 @interface CourseVC ()<JSDropDownMenuDataSource, JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate,CourseCellCourseButtonPressedDelegate>
@@ -571,9 +572,9 @@
     }
     else if ([sender isEqualToString:@"1"]){
         //为1时，状态是已上课，可以“评论”
-        CourseCommentVC *vc = [[CourseCommentVC alloc] init];
+        CommentVC *vc = [[CommentVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
-        vc.courseLeaveInfoDic = courseInfoDic;
+        vc.courseInfoDic = courseInfoDic;
         [self.navigationController pushViewController:vc animated:YES];
 
     }
