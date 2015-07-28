@@ -5,6 +5,7 @@
 //  Created by houjing on 15/7/27.
 //  Copyright (c) 2015年 lixiang. All rights reserved.
 //
+#define imageHeight 110
 
 #import "photoCell.h"
 
@@ -17,17 +18,21 @@
     if (self) {
         //NSLog(@"info:%@",self.photoArray);
         
-        self.photo1 = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, (kScreenWidth/3)-10, self.frame.size.height-10)];
-        self.photo2 = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth/3)+5, 5,(kScreenWidth/3)-10, self.frame.size.height-10)];
-        self.photo3 = [[UIImageView alloc] initWithFrame:CGRectMake(2*(kScreenWidth/3)+5, 5, kScreenWidth/3-10, self.frame.size.height-10)];
-    } 
+        self.photo1 = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, ((kScreenWidth-20)/3)-10, imageHeight)];
+        self.photo2 = [[UIImageView alloc] initWithFrame:CGRectMake(((kScreenWidth-20)/3)+5, 5,((kScreenWidth-20)/3)-10, imageHeight)];
+        self.photo3 = [[UIImageView alloc] initWithFrame:CGRectMake(2*((kScreenWidth-20)/3)+5, 5, (kScreenWidth-20)/3-10, imageHeight)];
+        
+        [self.contentView addSubview:self.photo1];
+        [self.contentView addSubview:self.photo2];
+        [self.contentView addSubview:self.photo3];
+    }
     return self;
 }
 
 - (void)layoutSubviews{
     [super layoutSubviews];
     //NSLog(@"info:%@",self.photoArray);
-    NSLog(@"url:%@",[self.photoArray[0] objectForKey:@"pic_url"]);
+    //NSLog(@"url:%@",[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[self.photoArray[0] objectForKey:@"pic_url"]]);
     [self.photo1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[self.photoArray[0] objectForKey:@"pic_url"]]]];
     
     if ([self.photoArray count] >= 2) {

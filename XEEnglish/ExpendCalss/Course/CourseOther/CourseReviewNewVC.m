@@ -60,6 +60,7 @@
     //查询上这节课的这个学生图片，传值signon_id 课表签到id；create_time、student_id, course_schedule_id不传值。
     [self getStudentSignPhotoListWithCourseScheduleId:@"" andSignonId:self.courseLeaveInfoDic[@"signon_id"]];
     //查询上这节课的所有学生图片，传值course_schedule_id 课表id；create_time、student_id, signon_id不传值。
+    [self getStudentSignPhotoListWithCourseScheduleId:self.courseLeaveInfoDic[@"course_schedule_id"] andSignonId:@""];
 }
 
 #pragma mark - Web
