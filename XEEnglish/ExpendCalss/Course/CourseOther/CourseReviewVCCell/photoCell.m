@@ -15,6 +15,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        //NSLog(@"info:%@",self.photoArray);
+        
         self.photo1 = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, (kScreenWidth/3)-10, self.frame.size.height-10)];
         self.photo2 = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth/3)+5, 5,(kScreenWidth/3)-10, self.frame.size.height-10)];
         self.photo3 = [[UIImageView alloc] initWithFrame:CGRectMake(2*(kScreenWidth/3)+5, 5, kScreenWidth/3-10, self.frame.size.height-10)];
@@ -24,7 +26,8 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    
+    //NSLog(@"info:%@",self.photoArray);
+    NSLog(@"url:%@",[self.photoArray[0] objectForKey:@"pic_url"]);
     [self.photo1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[self.photoArray[0] objectForKey:@"pic_url"]]]];
     
     if ([self.photoArray count] >= 2) {

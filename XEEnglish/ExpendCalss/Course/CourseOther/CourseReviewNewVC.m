@@ -105,13 +105,14 @@
         [self hideHud];
         
         if (!error) {
+            //NSLog(@"result:%@",result);
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 //查询这节课老师和家长的评论，传值signon_id课表签到id，course_schedule_id不传值。
                 if ([course_schedule_id isEqualToString:@""]) {
                     NSDictionary *photoDic = result[@"resultInfo"];
                     self.myPhotoArray = photoDic[@"data"];
-                    NSLog(@"array:%@",self.myPhotoArray);
+                    //NSLog(@"array:%@",self.myPhotoArray);
                     [self.tableview reloadData];
                 }
                 else{
@@ -155,7 +156,7 @@
             return 1;
         }
         else{
-            return [self.myPhotoArray count];
+            return (self.myPhotoArray.count+2)/3;
         }
     }
     else{
@@ -163,7 +164,7 @@
             return 1;
         }
         else{
-            return [self.otherPhotoArray count];
+            return (self.otherPhotoArray.count+2)/3;
         }
     }
 }
@@ -231,8 +232,9 @@
                 cell = [[photoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
             }
             cell.cellEdge = 10;
-            [cell.photoArray addObjectsFromArray:self.otherCommentArray];
-            
+            cell.photoArray = self.myPhotoArray;
+            //NSLog(@"array:%@",self.myPhotoArray);
+            //NSLog(@"cell:%@",cell.photoArray);
             return cell;
         }
     }
@@ -252,7 +254,9 @@
                 cell = [[photoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
             }
             cell.cellEdge = 10;
-            [cell.photoArray addObjectsFromArray:self.otherCommentArray];
+            cell.photoArray = self.otherPhotoArray;
+            //NSLog(@"array:%@",self.otherPhotoArray);
+            //NSLog(@"cell:%@",cell.photoArray);
             
             return cell;
         }

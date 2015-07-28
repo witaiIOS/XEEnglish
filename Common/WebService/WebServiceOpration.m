@@ -290,7 +290,7 @@
  */
 + (AFHTTPRequestOperation *)getStudentSignPhotoListWithParentId:(NSString *)parent_id  andStudentId:(NSString *)student_id  andSignonId:(NSString *)signon_id  andCreateTime:(NSString *)create_time andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPhotoByCourseScheduleId><web:json>{\"parent_id\":\"%@\",\"student_id\":\"%@\", \"signon_id\":\"%@\", \"create_time\": \"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetPhotoByCourseScheduleId>",parent_id,student_id,signon_id,create_time,pageSize,pageIndex,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetStudentSignPhotoList><web:json>{\"parent_id\":\"%@\",\"student_id\":\"%@\", \"signon_id\":\"%@\", \"create_time\": \"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetStudentSignPhotoList>",parent_id,student_id,signon_id,create_time,pageSize,pageIndex,token]];
 }
 
 /**

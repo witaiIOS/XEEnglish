@@ -455,7 +455,7 @@
     
     AFHTTPRequestOperation *operation = [WebServiceOpration getStudentSignPhotoListWithParentId:parent_id andStudentId:student_id andSignonId:signon_id andCreateTime:create_time andPageSize:pageSize andPageIndex:pageIndex andToken:token];
     
-    [self getResponseWithOpration:operation andXmlKey:@"GetPhotoByCourseScheduleIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+    [self getResponseWithOpration:operation andXmlKey:@"GetStudentSignPhotoListResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         if (block) {
             block(result,error);
         }
