@@ -42,6 +42,17 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [commentBtn setFrame:CGRectMake(kScreenWidth-60, 17, 40, 30)];
+    [commentBtn setTitle:@"评论" forState:UIControlStateNormal];
+    [commentBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [commentBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [commentBtn addTarget:self action:@selector(commentBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *commentBarBtn = [[UIBarButtonItem alloc] initWithCustomView:commentBtn];
+    self.navigationItem.rightBarButtonItem = commentBarBtn;
+    
+    
     //初始化数组
     self.myCommentArray = [NSMutableArray array];
     self.otherCommentArray = [NSMutableArray array];
@@ -61,6 +72,11 @@
     [self getStudentSignPhotoListWithCourseScheduleId:@"" andSignonId:self.courseLeaveInfoDic[@"signon_id"]];
     //查询上这节课的所有学生图片，传值course_schedule_id 课表id；create_time、student_id, signon_id不传值。
     [self getStudentSignPhotoListWithCourseScheduleId:self.courseLeaveInfoDic[@"course_schedule_id"] andSignonId:@""];
+}
+
+#pragma mark - comment
+- (void)commentBtnClicked{
+    
 }
 
 #pragma mark - Web

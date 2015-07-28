@@ -66,6 +66,22 @@
 		09C87F2C1B3BF06600D7C913 /* SubCourseListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F2B1B3BF06600D7C913 /* SubCourseListCell.m */; };
 		09C87F2F1B3C24E700D7C913 /* PayCourseMethodVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F2E1B3C24E700D7C913 /* PayCourseMethodVCViewController.m */; };
 		09C87F321B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C87F311B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m */; };
+		09C88A3E1B675EE300B795C8 /* CommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C88A3C1B675EE300B795C8 /* CommentVC.m */; };
+		09C88A3F1B675EE300B795C8 /* CommentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A3D1B675EE300B795C8 /* CommentVC.xib */; };
+		09C88A421B67678100B795C8 /* CommentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C88A411B67678100B795C8 /* CommentButton.m */; };
+		09C88A511B676DC800B795C8 /* ic_review_score1_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A441B676DC800B795C8 /* ic_review_score1_off.png */; };
+		09C88A521B676DC800B795C8 /* ic_review_score1_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A451B676DC800B795C8 /* ic_review_score1_on.png */; };
+		09C88A531B676DC800B795C8 /* ic_review_score2_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A461B676DC800B795C8 /* ic_review_score2_on.png */; };
+		09C88A541B676DC800B795C8 /* ic_review_score2l_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A471B676DC800B795C8 /* ic_review_score2l_off.png */; };
+		09C88A551B676DC800B795C8 /* ic_review_score3_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A481B676DC800B795C8 /* ic_review_score3_off.png */; };
+		09C88A561B676DC800B795C8 /* ic_review_score3_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A491B676DC800B795C8 /* ic_review_score3_on.png */; };
+		09C88A571B676DC800B795C8 /* ic_review_score4_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A4A1B676DC800B795C8 /* ic_review_score4_off.png */; };
+		09C88A581B676DC800B795C8 /* ic_review_score4_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A4B1B676DC800B795C8 /* ic_review_score4_on.png */; };
+		09C88A591B676DC800B795C8 /* ic_review_score5_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A4C1B676DC800B795C8 /* ic_review_score5_off.png */; };
+		09C88A5A1B676DC800B795C8 /* ic_review_score5_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A4D1B676DC800B795C8 /* ic_review_score5_on.png */; };
+		09C88A5B1B676DC800B795C8 /* takeout_bg_rating_face_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A4E1B676DC800B795C8 /* takeout_bg_rating_face_normal.png */; };
+		09C88A5C1B676DC800B795C8 /* takeout_bg_rating_face_selected_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A4F1B676DC800B795C8 /* takeout_bg_rating_face_selected_2.png */; };
+		09C88A5D1B676DC800B795C8 /* takeout_bg_rating_face_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C88A501B676DC800B795C8 /* takeout_bg_rating_face_selected.png */; };
 		09C8C1CD1B535439000E089F /* NearSchoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C8C1CC1B535439000E089F /* NearSchoolVC.m */; };
 		09C8C1D01B535743000E089F /* NearSchoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C8C1CF1B535743000E089F /* NearSchoolCell.m */; };
 		09C8C1D21B53575C000E089F /* NearSchoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C8C1D11B53575C000E089F /* NearSchoolCell.xib */; };
@@ -393,6 +409,24 @@
 		09C87F2E1B3C24E700D7C913 /* PayCourseMethodVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayCourseMethodVCViewController.m; sourceTree = "<group>"; };
 		09C87F301B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyCoursePaymentAmountCell.h; sourceTree = "<group>"; };
 		09C87F311B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyCoursePaymentAmountCell.m; sourceTree = "<group>"; };
+		09C88A3B1B675EE300B795C8 /* CommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentVC.h; sourceTree = "<group>"; };
+		09C88A3C1B675EE300B795C8 /* CommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentVC.m; sourceTree = "<group>"; };
+		09C88A3D1B675EE300B795C8 /* CommentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentVC.xib; sourceTree = "<group>"; };
+		09C88A401B67678100B795C8 /* CommentButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentButton.h; sourceTree = "<group>"; };
+		09C88A411B67678100B795C8 /* CommentButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentButton.m; sourceTree = "<group>"; };
+		09C88A441B676DC800B795C8 /* ic_review_score1_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_review_score1_off.png; sourceTree = "<group>"; };
+		09C88A451B676DC800B795C8 /* ic_review_score1_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_review_score1_on.png; sourceTree = "<group>"; };
+		09C88A461B676DC800B795C8 /* ic_review_score2_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_review_score2_on.png; sourceTree = "<group>"; };
+		09C88A471B676DC800B795C8 /* ic_review_score2l_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_review_score2l_off.png; sourceTree = "<group>"; };
+		09C88A481B676DC800B795C8 /* ic_review_score3_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_review_score3_off.png; sourceTree = "<group>"; };
+		09C88A491B676DC800B795C8 /* ic_review_score3_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_review_score3_on.png; sourceTree = "<group>"; };
+		09C88A4A1B676DC800B795C8 /* ic_review_score4_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_review_score4_off.png; sourceTree = "<group>"; };
+		09C88A4B1B676DC800B795C8 /* ic_review_score4_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_review_score4_on.png; sourceTree = "<group>"; };
+		09C88A4C1B676DC800B795C8 /* ic_review_score5_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_review_score5_off.png; sourceTree = "<group>"; };
+		09C88A4D1B676DC800B795C8 /* ic_review_score5_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_review_score5_on.png; sourceTree = "<group>"; };
+		09C88A4E1B676DC800B795C8 /* takeout_bg_rating_face_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takeout_bg_rating_face_normal.png; sourceTree = "<group>"; };
+		09C88A4F1B676DC800B795C8 /* takeout_bg_rating_face_selected_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takeout_bg_rating_face_selected_2.png; sourceTree = "<group>"; };
+		09C88A501B676DC800B795C8 /* takeout_bg_rating_face_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takeout_bg_rating_face_selected.png; sourceTree = "<group>"; };
 		09C8C1CB1B535439000E089F /* NearSchoolVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearSchoolVC.h; sourceTree = "<group>"; };
 		09C8C1CC1B535439000E089F /* NearSchoolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearSchoolVC.m; sourceTree = "<group>"; };
 		09C8C1CE1B535743000E089F /* NearSchoolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearSchoolCell.h; sourceTree = "<group>"; };
@@ -981,6 +1015,18 @@
 			path = OtherList;
 			sourceTree = "<group>";
 		};
+		09C88A3A1B675E2F00B795C8 /* CommentVC */ = {
+			isa = PBXGroup;
+			children = (
+				09C88A3B1B675EE300B795C8 /* CommentVC.h */,
+				09C88A3C1B675EE300B795C8 /* CommentVC.m */,
+				09C88A3D1B675EE300B795C8 /* CommentVC.xib */,
+				09C88A401B67678100B795C8 /* CommentButton.h */,
+				09C88A411B67678100B795C8 /* CommentButton.m */,
+			);
+			path = CommentVC;
+			sourceTree = "<group>";
+		};
 		09C8C1CA1B535420000E089F /* NearSchoolVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1253,6 +1299,19 @@
 		09DB2DCF1B1322CC0078AAF5 /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				09C88A441B676DC800B795C8 /* ic_review_score1_off.png */,
+				09C88A451B676DC800B795C8 /* ic_review_score1_on.png */,
+				09C88A461B676DC800B795C8 /* ic_review_score2_on.png */,
+				09C88A471B676DC800B795C8 /* ic_review_score2l_off.png */,
+				09C88A481B676DC800B795C8 /* ic_review_score3_off.png */,
+				09C88A491B676DC800B795C8 /* ic_review_score3_on.png */,
+				09C88A4A1B676DC800B795C8 /* ic_review_score4_off.png */,
+				09C88A4B1B676DC800B795C8 /* ic_review_score4_on.png */,
+				09C88A4C1B676DC800B795C8 /* ic_review_score5_off.png */,
+				09C88A4D1B676DC800B795C8 /* ic_review_score5_on.png */,
+				09C88A4E1B676DC800B795C8 /* takeout_bg_rating_face_normal.png */,
+				09C88A4F1B676DC800B795C8 /* takeout_bg_rating_face_selected_2.png */,
+				09C88A501B676DC800B795C8 /* takeout_bg_rating_face_selected.png */,
 				09C532141B50A6FD00D6A07E /* star_0_pressed.png */,
 				09C532151B50A6FD00D6A07E /* star_1_normal.png */,
 				09DB2DD01B1322CC0078AAF5 /* star_select.png */,
@@ -1577,6 +1636,7 @@
 		A6284D691B105E6600EFF820 /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				09C88A3A1B675E2F00B795C8 /* CommentVC */,
 				093A58721B438B11006F104D /* CourseOther */,
 				A6284D901B10669200EFF820 /* CourseVC.h */,
 				A6284D911B10669200EFF820 /* CourseVC.m */,
@@ -2035,20 +2095,25 @@
 				09CA69211B201F2500A31E0E /* coupons1.png in Resources */,
 				09E24B221B41711700F762BD /* MyBookSiteCell.xib in Resources */,
 				A6B1CEE01B1C62D400100E9F /* SettingBirthdayVC.xib in Resources */,
+				09C88A531B676DC800B795C8 /* ic_review_score2_on.png in Resources */,
+				09C88A561B676DC800B795C8 /* ic_review_score3_on.png in Resources */,
 				09DB2DC41B1322980078AAF5 /* join_07.png in Resources */,
 				09D5604A1B26DB8F00ADF334 /* RegisterVC.xib in Resources */,
 				09CB13421B65FF3B0012F5E5 /* addStudentBirthday.xib in Resources */,
 				A6B1CEDC1B1C62D400100E9F /* NeTNameAndDomicileVC.xib in Resources */,
 				09CA691D1B1FFCE300A31E0E /* CouponsCell.xib in Resources */,
 				09D560451B26D3E700ADF334 /* ForgetPassWordVC.xib in Resources */,
+				09C88A3F1B675EE300B795C8 /* CommentVC.xib in Resources */,
 				A6B1CEDA1B1C62D400100E9F /* ChangePassWordVC.xib in Resources */,
 				09D23C5B1B42B0F1008B6085 /* PointSRuleCell.xib in Resources */,
 				09C543231B4F93C900BD750C /* SwitchButtonCell.xib in Resources */,
 				09C768341B592B1400012A33 /* CannelOrderExplainVC.xib in Resources */,
+				09C88A571B676DC800B795C8 /* ic_review_score4_off.png in Resources */,
 				A6B1CEE21B1C62D400100E9F /* SettingSignatureVC.xib in Resources */,
 				09CB133D1B65ED140012F5E5 /* AddStudentVC.xib in Resources */,
 				09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */,
 				A6284CD81B10592100EFF820 /* Main.storyboard in Resources */,
+				09C88A591B676DC800B795C8 /* ic_review_score5_off.png in Resources */,
 				A6DA3E291B44D919005850EB /* UMSocialSDKResourcesNew.bundle in Resources */,
 				093A587D1B43B543006F104D /* CourseLeaveExplainVC.xib in Resources */,
 				09C639541B3A9F5E00510F00 /* pay_03.png in Resources */,
@@ -2059,16 +2124,20 @@
 				A6DA3E1F1B44D919005850EB /* UMSocialLocalizable.strings in Resources */,
 				A63A0A831B2D1BFF003D3852 /* chekbox.png in Resources */,
 				A6DA3E271B44D919005850EB /* UMSnsAccountViewController.xib in Resources */,
+				09C88A541B676DC800B795C8 /* ic_review_score2l_off.png in Resources */,
 				09C9C0DF1B22C890001BBA1C /* STcity.png in Resources */,
 				09CA69231B20213800A31E0E /* couponstime.png in Resources */,
 				A6DA3E241B44D919005850EB /* UMShareEditViewController.xib in Resources */,
+				09C88A5C1B676DC800B795C8 /* takeout_bg_rating_face_selected_2.png in Resources */,
 				092A8C4D1B5FA45C006F7C6F /* question.html in Resources */,
 				A6A9442C1B2E74B500AF304F /* ico_make.png in Resources */,
 				A6284D8B1B10652700EFF820 /* tab_course@2x.png in Resources */,
 				A6DA3E221B44D919005850EB /* UMSCommentInputController.xib in Resources */,
+				09C88A521B676DC800B795C8 /* ic_review_score1_on.png in Resources */,
 				A6D4F22D1B539D42001D3D0E /* AlipaySDK.bundle in Resources */,
 				09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */,
 				09D47BA41B54E31F00B86CA2 /* ActivityHistoryCell.xib in Resources */,
+				09C88A551B676DC800B795C8 /* ic_review_score3_off.png in Resources */,
 				09C9C0E71B22D252001BBA1C /* SThead.png in Resources */,
 				09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */,
 				A6DA3E261B44D919005850EB /* UMSLoginViewController.xib in Resources */,
@@ -2096,6 +2165,7 @@
 				A6DA3E211B44D919005850EB /* UMSCommentDetailController.xib in Resources */,
 				09C9C0F81B22FA19001BBA1C /* yes.png in Resources */,
 				09C532131B50A60A00D6A07E /* CourseCommentCell.xib in Resources */,
+				09C88A5B1B676DC800B795C8 /* takeout_bg_rating_face_normal.png in Resources */,
 				09D2319A1B50EEA70055758A /* CourseMyCommentVC.xib in Resources */,
 				09C7682F1B58AF0100012A33 /* MyCourseCell.xib in Resources */,
 				A6284CDA1B10592100EFF820 /* Images.xcassets in Resources */,
@@ -2108,12 +2178,16 @@
 				09DB2DC81B1322A30078AAF5 /* mybgpic@2x.png in Resources */,
 				09C9C0E11B22C890001BBA1C /* STexpense.png in Resources */,
 				09C9DE3C1B2A670C00A07544 /* MyActivityCell.xib in Resources */,
+				09C88A5A1B676DC800B795C8 /* ic_review_score5_on.png in Resources */,
 				09C532161B50A6FD00D6A07E /* star_0_pressed.png in Resources */,
 				09C6B6181B3D76D300221974 /* image_loading.png in Resources */,
 				A6647CC01B270E9B00D2DC57 /* course7.png in Resources */,
+				09C88A5D1B676DC800B795C8 /* takeout_bg_rating_face_selected.png in Resources */,
+				09C88A581B676DC800B795C8 /* ic_review_score4_on.png in Resources */,
 				09C9C0E41B22C890001BBA1C /* STreserve.png in Resources */,
 				09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */,
 				09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */,
+				09C88A511B676DC800B795C8 /* ic_review_score1_off.png in Resources */,
 				09D0BD4F1B6227D60074D1A3 /* hp_active.png in Resources */,
 				09C9C0E51B22C890001BBA1C /* STset.png in Resources */,
 				09C8C1D21B53575C000E089F /* NearSchoolCell.xib in Resources */,
@@ -2169,6 +2243,7 @@
 				A6284D5F1B105E5600EFF820 /* UIButton+AFNetworking.m in Sources */,
 				A6284D491B105E5600EFF820 /* AFSecurityPolicy.m in Sources */,
 				A65B56EB1B5B7F8700F7E40B /* ListeningPayVC.m in Sources */,
+				09C88A421B67678100B795C8 /* CommentButton.m in Sources */,
 				09CB13481B6606810012F5E5 /* PayListeningCourseVCCell.m in Sources */,
 				09C532111B50A5EE00D6A07E /* CourseCommentCell.m in Sources */,
 				097990681B17006600D4A8DC /* ResetPassWordVC.m in Sources */,
@@ -2298,6 +2373,7 @@
 				094DD2691B3965AD0045EF2C /* ListenZoneCell.m in Sources */,
 				09DC56FF1B390DEB00636C70 /* SingleCourseVC.m in Sources */,
 				09CB13301B65DDC70012F5E5 /* StudentVC.m in Sources */,
+				09C88A3E1B675EE300B795C8 /* CommentVC.m in Sources */,
 				09D545A21B452C4000CC5844 /* courseSchoolZoneVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
