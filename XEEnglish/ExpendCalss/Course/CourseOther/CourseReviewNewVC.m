@@ -17,6 +17,11 @@
 
 #import "XeeService.h"
 
+#import "CourseMyChatVC.h"
+#import "OtherCommentVC.h"
+#import "CourseMyPhotoVC.h"
+#import "CourseOtherPhotoVC.h"
+
 @interface CourseReviewNewVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableview;
 
@@ -352,24 +357,53 @@
     detailLabel.textAlignment = NSTextAlignmentRight;
     [view addSubview:detailLabel];
     
+    UIButton *commonBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [commonBtn setFrame:CGRectMake(10, 0, kScreenWidth-20, 40)];
+    [commonBtn addTarget:self action:@selector(commonBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:commonBtn];
+    
     if (section == 0) {
         tipLabel.text = @"我的评论";
         detailLabel.text = @"历史聊天";
+        commonBtn.tag = 1;
     }
     else if (section == 1){
         tipLabel.text = @"其他评论";
         detailLabel.text = @"全部评论";
+        commonBtn.tag = 2;
     }
     else if (section == 2){
         tipLabel.text = @"我的照片";
         detailLabel.text = @"全部照片";
+        commonBtn.tag = 3;
     }
     else{
         tipLabel.text = @"其他照片";
         detailLabel.text = @"全部照片";
+        commonBtn.tag = 4;
     }
     
     return view;
+}
+
+- (void)commonBtnClicked:(id)sender{
+    UIButton *btn = (UIButton *)sender;
+    if (btn.tag == 1) {
+        CourseMyChatVC *vc = [[CourseMyChatVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (btn.tag == 2) {
+        OtherCommentVC *vc = [[OtherCommentVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (btn.tag == 3){
+        CourseMyPhotoVC *vc = [[CourseMyPhotoVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (btn.tag == 4){
+        CourseOtherPhotoVC *vc = [[CourseOtherPhotoVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 

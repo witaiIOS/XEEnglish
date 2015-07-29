@@ -52,6 +52,10 @@
 		09C639541B3A9F5E00510F00 /* pay_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C639511B3A9F5E00510F00 /* pay_03.png */; };
 		09C639561B3AA77400510F00 /* pay_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C639551B3AA77400510F00 /* pay_02.png */; };
 		09C639591B3AADA700510F00 /* PayProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C639581B3AADA700510F00 /* PayProtocolVC.m */; };
+		09C698411B686FBD00DDF7E6 /* OtherCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */; };
+		09C698441B6872FF00DDF7E6 /* CourseMyPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698431B6872FF00DDF7E6 /* CourseMyPhotoVC.m */; };
+		09C698471B6873A500DDF7E6 /* CourseOtherPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698461B6873A500DDF7E6 /* CourseOtherPhotoVC.m */; };
+		09C6984A1B6874F600DDF7E6 /* CourseMyChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698491B6874F600DDF7E6 /* CourseMyChatVC.m */; };
 		09C6B6181B3D76D300221974 /* image_loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C6B6171B3D76D300221974 /* image_loading.png */; };
 		09C6FEFA1B4BCEB50069156D /* CourseReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6FEF91B4BCEB50069156D /* CourseReviewCell.m */; };
 		09C6FEFD1B4BFBF90069156D /* SelectedStudentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6FEFC1B4BFBF90069156D /* SelectedStudentVC.m */; };
@@ -384,6 +388,14 @@
 		09C639551B3AA77400510F00 /* pay_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_02.png; sourceTree = "<group>"; };
 		09C639571B3AADA700510F00 /* PayProtocolVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayProtocolVC.h; sourceTree = "<group>"; };
 		09C639581B3AADA700510F00 /* PayProtocolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayProtocolVC.m; sourceTree = "<group>"; };
+		09C6983F1B686FBD00DDF7E6 /* OtherCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherCommentVC.h; sourceTree = "<group>"; };
+		09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherCommentVC.m; sourceTree = "<group>"; };
+		09C698421B6872FF00DDF7E6 /* CourseMyPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyPhotoVC.h; sourceTree = "<group>"; };
+		09C698431B6872FF00DDF7E6 /* CourseMyPhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMyPhotoVC.m; sourceTree = "<group>"; };
+		09C698451B6873A500DDF7E6 /* CourseOtherPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseOtherPhotoVC.h; sourceTree = "<group>"; };
+		09C698461B6873A500DDF7E6 /* CourseOtherPhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseOtherPhotoVC.m; sourceTree = "<group>"; };
+		09C698481B6874F600DDF7E6 /* CourseMyChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyChatVC.h; sourceTree = "<group>"; };
+		09C698491B6874F600DDF7E6 /* CourseMyChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMyChatVC.m; sourceTree = "<group>"; };
 		09C6B6171B3D76D300221974 /* image_loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_loading.png; path = Home/image_loading.png; sourceTree = "<group>"; };
 		09C6FEF81B4BCEB50069156D /* CourseReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseReviewCell.h; sourceTree = "<group>"; };
 		09C6FEF91B4BCEB50069156D /* CourseReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseReviewCell.m; sourceTree = "<group>"; };
@@ -919,6 +931,7 @@
 		093A58721B438B11006F104D /* CourseOther */ = {
 			isa = PBXGroup;
 			children = (
+				09C6983E1B686F6100DDF7E6 /* CourseReviewOtherVC */,
 				09CB134F1B665BA80012F5E5 /* CourseReviewVCCell */,
 				093A58731B438BCA006F104D /* CourseLeaveApplyVC.h */,
 				093A58741B438BCA006F104D /* CourseLeaveApplyVC.m */,
@@ -998,6 +1011,21 @@
 				09CFD0071B4CFA17000D9D40 /* payCompleteVC.m */,
 			);
 			path = PayCourseVC;
+			sourceTree = "<group>";
+		};
+		09C6983E1B686F6100DDF7E6 /* CourseReviewOtherVC */ = {
+			isa = PBXGroup;
+			children = (
+				09C698481B6874F600DDF7E6 /* CourseMyChatVC.h */,
+				09C698491B6874F600DDF7E6 /* CourseMyChatVC.m */,
+				09C6983F1B686FBD00DDF7E6 /* OtherCommentVC.h */,
+				09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */,
+				09C698421B6872FF00DDF7E6 /* CourseMyPhotoVC.h */,
+				09C698431B6872FF00DDF7E6 /* CourseMyPhotoVC.m */,
+				09C698451B6873A500DDF7E6 /* CourseOtherPhotoVC.h */,
+				09C698461B6873A500DDF7E6 /* CourseOtherPhotoVC.m */,
+			);
+			path = CourseReviewOtherVC;
 			sourceTree = "<group>";
 		};
 		09C87F261B3BEF6400D7C913 /* OtherList */ = {
@@ -2223,6 +2251,7 @@
 				09CB13411B65FF3B0012F5E5 /* addStudentBirthday.m in Sources */,
 				09D2319D1B511DEB0055758A /* SingleCourseCommentVC.m in Sources */,
 				09D560491B26DB8F00ADF334 /* RegisterVC.m in Sources */,
+				09C698411B686FBD00DDF7E6 /* OtherCommentVC.m in Sources */,
 				A6284D4B1B105E5600EFF820 /* AFURLRequestSerialization.m in Sources */,
 				A6284D4A1B105E5600EFF820 /* AFURLConnectionOperation.m in Sources */,
 				A6D4F2361B539D43001D3D0E /* openssl_wrapper.m in Sources */,
@@ -2251,8 +2280,10 @@
 				09C5431F1B4F938000BD750C /* SwitchButtonCell.m in Sources */,
 				09D0EE511B60C97200624E9B /* HomeDetailButton.m in Sources */,
 				09D23C541B427DDF008B6085 /* PointsRecordCell.m in Sources */,
+				09C698441B6872FF00DDF7E6 /* CourseMyPhotoVC.m in Sources */,
 				09C9C0F41B22E409001BBA1C /* HardwareDemandCell.m in Sources */,
 				A6284D631B105E5600EFF820 /* UIWebView+AFNetworking.m in Sources */,
+				09C698471B6873A500DDF7E6 /* CourseOtherPhotoVC.m in Sources */,
 				A6284D611B105E5600EFF820 /* UIProgressView+AFNetworking.m in Sources */,
 				A6D4F2321B539D43001D3D0E /* DataSigner.m in Sources */,
 				09C9C39B1B29AF1900B1F902 /* LXSegmentViewThree.m in Sources */,
@@ -2350,6 +2381,7 @@
 				A6284D951B1066CC00EFF820 /* ActivityVC.m in Sources */,
 				A6284D481B105E5600EFF820 /* AFNetworkReachabilityManager.m in Sources */,
 				09C95EBE1B27EAAD000972D8 /* SchoolZoneVC.m in Sources */,
+				09C6984A1B6874F600DDF7E6 /* CourseMyChatVC.m in Sources */,
 				A6D4F2311B539D43001D3D0E /* base64.m in Sources */,
 				090604841B146B050038BAC4 /* CountdownButton.m in Sources */,
 				09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */,
