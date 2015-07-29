@@ -394,6 +394,7 @@
     }
     else if (btn.tag == 2) {
         OtherCommentVC *vc = [[OtherCommentVC alloc] init];
+        vc.courseInfoDic = self.courseLeaveInfoDic;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (btn.tag == 3){

@@ -56,6 +56,8 @@
 		09C698441B6872FF00DDF7E6 /* CourseMyPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698431B6872FF00DDF7E6 /* CourseMyPhotoVC.m */; };
 		09C698471B6873A500DDF7E6 /* CourseOtherPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698461B6873A500DDF7E6 /* CourseOtherPhotoVC.m */; };
 		09C6984A1B6874F600DDF7E6 /* CourseMyChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698491B6874F600DDF7E6 /* CourseMyChatVC.m */; };
+		09C6984D1B6876BA00DDF7E6 /* OtherCommentVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6984C1B6876BA00DDF7E6 /* OtherCommentVCCell.m */; };
+		09C6984F1B6876E800DDF7E6 /* OtherCommentVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C6984E1B6876E800DDF7E6 /* OtherCommentVCCell.xib */; };
 		09C6B6181B3D76D300221974 /* image_loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C6B6171B3D76D300221974 /* image_loading.png */; };
 		09C6FEFA1B4BCEB50069156D /* CourseReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6FEF91B4BCEB50069156D /* CourseReviewCell.m */; };
 		09C6FEFD1B4BFBF90069156D /* SelectedStudentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6FEFC1B4BFBF90069156D /* SelectedStudentVC.m */; };
@@ -396,6 +398,9 @@
 		09C698461B6873A500DDF7E6 /* CourseOtherPhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseOtherPhotoVC.m; sourceTree = "<group>"; };
 		09C698481B6874F600DDF7E6 /* CourseMyChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyChatVC.h; sourceTree = "<group>"; };
 		09C698491B6874F600DDF7E6 /* CourseMyChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMyChatVC.m; sourceTree = "<group>"; };
+		09C6984B1B6876BA00DDF7E6 /* OtherCommentVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherCommentVCCell.h; sourceTree = "<group>"; };
+		09C6984C1B6876BA00DDF7E6 /* OtherCommentVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherCommentVCCell.m; sourceTree = "<group>"; };
+		09C6984E1B6876E800DDF7E6 /* OtherCommentVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherCommentVCCell.xib; sourceTree = "<group>"; };
 		09C6B6171B3D76D300221974 /* image_loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_loading.png; path = Home/image_loading.png; sourceTree = "<group>"; };
 		09C6FEF81B4BCEB50069156D /* CourseReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseReviewCell.h; sourceTree = "<group>"; };
 		09C6FEF91B4BCEB50069156D /* CourseReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseReviewCell.m; sourceTree = "<group>"; };
@@ -1020,6 +1025,9 @@
 				09C698491B6874F600DDF7E6 /* CourseMyChatVC.m */,
 				09C6983F1B686FBD00DDF7E6 /* OtherCommentVC.h */,
 				09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */,
+				09C6984B1B6876BA00DDF7E6 /* OtherCommentVCCell.h */,
+				09C6984C1B6876BA00DDF7E6 /* OtherCommentVCCell.m */,
+				09C6984E1B6876E800DDF7E6 /* OtherCommentVCCell.xib */,
 				09C698421B6872FF00DDF7E6 /* CourseMyPhotoVC.h */,
 				09C698431B6872FF00DDF7E6 /* CourseMyPhotoVC.m */,
 				09C698451B6873A500DDF7E6 /* CourseOtherPhotoVC.h */,
@@ -2126,6 +2134,7 @@
 				09C88A531B676DC800B795C8 /* ic_review_score2_on.png in Resources */,
 				09C88A561B676DC800B795C8 /* ic_review_score3_on.png in Resources */,
 				09DB2DC41B1322980078AAF5 /* join_07.png in Resources */,
+				09C6984F1B6876E800DDF7E6 /* OtherCommentVCCell.xib in Resources */,
 				09D5604A1B26DB8F00ADF334 /* RegisterVC.xib in Resources */,
 				09CB13421B65FF3B0012F5E5 /* addStudentBirthday.xib in Resources */,
 				A6B1CEDC1B1C62D400100E9F /* NeTNameAndDomicileVC.xib in Resources */,
@@ -2289,6 +2298,7 @@
 				09C9C39B1B29AF1900B1F902 /* LXSegmentViewThree.m in Sources */,
 				A6284D561B105E5600EFF820 /* MJRefreshConst.m in Sources */,
 				09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */,
+				09C6984D1B6876BA00DDF7E6 /* OtherCommentVCCell.m in Sources */,
 				09C95ECE1B284225000972D8 /* CitiesVC.m in Sources */,
 				A6284D451B105E5600EFF820 /* AFHTTPRequestOperation.m in Sources */,
 				A6B1CEDD1B1C62D400100E9F /* PersonImageTVC.m in Sources */,
