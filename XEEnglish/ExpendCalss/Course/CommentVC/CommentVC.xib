@@ -322,7 +322,7 @@
                     <rect key="frame" x="0.0" y="370" width="320" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="请在这里输入您的评论" id="1fa-RK-U7h">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="请输入－－" id="1fa-RK-U7h">
                             <rect key="frame" x="20" y="20" width="280" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

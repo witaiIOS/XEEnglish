@@ -10,6 +10,11 @@
 
 #import "XeeService.h"
 
+//动画时间
+#define kAnimationDuration 0.2
+//view高度
+#define kViewHeight 56
+
 @interface CommentVC ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *commentTV;//评论的UITextView
 
@@ -41,7 +46,6 @@
     self.teacherStatusNum = 0;
     self.teacherAbilityNum = 0;
     self.studentStatusNum = 0;
-    
     
     //添加键盘上的done按钮
     [self addKeyboardDone];
@@ -203,6 +207,10 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView{
     
     [textView becomeFirstResponder];
+    if ([textView.text isEqualToString:@"请输入－－"]) {
+        textView.text = @"";
+    }
+
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView{
