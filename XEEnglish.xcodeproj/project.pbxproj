@@ -53,6 +53,10 @@
 		09C639561B3AA77400510F00 /* pay_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C639551B3AA77400510F00 /* pay_02.png */; };
 		09C639591B3AADA700510F00 /* PayProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C639581B3AADA700510F00 /* PayProtocolVC.m */; };
 		09C64C7E1B69BC43004E8C9A /* UserStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64C7D1B69BC43004E8C9A /* UserStudent.m */; };
+		09C64C921B69D1DA004E8C9A /* DropButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64C8E1B69D1DA004E8C9A /* DropButton.m */; };
+		09C64C931B69D1DA004E8C9A /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64C901B69D1DA004E8C9A /* DropDown.m */; };
+		09C64C941B69D1DA004E8C9A /* ic_arrow_down_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C64C911B69D1DA004E8C9A /* ic_arrow_down_black.png */; };
+		09C64C981B69D237004E8C9A /* StudentPhotosVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64C971B69D237004E8C9A /* StudentPhotosVC.m */; };
 		09C698411B686FBD00DDF7E6 /* OtherCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */; };
 		09C698441B6872FF00DDF7E6 /* CourseMyPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698431B6872FF00DDF7E6 /* CourseMyPhotoVC.m */; };
 		09C698471B6873A500DDF7E6 /* CourseOtherPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698461B6873A500DDF7E6 /* CourseOtherPhotoVC.m */; };
@@ -393,6 +397,13 @@
 		09C639581B3AADA700510F00 /* PayProtocolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayProtocolVC.m; sourceTree = "<group>"; };
 		09C64C7C1B69BC43004E8C9A /* UserStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserStudent.h; sourceTree = "<group>"; };
 		09C64C7D1B69BC43004E8C9A /* UserStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserStudent.m; sourceTree = "<group>"; };
+		09C64C8D1B69D1DA004E8C9A /* DropButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropButton.h; sourceTree = "<group>"; };
+		09C64C8E1B69D1DA004E8C9A /* DropButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropButton.m; sourceTree = "<group>"; };
+		09C64C8F1B69D1DA004E8C9A /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
+		09C64C901B69D1DA004E8C9A /* DropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDown.m; sourceTree = "<group>"; };
+		09C64C911B69D1DA004E8C9A /* ic_arrow_down_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_arrow_down_black.png; sourceTree = "<group>"; };
+		09C64C961B69D237004E8C9A /* StudentPhotosVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentPhotosVC.h; sourceTree = "<group>"; };
+		09C64C971B69D237004E8C9A /* StudentPhotosVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentPhotosVC.m; sourceTree = "<group>"; };
 		09C6983F1B686FBD00DDF7E6 /* OtherCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherCommentVC.h; sourceTree = "<group>"; };
 		09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherCommentVC.m; sourceTree = "<group>"; };
 		09C698421B6872FF00DDF7E6 /* CourseMyPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyPhotoVC.h; sourceTree = "<group>"; };
@@ -1021,6 +1032,27 @@
 			path = PayCourseVC;
 			sourceTree = "<group>";
 		};
+		09C64C8C1B69D1DA004E8C9A /* TabButton */ = {
+			isa = PBXGroup;
+			children = (
+				09C64C8D1B69D1DA004E8C9A /* DropButton.h */,
+				09C64C8E1B69D1DA004E8C9A /* DropButton.m */,
+				09C64C8F1B69D1DA004E8C9A /* DropDown.h */,
+				09C64C901B69D1DA004E8C9A /* DropDown.m */,
+				09C64C911B69D1DA004E8C9A /* ic_arrow_down_black.png */,
+			);
+			path = TabButton;
+			sourceTree = "<group>";
+		};
+		09C64C951B69D216004E8C9A /* StudentPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				09C64C961B69D237004E8C9A /* StudentPhotosVC.h */,
+				09C64C971B69D237004E8C9A /* StudentPhotosVC.m */,
+			);
+			path = StudentPhotos;
+			sourceTree = "<group>";
+		};
 		09C6983E1B686F6100DDF7E6 /* CourseReviewOtherVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1467,6 +1499,7 @@
 		A6284CF81B105E5600EFF820 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				09C64C8C1B69D1DA004E8C9A /* TabButton */,
 				09CA16221B467BC80064667D /* GTMBase64 */,
 				A64F3E441B4413C600E6E99B /* NSString(md5) */,
 				A6A944281B2E74B500AF304F /* JSDropDownMenu */,
@@ -1739,6 +1772,7 @@
 		A6284D6C1B105E6600EFF820 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				09C64C951B69D216004E8C9A /* StudentPhotos */,
 				09D545971B44CD4F00CC5844 /* ExpendRecord */,
 				09D23C3F1B42401E008B6085 /* Points */,
 				09C9C3921B29A78E00B1F902 /* Schedule */,
@@ -2143,6 +2177,7 @@
 				09D5604A1B26DB8F00ADF334 /* RegisterVC.xib in Resources */,
 				09CB13421B65FF3B0012F5E5 /* addStudentBirthday.xib in Resources */,
 				A6B1CEDC1B1C62D400100E9F /* NeTNameAndDomicileVC.xib in Resources */,
+				09C64C941B69D1DA004E8C9A /* ic_arrow_down_black.png in Resources */,
 				09CA691D1B1FFCE300A31E0E /* CouponsCell.xib in Resources */,
 				09D560451B26D3E700ADF334 /* ForgetPassWordVC.xib in Resources */,
 				09C88A3F1B675EE300B795C8 /* CommentVC.xib in Resources */,
@@ -2275,6 +2310,7 @@
 				09D0BD4B1B6220890074D1A3 /* SchoolVCCell.m in Sources */,
 				09CB13451B6606600012F5E5 /* PayListeningCourseVC.m in Sources */,
 				09C87F291B3BEFB900D7C913 /* SubCourseListVC.m in Sources */,
+				09C64C981B69D237004E8C9A /* StudentPhotosVC.m in Sources */,
 				093A587C1B43B543006F104D /* CourseLeaveExplainVC.m in Sources */,
 				09C6394B1B3A935100510F00 /* PaymoneyCell.m in Sources */,
 				09D560401B26809400ADF334 /* DatePickerCell.m in Sources */,
@@ -2328,10 +2364,12 @@
 				A6284D551B105E5600EFF820 /* MJRefreshBaseView.m in Sources */,
 				09D5459A1B44D5FF00CC5844 /* ExpendRecordVC.m in Sources */,
 				09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */,
+				09C64C931B69D1DA004E8C9A /* DropDown.m in Sources */,
 				09CA16261B467BC80064667D /* GTMBase64.m in Sources */,
 				09C6FEFD1B4BFBF90069156D /* SelectedStudentVC.m in Sources */,
 				09CB13551B665E620012F5E5 /* photoCell.m in Sources */,
 				09D0BD3F1B620A8C0074D1A3 /* PriceCell.m in Sources */,
+				09C64C921B69D1DA004E8C9A /* DropButton.m in Sources */,
 				09C87F321B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m in Sources */,
 				09C87F2F1B3C24E700D7C913 /* PayCourseMethodVCViewController.m in Sources */,
 				A65B56F11B5B818E00F7E40B /* OrderPayVC.m in Sources */,

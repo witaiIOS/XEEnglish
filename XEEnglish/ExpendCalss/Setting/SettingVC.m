@@ -12,6 +12,7 @@
 
 
 #import "PersonInfoVC.h"
+#import "StudentPhotosVC.h"
 #import "CouponsVC.h"
 //#import "PointsVC.h"
 #import "ExchangePointsVC.h"
@@ -427,7 +428,8 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    PersonInfoVC *vc = [[PersonInfoVC alloc] init];
+                    StudentPhotosVC *vc = [[StudentPhotosVC alloc] init];
+                    //PersonInfoVC *vc = [[PersonInfoVC alloc] init];
                     vc.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:vc animated:YES];
                     break;
