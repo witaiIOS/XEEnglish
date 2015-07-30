@@ -52,6 +52,7 @@
 		09C639541B3A9F5E00510F00 /* pay_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C639511B3A9F5E00510F00 /* pay_03.png */; };
 		09C639561B3AA77400510F00 /* pay_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C639551B3AA77400510F00 /* pay_02.png */; };
 		09C639591B3AADA700510F00 /* PayProtocolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C639581B3AADA700510F00 /* PayProtocolVC.m */; };
+		09C64C7E1B69BC43004E8C9A /* UserStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64C7D1B69BC43004E8C9A /* UserStudent.m */; };
 		09C698411B686FBD00DDF7E6 /* OtherCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */; };
 		09C698441B6872FF00DDF7E6 /* CourseMyPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698431B6872FF00DDF7E6 /* CourseMyPhotoVC.m */; };
 		09C698471B6873A500DDF7E6 /* CourseOtherPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698461B6873A500DDF7E6 /* CourseOtherPhotoVC.m */; };
@@ -390,6 +391,8 @@
 		09C639551B3AA77400510F00 /* pay_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_02.png; sourceTree = "<group>"; };
 		09C639571B3AADA700510F00 /* PayProtocolVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayProtocolVC.h; sourceTree = "<group>"; };
 		09C639581B3AADA700510F00 /* PayProtocolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayProtocolVC.m; sourceTree = "<group>"; };
+		09C64C7C1B69BC43004E8C9A /* UserStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserStudent.h; sourceTree = "<group>"; };
+		09C64C7D1B69BC43004E8C9A /* UserStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserStudent.m; sourceTree = "<group>"; };
 		09C6983F1B686FBD00DDF7E6 /* OtherCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherCommentVC.h; sourceTree = "<group>"; };
 		09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherCommentVC.m; sourceTree = "<group>"; };
 		09C698421B6872FF00DDF7E6 /* CourseMyPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyPhotoVC.h; sourceTree = "<group>"; };
@@ -1455,6 +1458,8 @@
 				A6B1CEFA1B1D968600100E9F /* MyParser.m */,
 				A6C3CF2A1B285ECD0039C951 /* UserInfo.h */,
 				A6C3CF2B1B285ECD0039C951 /* UserInfo.m */,
+				09C64C7C1B69BC43004E8C9A /* UserStudent.h */,
+				09C64C7D1B69BC43004E8C9A /* UserStudent.m */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -2261,6 +2266,7 @@
 				09D2319D1B511DEB0055758A /* SingleCourseCommentVC.m in Sources */,
 				09D560491B26DB8F00ADF334 /* RegisterVC.m in Sources */,
 				09C698411B686FBD00DDF7E6 /* OtherCommentVC.m in Sources */,
+				09C64C7E1B69BC43004E8C9A /* UserStudent.m in Sources */,
 				A6284D4B1B105E5600EFF820 /* AFURLRequestSerialization.m in Sources */,
 				A6284D4A1B105E5600EFF820 /* AFURLConnectionOperation.m in Sources */,
 				A6D4F2361B539D43001D3D0E /* openssl_wrapper.m in Sources */,

@@ -99,6 +99,9 @@
 //                    NSDictionary *userDic = result[@"resultInfo"];
 //                    NSLog(@"token:%@",userDic[@"token"]);
                     [[UserInfo sharedUser] setUserInfoDicWithWebServiceResult:result];//本地化存储用户信息
+                    NSArray *studentArray = result[@"resultInfo"][@"listStudent"];
+                    [[UserStudent sharedUser] setUserStudentArrayWithWebServiceResult:studentArray];
+                    //NSLog(@"array:%@",[[UserStudent sharedUser] getUserStudentArray]);
                     if ([self.delegate respondsToSelector:@selector(loginVCloginSuccess)]) {
                         [self.delegate loginVCloginSuccess];
                     }

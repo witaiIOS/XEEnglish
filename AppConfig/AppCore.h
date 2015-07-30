@@ -20,6 +20,7 @@
 //Common
 #import "UIFactory.h"
 #import "UserInfo.h"
+#import "UserStudent.h"
 
 #import "NSString+md5.h"
 #import "GTMBase64.h"

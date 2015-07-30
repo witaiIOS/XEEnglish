@@ -41,6 +41,9 @@
 //测试Token
 #define ceShiId                 @"17"
 #define ceShiToken              @"yEqHDenWZHANQ08W1WF93J+t+ELfkokN0dz9KsI8kALd/GXU1pEykMyOJupHiHATpELTmg8I+XWN1mKJb8Vr+g=="
+///用户学生信息
+#define UserStudentGlobalKey   @"UserStudentGlobalKey"
+
 ///用户信息key
 #define UserInfoGlobalKey      @"UserInfoGlobalKey"
 
