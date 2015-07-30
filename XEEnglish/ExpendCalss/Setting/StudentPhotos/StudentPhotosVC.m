@@ -27,6 +27,9 @@
 @property (nonatomic, strong) UITableView *photoTableView;//图像tableView
 @property (nonatomic, strong) NSMutableArray *photoArray;
 
+@property (nonatomic, assign) NSInteger currentPhotoPageIndex;//当前评论页
+@property (nonatomic, assign) NSInteger totalPhotoPageIndex;//评论总页数
+
 @end
 
 
@@ -35,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"宝宝相册";
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -100,7 +104,12 @@
     [self.view addSubview:self.photoTableView];
     
     //请求数据
-    [self getPhotoGroupListByStudentIdWithWeb];
+    //[self getPhotoGroupListByStudentIdWithWeb];
+    
+    _currentPhotoPageIndex = 1;
+    _totalPhotoPageIndex = 0;
+    
+    [self setupRefresh:@"table"];
 
 }
 
@@ -251,7 +260,14 @@
         _dropTableView.frame = frame;
         
         //刷新数据
-        [self getPhotoGroupListByStudentIdWithWeb];
+        //[self getPhotoGroupListByStudentIdWithWeb];
+        
+        //切换用户，重新请求数据，都置为初始值
+        _currentPhotoPageIndex = 1;
+        _totalPhotoPageIndex = 0;
+        
+        [self setupRefresh:@"table"];
+        
         [self.photoTableView reloadData];
     }
     else if (tableView == self.photoTableView){
@@ -279,29 +295,133 @@
 
 #pragma mark - Web
 
-- (void)getPhotoGroupListByStudentIdWithWeb{
-    
+//- (void)getPhotoGroupListByStudentIdWithWeb{
+//    
+//    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+//    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+//    
+//    [self showHudWithMsg:@"载入中..."];
+//    [[XeeService sharedInstance] getPhotoGroupListByStudentIdWithParentId:userInfoDic[uUserId] andStudentId:self.studentId andPageSize:10 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+//        [self hideHud];
+//        
+//        if (!error) {
+//            NSNumber *isResilt = result[@"result"];
+//            if (isResilt.integerValue == 0) {
+//                NSDictionary *photoDic = result[@"resultInfo"];
+//                self.photoArray = photoDic[@"data"];
+//                //NSLog(@"photoArray:%@",self.photoArray);
+//                [self.photoTableView reloadData];
+//            }else{
+//                [UIFactory showAlert:@"未知错误"];
+//            }
+//        }else{
+//            [UIFactory showAlert:@"网络错误"];
+//        }
+//    }];
+//}
+- (void)getPhotoGroupListByStudentIdWithPageIndex:(NSInteger)pageIndex WithBlock:(void (^)(NSDictionary *result, NSError *error))block{
+
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
+
+    //[self showHudWithMsg:@"载入中..."];
+    [[XeeService sharedInstance] getPhotoGroupListByStudentIdWithParentId:userInfoDic[uUserId] andStudentId:self.studentId andPageSize:10 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:block];
+}
+
+
+#pragma mark -
+#pragma mark - MJRefresh
+/**
+ *  集成刷新控件
+ */
+- (void)setupRefresh:(NSString *)dateKey
+{
     
-    [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getPhotoGroupListByStudentIdWithParentId:userInfoDic[uUserId] andStudentId:self.studentId andPageSize:10 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
-        [self hideHud];
+    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+    // dateKey用于存储刷新时间，可以保证不同界面拥有不同的刷新时间
+    [_photoTableView addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:dateKey];
+    //#warning 自动刷新(一进入程序就下拉刷新)
+    [_photoTableView headerBeginRefreshing];
+    
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [_photoTableView addFooterWithTarget:self action:@selector(footerRereshing)];
+    
+    // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
+    _photoTableView.headerPullToRefreshText = @"下拉可以刷新";
+    _photoTableView.headerReleaseToRefreshText = @"松开马上刷新";
+    _photoTableView.headerRefreshingText = @"正在努力帮您刷新中,不客气";
+    
+    _photoTableView.footerPullToRefreshText = @"上拉可以加载更多数据";
+    _photoTableView.footerReleaseToRefreshText = @"松开马上加载更多数据";
+    _photoTableView.footerRefreshingText = @"正在努力帮您加载中,不客气";
+    
+}
+
+- (void)headerRereshing{
+    self.currentPhotoPageIndex = 1;
+    
+    [self getPhotoGroupListByStudentIdWithPageIndex:_currentPhotoPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+        [self.photoTableView headerEndRefreshing];
         
         if (!error) {
-            NSNumber *isResilt = result[@"result"];
-            if (isResilt.integerValue == 0) {
+            //NSLog(@"result:%@",result);
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
                 NSDictionary *photoDic = result[@"resultInfo"];
-                self.photoArray = photoDic[@"data"];
-                //NSLog(@"photoArray:%@",self.photoArray);
+                
+                NSMutableArray *array = [NSMutableArray array];
+                [array addObjectsFromArray:photoDic[@"data"]];
+                
+                self.photoArray = array;
                 [self.photoTableView reloadData];
+                
+                NSNumber *totalNum = photoDic[@"totalPage"];
+                if (totalNum) {
+                    self.totalPhotoPageIndex = totalNum.integerValue;
+                }
             }else{
-                [UIFactory showAlert:@"未知错误"];
+                [self showHudOnlyMsg:@"未知错误"];
             }
         }else{
-            [UIFactory showAlert:@"网络错误"];
+            [self showHudOnlyMsg:@"网络错误"];
         }
     }];
+}
+
+- (void)footerRereshing{
+    
+    if (_currentPhotoPageIndex < _totalPhotoPageIndex) {
+        _currentPhotoPageIndex++;
+        
+        [self getPhotoGroupListByStudentIdWithPageIndex:_currentPhotoPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+            [self.photoTableView footerEndRefreshing];
+            
+            if (!error) {
+                //NSLog(@"result:%@",result);
+                NSNumber *isResult = result[@"result"];
+                if (isResult.integerValue == 0) {
+                    NSDictionary *photoDic = result[@"resultInfo"];
+                    
+                    [self.photoArray addObjectsFromArray:photoDic[@"data"]];
+                    
+                    [self.photoTableView reloadData];
+                    
+                    NSNumber *totalNum = photoDic[@"totalPage"];
+                    if (totalNum) {
+                        self.totalPhotoPageIndex = totalNum.integerValue;
+                    }
+                }else{
+                    [self showHudOnlyMsg:@"未知错误"];
+                }
+            }else{
+                [self showHudOnlyMsg:@"网络错误"];
+            }
+        }];
+    }else{
+        [self.photoTableView footerEndRefreshing];
+        [self showHudOnlyMsg:@"已全部加载完"];
+    }
+    
 }
 
 #pragma mark - PhotoMonthCellDelegate
