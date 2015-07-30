@@ -7,8 +7,11 @@
 //
 
 #import "StudentPhotosVC.h"
+#import "PhotoMonthCell.h"
 
-@interface StudentPhotosVC ()<UITableViewDataSource, UITableViewDelegate>
+#import "XeeService.h"
+
+@interface StudentPhotosVC ()<UITableViewDataSource, UITableViewDelegate,PhotoMonthCellDelegate>
 
 //@property (nonatomic, strong) DropDown *tabButton;
 @property (strong, nonatomic) DropButton *dropButton;
@@ -16,6 +19,11 @@
 @property (strong, nonatomic) NSArray *dropTableList;
 
 @property (nonatomic, assign) BOOL showList;
+
+
+@property (nonatomic, strong) NSString *studentId;//学生id
+@property (nonatomic, strong) UITableView *photoTableView;//图像tableView
+@property (nonatomic, strong) NSMutableArray *photoArray;
 
 @end
 
@@ -36,6 +44,7 @@
     
     [super initUI];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
    /* NSArray *array = [[UserStudent sharedUser] getUserStudentArray];
     //NSLog(@"array:%@",array);
     self.tabButton = [[DropDown alloc] initWithFrame:CGRectMake(kScreenWidth-80, 14, 70, 35*array.count+40)];
@@ -67,6 +76,23 @@
     _dropTableView.separatorColor = [UIColor lightGrayColor];
     _dropTableView.hidden = YES;
     [self.view addSubview:_dropTableView];
+    
+    //初始化学生id
+    self.studentId = [_dropTableList[0] objectForKey:@"student_id"];
+    //NSLog(@"studentId:%@",self.studentId);
+    
+    //初始化照片数组
+    self.photoArray = [NSMutableArray array];
+    
+    //设置照片tableView
+    self.photoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
+    self.photoTableView.dataSource = self;
+    self.photoTableView.delegate = self;
+    
+    [self.view addSubview:self.photoTableView];
+    
+    //请求数据
+    [self getPhotoGroupListByStudentIdWithWeb];
 
 }
 
@@ -76,7 +102,7 @@
         return;
     }
     else{
-        
+        [self.view bringSubviewToFront:self.dropTableView];
         _dropTableView.hidden = NO;
         self.showList = YES;
         
@@ -95,60 +121,181 @@
 
 #pragma mark - tableView datasouce delegate
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
-    
-    return 1;
+    if (tableView == self.dropTableView) {
+        return 1;
+    }
+    else if (tableView == self.photoTableView){
+        return (_photoArray.count+2)/3;
+    }
+    else{
+        return 0;
+    }
 }
 
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return _dropTableList.count;
+    if (tableView == self.dropTableView) {
+        return _dropTableList.count;
+    }
+    else if (tableView == self.photoTableView){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *reuse = @"Cell";
+    static NSString *reuse2 = @"PhotoMonthCell";
+    static NSString *reuse3 = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+    if (tableView == self.dropTableView) {
         
-        cell.textLabel.font = [UIFont systemFontOfSize:12.0f];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        //cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+            
+            cell.textLabel.font = [UIFont systemFontOfSize:12.0f];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            //cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        }
+        
+        NSDictionary *dic = [_dropTableList objectAtIndex:[indexPath row]];
+        
+        cell.textLabel.text = dic[@"name"];
+        
+        return cell;
+    }
+    else if (tableView == self.photoTableView){
+        
+        PhotoMonthCell *cell2 = [tableView dequeueReusableCellWithIdentifier:reuse2];
+        if(cell2 == nil){
+            cell2 = [[PhotoMonthCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse2];
+        }
+        cell2.delegate = self;
+        cell2.cellEdge = 10;
+        cell2.serviceDic1 = [_photoArray objectAtIndex:3*(indexPath.row)];
+        
+        if ( (3*(indexPath.row)+1) < _photoArray.count) {
+            cell2.serviceDic2 = [_photoArray objectAtIndex:3*(indexPath.row)+1];
+            
+            if ( (3*(indexPath.row)+2) < _photoArray.count) {
+                cell2.serviceDic3 = [_photoArray objectAtIndex:3*(indexPath.row)+2];
+            }
+            else{
+                cell2.serviceDic3 = nil;
+            }
+        }
+        else{
+            cell2.serviceDic2 = nil;
+        }
+        
+        return cell2;
+    }
+    else{
+        
+        BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse3];
+        if (cell == nil) {
+            cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse3];
+        }
+        cell.cellEdge = 10;
+        return cell;
     }
     
-    NSDictionary *dic = [_dropTableList objectAtIndex:[indexPath row]];
-    
-    cell.textLabel.text = dic[@"name"];
-    
-    return cell;
     
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 35.0f;
+    if (tableView == self.dropTableView) {
+        return 35.0f;
+    }
+    else if (tableView == self.photoTableView){
+        
+        return 150.0f;
+    }
+    else{
+        return 0.0f;
+    }
 }
 
 
 - (void )tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSDictionary *dic = [_dropTableList objectAtIndex:[indexPath row]];
+    if (tableView == self.dropTableView) {
+        NSDictionary *dic = [_dropTableList objectAtIndex:[indexPath row]];
+        
+        [_dropButton setTitle:dic[@"name"] forState:UIControlStateNormal];
+        self.studentId = dic[@"student_id"];
+        self.showList = NO;
+        _dropTableView.hidden =YES;
+        
+        CGRect frame = _dropTableView.frame;
+        frame.size.height = 0;
+        _dropTableView.frame = frame;
+        
+        //刷新数据
+        [self getPhotoGroupListByStudentIdWithWeb];
+        [self.photoTableView reloadData];
+    }
+    else if (tableView == self.photoTableView){
+        
+    }
     
-    [_dropButton setTitle:dic[@"name"] forState:UIControlStateNormal];
-    self.showList = NO;
-    _dropTableView.hidden =YES;
-    
-    CGRect frame = _dropTableView.frame;
-    frame.size.height = 0;
-    _dropTableView.frame = frame;
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.01f;
+    if (tableView == self.dropTableView) {
+        return 1.0f;
+    }
+    else if (tableView == self.photoTableView){
+        if (section == 0) {
+            return 5.0f;
+        }
+        else{
+            return 1.0f;
+        }
+    }
+    else{
+        return 0.01f;
+    }
 }
 
+#pragma mark - Web
+
+- (void)getPhotoGroupListByStudentIdWithWeb{
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    [self showHudWithMsg:@"载入中..."];
+    [[XeeService sharedInstance] getPhotoGroupListByStudentIdWithParentId:userInfoDic[uUserId] andStudentId:self.studentId andPageSize:10 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [self hideHud];
+        
+        if (!error) {
+            NSNumber *isResilt = result[@"result"];
+            if (isResilt.integerValue == 0) {
+                NSDictionary *photoDic = result[@"resultInfo"];
+                self.photoArray = photoDic[@"data"];
+                //NSLog(@"photoArray:%@",self.photoArray);
+                [self.photoTableView reloadData];
+            }else{
+                [UIFactory showAlert:@"未知错误"];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
+}
+
+#pragma mark - PhotoMonthCellDelegate
+- (void)PhotoMonthCellButtonPressed:(id)sender andServiceInfo:(NSDictionary *)serviceDic{
+    
+}
 @end

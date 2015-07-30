@@ -57,6 +57,8 @@
 		09C64C931B69D1DA004E8C9A /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64C901B69D1DA004E8C9A /* DropDown.m */; };
 		09C64C941B69D1DA004E8C9A /* ic_arrow_down_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C64C911B69D1DA004E8C9A /* ic_arrow_down_black.png */; };
 		09C64C981B69D237004E8C9A /* StudentPhotosVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64C971B69D237004E8C9A /* StudentPhotosVC.m */; };
+		09C64C9B1B69F396004E8C9A /* PhotoMonthButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64C9A1B69F396004E8C9A /* PhotoMonthButton.m */; };
+		09C64C9E1B69F60E004E8C9A /* PhotoMonthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64C9D1B69F60E004E8C9A /* PhotoMonthCell.m */; };
 		09C698411B686FBD00DDF7E6 /* OtherCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */; };
 		09C698441B6872FF00DDF7E6 /* CourseMyPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698431B6872FF00DDF7E6 /* CourseMyPhotoVC.m */; };
 		09C698471B6873A500DDF7E6 /* CourseOtherPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698461B6873A500DDF7E6 /* CourseOtherPhotoVC.m */; };
@@ -404,6 +406,10 @@
 		09C64C911B69D1DA004E8C9A /* ic_arrow_down_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_arrow_down_black.png; sourceTree = "<group>"; };
 		09C64C961B69D237004E8C9A /* StudentPhotosVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentPhotosVC.h; sourceTree = "<group>"; };
 		09C64C971B69D237004E8C9A /* StudentPhotosVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentPhotosVC.m; sourceTree = "<group>"; };
+		09C64C991B69F396004E8C9A /* PhotoMonthButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoMonthButton.h; sourceTree = "<group>"; };
+		09C64C9A1B69F396004E8C9A /* PhotoMonthButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoMonthButton.m; sourceTree = "<group>"; };
+		09C64C9C1B69F60E004E8C9A /* PhotoMonthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoMonthCell.h; sourceTree = "<group>"; };
+		09C64C9D1B69F60E004E8C9A /* PhotoMonthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoMonthCell.m; sourceTree = "<group>"; };
 		09C6983F1B686FBD00DDF7E6 /* OtherCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherCommentVC.h; sourceTree = "<group>"; };
 		09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherCommentVC.m; sourceTree = "<group>"; };
 		09C698421B6872FF00DDF7E6 /* CourseMyPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyPhotoVC.h; sourceTree = "<group>"; };
@@ -1049,6 +1055,10 @@
 			children = (
 				09C64C961B69D237004E8C9A /* StudentPhotosVC.h */,
 				09C64C971B69D237004E8C9A /* StudentPhotosVC.m */,
+				09C64C9C1B69F60E004E8C9A /* PhotoMonthCell.h */,
+				09C64C9D1B69F60E004E8C9A /* PhotoMonthCell.m */,
+				09C64C991B69F396004E8C9A /* PhotoMonthButton.h */,
+				09C64C9A1B69F396004E8C9A /* PhotoMonthButton.m */,
 			);
 			path = StudentPhotos;
 			sourceTree = "<group>";
@@ -2346,6 +2356,7 @@
 				A6B1CEDD1B1C62D400100E9F /* PersonImageTVC.m in Sources */,
 				09CB134E1B6617EA0012F5E5 /* ListenPayCourseVC.m in Sources */,
 				A6284D601B105E5600EFF820 /* UIImageView+AFNetworking.m in Sources */,
+				09C64C9E1B69F60E004E8C9A /* PhotoMonthCell.m in Sources */,
 				A6D4F2331B539D43001D3D0E /* DataVerifier.m in Sources */,
 				A6284D501B105E5600EFF820 /* DDXMLDocument.m in Sources */,
 				09C639591B3AADA700510F00 /* PayProtocolVC.m in Sources */,
@@ -2423,6 +2434,7 @@
 				0906047E1B1421B60038BAC4 /* AboutVC.m in Sources */,
 				09D47BA21B54E30400B86CA2 /* ActivityHistoryCell.m in Sources */,
 				09D23C481B424526008B6085 /* ExchangePointsCell.m in Sources */,
+				09C64C9B1B69F396004E8C9A /* PhotoMonthButton.m in Sources */,
 				A6284D5A1B105E5600EFF820 /* UIScrollView+MJRefresh.m in Sources */,
 				A6284D621B105E5600EFF820 /* UIRefreshControl+AFNetworking.m in Sources */,
 				A6D4F2351B539D43001D3D0E /* NSDataEx.m in Sources */,
