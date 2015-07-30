@@ -98,9 +98,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
         
-        cell.textLabel.font = [UIFont systemFontOfSize:16.0f];
+        cell.textLabel.font = [UIFont systemFontOfSize:12.0f];
         cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        //cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     
     NSDictionary *dic = [self.tableArray objectAtIndex:[indexPath row]];

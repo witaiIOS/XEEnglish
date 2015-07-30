@@ -29,12 +29,14 @@
     [super initUI];
     
     NSArray *array = [[UserStudent sharedUser] getUserStudentArray];
-    NSLog(@"array:%@",array);
+    //NSLog(@"array:%@",array);
     self.tabButton = [[DropDown alloc] initWithFrame:CGRectMake(kScreenWidth-80, 14, 70, 35*array.count+40)];
     //self.mydd.textField.placeholder = @"请输入联系方式";
     self.tabButton.tableArray = array;
     [self.tabButton.tabBtn setTitle:[array[0] objectForKey:@"name"] forState:UIControlStateNormal];
-    [self.view addSubview:self.tabButton];
+    
+    UIBarButtonItem *tabBarButton = [[UIBarButtonItem alloc] initWithCustomView:self.tabButton];
+    self.navigationItem.rightBarButtonItem = tabBarButton;
 }
 
 /*
