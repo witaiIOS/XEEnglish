@@ -359,9 +359,10 @@
 
 - (void)headerRereshing{
     self.currentPhotoPageIndex = 1;
-    
+    //[self showHudWithMsg:@"载入中..."];
     [self getPhotoGroupListByStudentIdWithPageIndex:_currentPhotoPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
         [self.photoTableView headerEndRefreshing];
+        //[self hideHud];
         
         if (!error) {
             //NSLog(@"result:%@",result);
@@ -392,9 +393,10 @@
     
     if (_currentPhotoPageIndex < _totalPhotoPageIndex) {
         _currentPhotoPageIndex++;
-        
+        //[self showHudWithMsg:@"载入中..."];
         [self getPhotoGroupListByStudentIdWithPageIndex:_currentPhotoPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
             [self.photoTableView footerEndRefreshing];
+            //[self hideHud];
             
             if (!error) {
                 //NSLog(@"result:%@",result);
