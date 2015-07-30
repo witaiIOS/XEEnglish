@@ -32,7 +32,9 @@
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.contentSize = CGSizeMake(kScreenWidth*self.photoArray.count, kScreenHeight-64);
-    self.scrollView.contentOffset = CGPointMake(self.currentIndex*kScreenWidth, kScreenHeight-64);
+    //定位到指定位置
+    //self.scrollView.contentOffset = CGPointMake(self.currentIndex*kScreenWidth,0);
+    [self.scrollView setContentOffset:CGPointMake(self.currentIndex*kScreenWidth,0) animated:YES];
     self.scrollView.delegate = self;
     [self.view addSubview:self.scrollView];
     
