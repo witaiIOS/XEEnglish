@@ -341,6 +341,18 @@
  */
 + (AFHTTPRequestOperation *)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andParentId:(NSString *)parent_id andToken:(NSString *)token;
 
+#pragma mark - 我的 宝宝相册
+/**
+ 用积分兑换礼品
+ @param parentId 表示当前登录人id
+ @param student_id    学生id
+ @param pageSize
+ @param pageIndex
+ @param token
+ */
++ (AFHTTPRequestOperation *)getPhotoGroupListByStudentIdWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andPageSize: (NSInteger )pageSize andPageIndex: (NSInteger )pageIndex andToken:(NSString *)token;
+
+
 #pragma mark - 我的 我的积分
 /**
  我的积分交易记录

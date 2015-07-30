@@ -595,7 +595,7 @@
     
 }
 
-
+#pragma mark - 我的 个人信息
 /**
  登录后修改密码
  */
@@ -610,7 +610,7 @@
     }];
 }
 
-#pragma mark - 我的 个人信息
+
 /**
  登录后修改密码
  */
@@ -626,6 +626,27 @@
     }];
 
 }
+
+#pragma mark - 我的 宝宝相册
+/**
+ 用积分兑换礼品
+ @param parentId 表示当前登录人id
+ @param student_id    学生id
+ @param pageSize
+ @param pageIndex
+ @param token
+ */
+- (void)getPhotoGroupListByStudentIdWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andPageSize: (NSInteger )pageSize andPageIndex: (NSInteger )pageIndex andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getPhotoGroupListByStudentIdWithParentId:parent_id andStudentId:student_id andPageSize:pageSize andPageIndex:pageIndex andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetPhotoGroupListByStudentIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 #pragma mark - 我的 我的积分
 /**
  我的积分交易记录

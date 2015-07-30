@@ -399,6 +399,20 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:modifyPwd><web:json>{\"password\":\"%@\",\"old_password\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:modifyPwd>",newPassword,oldPassword,parent_id,token]];
 }
 
+#pragma mark - 我的 宝宝相册
+/**
+ 用积分兑换礼品
+ @param parentId 表示当前登录人id
+ @param student_id    学生id
+ @param pageSize
+ @param pageIndex
+ @param token
+ */
++ (AFHTTPRequestOperation *)getPhotoGroupListByStudentIdWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andPageSize: (NSInteger )pageSize andPageIndex: (NSInteger )pageIndex andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPhotoGroupListByStudentId><web:json>{\"parent_id\":\"%@\",\"student_id\": \"%@\",\"pageSize\": \"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetPhotoGroupListByStudentId>",parent_id,student_id,pageSize,pageIndex,token]];
+}
+
 #pragma mark - 我的 我的积分
 /**
  我的积分交易记录
