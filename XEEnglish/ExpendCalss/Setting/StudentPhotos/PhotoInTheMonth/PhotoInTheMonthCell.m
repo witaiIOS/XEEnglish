@@ -91,13 +91,13 @@
     UIButton *button = (UIButton *)sender;
     
     if (button.tag == 1) {
-        [self.delegate PhotoInTheMonthCellButtonPressed:sender andServiceInfo:_serviceDic1];
+        [self.delegate PhotoInTheMonthCellButtonPressed:sender andRowOfCell:_rowOfCell];
     }
     else if (button.tag == 2){
-        [self.delegate PhotoInTheMonthCellButtonPressed:sender andServiceInfo:_serviceDic2];
+        [self.delegate PhotoInTheMonthCellButtonPressed:sender andRowOfCell:_rowOfCell];
     }
     else if (button.tag == 3){
-        [self.delegate PhotoInTheMonthCellButtonPressed:sender andServiceInfo:_serviceDic3];
+        [self.delegate PhotoInTheMonthCellButtonPressed:sender andRowOfCell:_rowOfCell];
     }
     
 }

@@ -62,6 +62,7 @@
 		09C64CA21B6A0DEB004E8C9A /* PhotoInTheMonthVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64CA11B6A0DEB004E8C9A /* PhotoInTheMonthVC.m */; };
 		09C64CA51B6A0F3B004E8C9A /* PhotoInTheMonthButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64CA41B6A0F3B004E8C9A /* PhotoInTheMonthButton.m */; };
 		09C64CA81B6A0F85004E8C9A /* PhotoInTheMonthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64CA71B6A0F85004E8C9A /* PhotoInTheMonthCell.m */; };
+		09C64CAC1B6A1D82004E8C9A /* PhotoLookVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64CAB1B6A1D82004E8C9A /* PhotoLookVC.m */; };
 		09C698411B686FBD00DDF7E6 /* OtherCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */; };
 		09C698441B6872FF00DDF7E6 /* CourseMyPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698431B6872FF00DDF7E6 /* CourseMyPhotoVC.m */; };
 		09C698471B6873A500DDF7E6 /* CourseOtherPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698461B6873A500DDF7E6 /* CourseOtherPhotoVC.m */; };
@@ -419,6 +420,8 @@
 		09C64CA41B6A0F3B004E8C9A /* PhotoInTheMonthButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoInTheMonthButton.m; sourceTree = "<group>"; };
 		09C64CA61B6A0F85004E8C9A /* PhotoInTheMonthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoInTheMonthCell.h; sourceTree = "<group>"; };
 		09C64CA71B6A0F85004E8C9A /* PhotoInTheMonthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoInTheMonthCell.m; sourceTree = "<group>"; };
+		09C64CAA1B6A1D82004E8C9A /* PhotoLookVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLookVC.h; sourceTree = "<group>"; };
+		09C64CAB1B6A1D82004E8C9A /* PhotoLookVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLookVC.m; sourceTree = "<group>"; };
 		09C6983F1B686FBD00DDF7E6 /* OtherCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherCommentVC.h; sourceTree = "<group>"; };
 		09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherCommentVC.m; sourceTree = "<group>"; };
 		09C698421B6872FF00DDF7E6 /* CourseMyPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyPhotoVC.h; sourceTree = "<group>"; };
@@ -1062,6 +1065,7 @@
 		09C64C951B69D216004E8C9A /* StudentPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				09C64CA91B6A1D68004E8C9A /* PhotoLook */,
 				09C64C9F1B6A0DC5004E8C9A /* PhotoInTheMonth */,
 				09C64C961B69D237004E8C9A /* StudentPhotosVC.h */,
 				09C64C971B69D237004E8C9A /* StudentPhotosVC.m */,
@@ -1084,6 +1088,15 @@
 				09C64CA41B6A0F3B004E8C9A /* PhotoInTheMonthButton.m */,
 			);
 			path = PhotoInTheMonth;
+			sourceTree = "<group>";
+		};
+		09C64CA91B6A1D68004E8C9A /* PhotoLook */ = {
+			isa = PBXGroup;
+			children = (
+				09C64CAA1B6A1D82004E8C9A /* PhotoLookVC.h */,
+				09C64CAB1B6A1D82004E8C9A /* PhotoLookVC.m */,
+			);
+			path = PhotoLook;
 			sourceTree = "<group>";
 		};
 		09C6983E1B686F6100DDF7E6 /* CourseReviewOtherVC */ = {
@@ -2444,6 +2457,7 @@
 				A6B1CEE91B1D8C7200100E9F /* HomeAdCell.m in Sources */,
 				094DD2661B3960CA0045EF2C /* ListeningCourseVC.m in Sources */,
 				09CB133B1B65ED040012F5E5 /* AddStudentVC.m in Sources */,
+				09C64CAC1B6A1D82004E8C9A /* PhotoLookVC.m in Sources */,
 				0980856E1B32C37500BE9336 /* AllCoursesVC.m in Sources */,
 				09C9C3981B29A7CD00B1F902 /* MyScheduleVC.m in Sources */,
 				A6D4F2381B539D43001D3D0E /* RSADataVerifier.m in Sources */,

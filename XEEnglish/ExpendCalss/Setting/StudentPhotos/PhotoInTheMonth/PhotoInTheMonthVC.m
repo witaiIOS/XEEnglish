@@ -11,6 +11,7 @@
 #import "PhotoInTheMonthCell.h"
 
 #import "XeeService.h"
+#import "PhotoLookVC.h"
 
 @interface PhotoInTheMonthVC ()<UITableViewDataSource,UITableViewDelegate,PhotoInTheMonthCellDelegate>
 @property (nonatomic, strong) UITableView *tableView;//图片tableView
@@ -104,6 +105,7 @@
     }
     cell.delegate = self;
     cell.cellEdge = 10;
+    cell.rowOfCell = indexPath.section;
     cell.serviceDic1 = [_photoArray objectAtIndex:3*(indexPath.section)];
     
     if ( (3*(indexPath.section)+1) < _photoArray.count) {
@@ -149,8 +151,15 @@
 }
 
 #pragma mark - PhotoInTheMonthCellDelegate
-- (void)PhotoInTheMonthCellButtonPressed:(id)sender andServiceInfo:(NSDictionary *)serviceDic{
+- (void)PhotoInTheMonthCellButtonPressed:(id)sender andRowOfCell:(NSInteger )rowOfCell{
     
+    PhotoInTheMonthButton *btn = (PhotoInTheMonthButton *)sender;
+    
+    PhotoLookVC *vc = [[PhotoLookVC alloc] init];
+    vc.photoArray = self.photoArray;
+    vc.currentIndex = 3*rowOfCell+btn.tag-1;
+    //NSLog(@"index:%li",vc.currentIndex);
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

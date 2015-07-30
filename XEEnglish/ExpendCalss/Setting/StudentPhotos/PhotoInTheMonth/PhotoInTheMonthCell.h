@@ -11,11 +11,13 @@
 
 @protocol PhotoInTheMonthCellDelegate <NSObject>
 
-- (void)PhotoInTheMonthCellButtonPressed:(id)sender andServiceInfo:(NSDictionary *)serviceDic;
+- (void)PhotoInTheMonthCellButtonPressed:(id)sender andRowOfCell:(NSInteger )rowOfCell;
 
 @end
 
 @interface PhotoInTheMonthCell : BaseTVC
+@property (nonatomic, assign) NSInteger rowOfCell;
+
 @property (strong, nonatomic) NSDictionary *serviceDic1;
 @property (strong, nonatomic) NSDictionary *serviceDic2;
 @property (strong, nonatomic) NSDictionary *serviceDic3;
