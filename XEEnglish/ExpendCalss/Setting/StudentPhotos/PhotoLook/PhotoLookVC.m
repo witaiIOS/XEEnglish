@@ -8,8 +8,8 @@
 
 #import "PhotoLookVC.h"
 
-@interface PhotoLookVC ()
-
+@interface PhotoLookVC ()<UIScrollViewDelegate>
+@property (nonatomic, strong) UIScrollView *scrollView;
 @end
 
 @implementation PhotoLookVC
@@ -27,6 +27,20 @@
 - (void)initUI{
     
     [super initUI];
+    
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.contentSize = CGSizeMake(kScreenWidth*self.photoArray.count, kScreenHeight-64);
+    self.scrollView.contentOffset = CGPointMake(self.currentIndex*kScreenWidth, kScreenHeight-64);
+    self.scrollView.delegate = self;
+    [self.view addSubview:self.scrollView];
+    
+    for (int i= 0; i<self.photoArray.count; i++) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth*i, (kScreenHeight-64-300)/2, kScreenWidth, 300)];
+        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[self.photoArray[i] objectForKey:@"pic_url"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
+        [self.scrollView addSubview:imageView];
+    }
 }
 
 @end
