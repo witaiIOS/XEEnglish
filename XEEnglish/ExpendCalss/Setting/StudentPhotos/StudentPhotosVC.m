@@ -11,6 +11,8 @@
 
 #import "XeeService.h"
 
+#import "PhotoInTheMonthVC.h"
+
 @interface StudentPhotosVC ()<UITableViewDataSource, UITableViewDelegate,PhotoMonthCellDelegate>
 
 //@property (nonatomic, strong) DropDown *tabButton;
@@ -296,6 +298,10 @@
 
 #pragma mark - PhotoMonthCellDelegate
 - (void)PhotoMonthCellButtonPressed:(id)sender andServiceInfo:(NSDictionary *)serviceDic{
+    
+    PhotoInTheMonthVC *vc = [[PhotoInTheMonthVC alloc] init];
+    vc.photoInfoDic = serviceDic;
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 @end

@@ -130,7 +130,7 @@
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
     [self showHudWithMsg:@"加载中..."];
-    [[XeeService sharedInstance] getStudentSignPhotoListWithParentId:userInfoDic[uUserId] andStudentId:@"" andSignonId:signon_id andCreateTime:@"" andPageSize:3 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getStudentSignPhotoListWithParentId:userInfoDic[uUserId] andStudentId:@"" andSignonId:signon_id andCourseScheduleId:course_schedule_id andCreateTime:@"" andPageSize:3 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         
         if (!error) {

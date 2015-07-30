@@ -451,9 +451,9 @@
  @param pageIndex
  @param token
  */
-- (void)getStudentSignPhotoListWithParentId:(NSString *)parent_id  andStudentId:(NSString *)student_id  andSignonId:(NSString *)signon_id  andCreateTime:(NSString *)create_time andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+- (void)getStudentSignPhotoListWithParentId:(NSString *)parent_id  andStudentId:(NSString *)student_id  andSignonId:(NSString *)signon_id andCourseScheduleId:(NSString *)course_schedule_id  andCreateTime:(NSString *)create_time andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
     
-    AFHTTPRequestOperation *operation = [WebServiceOpration getStudentSignPhotoListWithParentId:parent_id andStudentId:student_id andSignonId:signon_id andCreateTime:create_time andPageSize:pageSize andPageIndex:pageIndex andToken:token];
+    AFHTTPRequestOperation *operation = [WebServiceOpration getStudentSignPhotoListWithParentId:parent_id andStudentId:student_id andSignonId:signon_id andCourseScheduleId:course_schedule_id andCreateTime:create_time andPageSize:pageSize andPageIndex:pageIndex andToken:token];
     
     [self getResponseWithOpration:operation andXmlKey:@"GetStudentSignPhotoListResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
         if (block) {
