@@ -33,7 +33,7 @@
     self.tabButton = [[DropDown alloc] initWithFrame:CGRectMake(kScreenWidth-80, 14, 70, 35*array.count+40)];
     //self.mydd.textField.placeholder = @"请输入联系方式";
     self.tabButton.tableArray = array;
-    [self.tabButton.tabBtn setTitle:array[0] forState:UIControlStateNormal];
+    [self.tabButton.tabBtn setTitle:[array[0] objectForKey:@"name"] forState:UIControlStateNormal];
     [self.view addSubview:self.tabButton];
 }
 

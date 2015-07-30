@@ -55,6 +55,9 @@
     ///初始化UserInfoDic
     [[UserInfo sharedUser] firstInitUserInfoDic];
     
+    //初始化UserStudent
+    [[UserStudent sharedUser] firstInitUserStudentArray];
+    
     ///友盟分享
     [UMSocialData setAppKey:kUmengAppkey];
     //微信分享

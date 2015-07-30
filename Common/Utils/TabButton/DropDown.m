@@ -103,7 +103,9 @@
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     
-    cell.textLabel.text = [self.tableArray objectAtIndex:[indexPath row]];
+    NSDictionary *dic = [self.tableArray objectAtIndex:[indexPath row]];
+    
+    cell.textLabel.text = dic[@"name"];
     
     return cell;
     
@@ -118,7 +120,9 @@
 
 - (void )tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [self.tabBtn setTitle:[self.tableArray objectAtIndex:[indexPath row]] forState:UIControlStateNormal];
+    NSDictionary *dic = [self.tableArray objectAtIndex:[indexPath row]];
+    
+    [self.tabBtn setTitle:dic[@"name"] forState:UIControlStateNormal];
     self.showList = NO;
     self.tableView.hidden =YES;
     CGRect sf = self.frame;
