@@ -44,6 +44,7 @@
     //初始化评价数组
     self.commentArray = [NSMutableArray array];
     
+    //
     [self getCourseDetailAndTopCommentListByCourseIdWithWeb];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-60) style:UITableViewStyleGrouped];
@@ -414,8 +415,10 @@
                 self.tableView.dataSource = self;
                 self.tableView.delegate = self;
                 self.tableView.tableHeaderView = [self headView];
-                
                 [self.tableView reloadData];
+                
+                //判断是否支持试听功能，不能就置灰，不能用
+                [self setListenBtnEnabled:self.courseInfo];
             }else{
                 [UIFactory showAlert:@"未知错误"];
             }
@@ -509,6 +512,19 @@
 //    return sectionHeadView;
 //}
 
+//根据courseInfo[@"is_pay_listen"]字段，判断是否能试听
+//is_pay_listen 取值 0不能试听 1免费试听 2有偿服务 3免费&有偿。
+- (void)setListenBtnEnabled:(NSDictionary *)courseInfo{
+    
+    NSNumber *isPayListen = courseInfo[@"is_pay_listen"];
+    if (isPayListen.integerValue == 0) {
+        [self.listenBtn setBackgroundColor:[UIColor grayColor]];
+        self.listenBtn.enabled = NO;
+    }
+    else{
+        
+    }
+}
 
 
 @end

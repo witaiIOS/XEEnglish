@@ -65,7 +65,12 @@
     [_dropButton setFrame:CGRectMake(0, 2, 70, 40)];
     [_dropButton setImage:[UIImage imageNamed:@"ic_arrow_down_black.png"] forState:UIControlStateNormal];
     [_dropButton addTarget:self action:@selector(dropdown) forControlEvents:UIControlEventTouchUpInside];
-    [_dropButton setTitle:[_dropTableList[0] objectForKey:@"name"] forState:UIControlStateNormal];
+    if (_dropTableList.count > 0) {
+        [_dropButton setTitle:[_dropTableList[0] objectForKey:@"name"] forState:UIControlStateNormal];
+    }
+    else{
+        [_dropButton setTitle:@"无学生" forState:UIControlStateNormal];
+    }
     
     UIBarButtonItem *tabBarButton = [[UIBarButtonItem alloc] initWithCustomView:_dropButton];
     self.navigationItem.rightBarButtonItem = tabBarButton;
@@ -78,11 +83,12 @@
     _dropTableView.separatorColor = [UIColor lightGrayColor];
     _dropTableView.hidden = YES;
     [self.view addSubview:_dropTableView];
-    
-    //初始化学生id
-    self.studentId = [_dropTableList[0] objectForKey:@"student_id"];
-    //NSLog(@"studentId:%@",self.studentId);
-    
+    if (_dropTableList.count > 0){
+        //初始化学生id
+        self.studentId = [_dropTableList[0] objectForKey:@"student_id"];
+        //NSLog(@"studentId:%@",self.studentId);
+    }
+
     //初始化照片数组
     self.photoArray = [NSMutableArray array];
     
@@ -166,10 +172,12 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
             //cell.selectionStyle = UITableViewCellSelectionStyleGray;
         }
+        if (_dropTableList.count > 0) {
+            NSDictionary *dic = [_dropTableList objectAtIndex:[indexPath row]];
+            
+            cell.textLabel.text = dic[@"name"];
+        }
         
-        NSDictionary *dic = [_dropTableList objectAtIndex:[indexPath row]];
-        
-        cell.textLabel.text = dic[@"name"];
         
         return cell;
     }
