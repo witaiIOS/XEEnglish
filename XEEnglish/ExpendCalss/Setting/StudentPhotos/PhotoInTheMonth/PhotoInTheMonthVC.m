@@ -69,6 +69,7 @@
                 NSDictionary *photoDic = result[@"resultInfo"];
                 self.photoArray = photoDic[@"data"];
                 //NSLog(@"array:%@",self.photoArray);
+                //NSLog(@"count:%li",self.photoArray.count);
                 [self.tableView reloadData];
                 
             }else{
@@ -103,13 +104,13 @@
     }
     cell.delegate = self;
     cell.cellEdge = 10;
-    cell.serviceDic1 = [_photoArray objectAtIndex:3*(indexPath.row)];
+    cell.serviceDic1 = [_photoArray objectAtIndex:3*(indexPath.section)];
     
-    if ( (3*(indexPath.row)+1) < _photoArray.count) {
-        cell.serviceDic2 = [_photoArray objectAtIndex:3*(indexPath.row)+1];
+    if ( (3*(indexPath.section)+1) < _photoArray.count) {
+        cell.serviceDic2 = [_photoArray objectAtIndex:3*(indexPath.section)+1];
         
-        if ( (3*(indexPath.row)+2) < _photoArray.count) {
-            cell.serviceDic3 = [_photoArray objectAtIndex:3*(indexPath.row)+2];
+        if ( (3*(indexPath.section)+2) < _photoArray.count) {
+            cell.serviceDic3 = [_photoArray objectAtIndex:3*(indexPath.section)+2];
         }
         else{
             cell.serviceDic3 = nil;

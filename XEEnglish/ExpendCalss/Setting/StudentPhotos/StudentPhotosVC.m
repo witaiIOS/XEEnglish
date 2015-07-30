@@ -181,13 +181,13 @@
         }
         cell2.delegate = self;
         cell2.cellEdge = 10;
-        cell2.serviceDic1 = [_photoArray objectAtIndex:3*(indexPath.row)];
+        cell2.serviceDic1 = [_photoArray objectAtIndex:3*(indexPath.section)];
         
-        if ( (3*(indexPath.row)+1) < _photoArray.count) {
-            cell2.serviceDic2 = [_photoArray objectAtIndex:3*(indexPath.row)+1];
+        if ( (3*(indexPath.section)+1) < _photoArray.count) {
+            cell2.serviceDic2 = [_photoArray objectAtIndex:3*(indexPath.section)+1];
             
-            if ( (3*(indexPath.row)+2) < _photoArray.count) {
-                cell2.serviceDic3 = [_photoArray objectAtIndex:3*(indexPath.row)+2];
+            if ( (3*(indexPath.section)+2) < _photoArray.count) {
+                cell2.serviceDic3 = [_photoArray objectAtIndex:3*(indexPath.section)+2];
             }
             else{
                 cell2.serviceDic3 = nil;
