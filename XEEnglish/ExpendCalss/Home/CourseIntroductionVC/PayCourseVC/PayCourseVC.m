@@ -17,6 +17,8 @@
 @interface PayCourseVC ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) NSString *out_trade_no;
 @end
 
 @implementation PayCourseVC
@@ -43,6 +45,8 @@
     //默认选中支付宝支付
     NSIndexPath *ip=[NSIndexPath indexPathForRow:0 inSection:1];
     [self.tableView selectRowAtIndexPath:ip animated:YES scrollPosition:UITableViewScrollPositionBottom];
+    
+    self.out_trade_no = [self generateTradeNO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -118,14 +122,15 @@
     
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
-    
-    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolId andStudentId:self.studentId andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.payMoney andPlatFormTypeId:@"202" andListCoupon:self.listCoupon andToken:userInfoDic[uUserToken] andPayType:self.payType andNumbers:self.number andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:self.name andBlock:block];
+    //NSLog(@"add:%@",self.out_trade_no);
+    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolId andStudentId:self.studentId andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.payMoney andPlatFormTypeId:@"202" andListCoupon:self.listCoupon andToken:userInfoDic[uUserToken] andPayType:self.payType andNumbers:self.number andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:self.name andOutTradeNo:self.out_trade_no andBlock:block];
 
 }
 
 
 - (void)aliyPay {//支付宝支付
-    [[XeeService sharedInstance] apliyPayWithOutTradeNo:[self generateTradeNO] andTotalFee:@"0.01" andType:self.courseName callback:^(NSDictionary *resultDic) {
+    //NSLog(@"aliypay:%@",self.out_trade_no);
+    [[XeeService sharedInstance] apliyPayWithOutTradeNo:self.out_trade_no andTotalFee:@"0.01" andType:self.courseName callback:^(NSDictionary *resultDic) {
         
         NSString *resultStatus = resultDic [@"resultStatus"];
         if (9000 == [resultStatus intValue]) {//支付成功
