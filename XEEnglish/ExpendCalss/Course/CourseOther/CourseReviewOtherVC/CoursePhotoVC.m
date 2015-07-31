@@ -1,22 +1,22 @@
 //
-//  CourseOtherPhotoVC.m
+//  CoursePhotoVC.m
 //  XEEnglish
 //
-//  Created by houjing on 15/7/29.
+//  Created by houjing on 15/7/31.
 //  Copyright (c) 2015年 lixiang. All rights reserved.
 //
 
-#import "CourseOtherPhotoVC.h"
+#import "CoursePhotoVC.h"
 
-@interface CourseOtherPhotoVC ()
+@interface CoursePhotoVC ()
 
 @end
 
-@implementation CourseOtherPhotoVC
+@implementation CoursePhotoVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"其他照片";
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

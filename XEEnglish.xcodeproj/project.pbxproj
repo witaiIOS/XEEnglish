@@ -64,8 +64,6 @@
 		09C64CA81B6A0F85004E8C9A /* PhotoInTheMonthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64CA71B6A0F85004E8C9A /* PhotoInTheMonthCell.m */; };
 		09C64CAC1B6A1D82004E8C9A /* PhotoLookVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64CAB1B6A1D82004E8C9A /* PhotoLookVC.m */; };
 		09C698411B686FBD00DDF7E6 /* OtherCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */; };
-		09C698441B6872FF00DDF7E6 /* CourseMyPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698431B6872FF00DDF7E6 /* CourseMyPhotoVC.m */; };
-		09C698471B6873A500DDF7E6 /* CourseOtherPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698461B6873A500DDF7E6 /* CourseOtherPhotoVC.m */; };
 		09C6984A1B6874F600DDF7E6 /* CourseMyChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698491B6874F600DDF7E6 /* CourseMyChatVC.m */; };
 		09C6984D1B6876BA00DDF7E6 /* OtherCommentVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6984C1B6876BA00DDF7E6 /* OtherCommentVCCell.m */; };
 		09C6984F1B6876E800DDF7E6 /* OtherCommentVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C6984E1B6876E800DDF7E6 /* OtherCommentVCCell.xib */; };
@@ -76,6 +74,7 @@
 		09C7682F1B58AF0100012A33 /* MyCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C7682E1B58AF0100012A33 /* MyCourseCell.xib */; };
 		09C768331B592B1400012A33 /* CannelOrderExplainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C768311B592B1400012A33 /* CannelOrderExplainVC.m */; };
 		09C768341B592B1400012A33 /* CannelOrderExplainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C768321B592B1400012A33 /* CannelOrderExplainVC.xib */; };
+		09C809BE1B6AFED400C3B856 /* CoursePhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C809BD1B6AFED400C3B856 /* CoursePhotoVC.m */; };
 		09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A41B25AC4700E72163 /* ActivityContentCell.m */; };
 		09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C832A71B25BB0100E72163 /* otherRequireCell.m */; };
 		09C83EBA1B5A048100E0FEB9 /* NearSchoolDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C83EB91B5A048100E0FEB9 /* NearSchoolDetailCell.m */; };
@@ -424,10 +423,6 @@
 		09C64CAB1B6A1D82004E8C9A /* PhotoLookVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLookVC.m; sourceTree = "<group>"; };
 		09C6983F1B686FBD00DDF7E6 /* OtherCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherCommentVC.h; sourceTree = "<group>"; };
 		09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherCommentVC.m; sourceTree = "<group>"; };
-		09C698421B6872FF00DDF7E6 /* CourseMyPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyPhotoVC.h; sourceTree = "<group>"; };
-		09C698431B6872FF00DDF7E6 /* CourseMyPhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMyPhotoVC.m; sourceTree = "<group>"; };
-		09C698451B6873A500DDF7E6 /* CourseOtherPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseOtherPhotoVC.h; sourceTree = "<group>"; };
-		09C698461B6873A500DDF7E6 /* CourseOtherPhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseOtherPhotoVC.m; sourceTree = "<group>"; };
 		09C698481B6874F600DDF7E6 /* CourseMyChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyChatVC.h; sourceTree = "<group>"; };
 		09C698491B6874F600DDF7E6 /* CourseMyChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMyChatVC.m; sourceTree = "<group>"; };
 		09C6984B1B6876BA00DDF7E6 /* OtherCommentVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherCommentVCCell.h; sourceTree = "<group>"; };
@@ -444,6 +439,8 @@
 		09C768301B592B1400012A33 /* CannelOrderExplainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CannelOrderExplainVC.h; sourceTree = "<group>"; };
 		09C768311B592B1400012A33 /* CannelOrderExplainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CannelOrderExplainVC.m; sourceTree = "<group>"; };
 		09C768321B592B1400012A33 /* CannelOrderExplainVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CannelOrderExplainVC.xib; sourceTree = "<group>"; };
+		09C809BC1B6AFED400C3B856 /* CoursePhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoursePhotoVC.h; sourceTree = "<group>"; };
+		09C809BD1B6AFED400C3B856 /* CoursePhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoursePhotoVC.m; sourceTree = "<group>"; };
 		09C832A31B25AC4700E72163 /* ActivityContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityContentCell.h; sourceTree = "<group>"; };
 		09C832A41B25AC4700E72163 /* ActivityContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityContentCell.m; sourceTree = "<group>"; };
 		09C832A61B25BB0100E72163 /* otherRequireCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = otherRequireCell.h; sourceTree = "<group>"; };
@@ -1109,10 +1106,8 @@
 				09C6984B1B6876BA00DDF7E6 /* OtherCommentVCCell.h */,
 				09C6984C1B6876BA00DDF7E6 /* OtherCommentVCCell.m */,
 				09C6984E1B6876E800DDF7E6 /* OtherCommentVCCell.xib */,
-				09C698421B6872FF00DDF7E6 /* CourseMyPhotoVC.h */,
-				09C698431B6872FF00DDF7E6 /* CourseMyPhotoVC.m */,
-				09C698451B6873A500DDF7E6 /* CourseOtherPhotoVC.h */,
-				09C698461B6873A500DDF7E6 /* CourseOtherPhotoVC.m */,
+				09C809BC1B6AFED400C3B856 /* CoursePhotoVC.h */,
+				09C809BD1B6AFED400C3B856 /* CoursePhotoVC.m */,
 			);
 			path = CourseReviewOtherVC;
 			sourceTree = "<group>";
@@ -2378,10 +2373,8 @@
 				09C5431F1B4F938000BD750C /* SwitchButtonCell.m in Sources */,
 				09D0EE511B60C97200624E9B /* HomeDetailButton.m in Sources */,
 				09D23C541B427DDF008B6085 /* PointsRecordCell.m in Sources */,
-				09C698441B6872FF00DDF7E6 /* CourseMyPhotoVC.m in Sources */,
 				09C9C0F41B22E409001BBA1C /* HardwareDemandCell.m in Sources */,
 				A6284D631B105E5600EFF820 /* UIWebView+AFNetworking.m in Sources */,
-				09C698471B6873A500DDF7E6 /* CourseOtherPhotoVC.m in Sources */,
 				A6284D611B105E5600EFF820 /* UIProgressView+AFNetworking.m in Sources */,
 				A6D4F2321B539D43001D3D0E /* DataSigner.m in Sources */,
 				09C9C39B1B29AF1900B1F902 /* LXSegmentViewThree.m in Sources */,
@@ -2394,6 +2387,7 @@
 				09CB134E1B6617EA0012F5E5 /* ListenPayCourseVC.m in Sources */,
 				A6284D601B105E5600EFF820 /* UIImageView+AFNetworking.m in Sources */,
 				09C64C9E1B69F60E004E8C9A /* PhotoMonthCell.m in Sources */,
+				09C809BE1B6AFED400C3B856 /* CoursePhotoVC.m in Sources */,
 				A6D4F2331B539D43001D3D0E /* DataVerifier.m in Sources */,
 				A6284D501B105E5600EFF820 /* DDXMLDocument.m in Sources */,
 				09C639591B3AADA700510F00 /* PayProtocolVC.m in Sources */,

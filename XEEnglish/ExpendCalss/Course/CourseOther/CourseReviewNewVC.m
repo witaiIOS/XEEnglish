@@ -19,8 +19,7 @@
 
 #import "CourseMyChatVC.h"
 #import "OtherCommentVC.h"
-#import "CourseMyPhotoVC.h"
-#import "CourseOtherPhotoVC.h"
+#import "CoursePhotoVC.h"
 
 @interface CourseReviewNewVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableview;
@@ -398,11 +397,19 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (btn.tag == 3){
-        CourseMyPhotoVC *vc = [[CourseMyPhotoVC alloc] init];
+        //查询上这节课的这个学生图片，传值signon_id 课表签到id；create_time、student_id, course_schedule_id不传值。
+        CoursePhotoVC *vc = [[CoursePhotoVC alloc] init];
+        vc.title = @"我的照片";
+        vc.courseScheduleId = @"";
+        vc.signonId = self.courseLeaveInfoDic[@"signon_id"];
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (btn.tag == 4){
-        CourseOtherPhotoVC *vc = [[CourseOtherPhotoVC alloc] init];
+        //查询上这节课的所有学生图片，传值course_schedule_id 课表id；create_time、student_id, signon_id不传值。
+        CoursePhotoVC *vc = [[CoursePhotoVC alloc] init];
+        vc.title = @"其他照片";
+        vc.courseScheduleId = self.courseLeaveInfoDic[@"course_schedule_id"];
+        vc.signonId = @"";
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
