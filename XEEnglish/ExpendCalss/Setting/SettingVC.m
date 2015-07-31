@@ -134,7 +134,7 @@
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
                 [UIFactory showAlert:result[@"resultInfo"]];
-                //self.signMarkStr = result[@"resultInfo"];
+                self.signMarkStr = @"1";
                 //NSLog(@"signMarkStr:%@",self.signMarkStr);
                 [self changeSignBtnTitle];
             }
