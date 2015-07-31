@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSString *signMarkStr;//签到返回标记
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *loginBtn;
+@property (nonatomic, strong) UILabel *loginBtnLabel;//请点击登陆
 @property (nonatomic, strong) UIButton *exitBtn;
 @property (nonatomic, strong) UILabel *userPhoneNumber;
 
@@ -176,7 +177,9 @@
 - (void)updateUserLoginUI {
     if ([[UserInfo sharedUser] isLogin]) {
         self.userPhoneNumber.hidden = NO;
-        self.loginBtn.hidden = YES;
+        self.loginBtnLabel.hidden = YES;
+        //登陆之后，tag设置成1，点击跳转到个人页面
+        self.loginBtn.tag = 1;
         
         self.userPhoneNumber.text = [[[[UserInfo sharedUser] getUserInfoDic] objectForKey:uUserInfoKey] objectForKey:uPhoneNumber];
         
@@ -186,7 +189,9 @@
     }
     else {
         self.userPhoneNumber.hidden = YES;
-        self.loginBtn.hidden = NO;
+        self.loginBtnLabel.hidden = NO;
+        //未登陆，tag设置成0，点击跳转到登陆页面
+        self.loginBtn.tag = 0;
         
         _exitBtn.hidden = YES;
 
@@ -211,13 +216,19 @@
     //    [self.loginBtn setFrame:CGRectMake(80, 50, 80, 40)];
     //    self.loginBtn.titleLabel.text = @"请点击登陆";
     //    self.loginBtn.titleLabel.textColor = [UIColor whiteColor];
-    [self.loginBtn setFrame:CGRectMake(50, 30, 80, 40)];
-    [self.loginBtn setTitle:@"立即登陆" forState:UIControlStateNormal];
-    self.loginBtn.layer.cornerRadius =4.0;
-    self.loginBtn.hidden = NO;
+    [self.loginBtn setFrame:CGRectMake(0, 0, kScreenWidth, 88)];
+    //[self.loginBtn setTitle:@"立即登陆" forState:UIControlStateNormal];
+    //self.loginBtn.layer.cornerRadius =4.0;
+    //self.loginBtn.hidden = NO;
     [self.loginBtn addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:self.loginBtn];
     
+    self.loginBtnLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 30, 220, 40)];
+    self.loginBtnLabel.text = @"请点击登陆";
+    //self.loginBtnLabel.textAlignment =NSTextAlignmentCenter;
+    self.loginBtnLabel.textColor = [UIColor whiteColor];
+    self.loginBtnLabel.font = [UIFont systemFontOfSize:17];
+    [view addSubview:self.loginBtnLabel];
     
     self.userPhoneNumber =[[UILabel alloc] initWithFrame:CGRectMake(50, 30, 220, 40)];
     //self.userPhoneNumber.textAlignment =NSTextAlignmentCenter;
@@ -251,11 +262,19 @@
 
 #pragma mark - Action
 - (void)loginAction:(id)sender{
+    UIButton *btn = (UIButton *)sender;
+    if (btn.tag == 0) {
+        LoginVC *loginVC = [[LoginVC alloc] init];
+        loginVC.hidesBottomBarWhenPushed = YES;
+        loginVC.delegate = self;
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
+    else if (btn.tag == 1){
+        PersonInfoVC *vc = [[PersonInfoVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
-    LoginVC *loginVC = [[LoginVC alloc] init];
-    loginVC.hidesBottomBarWhenPushed = YES;
-    loginVC.delegate = self;
-    [self.navigationController pushViewController:loginVC animated:YES];
 }
 
 - (void)exitAction{
