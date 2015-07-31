@@ -184,7 +184,8 @@
         NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
         NSDictionary *userInfoDic = userDic[uUserInfoKey];
         [self.personImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,userInfoDic[uUserPhoto]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
-        self.userPhoneNumber.text = [[[[UserInfo sharedUser] getUserInfoDic] objectForKey:uUserInfoKey] objectForKey:uPhoneNumber];
+        //self.userPhoneNumber.text = [[[[UserInfo sharedUser] getUserInfoDic] objectForKey:uUserInfoKey] objectForKey:uPhoneNumber];
+        self.userPhoneNumber.text = [NSString stringWithFormat:@"%@(%@)",userInfoDic[uUserName],userInfoDic[uPhoneNumber]];
         
         _exitBtn.hidden = NO;
         //登陆之后，请求“我的”信息
@@ -212,7 +213,7 @@
     [bakeGroundImage setImage:[UIImage imageNamed:@"SThead.png"]];
     [view addSubview:bakeGroundImage];
     
-    self.personImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 30, 31, 34)];
+    self.personImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 25, 50, 50)];
     //[self.personImage setImage:[UIImage imageNamed:@"people_ayb.png"]];
     [view addSubview: self.personImage];
     
@@ -227,14 +228,14 @@
     [self.loginBtn addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:self.loginBtn];
     
-    self.loginBtnLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 30, 220, 40)];
+    self.loginBtnLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 30, 220, 40)];
     self.loginBtnLabel.text = @"请点击登陆";
     //self.loginBtnLabel.textAlignment =NSTextAlignmentCenter;
     self.loginBtnLabel.textColor = [UIColor whiteColor];
     self.loginBtnLabel.font = [UIFont systemFontOfSize:17];
     [view addSubview:self.loginBtnLabel];
     
-    self.userPhoneNumber =[[UILabel alloc] initWithFrame:CGRectMake(50, 30, 220, 40)];
+    self.userPhoneNumber =[[UILabel alloc] initWithFrame:CGRectMake(70, 30, 220, 40)];
     //self.userPhoneNumber.textAlignment =NSTextAlignmentCenter;
     self.userPhoneNumber.textColor = [UIColor whiteColor];
     self.userPhoneNumber.font = [UIFont systemFontOfSize:17];
