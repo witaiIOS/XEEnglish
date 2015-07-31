@@ -35,6 +35,9 @@
     _totleExpendRecordPageIndex = 0;
     
     [self setupRefresh:@"table"];
+    
+    //注册监听者。
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(RefreshOrder) name:@"RefreshOrderVC" object:nil];
 }
 
 - (void)initUI{
@@ -257,6 +260,15 @@
     //自己的属性
     vc.out_trade_no = orderInfoDic[@"out_trade_no"];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - Noti
+- (void)RefreshOrder{
+    
+    _currentExpendRecordPageIndex = 1;
+    _totleExpendRecordPageIndex = 0;
+    
+    [self setupRefresh:@"table"];
 }
 
 

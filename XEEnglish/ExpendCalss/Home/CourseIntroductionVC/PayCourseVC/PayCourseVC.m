@@ -138,6 +138,8 @@
             
             payCompleteVC *vc = [[payCompleteVC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
+            //支付成功后刷新订单页
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"RefreshOrderVC" object:self];
         }
         else {
             //[UIFactory showAlert:@"支付遇到问题，请重新支付"];
