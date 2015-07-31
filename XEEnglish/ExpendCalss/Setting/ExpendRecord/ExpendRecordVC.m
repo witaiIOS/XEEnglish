@@ -248,9 +248,14 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)expendRecordCellPayBtnClicked {
+- (void)expendRecordCellPayBtnClicked:(id)sender {
+    NSDictionary *orderInfoDic = sender;
     OrderPayVC *vc = [[OrderPayVC alloc] init];
-    
+    //继承父类的属性
+    vc.payMoney = [orderInfoDic[@"order_price"] intValue];
+    vc.courseName = orderInfoDic[@"title"];
+    //自己的属性
+    vc.out_trade_no = orderInfoDic[@"out_trade_no"];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -231,8 +231,8 @@
 }
 - (IBAction)payBtnClicked:(id)sender {
     
-    if ([self.delegate respondsToSelector:@selector(expendRecordCellPayBtnClicked)]) {
-        [self.delegate expendRecordCellPayBtnClicked];
+    if ([self.delegate respondsToSelector:@selector(expendRecordCellPayBtnClicked:)]) {
+        [self.delegate expendRecordCellPayBtnClicked:self.expendRecordInfoDic];
     }
 }
 

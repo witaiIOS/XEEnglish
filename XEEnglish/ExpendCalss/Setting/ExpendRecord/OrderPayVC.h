@@ -9,5 +9,6 @@
 #import "PayCourseVC.h"
 
 @interface OrderPayVC : PayCourseVC
+@property (nonatomic, strong) NSString *out_trade_no;
 
 @end

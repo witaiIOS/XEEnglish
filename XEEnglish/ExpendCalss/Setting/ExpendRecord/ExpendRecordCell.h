@@ -11,7 +11,7 @@
 @protocol ExpendRecordCellDelegate <NSObject>
 
 - (void)expendRecordCellCannelBtnPressed:(id)sender;
-- (void)expendRecordCellPayBtnClicked;
+- (void)expendRecordCellPayBtnClicked:(id)sender;
 
 @end
 

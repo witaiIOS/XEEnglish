@@ -7,6 +7,12 @@
 //
 
 #import "BaseVC.h"
+#import "PaymoneyCell.h"
+#import "PayMethodCell.h"
+
+#import "payCompleteVC.h"
+
+#import "XeeService.h"
 
 @interface PayCourseVC : BaseVC
 
@@ -25,6 +31,9 @@
 @property (nonatomic, strong) NSString *sex;//sex(0女1男)
 @property (nonatomic, strong) NSString *birthday;//小孩生日
 @property (nonatomic, strong) NSString *name;//is_select_student为0填写孩子，name(姓名不能为空)
+
+
+@property (nonatomic, strong) UITableView *tableView;
 /**
  *  通过订单号获取支付宝、微信支付信息
  */

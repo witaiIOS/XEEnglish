@@ -16,7 +16,7 @@
 
 @interface PayCourseVC ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;
+
 
 //@property (nonatomic, strong) NSString *out_trade_no;
 @end
