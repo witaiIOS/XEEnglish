@@ -28,6 +28,7 @@
 @property (nonatomic, strong) UIButton *signBtn;//签到按钮
 @property (nonatomic, strong) NSString *signMarkStr;//签到返回标记
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIImageView *personImage;//个人头像
 @property (nonatomic, strong) UIButton *loginBtn;
 @property (nonatomic, strong) UILabel *loginBtnLabel;//请点击登陆
 @property (nonatomic, strong) UIButton *exitBtn;
@@ -180,7 +181,9 @@
         self.loginBtnLabel.hidden = YES;
         //登陆之后，tag设置成1，点击跳转到个人页面
         self.loginBtn.tag = 1;
-        
+        NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+        NSDictionary *userInfoDic = userDic[uUserInfoKey];
+        [self.personImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,userInfoDic[uUserPhoto]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
         self.userPhoneNumber.text = [[[[UserInfo sharedUser] getUserInfoDic] objectForKey:uUserInfoKey] objectForKey:uPhoneNumber];
         
         _exitBtn.hidden = NO;
@@ -188,6 +191,7 @@
         [self getMyInfoFromWeb];
     }
     else {
+        [self.personImage setImage:[UIImage imageNamed:@"people_ayb.png"]];
         self.userPhoneNumber.hidden = YES;
         self.loginBtnLabel.hidden = NO;
         //未登陆，tag设置成0，点击跳转到登陆页面
@@ -208,9 +212,9 @@
     [bakeGroundImage setImage:[UIImage imageNamed:@"SThead.png"]];
     [view addSubview:bakeGroundImage];
     
-    UIImageView *phoneImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 30, 31, 34)];
-    [phoneImage setImage:[UIImage imageNamed:@"people_ayb.png"]];
-    [view addSubview: phoneImage];
+    self.personImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 30, 31, 34)];
+    //[self.personImage setImage:[UIImage imageNamed:@"people_ayb.png"]];
+    [view addSubview: self.personImage];
     
     self.loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     //    [self.loginBtn setFrame:CGRectMake(80, 50, 80, 40)];
