@@ -8,8 +8,8 @@
 
 #import "CoursePhotoLookVC.h"
 
-@interface CoursePhotoLookVC ()
-
+@interface CoursePhotoLookVC ()<UIScrollViewDelegate>
+@property (nonatomic, strong) UIScrollView *scrollView;
 @end
 
 @implementation CoursePhotoLookVC
@@ -24,14 +24,25 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)initUI{
+    
+    [super initUI];
+    
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.contentSize = CGSizeMake(kScreenWidth*self.photoArray.count, kScreenHeight-64);
+    //定位到指定位置
+    //self.scrollView.contentOffset = CGPointMake(self.currentIndex*kScreenWidth,0);
+    [self.scrollView setContentOffset:CGPointMake(self.currentIndex*kScreenWidth,0) animated:YES];
+    self.scrollView.delegate = self;
+    [self.view addSubview:self.scrollView];
+    
+    for (int i= 0; i<self.photoArray.count; i++) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth*i, (kScreenHeight-64-300)/2, kScreenWidth, 300)];
+        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[self.photoArray[i] objectForKey:@"pic_url"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
+        [self.scrollView addSubview:imageView];
+    }
 }
-*/
 
 @end
