@@ -18,7 +18,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) NSString *out_trade_no;
+//@property (nonatomic, strong) NSString *out_trade_no;
 @end
 
 @implementation PayCourseVC
@@ -46,7 +46,7 @@
     NSIndexPath *ip=[NSIndexPath indexPathForRow:0 inSection:1];
     [self.tableView selectRowAtIndexPath:ip animated:YES scrollPosition:UITableViewScrollPositionBottom];
     
-    self.out_trade_no = [self generateTradeNO];
+    //self.out_trade_no = [self generateTradeNO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,17 +90,18 @@
         
     }
     else {//支付宝支付
+        NSString *out_trade_no = [self generateTradeNO];
         
         __block PayCourseVC *controller = self;
         
-        [self addStudentSubCourseWithBlock:^(NSDictionary *result, NSError *error) {
+        [self addStudentSubCourseWithOutTradeNo:out_trade_no andBlock:^(NSDictionary *result, NSError *error) {
             if (!error) {
                 NSNumber *isResult = result[@"result"];
                 NSLog(@"result:%@",result);
                 if (isResult.integerValue == 0) {
                     //payCompleteVC *vc = [[payCompleteVC alloc] init];
                     //[self.navigationController pushViewController:vc animated:YES];
-                    [controller aliyPay];
+                    [controller aliyPayWithOutTradeNo:out_trade_no];
                 }
                 else{
                     [UIFactory showAlert:result[@"resultInfo"]];
@@ -118,19 +119,19 @@
     
 }
 
-- (void)addStudentSubCourseWithBlock:(void(^)(NSDictionary *result, NSError *error))block {
+- (void)addStudentSubCourseWithOutTradeNo:(NSString *)out_trade_no andBlock:(void(^)(NSDictionary *result, NSError *error))block {
     
     NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     //NSLog(@"add:%@",self.out_trade_no);
-    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolId andStudentId:self.studentId andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.payMoney andPlatFormTypeId:@"202" andListCoupon:self.listCoupon andToken:userInfoDic[uUserToken] andPayType:self.payType andNumbers:self.number andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:self.name andOutTradeNo:self.out_trade_no andBlock:block];
+    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolId andStudentId:self.studentId andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.payMoney andPlatFormTypeId:@"202" andListCoupon:self.listCoupon andToken:userInfoDic[uUserToken] andPayType:self.payType andNumbers:self.number andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:self.name andOutTradeNo:out_trade_no andBlock:block];
 
 }
 
 
-- (void)aliyPay {//支付宝支付
+- (void)aliyPayWithOutTradeNo:(NSString *)out_trade_no {//支付宝支付
     //NSLog(@"aliypay:%@",self.out_trade_no);
-    [[XeeService sharedInstance] apliyPayWithOutTradeNo:self.out_trade_no andTotalFee:@"0.01" andType:self.courseName callback:^(NSDictionary *resultDic) {
+    [[XeeService sharedInstance] apliyPayWithOutTradeNo:out_trade_no andTotalFee:@"0.01" andType:self.courseName callback:^(NSDictionary *resultDic) {
         
         NSString *resultStatus = resultDic [@"resultStatus"];
         if (9000 == [resultStatus intValue]) {//支付成功

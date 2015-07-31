@@ -33,12 +33,12 @@
 /**
  *  通过购买信息获取支付宝、微信支付信息
  */
-- (void)addStudentSubCourseWithBlock:(void(^)(NSDictionary *result, NSError *error))block;
+- (void)addStudentSubCourseWithOutTradeNo:(NSString *)out_trade_no andBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
 /**
  *  支付宝支付
  */
-- (void)aliyPay ;
+- (void)aliyPayWithOutTradeNo:(NSString *)out_trade_no ;
 
 /**
  *  现金支付
