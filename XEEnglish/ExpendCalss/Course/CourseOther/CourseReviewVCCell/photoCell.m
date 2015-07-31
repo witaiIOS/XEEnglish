@@ -33,13 +33,14 @@
     [super layoutSubviews];
     //NSLog(@"info:%@",self.photoArray);
     //NSLog(@"url:%@",[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[self.photoArray[0] objectForKey:@"pic_url"]]);
-    [self.photo1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[self.photoArray[0] objectForKey:@"pic_url"]]]];
+//    [self.photo1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@thumb/%@",XEEimageURLPrefix,[self.photoArray[0] objectForKey:@"pic_url"]]]];
+    [self.photo1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@thumb/%@",XEEimageURLPrefix,[self.photoArray[0] objectForKey:@"pic_url"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
     
     if ([self.photoArray count] >= 2) {
-        [self.photo2 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[self.photoArray[1] objectForKey:@"pic_url"]]]];
+        [self.photo2 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@thumb/%@",XEEimageURLPrefix,[self.photoArray[1] objectForKey:@"pic_url"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
         
         if ([self.photoArray count] > 2){
-            [self.photo3 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[self.photoArray[2] objectForKey:@"pic_url"]]]];
+            [self.photo3 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@thumb/%@",XEEimageURLPrefix,[self.photoArray[2] objectForKey:@"pic_url"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
         }
     }
 }

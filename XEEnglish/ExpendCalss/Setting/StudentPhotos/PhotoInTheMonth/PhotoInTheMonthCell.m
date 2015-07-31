@@ -56,7 +56,7 @@
     
     [self.button1 setTitle:[_serviceDic1 objectForKey:@"create_time"] forState:UIControlStateNormal];
     
-    NSString *imageUrl1 = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[_serviceDic1 objectForKey:@"pic_url"]];
+    NSString *imageUrl1 = [NSString stringWithFormat:@"%@thumb/%@",XEEimageURLPrefix,[_serviceDic1 objectForKey:@"pic_url"]];
     
     [self.button1 setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl1] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
     
@@ -64,7 +64,7 @@
         [self.button2 setHidden:NO];
         
         [self.button2 setTitle:[_serviceDic2 objectForKey:@"create_time"] forState:UIControlStateNormal];
-        NSString *imageUrl2 = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[_serviceDic2 objectForKey:@"pic_url"]];
+        NSString *imageUrl2 = [NSString stringWithFormat:@"%@thumb/%@",XEEimageURLPrefix,[_serviceDic2 objectForKey:@"pic_url"]];
         
         [self.button2 setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl2] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
         
@@ -72,7 +72,7 @@
             [self.button3 setHidden:NO];
             
             [self.button3 setTitle:[_serviceDic3 objectForKey:@"create_time"] forState:UIControlStateNormal];
-            NSString *imageUrl3 = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[_serviceDic3 objectForKey:@"pic_url"]];
+            NSString *imageUrl3 = [NSString stringWithFormat:@"%@thumb/%@",XEEimageURLPrefix,[_serviceDic3 objectForKey:@"pic_url"]];
             
             [self.button3 setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl3] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
         }
