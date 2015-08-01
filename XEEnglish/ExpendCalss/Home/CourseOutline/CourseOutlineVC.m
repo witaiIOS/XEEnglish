@@ -81,12 +81,16 @@
     UILabel *buyMethedValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 170, kScreenWidth-80-20, 30)];
     //buyMethedValueLabel.text = @"";
     buyMethedValueLabel.textColor = [UIColor grayColor];
-    buyMethedValueLabel.font = [UIFont systemFontOfSize:14];
+    buyMethedValueLabel.font = [UIFont systemFontOfSize:12];
+    buyMethedValueLabel.numberOfLines = 0;
+    buyMethedValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
     NSString *payType = [NSString stringWithFormat:@"%@",self.courseInfo[@"pay_type"]];
     if ([payType intValue] == 1) {
         buyMethedValueLabel.text = [NSString stringWithFormat:@"课时购买。  课时单价：%@元／时 ",self.courseInfo[@"price"]];
     }else if ([payType intValue] == 2){
         buyMethedValueLabel.text = [NSString stringWithFormat:@"整套购买。  整套价：%@元／套 ",self.courseInfo[@"total_price"]];
+    }else if ([payType intValue] == 3){
+        buyMethedValueLabel.text = [NSString stringWithFormat:@"按课时购买或者整套购买。  课时单价：%@元／时；整套价：%@元／套 ",self.courseInfo[@"price"],self.courseInfo[@"total_price"]];
     }
     
 //    UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 170, 70, 30)];
@@ -107,7 +111,7 @@
     UILabel *ageValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 200, 150, 30)];
     ageValueLabel.text = [NSString stringWithFormat:@"%@ ~ %@岁",self.courseInfo[@"min_age"],self.courseInfo[@"max_age"]];
     ageValueLabel.textColor = [UIColor grayColor];
-    ageValueLabel.font = [UIFont systemFontOfSize:14];
+    ageValueLabel.font = [UIFont systemFontOfSize:12];
 
     //分割线
     UILabel *ageLabelLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 229, kScreenWidth-40, 1)];
@@ -126,7 +130,7 @@
     targetStudentValueLabel.numberOfLines = 0;
     targetStudentValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
     //CGSize targetStudentValueSize = [targetStudentValueLabel.text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(targetStudentValueLabel.frame.size.width, 2000.0) lineBreakMode:NSLineBreakByWordWrapping];
-    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:14]};
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:12]};
     CGSize targetStudentValueSize = [targetStudentValueLabel.text boundingRectWithSize:CGSizeMake(180.0f, 20000.0f) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
     if (targetStudentValueSize.height > 30) {
         targetStudentValueLabel.frame = CGRectMake(80, 230, kScreenWidth-80-20, targetStudentValueSize.height);
@@ -141,7 +145,7 @@
 //    }else{
 //        targetStudentValueLabel.frame = CGRectMake(80, 230, kScreenWidth-80-20, 30);
 //    }
-    targetStudentValueLabel.font = [UIFont systemFontOfSize:14];
+    targetStudentValueLabel.font = [UIFont systemFontOfSize:12];
     
 //    //重置课程目标的label
 //    targetStudentLabel.frame = CGRectMake(10, 230, 70, targetStudentValueSize.height);
