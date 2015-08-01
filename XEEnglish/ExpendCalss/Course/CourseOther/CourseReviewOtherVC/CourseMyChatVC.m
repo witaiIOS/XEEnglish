@@ -106,9 +106,9 @@
     bubbleImageView.frame = CGRectMake(0.0f, 14.0f, bubbleText.frame.size.width+30.0f, bubbleText.frame.size.height+20.0f);
     
     if(fromSelf)
-        returnView.frame = CGRectMake(320-position-(bubbleText.frame.size.width+30.0f), 0.0f, bubbleText.frame.size.width+30.0f, bubbleText.frame.size.height+30.0f);
+        returnView.frame = CGRectMake(kScreenWidth-position-(bubbleText.frame.size.width+30.0f), 0.0f+30, bubbleText.frame.size.width+30.0f, bubbleText.frame.size.height+30.0f);
     else
-        returnView.frame = CGRectMake(position, 0.0f, bubbleText.frame.size.width+30.0f, bubbleText.frame.size.height+30.0f);
+        returnView.frame = CGRectMake(position, 0.0f+30, bubbleText.frame.size.width+30.0f, bubbleText.frame.size.height+30.0f);
     
     [returnView addSubview:bubbleImageView];
     [returnView addSubview:bubbleText];
@@ -134,7 +134,7 @@
     UIFont *font = [UIFont systemFontOfSize:14];
     CGSize size = [[dict objectForKey:@"parent_comment"] sizeWithFont:font constrainedToSize:CGSizeMake(180.0f, 20000.0f) lineBreakMode:NSLineBreakByWordWrapping];
     
-    return size.height+44;
+    return size.height+44+30;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,12 +152,21 @@
         }
     }
     
+    
     NSDictionary *dict = [_commentArray objectAtIndex:indexPath.row];
+    //创建时间
+    UILabel *bubbleTime = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth/2-60, 10, 120, 20)];
+    bubbleTime.backgroundColor = [UIColor lightGrayColor];
+    bubbleTime.text = [dict objectForKey:@"create_time"];
+    bubbleTime.textColor = [UIColor whiteColor];
+    bubbleTime.font = [UIFont systemFontOfSize:12];
+    
+    [cell addSubview:bubbleTime];
     
     //创建头像
     UIImageView *photo ;
     if ([[dict objectForKey:@"type"] integerValue] == 1) {
-        photo = [[UIImageView alloc]initWithFrame:CGRectMake(320-60, 10, 50, 50)];
+        photo = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth-60, 10+30, 50, 50)];
         [cell addSubview:photo];
         //photo.image = [UIImage imageNamed:@"image_loading.png"];
         [photo setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,dict[@"photo"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
@@ -166,7 +175,7 @@
         
         
     }else{
-        photo = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 50, 50)];
+        photo = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10+30, 50, 50)];
         [cell addSubview:photo];
         //photo.image = [UIImage imageNamed:@"photo"];
         [photo setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,dict[@"photo"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
