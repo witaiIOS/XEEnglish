@@ -137,6 +137,14 @@
 		09CA691D1B1FFCE300A31E0E /* CouponsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */; };
 		09CA69211B201F2500A31E0E /* coupons1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69201B201F2500A31E0E /* coupons1.png */; };
 		09CA69231B20213800A31E0E /* couponstime.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA69221B20213800A31E0E /* couponstime.png */; };
+		09CA733F1B6C54B800C191E9 /* ReceiverTextNodeBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA73371B6C54B800C191E9 /* ReceiverTextNodeBkg.png */; };
+		09CA73401B6C54B800C191E9 /* ReceiverTextNodeBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA73381B6C54B800C191E9 /* ReceiverTextNodeBkg@2x.png */; };
+		09CA73411B6C54B800C191E9 /* ReceiverVoiceNodeDownloading.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA73391B6C54B800C191E9 /* ReceiverVoiceNodeDownloading.png */; };
+		09CA73421B6C54B800C191E9 /* ReceiverVoiceNodeDownloading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA733A1B6C54B800C191E9 /* ReceiverVoiceNodeDownloading@2x.png */; };
+		09CA73431B6C54B800C191E9 /* SenderAppNodeBkg_HL.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA733B1B6C54B800C191E9 /* SenderAppNodeBkg_HL.png */; };
+		09CA73441B6C54B800C191E9 /* SenderAppNodeBkg_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA733C1B6C54B800C191E9 /* SenderAppNodeBkg_HL@2x.png */; };
+		09CA73451B6C54B800C191E9 /* SenderVoiceNodeDownloading.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA733D1B6C54B800C191E9 /* SenderVoiceNodeDownloading.png */; };
+		09CA73461B6C54B800C191E9 /* SenderVoiceNodeDownloading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CA733E1B6C54B800C191E9 /* SenderVoiceNodeDownloading@2x.png */; };
 		09CB13301B65DDC70012F5E5 /* StudentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB132F1B65DDC70012F5E5 /* StudentVC.m */; };
 		09CB13331B65DDDF0012F5E5 /* StudentVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB13321B65DDDF0012F5E5 /* StudentVCCell.m */; };
 		09CB133B1B65ED040012F5E5 /* AddStudentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CB133A1B65ED040012F5E5 /* AddStudentVC.m */; };
@@ -535,6 +543,14 @@
 		09CA691C1B1FFCE300A31E0E /* CouponsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponsCell.xib; sourceTree = "<group>"; };
 		09CA69201B201F2500A31E0E /* coupons1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupons1.png; sourceTree = "<group>"; };
 		09CA69221B20213800A31E0E /* couponstime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couponstime.png; sourceTree = "<group>"; };
+		09CA73371B6C54B800C191E9 /* ReceiverTextNodeBkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReceiverTextNodeBkg.png; sourceTree = "<group>"; };
+		09CA73381B6C54B800C191E9 /* ReceiverTextNodeBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReceiverTextNodeBkg@2x.png"; sourceTree = "<group>"; };
+		09CA73391B6C54B800C191E9 /* ReceiverVoiceNodeDownloading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReceiverVoiceNodeDownloading.png; sourceTree = "<group>"; };
+		09CA733A1B6C54B800C191E9 /* ReceiverVoiceNodeDownloading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReceiverVoiceNodeDownloading@2x.png"; sourceTree = "<group>"; };
+		09CA733B1B6C54B800C191E9 /* SenderAppNodeBkg_HL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SenderAppNodeBkg_HL.png; sourceTree = "<group>"; };
+		09CA733C1B6C54B800C191E9 /* SenderAppNodeBkg_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SenderAppNodeBkg_HL@2x.png"; sourceTree = "<group>"; };
+		09CA733D1B6C54B800C191E9 /* SenderVoiceNodeDownloading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SenderVoiceNodeDownloading.png; sourceTree = "<group>"; };
+		09CA733E1B6C54B800C191E9 /* SenderVoiceNodeDownloading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SenderVoiceNodeDownloading@2x.png"; sourceTree = "<group>"; };
 		09CB132E1B65DDC70012F5E5 /* StudentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentVC.h; sourceTree = "<group>"; };
 		09CB132F1B65DDC70012F5E5 /* StudentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentVC.m; sourceTree = "<group>"; };
 		09CB13311B65DDDF0012F5E5 /* StudentVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentVCCell.h; sourceTree = "<group>"; };
@@ -1242,6 +1258,21 @@
 			path = Coupons;
 			sourceTree = "<group>";
 		};
+		09CA73361B6C54B800C191E9 /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				09CA73371B6C54B800C191E9 /* ReceiverTextNodeBkg.png */,
+				09CA73381B6C54B800C191E9 /* ReceiverTextNodeBkg@2x.png */,
+				09CA73391B6C54B800C191E9 /* ReceiverVoiceNodeDownloading.png */,
+				09CA733A1B6C54B800C191E9 /* ReceiverVoiceNodeDownloading@2x.png */,
+				09CA733B1B6C54B800C191E9 /* SenderAppNodeBkg_HL.png */,
+				09CA733C1B6C54B800C191E9 /* SenderAppNodeBkg_HL@2x.png */,
+				09CA733D1B6C54B800C191E9 /* SenderVoiceNodeDownloading.png */,
+				09CA733E1B6C54B800C191E9 /* SenderVoiceNodeDownloading@2x.png */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
 		09CB134F1B665BA80012F5E5 /* CourseReviewVCCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1426,6 +1457,7 @@
 		09DB2DCF1B1322CC0078AAF5 /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				09CA73361B6C54B800C191E9 /* chat */,
 				09C88A441B676DC800B795C8 /* ic_review_score1_off.png */,
 				09C88A451B676DC800B795C8 /* ic_review_score1_on.png */,
 				09C88A461B676DC800B795C8 /* ic_review_score2_on.png */,
@@ -2229,6 +2261,7 @@
 				09C88A531B676DC800B795C8 /* ic_review_score2_on.png in Resources */,
 				09C88A561B676DC800B795C8 /* ic_review_score3_on.png in Resources */,
 				09DB2DC41B1322980078AAF5 /* join_07.png in Resources */,
+				09CA73431B6C54B800C191E9 /* SenderAppNodeBkg_HL.png in Resources */,
 				09C6984F1B6876E800DDF7E6 /* OtherCommentVCCell.xib in Resources */,
 				09D5604A1B26DB8F00ADF334 /* RegisterVC.xib in Resources */,
 				09CB13421B65FF3B0012F5E5 /* addStudentBirthday.xib in Resources */,
@@ -2277,8 +2310,10 @@
 				09C3285E1B301370009F0BAB /* CourseCell.xib in Resources */,
 				A6284D7C1B10615200EFF820 /* nav_backButtonBg.png in Resources */,
 				09DB2DCD1B1322AF0078AAF5 /* accountDetail03@2x.png in Resources */,
+				09CA73421B6C54B800C191E9 /* ReceiverVoiceNodeDownloading@2x.png in Resources */,
 				09C9C0E31B22C890001BBA1C /* STpersonal.png in Resources */,
 				092A8C4C1B5FA45C006F7C6F /* agreement.html in Resources */,
+				09CA73461B6C54B800C191E9 /* SenderVoiceNodeDownloading@2x.png in Resources */,
 				A6284D9D1B1067C100EFF820 /* LoginVC.xib in Resources */,
 				09DB2DC91B1322A30078AAF5 /* people_ayb.png in Resources */,
 				09D0BD411B620A9F0074D1A3 /* PriceCell.xib in Resources */,
@@ -2289,12 +2324,17 @@
 				09C639561B3AA77400510F00 /* pay_02.png in Resources */,
 				09C9C0E21B22C890001BBA1C /* STintegral.png in Resources */,
 				09D23C561B427E03008B6085 /* PointsRecordCell.xib in Resources */,
+				09CA73401B6C54B800C191E9 /* ReceiverTextNodeBkg@2x.png in Resources */,
 				A6DA3E231B44D919005850EB /* UMSCommentInputControlleriPad.xib in Resources */,
 				A63A0A821B2D1BFF003D3852 /* chekbox_select.png in Resources */,
 				09D23C4C1B424546008B6085 /* ExchangePointsCell.xib in Resources */,
+				09CA733F1B6C54B800C191E9 /* ReceiverTextNodeBkg.png in Resources */,
 				09C95EC21B2806FA000972D8 /* school_unselected.png in Resources */,
 				09C9C0E01B22C890001BBA1C /* STcoupon.png in Resources */,
+				09CA73441B6C54B800C191E9 /* SenderAppNodeBkg_HL@2x.png in Resources */,
+				09CA73411B6C54B800C191E9 /* ReceiverVoiceNodeDownloading.png in Resources */,
 				09C639521B3A9F5E00510F00 /* pay_01.png in Resources */,
+				09CA73451B6C54B800C191E9 /* SenderVoiceNodeDownloading.png in Resources */,
 				A6DA3E211B44D919005850EB /* UMSCommentDetailController.xib in Resources */,
 				09C9C0F81B22FA19001BBA1C /* yes.png in Resources */,
 				09C532131B50A60A00D6A07E /* CourseCommentCell.xib in Resources */,

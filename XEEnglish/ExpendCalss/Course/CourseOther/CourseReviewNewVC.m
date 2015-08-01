@@ -389,6 +389,7 @@
     UIButton *btn = (UIButton *)sender;
     if (btn.tag == 1) {
         CourseMyChatVC *vc = [[CourseMyChatVC alloc] init];
+        vc.courseInfoDic = self.courseLeaveInfoDic;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (btn.tag == 2) {
