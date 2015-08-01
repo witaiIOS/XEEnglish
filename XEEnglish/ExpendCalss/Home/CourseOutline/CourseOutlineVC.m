@@ -125,7 +125,9 @@
     
     targetStudentValueLabel.numberOfLines = 0;
     targetStudentValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    CGSize targetStudentValueSize = [targetStudentValueLabel.text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(targetStudentValueLabel.frame.size.width, 2000.0) lineBreakMode:NSLineBreakByWordWrapping];
+    //CGSize targetStudentValueSize = [targetStudentValueLabel.text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(targetStudentValueLabel.frame.size.width, 2000.0) lineBreakMode:NSLineBreakByWordWrapping];
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:14]};
+    CGSize targetStudentValueSize = [targetStudentValueLabel.text boundingRectWithSize:CGSizeMake(180.0f, 20000.0f) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
     if (targetStudentValueSize.height > 30) {
         targetStudentValueLabel.frame = CGRectMake(80, 230, kScreenWidth-80-20, targetStudentValueSize.height);
     }else{
@@ -195,7 +197,9 @@
     //自动换行，自适应高度
     courseFeatureValueLabel.numberOfLines = 0;
     courseFeatureValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    CGSize courseFeatureValueSize = [courseFeatureValueLabel.text sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(courseFeatureValueLabel.frame.size.width, 2000.0) lineBreakMode:NSLineBreakByWordWrapping];
+    //CGSize courseFeatureValueSize = [courseFeatureValueLabel.text sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(courseFeatureValueLabel.frame.size.width, 2000.0) lineBreakMode:NSLineBreakByWordWrapping];
+    NSDictionary *attribute2 = @{NSFontAttributeName: [UIFont systemFontOfSize:12]};
+    CGSize courseFeatureValueSize = [courseFeatureValueLabel.text boundingRectWithSize:CGSizeMake(180.0f, 20000.0f) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute2 context:nil].size;
 //    CGSize courseFeatureValueSize = [courseFeatureValueLabel sizeThatFits:CGSizeMake(courseFeatureValueLabel.frame.size.width, MAXFLOAT)];
     if (courseFeatureValueSize.height > 30) {
         courseFeatureValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseFeatureValueSize.height);
@@ -241,7 +245,9 @@
     //自动换行，自适应高度
     courseIntroductionValueLabel.numberOfLines = 0;
     courseIntroductionValueLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    CGSize courseIntroductionValueSize = [courseIntroductionValueLabel.text sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(courseIntroductionValueLabel.frame.size.width, 2000.0) lineBreakMode:NSLineBreakByWordWrapping];
+    //CGSize courseIntroductionValueSize = [courseIntroductionValueLabel.text sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(courseIntroductionValueLabel.frame.size.width, 2000.0) lineBreakMode:NSLineBreakByWordWrapping];
+    NSDictionary *attribute3 = @{NSFontAttributeName: [UIFont systemFontOfSize:12]};
+    CGSize courseIntroductionValueSize = [courseIntroductionValueLabel.text boundingRectWithSize:CGSizeMake(180.0f, 20000.0f) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute3 context:nil].size;
     courseIntroductionValueLabel.frame = CGRectMake(10, 30, kScreenWidth-40, courseIntroductionValueSize.height);
 //    CGSize courseIntroductionValueSize = [courseIntroductionValueLabel sizeThatFits:CGSizeMake(courseIntroductionValueLabel.frame.size.width, MAXFLOAT)];
     
