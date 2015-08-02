@@ -159,6 +159,9 @@
 - (void)wxPayWithOutTradeNo:(NSString *)out_trade_no {//微信支付
     
     NSLog(@"self.courseName:%@",self.courseName);
+    if (!self.courseName) {
+        [UIFactory showAlert:@"课程名不能为空"];
+    }
     [[XeeService sharedInstance] wxSendPayWithBody:self.courseName andOrderNo:out_trade_no andOrderPrice:@"0.01"];
 }
 

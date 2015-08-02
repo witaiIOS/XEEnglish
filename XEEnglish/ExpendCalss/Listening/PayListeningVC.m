@@ -107,6 +107,7 @@
         }else{
             
             ListenPayCourseVC *vc = [[ListenPayCourseVC alloc] init];
+            vc.courseName = self.selectedCourse;
             vc.payMoney = [self.coursePrice intValue];
             vc.courseId = [self.courseInfoDic[@"course_id"] intValue];
             vc.studentId = self.selectedStudentInfoDic[@"student_id"];
