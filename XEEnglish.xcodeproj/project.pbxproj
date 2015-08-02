@@ -322,7 +322,9 @@
 		A6DA3E281B44D919005850EB /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6DA3E151B44D919005850EB /* UMSShareListController.xib */; };
 		A6DA3E291B44D919005850EB /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A6DA3E161B44D919005850EB /* UMSocialSDKResourcesNew.bundle */; };
 		A6DA3E2A1B44D919005850EB /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DA3E1A1B44D919005850EB /* libSocialWechat.a */; };
-		A6DA3E2B1B44D919005850EB /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DA3E1B1B44D919005850EB /* libWeChatSDK.a */; };
+		C9E4EC1E1B6DF6F80088A3DB /* payRequsestHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9E4EC1B1B6DF6F80088A3DB /* payRequsestHandler.mm */; };
+		C9E4EC1F1B6DF6F80088A3DB /* WXUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9E4EC1D1B6DF6F80088A3DB /* WXUtil.mm */; };
+		C9E4EC221B6DF86C0088A3DB /* ApiXml.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9E4EC211B6DF86C0088A3DB /* ApiXml.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -935,10 +937,13 @@
 		A6DA3E161B44D919005850EB /* UMSocialSDKResourcesNew.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResourcesNew.bundle; sourceTree = "<group>"; };
 		A6DA3E171B44D919005850EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UMSocialLocalizable.strings"; sourceTree = "<group>"; };
 		A6DA3E1A1B44D919005850EB /* libSocialWechat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWechat.a; sourceTree = "<group>"; };
-		A6DA3E1B1B44D919005850EB /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		A6DA3E1C1B44D919005850EB /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
-		A6DA3E1D1B44D919005850EB /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		A6DA3E1E1B44D919005850EB /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		C9E4EC1A1B6DF6F80088A3DB /* payRequsestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payRequsestHandler.h; sourceTree = "<group>"; };
+		C9E4EC1B1B6DF6F80088A3DB /* payRequsestHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = payRequsestHandler.mm; sourceTree = "<group>"; };
+		C9E4EC1C1B6DF6F80088A3DB /* WXUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUtil.h; sourceTree = "<group>"; };
+		C9E4EC1D1B6DF6F80088A3DB /* WXUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXUtil.mm; sourceTree = "<group>"; };
+		C9E4EC201B6DF86C0088A3DB /* ApiXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiXml.h; sourceTree = "<group>"; };
+		C9E4EC211B6DF86C0088A3DB /* ApiXml.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApiXml.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -957,7 +962,6 @@
 				A68C52DD1B4918CA00FCC916 /* AssetsLibrary.framework in Frameworks */,
 				A6284D761B105F0100EFF820 /* libxml2.dylib in Frameworks */,
 				A6DA3E2A1B44D919005850EB /* libSocialWechat.a in Frameworks */,
-				A6DA3E2B1B44D919005850EB /* libWeChatSDK.a in Frameworks */,
 				A6DA3E201B44D919005850EB /* libUMSocial_Sdk_4.2.1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1602,6 +1606,12 @@
 				A6B1CEF11B1D909800100E9F /* WebServiceOpration.m */,
 				A6B1CEF31B1D90EC00100E9F /* XeeService.h */,
 				A6B1CEF41B1D90EC00100E9F /* XeeService.m */,
+				C9E4EC201B6DF86C0088A3DB /* ApiXml.h */,
+				C9E4EC211B6DF86C0088A3DB /* ApiXml.mm */,
+				C9E4EC1A1B6DF6F80088A3DB /* payRequsestHandler.h */,
+				C9E4EC1B1B6DF6F80088A3DB /* payRequsestHandler.mm */,
+				C9E4EC1C1B6DF6F80088A3DB /* WXUtil.h */,
+				C9E4EC1D1B6DF6F80088A3DB /* WXUtil.mm */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -2156,10 +2166,7 @@
 			isa = PBXGroup;
 			children = (
 				A6DA3E1A1B44D919005850EB /* libSocialWechat.a */,
-				A6DA3E1B1B44D919005850EB /* libWeChatSDK.a */,
 				A6DA3E1C1B44D919005850EB /* UMSocialWechatHandler.h */,
-				A6DA3E1D1B44D919005850EB /* WXApi.h */,
-				A6DA3E1E1B44D919005850EB /* WXApiObject.h */,
 			);
 			path = Wechat;
 			sourceTree = "<group>";
@@ -2453,6 +2460,7 @@
 				A6284D9C1B1067C100EFF820 /* LoginVC.m in Sources */,
 				09C543261B4FB67500BD750C /* ListenStudentNameVC.m in Sources */,
 				A6B1CEEA1B1D8C7200100E9F /* HomeBtnCell.m in Sources */,
+				C9E4EC1F1B6DF6F80088A3DB /* WXUtil.mm in Sources */,
 				A6B1CEDE1B1C62D400100E9F /* PersonInfoVC.m in Sources */,
 				09D23C511B4276A4008B6085 /* PointSRuleVC.m in Sources */,
 				09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */,
@@ -2476,6 +2484,7 @@
 				09D47BA71B54ECD500B86CA2 /* ActivityHistoryDetailVC.m in Sources */,
 				09CA691B1B1FFCCA00A31E0E /* CouponsCell.m in Sources */,
 				09D560441B26D3E700ADF334 /* ForgetPassWordVC.m in Sources */,
+				C9E4EC221B6DF86C0088A3DB /* ApiXml.mm in Sources */,
 				A6284D591B105E5600EFF820 /* UIScrollView+MJExtension.m in Sources */,
 				09E24B201B41710200F762BD /* MyBookSiteCell.m in Sources */,
 				09D0EE551B61060000624E9B /* CourseOutlineVC.m in Sources */,
@@ -2542,6 +2551,7 @@
 				A6D4F2311B539D43001D3D0E /* base64.m in Sources */,
 				090604841B146B050038BAC4 /* CountdownButton.m in Sources */,
 				09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */,
+				C9E4EC1E1B6DF6F80088A3DB /* payRequsestHandler.mm in Sources */,
 				A6284CCF1B10592100EFF820 /* main.m in Sources */,
 				09C64CA51B6A0F3B004E8C9A /* PhotoInTheMonthButton.m in Sources */,
 				A6A9442D1B2E74B500AF304F /* JSDropDownMenu.m in Sources */,

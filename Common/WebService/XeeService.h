@@ -460,4 +460,7 @@
 ///支付宝支付
 - (void)apliyPayWithOutTradeNo:(NSString *)outTradeNo andTotalFee:(NSString *)totalFee andType:(NSString *)type callback:(CompletionBlock)completionBlock;
 
+//微信支付
+- (void)wxSendPayWithBody:(NSString *)body andOrderNo:(NSString *)orderno andOrderPrice:(NSString *)orderPrice;
+
 @end

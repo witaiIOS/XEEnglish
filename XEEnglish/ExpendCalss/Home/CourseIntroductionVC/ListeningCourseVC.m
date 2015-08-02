@@ -150,6 +150,7 @@
                 }
                 //NSLog(@"price:%li",self.listenPrice);
                 ListeningPayVC *vc = [[ListeningPayVC alloc] init];
+                vc.courseName = self.courseName;
                 vc.payMoney = self.listenPrice;
                 vc.courseId = self.courseId;
                 //vc.studentId = self.selectedStudent[@"student_id"];

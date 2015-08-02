@@ -57,7 +57,7 @@
 /**
  *  微信支付
  */
-- (void)wxPay;
+- (void)wxPayWithOutTradeNo:(NSString *)out_trade_no;
 
 /**
  *  点击下一步按钮

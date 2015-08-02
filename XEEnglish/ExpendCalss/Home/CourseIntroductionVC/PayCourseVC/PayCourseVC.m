@@ -83,36 +83,41 @@
     
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
-    if (indexPath.row == 2) {//微信支付
-        
-    }
-    else if (indexPath.row == 1) {//现金支付
-        
-    }
-    else {//支付宝支付
-        NSString *out_trade_no = [self generateTradeNO];
-        
-        __block PayCourseVC *controller = self;
-        
-        [self addStudentSubCourseWithOutTradeNo:out_trade_no andBlock:^(NSDictionary *result, NSError *error) {
-            if (!error) {
-                NSNumber *isResult = result[@"result"];
-                NSLog(@"result:%@",result);
-                if (isResult.integerValue == 0) {
-                    //payCompleteVC *vc = [[payCompleteVC alloc] init];
-                    //[self.navigationController pushViewController:vc animated:YES];
+    NSString *out_trade_no = [self generateTradeNO];
+    
+    __block PayCourseVC *controller = self;
+    
+    [self addStudentSubCourseWithOutTradeNo:out_trade_no andBlock:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            NSNumber *isResult = result[@"result"];
+            NSLog(@"result:%@",result);
+            if (isResult.integerValue == 0) {
+                //payCompleteVC *vc = [[payCompleteVC alloc] init];
+                //[self.navigationController pushViewController:vc animated:YES];
+    
+                if (indexPath.row == 2) {//微信支付
+                    
+                    [controller wxPayWithOutTradeNo:out_trade_no];
+                }
+                else if (indexPath.row == 1) {//现金支付
+                    
+                }
+                else {//支付宝支付
                     [controller aliyPayWithOutTradeNo:out_trade_no];
                 }
-                else{
-                    [UIFactory showAlert:result[@"resultInfo"]];
-                }
-            }else{
-                [UIFactory showAlert:@"网络错误"];
-            }
 
-        }];
-    }
-}
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+        
+    }];
+
+    
+   }
 
 #pragma mark - 支付
 - (void)getMak {
@@ -151,8 +156,10 @@
     
 }
 
-- (void)wxPay {//微信支付
+- (void)wxPayWithOutTradeNo:(NSString *)out_trade_no {//微信支付
     
+    NSLog(@"self.courseName:%@",self.courseName);
+    [[XeeService sharedInstance] wxSendPayWithBody:self.courseName andOrderNo:out_trade_no andOrderPrice:@"0.01"];
 }
 
 #pragma mark - tableView footView
