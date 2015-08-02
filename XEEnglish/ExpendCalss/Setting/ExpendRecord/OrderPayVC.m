@@ -29,17 +29,13 @@
     
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
-    if (indexPath.row == 2) {//微信支付
-        
-    }
-    else if (indexPath.row == 1) {//现金支付
-        
+    
+    if (indexPath.row == 1) {//微信支付
+        [self wxPayWithOutTradeNo:self.out_trade_no];
     }
     else {//支付宝支付
         
-        __block PayCourseVC *controller = self;
-        
-        [controller aliyPayWithOutTradeNo:self.out_trade_no];
+        [self aliyPayWithOutTradeNo:self.out_trade_no];
     }
 }
 
