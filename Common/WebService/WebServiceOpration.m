@@ -565,7 +565,7 @@
  @param out_trade_no 微信商户订单号
  @param platform_type_id 平台"201"为安卓，"202"为ios
  */
-+ (AFHTTPRequestOperation *)updateOrderStatueWxWithParentId:(NSString *)parent_id andOutTradeNo:(NSString *)out_trade_no and:(NSString *)platform_type_id andToken:(NSString *)token{
++ (AFHTTPRequestOperation *)updateOrderStatueWxWithParentId:(NSString *)parent_id andOutTradeNo:(NSString *)out_trade_no andPlatformTypeId:(NSString *)platform_type_id andToken:(NSString *)token{
     
     return [self XEEWebService:[NSString stringWithFormat:@"<web:UpdateOrderStatueWx><web:json>{\"parent_id\":\"%@\",\"out_trade_no\":\"%@\",\"platform_type_id\":\"%@\",\"token\":\"%@\"}</web:json></web:UpdateOrderStatueWx>",parent_id,out_trade_no,platform_type_id,token]];
 }

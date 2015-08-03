@@ -103,6 +103,8 @@
 
 //刷新我的页面
 #define SettingRefresh @"SettingRefresh"
+//微信支付回调修改订单状态
+#define GetOutTradeNo @"Get_out_trade_no"
 
 
 

@@ -86,6 +86,9 @@
     NSString *out_trade_no = [self generateTradeNO];
     
     __block PayCourseVC *controller = self;
+    //支付成功后传订单号给APPDelegate.m，如果返回成功，则调用接口UpdateOrderStatueWx修改后台的微信支付状态
+    NSDictionary *dic = [NSDictionary dictionaryWithObject:out_trade_no forKey:@"out_trade_no"];
+    [[NSNotificationCenter defaultCenter]postNotificationName:GetOutTradeNo object:self userInfo:dic];
     
     [self addStudentSubCourseWithOutTradeNo:out_trade_no andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {
@@ -98,6 +101,8 @@
                 if (indexPath.row == 2) {//微信支付
                     
                     [controller wxPayWithOutTradeNo:out_trade_no];
+                    
+                    
                 }
                 else if (indexPath.row == 1) {//现金支付
                     
