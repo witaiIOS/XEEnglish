@@ -67,6 +67,9 @@
     
     //微信支付
     [WXApi registerApp:kWxAppID];
+    
+    //注册监听者。
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeWXPayStatus:) name:GetOutTradeNo object:nil];
 
     
     return YES;
@@ -146,8 +149,7 @@
         
         switch (resp.errCode) {
             case WXSuccess:{
-                //注册监听者。
-                [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeWXPayStatus:) name:GetOutTradeNo object:nil];
+                
                 [self updateOrderStatueWxWithOutTradeNo];
                 strMsg = @"支付结果：成功！";
                 NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
