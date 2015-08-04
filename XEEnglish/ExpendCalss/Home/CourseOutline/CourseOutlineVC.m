@@ -23,6 +23,8 @@
 
 @property (nonatomic, strong) UIButton *listenBtn;//试听按键
 
+@property (nonatomic, assign) NSInteger headViewHeight;//headView高度。
+
 @end
 
 @implementation CourseOutlineVC
@@ -47,7 +49,7 @@
     //初始化评价数组
     self.commentArray = [NSMutableArray array];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-60) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+6, kScreenWidth, kScreenHeight-64-60) style:UITableViewStyleGrouped];
 //    self.tableView.dataSource = self;
 //    self.tableView.delegate = self;
 //    self.tableView.tableHeaderView = [self headView];
@@ -312,6 +314,7 @@
     
 //----------------------------------------------------------------------------------
     CGFloat backgroundViewHeight = orignalFourthHeight + fourthView.frame.size.height;
+    self.headViewHeight = backgroundViewHeight;
     
     UIView *backgroundView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, backgroundViewHeight)];
     backgroundView.backgroundColor = [UIColor clearColor];
@@ -490,6 +493,7 @@
     
     return 80.0f;
 }
+
 
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 //    
