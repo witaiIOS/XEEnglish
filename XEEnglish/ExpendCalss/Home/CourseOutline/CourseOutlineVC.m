@@ -31,6 +31,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"课程概要";
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self getCourseDetailAndTopCommentListByCourseIdWithWeb];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,9 +46,6 @@
     [super initUI];
     //初始化评价数组
     self.commentArray = [NSMutableArray array];
-    
-    //
-    [self getCourseDetailAndTopCommentListByCourseIdWithWeb];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-60) style:UITableViewStyleGrouped];
 //    self.tableView.dataSource = self;
