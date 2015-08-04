@@ -462,7 +462,7 @@
                 //NSLog(@"aaaaaaa:%li",[self.studentCoursesArray count]);
                 [self.courseTableView reloadData];
                 
-                [self performSelector:@selector(scrollTableView) withObject:nil afterDelay:0.3];
+                [self performSelector:@selector(scrollTableView) withObject:nil afterDelay:0.3];//滚动课程。
             }
         }
     }];
@@ -474,7 +474,7 @@
     
     NSTimeInterval nowTimeInterval = [[NSDate date] timeIntervalSince1970];
     
-    NSTimeInterval cha = nowTimeInterval - nowTimeInterval;
+    NSTimeInterval cha = NSTimeIntervalSince1970;
     
     for (int i=0; i<self.studentCoursesArray.count; i++) {
         NSDictionary *courseInfo =  self.studentCoursesArray[i];
@@ -485,12 +485,17 @@
         
         NSTimeInterval courseTimeInterval = [courseDate timeIntervalSince1970];
         
-        if ( (courseTimeInterval-nowTimeInterval) < cha ) {
-            cha = courseTimeInterval-nowTimeInterval;
+        NSTimeInterval tempCha = (courseTimeInterval > nowTimeInterval) ? (courseTimeInterval-nowTimeInterval) : (nowTimeInterval-courseTimeInterval);
+        
+        NSLog(@"tempCha:%f",tempCha);
+        
+        if ( tempCha < cha ) {
+            cha = tempCha;
             section = i;
         }
     }
     
+    NSLog(@"section:%ld",(long)section);
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
     [self.courseTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
