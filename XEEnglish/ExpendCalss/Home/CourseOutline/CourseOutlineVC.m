@@ -23,7 +23,6 @@
 
 @property (nonatomic, strong) UIButton *listenBtn;//试听按键
 
-@property (nonatomic, assign) NSInteger headViewHeight;//headView高度。
 
 @end
 
@@ -314,7 +313,6 @@
     
 //----------------------------------------------------------------------------------
     CGFloat backgroundViewHeight = orignalFourthHeight + fourthView.frame.size.height;
-    self.headViewHeight = backgroundViewHeight;
     
     UIView *backgroundView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, backgroundViewHeight)];
     backgroundView.backgroundColor = [UIColor clearColor];
