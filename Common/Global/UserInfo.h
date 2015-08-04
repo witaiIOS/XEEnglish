@@ -14,6 +14,7 @@
 + (UserInfo *)sharedUser;
 
 - (BOOL)isLogin;
+- (NSString *)getUserName ;
 
 - (void)firstInitUserInfoDic;
 

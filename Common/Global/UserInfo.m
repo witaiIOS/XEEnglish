@@ -30,6 +30,12 @@
     return ifLogin.integerValue == 0 ? YES : NO;
 }
 
+- (NSString *)getUserName {
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    return userInfoDic[uUserName];
+}
 
 
 - (void)firstInitUserInfoDic {//仅AppDelegate didFinishLaunchingWithOptions 中用到

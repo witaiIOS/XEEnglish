@@ -29,7 +29,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"登陆";
-    self.phoneTextField.text = @"18671598730";
+    self.phoneTextField.text = @"15007109087";
+    self.codeTextField.text = @"123456";
     
 }
 

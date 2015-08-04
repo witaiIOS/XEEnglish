@@ -23,6 +23,7 @@
 //#import "CourseCommentVC.h"     //评论页面
 #import "CommentVC.h"     //评论页面
 
+#import "LoginVC.h"
 
 @interface CourseVC ()<JSDropDownMenuDataSource, JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate,CourseCellCourseButtonPressedDelegate>
 
@@ -46,7 +47,12 @@
 @property (strong, nonatomic) NSMutableArray *studentCoursesArray;
 @property (strong, nonatomic) UITableView *courseTableView;//课表
 
-@property (nonatomic, assign) NSInteger isLogin;//登录状态
+@property (nonatomic, assign) BOOL isLogin;//登录状态
+@property (nonatomic, strong) NSString *userName;
+
+@property (strong, nonatomic) UIView *bgView;//遮羞视图
+@property (strong, nonatomic) UIImageView *bgImgView;//
+@property (strong, nonatomic) UIButton *bgButton;
 
 //- (void)courseLeaveToLeaveVC;//跳转到请假界面
 //- (void)courseAbsentToAbsentVC;//跳转到缺课界面
@@ -74,6 +80,7 @@
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingVCToReloadCourseVCWithNotification:) name:@"SettingVCToReloadCourseVC" object:nil];
     //保留登录状态
     self.isLogin = [[UserInfo sharedUser] isLogin];
+    self.userName = [[UserInfo sharedUser] getUserName];
     
 }
 
@@ -107,27 +114,122 @@
     [self.view addSubview:self.courseTableView];
     
     self.courseIsSignon = @"";
+    
+    ////////////////////////////
+    //遮羞页面
+    _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    _bgView.backgroundColor = RGBCOLOR(236, 236, 236);
+    [self.view addSubview:_bgView];
+    
+    _bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth-250)/2, 120, 240, 202)];
+    [_bgView addSubview:_bgImgView];
+    
+    _bgButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_bgButton setFrame:CGRectMake((kScreenWidth-80)/2, 320, 80, 30)];
+    [_bgButton addTarget:self action:@selector(bgButtonCliceked:) forControlEvents:UIControlEventTouchUpInside];
+    [_bgButton setBackgroundImage:[UIImage imageNamed:@"btn_login.png"] forState:UIControlStateNormal];
+    [_bgView addSubview:_bgButton];
    
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //进入页面时先判断当前登录状态是否改变，改变了就刷新列表，并改变当前状态
-    if (self.isLogin != [[UserInfo sharedUser] isLogin]) {
-        //NSLog(@"isLogin:%li",self.isLogin);
-        //NSLog(@"userisLogin:%i",(int)[[UserInfo sharedUser] isLogin]);
-        self.isLogin = [[UserInfo sharedUser] isLogin];
-        [self getVStudentCourseByParentId];
+    if ([self isLoginChanged] || [self isUserNameChanged]) {
+        
+        //[self getVStudentCourseByParentId];
+        [self refreshData];
     }
     
     if (self.students.count == 0) {
-        [self getVStudentCourseByParentId];
+        //[self getVStudentCourseByParentId];
+        [self refreshData];
     }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - myself
+- (BOOL)isUserNameChanged {
+    if ([self.userName isEqualToString:[[UserInfo sharedUser] getUserName]]) {
+        return NO;
+    }
+    else {
+        self.userName = [[UserInfo sharedUser] getUserName];
+        return YES;
+    }
+}
+
+- (BOOL)isLoginChanged {
+    if ((self.isLogin == [[UserInfo sharedUser] isLogin])) {
+        return NO;
+    }
+    else {
+        self.isLogin = [[UserInfo sharedUser] isLogin];
+        return YES;
+    }
+}
+
+- (BOOL)isHasChild {
+    NSArray *arr = [[UserStudent sharedUser] getUserStudentArray];
+    
+    return  arr.count == 0 ? NO : YES;
+}
+
+///是否显示遮羞视图
+- (void)showBgNotLoginView {
+    _bgView.hidden = NO;
+    
+    _bgImgView.image = [UIImage imageNamed:@"no_login_photo.png"];
+    [_bgButton setTitle:@"登录" forState:UIControlStateNormal];
+    _bgButton.tag = 1001;
+}
+- (void)showBgNOChildView{
+    _bgView.hidden = NO;
+    
+    _bgImgView.image = [UIImage imageNamed:@"no_child_photo.png"];
+    [_bgButton setTitle:@"联系客服" forState:UIControlStateNormal];
+    _bgButton.tag = 1002;
+}
+- (void)hideBgView {
+    _bgView.hidden = YES;
+}
+
+#pragma mark - refresh
+- (void)refreshData {
+    
+    if (!self.isLogin) {//没有登录
+        [self showBgNotLoginView];
+    }
+    else {
+        if (![self isHasChild]) {//没有小孩
+            [self showBgNOChildView];
+        }
+        else{
+            [self hideBgView];//隐藏遮羞视图
+            [self getVStudentCourseByParentId];
+        }
+    }
+    
+}
+
+#pragma mark - bgButton action
+- (void)bgButtonCliceked:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    
+    if (button.tag  == 1001) {//没有登录 进行登录
+        LoginVC *loginVC = [[LoginVC alloc] initWithNibName:@"LoginVC" bundle:nil];
+    
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
+    else if (button.tag  == 1002) {//登录了但是没有孩子，联系客服安排小孩
+        //呼叫
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt://4000999027"]];
+    }
 }
 
 #pragma mark - 课表
@@ -270,11 +372,6 @@
 
 #pragma mark - Web
 - (void)getVStudentCourseByParentId{
-    if([[UserInfo sharedUser] isLogin]){
-        //隐藏遮羞页
-        UIView *view = (UIView *)[self.view viewWithTag:100];
-        view.hidden = YES;
-        
         //网路请求
         NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
         NSDictionary *userInfoDic = userDic[uUserInfoKey];
@@ -301,17 +398,6 @@
                 [UIFactory showAlert:@"网络错误"];
             }
         }];
-    }
-    else{
-        //遮羞页面
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-        view.backgroundColor = [UIColor whiteColor];
-        view.tag = 100;
-        [self.view addSubview:view];
-        
-        [UIFactory showAlert:@"请先登录"];
-    }
-    
 }
 
 //changeTitleMark为1时修改courseView中的值，为2时不修改
