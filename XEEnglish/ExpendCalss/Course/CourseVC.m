@@ -405,6 +405,7 @@
                 }
             }
             else{
+                [self hideHud];
                 [UIFactory showAlert:@"网络错误"];
             }
         }];
@@ -460,9 +461,38 @@
                 self.studentCoursesArray = studentCourseDic[@"data"];
                 //NSLog(@"aaaaaaa:%li",[self.studentCoursesArray count]);
                 [self.courseTableView reloadData];
+                
+                [self performSelector:@selector(scrollTableView) withObject:nil afterDelay:0.3];
             }
         }
     }];
+}
+
+- (void)scrollTableView {
+    
+    NSInteger section = 0;
+    
+    NSTimeInterval nowTimeInterval = [[NSDate date] timeIntervalSince1970];
+    
+    NSTimeInterval cha = nowTimeInterval - nowTimeInterval;
+    
+    for (int i=0; i<self.studentCoursesArray.count; i++) {
+        NSDictionary *courseInfo =  self.studentCoursesArray[i];
+        NSString *courserTime  = courseInfo[@"create_time"];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        NSDate *courseDate = [formatter dateFromString:courserTime];
+        
+        NSTimeInterval courseTimeInterval = [courseDate timeIntervalSince1970];
+        
+        if ( (courseTimeInterval-nowTimeInterval) < cha ) {
+            cha = courseTimeInterval-nowTimeInterval;
+            section = i;
+        }
+    }
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+    [self.courseTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 //获取当前学生的当前课程 上课的相关信息
