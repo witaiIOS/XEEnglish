@@ -182,7 +182,9 @@
 
 ///是否显示遮羞视图
 - (void)showBgNotLoginView {
+    
     _bgView.hidden = NO;
+    [self.view bringSubviewToFront:_bgView];
     
     _bgImgView.image = [UIImage imageNamed:@"no_login_photo.png"];
     [_bgButton setTitle:@"登录" forState:UIControlStateNormal];
@@ -190,6 +192,7 @@
 }
 - (void)showBgNOChildView{
     _bgView.hidden = NO;
+    [self.view bringSubviewToFront:_bgView];
     
     _bgImgView.image = [UIImage imageNamed:@"no_child_photo.png"];
     [_bgButton setTitle:@"联系客服" forState:UIControlStateNormal];
@@ -211,6 +214,13 @@
         }
         else{
             [self hideBgView];//隐藏遮羞视图
+            
+            //清除之前数据
+            _students = [NSMutableArray array];
+            _courseList = [NSMutableArray array];
+            _studentCoursesArray = [NSMutableArray array];
+            [self.courseTableView reloadData];
+            
             [self getVStudentCourseByParentId];
         }
     }
@@ -223,7 +233,7 @@
     
     if (button.tag  == 1001) {//没有登录 进行登录
         LoginVC *loginVC = [[LoginVC alloc] initWithNibName:@"LoginVC" bundle:nil];
-    
+        loginVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:loginVC animated:YES];
     }
     else if (button.tag  == 1002) {//登录了但是没有孩子，联系客服安排小孩

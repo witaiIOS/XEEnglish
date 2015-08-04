@@ -107,6 +107,9 @@
                         [self.delegate loginVCloginSuccess];
                     }
                     
+                    //发送通知，刷新我的页面
+                    [[NSNotificationCenter defaultCenter] postNotificationName:SettingRefresh object:self];
+                    
                     [self.navigationController popViewControllerAnimated:YES];
                 }else{
                     [UIFactory showAlert:result[@"resultInfo"]];

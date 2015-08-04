@@ -38,20 +38,29 @@
 
 @property (nonatomic, strong) NSDictionary *myInfoDic;
 
+
 @end
 
 @implementation SettingVC
 - (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:YES];
+    [super viewWillAppear:animated];
     //[self.tableView reloadData];
     
+           [self updateUserLoginUI];
+        
+       // [self getMyInfoFromWeb];
+        
+       // [self.tableView reloadData];
+    
 }
+
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    self.selectCity = self.myInfoDic[@"city"];
+    
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
