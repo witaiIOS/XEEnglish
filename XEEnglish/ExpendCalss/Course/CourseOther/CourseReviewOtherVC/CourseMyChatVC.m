@@ -42,6 +42,16 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [shareBtn setFrame:CGRectMake(kScreenWidth-80, 12, 60, 40)];
+    [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+    [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [shareBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [shareBtn addTarget:self action:@selector(shareBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *shareBarBtn = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
+    self.navigationItem.rightBarButtonItem = shareBarBtn;
+    
     //初始化数组
     self.commentArray = [NSMutableArray array];
     
@@ -63,6 +73,7 @@
     
     //[self moveToTableViewBottom];
 }
+
 //滚动到TableView的底部
 - (void)moveToTableViewBottom{
     
@@ -71,6 +82,12 @@
         CGPoint offset = CGPointMake(0, self.tableView.contentSize.height - self.tableView.frame.size.height);
         [self.tableView setContentOffset:offset animated:YES];
     }
+}
+
+#pragma mark - shareBtn
+- (void)shareBtnClicked{
+    
+    [self shareAction];
 }
 
 #pragma mark - AddKeyboardDone
@@ -464,6 +481,23 @@
     [textField resignFirstResponder];
     
     return YES;
+}
+
+#pragma mark - share
+- (void)shareAction {
+    
+    // [[XeeService sharedInstance] tellFriendWithShareContent:<#(NSString *)#> andParentId:<#(NSString *)#> andToken:<#(NSString *)#> andBlock:<#^(NSDictionary *result, NSError *error)block#>];
+    
+    NSString *shareText = [NSString stringWithFormat:@"http://218.244.143.58:604/admin/html/course/course_schedule_sign_share.html?signon_id=%@",self.courseInfoDic[@"signon_id"]];
+    
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:kUmengAppkey
+                                      shareText:shareText
+                                     shareImage:[UIImage imageNamed:@"icon-60@2x.png"]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToSms,UMShareToWechatTimeline,nil]
+                                       delegate:nil];
+    //[UMSocialConfig setFinishToastIsHidden:YES position:UMSocialiToastPositionCenter];
+    
 }
 
 @end
