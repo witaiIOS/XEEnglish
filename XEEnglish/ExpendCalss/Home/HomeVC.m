@@ -20,7 +20,7 @@
 #import "SingleCourseVC.h"
 #import "CourseOutlineVC.h"
 
-@interface HomeVC ()<HomeBtnCellDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface HomeVC ()<HomeBtnCellDelegate, UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -92,13 +92,20 @@
             [UIFactory showAlert:@"网络错误"];
         }
     }];
+    
+    [self getCourseListAppHomeWithWeb];
+ 
+}
+
+- (void)getCourseListAppHomeWithWeb{
+    
     NSString *titleStr = nil;
     if (self.titleTF.text.length == 0 ) {
         titleStr = @"";
     }else{
         titleStr = [self.titleTF.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
-        
+    
     //NSLog(@"title:%@",self.titleTF.text);
     
     [self showHudWithMsg:@"载入中..."];
@@ -119,8 +126,10 @@
             [UIFactory showAlert:@"网络错误"];
         }
     }];
- 
 }
+
+
+
 
 - (void)initUI{
     
@@ -143,11 +152,62 @@
 //    
 //    UIBarButtonItem *servicePhoneBarBtn = [[UIBarButtonItem alloc] initWithCustomView:servicePhoneBtn];
 //    self.navigationItem.rightBarButtonItem = servicePhoneBarBtn;
+    self.titleTF = [[UITextField alloc] initWithFrame:CGRectMake(70, 17, kScreenWidth-140, 30)];
+    self.titleTF.font = [UIFont systemFontOfSize:14];
+    self.titleTF.backgroundColor = [UIColor whiteColor];
+    self.titleTF.placeholder = @"请输入...";
+    self.titleTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"home_search.png"]];
+    self.titleTF.leftViewMode = UITextFieldViewModeAlways;
+    self.titleTF.delegate = self;
+    
+    self.navigationItem.titleView = self.titleTF;
+    
+    //添加键盘上的done按钮
+    [self addKeyboardDone];
+    
+    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [searchBtn setFrame:CGRectMake(kScreenWidth-60, 17, 50, 30)];
+    [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
+    [searchBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [searchBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [searchBtn setBackgroundColor:[UIColor orangeColor]];
+    [searchBtn addTarget:self action:@selector(searchBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *searchBarBtn = [[UIBarButtonItem alloc] initWithCustomView:searchBtn];
+    self.navigationItem.rightBarButtonItem = searchBarBtn;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)searchBtnClicked{
+    [self getCourseListAppHomeWithWeb];
+}
+
+#pragma mark - AddKeyboardDone
+- (void)addKeyboardDone{
+    
+    UIToolbar * topView = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+    [topView setBarStyle:UIBarStyleBlack];
+    
+    UIBarButtonItem *btnSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Done"
+                                                                  style:UIBarButtonItemStyleDone
+                                                                 target:self
+                                                                 action:@selector(dismissKeyBoard)];
+    
+    NSArray * buttonsArray = @[btnSpace, doneButton];;
+    [topView setItems:buttonsArray];
+    [self.titleTF setInputAccessoryView:topView];//当文本输入框加上topView
+    topView = nil;
+}
+
+-(IBAction)dismissKeyBoard
+{
+    [self.titleTF resignFirstResponder];
 }
 
 //#pragma mark - MyAction
@@ -394,6 +454,19 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+#pragma mark - UITextField Delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
 
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
 
 @end

@@ -198,6 +198,7 @@
 		09D560451B26D3E700ADF334 /* ForgetPassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D560431B26D3E700ADF334 /* ForgetPassWordVC.xib */; };
 		09D560491B26DB8F00ADF334 /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D560471B26DB8F00ADF334 /* RegisterVC.m */; };
 		09D5604A1B26DB8F00ADF334 /* RegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D560481B26DB8F00ADF334 /* RegisterVC.xib */; };
+		09D8786B1B71B1CB005899F2 /* home_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 09D8786A1B71B1CA005899F2 /* home_search.png */; };
 		09DB2DB41B1312F80078AAF5 /* PhoneLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */; };
 		09DB2DB51B1312F80078AAF5 /* PhoneLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DB31B1312F80078AAF5 /* PhoneLoginVC.xib */; };
 		09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 09DB2DB71B1322800078AAF5 /* nav_back.png */; };
@@ -646,6 +647,7 @@
 		09D560461B26DB8F00ADF334 /* RegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
 		09D560471B26DB8F00ADF334 /* RegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
 		09D560481B26DB8F00ADF334 /* RegisterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterVC.xib; sourceTree = "<group>"; };
+		09D8786A1B71B1CA005899F2 /* home_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_search.png; sourceTree = "<group>"; };
 		09DB2DB11B1312F80078AAF5 /* PhoneLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneLoginVC.h; sourceTree = "<group>"; };
 		09DB2DB21B1312F80078AAF5 /* PhoneLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneLoginVC.m; sourceTree = "<group>"; };
 		09DB2DB31B1312F80078AAF5 /* PhoneLoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneLoginVC.xib; sourceTree = "<group>"; };
@@ -1405,6 +1407,7 @@
 		09DB2DBB1B13228B0078AAF5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				09D8786A1B71B1CA005899F2 /* home_search.png */,
 				09D0BD4C1B6227D60074D1A3 /* hp_active.png */,
 				09D0BD4D1B6227D60074D1A3 /* hp_mamabang.png */,
 				09D0BD4E1B6227D60074D1A3 /* hp_near_schoolsite.png */,
@@ -2374,6 +2377,7 @@
 				A6647CC01B270E9B00D2DC57 /* course7.png in Resources */,
 				C97C38431B7066C900DD2F23 /* no_child_photo.png in Resources */,
 				09C88A5D1B676DC800B795C8 /* takeout_bg_rating_face_selected.png in Resources */,
+				09D8786B1B71B1CB005899F2 /* home_search.png in Resources */,
 				09C88A581B676DC800B795C8 /* ic_review_score4_on.png in Resources */,
 				09C9C0E41B22C890001BBA1C /* STreserve.png in Resources */,
 				09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */,
