@@ -184,6 +184,7 @@
                 NSNumber *isResult = result[@"result"];
                 if (isResult.integerValue == 0) {
                     [UIFactory showAlert:result[@"resultInfo"]];
+                    [self.navigationController popViewControllerAnimated:YES];
                 }
                 else{
                     [UIFactory showAlert:result[@"resultInfo"]];
