@@ -53,6 +53,16 @@
     
     [self.view addSubview:self.tableView];
     
+    //[self moveToTableViewBottom];
+}
+
+- (void)moveToTableViewBottom{
+    
+    if (self.tableView.contentSize.height > self.tableView.frame.size.height)
+    {
+        CGPoint offset = CGPointMake(0, self.tableView.contentSize.height - self.tableView.frame.size.height);
+        [self.tableView setContentOffset:offset animated:YES];
+    }
 }
 
 #pragma mark - AddKeyboardDone
@@ -168,6 +178,8 @@
                 self.commentArray = commentDic[@"data"];
                 //NSLog(@"array:%@",self.myCommentArray);
                 [self.tableView reloadData];
+                
+                [self performSelector:@selector(moveToTableViewBottom) withObject:nil afterDelay:0.3];//滚动课程。
             }else{
                 [UIFactory showAlert:result[@"resultInfo"]];
             }
@@ -254,9 +266,10 @@
             [cellView removeFromSuperview];
         }
     }
-    
-    
-    NSDictionary *dict = [_commentArray objectAtIndex:indexPath.row];
+    //数据时反着的，最新的在数组的最后面，所以反着输出
+    NSInteger newRow = _commentArray.count - indexPath.row;
+    //NSLog(@"newRow:%li",newRow);
+    NSDictionary *dict = [_commentArray objectAtIndex:newRow-1];
     //创建时间
     UILabel *bubbleTime = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth/2-60, 10, 120, 20)];
     bubbleTime.backgroundColor = [UIColor lightGrayColor];
