@@ -59,7 +59,7 @@
     self.footView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.footView];
     
-    self.chatTF = [[UITextField alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth-70, 30)];
+    self.chatTF = [[UITextField alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth-80, 30)];
     self.chatTF.backgroundColor = [UIColor whiteColor];
     self.chatTF.font = [UIFont systemFontOfSize:14];
     self.chatTF.placeholder = @"请输入...";
@@ -105,17 +105,20 @@
     [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseInfoDic[@"signon_id"] andRemark:niceChatStr andStar:@"null" andType:self.courseInfoDic[@"is_signon"] andApplyId:@"null" andCreateTime:createTime andStatus:@"null" andTeacherId:@"null" andCheckTime:@"null" andCheckRemark:@"null" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         
         //NSLog(@"result:%@",result);
-        [self hideHud];
+        //[self hideHud];
         if (!error) {
             
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
+                [self getCourseScheduleSignParentCommentWithWeb];
                 [UIFactory showAlert:result[@"resultInfo"]];
             }
             else{
+                [self hideHud];
                 [UIFactory showAlert:result[@"resultInfo"]];
             }
         }else{
+            [self hideHud];
             [UIFactory showAlert:@"网络错误"];
         }
     }];
