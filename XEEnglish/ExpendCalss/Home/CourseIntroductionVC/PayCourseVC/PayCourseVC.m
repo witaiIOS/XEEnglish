@@ -114,11 +114,12 @@
                     
                 }
                 else if (indexPath.row == 1) {//现金支付
-                    
+                    [UIFactory showAlert:@"订单已提交"];
                 }
                 else {//支付宝支付
                     [controller aliyPayWithOutTradeNo:out_trade_no];
                 }
+                [controller.navigationController popViewControllerAnimated:YES];
 
             }
             else{
