@@ -10,4 +10,5 @@
 
 @interface CourseForenoticeVC : BaseVC
 @property (nonatomic, strong) NSDictionary *courseLeaveInfoDic;
+@property (nonatomic, strong) NSString *courseIdStr;//课程预览请求需要传递整套课程的id
 @end

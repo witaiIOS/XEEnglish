@@ -78,8 +78,9 @@
 
 #pragma mark - Web
 - (void)getCourseDetailByCourseId{
+    //NSLog(@"courseIdStr:%@",self.courseIdStr);
     [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getCourseDetailByCourseId:self.courseLeaveInfoDic[@"course_id"] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getCourseDetailByCourseId:self.courseIdStr andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         if (!error) {
             //NSLog(@"result:%@",result);
@@ -123,6 +124,10 @@
     
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    //改变字体大小
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self.courseWeb stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName_r('body')[0].style.webkitTextSizeAdjust= '150%'"];
     
     [self.activityIndicator stopAnimating];
     UIView *view = (UIView *)[self.view viewWithTag:108];

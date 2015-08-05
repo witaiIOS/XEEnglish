@@ -660,6 +660,11 @@
         CourseForenoticeVC *vc = [[CourseForenoticeVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         vc.courseLeaveInfoDic = self.studentCoursesArray[indexPath.section];
+        //课程预览请求需要传递整套课程的id
+        NSDictionary *studentDic = _students[_currentStudentsIndex];
+        NSMutableArray *courseArray = studentDic[@"listCourse"];
+        NSDictionary *courseDic = courseArray[_currentCouseListIndex];
+        vc.courseIdStr = courseDic[@"course_id"];
         [self.navigationController pushViewController:vc animated:YES];
         
     }

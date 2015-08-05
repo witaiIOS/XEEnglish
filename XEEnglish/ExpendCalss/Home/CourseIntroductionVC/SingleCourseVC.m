@@ -330,7 +330,7 @@
     
     //改变字体大小
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    [self.courseWeb stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName_r('body')[0].style.webkitTextSizeAdjust= '200%'"];
+    [self.courseWeb stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName_r('body')[0].style.webkitTextSizeAdjust= '150%'"];
     
     [self.activityIndicator stopAnimating];
     UIView *view = (UIView *)[self.view viewWithTag:108];
