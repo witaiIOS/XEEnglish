@@ -43,7 +43,7 @@
     
     self.courseWeb = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
     self.courseWeb.delegate = self;
-    self.courseWeb.scalesPageToFit = YES;
+    //self.courseWeb.scalesPageToFit = YES;
     
     [self.view addSubview:self.courseWeb];
     
