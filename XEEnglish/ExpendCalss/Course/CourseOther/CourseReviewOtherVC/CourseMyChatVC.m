@@ -488,7 +488,7 @@
     
     // [[XeeService sharedInstance] tellFriendWithShareContent:<#(NSString *)#> andParentId:<#(NSString *)#> andToken:<#(NSString *)#> andBlock:<#^(NSDictionary *result, NSError *error)block#>];
     
-    NSString *shareText = [NSString stringWithFormat:@"http://218.244.143.58:604/admin/html/course/course_schedule_sign_share.html?signon_id=%@",self.courseInfoDic[@"signon_id"]];
+    NSString *shareText = [NSString stringWithFormat:@"http://218.244.143.58:604/admin/html/share/course_schedule_sign_share.html?signon_id=%@",self.courseInfoDic[@"signon_id"]];
     
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:kUmengAppkey
