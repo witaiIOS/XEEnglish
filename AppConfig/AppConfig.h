@@ -20,7 +20,8 @@
 #define kWxAppSecret      @"a0be8fb9e9933e48beb1e6eb64258630"
 #define kWxMCHID          @"1250430901"
 
-#define kWxNOTIFY_URL     @"http:121.40.35.3/test"
+//#define kWxNOTIFY_URL     @"http:121.40.35.3/test"
+#define kWxNOTIFY_URL     @"http://218.244.143.58:604/pay/wx_notify_url.aspx?"
 
 
 //----------屏幕尺寸----------

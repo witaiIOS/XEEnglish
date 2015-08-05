@@ -879,24 +879,24 @@
     }];
 }
 
-#pragma mark - 微信支付修改订单
-/**
- 查我的现金卷
- @param parentId 表示当前登录人id
- @param token
- @param out_trade_no 微信商户订单号
- @param platform_type_id 平台"201"为安卓，"202"为ios
- */
-- (void)updateOrderStatueWithParentId:(NSString *)parent_id andOutTradeNo:(NSString *)out_trade_no andPlatformTypeId:(NSString *)platform_type_id andToken:(NSString *)token andBolck:(void(^)(NSDictionary *result, NSError *error))block{
-    
-    AFHTTPRequestOperation *operation = [WebServiceOpration updateOrderStatueWxWithParentId:parent_id andOutTradeNo:out_trade_no andPlatformTypeId:platform_type_id andToken:token];
-    
-    [self getResponseWithOpration:operation andXmlKey:@"UpdateOrderStatueWxResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
-        if (block) {
-            block(result,error);
-        }
-    }];
-}
+//#pragma mark - 微信支付修改订单
+///**
+// 查我的现金卷
+// @param parentId 表示当前登录人id
+// @param token
+// @param out_trade_no 微信商户订单号
+// @param platform_type_id 平台"201"为安卓，"202"为ios
+// */
+//- (void)updateOrderStatueWithParentId:(NSString *)parent_id andOutTradeNo:(NSString *)out_trade_no andPlatformTypeId:(NSString *)platform_type_id andToken:(NSString *)token andBolck:(void(^)(NSDictionary *result, NSError *error))block{
+//    
+//    AFHTTPRequestOperation *operation = [WebServiceOpration updateOrderStatueWxWithParentId:parent_id andOutTradeNo:out_trade_no andPlatformTypeId:platform_type_id andToken:token];
+//    
+//    [self getResponseWithOpration:operation andXmlKey:@"UpdateOrderStatueWxResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+//        if (block) {
+//            block(result,error);
+//        }
+//    }];
+//}
 
 
 #pragma mark - 支付相关

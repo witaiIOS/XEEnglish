@@ -95,9 +95,9 @@
     //NSLog(@"out_trade_no:%@",out_trade_no);
     
     __block PayCourseVC *controller = self;
-    //支付成功后传订单号给APPDelegate.m，如果返回成功，则调用接口UpdateOrderStatueWx修改后台的微信支付状态
-    NSDictionary *dic = [NSDictionary dictionaryWithObject:out_trade_no forKey:@"out_trade_no"];
-    [[NSNotificationCenter defaultCenter]postNotificationName:GetOutTradeNo object:self userInfo:dic];
+//    //支付成功后传订单号给APPDelegate.m，如果返回成功，则调用接口UpdateOrderStatueWx修改后台的微信支付状态
+//    NSDictionary *dic = [NSDictionary dictionaryWithObject:out_trade_no forKey:@"out_trade_no"];
+//    [[NSNotificationCenter defaultCenter]postNotificationName:GetOutTradeNo object:self userInfo:dic];
     
     [self addStudentSubCourseWithOutTradeNo:out_trade_no andBlock:^(NSDictionary *result, NSError *error) {
         if (!error) {

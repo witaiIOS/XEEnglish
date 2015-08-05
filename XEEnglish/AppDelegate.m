@@ -13,7 +13,7 @@
 #import "XeeService.h"
 
 @interface AppDelegate ()
-@property (nonatomic, strong) NSString *tradeNO;
+//@property (nonatomic, strong) NSString *tradeNO;
 @end
 
 @implementation AppDelegate
@@ -68,8 +68,8 @@
     //微信支付
     [WXApi registerApp:kWxAppID];
     
-    //注册监听者。
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeWXPayStatus:) name:GetOutTradeNo object:nil];
+//    //注册监听者。
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeWXPayStatus:) name:GetOutTradeNo object:nil];
 
     
     return YES;
@@ -150,7 +150,7 @@
         switch (resp.errCode) {
             case WXSuccess:{
                 
-                [self updateOrderStatueWxWithOutTradeNo];
+                //[self updateOrderStatueWxWithOutTradeNo];
                 strMsg = @"支付结果：成功！";
                 NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
                 break;
@@ -167,34 +167,34 @@
     [alert show];
 }
 
-#pragma mark - WXPay
-- (void)updateOrderStatueWxWithOutTradeNo{
-    
-    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
-    NSDictionary *userInfoDic = userDic[uUserInfoKey];
-    
-    [[XeeService sharedInstance] updateOrderStatueWithParentId:userInfoDic[uUserId] andOutTradeNo:self.tradeNO andPlatformTypeId:@"202" andToken:userInfoDic[uUserToken] andBolck:^(NSDictionary *result, NSError *error) {
-        if (!error) {
-            NSNumber *isResult = result[@"result"];
-            if (isResult.integerValue == 0) {
-                NSLog(@"修改微信支付成功");
-            }
-            else{
-                NSLog(@"修改微信支付失败，请联系客服");
-            }
-        }else{
-            NSLog(@"网络错误");
-        }
-    }];
-    
-}
-
-- (void )changeWXPayStatus:(NSNotification *)notification{
-    
-    //拿到通知内容。
-    NSDictionary *dic = [notification userInfo];
-    self.tradeNO = [dic objectForKey:@"out_trade_no"];
-    
-}
+//#pragma mark - WXPay
+//- (void)updateOrderStatueWxWithOutTradeNo{
+//    
+//    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+//    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+//    
+//    [[XeeService sharedInstance] updateOrderStatueWithParentId:userInfoDic[uUserId] andOutTradeNo:self.tradeNO andPlatformTypeId:@"202" andToken:userInfoDic[uUserToken] andBolck:^(NSDictionary *result, NSError *error) {
+//        if (!error) {
+//            NSNumber *isResult = result[@"result"];
+//            if (isResult.integerValue == 0) {
+//                NSLog(@"修改微信支付成功");
+//            }
+//            else{
+//                NSLog(@"修改微信支付失败，请联系客服");
+//            }
+//        }else{
+//            NSLog(@"网络错误");
+//        }
+//    }];
+//    
+//}
+//
+//- (void )changeWXPayStatus:(NSNotification *)notification{
+//    
+//    //拿到通知内容。
+//    NSDictionary *dic = [notification userInfo];
+//    self.tradeNO = [dic objectForKey:@"out_trade_no"];
+//    
+//}
 
 @end
