@@ -10,11 +10,12 @@
 
 #import "XeeService.h"
 
-@interface CourseMyChatVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface CourseMyChatVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *commentArray;
 
 @property (nonatomic, strong) UIView *footView;
+@property (nonatomic, strong) UITextField *chatTF;//聊天输入框
 @end
 
 @implementation CourseMyChatVC
@@ -58,13 +59,14 @@
     self.footView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.footView];
     
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth-70, 30)];
-    textField.backgroundColor = [UIColor whiteColor];
-    textField.font = [UIFont systemFontOfSize:14];
-    textField.placeholder = @"请输入...";
-    textField.borderStyle = UITextBorderStyleRoundedRect;
+    self.chatTF = [[UITextField alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth-70, 30)];
+    self.chatTF.backgroundColor = [UIColor whiteColor];
+    self.chatTF.font = [UIFont systemFontOfSize:14];
+    self.chatTF.placeholder = @"请输入...";
+    self.chatTF.borderStyle = UITextBorderStyleRoundedRect;
+    self.chatTF.delegate = self;
     
-    [self.footView addSubview:textField];
+    [self.footView addSubview:self.chatTF];
     
     UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [submitBtn setFrame:CGRectMake(kScreenWidth-60, 5, 50, 30)];
@@ -79,6 +81,44 @@
 
 - (void)submitBtnClicked{
     
+    [self addSubcourseLeaveApply];
+    self.chatTF.text = @"";
+}
+
+#pragma mark - Web
+
+- (void)addSubcourseLeaveApply{
+    
+    NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+    NSDictionary *userInfoDic = userDic[uUserInfoKey];
+    
+    //NSLog(@"111:%@",self.courseLeaveInfoDic);
+    // NSLog(@"111:%@",userInfoDic[uUserToken]);
+    // NSLog(@"111:%@",self.courseLeaveInfoDic[@"course_id"]);
+    
+    //对汉字进行编码
+    NSString *niceChatStr = [self.chatTF.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString *createTime = [NSString stringWithFormat:@"%@",self.courseInfoDic[@"create_time"]];
+    
+    [self showHudWithMsg:@"上传中..."];
+    [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseInfoDic[@"signon_id"] andRemark:niceChatStr andStar:@"null" andType:self.courseInfoDic[@"is_signon"] andApplyId:@"null" andCreateTime:createTime andStatus:@"null" andTeacherId:@"null" andCheckTime:@"null" andCheckRemark:@"null" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        
+        //NSLog(@"result:%@",result);
+        [self hideHud];
+        if (!error) {
+            
+            NSNumber *isResult = result[@"result"];
+            if (isResult.integerValue == 0) {
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+            else{
+                [UIFactory showAlert:result[@"resultInfo"]];
+            }
+        }else{
+            [UIFactory showAlert:@"网络错误"];
+        }
+    }];
 }
 
 #pragma mark - Web
@@ -226,6 +266,12 @@
     
 }
 
-
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
 
 @end
