@@ -374,7 +374,7 @@
         switch (indexPath.row) {
             case 0:
             {
-                str = @"个人信息";
+                str = @"宝宝相册";
                 image = [UIImage imageNamed:@"STpersonal.png"];
                 break;
             }
