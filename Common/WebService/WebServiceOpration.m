@@ -146,8 +146,8 @@
  获取首页课程列表
  @param {}
  */
-+ (AFHTTPRequestOperation *)getCourseListAppHome{
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseListAppHome><web:json>{}</web:json></web:GetCourseListAppHome>"]];
++ (AFHTTPRequestOperation *)getCourseListAppHomeWithTitle:(NSString *)title{
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseListAppHome><web:json>{\"title\":\"%@\"}</web:json></web:GetCourseListAppHome>",title]];
 }
 
 

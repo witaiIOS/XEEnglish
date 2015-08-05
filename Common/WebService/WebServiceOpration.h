@@ -92,9 +92,9 @@
 
 /**
  获取首页课程列表
- @param {}
+ @param title  输入的搜索数据
  */
-+ (AFHTTPRequestOperation *)getCourseListAppHome;
++ (AFHTTPRequestOperation *)getCourseListAppHomeWithTitle:(NSString *)title;
 
 /**
  获取课程大类和课程年龄段

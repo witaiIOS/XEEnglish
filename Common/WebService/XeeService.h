@@ -87,7 +87,7 @@
  获取首页课程列表
  @param {}
  */
-- (void)getCourseListAppHomeAndBlock:(void(^)(NSDictionary *result,NSError *error))block;
+- (void)getCourseListAppHomeWithTitle:(NSString *)title AndBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
 
 /**

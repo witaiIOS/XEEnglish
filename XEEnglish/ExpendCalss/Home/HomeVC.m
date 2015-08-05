@@ -27,6 +27,8 @@
 @property (strong, nonatomic) NSArray *serviceInfos;
 @property (strong, nonatomic) NSArray *adInfos;
 
+@property (strong, nonatomic) UITextField *titleTF;
+
 
 @end
 
@@ -90,11 +92,17 @@
             [UIFactory showAlert:@"网络错误"];
         }
     }];
+    NSString *titleStr = nil;
+    if (self.titleTF.text.length == 0 ) {
+        titleStr = @"";
+    }else{
+        titleStr = [self.titleTF.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
         
-    
+    //NSLog(@"title:%@",self.titleTF.text);
     
     [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getCourseListAppHomeAndBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getCourseListAppHomeWithTitle:titleStr AndBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         if (!error) {
             NSNumber *isResult = result[@"result"];
