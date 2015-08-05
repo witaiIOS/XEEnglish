@@ -232,7 +232,7 @@
         if (cell == nil) {
             cell = [[PaymoneyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse1];
             cell.myLabel.text = @"支付金额";
-            cell.myMoneyLabel.text = [NSString stringWithFormat:@"%i",self.payMoney];
+            cell.myMoneyLabel.text = [NSString stringWithFormat:@"%li",(long)self.payMoney];
             cell.cellEdge = 10;
         }
         

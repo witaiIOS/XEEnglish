@@ -13,6 +13,8 @@
 @interface CourseMyChatVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *commentArray;
+
+@property (nonatomic, strong) UIView *footView;
 @end
 
 @implementation CourseMyChatVC
@@ -37,13 +39,45 @@
     //网络请求评论数据
     [self getCourseScheduleSignParentCommentWithWeb];
     
+    //添加脚视图
+    [self addFootView];
+    
     //定义tableView
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-40) style:UITableViewStylePlain];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
     [self.view addSubview:self.tableView];
+    
+}
+
+- (void )addFootView{
+    
+    self.footView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight-40, kScreenWidth, 40)];
+    self.footView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.footView];
+    
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth-70, 30)];
+    textField.backgroundColor = [UIColor whiteColor];
+    textField.font = [UIFont systemFontOfSize:14];
+    textField.placeholder = @"请输入...";
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    
+    [self.footView addSubview:textField];
+    
+    UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [submitBtn setFrame:CGRectMake(kScreenWidth-60, 5, 50, 30)];
+    [submitBtn setBackgroundColor:[UIColor orangeColor]];
+    [submitBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [submitBtn setTintColor:[UIColor whiteColor]];
+    [submitBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [submitBtn addTarget:self action:@selector(submitBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.footView addSubview:submitBtn];
+    
+}
+
+- (void)submitBtnClicked{
     
 }
 
@@ -191,5 +225,7 @@
 {
     
 }
+
+
 
 @end

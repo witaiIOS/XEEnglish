@@ -150,7 +150,7 @@
             NSNumber *price = couponDic[@"price"];
             couponTotalPrice = couponTotalPrice + price.integerValue;
         }
-        return [NSString stringWithFormat:@"现金券%i张，总价值%li元",couponArray.count,(long)couponTotalPrice];
+        return [NSString stringWithFormat:@"现金券%li张，总价值%li元",(unsigned long)couponArray.count,(long)couponTotalPrice];
     }
     
 }

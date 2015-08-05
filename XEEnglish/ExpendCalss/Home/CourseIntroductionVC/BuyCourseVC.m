@@ -196,7 +196,7 @@
         vc.studentId = self.selectedStudent[@"student_id"];
         vc.schoolId = self.schoolZone[@"department_id"];
         vc.payMethod = 1;
-        vc.payType = [NSString stringWithFormat:@"%i",self.payMethodNumber];
+        vc.payType = [NSString stringWithFormat:@"%li",(long)self.payMethodNumber];
         vc.listCoupon = self.listCouponsString;
         vc.courseId = self.buyCourseId;
         vc.is_select_student = @"";
