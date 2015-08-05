@@ -222,6 +222,7 @@
             [self.courseTableView reloadData];
             
             _menu.hidden = YES;
+            _courseView.hidden = YES;
             
             [self getVStudentCourseByParentId];
         }
@@ -397,6 +398,7 @@
                     //NSLog(@"resultInfo1111:%@",result[@"resultInfo"]) ;
                     self.students = result[@"resultInfo"];
                     _menu.hidden = NO;
+                    _courseView.hidden = NO;
                     _menu.dataSource = self;
                     _menu.delegate = self;
                     [self getVStudentSourseScheduleSign:1];
