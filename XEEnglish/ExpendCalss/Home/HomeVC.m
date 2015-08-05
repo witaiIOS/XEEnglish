@@ -155,8 +155,11 @@
     self.titleTF = [[UITextField alloc] initWithFrame:CGRectMake(70, 17, kScreenWidth-140, 30)];
     self.titleTF.font = [UIFont systemFontOfSize:14];
     self.titleTF.backgroundColor = [UIColor whiteColor];
+    self.titleTF.borderStyle = UITextBorderStyleRoundedRect;
     self.titleTF.placeholder = @"请输入...";
-    self.titleTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"home_search.png"]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"home_search.png"]];
+    [imageView setFrame:CGRectMake(0, 0, 20, 20)];
+    self.titleTF.leftView = imageView;
     self.titleTF.leftViewMode = UITextFieldViewModeAlways;
     self.titleTF.delegate = self;
     
