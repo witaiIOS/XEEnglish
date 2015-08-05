@@ -363,7 +363,7 @@
 - (void)listenBtnClicked{
     if ([[UserInfo sharedUser] isLogin]) {
         ListeningCourseVC *vc = [[ListeningCourseVC alloc] init];
-        vc.courseName = self.title;
+        vc.courseName = [self.courseInfo objectForKey:@"title"];
         vc.parentCourseId = self.courseId;
         vc.parentCourseInfo = self.courseInfo;
         [self.navigationController pushViewController:vc animated:YES];
@@ -380,7 +380,7 @@
 - (void)buyBtnClicked{
     if ([[UserInfo sharedUser] isLogin]) {
         BuyCourseVC *vc = [[BuyCourseVC alloc] init];
-        vc.courseName = self.title;
+        vc.courseName = [self.courseInfo objectForKey:@"title"];
         vc.parentCourseId = self.courseId;
         NSString *payMethod = self.courseInfo[@"pay_type"];
         vc.payMethodNumber = [payMethod intValue];
