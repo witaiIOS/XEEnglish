@@ -40,6 +40,8 @@
     //网络请求评论数据
     [self getCourseScheduleSignParentCommentWithWeb];
     
+    //添加键盘上的done按钮
+    [self addKeyboardDone];
     //添加脚视图
     [self addFootView];
     
@@ -51,6 +53,30 @@
     
     [self.view addSubview:self.tableView];
     
+}
+
+#pragma mark - AddKeyboardDone
+- (void)addKeyboardDone{
+    
+    UIToolbar * topView = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+    [topView setBarStyle:UIBarStyleBlack];
+    
+    UIBarButtonItem *btnSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Done"
+                                                                  style:UIBarButtonItemStyleDone
+                                                                 target:self
+                                                                 action:@selector(dismissKeyBoard)];
+    
+    NSArray * buttonsArray = @[btnSpace, doneButton];;
+    [topView setItems:buttonsArray];
+    [self.chatTF setInputAccessoryView:topView];//当文本输入框加上topView
+    topView = nil;
+}
+
+-(IBAction)dismissKeyBoard
+{
+    [self.chatTF resignFirstResponder];
 }
 
 - (void )addFootView{
@@ -270,6 +296,31 @@
 }
 
 #pragma mark - UITextFieldDelegate
+-(void) slideFrame:(BOOL)up
+{
+    const int movementDistance = 260; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    //NSLog(@"frame:%@",NSStringFromCGRect(self.view.frame));
+    [UIView commitAnimations];
+}
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    [self slideFrame:YES];
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    [self slideFrame:NO];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     [textField resignFirstResponder];
