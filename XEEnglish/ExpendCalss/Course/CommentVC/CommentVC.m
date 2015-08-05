@@ -59,7 +59,7 @@
     
     UIBarButtonItem *btnSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Done"
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"完成"
                                                                   style:UIBarButtonItemStyleDone
                                                                  target:self
                                                                  action:@selector(dismissKeyBoard)];
@@ -206,9 +206,25 @@
 
 
 #pragma mark - UITextView Delegate
+-(void) slideFrame:(BOOL)up
+{
+    const int movementDistance = 220; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+}
+
+
 - (void)textViewDidBeginEditing:(UITextView *)textView{
     
-    [textView becomeFirstResponder];
+    //[textView becomeFirstResponder];
+    [self slideFrame:YES];
     if ([textView.text isEqualToString:@"请输入－－"]) {
         textView.text = @"";
     }
@@ -216,7 +232,7 @@
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView{
-    
-    [textView resignFirstResponder];
+    [self slideFrame:NO];
+    //[textView resignFirstResponder];
 }
 @end
