@@ -285,7 +285,7 @@
     
     NSString *niceStudentName = [self.studentName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolZone[@"department_id"] andStudentId:self.studentId andType:[NSString stringWithFormat:@"%li",self.payMethod] andOrderPrice:self.listenPrice andPlatFormTypeId:@"202" andListCoupon:@"[]" andToken:userInfoDic[uUserToken] andPayType:@"1" andNumbers:1 andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:niceStudentName andOutTradeNo:@"" andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] addStudentSubCourseWithDepartmentId:self.schoolZone[@"department_id"] andStudentId:self.studentId andType:[NSString stringWithFormat:@"%i",self.payMethod] andOrderPrice:self.listenPrice andPlatFormTypeId:@"202" andListCoupon:@"[]" andToken:userInfoDic[uUserToken] andPayType:@"1" andNumbers:1 andCourseId:self.courseId andParentId:userInfoDic[uUserId] andIsSelectStudent:self.is_select_student andSex:self.sex andBirthday:self.birthday andName:niceStudentName andOutTradeNo:@"" andBlock:^(NSDictionary *result, NSError *error) {
         
         if (!error) {
             NSNumber *isResult = result[@"result"];
@@ -596,10 +596,10 @@
                 cell.myLabel.text = @"有偿上门试听";
                 //没有选择子课程时是父课程的price，选择了子课程是子课程的price
                 if ([self.subCourseName length] == 0) {
-                    cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.listenPrice];
+                    cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",(long)self.listenPrice];
                 }
                 else{
-                    cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.subCoursePrice];
+                    cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",(long)self.subCoursePrice];
                 }
                 
                 if (self.payMethod == 3) {

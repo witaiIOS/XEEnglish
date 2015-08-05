@@ -196,7 +196,7 @@
         vc.studentId = self.selectedStudent[@"student_id"];
         vc.schoolId = self.schoolZone[@"department_id"];
         vc.payMethod = 1;
-        vc.payType = [NSString stringWithFormat:@"%li",self.payMethodNumber];
+        vc.payType = [NSString stringWithFormat:@"%i",self.payMethodNumber];
         vc.listCoupon = self.listCouponsString;
         vc.courseId = self.buyCourseId;
         vc.is_select_student = @"";
@@ -431,7 +431,7 @@
                     cell.myPriceLabel.text = @"";
                 }
                 else{
-                    cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.priceTotal];
+                    cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",(long)self.priceTotal];
                 }
                 
                 return cell;
@@ -446,7 +446,7 @@
             cell.cellEdge = 10;
             cell.myLabel.text = @"缴费金额";
             
-            cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",self.priceTotal];
+            cell.myPriceLabel.text = [NSString stringWithFormat:@"%li",(long)self.priceTotal];
             
             return cell;
         }
@@ -471,7 +471,7 @@
                 NSString *nextCoupon = couponDic[@"price"];
                 coupons = coupons + [nextCoupon intValue];
             }
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%li",coupons];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%li",(long)coupons];
             
         }
         else{
@@ -676,7 +676,7 @@
             [view addSubview:priceTotalTipLabel];
             
             UILabel *priceTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 100, 20)];
-            priceTotalLabel.text = [NSString stringWithFormat:@"%li元/套",self.priceSeries];//整套价格
+            priceTotalLabel.text = [NSString stringWithFormat:@"%li元/套",(long)self.priceSeries];//整套价格
             priceTotalLabel.font = [UIFont systemFontOfSize:12];
             priceTotalLabel.textColor = [UIColor grayColor];
             
@@ -719,7 +719,7 @@
 //            [view addSubview:priceTotalTipLabel];
             
             UILabel *priceTotalLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 200, 15)];
-            priceTotalLabel.text = [NSString stringWithFormat:@"整套价格:%li元/套",self.priceSeries];//整套价格
+            priceTotalLabel.text = [NSString stringWithFormat:@"整套价格:%li元/套",(long)self.priceSeries];//整套价格
             priceTotalLabel.font = [UIFont systemFontOfSize:12];
             priceTotalLabel.textColor = [UIColor grayColor];
             
@@ -865,7 +865,7 @@
     self.listCouponsArray = couponsArray;
     //最终价格需要减去优惠券的价格
     [self usedCouponsToChangeTotalPrice];
-    NSLog(@"price:%li",self.priceTotal);
+    NSLog(@"price:%li",(long)self.priceTotal);
     [self.tableView reloadData];
 }
 

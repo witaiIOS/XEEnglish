@@ -183,7 +183,7 @@
  */
 + (AFHTTPRequestOperation *)getCourseParentCommentByCourseId:(NSString *)course_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseParentComment><web:json>{\"course_id\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetCourseParentComment>",course_id,pageSize,pageIndex]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseParentComment><web:json>{\"course_id\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetCourseParentComment>",course_id,(long)pageSize,(long)pageIndex]];
 }
 
 /**
@@ -290,7 +290,7 @@
  */
 + (AFHTTPRequestOperation *)getStudentSignPhotoListWithParentId:(NSString *)parent_id  andStudentId:(NSString *)student_id  andSignonId:(NSString *)signon_id andCourseScheduleId:(NSString *)course_schedule_id  andCreateTime:(NSString *)create_time andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetStudentSignPhotoList><web:json>{\"parent_id\":\"%@\",\"student_id\":\"%@\", \"signon_id\":\"%@\",\"course_schedule_id\":\"%@\", \"create_time\": \"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetStudentSignPhotoList>",parent_id,student_id,signon_id,course_schedule_id,create_time,pageSize,pageIndex,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetStudentSignPhotoList><web:json>{\"parent_id\":\"%@\",\"student_id\":\"%@\", \"signon_id\":\"%@\",\"course_schedule_id\":\"%@\", \"create_time\": \"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetStudentSignPhotoList>",parent_id,student_id,signon_id,course_schedule_id,create_time,(long)pageSize,(long)pageIndex,token]];
 }
 
 /**
@@ -300,7 +300,7 @@
  @param token
  */
 + (AFHTTPRequestOperation *)getCourseScheduleSignParentCommentWithParentId:(NSString *)parent_id  andCourseScheduleId:(NSString *)course_schedule_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andSignonId:(NSString *)signon_id andToken:(NSString *)token{
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseScheduleSignParentComment><web:json>{\"parent_id\":\"%@\",\"course_schedule_id\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"signon_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetCourseScheduleSignParentComment>",parent_id,course_schedule_id,pageSize,pageIndex,signon_id,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCourseScheduleSignParentComment><web:json>{\"parent_id\":\"%@\",\"course_schedule_id\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\",\"signon_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetCourseScheduleSignParentComment>",parent_id,course_schedule_id,(long)pageSize,(long)pageIndex,signon_id,token]];
 }
 
 /**
@@ -316,7 +316,7 @@
  */
 + (AFHTTPRequestOperation *)addTStarCommentWithParentId:(NSString *)parent_id  andStarCommentNumbers:(NSInteger )star_comment_numbers andTeacherTowardsNumbers:(NSInteger )teacher_towards_numbers andTeacherCommentNumbers:(NSInteger )teacher_comment_numbers andStudentDegreeNumbers:(NSInteger )student_degree_numbers andRemark:(NSString *)remark andRelationId:(NSString *)relation_id andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddTStarComment><web:json>{\"parent_id\":\"%@\",\"star_comment_numbers\":\"%li\",\"teacher_towards_numbers\":\"%li\",\"teacher_comment_numbers\": \"%li\",\"student_degree_numbers\":\"%li\",\"remark\":\"%@\",\"relation_id\":\"%@\",\"token\":\"%@\"} </web:json></web:AddTStarComment>",parent_id,star_comment_numbers,teacher_towards_numbers,teacher_comment_numbers,student_degree_numbers,remark,relation_id,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:AddTStarComment><web:json>{\"parent_id\":\"%@\",\"star_comment_numbers\":\"%li\",\"teacher_towards_numbers\":\"%li\",\"teacher_comment_numbers\": \"%li\",\"student_degree_numbers\":\"%li\",\"remark\":\"%@\",\"relation_id\":\"%@\",\"token\":\"%@\"} </web:json></web:AddTStarComment>",parent_id,(long)star_comment_numbers,(long)teacher_towards_numbers,(long)teacher_comment_numbers,(long)student_degree_numbers,remark,relation_id,token]];
 }
 
 
@@ -410,7 +410,7 @@
  */
 + (AFHTTPRequestOperation *)getPhotoGroupListByStudentIdWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andPageSize: (NSInteger )pageSize andPageIndex: (NSInteger )pageIndex andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPhotoGroupListByStudentId><web:json>{\"parent_id\":\"%@\",\"student_id\": \"%@\",\"pageSize\": \"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetPhotoGroupListByStudentId>",parent_id,student_id,pageSize,pageIndex,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetPhotoGroupListByStudentId><web:json>{\"parent_id\":\"%@\",\"student_id\": \"%@\",\"pageSize\": \"%li\",\"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetPhotoGroupListByStudentId>",parent_id,student_id,(long)pageSize,(long)pageIndex,token]];
 }
 
 #pragma mark - 我的 我的积分
@@ -544,7 +544,7 @@
  查询附近校区
  */
 + (AFHTTPRequestOperation *)getSchoolNearByWithLongitude:(CGFloat)longitude andLatitude:(CGFloat)latitude andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex {
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchoolNearby><web:json>{\"longitude\":\"%f\",\"latitude\":\"%f\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetSchoolNearby>",longitude, latitude, pageSize, pageIndex]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchoolNearby><web:json>{\"longitude\":\"%f\",\"latitude\":\"%f\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetSchoolNearby>",longitude, latitude, (long)pageSize, (long)pageIndex]];
 }
 
 /**
@@ -554,7 +554,7 @@
  */
 + (AFHTTPRequestOperation *)getSchoolNearbyPicListWithDepartmentId:(NSString *)department_id andPlatformTypeId:(NSString *)platform_type_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchoolNearbyPicList><web:json>{\"department_id\":\"%@\",\"platform_type_id\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetSchoolNearbyPicList>",department_id,platform_type_id,pageSize,pageIndex]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSchoolNearbyPicList><web:json>{\"department_id\":\"%@\",\"platform_type_id\":\"%@\",\"pageSize\":\"%li\",\"pageIndex\":\"%li\"}</web:json></web:GetSchoolNearbyPicList>",department_id,platform_type_id,(long)pageSize,(long)pageIndex]];
 }
 
 //#pragma mark - 微信支付修改订单
