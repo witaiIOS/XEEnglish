@@ -61,10 +61,18 @@
 
 - (NSString *)generateTradeNO
 {
-    static int kNumber = 15;
+    NSMutableString *resultStr = [[NSMutableString alloc] init];
+    
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
+    NSString *dateStr = [dateFormatter stringFromDate:date];
+    //NSLog(@"dateStr:%@",dateStr);
+    [resultStr appendString:dateStr];
+    
+    static int kNumber = 5;
     //对名字进行编码
     NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    NSMutableString *resultStr = [[NSMutableString alloc] init];
     
     srand((int)time(0));
     for (int i = 0; i < kNumber; i++)
@@ -84,6 +92,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
     NSString *out_trade_no = [self generateTradeNO];
+    //NSLog(@"out_trade_no:%@",out_trade_no);
     
     __block PayCourseVC *controller = self;
     //支付成功后传订单号给APPDelegate.m，如果返回成功，则调用接口UpdateOrderStatueWx修改后台的微信支付状态
