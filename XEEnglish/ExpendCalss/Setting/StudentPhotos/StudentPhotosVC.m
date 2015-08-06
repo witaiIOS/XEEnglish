@@ -431,6 +431,7 @@
     
     PhotoInTheMonthVC *vc = [[PhotoInTheMonthVC alloc] init];
     vc.photoInfoDic = serviceDic;
+    vc.studentId = self.studentId;
     [self.navigationController pushViewController:vc animated:YES];
     
 }

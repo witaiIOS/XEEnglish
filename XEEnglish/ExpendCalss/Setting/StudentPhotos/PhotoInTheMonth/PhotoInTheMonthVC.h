@@ -10,4 +10,5 @@
 
 @interface PhotoInTheMonthVC : BaseVC
 @property (nonatomic, strong) NSDictionary *photoInfoDic;
+@property (nonatomic, strong) NSString *studentId;//学生id
 @end

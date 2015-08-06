@@ -94,7 +94,7 @@
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
     //[self showHudWithMsg:@"加载中..."];
-    [[XeeService sharedInstance] getStudentSignPhotoListWithParentId:userInfoDic[uUserId] andStudentId:@"" andSignonId:@"" andCourseScheduleId:@"" andCreateTime:@"" andPageSize:10 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:block];
+    [[XeeService sharedInstance] getStudentSignPhotoListWithParentId:userInfoDic[uUserId] andStudentId:self.studentId andSignonId:@"" andCourseScheduleId:@"" andCreateTime:@"" andPageSize:10 andPageIndex:1 andToken:userInfoDic[uUserToken] andBlock:block];
 }
 
 #pragma mark -
