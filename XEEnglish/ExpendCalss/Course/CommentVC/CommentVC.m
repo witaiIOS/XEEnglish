@@ -16,6 +16,9 @@
 #define kViewHeight 56
 
 @interface CommentVC ()<UITextViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
+
 @property (weak, nonatomic) IBOutlet UITextView *commentTV;//评论的UITextView
 
 @property (nonatomic, assign) NSInteger starNum;//评价星级，满意度
@@ -41,6 +44,11 @@
 - (void)initUI{
     
     [super initUI];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.myScrollView.contentSize = CGSizeMake(kScreenWidth, 700);
+    
     //初始化
     self.starNum = 0;
     self.teacherStatusNum = 0;
@@ -209,7 +217,7 @@
 #pragma mark - UITextView Delegate
 -(void) slideFrame:(BOOL)up
 {
-    const int movementDistance = 220; // tweak as needed
+    const int movementDistance = 260; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     int movement = (up ? -movementDistance : movementDistance);
