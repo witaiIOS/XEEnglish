@@ -310,7 +310,7 @@
             _currentCommentPageIndex++;
             
             [self getCourseScheduleSignParentCommentWithPageIndex:_currentCommentPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
-                [self.tableView footerEndRefreshing];
+                [self.tableView headerBeginRefreshing];
                 
                 if (!error) {
                     //NSLog(@"result:%@",result);
@@ -337,7 +337,7 @@
                 }
             }];
         }else{
-            [self.tableView footerEndRefreshing];
+            [self.tableView headerEndRefreshing];
             [self showHudOnlyMsg:@"已全部加载完"];
         }
     }
