@@ -19,6 +19,8 @@
 
 @property (nonatomic, assign) NSInteger currentCommentPageIndex;//当前评论页
 @property (nonatomic, assign) NSInteger totalCOmmentPageIndex;//评论总页数
+
+@property (nonatomic, assign) NSInteger isOnlyFirstPageMark;//是否只显示第一页的数据，作为下拉操作的标记，为0表示请求第一页数据，为1表示加载数据
 @end
 
 @implementation CourseMyChatVC
@@ -51,6 +53,9 @@
     
     UIBarButtonItem *shareBarBtn = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
     self.navigationItem.rightBarButtonItem = shareBarBtn;
+    
+    //初始化//是否只显示第一页的数据 0表示只显示第一页，1表示加载数据
+    self.isOnlyFirstPageMark = 0;
     
     //初始化数组
     self.commentArray = [NSMutableArray array];
@@ -166,11 +171,14 @@
     [[XeeService sharedInstance] addSubcourseLeaveApplyByParentId:userInfoDic[uUserId] andRelationId:self.courseInfoDic[@"signon_id"] andRemark:niceChatStr andStar:@"null" andType:self.courseInfoDic[@"is_signon"] andApplyId:@"null" andCreateTime:createTime andStatus:@"null" andTeacherId:@"null" andCheckTime:@"null" andCheckRemark:@"null" andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         
         //NSLog(@"result:%@",result);
-        //[self hideHud];
+        [self hideHud];
         if (!error) {
             
             NSNumber *isResult = result[@"result"];
             if (isResult.integerValue == 0) {
+                //发送聊天成功后，应该设置属性isOnlyFirstPageMark＝0，只请求第一页的
+                self.isOnlyFirstPageMark = 0;
+                
                 //发送聊天内容重新刷新页面
                 //[self getCourseScheduleSignParentCommentWithWeb];
                 _currentCommentPageIndex = 1;
@@ -245,61 +253,27 @@
     //#warning 自动刷新(一进入程序就下拉刷新)
     [_tableView headerBeginRefreshing];
     
-    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
-    [_tableView addFooterWithTarget:self action:@selector(footerRereshing)];
+//    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+//    [_tableView addFooterWithTarget:self action:@selector(footerRereshing)];
     
     // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
     _tableView.headerPullToRefreshText = @"下拉可以刷新";
     _tableView.headerReleaseToRefreshText = @"松开马上刷新";
     _tableView.headerRefreshingText = @"正在努力帮您刷新中,不客气";
     
-    _tableView.footerPullToRefreshText = @"上拉可以加载更多数据";
-    _tableView.footerReleaseToRefreshText = @"松开马上加载更多数据";
-    _tableView.footerRefreshingText = @"正在努力帮您加载中,不客气";
+//    _tableView.footerPullToRefreshText = @"上拉可以加载更多数据";
+//    _tableView.footerReleaseToRefreshText = @"松开马上加载更多数据";
+//    _tableView.footerRefreshingText = @"正在努力帮您加载中,不客气";
     
 }
 
 - (void)headerRereshing{
-    self.currentCommentPageIndex = 1;
     
-    [self getCourseScheduleSignParentCommentWithPageIndex:_currentCommentPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
-        [self.tableView headerEndRefreshing];
-        
-        if (!error) {
-            //NSLog(@"result:%@",result);
-            NSNumber *isResult = result[@"result"];
-            if (isResult.integerValue == 0) {
-                NSDictionary *commentInfo = result[@"resultInfo"];
-                
-                NSMutableArray *array = [NSMutableArray array];
-                [array addObjectsFromArray:commentInfo[@"data"]];
-                
-                self.commentArray = array;
-                [self.tableView reloadData];
-                
-                //请求数据成功后，滚动到TableView的底部
-                [self performSelector:@selector(moveToTableViewBottom) withObject:nil afterDelay:0.3];//滚动课程。
-                
-                NSNumber *totalNum = commentInfo[@"totalPage"];
-                if (totalNum) {
-                    self.totalCOmmentPageIndex = totalNum.integerValue;
-                }
-            }else{
-                [self showHudOnlyMsg:@"未知错误"];
-            }
-        }else{
-            [self showHudOnlyMsg:@"网络错误"];
-        }
-    }];
-}
-
-- (void)footerRereshing{
-    
-    if (_currentCommentPageIndex < _totalCOmmentPageIndex) {
-        _currentCommentPageIndex++;
+    if (self.isOnlyFirstPageMark == 0) {
+        self.currentCommentPageIndex = 1;
         
         [self getCourseScheduleSignParentCommentWithPageIndex:_currentCommentPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
-            [self.tableView footerEndRefreshing];
+            [self.tableView headerEndRefreshing];
             
             if (!error) {
                 //NSLog(@"result:%@",result);
@@ -307,9 +281,14 @@
                 if (isResult.integerValue == 0) {
                     NSDictionary *commentInfo = result[@"resultInfo"];
                     
-                    [self.commentArray addObjectsFromArray:commentInfo[@"data"]];
+                    NSMutableArray *array = [NSMutableArray array];
+                    [array addObjectsFromArray:commentInfo[@"data"]];
                     
+                    self.commentArray = array;
                     [self.tableView reloadData];
+                    
+                    //请求数据成功后，修改isOnlyFirstPageMark＝1，再次下拉为加载数据
+                    self.isOnlyFirstPageMark = 1;
                     
                     //请求数据成功后，滚动到TableView的底部
                     [self performSelector:@selector(moveToTableViewBottom) withObject:nil afterDelay:0.3];//滚动课程。
@@ -325,12 +304,84 @@
                 [self showHudOnlyMsg:@"网络错误"];
             }
         }];
-    }else{
-        [self.tableView footerEndRefreshing];
-        [self showHudOnlyMsg:@"已全部加载完"];
+    }
+    else{
+        if (_currentCommentPageIndex < _totalCOmmentPageIndex) {
+            _currentCommentPageIndex++;
+            
+            [self getCourseScheduleSignParentCommentWithPageIndex:_currentCommentPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+                [self.tableView footerEndRefreshing];
+                
+                if (!error) {
+                    //NSLog(@"result:%@",result);
+                    NSNumber *isResult = result[@"result"];
+                    if (isResult.integerValue == 0) {
+                        NSDictionary *commentInfo = result[@"resultInfo"];
+                        
+                        [self.commentArray addObjectsFromArray:commentInfo[@"data"]];
+                        
+                        [self.tableView reloadData];
+                        
+                        //请求数据成功后，滚动到TableView的底部
+                        [self performSelector:@selector(moveToTableViewBottom) withObject:nil afterDelay:0.3];//滚动课程。
+                        
+                        NSNumber *totalNum = commentInfo[@"totalPage"];
+                        if (totalNum) {
+                            self.totalCOmmentPageIndex = totalNum.integerValue;
+                        }
+                    }else{
+                        [self showHudOnlyMsg:@"未知错误"];
+                    }
+                }else{
+                    [self showHudOnlyMsg:@"网络错误"];
+                }
+            }];
+        }else{
+            [self.tableView footerEndRefreshing];
+            [self showHudOnlyMsg:@"已全部加载完"];
+        }
     }
     
 }
+
+//- (void)footerRereshing{
+//    
+//    if (_currentCommentPageIndex < _totalCOmmentPageIndex) {
+//        _currentCommentPageIndex++;
+//        
+//        [self getCourseScheduleSignParentCommentWithPageIndex:_currentCommentPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
+//            [self.tableView footerEndRefreshing];
+//            
+//            if (!error) {
+//                //NSLog(@"result:%@",result);
+//                NSNumber *isResult = result[@"result"];
+//                if (isResult.integerValue == 0) {
+//                    NSDictionary *commentInfo = result[@"resultInfo"];
+//                    
+//                    [self.commentArray addObjectsFromArray:commentInfo[@"data"]];
+//                    
+//                    [self.tableView reloadData];
+//                    
+//                    //请求数据成功后，滚动到TableView的底部
+//                    [self performSelector:@selector(moveToTableViewBottom) withObject:nil afterDelay:0.3];//滚动课程。
+//                    
+//                    NSNumber *totalNum = commentInfo[@"totalPage"];
+//                    if (totalNum) {
+//                        self.totalCOmmentPageIndex = totalNum.integerValue;
+//                    }
+//                }else{
+//                    [self showHudOnlyMsg:@"未知错误"];
+//                }
+//            }else{
+//                [self showHudOnlyMsg:@"网络错误"];
+//            }
+//        }];
+//    }else{
+//        [self.tableView footerEndRefreshing];
+//        [self showHudOnlyMsg:@"已全部加载完"];
+//    }
+//    
+//}
 
 //泡泡文本
 - (UIView *)bubbleView:(NSString *)text from:(BOOL)fromSelf withPosition:(int)position{
