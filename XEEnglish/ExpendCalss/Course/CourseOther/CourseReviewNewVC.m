@@ -98,7 +98,7 @@
     NSDictionary *userInfoDic = userDic[uUserInfoKey];
     
     [self showHudWithMsg:@"加载中..."];
-    [[XeeService sharedInstance] getCourseScheduleSignParentCommentWithParentId:userInfoDic[uUserId] andCourseScheduleId:course_schedule_id andPageSize:5 andPageIndex:1 andSignonId:signon_id andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getCourseScheduleSignParentCommentWithParentId:userInfoDic[uUserId] andCourseScheduleId:course_schedule_id andPageSize:3 andPageIndex:1 andSignonId:signon_id andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         if (!error) {
             NSNumber *isResult = result[@"result"];

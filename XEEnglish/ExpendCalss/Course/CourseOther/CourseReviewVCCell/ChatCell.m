@@ -25,15 +25,6 @@
         [self addSubview:self.bubbleTime];
         
         
-        //创建头像
-        if ([[self.chatInfoDic objectForKey:@"type"] integerValue] == 1) {
-            self.photo = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth-60, 10+30, 50, 50)];
-            [self addSubview:self.photo];
-
-        }else{
-            self.photo = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10+30, 50, 50)];
-            [self addSubview:self.photo];
-        }
         
     }
     
@@ -49,17 +40,19 @@
     
     //创建头像
     if ([[self.chatInfoDic objectForKey:@"type"] integerValue] == 1) {
-        
+        self.photo = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth-60, 10+30, 50, 50)];
         [self.photo setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,self.chatInfoDic[@"photo"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
         
         [self addSubview:[self bubbleView:[self.chatInfoDic objectForKey:@"parent_comment"] from:YES withPosition:65]];
+        [self addSubview:self.photo];
         
         
     }else{
-       
+        self.photo = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10+30, 50, 50)];
         [self.photo setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,self.chatInfoDic[@"photo"]]] placeholderImage:[UIImage imageNamed:@"image_loading.png"]];
         
         [self addSubview:[self bubbleView:[self.chatInfoDic objectForKey:@"parent_comment"] from:NO withPosition:65]];
+        [self addSubview:self.photo];
     }
     
     
