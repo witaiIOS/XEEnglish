@@ -310,7 +310,7 @@
             _currentCommentPageIndex++;
             
             [self getCourseScheduleSignParentCommentWithPageIndex:_currentCommentPageIndex WithBlock:^(NSDictionary *result, NSError *error) {
-                [self.tableView headerBeginRefreshing];
+                [self.tableView headerEndRefreshing];
                 
                 if (!error) {
                     //NSLog(@"result:%@",result);
