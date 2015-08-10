@@ -63,6 +63,7 @@
 		09C64CA51B6A0F3B004E8C9A /* PhotoInTheMonthButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64CA41B6A0F3B004E8C9A /* PhotoInTheMonthButton.m */; };
 		09C64CA81B6A0F85004E8C9A /* PhotoInTheMonthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64CA71B6A0F85004E8C9A /* PhotoInTheMonthCell.m */; };
 		09C64CAC1B6A1D82004E8C9A /* PhotoLookVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C64CAB1B6A1D82004E8C9A /* PhotoLookVC.m */; };
+		09C657FA1B78394F00BCE27E /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C657F91B78394F00BCE27E /* ChatCell.m */; };
 		09C698411B686FBD00DDF7E6 /* OtherCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */; };
 		09C6984A1B6874F600DDF7E6 /* CourseMyChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C698491B6874F600DDF7E6 /* CourseMyChatVC.m */; };
 		09C6984D1B6876BA00DDF7E6 /* OtherCommentVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C6984C1B6876BA00DDF7E6 /* OtherCommentVCCell.m */; };
@@ -438,6 +439,8 @@
 		09C64CA71B6A0F85004E8C9A /* PhotoInTheMonthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoInTheMonthCell.m; sourceTree = "<group>"; };
 		09C64CAA1B6A1D82004E8C9A /* PhotoLookVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLookVC.h; sourceTree = "<group>"; };
 		09C64CAB1B6A1D82004E8C9A /* PhotoLookVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLookVC.m; sourceTree = "<group>"; };
+		09C657F81B78394F00BCE27E /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		09C657F91B78394F00BCE27E /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
 		09C6983F1B686FBD00DDF7E6 /* OtherCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherCommentVC.h; sourceTree = "<group>"; };
 		09C698401B686FBD00DDF7E6 /* OtherCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherCommentVC.m; sourceTree = "<group>"; };
 		09C698481B6874F600DDF7E6 /* CourseMyChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMyChatVC.h; sourceTree = "<group>"; };
@@ -1292,6 +1295,8 @@
 				09CB13541B665E620012F5E5 /* photoCell.m */,
 				09CB13561B665E7D0012F5E5 /* DataIsNullCell.h */,
 				09CB13571B665E7D0012F5E5 /* DataIsNullCell.m */,
+				09C657F81B78394F00BCE27E /* ChatCell.h */,
+				09C657F91B78394F00BCE27E /* ChatCell.m */,
 			);
 			path = CourseReviewVCCell;
 			sourceTree = "<group>";
@@ -2565,6 +2570,7 @@
 				09C95EBE1B27EAAD000972D8 /* SchoolZoneVC.m in Sources */,
 				09C6984A1B6874F600DDF7E6 /* CourseMyChatVC.m in Sources */,
 				A6D4F2311B539D43001D3D0E /* base64.m in Sources */,
+				09C657FA1B78394F00BCE27E /* ChatCell.m in Sources */,
 				090604841B146B050038BAC4 /* CountdownButton.m in Sources */,
 				09D450B11B1078AB00B39B4A /* BaseTVC.m in Sources */,
 				C9E4EC1E1B6DF6F80088A3DB /* payRequsestHandler.mm in Sources */,

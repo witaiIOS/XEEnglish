@@ -9,6 +9,7 @@
 #import "CourseReviewNewVC.h"
 
 #import "DataIsNullCell.h"
+#import "ChatCell.h"
 #import "CourseCommentCell.h"
 #import "photoCell.h"
 
@@ -200,6 +201,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *reuse1 = @"DataIsNullCell";
+    static NSString *reuse4 = @"ChatCell";
     static NSString *reuse2 = @"CourseCommentVCCell";
     static NSString *reuse3 = @"photoCell";
     
@@ -214,12 +216,24 @@
             return cell;
         }
         else{
-            [tableView registerNib:[UINib nibWithNibName:@"CourseCommentCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse2];
-            CourseCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
-            cell.cellEdge = 10;
-            cell.commentInfoDic = self.myCommentArray[indexPath.row];
-            //NSLog(@"cell:%@",cell.commentInfoDic);
-            //NSLog(@"myCommentArray:%@",self.myCommentArray[indexPath.row]);
+//            [tableView registerNib:[UINib nibWithNibName:@"CourseCommentCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuse2];
+//            CourseCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse2];
+//            cell.cellEdge = 10;
+//            cell.commentInfoDic = self.myCommentArray[indexPath.row];
+//            //NSLog(@"cell:%@",cell.commentInfoDic);
+//            //NSLog(@"myCommentArray:%@",self.myCommentArray[indexPath.row]);
+//            
+//            return cell;
+            
+            ChatCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse4];
+            if (cell == nil) {
+                cell = [[ChatCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse4];
+            }
+            //数据时反着的，最新的在数组的最后面，所以反着输出
+            NSInteger newRow = _myCommentArray.count - indexPath.row;
+            //NSLog(@"newRow:%li",newRow);
+            NSDictionary *dict = [_myCommentArray objectAtIndex:newRow-1];
+            cell.chatInfoDic = dict;
             
             return cell;
         }
@@ -292,7 +306,7 @@
     
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark - UITableViewDelegate
 
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -301,7 +315,11 @@
             return 44.0f;
         }
         else{
-            return 80.0f;
+            NSDictionary *dict = [_myCommentArray objectAtIndex:indexPath.row];
+            UIFont *font = [UIFont systemFontOfSize:14];
+            CGSize size = [[dict objectForKey:@"parent_comment"] sizeWithFont:font constrainedToSize:CGSizeMake(180.0f, 20000.0f) lineBreakMode:NSLineBreakByWordWrapping];
+            
+            return size.height+44+30;
         }
     }
     else if (indexPath.section == 1){
