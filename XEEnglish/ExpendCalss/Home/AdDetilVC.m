@@ -8,8 +8,9 @@
 
 #import "AdDetilVC.h"
 
-@interface AdDetilVC ()
-
+@interface AdDetilVC ()<UIWebViewDelegate>
+@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 @end
 
 @implementation AdDetilVC
@@ -25,14 +26,51 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)initUI{
+    
+    [super initUI];
+    
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
+    self.webView.delegate = self;
+    [self.view addSubview:self.webView];
+    
+    NSURL *webURL = [NSURL URLWithString:self.webString];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:webURL];
+    
+    [self.webView loadRequest:request];
+    
 }
-*/
 
+#pragma mark - UIWebView Delegate
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    view.backgroundColor = [UIColor whiteColor];
+    view.tag = 108;
+    [self.view addSubview:view];
+    
+    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    self.activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    self.activityIndicatorView.center = self.view.center;
+    
+    [self.activityIndicatorView startAnimating];
+    
+    [view addSubview:self.activityIndicatorView];
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    UIView *view = (UIView *)[self.view viewWithTag:108];
+    view.hidden = YES;
+    
+    [self.activityIndicatorView stopAnimating];
+    
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+    UIView *view = (UIView *)[self.view viewWithTag:108];
+    view.hidden = YES;
+    
+    [self.activityIndicatorView stopAnimating];
+    
+}
 @end
