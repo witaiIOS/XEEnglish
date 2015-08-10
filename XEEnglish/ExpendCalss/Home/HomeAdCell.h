@@ -7,6 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol HomeAdCellDelegate <NSObject>
+
+- (void)HomeAdCellButtonPressed:(id)sender andAdInfo:(NSDictionary *)adDic;
+
+@end
 
 @interface HomeAdCell : UITableViewCell<UIScrollViewDelegate>
 
@@ -15,6 +20,8 @@
 
 @property (strong, nonatomic) NSArray *adArray;
 @property (nonatomic) NSInteger timeCount;
+
+@property (nonatomic, assign) id<HomeAdCellDelegate>delegate;
 
 - (void)layoutThatImages:(NSArray *)imageArray;
 

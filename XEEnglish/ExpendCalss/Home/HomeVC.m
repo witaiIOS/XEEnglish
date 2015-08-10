@@ -16,11 +16,12 @@
 #import "ActivityVC.h"
 #import "NearSchoolVC.h"
 
+#import "AdDetilVC.h"
 #import "AllCoursesVC.h"
 #import "SingleCourseVC.h"
 #import "CourseOutlineVC.h"
 
-@interface HomeVC ()<HomeBtnCellDelegate, UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate>
+@interface HomeVC ()<HomeBtnCellDelegate,HomeAdCellDelegate, UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -261,8 +262,9 @@
         if (cell == nil) {
             cell = [[HomeAdCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier1];
         }
-        
+        ((HomeAdCell *)cell).delegate = self;
         ((HomeAdCell *)cell).adArray = _adInfos;
+        
         
         return cell;
         
@@ -422,6 +424,16 @@
     vc.title = @"所有课程";
     [self.navigationController pushViewController:vc animated:YES];
 }
+#pragma mark - HomeAdCell delegate
+- (void)HomeAdCellButtonPressed:(id)sender andAdInfo:(NSDictionary *)adDic{
+    
+    NSString *webString = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,adDic[@"link_url"]];
+    AdDetilVC *vc = [[AdDetilVC alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.webString = webString;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 #pragma mark - HomeBtnCell delegate
 - (void)HomeBtnCellButtonPressed:(id)sender andServiceInfo:(NSDictionary *)serviceDic{
