@@ -70,6 +70,7 @@
     self.tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableview.dataSource = self;
     self.tableview.delegate = self;
+    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableview];
 
     //获取我的评论
@@ -204,7 +205,14 @@
     static NSString *reuse4 = @"ChatCell";
     static NSString *reuse2 = @"CourseCommentVCCell";
     static NSString *reuse3 = @"photoCell";
-    
+    BaseTVC *cell = nil;
+    if (indexPath.section == 0 &&(self.myCommentArray.count != 0)) {
+        
+    }else{
+        UIView *view = [[UIView alloc] init];
+        view.backgroundColor = [UIColor clearColor];
+        [cell setBackgroundView:view];
+    }
     if (indexPath.section == 0) {
         if ([self.myCommentArray count] == 0) {
             DataIsNullCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse1];
