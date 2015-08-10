@@ -395,7 +395,7 @@
             }
             case 1:
             {
-                str =@"优惠券";
+                str =@"现金券";
                 image = [UIImage imageNamed:@"STcoupon.png"];
                 break;
             }
