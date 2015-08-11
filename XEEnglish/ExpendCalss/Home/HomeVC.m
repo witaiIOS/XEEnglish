@@ -14,7 +14,8 @@
 #import "HomeDetailButton.h"
 
 #import "ActivityVC.h"
-#import "NearSchoolVC.h"
+//#import "NearSchoolVC.h"
+#import "SchedulePlace.h"
 
 #import "AdDetilVC.h"
 #import "AllCoursesVC.h"
@@ -355,8 +356,8 @@
         HomeDetailButton *nearSchoolBtn = [HomeDetailButton buttonWithType:UIButtonTypeCustom];
         [nearSchoolBtn setFrame:CGRectMake(20+2*(kScreenWidth/3), 0, 70, 70)];
         nearSchoolBtn.tag = 12;
-        [nearSchoolBtn setTitle:@"附近校区" forState:UIControlStateNormal];
-        [nearSchoolBtn setImage:[UIImage imageNamed:@"hp_near_schoolsite.png" ]forState:UIControlStateNormal];
+        [nearSchoolBtn setTitle:@"场馆预订" forState:UIControlStateNormal];
+        [nearSchoolBtn setImage:[UIImage imageNamed:@"hp_scheduleplace.png" ]forState:UIControlStateNormal];
         [nearSchoolBtn addTarget:self action:@selector(HomeDetailButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [viewWhite addSubview:nearSchoolBtn];
         //课程列表Label
@@ -408,7 +409,7 @@
     }
     //附近校区Btn
     else if(button.tag == 12){
-        NearSchoolVC *vc = [[NearSchoolVC alloc] init];
+        SchedulePlace *vc = [[SchedulePlace alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -425,7 +426,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark - HomeAdCell delegate
-- (void)HomeAdCellButtonPressed:(NSInteger )sender andAdInfo:(NSDictionary *)adDic{
+- (void)HomeAdCellImageViewPressed:(NSInteger )sender andAdInfo:(NSDictionary *)adDic{
     
     NSString *webString = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,adDic[@"link_url"]];
     AdDetilVC *vc = [[AdDetilVC alloc] init];

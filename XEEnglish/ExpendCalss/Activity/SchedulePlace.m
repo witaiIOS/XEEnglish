@@ -56,7 +56,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"场馆预定";
+    self.title = @"场馆预订";
 }
 
 - (void)initUI{

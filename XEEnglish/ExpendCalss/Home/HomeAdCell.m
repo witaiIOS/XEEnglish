@@ -124,7 +124,7 @@
 - (void)pageViewClick:(UITapGestureRecognizer *)tap
 {
     NSLog(@"点击了第%ld页",self.pageControl.currentPage);
-    [self.delegate HomeAdCellButtonPressed:self.pageControl.currentPage andAdInfo:self.adArray[self.pageControl.currentPage]];
+    [self.delegate HomeAdCellImageViewPressed:self.pageControl.currentPage andAdInfo:self.adArray[self.pageControl.currentPage]];
 }
 
 #pragma mark - Private
