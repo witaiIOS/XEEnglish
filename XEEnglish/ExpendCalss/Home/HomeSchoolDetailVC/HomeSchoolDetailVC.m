@@ -14,6 +14,7 @@
 
 #import "ServiceButton.h"
 
+#import "DepositServiceVC.h"
 #import "PayListeningVC.h"
 
 @interface HomeSchoolDetailVC ()<UITableViewDataSource,UITableViewDelegate>
@@ -336,7 +337,9 @@
     
     ServiceButton *selectBtn = (ServiceButton *)sender;
     if (selectBtn.tag == 10) {
-        
+        DepositServiceVC *vc = [[DepositServiceVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     else if (selectBtn.tag == 11){
         PayListeningVC *vc = [[PayListeningVC alloc] init];

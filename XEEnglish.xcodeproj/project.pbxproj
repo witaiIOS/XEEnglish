@@ -84,6 +84,7 @@
 		09C720361B79EADC004DC5FB /* ServiceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C720351B79EADC004DC5FB /* ServiceButton.m */; };
 		09C720391B79F0E4004DC5FB /* school_course_service_trust.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C720371B79F0E4004DC5FB /* school_course_service_trust.png */; };
 		09C7203A1B79F0E4004DC5FB /* school_course_service_visit.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C720381B79F0E4004DC5FB /* school_course_service_visit.png */; };
+		09C7203E1B79F78E004DC5FB /* DepositServiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7203D1B79F78E004DC5FB /* DepositServiceVC.m */; };
 		09C7682D1B58AEE900012A33 /* MyCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7682C1B58AEE900012A33 /* MyCourseCell.m */; };
 		09C7682F1B58AF0100012A33 /* MyCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C7682E1B58AF0100012A33 /* MyCourseCell.xib */; };
 		09C768331B592B1400012A33 /* CannelOrderExplainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C768311B592B1400012A33 /* CannelOrderExplainVC.m */; };
@@ -482,6 +483,8 @@
 		09C720351B79EADC004DC5FB /* ServiceButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceButton.m; sourceTree = "<group>"; };
 		09C720371B79F0E4004DC5FB /* school_course_service_trust.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = school_course_service_trust.png; sourceTree = "<group>"; };
 		09C720381B79F0E4004DC5FB /* school_course_service_visit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = school_course_service_visit.png; sourceTree = "<group>"; };
+		09C7203C1B79F78E004DC5FB /* DepositServiceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositServiceVC.h; sourceTree = "<group>"; };
+		09C7203D1B79F78E004DC5FB /* DepositServiceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositServiceVC.m; sourceTree = "<group>"; };
 		09C7682B1B58AEE900012A33 /* MyCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCourseCell.h; sourceTree = "<group>"; };
 		09C7682C1B58AEE900012A33 /* MyCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCourseCell.m; sourceTree = "<group>"; };
 		09C7682E1B58AF0100012A33 /* MyCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCourseCell.xib; sourceTree = "<group>"; };
@@ -1187,6 +1190,7 @@
 		09C720221B79A6B6004DC5FB /* HomeSchoolDetailVC */ = {
 			isa = PBXGroup;
 			children = (
+				09C7203B1B79F767004DC5FB /* DepositServiceVC */,
 				09C720231B79A6DC004DC5FB /* HomeSchoolDetailVC.h */,
 				09C720241B79A6DC004DC5FB /* HomeSchoolDetailVC.m */,
 				09C720291B79BFFB004DC5FB /* SchoolAdCell.h */,
@@ -1198,6 +1202,15 @@
 				09C720351B79EADC004DC5FB /* ServiceButton.m */,
 			);
 			path = HomeSchoolDetailVC;
+			sourceTree = "<group>";
+		};
+		09C7203B1B79F767004DC5FB /* DepositServiceVC */ = {
+			isa = PBXGroup;
+			children = (
+				09C7203C1B79F78E004DC5FB /* DepositServiceVC.h */,
+				09C7203D1B79F78E004DC5FB /* DepositServiceVC.m */,
+			);
+			path = DepositServiceVC;
 			sourceTree = "<group>";
 		};
 		09C87F261B3BEF6400D7C913 /* OtherList */ = {
@@ -2555,6 +2568,7 @@
 				09CB13551B665E620012F5E5 /* photoCell.m in Sources */,
 				09D0BD3F1B620A8C0074D1A3 /* PriceCell.m in Sources */,
 				09C64C921B69D1DA004E8C9A /* DropButton.m in Sources */,
+				09C7203E1B79F78E004DC5FB /* DepositServiceVC.m in Sources */,
 				09C87F321B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m in Sources */,
 				09C7201F1B7992B1004DC5FB /* HomeSchoolCell.m in Sources */,
 				09C87F2F1B3C24E700D7C913 /* PayCourseMethodVCViewController.m in Sources */,
