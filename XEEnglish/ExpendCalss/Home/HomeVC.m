@@ -363,7 +363,7 @@
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
     if (section == 1) {
-        return 120.0f;
+        return 130.0f;
     }else{
         return 1.0f;
     }
@@ -407,29 +407,37 @@
         [nearSchoolBtn setImage:[UIImage imageNamed:@"hp_scheduleplace.png" ]forState:UIControlStateNormal];
         [nearSchoolBtn addTarget:self action:@selector(HomeDetailButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [viewWhite addSubview:nearSchoolBtn];
-        //课程列表Label
-        UILabel *courseListLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 90, 160, 30)];
-        courseListLabel.text = @"课程列表";
-        courseListLabel.textColor = [UIColor blackColor];
-        courseListLabel.font = [UIFont systemFontOfSize:14];
-        [viewBackground addSubview:courseListLabel];
+//        //课程列表Label
+//        UILabel *courseListLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 90, 160, 30)];
+//        courseListLabel.text = @"课程列表";
+//        courseListLabel.textColor = [UIColor blackColor];
+//        courseListLabel.font = [UIFont systemFontOfSize:14];
+//        [viewBackground addSubview:courseListLabel];
+//        
+//        //所有课程Label
+//        UILabel *allCourseLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-160, 90, 130, 30)];
+//        allCourseLabel.text = @"所有课程";
+//        allCourseLabel.textColor = [UIColor lightGrayColor];
+//        allCourseLabel.textAlignment = NSTextAlignmentRight;
+//        allCourseLabel.font = [UIFont systemFontOfSize:12];
+//        [viewBackground addSubview:allCourseLabel];
+//        //箭头图标
+//        UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-20, 95, 8, 15)];
+//        arrowImageView.image = [UIImage imageNamed:@"arrow_right_gray.png"];
+//        [viewBackground addSubview:arrowImageView];
+//        
+//        UIButton *allCourseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [allCourseBtn setFrame:CGRectMake(0, 80, kScreenWidth, 40)];
+//        [allCourseBtn addTarget:self action:@selector(allCourseBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+//        [viewBackground addSubview:allCourseBtn];
+        UIView *viewWhite2 = [[UIView alloc] initWithFrame:CGRectMake(0, 90, kScreenWidth, 39)];
+        viewWhite2.backgroundColor = [UIColor whiteColor];
+        [viewBackground addSubview:viewWhite2];
         
-        //所有课程Label
-        UILabel *allCourseLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-160, 90, 130, 30)];
-        allCourseLabel.text = @"所有课程";
-        allCourseLabel.textColor = [UIColor lightGrayColor];
-        allCourseLabel.textAlignment = NSTextAlignmentRight;
-        allCourseLabel.font = [UIFont systemFontOfSize:12];
-        [viewBackground addSubview:allCourseLabel];
-        //箭头图标
-        UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-20, 95, 8, 15)];
-        arrowImageView.image = [UIImage imageNamed:@"arrow_right_gray.png"];
-        [viewBackground addSubview:arrowImageView];
-        
-        UIButton *allCourseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [allCourseBtn setFrame:CGRectMake(0, 80, kScreenWidth, 40)];
-        [allCourseBtn addTarget:self action:@selector(allCourseBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-        [viewBackground addSubview:allCourseBtn];
+        UILabel *schoolListLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 20)];
+        schoolListLabel.text = @"校区列表";
+        schoolListLabel.font = [UIFont systemFontOfSize:14];
+        [viewWhite2 addSubview:schoolListLabel];
         
         return viewBackground;
     }
@@ -465,13 +473,13 @@
     }
     
 }
-#pragma mark - allCourseBtn action
-- (void)allCourseBtnPressed{
-    AllCoursesVC *vc = [[AllCoursesVC alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
-    vc.title = @"所有课程";
-    [self.navigationController pushViewController:vc animated:YES];
-}
+//#pragma mark - allCourseBtn action
+//- (void)allCourseBtnPressed{
+//    AllCoursesVC *vc = [[AllCoursesVC alloc] init];
+//    vc.hidesBottomBarWhenPushed = YES;
+//    vc.title = @"所有课程";
+//    [self.navigationController pushViewController:vc animated:YES];
+//}
 #pragma mark - HomeAdCell delegate
 - (void)HomeAdCellImageViewPressed:(NSInteger )sender andAdInfo:(NSDictionary *)adDic{
     
