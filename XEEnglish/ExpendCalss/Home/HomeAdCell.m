@@ -26,6 +26,9 @@
         _imageScrollView.pagingEnabled = YES;
         _imageScrollView.showsHorizontalScrollIndicator = NO;
         _imageScrollView.delegate = self;
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pageViewClick:)];
+        [_imageScrollView addGestureRecognizer:tapGesture];
+        
         [self.contentView addSubview:_imageScrollView];
         
         //
@@ -84,38 +87,44 @@
     _imageScrollView.contentSize = CGSizeMake(imageArray.count*320, 160);
     
     CGFloat x=0;
-//    for (int i = 0 ; i < imageArray.count; i++,x+=320) {
-//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, 0, 320, 160)];
-//        NSDictionary *infoDic = [imageArray objectAtIndex:i];
-//        
-//        NSString *imageUrl = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[infoDic objectForKey:@"image_url"]];
-//        [imageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@""]];
-//        
-//        [_imageScrollView addSubview:imageView];
-//    }
     for (int i = 0 ; i < imageArray.count; i++,x+=320) {
-        UIButton *imageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [imageBtn setFrame:CGRectMake(x, 0, 320, 160)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, 0, 320, 160)];
         NSDictionary *infoDic = [imageArray objectAtIndex:i];
         
         NSString *imageUrl = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[infoDic objectForKey:@"image_url"]];
-        //NSLog(@"imageURL:%@",imageUrl);
-        //[imageBtn.imageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@""]];
-        [imageBtn setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@""]];
-        imageBtn.tag = i;
-        [imageBtn addTarget:self action:@selector(imageBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [imageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@""]];
         
-        [_imageScrollView addSubview:imageBtn];
+        [_imageScrollView addSubview:imageView];
     }
+//    for (int i = 0 ; i < imageArray.count; i++,x+=320) {
+//        UIButton *imageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [imageBtn setFrame:CGRectMake(x, 0, 320, 160)];
+//        NSDictionary *infoDic = [imageArray objectAtIndex:i];
+//        
+//        NSString *imageUrl = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,[infoDic objectForKey:@"image_url"]];
+//        //NSLog(@"imageURL:%@",imageUrl);
+//        //[imageBtn.imageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@""]];
+//        [imageBtn setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@""]];
+//        imageBtn.tag = i;
+//        [imageBtn addTarget:self action:@selector(imageBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        [_imageScrollView addSubview:imageBtn];
+//    }
 }
 
-- (void)imageBtnPressed:(id)sender{
-    UIButton *imageButton = (UIButton *)sender;
-    
-    NSDictionary *infoDic = [_adArray objectAtIndex:imageButton.tag];
-    
-    [self.delegate HomeAdCellButtonPressed:sender andAdInfo:infoDic];
-    
+//- (void)imageBtnPressed:(id)sender{
+//    UIButton *imageButton = (UIButton *)sender;
+//    
+//    NSDictionary *infoDic = [_adArray objectAtIndex:imageButton.tag];
+//    
+//    [self.delegate HomeAdCellButtonPressed:sender andAdInfo:infoDic];
+//    
+//}
+//手势点击
+- (void)pageViewClick:(UITapGestureRecognizer *)tap
+{
+    NSLog(@"点击了第%ld页",self.pageControl.currentPage);
+    [self.delegate HomeAdCellButtonPressed:self.pageControl.currentPage andAdInfo:self.adArray[self.pageControl.currentPage]];
 }
 
 #pragma mark - Private

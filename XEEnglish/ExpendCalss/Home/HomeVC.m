@@ -425,7 +425,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark - HomeAdCell delegate
-- (void)HomeAdCellButtonPressed:(id)sender andAdInfo:(NSDictionary *)adDic{
+- (void)HomeAdCellButtonPressed:(NSInteger )sender andAdInfo:(NSDictionary *)adDic{
     
     NSString *webString = [NSString stringWithFormat:@"%@%@",XEEimageURLPrefix,adDic[@"link_url"]];
     AdDetilVC *vc = [[AdDetilVC alloc] init];

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol HomeAdCellDelegate <NSObject>
 
-- (void)HomeAdCellButtonPressed:(id)sender andAdInfo:(NSDictionary *)adDic;
+- (void)HomeAdCellButtonPressed:(NSInteger )sender andAdInfo:(NSDictionary *)adDic;
 
 @end
 
