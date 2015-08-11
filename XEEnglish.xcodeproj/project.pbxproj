@@ -79,6 +79,8 @@
 		09C720211B7992D3004DC5FB /* HomeSchoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C720201B7992D3004DC5FB /* HomeSchoolCell.xib */; };
 		09C720251B79A6DC004DC5FB /* HomeSchoolDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C720241B79A6DC004DC5FB /* HomeSchoolDetailVC.m */; };
 		09C7202B1B79BFFB004DC5FB /* SchoolAdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7202A1B79BFFB004DC5FB /* SchoolAdCell.m */; };
+		09C7202E1B79CC9C004DC5FB /* SchoolCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7202D1B79CC9C004DC5FB /* SchoolCourseCell.m */; };
+		09C720301B79CCB9004DC5FB /* SchoolCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C7202F1B79CCB9004DC5FB /* SchoolCourseCell.xib */; };
 		09C7682D1B58AEE900012A33 /* MyCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7682C1B58AEE900012A33 /* MyCourseCell.m */; };
 		09C7682F1B58AF0100012A33 /* MyCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C7682E1B58AF0100012A33 /* MyCourseCell.xib */; };
 		09C768331B592B1400012A33 /* CannelOrderExplainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C768311B592B1400012A33 /* CannelOrderExplainVC.m */; };
@@ -470,6 +472,9 @@
 		09C720241B79A6DC004DC5FB /* HomeSchoolDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSchoolDetailVC.m; sourceTree = "<group>"; };
 		09C720291B79BFFB004DC5FB /* SchoolAdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolAdCell.h; sourceTree = "<group>"; };
 		09C7202A1B79BFFB004DC5FB /* SchoolAdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolAdCell.m; sourceTree = "<group>"; };
+		09C7202C1B79CC9C004DC5FB /* SchoolCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolCourseCell.h; sourceTree = "<group>"; };
+		09C7202D1B79CC9C004DC5FB /* SchoolCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolCourseCell.m; sourceTree = "<group>"; };
+		09C7202F1B79CCB9004DC5FB /* SchoolCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolCourseCell.xib; sourceTree = "<group>"; };
 		09C7682B1B58AEE900012A33 /* MyCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCourseCell.h; sourceTree = "<group>"; };
 		09C7682C1B58AEE900012A33 /* MyCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCourseCell.m; sourceTree = "<group>"; };
 		09C7682E1B58AF0100012A33 /* MyCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCourseCell.xib; sourceTree = "<group>"; };
@@ -1179,6 +1184,9 @@
 				09C720241B79A6DC004DC5FB /* HomeSchoolDetailVC.m */,
 				09C720291B79BFFB004DC5FB /* SchoolAdCell.h */,
 				09C7202A1B79BFFB004DC5FB /* SchoolAdCell.m */,
+				09C7202C1B79CC9C004DC5FB /* SchoolCourseCell.h */,
+				09C7202D1B79CC9C004DC5FB /* SchoolCourseCell.m */,
+				09C7202F1B79CCB9004DC5FB /* SchoolCourseCell.xib */,
 			);
 			path = HomeSchoolDetailVC;
 			sourceTree = "<group>";
@@ -2397,6 +2405,7 @@
 				A6DA3E211B44D919005850EB /* UMSCommentDetailController.xib in Resources */,
 				09C9C0F81B22FA19001BBA1C /* yes.png in Resources */,
 				09C532131B50A60A00D6A07E /* CourseCommentCell.xib in Resources */,
+				09C720301B79CCB9004DC5FB /* SchoolCourseCell.xib in Resources */,
 				09C88A5B1B676DC800B795C8 /* takeout_bg_rating_face_normal.png in Resources */,
 				09D2319A1B50EEA70055758A /* CourseMyCommentVC.xib in Resources */,
 				09C7682F1B58AF0100012A33 /* MyCourseCell.xib in Resources */,
@@ -2526,6 +2535,7 @@
 				09CFD0081B4CFA17000D9D40 /* payCompleteVC.m in Sources */,
 				09C64C931B69D1DA004E8C9A /* DropDown.m in Sources */,
 				09CA16261B467BC80064667D /* GTMBase64.m in Sources */,
+				09C7202E1B79CC9C004DC5FB /* SchoolCourseCell.m in Sources */,
 				09C720251B79A6DC004DC5FB /* HomeSchoolDetailVC.m in Sources */,
 				09C6FEFD1B4BFBF90069156D /* SelectedStudentVC.m in Sources */,
 				09CB13551B665E620012F5E5 /* photoCell.m in Sources */,
