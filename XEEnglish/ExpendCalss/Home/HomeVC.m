@@ -7,9 +7,11 @@
 //
 
 #import "HomeVC.h"
-#import "HomeBtnCell.h"
+//#import "HomeBtnCell.h"
 #import "HomeAdCell.h"
+#import "HomeSchoolCell.h"
 #import "XeeService.h"
+#import <CoreLocation/CoreLocation.h>
 
 #import "HomeDetailButton.h"
 
@@ -22,12 +24,19 @@
 #import "SingleCourseVC.h"
 #import "CourseOutlineVC.h"
 
-@interface HomeVC ()<HomeBtnCellDelegate,HomeAdCellDelegate, UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate>
+@interface HomeVC ()</*HomeBtnCellDelegate,*/HomeAdCellDelegate, UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) NSArray *serviceInfos;
+//@property (strong, nonatomic) NSArray *serviceInfos;
 @property (strong, nonatomic) NSArray *adInfos;
+
+@property (nonatomic, strong) NSMutableArray *schoolArray;
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
+
+
+@property (strong, nonatomic) CLLocation *currentLocation;//当前位置坐标
 
 @property (strong, nonatomic) UITextField *titleTF;
 
@@ -41,7 +50,29 @@
     // Do any additional setup after loading the view.
     
     _adInfos = [[NSArray alloc] init];
-    _serviceInfos = [[NSArray alloc] init];
+    //_serviceInfos = [[NSArray alloc] init];
+    _schoolArray = [NSMutableArray array];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
+    if ([CLLocationManager locationServicesEnabled]) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.distanceFilter = 1000.0f;
+        [_locationManager startUpdatingLocation];
+        
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+            [_locationManager requestAlwaysAuthorization];
+        }
+        
+        
+    }
+    else {
+        NSLog(@"定位不可用");
+    }
+    
+    _currentLocation = nil;
     
 //    [[XeeService sharedInstance] getHomeServiceWithBlock:^(NSNumber *result, NSArray *resultInfo, NSError *error) {
 //        if (error) {
@@ -95,41 +126,45 @@
         }
     }];
     
-    [self getCourseListAppHomeWithWeb];
+    //[self getCourseListAppHomeWithWeb];
  
 }
 
-- (void)getCourseListAppHomeWithWeb{
-    
-    NSString *titleStr = nil;
-    if (self.titleTF.text.length == 0 ) {
-        titleStr = @"";
-    }else{
-        titleStr = [self.titleTF.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    }
-    
-    //NSLog(@"title:%@",self.titleTF.text);
-    
-    [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getCourseListAppHomeWithTitle:titleStr AndBlock:^(NSDictionary *result, NSError *error) {
-        [self hideHud];
-        if (!error) {
-            NSNumber *isResult = result[@"result"];
-            //NSLog(@"result:%@",result);
-            if (isResult.integerValue == 0) {
-                self.serviceInfos = result[@"resultInfo"];
-                [self.tableView reloadData];
-            }
-            else{
-                [UIFactory showAlert:@"未知错误"];
-            }
-        }
-        else{
-            [UIFactory showAlert:@"网络错误"];
-        }
-    }];
-}
+//- (void)getCourseListAppHomeWithWeb{
+//    
+//    NSString *titleStr = nil;
+//    if (self.titleTF.text.length == 0 ) {
+//        titleStr = @"";
+//    }else{
+//        titleStr = [self.titleTF.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    }
+//    
+//    //NSLog(@"title:%@",self.titleTF.text);
+//    
+//    [self showHudWithMsg:@"载入中..."];
+//    [[XeeService sharedInstance] getCourseListAppHomeWithTitle:titleStr AndBlock:^(NSDictionary *result, NSError *error) {
+//        [self hideHud];
+//        if (!error) {
+//            NSNumber *isResult = result[@"result"];
+//            //NSLog(@"result:%@",result);
+//            if (isResult.integerValue == 0) {
+//                self.serviceInfos = result[@"resultInfo"];
+//                [self.tableView reloadData];
+//            }
+//            else{
+//                [UIFactory showAlert:@"未知错误"];
+//            }
+//        }
+//        else{
+//            [UIFactory showAlert:@"网络错误"];
+//        }
+//    }];
+//}
 
+- (void)getSchoolNearByWithLongitude:(CGFloat )longitude andLatitude:(CGFloat )latitude andPageIndex:(NSInteger )pageIndex andBlock:(void (^)(NSDictionary *result, NSError *error))block{
+
+    [[XeeService sharedInstance] getSchoolNearByWithLongitude:longitude andLatitude:latitude andPageSize:10 andPageIndex:pageIndex andBolck:block];
+}
 
 
 
@@ -188,7 +223,7 @@
 }
 
 - (void)searchBtnClicked{
-    [self getCourseListAppHomeWithWeb];
+    //[self getCourseListAppHomeWithWeb];
 }
 
 #pragma mark - AddKeyboardDone
@@ -243,7 +278,8 @@
         return 1;
     }
     else if (section == 1) {
-        return (_serviceInfos.count+1)/2;
+//        return (_serviceInfos.count+1)/2;
+        return _schoolArray.count;
     }
     else{
         return 0;
@@ -253,7 +289,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier1 = @"HomeAdCell_Identifier";
-    static NSString *CellIdentifier2 = @"HomeBntCell_Identifier";
+    //static NSString *CellIdentifier2 = @"HomeBntCell_Identifier";
+    static NSString *CellIdentifier2 = @"HomeSchoolCell_Identifier";
     
     UITableViewCell *cell = nil;
 
@@ -272,21 +309,31 @@
         
     }
     else if (indexPath.section == 1){//bnt
-        HomeBtnCell *cell2 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
-        if(cell2 == nil){
-            cell2 = [[HomeBtnCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier2];
-        }
-        cell2.delegate = self;
-        cell2.serviceDic1 = [_serviceInfos objectAtIndex:2*(indexPath.row)];
+//        HomeBtnCell *cell2 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
+//        if(cell2 == nil){
+//            cell2 = [[HomeBtnCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier2];
+//        }
+//        cell2.delegate = self;
+//        cell2.serviceDic1 = [_serviceInfos objectAtIndex:2*(indexPath.row)];
+//        
+//        if ( (2*(indexPath.row)+1) < _serviceInfos.count) {
+//            cell2.serviceDic2 = [_serviceInfos objectAtIndex:2*(indexPath.row)+1];
+//        }
+//        else{
+//            cell2.serviceDic2 = nil;
+//        }
+//
+//        return cell2;
         
-        if ( (2*(indexPath.row)+1) < _serviceInfos.count) {
-            cell2.serviceDic2 = [_serviceInfos objectAtIndex:2*(indexPath.row)+1];
-        }
-        else{
-            cell2.serviceDic2 = nil;
-        }
-
+        [tableView registerNib:[UINib nibWithNibName:@"HomeSchoolCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:CellIdentifier2];
+        
+        HomeSchoolCell *cell2 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
+        
+        //cell2.cellEdge = 10;
+        cell2.schoolInfoDic = self.schoolArray[indexPath.row];
+        
         return cell2;
+        
     }
     else{
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -306,7 +353,7 @@
         return 160;
     }
     else if (indexPath.section == 1){
-        return 140;
+        return 120;
     }
     else{
         return 44;
@@ -483,6 +530,51 @@
     [textField resignFirstResponder];
     
     return YES;
+}
+
+#pragma mark - CLLocation delegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
+    [_locationManager stopUpdatingLocation];
+    
+    // most recent is last in the list
+    CLLocation *location = [locations lastObject];
+    //NSLog(@"location:%f\n%f",location.coordinate.latitude,location.coordinate.longitude);
+    _currentLocation = location;
+    
+    if (_currentLocation) {
+        
+        [self getSchoolNearByWithLongitude:_currentLocation.coordinate.longitude andLatitude:_currentLocation.coordinate.latitude andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
+            if (!error) {
+                //NSLog(@"result:%@",result);
+                NSNumber *isResult = result[@"result"];
+                if (isResult.integerValue == 0) {
+                    NSDictionary *schoolDic = result[@"resultInfo"];
+                    
+                    NSMutableArray *array = [NSMutableArray array];
+                    [array addObjectsFromArray:schoolDic[@"data"]];
+                    
+                    self.schoolArray = array;
+                    
+                    [self.tableView reloadData];
+                    
+                }else{
+                    [UIFactory showAlert:@"未知错误"];
+                }
+            }else{
+                [UIFactory showAlert:@"网络错误"];
+            }
+        }];
+    }
+    else {
+        [UIFactory showAlert:@"定位失败"];
+    }
+    
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"error: %@",error);
 }
 
 @end
