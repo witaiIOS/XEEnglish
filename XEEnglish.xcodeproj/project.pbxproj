@@ -75,6 +75,8 @@
 		09C7201A1B798A66004DC5FB /* hp_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C720171B798A66004DC5FB /* hp_active.png */; };
 		09C7201B1B798A66004DC5FB /* hp_mamabang.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C720181B798A66004DC5FB /* hp_mamabang.png */; };
 		09C7201C1B798A66004DC5FB /* hp_scheduleplace.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C720191B798A66004DC5FB /* hp_scheduleplace.png */; };
+		09C7201F1B7992B1004DC5FB /* HomeSchoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7201E1B7992B1004DC5FB /* HomeSchoolCell.m */; };
+		09C720211B7992D3004DC5FB /* HomeSchoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C720201B7992D3004DC5FB /* HomeSchoolCell.xib */; };
 		09C7682D1B58AEE900012A33 /* MyCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7682C1B58AEE900012A33 /* MyCourseCell.m */; };
 		09C7682F1B58AF0100012A33 /* MyCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C7682E1B58AF0100012A33 /* MyCourseCell.xib */; };
 		09C768331B592B1400012A33 /* CannelOrderExplainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C768311B592B1400012A33 /* CannelOrderExplainVC.m */; };
@@ -459,6 +461,9 @@
 		09C720171B798A66004DC5FB /* hp_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_active.png; sourceTree = "<group>"; };
 		09C720181B798A66004DC5FB /* hp_mamabang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_mamabang.png; sourceTree = "<group>"; };
 		09C720191B798A66004DC5FB /* hp_scheduleplace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_scheduleplace.png; sourceTree = "<group>"; };
+		09C7201D1B7992B1004DC5FB /* HomeSchoolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSchoolCell.h; sourceTree = "<group>"; };
+		09C7201E1B7992B1004DC5FB /* HomeSchoolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSchoolCell.m; sourceTree = "<group>"; };
+		09C720201B7992D3004DC5FB /* HomeSchoolCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeSchoolCell.xib; sourceTree = "<group>"; };
 		09C7682B1B58AEE900012A33 /* MyCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCourseCell.h; sourceTree = "<group>"; };
 		09C7682C1B58AEE900012A33 /* MyCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCourseCell.m; sourceTree = "<group>"; };
 		09C7682E1B58AF0100012A33 /* MyCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCourseCell.xib; sourceTree = "<group>"; };
@@ -1861,6 +1866,9 @@
 				09D0EE501B60C97200624E9B /* HomeDetailButton.m */,
 				09C658011B7862FE00BCE27E /* AdDetilVC.h */,
 				09C658021B7862FE00BCE27E /* AdDetilVC.m */,
+				09C7201D1B7992B1004DC5FB /* HomeSchoolCell.h */,
+				09C7201E1B7992B1004DC5FB /* HomeSchoolCell.m */,
+				09C720201B7992D3004DC5FB /* HomeSchoolCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2324,6 +2332,7 @@
 				09C88A541B676DC800B795C8 /* ic_review_score2_off.png in Resources */,
 				09C9C0DF1B22C890001BBA1C /* STcity.png in Resources */,
 				09CA69231B20213800A31E0E /* couponstime.png in Resources */,
+				09C720211B7992D3004DC5FB /* HomeSchoolCell.xib in Resources */,
 				A6DA3E241B44D919005850EB /* UMShareEditViewController.xib in Resources */,
 				09C88A5C1B676DC800B795C8 /* takeout_bg_rating_face_selected_2.png in Resources */,
 				092A8C4D1B5FA45C006F7C6F /* question.html in Resources */,
@@ -2504,6 +2513,7 @@
 				09D0BD3F1B620A8C0074D1A3 /* PriceCell.m in Sources */,
 				09C64C921B69D1DA004E8C9A /* DropButton.m in Sources */,
 				09C87F321B3C2EA200D7C913 /* BuyCoursePaymentAmountCell.m in Sources */,
+				09C7201F1B7992B1004DC5FB /* HomeSchoolCell.m in Sources */,
 				09C87F2F1B3C24E700D7C913 /* PayCourseMethodVCViewController.m in Sources */,
 				A65B56F11B5B818E00F7E40B /* OrderPayVC.m in Sources */,
 				09D23C451B424417008B6085 /* ExchangePointsVC.m in Sources */,
