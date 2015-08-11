@@ -158,17 +158,106 @@
     }
 }
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return 0.5f;
+    if (section == 1) {
+        UIFont *font = [UIFont systemFontOfSize:14];
+        CGSize size = [self.schoolInfoDic[@"history"] sizeWithFont:font constrainedToSize:CGSizeMake(180.0f, 20000.0f) lineBreakMode:NSLineBreakByWordWrapping];
+        
+        return 10+20+size.height+10 +50+20+10+10+40;
     }
     else{
-        return 5.0f;
+        return 0.5f;
     }
     
 }
 - (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
     return 3.0f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    if (section == 1) {
+        //校区名
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,10, kScreenWidth-20, 20)];
+        titleLabel.text = self.schoolInfoDic[@"department"];
+        titleLabel.font = [UIFont systemFontOfSize:17];
+        titleLabel.textColor = [UIColor orangeColor];
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        
+        //历史介绍
+        UILabel *historyLabel =  [[UILabel alloc]initWithFrame:CGRectMake(20, 20, kScreenWidth-40, 60)];
+        historyLabel.text = self.schoolInfoDic[@"history"];
+        historyLabel.numberOfLines = 0;
+        historyLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        historyLabel.font = [UIFont systemFontOfSize:14];
+        //NSLog(@"width:%li",(long)historyLabel.frame.size.width);
+        //CGSize historySize = [historyLabel sizeThatFits:CGSizeMake(historyLabel.frame.size.width, MAXFLOAT)];
+        CGSize historySize = [self.schoolInfoDic[@"history"] sizeWithFont:historyLabel.font constrainedToSize:CGSizeMake(180.0f, 20000.0f) lineBreakMode:NSLineBreakByWordWrapping];
+        historyLabel.frame =CGRectMake(20, 20, kScreenWidth-40, historySize.height);
+        
+        
+        //分割线
+        UILabel *historyLine = [[UILabel alloc] initWithFrame:CGRectMake(10, historyLabel.frame.origin.y+historySize.height+5, kScreenWidth-20, 1)];
+        historyLine.backgroundColor = [UIColor lightGrayColor];
+        
+        //地址
+        UILabel *addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, historyLabel.frame.origin.y+historySize.height+10, kScreenWidth-20, 50)];
+        addressLabel.text = [NSString stringWithFormat:@"地址：%@",self.schoolInfoDic[@"addr"]];
+        addressLabel.textColor = [UIColor blackColor];
+        addressLabel.font = [UIFont systemFontOfSize:14];
+        //addressLabel.textAlignment = NSTextAlignmentLeft;
+        addressLabel.numberOfLines = 0;
+        addressLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        
+        //电话
+        UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, historyLabel.frame.origin.y+historySize.height+10 +50, kScreenWidth-20, 20)];
+        phoneLabel.text = [NSString stringWithFormat:@"电话：%@",self.schoolInfoDic[@"mobile"]];
+        phoneLabel.textColor = [UIColor blackColor];
+        phoneLabel.font = [UIFont systemFontOfSize:14];
+        //phoneLabel.textAlignment = NSTextAlignmentLeft;
+        
+//        //分割线
+//        UILabel *phoneLine = [[UILabel alloc] initWithFrame:CGRectMake(10, historyLabel.frame.origin.y+historySize.height+10 +50+20+5, kScreenWidth-20, 1)];
+//        phoneLine.backgroundColor = [UIColor lightGrayColor];
+        
+        //头视图
+        UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, historyLabel.frame.origin.y+historySize.height+10 +50+20+10)];
+        headView.backgroundColor = [UIColor whiteColor];
+        
+        //label都加入headView
+        [headView addSubview:titleLabel];
+        [headView addSubview:historyLabel];
+        [headView addSubview:historyLine];
+        [headView addSubview:addressLabel];
+        [headView addSubview:phoneLabel];
+        //[headView addSubview:phoneLine];
+//---------------------------------------section头视图---------------------------
+        UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, historyLabel.frame.origin.y+historySize.height+10 +50+20+10+10,kScreenWidth,40)];
+        sectionView.backgroundColor = [UIColor whiteColor];
+        
+        UILabel *sectionLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 20)];
+        sectionLabel.text = @"早教课程";
+        sectionLabel.font = [UIFont systemFontOfSize:14];
+        sectionLabel.textColor = [UIColor blackColor];
+        
+        [sectionView addSubview:sectionLabel];
+        
+//------------------------------------------背景视图-------------------------------
+        UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,kScreenWidth,historyLabel.frame.origin.y+historySize.height+10 +50+20+10+10+40)];
+        sectionView.backgroundColor = [UIColor clearColor];
+        
+        [backGroundView addSubview:headView];
+        [backGroundView addSubview:sectionView];
+        
+        return backGroundView;
+    }
+    else{
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0)];
+        view.backgroundColor = [UIColor clearColor];
+        
+        return view;
+    }
+    
 }
 
 @end
