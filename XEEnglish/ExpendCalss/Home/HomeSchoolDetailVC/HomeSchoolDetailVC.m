@@ -210,11 +210,20 @@
         addressLabel.lineBreakMode = NSLineBreakByWordWrapping;
         
         //电话
-        UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, historyLabel.frame.origin.y+historySize.height+10 +50, kScreenWidth-20, 20)];
-        phoneLabel.text = [NSString stringWithFormat:@"电话：%@",self.schoolInfoDic[@"mobile"]];
-        phoneLabel.textColor = [UIColor blackColor];
+        UILabel *phoneTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, historyLabel.frame.origin.y+historySize.height+10 +50, 45, 20)];
+        phoneTipLabel.text = @"电话：";
+        phoneTipLabel.textColor = [UIColor blackColor];
+        phoneTipLabel.font = [UIFont systemFontOfSize:14];
+        
+        UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(55, historyLabel.frame.origin.y+historySize.height+10 +50, kScreenWidth-55, 20)];
+        phoneLabel.text = [NSString stringWithFormat:@"%@",self.schoolInfoDic[@"mobile"]];
+        phoneLabel.textColor = [UIColor orangeColor];
         phoneLabel.font = [UIFont systemFontOfSize:14];
         //phoneLabel.textAlignment = NSTextAlignmentLeft;
+        
+        UIButton *phoneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [phoneBtn setFrame:CGRectMake(55, historyLabel.frame.origin.y+historySize.height+10 +50, kScreenWidth-55, 20)];
+        [phoneBtn addTarget:self action:@selector(TakePhoneBtnClicked) forControlEvents:UIControlEventTouchUpInside];
         
 //        //分割线
 //        UILabel *phoneLine = [[UILabel alloc] initWithFrame:CGRectMake(10, historyLabel.frame.origin.y+historySize.height+10 +50+20+5, kScreenWidth-20, 1)];
@@ -223,15 +232,17 @@
         //头视图
         UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, historyLabel.frame.origin.y+historySize.height+10 +50+20+10)];
         headView.backgroundColor = [UIColor whiteColor];
-        
         //label都加入headView
         [headView addSubview:titleLabel];
         [headView addSubview:historyLabel];
         [headView addSubview:historyLine];
         [headView addSubview:addressLabel];
+        [headView addSubview:phoneTipLabel];
         [headView addSubview:phoneLabel];
+        [headView addSubview:phoneBtn];
         //[headView addSubview:phoneLine];
 //---------------------------------------section头视图---------------------------
+        //NSLog(@"height:%.f",historyLabel.frame.origin.y+historySize.height+10 +50+20+10+10);
         UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, historyLabel.frame.origin.y+historySize.height+10 +50+20+10+10,kScreenWidth,40)];
         sectionView.backgroundColor = [UIColor whiteColor];
         
@@ -258,6 +269,13 @@
         return view;
     }
     
+}
+
+#pragma mark - TakePhoneBtnClicked
+- (void)TakePhoneBtnClicked{
+    
+    //呼叫
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@",self.schoolInfoDic[@"mobile"]]]];
 }
 
 @end
