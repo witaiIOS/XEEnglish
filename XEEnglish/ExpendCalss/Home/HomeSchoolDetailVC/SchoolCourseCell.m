@@ -19,7 +19,8 @@
     self.courseNameLabel.text = [_courseInfo objectForKey:@"title"];
     //获取报名人数
     self.courseStudentNumberLabel.text = [NSString stringWithFormat:@"已报名人数：%@人",[_courseInfo objectForKey:@"order_parent_count"]];
-    
+    //获取价格
+    self.coursePriceLabel.text = [NSString stringWithFormat:@"总价：%@元/套(单价：%@元/套)",[_courseInfo objectForKey:@"total_price"],[_courseInfo objectForKey:@"price"]];
 }
 
 @end

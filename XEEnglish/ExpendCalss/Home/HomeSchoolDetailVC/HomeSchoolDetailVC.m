@@ -151,7 +151,7 @@
         return 160.0f;
     }
     else if (indexPath.section == 1){
-        return 120.0f;
+        return 105.0f;
     }
     else{
         return 44.0f;
