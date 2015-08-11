@@ -20,6 +20,9 @@
 #import "SchedulePlace.h"
 
 #import "AdDetilVC.h"
+
+#import "HomeSchoolDetailVC.h"
+
 #import "AllCoursesVC.h"
 #import "SingleCourseVC.h"
 #import "CourseOutlineVC.h"
@@ -449,6 +452,20 @@
     }
     
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 1) {
+        HomeSchoolDetailVC *vc = [[HomeSchoolDetailVC alloc] init];
+        vc.schoolInfoDic = self.schoolArray[indexPath.row];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+
 #pragma mark - HomeDetailButton action
 - (void)HomeDetailButtonPressed:(id)sender{
     UIButton *button = (UIButton *)sender;
