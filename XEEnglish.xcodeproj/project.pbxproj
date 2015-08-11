@@ -78,6 +78,7 @@
 		09C7201F1B7992B1004DC5FB /* HomeSchoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7201E1B7992B1004DC5FB /* HomeSchoolCell.m */; };
 		09C720211B7992D3004DC5FB /* HomeSchoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C720201B7992D3004DC5FB /* HomeSchoolCell.xib */; };
 		09C720251B79A6DC004DC5FB /* HomeSchoolDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C720241B79A6DC004DC5FB /* HomeSchoolDetailVC.m */; };
+		09C7202B1B79BFFB004DC5FB /* SchoolAdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7202A1B79BFFB004DC5FB /* SchoolAdCell.m */; };
 		09C7682D1B58AEE900012A33 /* MyCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7682C1B58AEE900012A33 /* MyCourseCell.m */; };
 		09C7682F1B58AF0100012A33 /* MyCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C7682E1B58AF0100012A33 /* MyCourseCell.xib */; };
 		09C768331B592B1400012A33 /* CannelOrderExplainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C768311B592B1400012A33 /* CannelOrderExplainVC.m */; };
@@ -467,6 +468,8 @@
 		09C720201B7992D3004DC5FB /* HomeSchoolCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeSchoolCell.xib; sourceTree = "<group>"; };
 		09C720231B79A6DC004DC5FB /* HomeSchoolDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSchoolDetailVC.h; sourceTree = "<group>"; };
 		09C720241B79A6DC004DC5FB /* HomeSchoolDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSchoolDetailVC.m; sourceTree = "<group>"; };
+		09C720291B79BFFB004DC5FB /* SchoolAdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolAdCell.h; sourceTree = "<group>"; };
+		09C7202A1B79BFFB004DC5FB /* SchoolAdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolAdCell.m; sourceTree = "<group>"; };
 		09C7682B1B58AEE900012A33 /* MyCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCourseCell.h; sourceTree = "<group>"; };
 		09C7682C1B58AEE900012A33 /* MyCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCourseCell.m; sourceTree = "<group>"; };
 		09C7682E1B58AF0100012A33 /* MyCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCourseCell.xib; sourceTree = "<group>"; };
@@ -1174,6 +1177,8 @@
 			children = (
 				09C720231B79A6DC004DC5FB /* HomeSchoolDetailVC.h */,
 				09C720241B79A6DC004DC5FB /* HomeSchoolDetailVC.m */,
+				09C720291B79BFFB004DC5FB /* SchoolAdCell.h */,
+				09C7202A1B79BFFB004DC5FB /* SchoolAdCell.m */,
 			);
 			path = HomeSchoolDetailVC;
 			sourceTree = "<group>";
@@ -2588,6 +2593,7 @@
 				09C64C9B1B69F396004E8C9A /* PhotoMonthButton.m in Sources */,
 				A6284D5A1B105E5600EFF820 /* UIScrollView+MJRefresh.m in Sources */,
 				A6284D621B105E5600EFF820 /* UIRefreshControl+AFNetworking.m in Sources */,
+				09C7202B1B79BFFB004DC5FB /* SchoolAdCell.m in Sources */,
 				A6D4F2351B539D43001D3D0E /* NSDataEx.m in Sources */,
 				09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */,
 				09D0BD441B620C0F0074D1A3 /* PayListeningVC.m in Sources */,
