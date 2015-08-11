@@ -81,6 +81,9 @@
 		09C7202B1B79BFFB004DC5FB /* SchoolAdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7202A1B79BFFB004DC5FB /* SchoolAdCell.m */; };
 		09C7202E1B79CC9C004DC5FB /* SchoolCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7202D1B79CC9C004DC5FB /* SchoolCourseCell.m */; };
 		09C720301B79CCB9004DC5FB /* SchoolCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C7202F1B79CCB9004DC5FB /* SchoolCourseCell.xib */; };
+		09C720361B79EADC004DC5FB /* ServiceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C720351B79EADC004DC5FB /* ServiceButton.m */; };
+		09C720391B79F0E4004DC5FB /* school_course_service_trust.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C720371B79F0E4004DC5FB /* school_course_service_trust.png */; };
+		09C7203A1B79F0E4004DC5FB /* school_course_service_visit.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C720381B79F0E4004DC5FB /* school_course_service_visit.png */; };
 		09C7682D1B58AEE900012A33 /* MyCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C7682C1B58AEE900012A33 /* MyCourseCell.m */; };
 		09C7682F1B58AF0100012A33 /* MyCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C7682E1B58AF0100012A33 /* MyCourseCell.xib */; };
 		09C768331B592B1400012A33 /* CannelOrderExplainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C768311B592B1400012A33 /* CannelOrderExplainVC.m */; };
@@ -475,6 +478,10 @@
 		09C7202C1B79CC9C004DC5FB /* SchoolCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolCourseCell.h; sourceTree = "<group>"; };
 		09C7202D1B79CC9C004DC5FB /* SchoolCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolCourseCell.m; sourceTree = "<group>"; };
 		09C7202F1B79CCB9004DC5FB /* SchoolCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolCourseCell.xib; sourceTree = "<group>"; };
+		09C720341B79EADC004DC5FB /* ServiceButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceButton.h; sourceTree = "<group>"; };
+		09C720351B79EADC004DC5FB /* ServiceButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceButton.m; sourceTree = "<group>"; };
+		09C720371B79F0E4004DC5FB /* school_course_service_trust.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = school_course_service_trust.png; sourceTree = "<group>"; };
+		09C720381B79F0E4004DC5FB /* school_course_service_visit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = school_course_service_visit.png; sourceTree = "<group>"; };
 		09C7682B1B58AEE900012A33 /* MyCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCourseCell.h; sourceTree = "<group>"; };
 		09C7682C1B58AEE900012A33 /* MyCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCourseCell.m; sourceTree = "<group>"; };
 		09C7682E1B58AF0100012A33 /* MyCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCourseCell.xib; sourceTree = "<group>"; };
@@ -1187,6 +1194,8 @@
 				09C7202C1B79CC9C004DC5FB /* SchoolCourseCell.h */,
 				09C7202D1B79CC9C004DC5FB /* SchoolCourseCell.m */,
 				09C7202F1B79CCB9004DC5FB /* SchoolCourseCell.xib */,
+				09C720341B79EADC004DC5FB /* ServiceButton.h */,
+				09C720351B79EADC004DC5FB /* ServiceButton.m */,
 			);
 			path = HomeSchoolDetailVC;
 			sourceTree = "<group>";
@@ -1445,6 +1454,8 @@
 		09DB2DBB1B13228B0078AAF5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				09C720371B79F0E4004DC5FB /* school_course_service_trust.png */,
+				09C720381B79F0E4004DC5FB /* school_course_service_visit.png */,
 				09C720171B798A66004DC5FB /* hp_active.png */,
 				09C720181B798A66004DC5FB /* hp_mamabang.png */,
 				09C720191B798A66004DC5FB /* hp_scheduleplace.png */,
@@ -2410,8 +2421,10 @@
 				09D2319A1B50EEA70055758A /* CourseMyCommentVC.xib in Resources */,
 				09C7682F1B58AF0100012A33 /* MyCourseCell.xib in Resources */,
 				A6284CDA1B10592100EFF820 /* Images.xcassets in Resources */,
+				09C720391B79F0E4004DC5FB /* school_course_service_trust.png in Resources */,
 				090604711B140A5E0038BAC4 /* FeedBackVC.xib in Resources */,
 				09D5459F1B44D6DB00CC5844 /* ExpendRecordCell.xib in Resources */,
+				09C7203A1B79F0E4004DC5FB /* school_course_service_visit.png in Resources */,
 				09DB2DBE1B13228B0078AAF5 /* join_05.png in Resources */,
 				097990691B17006600D4A8DC /* ResetPassWordVC.xib in Resources */,
 				09C95EC11B2806FA000972D8 /* school_selected.png in Resources */,
@@ -2488,6 +2501,7 @@
 				09C809C11B6B019E00C3B856 /* CoursePhotoButton.m in Sources */,
 				09C9C0F11B22E3E5001BBA1C /* PlaceDemandCell.m in Sources */,
 				A6284D5F1B105E5600EFF820 /* UIButton+AFNetworking.m in Sources */,
+				09C720361B79EADC004DC5FB /* ServiceButton.m in Sources */,
 				A6284D491B105E5600EFF820 /* AFSecurityPolicy.m in Sources */,
 				A65B56EB1B5B7F8700F7E40B /* ListeningPayVC.m in Sources */,
 				09C88A421B67678100B795C8 /* CommentButton.m in Sources */,

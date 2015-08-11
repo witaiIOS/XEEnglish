@@ -12,6 +12,10 @@
 
 #import "XeeService.h"
 
+#import "ServiceButton.h"
+
+#import "PayListeningVC.h"
+
 @interface HomeSchoolDetailVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *schoolImageArray;//校区图片
@@ -170,8 +174,13 @@
     
 }
 - (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (section == 1) {
+        return 140.0f;
+    }
+    else{
+        return 3.0f;
+    }
     
-    return 3.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -267,6 +276,72 @@
         view.backgroundColor = [UIColor clearColor];
         
         return view;
+    }
+    
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    if (section == 1) {
+        UIView *serviceView = [[UIView alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, 120)];
+        serviceView.backgroundColor = [UIColor whiteColor];
+        
+        UILabel *serviceTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 20)];
+        serviceTipLabel.text = @"服务";
+        serviceTipLabel.textColor = [UIColor blackColor];
+        serviceTipLabel.font = [UIFont systemFontOfSize:14];
+        [serviceView addSubview:serviceTipLabel];
+        
+        UILabel *serviceTipLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 39, kScreenWidth-20, 1)];
+        serviceTipLine.backgroundColor = [UIColor lightGrayColor];
+        [serviceView addSubview:serviceTipLine];
+        //托管服务Btn
+        ServiceButton *depositServiceBtn = [[ServiceButton alloc] initWithFrame:CGRectMake(0, 40, kScreenWidth/2-1, 70)];
+        depositServiceBtn.tag = 10;
+        [depositServiceBtn setImage:[UIImage imageNamed:@"school_course_service_trust.png"] forState:UIControlStateNormal];
+        [depositServiceBtn setTitle:@"托管" forState:UIControlStateNormal];
+        [depositServiceBtn addTarget:self action:@selector(ServiceBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [serviceView addSubview:depositServiceBtn];
+        
+        UILabel *serviceMiddleLine = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth/2-1, 40, 1, 80)];
+        serviceMiddleLine.backgroundColor = [UIColor lightGrayColor];
+        [serviceView addSubview:serviceMiddleLine];
+        
+        //托管服务Btn
+        ServiceButton *visitCourseServiceBtn = [[ServiceButton alloc] initWithFrame:CGRectMake(kScreenWidth/2, 40, kScreenWidth/2, 70)];
+        visitCourseServiceBtn.tag = 11;
+        [visitCourseServiceBtn setImage:[UIImage imageNamed:@"school_course_service_visit.png"] forState:UIControlStateNormal];
+        [visitCourseServiceBtn setTitle:@"上门送课" forState:UIControlStateNormal];
+        [visitCourseServiceBtn addTarget:self action:@selector(ServiceBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [serviceView addSubview:visitCourseServiceBtn];
+//------------------------------------------------------------------------------------
+        UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 140)];
+        backGroundView.backgroundColor = [UIColor clearColor];
+        
+        [backGroundView addSubview:serviceView];
+        
+        return backGroundView;
+        
+        
+    }
+    else{
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0)];
+        view.backgroundColor = [UIColor clearColor];
+        
+        return view;
+    }
+}
+
+#pragma mark - ServiceBtn
+- (void)ServiceBtnClicked:(id)sender{
+    
+    ServiceButton *selectBtn = (ServiceButton *)sender;
+    if (selectBtn.tag == 10) {
+        
+    }
+    else if (selectBtn.tag == 11){
+        PayListeningVC *vc = [[PayListeningVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
 }
