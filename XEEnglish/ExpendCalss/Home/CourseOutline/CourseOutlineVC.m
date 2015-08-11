@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"课程概要";
+    self.title = @"课程信息";
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self getCourseDetailAndTopCommentListByCourseIdWithWeb];
@@ -45,6 +45,17 @@
 - (void)initUI{
     
     [super initUI];
+    
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [shareBtn setFrame:CGRectMake(kScreenWidth-80, 12, 60, 40)];
+    [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+    [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [shareBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [shareBtn addTarget:self action:@selector(shareBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *shareBarBtn = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
+    self.navigationItem.rightBarButtonItem = shareBarBtn;
+    
     //初始化评价数组
     self.commentArray = [NSMutableArray array];
     
@@ -55,6 +66,12 @@
     [self.view addSubview:self.tableView];
     //显示页面尾，显示试听和购买按钮
     [self footView];
+}
+
+#pragma mark - shareBtn
+- (void)shareBtnClicked{
+    
+    [self shareAction];
 }
 
 - (UIView *)headView{
@@ -414,7 +431,7 @@
 - (void)getCourseDetailAndTopCommentListByCourseIdWithWeb{
     
     [self showHudWithMsg:@"载入中..."];
-    [[XeeService sharedInstance] getCourseDetailAndTopCommentListByCourseId:self.courseId andPageSize:10 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] getCourseDetailAndTopCommentListByCourseId:self.courseId andPageSize:5 andPageIndex:1 andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         if (!error) {
             //NSLog(@"result:%@",result);
@@ -536,6 +553,24 @@
     else{
         
     }
+}
+
+
+#pragma mark - share
+- (void)shareAction {
+    
+    // [[XeeService sharedInstance] tellFriendWithShareContent:<#(NSString *)#> andParentId:<#(NSString *)#> andToken:<#(NSString *)#> andBlock:<#^(NSDictionary *result, NSError *error)block#>];
+    
+    NSString *shareText = [NSString stringWithFormat:@"http://218.244.143.58:604/admin/html/share/course_details_share.html?course_id=%@",self.courseId];
+    
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:kUmengAppkey
+                                      shareText:shareText
+                                     shareImage:[UIImage imageNamed:@"icon-60@2x.png"]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToSms,UMShareToWechatTimeline,nil]
+                                       delegate:nil];
+    //[UMSocialConfig setFinishToastIsHidden:YES position:UMSocialiToastPositionCenter];
+    
 }
 
 
