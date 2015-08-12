@@ -14,6 +14,7 @@
 
 #import "ServiceButton.h"
 
+#import "CourseOutlineVC.h"
 #import "DepositServiceVC.h"
 #import "PayListeningVC.h"
 
@@ -182,6 +183,17 @@
         return 3.0f;
     }
     
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 1) {
+        CourseOutlineVC *vc = [[CourseOutlineVC alloc] init];
+        vc.courseId = [self.courseArray[indexPath.row] objectForKey:@"course_id"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
