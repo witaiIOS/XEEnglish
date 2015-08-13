@@ -402,6 +402,12 @@
         switch (indexPath.row) {
             case 0:
             {
+                SetCommunityVC *vc = [[SetCommunityVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+            case 1:
+            {
                 NeTNameAndDomicileVC *vc = [[NeTNameAndDomicileVC alloc] init];
                 vc.nTitle = @"修改居住地";
                 vc.nplaceholder = @"请输入居住地";
@@ -411,7 +417,7 @@
                 break;
             }
                 
-            case 1:
+            case 2:
             {
                 SettingBirthdayVC *vc = [[SettingBirthdayVC alloc] init];
                 vc.delegate =self;
@@ -419,7 +425,7 @@
                 break;
             }
                 
-            case 2:
+            case 3:
             {
                 SettingSignatureVC *vc = [[SettingSignatureVC alloc] init];
                 vc.delegate = self;
