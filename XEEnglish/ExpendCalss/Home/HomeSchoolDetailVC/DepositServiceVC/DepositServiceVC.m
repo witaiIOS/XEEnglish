@@ -11,14 +11,16 @@
 
 #import "SetInfoVC.h"
 #import "DepositStypeVC.h"
+#import "DepositTimeVC.h"
 
-@interface DepositServiceVC ()<UITableViewDataSource,UITableViewDelegate,SetInfoVCDelegate,DepositStypeVCDelegate>
+@interface DepositServiceVC ()<UITableViewDataSource,UITableViewDelegate,SetInfoVCDelegate,DepositStypeVCDelegate,DepositTimeVCDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSString *parentName;//家长姓名
 @property (nonatomic, strong) NSString *parentPhone;//家长电话
 @property (nonatomic, strong) NSString *childrenName;//小孩姓名
 @property (nonatomic, strong) NSString *depositStype;//托管方式
+@property (nonatomic, strong) NSString *depositTime;//托管时间
 @end
 
 @implementation DepositServiceVC
@@ -95,6 +97,7 @@
         case 4:
         {
             cell.textLabel.text = @"托管时间";
+            cell.detailTextLabel.text = self.depositTime;
             break;
         }
             
@@ -139,6 +142,11 @@
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
+    else if (indexPath.section == 4){
+        DepositTimeVC *vc = [[DepositTimeVC alloc] init];
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -174,6 +182,13 @@
 - (void)DepositStypeVCSelectedDepositStype:(id)sender{
     self.depositStype = sender;
     [self.tableView reloadData];
+}
+
+#pragma mark - DepositTimeVCDelegate
+- (void)DepositTimeVCSetTime:(id)sender{
+    self.depositTime = sender;
+    [self.tableView reloadData];
+    
 }
 
 @end
