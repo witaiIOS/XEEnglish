@@ -7,7 +7,16 @@
 //
 
 #import "BaseVC.h"
+@protocol SetCommunityVCDelegate <NSObject>
+
+@optional
+- (void)setCommunityVCSelectedCommunity:(id) sender;
+
+@end
 
 @interface SetCommunityVC : BaseVC
+
+@property (nonatomic, strong) NSDictionary *selectedCommunityDic;
+@property (nonatomic, assign) id<SetCommunityVCDelegate>delegate;
 
 @end

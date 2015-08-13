@@ -31,7 +31,7 @@
     
     [super initUI];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    //self.automaticallyAdjustsScrollViewInsets = NO;
     
     //初始化数组
     self.communityArray = [NSMutableArray array];
@@ -39,7 +39,7 @@
     //请求数据
     [self getCommunityWithSearchContent:@""];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -76,12 +76,12 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return [self.communityArray count];
+    return 1;
 }
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 1;
+    return [self.communityArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -93,7 +93,14 @@
         cell = [[SetCommunityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
     }
     cell.cellEdge = 10;
-    cell.communityNameLabel.text = [self.communityArray[indexPath.section] objectForKey:@"name"];
+    cell.communityNameLabel.text = [self.communityArray[indexPath.row] objectForKey:@"name"];
+    if (self.selectedCommunityDic != nil) {
+        NSNumber *seleteedId = self.selectedCommunityDic[@"community_id"];
+        NSNumber *cellId = [self.communityArray[indexPath.row] objectForKey:@"community_id"];
+        if (seleteedId.integerValue == cellId.integerValue) {
+            cell.selectedImageView.highlighted = YES;
+        }
+    }
     
     return cell;
     
@@ -103,6 +110,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self.delegate setCommunityVCSelectedCommunity:self.communityArray[indexPath.row]];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -20,7 +20,7 @@
 
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeTNameAndDomicileDelegate,SettingBirthdayDelegate,SettingSignatureDelegate>
+@interface PersonInfoVC ()<UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeTNameAndDomicileDelegate,SettingBirthdayDelegate,SettingSignatureDelegate,SetCommunityVCDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *keepBtn;
 
@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSString *isPhotoEdit;//是否编辑了个人头像
 @property (nonatomic, strong) NSString *netName;    //名字
 @property (nonatomic, strong) NSString *phoneNumber; //手机号
+@property (nonatomic, strong) NSDictionary *myCommunityDic;//小区
 @property (nonatomic, strong) NSString *myAddr;   //城市名
 @property (nonatomic, strong) NSString *myBirthday; //生日
 @property (nonatomic, strong) NSString *myInvitationCode;//邀请码
@@ -52,6 +53,11 @@
     
     [super viewWillAppear:YES];
     [self.tableView reloadData];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)initUI
@@ -309,7 +315,9 @@
                 case 0:
                 {
                     infoString = @"小区";
-                    //detailInfoString = self.myAddr;
+                    if (self.myCommunityDic !=nil) {
+                        detailInfoString = self.myCommunityDic[@"name"];
+                    }
                     break;
                 }
                 case 1:
@@ -403,6 +411,10 @@
             case 0:
             {
                 SetCommunityVC *vc = [[SetCommunityVC alloc] init];
+                vc.delegate = self;
+                if (self.myCommunityDic !=nil) {
+                    vc.selectedCommunityDic = self.myCommunityDic;
+                }
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
@@ -664,12 +676,13 @@
     self.mySignature = sender;
 }
 
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - SetCommunityVCDelegate
+- (void)setCommunityVCSelectedCommunity:(id)sender{
+    
+    self.myCommunityDic = sender;
 }
+
+
 
 /*
 #pragma mark - Navigation
