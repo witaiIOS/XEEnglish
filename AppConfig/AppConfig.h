@@ -74,6 +74,8 @@
 #define uUserInvitationCode      @"uUserInvitationCode"  //推荐码
 #define uUserMemo                @"uUserMemo"            //个性签名
 #define uUserPhoto               @"uUserPhoto"
+#define uUserCommunityId         @"uUserCommunityId"
+#define uUserCommunityName       @"uUserCommunityName"
 
 #define uUserId                @"uUserId"
 #define uUserToken             @"uUserToken"

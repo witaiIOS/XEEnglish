@@ -95,12 +95,9 @@
     }
     cell.cellEdge = 10;
     cell.communityNameLabel.text = [self.communityArray[indexPath.row] objectForKey:@"name"];
-    if (self.selectedCommunityDic != nil) {
-        NSNumber *seleteedId = self.selectedCommunityDic[@"community_id"];
-        NSNumber *cellId = [self.communityArray[indexPath.row] objectForKey:@"community_id"];
-        if (seleteedId.integerValue == cellId.integerValue) {
-            cell.selectedImageView.highlighted = YES;
-        }
+    NSNumber *cellId = [self.communityArray[indexPath.row] objectForKey:@"community_id"];
+    if ([self.selectedCommunityId integerValue] == cellId.integerValue) {
+        cell.selectedImageView.highlighted = YES;
     }
     
     return cell;

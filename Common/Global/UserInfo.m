@@ -69,7 +69,7 @@
     //NSLog(@"result:%@",result);
     NSDictionary *resultInfoDic = result[@"resultInfo"];
     NSDictionary *resultInfo = [self filterNullForDictionary:resultInfoDic];
-    NSDictionary *userDic = @{uIslogin:result[@"result"], uUserInfoKey:@{uUserId:resultInfo[@"parent_id"],uUserToken:resultInfo[@"token"], uUserName:resultInfo[@"name"], uPhoneNumber:resultInfo[@"mobile"], uPassword:resultInfo[@"password"],uUserRegionalId:resultInfo[@"regional_id"],uUserBirthday:resultInfo[@"birthday" ],uUserAddr:resultInfo[@"addr"],uUserInvitationCode:resultInfo[@"invitation_code"],uUserMemo:resultInfo[@"memo"],uUserPhoto:resultInfo[@"photo"]}};
+    NSDictionary *userDic = @{uIslogin:result[@"result"], uUserInfoKey:@{uUserId:resultInfo[@"parent_id"],uUserToken:resultInfo[@"token"], uUserName:resultInfo[@"name"], uPhoneNumber:resultInfo[@"mobile"], uPassword:resultInfo[@"password"],uUserRegionalId:resultInfo[@"regional_id"],uUserBirthday:resultInfo[@"birthday" ],uUserAddr:resultInfo[@"addr"],uUserInvitationCode:resultInfo[@"invitation_code"],uUserMemo:resultInfo[@"memo"],uUserPhoto:resultInfo[@"photo"],uUserCommunityId:resultInfo[@"community_id"],uUserCommunityName:resultInfo[@"community_name"]}};
     //NSLog(@"photo:%@",resultInfo[@"photo"]);
     [self setUserInfoDic:userDic];
 }

@@ -16,7 +16,7 @@
 
 @interface SetCommunityVC : BaseVC
 
-@property (nonatomic, strong) NSDictionary *selectedCommunityDic;
+@property (nonatomic, strong) NSString *selectedCommunityId;
 @property (nonatomic, assign) id<SetCommunityVCDelegate>delegate;
 
 @end

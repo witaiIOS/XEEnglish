@@ -30,7 +30,8 @@
 @property (nonatomic, strong) NSString *isPhotoEdit;//是否编辑了个人头像
 @property (nonatomic, strong) NSString *netName;    //名字
 @property (nonatomic, strong) NSString *phoneNumber; //手机号
-@property (nonatomic, strong) NSDictionary *myCommunityDic;//小区
+@property (nonatomic, strong) NSString *myCommunityId;//小区id
+@property (nonatomic, strong) NSString *myCommunityName;//小区名字
 @property (nonatomic, strong) NSString *myAddr;   //城市名
 @property (nonatomic, strong) NSString *myBirthday; //生日
 @property (nonatomic, strong) NSString *myInvitationCode;//邀请码
@@ -77,6 +78,9 @@
     self.myBirthday = userInfoDic[uUserBirthday];
     self.myInvitationCode = userInfoDic[uUserInvitationCode];
     self.mySignature = userInfoDic[uUserMemo];
+    self.myCommunityId = [NSString stringWithFormat:@"%@",userInfoDic[uUserCommunityId]];
+    self.myCommunityName = userInfoDic[uUserCommunityName];
+    //NSLog(@"comminut:%@",userInfoDic[uUserCommunityName]);
     //NSLog(@"phone:%@",userInfoDic[uUserPhoto]);
 //    if ([userInfoDic[uUserPhoto] isKindOfClass:[NSNull class]]) {
 //        self.personImage =[UIImage imageNamed:@"people_ayb"];//没有图像就给个磨人图像
@@ -315,9 +319,7 @@
                 case 0:
                 {
                     infoString = @"小区";
-                    if (self.myCommunityDic !=nil) {
-                        detailInfoString = self.myCommunityDic[@"name"];
-                    }
+                    detailInfoString = self.myCommunityName;
                     break;
                 }
                 case 1:
@@ -412,9 +414,7 @@
             {
                 SetCommunityVC *vc = [[SetCommunityVC alloc] init];
                 vc.delegate = self;
-                if (self.myCommunityDic !=nil) {
-                    vc.selectedCommunityDic = self.myCommunityDic;
-                }
+                vc.selectedCommunityId = self.myCommunityId;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
@@ -679,7 +679,8 @@
 #pragma mark - SetCommunityVCDelegate
 - (void)setCommunityVCSelectedCommunity:(id)sender{
     
-    self.myCommunityDic = sender;
+    self.myCommunityId = sender[@"community_id"];
+    self.myCommunityName = sender[@"name"];
 }
 
 
