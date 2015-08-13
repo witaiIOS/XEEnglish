@@ -123,6 +123,8 @@
 		09C943901B7C3EE400A49CDE /* SetCommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9438F1B7C3EE400A49CDE /* SetCommunityCell.m */; };
 		09C943941B7C7AA900A49CDE /* SetInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C943921B7C7AA900A49CDE /* SetInfoVC.m */; };
 		09C943951B7C7AA900A49CDE /* SetInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C943931B7C7AA900A49CDE /* SetInfoVC.xib */; };
+		09C943981B7C884F00A49CDE /* DepositStypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C943971B7C884F00A49CDE /* DepositStypeVC.m */; };
+		09C9439B1B7C889D00A49CDE /* DepositStypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9439A1B7C889D00A49CDE /* DepositStypeCell.m */; };
 		09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */; };
 		09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */; };
 		09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDB1B1EDD3E00ABC885 /* select_flag.png */; };
@@ -547,6 +549,10 @@
 		09C943911B7C7AA900A49CDE /* SetInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetInfoVC.h; sourceTree = "<group>"; };
 		09C943921B7C7AA900A49CDE /* SetInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetInfoVC.m; sourceTree = "<group>"; };
 		09C943931B7C7AA900A49CDE /* SetInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetInfoVC.xib; sourceTree = "<group>"; };
+		09C943961B7C884F00A49CDE /* DepositStypeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositStypeVC.h; sourceTree = "<group>"; };
+		09C943971B7C884F00A49CDE /* DepositStypeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositStypeVC.m; sourceTree = "<group>"; };
+		09C943991B7C889D00A49CDE /* DepositStypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositStypeCell.h; sourceTree = "<group>"; };
+		09C9439A1B7C889D00A49CDE /* DepositStypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositStypeCell.m; sourceTree = "<group>"; };
 		09C95CD71B1EDD2800ABC885 /* LXSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSegmentView.h; sourceTree = "<group>"; };
 		09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegmentView.m; sourceTree = "<group>"; };
 		09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_tab_selected.png; sourceTree = "<group>"; };
@@ -1223,6 +1229,10 @@
 				09C943911B7C7AA900A49CDE /* SetInfoVC.h */,
 				09C943921B7C7AA900A49CDE /* SetInfoVC.m */,
 				09C943931B7C7AA900A49CDE /* SetInfoVC.xib */,
+				09C943961B7C884F00A49CDE /* DepositStypeVC.h */,
+				09C943971B7C884F00A49CDE /* DepositStypeVC.m */,
+				09C943991B7C889D00A49CDE /* DepositStypeCell.h */,
+				09C9439A1B7C889D00A49CDE /* DepositStypeCell.m */,
 			);
 			path = DepositServiceVC;
 			sourceTree = "<group>";
@@ -2579,6 +2589,7 @@
 				09C543261B4FB67500BD750C /* ListenStudentNameVC.m in Sources */,
 				A6B1CEEA1B1D8C7200100E9F /* HomeBtnCell.m in Sources */,
 				C9E4EC1F1B6DF6F80088A3DB /* WXUtil.mm in Sources */,
+				09C9439B1B7C889D00A49CDE /* DepositStypeCell.m in Sources */,
 				A6B1CEDE1B1C62D400100E9F /* PersonInfoVC.m in Sources */,
 				09D23C511B4276A4008B6085 /* PointSRuleVC.m in Sources */,
 				09C832A81B25BB0100E72163 /* otherRequireCell.m in Sources */,
@@ -2609,6 +2620,7 @@
 				C9E4EC221B6DF86C0088A3DB /* ApiXml.mm in Sources */,
 				A6284D591B105E5600EFF820 /* UIScrollView+MJExtension.m in Sources */,
 				09E24B201B41710200F762BD /* MyBookSiteCell.m in Sources */,
+				09C943981B7C884F00A49CDE /* DepositStypeVC.m in Sources */,
 				09D0EE551B61060000624E9B /* CourseOutlineVC.m in Sources */,
 				09C9DE3A1B2A66F600A07544 /* MyActivityCell.m in Sources */,
 				A6284D981B1066DE00EFF820 /* SettingVC.m in Sources */,

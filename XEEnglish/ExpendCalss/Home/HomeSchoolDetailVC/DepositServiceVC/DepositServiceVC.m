@@ -10,13 +10,15 @@
 #import "BaseTVC.h"
 
 #import "SetInfoVC.h"
+#import "DepositStypeVC.h"
 
-@interface DepositServiceVC ()<UITableViewDataSource,UITableViewDelegate,SetInfoVCDelegate>
+@interface DepositServiceVC ()<UITableViewDataSource,UITableViewDelegate,SetInfoVCDelegate,DepositStypeVCDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSString *parentName;//家长姓名
 @property (nonatomic, strong) NSString *parentPhone;//家长电话
 @property (nonatomic, strong) NSString *childrenName;//小孩姓名
+@property (nonatomic, strong) NSString *depositStype;//托管方式
 @end
 
 @implementation DepositServiceVC
@@ -87,6 +89,7 @@
         case 3:
         {
             cell.textLabel.text = @"托管类型";
+            cell.detailTextLabel.text = self.depositStype;
             break;
         }
         case 4:
@@ -131,6 +134,11 @@
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
+    else if (indexPath.section == 3){
+        DepositStypeVC *vc = [[DepositStypeVC alloc] init];
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -159,6 +167,12 @@
     else if (index ==2){
         self.childrenName = sender;
     }
+    [self.tableView reloadData];
+}
+
+#pragma mark - DepositStypeVCDelegate
+- (void)DepositStypeVCSelectedDepositStype:(id)sender{
+    self.depositStype = sender;
     [self.tableView reloadData];
 }
 
