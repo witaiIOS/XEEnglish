@@ -325,6 +325,16 @@
  */
 - (void)modifyPwdWithNewPassword:(NSString *)newPassword andOldPassword:(NSString *)oldPassword andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result, NSError *error))block;
 
+/**
+ 查询小区
+ 参数1:pageSize表示一页行数
+ 参数2:pageIndex 表示页码
+ 参数3:parent_id表示登陆人id
+ 参数4:token
+ 参数5:search_content查询内容,可选参数
+ */
+- (void)getCommunityWithParentId:(NSString *)parent_id andSearchContent:(NSString *)search_content andPageSize: (NSInteger )pageSize andPageIndex: (NSInteger )pageIndex andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result, NSError *error))block;
+
 #pragma mark - 我的 宝宝相册
 /**
  用积分兑换礼品

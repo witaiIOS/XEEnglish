@@ -11,6 +11,7 @@
 #import "BaseTVC.h"
 
 #import "NeTNameAndDomicileVC.h"
+#import "SetCommunityVC.h"
 #import "SettingBirthdayVC.h"
 #import "SettingSignatureVC.h"
 #import "ChangePassWordVC.h"
@@ -226,7 +227,7 @@
     
     if (section == 3) {
         
-        return 3;
+        return 4;
     }else{
         return 1;
     }
@@ -307,17 +308,23 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    infoString = @"居住地";
-                    detailInfoString = self.myAddr;
+                    infoString = @"小区";
+                    //detailInfoString = self.myAddr;
                     break;
                 }
                 case 1:
+                {
+                    infoString = @"详细地址";
+                    detailInfoString = self.myAddr;
+                    break;
+                }
+                case 2:
                 {
                     infoString = @"生日";
                     detailInfoString = self.myBirthday;
                     break;
                 }
-                case 2:
+                case 3:
                 {
                     infoString = @"个性签名";
                     detailInfoString = self.mySignature;

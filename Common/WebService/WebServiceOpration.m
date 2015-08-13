@@ -399,6 +399,19 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:modifyPwd><web:json>{\"password\":\"%@\",\"old_password\":\"%@\",\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:modifyPwd>",newPassword,oldPassword,parent_id,token]];
 }
 
+/**
+ 查询小区
+ 参数1:pageSize表示一页行数
+ 参数2:pageIndex 表示页码
+ 参数3:parent_id表示登陆人id
+ 参数4:token
+ 参数5:search_content查询内容,可选参数
+ */
++ (AFHTTPRequestOperation *)getCommunityWithParentId:(NSString *)parent_id andSearchContent:(NSString *)search_content andPageSize: (NSInteger )pageSize andPageIndex: (NSInteger )pageIndex andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetCommunity><web:json>{\"parent_id\":\"%@\",\"search_content\":\"%@\",\"pageSize\":\"%li\", \"pageIndex\":\"%li\",\"token\":\"%@\"}</web:json></web:GetCommunity>",parent_id,search_content,pageSize,pageIndex,token]];
+}
+
 #pragma mark - 我的 宝宝相册
 /**
  用积分兑换礼品

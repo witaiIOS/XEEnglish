@@ -119,6 +119,8 @@
 		09C8C1CD1B535439000E089F /* NearSchoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C8C1CC1B535439000E089F /* NearSchoolVC.m */; };
 		09C8C1D01B535743000E089F /* NearSchoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C8C1CF1B535743000E089F /* NearSchoolCell.m */; };
 		09C8C1D21B53575C000E089F /* NearSchoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C8C1D11B53575C000E089F /* NearSchoolCell.xib */; };
+		09C9438D1B7C3EBF00A49CDE /* SetCommunityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9438C1B7C3EBF00A49CDE /* SetCommunityVC.m */; };
+		09C943901B7C3EE400A49CDE /* SetCommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9438F1B7C3EE400A49CDE /* SetCommunityCell.m */; };
 		09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */; };
 		09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */; };
 		09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDB1B1EDD3E00ABC885 /* select_flag.png */; };
@@ -536,6 +538,10 @@
 		09C8C1CE1B535743000E089F /* NearSchoolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearSchoolCell.h; sourceTree = "<group>"; };
 		09C8C1CF1B535743000E089F /* NearSchoolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearSchoolCell.m; sourceTree = "<group>"; };
 		09C8C1D11B53575C000E089F /* NearSchoolCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearSchoolCell.xib; sourceTree = "<group>"; };
+		09C9438B1B7C3EBF00A49CDE /* SetCommunityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCommunityVC.h; sourceTree = "<group>"; };
+		09C9438C1B7C3EBF00A49CDE /* SetCommunityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCommunityVC.m; sourceTree = "<group>"; };
+		09C9438E1B7C3EE400A49CDE /* SetCommunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCommunityCell.h; sourceTree = "<group>"; };
+		09C9438F1B7C3EE400A49CDE /* SetCommunityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCommunityCell.m; sourceTree = "<group>"; };
 		09C95CD71B1EDD2800ABC885 /* LXSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSegmentView.h; sourceTree = "<group>"; };
 		09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegmentView.m; sourceTree = "<group>"; };
 		09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_tab_selected.png; sourceTree = "<group>"; };
@@ -1254,6 +1260,17 @@
 				09C83EB91B5A048100E0FEB9 /* NearSchoolDetailCell.m */,
 			);
 			path = NearSchoolVC;
+			sourceTree = "<group>";
+		};
+		09C9438A1B7C3EA200A49CDE /* SetCommunityVC */ = {
+			isa = PBXGroup;
+			children = (
+				09C9438B1B7C3EBF00A49CDE /* SetCommunityVC.h */,
+				09C9438C1B7C3EBF00A49CDE /* SetCommunityVC.m */,
+				09C9438E1B7C3EE400A49CDE /* SetCommunityCell.h */,
+				09C9438F1B7C3EE400A49CDE /* SetCommunityCell.m */,
+			);
+			path = SetCommunityVC;
 			sourceTree = "<group>";
 		};
 		09C9C0E81B22E059001BBA1C /* SchedulePlace */ = {
@@ -2041,6 +2058,7 @@
 		A6B1CEC81B1C62D400100E9F /* PersonInfo */ = {
 			isa = PBXGroup;
 			children = (
+				09C9438A1B7C3EA200A49CDE /* SetCommunityVC */,
 				A6B1CED11B1C62D400100E9F /* PersonInfoVC.h */,
 				A6B1CED21B1C62D400100E9F /* PersonInfoVC.m */,
 				A6B1CECF1B1C62D400100E9F /* PersonImageTVC.h */,
@@ -2533,6 +2551,7 @@
 				A6284D561B105E5600EFF820 /* MJRefreshConst.m in Sources */,
 				09C832A51B25AC4700E72163 /* ActivityContentCell.m in Sources */,
 				09C6984D1B6876BA00DDF7E6 /* OtherCommentVCCell.m in Sources */,
+				09C9438D1B7C3EBF00A49CDE /* SetCommunityVC.m in Sources */,
 				09C95ECE1B284225000972D8 /* CitiesVC.m in Sources */,
 				A6284D451B105E5600EFF820 /* AFHTTPRequestOperation.m in Sources */,
 				A6B1CEDD1B1C62D400100E9F /* PersonImageTVC.m in Sources */,
@@ -2654,6 +2673,7 @@
 				09C87F2C1B3BF06600D7C913 /* SubCourseListCell.m in Sources */,
 				093A58861B43F541006F104D /* CourseForenoticeVC.m in Sources */,
 				A6284D5C1B105E5600EFF820 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				09C943901B7C3EE400A49CDE /* SetCommunityCell.m in Sources */,
 				090604701B140A5E0038BAC4 /* FeedBackVC.m in Sources */,
 				09C6394E1B3A957F00510F00 /* PayMethodCell.m in Sources */,
 				A6B1CEDB1B1C62D400100E9F /* NeTNameAndDomicileVC.m in Sources */,

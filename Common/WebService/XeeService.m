@@ -629,6 +629,25 @@
 
 }
 
+/**
+ 查询小区
+ 参数1:pageSize表示一页行数
+ 参数2:pageIndex 表示页码
+ 参数3:parent_id表示登陆人id
+ 参数4:token
+ 参数5:search_content查询内容,可选参数
+ */
+- (void)getCommunityWithParentId:(NSString *)parent_id andSearchContent:(NSString *)search_content andPageSize: (NSInteger )pageSize andPageIndex: (NSInteger )pageIndex andToken:(NSString *)token andBlock:(void (^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getCommunityWithParentId:parent_id andSearchContent:search_content andPageSize:pageSize andPageIndex:pageIndex andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetCommunityResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 #pragma mark - 我的 宝宝相册
 /**
  用积分兑换礼品
