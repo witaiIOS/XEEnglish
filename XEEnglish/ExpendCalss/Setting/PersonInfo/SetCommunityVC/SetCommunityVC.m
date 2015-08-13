@@ -40,6 +40,7 @@
     [self getCommunityWithSearchContent:@""];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStylePlain];
+    self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
