@@ -164,7 +164,7 @@
     NSString *niceAddr = [self.myAddr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *niceSignature = [self.mySignature stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self showHudWithMsg:@"上传中..."];
-    [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:nickName andSex:@"null" andBirthday:self.myBirthday andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:niceAddr andQq:@"null" andEmail:@"null" andMemo:niceSignature andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+    [[XeeService sharedInstance] modifyUserWithIsPhotoEdit:self.isPhotoEdit andName:nickName andSex:@"null" andBirthday:self.myBirthday andIdentifyId:@"null" andMobile:userInfoDic[uPhoneNumber] andAddr:niceAddr andQq:@"null" andEmail:@"null" andMemo:niceSignature andMobile2:@"null" andParentId:userInfoDic[uUserId] andPhoto: imageWeb andCommunityId:self.myCommunityId andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
         [self hideHud];
         if (!error) {
             NSNumber *isResult = result[@"result "];
@@ -183,6 +183,8 @@
                 
                 [tempUserInfoDic setObject:resultInfoDic[@"photo"] forKey:uUserPhoto];
                 [tempUserInfoDic setObject:resultInfoDic[@"name"] forKey:uUserName];
+                [tempUserInfoDic setObject:resultInfoDic[@"community_id"] forKey:uUserCommunityId];
+                [tempUserInfoDic setObject:resultInfoDic[@"community_name"] forKey:uUserCommunityName];
                 [tempUserInfoDic setObject:resultInfoDic[@"addr"] forKey:uUserAddr];
                 [tempUserInfoDic setObject:resultInfoDic[@"birthday"] forKey:uUserBirthday];
                 [tempUserInfoDic setObject:resultInfoDic[@"memo"] forKey:uUserMemo];

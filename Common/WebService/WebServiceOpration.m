@@ -364,9 +364,9 @@
 /**
  个人信息修改
 */
-+ (AFHTTPRequestOperation *)modifyUserWithIsPhotoEdit:(NSString *)is_photo_edit andName:(NSString *)name andSex:(NSString *)sex andBirthday:(NSString *)birthday andIdentifyId:(NSString *)identify_id andMobile:(NSString *)mobile andAddr:(NSString *)addr andQq:(NSString *)qq andEmail:(NSString *)email andMemo:(NSString *)memo andMobile2:(NSString *)mobile2 andParentId:(NSString *)parent_id andPhoto:(NSString *)photo andToken:(NSString *)token{
++ (AFHTTPRequestOperation *)modifyUserWithIsPhotoEdit:(NSString *)is_photo_edit andName:(NSString *)name andSex:(NSString *)sex andBirthday:(NSString *)birthday andIdentifyId:(NSString *)identify_id andMobile:(NSString *)mobile andAddr:(NSString *)addr andQq:(NSString *)qq andEmail:(NSString *)email andMemo:(NSString *)memo andMobile2:(NSString *)mobile2 andParentId:(NSString *)parent_id andPhoto:(NSString *)photo andCommunityId:(NSString *)community_id andToken:(NSString *)token{
     
-    return [self XEEWebService:[NSString stringWithFormat:@"<web:modifyUser><web:json>{\"is_photo_edit\":\"%@\",\"name\":\"%@\",\"sex\":\"%@\",\"birthday\":\"%@\",\"identify_id\":\"%@\",\"mobile\":\"%@\",\"addr\":\"%@\",\"qq\":\"%@\",\"email\":\"%@\",\"memo\":\"%@\",\"mobile2\":\"%@\",\"parent_id\":\"%@\",\"photo\":\"%@\",\"token\":\"%@\"}</web:json></web:modifyUser>",is_photo_edit,name,sex,birthday,identify_id,mobile,addr,qq,email,memo,mobile2,parent_id,photo,token]];
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:modifyUser><web:json>{\"is_photo_edit\":\"%@\",\"name\":\"%@\",\"sex\":\"%@\",\"birthday\":\"%@\",\"identify_id\":\"%@\",\"mobile\":\"%@\",\"addr\":\"%@\",\"qq\":\"%@\",\"email\":\"%@\",\"memo\":\"%@\",\"mobile2\":\"%@\",\"parent_id\":\"%@\",\"photo\":\"%@\",\"community_id\":\"%@\",\"token\":\"%@\"}</web:json></web:modifyUser>",is_photo_edit,name,sex,birthday,identify_id,mobile,addr,qq,email,memo,mobile2,parent_id,photo,community_id,token]];
 }
 
 /**
