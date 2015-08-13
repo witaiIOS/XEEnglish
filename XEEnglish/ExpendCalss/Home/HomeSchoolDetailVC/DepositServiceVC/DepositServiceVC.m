@@ -42,8 +42,32 @@
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.tableFooterView = [self tableFooterView];
     
     [self.view addSubview:self.tableView];
+}
+
+#pragma mark - Set UITableFootView
+- (UIView *)tableFooterView{
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 200)];
+    view.backgroundColor = [UIColor clearColor];
+    
+    UIButton *commitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [commitBtn setFrame:CGRectMake(20, 20, kScreenWidth-40, 40)];
+    [commitBtn setTitle:@"立即申请" forState:UIControlStateNormal];
+    [commitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [commitBtn setBackgroundColor:[UIColor orangeColor]];
+    [commitBtn addTarget:self action:@selector(commitBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    commitBtn.layer.cornerRadius = 4.0;
+    
+    [view addSubview:commitBtn];
+    
+    return view;
+}
+
+- (void)commitBtnAction{
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -158,7 +182,7 @@
         return 3.0f;
     }
     else{
-        return 1.0f;
+        return 0.1f;
     }
 }
 - (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
