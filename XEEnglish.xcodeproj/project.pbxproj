@@ -121,6 +121,8 @@
 		09C8C1D21B53575C000E089F /* NearSchoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C8C1D11B53575C000E089F /* NearSchoolCell.xib */; };
 		09C9438D1B7C3EBF00A49CDE /* SetCommunityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9438C1B7C3EBF00A49CDE /* SetCommunityVC.m */; };
 		09C943901B7C3EE400A49CDE /* SetCommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9438F1B7C3EE400A49CDE /* SetCommunityCell.m */; };
+		09C943941B7C7AA900A49CDE /* SetInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C943921B7C7AA900A49CDE /* SetInfoVC.m */; };
+		09C943951B7C7AA900A49CDE /* SetInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C943931B7C7AA900A49CDE /* SetInfoVC.xib */; };
 		09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */; };
 		09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */; };
 		09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDB1B1EDD3E00ABC885 /* select_flag.png */; };
@@ -542,6 +544,9 @@
 		09C9438C1B7C3EBF00A49CDE /* SetCommunityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCommunityVC.m; sourceTree = "<group>"; };
 		09C9438E1B7C3EE400A49CDE /* SetCommunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCommunityCell.h; sourceTree = "<group>"; };
 		09C9438F1B7C3EE400A49CDE /* SetCommunityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCommunityCell.m; sourceTree = "<group>"; };
+		09C943911B7C7AA900A49CDE /* SetInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetInfoVC.h; sourceTree = "<group>"; };
+		09C943921B7C7AA900A49CDE /* SetInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetInfoVC.m; sourceTree = "<group>"; };
+		09C943931B7C7AA900A49CDE /* SetInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetInfoVC.xib; sourceTree = "<group>"; };
 		09C95CD71B1EDD2800ABC885 /* LXSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSegmentView.h; sourceTree = "<group>"; };
 		09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegmentView.m; sourceTree = "<group>"; };
 		09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_tab_selected.png; sourceTree = "<group>"; };
@@ -1215,6 +1220,9 @@
 			children = (
 				09C7203C1B79F78E004DC5FB /* DepositServiceVC.h */,
 				09C7203D1B79F78E004DC5FB /* DepositServiceVC.m */,
+				09C943911B7C7AA900A49CDE /* SetInfoVC.h */,
+				09C943921B7C7AA900A49CDE /* SetInfoVC.m */,
+				09C943931B7C7AA900A49CDE /* SetInfoVC.xib */,
 			);
 			path = DepositServiceVC;
 			sourceTree = "<group>";
@@ -2474,6 +2482,7 @@
 				09DB2DB91B1322800078AAF5 /* nav_back.png in Resources */,
 				09CA40901B1C655000D12796 /* ActivityCell.xib in Resources */,
 				09C88A511B676DC800B795C8 /* ic_review_score1_off.png in Resources */,
+				09C943951B7C7AA900A49CDE /* SetInfoVC.xib in Resources */,
 				09C9C0E51B22C890001BBA1C /* STset.png in Resources */,
 				09C8C1D21B53575C000E089F /* NearSchoolCell.xib in Resources */,
 				C97C38441B7066C900DD2F23 /* no_login_photo.png in Resources */,
@@ -2555,6 +2564,7 @@
 				09C95ECE1B284225000972D8 /* CitiesVC.m in Sources */,
 				A6284D451B105E5600EFF820 /* AFHTTPRequestOperation.m in Sources */,
 				A6B1CEDD1B1C62D400100E9F /* PersonImageTVC.m in Sources */,
+				09C943941B7C7AA900A49CDE /* SetInfoVC.m in Sources */,
 				09C809C71B6B061B00C3B856 /* CoursePhotoLookVC.m in Sources */,
 				09CB134E1B6617EA0012F5E5 /* ListenPayCourseVC.m in Sources */,
 				A6284D601B105E5600EFF820 /* UIImageView+AFNetworking.m in Sources */,

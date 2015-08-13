@@ -9,8 +9,14 @@
 #import "DepositServiceVC.h"
 #import "BaseTVC.h"
 
-@interface DepositServiceVC ()<UITableViewDataSource,UITableViewDelegate>
+#import "SetInfoVC.h"
+
+@interface DepositServiceVC ()<UITableViewDataSource,UITableViewDelegate,SetInfoVCDelegate>
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) NSString *parentName;//家长姓名
+@property (nonatomic, strong) NSString *parentPhone;//家长电话
+@property (nonatomic, strong) NSString *childrenName;//小孩姓名
 @end
 
 @implementation DepositServiceVC
@@ -51,28 +57,31 @@
     
     BaseTVC *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
     if (cell == nil) {
-        cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
+        cell = [[BaseTVC alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse];
         cell.cellEdge = 10;
         cell.textLabel.textColor = [UIColor blackColor];
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.detailTextLabel.textColor = [UIColor darkGrayColor];
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     switch (indexPath.section) {
         case 0:
         {
             cell.textLabel.text = @"家长姓名";
+            cell.detailTextLabel.text = self.parentName;
             break;
         }
         case 1:
         {
             cell.textLabel.text = @"家长电话";
+            cell.detailTextLabel.text = self.parentPhone;
             break;
         }
         case 2:
         {
             cell.textLabel.text = @"小孩姓名";
+            cell.detailTextLabel.text = self.childrenName;
             break;
         }
         case 3:
@@ -97,6 +106,31 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0) {
+        SetInfoVC *vc = [[SetInfoVC alloc] init];
+        vc.nTitle = @"设置家长姓名";
+        vc.nplaceholder = @"请输入家长姓名";
+        vc.index = @"ParentName";
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (indexPath.section == 1){
+        SetInfoVC *vc = [[SetInfoVC alloc] init];
+        vc.nTitle = @"设置家长电话";
+        vc.nplaceholder = @"请输入家长电话";
+        vc.index = @"ParentPhone";
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (indexPath.section == 2){
+        SetInfoVC *vc = [[SetInfoVC alloc] init];
+        vc.nTitle = @"设置小孩姓名";
+        vc.nplaceholder = @"请输入小孩姓名";
+        vc.index = @"ChildrenName";
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -114,6 +148,18 @@
 - (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
     return 1.0f;
+}
+#pragma mark - SetInfoVCDelegate
+- (void)SetInfoVCInputInfo:(id)sender index:(NSInteger)index{
+    if (index == 0) {
+        self.parentName = sender;
+    }else if (index == 1){
+        self.parentPhone = sender;
+    }
+    else if (index ==2){
+        self.childrenName = sender;
+    }
+    [self.tableView reloadData];
 }
 
 @end
