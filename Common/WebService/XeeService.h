@@ -156,6 +156,16 @@
 - (void)getCourseDetailAndTopCommentListByCourseId:(NSString *)course_id andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void(^)(NSDictionary *result, NSError *error))block;
 
 /**
+ 通过课程id，获取补课课表安排
+ @param parent_id 注册id
+ @param course_id 课程id
+ @param course_id 注册id
+ @param course_id 注册id
+ @param course_id 注册id
+ */
+- (void)getMakeupLessionListByCourseIdWithToken:(NSString *)token andParentId:(NSString *)parent_id andCourseId:(NSString *)course_id andCreateTime:(NSString *)create_time andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void(^)(NSDictionary *result, NSError *error))block;
+
+/**
  托管申请
  @param student_name    学生姓名
  @param parent_name     家长姓名

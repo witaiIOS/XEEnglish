@@ -381,6 +381,24 @@
     }];
 }
 
+/**
+ 通过课程id，获取补课课表安排
+ @param parent_id 注册id
+ @param course_id 课程id
+ @param course_id 注册id
+ @param course_id 注册id
+ @param course_id 注册id
+ */
+- (void)getMakeupLessionListByCourseIdWithToken:(NSString *)token andParentId:(NSString *)parent_id andCourseId:(NSString *)course_id andCreateTime:(NSString *)create_time andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getMakeupLessionListByCourseIdWithToken:token andParentId:parent_id andCourseId:course_id andCreateTime:create_time andPageSize:pageSize andPageIndex:pageIndex];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetMakeupLessionListByCourseIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
 
 /**
  托管申请
