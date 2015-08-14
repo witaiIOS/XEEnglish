@@ -215,6 +215,14 @@
 
 
 /**
+ 通过学号，获取选课列表
+ @param parent_id    注册id
+ @param student_id   学生id
+ @param token
+ */
++ (AFHTTPRequestOperation *)getSubcourseCourseListByStudentIdWithParentId:(NSString *)parent_id  andStudentId:(NSString *)student_id andToken:(NSString *)token;
+
+/**
  请假/家长评论   type取值 0 请假 1评论
  @param parent_id    注册id
  @param relation_id  课表id

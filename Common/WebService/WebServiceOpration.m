@@ -283,6 +283,18 @@
     return [self XEEWebService:[NSString stringWithFormat:@"<web:GetVStudentCourseByParentId><web:json>{\"parent_id\":\"%@\",\"token\":\"%@\"}</web:json></web:GetVStudentCourseByParentId>",parent_id,token]];
 }
 
+
+/**
+ 通过学号，获取选课列表
+ @param parent_id    注册id
+ @param student_id   学生id
+ @param token
+ */
++ (AFHTTPRequestOperation *)getSubcourseCourseListByStudentIdWithParentId:(NSString *)parent_id  andStudentId:(NSString *)student_id andToken:(NSString *)token{
+    
+    return [self XEEWebService:[NSString stringWithFormat:@"<web:GetSubcourseCourseListByStudentId><web:json>{\"parent_id\": \"%@\",\"student_id\":\"%@\",\"token\": \"%@\"}</web:json></web:GetSubcourseCourseListByStudentId>",parent_id,student_id,token]];
+}
+
 /**
  通过student_id学员id，获取课程计划签到信息分页(获取请假/缺课列表 共用)
  */

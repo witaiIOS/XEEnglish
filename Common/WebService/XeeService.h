@@ -189,6 +189,14 @@
 - (void)getVStudentCourseByParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block;
 
 /**
+ 通过学号，获取选课列表
+ @param parent_id    注册id
+ @param student_id   学生id
+ @param token
+ */
+- (void)getSubcourseCourseListByStudentIdWithParentId:(NSString *)parent_id  andStudentId:(NSString *)student_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block;
+
+/**
  通过student_id学员id，获取课程计划签到信息分页(获取请假/缺课列表 共用)
  @param parent_id 注册id
  @param StudentId 学生id

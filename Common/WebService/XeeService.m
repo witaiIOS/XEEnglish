@@ -441,6 +441,23 @@
 }
 
 /**
+ 通过学号，获取选课列表
+ @param parent_id    注册id
+ @param student_id   学生id
+ @param token
+ */
+- (void)getSubcourseCourseListByStudentIdWithParentId:(NSString *)parent_id  andStudentId:(NSString *)student_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
+    
+    AFHTTPRequestOperation *operation = [WebServiceOpration getSubcourseCourseListByStudentIdWithParentId:parent_id andStudentId:student_id andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"GetSubcourseCourseListByStudentIdResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
+/**
  通过student_id学员id，获取课程计划签到信息分页(获取请假/缺课列表 共用)
  */
 - (void)getVStudentSourseScheduleSignWithParentId:(NSString *)parent_id andStudentId:(NSString *)student_id andCourseId:(NSString *)course_id andSignon:(NSString *)is_signon andSort:(NSString *)sort andOrder:(NSString *)order andPageSize:(NSInteger )pageSize andPageIndex:(NSInteger )pageIndex andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result,NSError *error))block{
