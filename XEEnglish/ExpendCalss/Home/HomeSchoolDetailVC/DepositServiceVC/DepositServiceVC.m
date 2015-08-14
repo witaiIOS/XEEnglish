@@ -28,10 +28,10 @@
 @property (nonatomic, strong) NSString *parentName;//家长姓名
 @property (nonatomic, strong) NSString *parentPhone;//家长电话
 @property (nonatomic, strong) NSString *childrenName;//小孩姓名
-@property (nonatomic, strong) NSString *isTransfer;//是否接送
+@property (nonatomic, strong) NSDictionary *isTransferDic;//是否接送
 @property (nonatomic, strong) NSString *transferReceiveTime;//接宝宝时间
 @property (nonatomic, strong) NSString *transferSendTime;//送宝宝时间
-@property (nonatomic, strong) NSString *depositStype;//托管方式
+@property (nonatomic, strong) NSDictionary *depositStypeDic;//托管方式
 @property (nonatomic, strong) NSString *depositStartTime;//托管开始时间
 @property (nonatomic, strong) NSString *depositEndTime;//托管结束时间
 @end
@@ -52,9 +52,11 @@
     
     [super initUI];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     //初始化
-    self.isTransfer = @"否";
-    self.depositStype = @"半托";
+    self.isTransferDic = @{@"typeId":@"0",@"type":@"否"};
+    self.depositStypeDic = @{@"typeId":@"0",@"type":@"半托"};
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
@@ -111,23 +113,23 @@
         NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
         NSDictionary *userInfoDic = userDic[uUserInfoKey];
         
-        //is_transfer 1接送 0不接送
-        NSInteger isTransferInt = 0;
-        if ([self.isTransfer isEqualToString:@"是"]) {
-            isTransferInt = 1;
-        }
-        //type 1全托0半托
-        NSInteger depositStypeInt = 0;
-        if ([self.depositStype isEqualToString:@"全托"]) {
-            depositStypeInt = 1;
-        }
+//        //is_transfer 1接送 0不接送
+//        NSInteger isTransferInt = 0;
+//        if ([self.isTransfer isEqualToString:@"是"]) {
+//            isTransferInt = 1;
+//        }
+//        //type 1全托0半托
+//        NSInteger depositStypeInt = 0;
+//        if ([self.depositStype isEqualToString:@"全托"]) {
+//            depositStypeInt = 1;
+//        }
         
         NSString *niceParentName = [self.parentName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
         NSString *niceChildrenName = [self.childrenName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
         [self showHudWithMsg:@"上传中..."];
-        [[XeeService sharedInstance] addTrustByStudentName:niceChildrenName andParentName:niceParentName andMobile:self.parentPhone andType:depositStypeInt andStartTime:self.depositStartTime andEndTime:self.depositEndTime andIsTransfer:isTransferInt andReceiveTime:self.transferReceiveTime andSendTime:self.transferSendTime andDepartmentId:self.schoolInfoDic[@"department_id"] andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+        [[XeeService sharedInstance] addTrustByStudentName:niceChildrenName andParentName:niceParentName andMobile:self.parentPhone andType:[self.depositStypeDic[@"typeId"] integerValue] andStartTime:self.depositStartTime andEndTime:self.depositEndTime andIsTransfer:[self.isTransferDic[@"typeId"] integerValue] andReceiveTime:self.transferReceiveTime andSendTime:self.transferSendTime andDepartmentId:self.schoolInfoDic[@"department_id"] andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
             [self hideHud];
             if (!error) {
                 NSNumber *isResult = result[@"result"];
@@ -197,7 +199,7 @@
         case 3:
         {
             cell.textLabel.text = @"是否接送";
-            cell.detailTextLabel.text = self.isTransfer;
+            cell.detailTextLabel.text = self.isTransferDic[@"type"];
             break;
         }
         case 4:
@@ -215,7 +217,7 @@
         case 6:
         {
             cell.textLabel.text = @"托管类型";
-            cell.detailTextLabel.text = self.depositStype;
+            cell.detailTextLabel.text = self.depositStypeDic[@"type"];
             break;
         }
         case 7:
@@ -271,7 +273,7 @@
         DepositStypeVC *vc = [[DepositStypeVC alloc] init];
         vc.nTitle = @"是否接送";
         vc.index = IsTransfer;
-        vc.selectedStype = self.isTransfer;
+        vc.selectedStype = self.isTransferDic[@"type"];
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -293,7 +295,7 @@
         DepositStypeVC *vc = [[DepositStypeVC alloc] init];
         vc.nTitle = @"托管类型";
         vc.index = DepositStype;
-        vc.selectedStype = self.depositStype;
+        vc.selectedStype = self.depositStypeDic[@"type"];
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -345,11 +347,11 @@
 #pragma mark - DepositStypeVCDelegate
 - (void)DepositStypeVCSelectedDepositStype:(id)sender index:(NSString *)index{
     if ([index isEqualToString:IsTransfer]) {
-        self.isTransfer = sender;
+        self.isTransferDic = sender;
         
     }
     else if ([index isEqualToString:DepositStype]){
-        self.depositStype = sender;
+        self.depositStypeDic = sender;
     }
     [self.tableView reloadData];
 }

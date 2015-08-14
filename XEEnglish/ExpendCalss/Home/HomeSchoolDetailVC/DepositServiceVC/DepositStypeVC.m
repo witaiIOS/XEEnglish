@@ -33,10 +33,10 @@
     [super initUI];
     
     if ([_index isEqualToString:IsTransfer]) {
-        self.stypeArray = @[@"是",@"否"];
+        self.stypeArray = @[@{@"typeId":@"1",@"type":@"是"},@{@"typeId":@"0",@"type":@"否"}];
     }
     else if ([_index isEqualToString:DepositStype]){
-        self.stypeArray = @[@"半托",@"全托"];
+        self.stypeArray = @[@{@"typeId":@"1",@"type":@"全托"},@{@"typeId":@"0",@"type":@"半托"}];
     }
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
@@ -61,8 +61,8 @@
         cell = [[DepositStypeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
         cell.cellEdge = 10;
     }
-    
-    cell.stypeLabel.text = self.stypeArray[indexPath.section];
+    NSDictionary *typeDic = self.stypeArray[indexPath.section];
+    cell.stypeLabel.text = typeDic[@"type"];
     if ([self.selectedStype isEqualToString:cell.stypeLabel.text]) {
         cell.selectImageView.highlighted = YES;
     }
