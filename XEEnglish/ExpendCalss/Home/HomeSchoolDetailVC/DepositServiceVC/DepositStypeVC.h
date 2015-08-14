@@ -10,10 +10,13 @@
 @protocol DepositStypeVCDelegate <NSObject>
 
 @optional
-- (void)DepositStypeVCSelectedDepositStype:(id) sender;
+- (void)DepositStypeVCSelectedDepositStype:(id) sender index:(NSString *)index;
 
 @end
 @interface DepositStypeVC : BaseVC
+@property (strong, nonatomic) NSString *nTitle;
+@property (strong, nonatomic) NSString *index;//公共界面，标记更改哪个cell
+
 @property (nonatomic, strong) NSString *selectedStype;
 
 @property (nonatomic, assign) id<DepositStypeVCDelegate>delegate;

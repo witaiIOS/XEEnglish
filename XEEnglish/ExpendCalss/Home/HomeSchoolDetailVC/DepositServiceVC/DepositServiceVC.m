@@ -5,6 +5,13 @@
 //  Created by houjing on 15/8/11.
 //  Copyright (c) 2015年 lixiang. All rights reserved.
 //
+#define IsTransfer   @"IsTransfer"  //是否接送
+#define DepositStype @"DepositStype"  //托管类型
+
+#define TransferReceiveTime  @"TransferReceiveTime"
+#define TransferSendTime     @"TransferSendTime"
+#define DepositStartTime     @"DepositStartTime"
+#define DepositEndTime       @"DepositEndTime"
 
 #import "DepositServiceVC.h"
 #import "BaseTVC.h"
@@ -19,8 +26,12 @@
 @property (nonatomic, strong) NSString *parentName;//家长姓名
 @property (nonatomic, strong) NSString *parentPhone;//家长电话
 @property (nonatomic, strong) NSString *childrenName;//小孩姓名
+@property (nonatomic, strong) NSString *isTransfer;//是否接送
+@property (nonatomic, strong) NSString *transferReceiveTime;//接宝宝时间
+@property (nonatomic, strong) NSString *transferSendTime;//送宝宝时间
 @property (nonatomic, strong) NSString *depositStype;//托管方式
-@property (nonatomic, strong) NSString *depositTime;//托管时间
+@property (nonatomic, strong) NSString *depositStartTime;//托管开始时间
+@property (nonatomic, strong) NSString *depositEndTime;//托管结束时间
 @end
 
 @implementation DepositServiceVC
@@ -73,10 +84,10 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 5;
+    return 1;
 }
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return 9;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -93,7 +104,7 @@
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    switch (indexPath.section) {
+    switch (indexPath.row) {
         case 0:
         {
             cell.textLabel.text = @"家长姓名";
@@ -114,14 +125,38 @@
         }
         case 3:
         {
-            cell.textLabel.text = @"托管类型";
-            cell.detailTextLabel.text = self.depositStype;
+            cell.textLabel.text = @"是否接送";
+            cell.detailTextLabel.text = self.isTransfer;
             break;
         }
         case 4:
         {
-            cell.textLabel.text = @"托管时间";
-            cell.detailTextLabel.text = self.depositTime;
+            cell.textLabel.text = @"接宝宝时间";
+            cell.detailTextLabel.text = self.transferReceiveTime;
+            break;
+        }
+        case 5:
+        {
+            cell.textLabel.text = @"送宝宝时间";
+            cell.detailTextLabel.text = self.transferSendTime;
+            break;
+        }
+        case 6:
+        {
+            cell.textLabel.text = @"托管类型";
+            cell.detailTextLabel.text = self.depositStype;
+            break;
+        }
+        case 7:
+        {
+            cell.textLabel.text = @"托管开始时间";
+            cell.detailTextLabel.text = self.depositStartTime;
+            break;
+        }
+        case 8:
+        {
+            cell.textLabel.text = @"托管结束时间";
+            cell.detailTextLabel.text = self.depositEndTime;
             break;
         }
             
@@ -137,7 +172,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 0) {
+    if (indexPath.row == 0) {
         SetInfoVC *vc = [[SetInfoVC alloc] init];
         vc.nTitle = @"设置家长姓名";
         vc.nplaceholder = @"请输入家长姓名";
@@ -145,7 +180,7 @@
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    else if (indexPath.section == 1){
+    else if (indexPath.row == 1){
         SetInfoVC *vc = [[SetInfoVC alloc] init];
         vc.nTitle = @"设置家长电话";
         vc.nplaceholder = @"请输入家长电话";
@@ -153,7 +188,7 @@
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    else if (indexPath.section == 2){
+    else if (indexPath.row == 2){
         SetInfoVC *vc = [[SetInfoVC alloc] init];
         vc.nTitle = @"设置小孩姓名";
         vc.nplaceholder = @"请输入小孩姓名";
@@ -161,13 +196,45 @@
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    else if (indexPath.section == 3){
+    else if (indexPath.row == 3){
         DepositStypeVC *vc = [[DepositStypeVC alloc] init];
+        vc.nTitle = @"是否接送";
+        vc.index = IsTransfer;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    else if (indexPath.section == 4){
+    else if (indexPath.row == 4){
         DepositTimeVC *vc = [[DepositTimeVC alloc] init];
+        vc.nTitle = @"接宝宝时间";
+        vc.index = TransferReceiveTime;
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (indexPath.row == 5){
+        DepositTimeVC *vc = [[DepositTimeVC alloc] init];
+        vc.nTitle = @"送宝宝时间";
+        vc.index = TransferSendTime;
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (indexPath.row == 6){
+        DepositStypeVC *vc = [[DepositStypeVC alloc] init];
+        vc.nTitle = @"托管类型";
+        vc.index = DepositStype;
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (indexPath.row == 7){
+        DepositTimeVC *vc = [[DepositTimeVC alloc] init];
+        vc.nTitle = @"托管开始时间";
+        vc.index = DepositStartTime;
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (indexPath.row == 8){
+        DepositTimeVC *vc = [[DepositTimeVC alloc] init];
+        vc.nTitle = @"托管结束时间";
+        vc.index = DepositEndTime;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -203,14 +270,31 @@
 }
 
 #pragma mark - DepositStypeVCDelegate
-- (void)DepositStypeVCSelectedDepositStype:(id)sender{
-    self.depositStype = sender;
+- (void)DepositStypeVCSelectedDepositStype:(id)sender index:(NSString *)index{
+    if ([index isEqualToString:IsTransfer]) {
+        self.isTransfer = sender;
+    }
+    else if ([index isEqualToString:DepositStype]){
+        self.depositStype = sender;
+    }
     [self.tableView reloadData];
 }
 
 #pragma mark - DepositTimeVCDelegate
-- (void)DepositTimeVCSetTime:(id)sender{
-    self.depositTime = sender;
+- (void)DepositTimeVCSetTime:(id)sender index:(NSString *)index{
+    if ([index isEqualToString:TransferReceiveTime]) {
+        self.transferReceiveTime = sender;
+    }
+    else if ([index isEqualToString:TransferSendTime]){
+        self.transferSendTime = sender;
+    }
+    else if ([index isEqualToString:DepositStartTime]){
+        self.depositStartTime = sender;
+    }
+    else if ([index isEqualToString:DepositEndTime]){
+        self.depositEndTime = sender;
+    }
+    
     [self.tableView reloadData];
     
 }

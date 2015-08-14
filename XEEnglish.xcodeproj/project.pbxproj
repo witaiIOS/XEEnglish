@@ -119,14 +119,14 @@
 		09C8C1CD1B535439000E089F /* NearSchoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C8C1CC1B535439000E089F /* NearSchoolVC.m */; };
 		09C8C1D01B535743000E089F /* NearSchoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C8C1CF1B535743000E089F /* NearSchoolCell.m */; };
 		09C8C1D21B53575C000E089F /* NearSchoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C8C1D11B53575C000E089F /* NearSchoolCell.xib */; };
+		09C8F47A1B7DDD1A00A30BF8 /* DepositTimeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C8F4781B7DDD1A00A30BF8 /* DepositTimeVC.m */; };
+		09C8F47B1B7DDD1A00A30BF8 /* DepositTimeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C8F4791B7DDD1A00A30BF8 /* DepositTimeVC.xib */; };
 		09C9438D1B7C3EBF00A49CDE /* SetCommunityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9438C1B7C3EBF00A49CDE /* SetCommunityVC.m */; };
 		09C943901B7C3EE400A49CDE /* SetCommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9438F1B7C3EE400A49CDE /* SetCommunityCell.m */; };
 		09C943941B7C7AA900A49CDE /* SetInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C943921B7C7AA900A49CDE /* SetInfoVC.m */; };
 		09C943951B7C7AA900A49CDE /* SetInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C943931B7C7AA900A49CDE /* SetInfoVC.xib */; };
 		09C943981B7C884F00A49CDE /* DepositStypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C943971B7C884F00A49CDE /* DepositStypeVC.m */; };
 		09C9439B1B7C889D00A49CDE /* DepositStypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9439A1B7C889D00A49CDE /* DepositStypeCell.m */; };
-		09C9439F1B7C901500A49CDE /* DepositTimeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9439D1B7C901500A49CDE /* DepositTimeVC.m */; };
-		09C943A01B7C901500A49CDE /* DepositTimeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C9439E1B7C901500A49CDE /* DepositTimeVC.xib */; };
 		09C95CD91B1EDD2800ABC885 /* LXSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */; };
 		09C95CDC1B1EDD3E00ABC885 /* bg_tab_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */; };
 		09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C95CDB1B1EDD3E00ABC885 /* select_flag.png */; };
@@ -544,6 +544,9 @@
 		09C8C1CE1B535743000E089F /* NearSchoolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearSchoolCell.h; sourceTree = "<group>"; };
 		09C8C1CF1B535743000E089F /* NearSchoolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearSchoolCell.m; sourceTree = "<group>"; };
 		09C8C1D11B53575C000E089F /* NearSchoolCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearSchoolCell.xib; sourceTree = "<group>"; };
+		09C8F4771B7DDD1A00A30BF8 /* DepositTimeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositTimeVC.h; sourceTree = "<group>"; };
+		09C8F4781B7DDD1A00A30BF8 /* DepositTimeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositTimeVC.m; sourceTree = "<group>"; };
+		09C8F4791B7DDD1A00A30BF8 /* DepositTimeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepositTimeVC.xib; sourceTree = "<group>"; };
 		09C9438B1B7C3EBF00A49CDE /* SetCommunityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCommunityVC.h; sourceTree = "<group>"; };
 		09C9438C1B7C3EBF00A49CDE /* SetCommunityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCommunityVC.m; sourceTree = "<group>"; };
 		09C9438E1B7C3EE400A49CDE /* SetCommunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCommunityCell.h; sourceTree = "<group>"; };
@@ -555,9 +558,6 @@
 		09C943971B7C884F00A49CDE /* DepositStypeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositStypeVC.m; sourceTree = "<group>"; };
 		09C943991B7C889D00A49CDE /* DepositStypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositStypeCell.h; sourceTree = "<group>"; };
 		09C9439A1B7C889D00A49CDE /* DepositStypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositStypeCell.m; sourceTree = "<group>"; };
-		09C9439C1B7C901500A49CDE /* DepositTimeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositTimeVC.h; sourceTree = "<group>"; };
-		09C9439D1B7C901500A49CDE /* DepositTimeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositTimeVC.m; sourceTree = "<group>"; };
-		09C9439E1B7C901500A49CDE /* DepositTimeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepositTimeVC.xib; sourceTree = "<group>"; };
 		09C95CD71B1EDD2800ABC885 /* LXSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSegmentView.h; sourceTree = "<group>"; };
 		09C95CD81B1EDD2800ABC885 /* LXSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSegmentView.m; sourceTree = "<group>"; };
 		09C95CDA1B1EDD3E00ABC885 /* bg_tab_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_tab_selected.png; sourceTree = "<group>"; };
@@ -1238,9 +1238,9 @@
 				09C943971B7C884F00A49CDE /* DepositStypeVC.m */,
 				09C943991B7C889D00A49CDE /* DepositStypeCell.h */,
 				09C9439A1B7C889D00A49CDE /* DepositStypeCell.m */,
-				09C9439C1B7C901500A49CDE /* DepositTimeVC.h */,
-				09C9439D1B7C901500A49CDE /* DepositTimeVC.m */,
-				09C9439E1B7C901500A49CDE /* DepositTimeVC.xib */,
+				09C8F4771B7DDD1A00A30BF8 /* DepositTimeVC.h */,
+				09C8F4781B7DDD1A00A30BF8 /* DepositTimeVC.m */,
+				09C8F4791B7DDD1A00A30BF8 /* DepositTimeVC.xib */,
 			);
 			path = DepositServiceVC;
 			sourceTree = "<group>";
@@ -2441,7 +2441,7 @@
 				09C9C0E71B22D252001BBA1C /* SThead.png in Resources */,
 				09C95CDD1B1EDD3E00ABC885 /* select_flag.png in Resources */,
 				A6DA3E261B44D919005850EB /* UMSLoginViewController.xib in Resources */,
-				09C943A01B7C901500A49CDE /* DepositTimeVC.xib in Resources */,
+				09C8F47B1B7DDD1A00A30BF8 /* DepositTimeVC.xib in Resources */,
 				09C3285E1B301370009F0BAB /* CourseCell.xib in Resources */,
 				A6284D7C1B10615200EFF820 /* nav_backButtonBg.png in Resources */,
 				09DB2DCD1B1322AF0078AAF5 /* accountDetail03@2x.png in Resources */,
@@ -2686,7 +2686,7 @@
 				09CA69181B1FFC8200A31E0E /* CouponsVC.m in Sources */,
 				09D0BD441B620C0F0074D1A3 /* PayListeningVC.m in Sources */,
 				A6284D5E1B105E5600EFF820 /* UIAlertView+AFNetworking.m in Sources */,
-				09C9439F1B7C901500A49CDE /* DepositTimeVC.m in Sources */,
+				09C8F47A1B7DDD1A00A30BF8 /* DepositTimeVC.m in Sources */,
 				093A58781B4398F2006F104D /* ApplyProtocolVC.m in Sources */,
 				A6284D4E1B105E5600EFF820 /* DDXMLElementAdditions.m in Sources */,
 				A6284D461B105E5600EFF820 /* AFHTTPRequestOperationManager.m in Sources */,

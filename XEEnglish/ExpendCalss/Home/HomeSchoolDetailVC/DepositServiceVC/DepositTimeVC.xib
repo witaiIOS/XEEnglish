@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DepositTimeVC">
             <connections>
-                <outlet property="setDepositTimeDP" destination="sN1-kw-o1D" id="dp5-rM-lqy"/>
+                <outlet property="setDepositTimeDP" destination="Qu2-3V-wvz" id="pUy-Mn-swF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,18 +16,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="sN1-kw-o1D">
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="Qu2-3V-wvz">
                     <rect key="frame" x="0.0" y="90" width="320" height="200"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <date key="date" timeIntervalSinceReferenceDate="461148335.51772499">
-                        <!--2015-08-13 08:45:35 +0000-->
+                    <date key="date" timeIntervalSinceReferenceDate="461233479.48727602">
+                        <!--2015-08-14 08:24:39 +0000-->
                     </date>
                     <locale key="locale" localeIdentifier="zh_CN"/>
                     <connections>
-                        <action selector="setDepositTime:" destination="-1" eventType="valueChanged" id="sof-Nx-r7C"/>
+                        <action selector="setDepositTime:" destination="-1" eventType="valueChanged" id="jZ5-vM-i0M"/>
                     </connections>
                 </datePicker>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="42W-QI-8sE">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2eI-Y1-8bo">
                     <rect key="frame" x="20" y="310" width="280" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="0.48263922009999999" blue="0.1546600128" alpha="1" colorSpace="calibratedRGB"/>
@@ -37,7 +37,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="keepBtn:" destination="-1" eventType="touchUpInside" id="VcJ-kd-xmL"/>
+                        <action selector="keepBtn:" destination="-1" eventType="touchUpInside" id="HVc-wr-ipB"/>
                     </connections>
                 </button>
             </subviews>

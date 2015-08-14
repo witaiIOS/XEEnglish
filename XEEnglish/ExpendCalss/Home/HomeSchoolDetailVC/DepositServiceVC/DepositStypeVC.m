@@ -5,6 +5,8 @@
 //  Created by houjing on 15/8/13.
 //  Copyright (c) 2015年 lixiang. All rights reserved.
 //
+#define IsTransfer   @"IsTransfer"  //是否接送
+#define DepositStype @"DepositStype"  //托管类型
 
 #import "DepositStypeVC.h"
 #import "DepositStypeCell.h"
@@ -19,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"选择托管方式";
+    self.title = _nTitle;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,7 +32,12 @@
 - (void)initUI{
     [super initUI];
     
-    self.stypeArray = @[@"临时托管",@"长期托管"];
+    if ([_index isEqualToString:IsTransfer]) {
+        self.stypeArray = @[@"是",@"否"];
+    }
+    else if ([_index isEqualToString:DepositStype]){
+        self.stypeArray = @[@"半托",@"全托"];
+    }
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
@@ -64,7 +71,7 @@
     
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    [self.delegate DepositStypeVCSelectedDepositStype:self.stypeArray[indexPath.section]];
+    [self.delegate DepositStypeVCSelectedDepositStype:self.stypeArray[indexPath.section] index:_index];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
