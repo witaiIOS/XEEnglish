@@ -20,6 +20,8 @@
 #import "DepositStypeVC.h"
 #import "DepositTimeVC.h"
 
+#import "XeeService.h"
+
 @interface DepositServiceVC ()<UITableViewDataSource,UITableViewDelegate,SetInfoVCDelegate,DepositStypeVCDelegate,DepositTimeVCDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -82,6 +84,71 @@
 }
 
 - (void)commitBtnAction{
+    
+    if (self.parentName == nil) {
+        [UIFactory showAlert:@"请填写家长姓名"];
+    }
+    else if (self.parentPhone == nil){
+        [UIFactory showAlert:@"请填写家长电话"];
+    }
+    else if (self.childrenName == nil){
+        [UIFactory showAlert:@"请填写小孩姓名"];
+    }
+    else if (self.transferReceiveTime == nil){
+        [UIFactory showAlert:@"请填写接宝宝时间"];
+    }
+    else if (self.transferSendTime == nil){
+        [UIFactory showAlert:@"请填写送宝宝时间"];
+    }
+    else if (self.depositStartTime == nil){
+        [UIFactory showAlert:@"请填写托管开始时间"];
+    }
+    else if (self.depositEndTime == nil){
+        [UIFactory showAlert:@"请填写托管结束时间"];
+    }
+    //还差一个判断两个时间的方法
+    else{
+        NSDictionary *userDic = [[UserInfo sharedUser] getUserInfoDic];
+        NSDictionary *userInfoDic = userDic[uUserInfoKey];
+        
+        //is_transfer 1接送 0不接送
+        NSInteger isTransferInt = 0;
+        if ([self.isTransfer isEqualToString:@"是"]) {
+            isTransferInt = 1;
+        }
+        //type 1全托0半托
+        NSInteger depositStypeInt = 0;
+        if ([self.depositStype isEqualToString:@"全托"]) {
+            depositStypeInt = 1;
+        }
+        
+        NSString *niceParentName = [self.parentName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        NSString *niceChildrenName = [self.childrenName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        [self showHudWithMsg:@"上传中..."];
+        [[XeeService sharedInstance] addTrustByStudentName:niceChildrenName andParentName:niceParentName andMobile:self.parentPhone andType:depositStypeInt andStartTime:self.depositStartTime andEndTime:self.depositEndTime andIsTransfer:isTransferInt andReceiveTime:self.transferReceiveTime andSendTime:self.transferSendTime andDepartmentId:self.schoolInfoDic[@"department_id"] andParentId:userInfoDic[uUserId] andToken:userInfoDic[uUserToken] andBlock:^(NSDictionary *result, NSError *error) {
+            [self hideHud];
+            if (!error) {
+                NSNumber *isResult = result[@"result"];
+                if (isResult.integerValue == 0) {
+                    [UIFactory showAlert:result[@"resultInfo"]];
+                }else{
+                    [UIFactory showAlert:result[@"resultInfo"]];
+                }
+            }else{
+                [UIFactory showAlert:@"网络错误"];
+            }
+        }];
+        
+        
+        
+        
+        
+        
+    }
+    
+    
     
 }
 
@@ -279,6 +346,7 @@
 - (void)DepositStypeVCSelectedDepositStype:(id)sender index:(NSString *)index{
     if ([index isEqualToString:IsTransfer]) {
         self.isTransfer = sender;
+        
     }
     else if ([index isEqualToString:DepositStype]){
         self.depositStype = sender;

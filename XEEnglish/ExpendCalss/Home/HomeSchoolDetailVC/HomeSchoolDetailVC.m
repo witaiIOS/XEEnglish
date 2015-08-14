@@ -351,6 +351,7 @@
     if (selectBtn.tag == 10) {
         DepositServiceVC *vc = [[DepositServiceVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
+        vc.schoolInfoDic = self.schoolInfoDic;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (selectBtn.tag == 11){

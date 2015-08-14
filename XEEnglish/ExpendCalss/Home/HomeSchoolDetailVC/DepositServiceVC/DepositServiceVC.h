@@ -9,5 +9,5 @@
 #import "BaseVC.h"
 
 @interface DepositServiceVC : BaseVC
-
+@property (nonatomic, strong) NSDictionary *schoolInfoDic;//学校信息
 @end
