@@ -50,6 +50,10 @@
     
     [super initUI];
     
+    //初始化
+    self.isTransfer = @"否";
+    self.depositStype = @"半托";
+    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -200,6 +204,7 @@
         DepositStypeVC *vc = [[DepositStypeVC alloc] init];
         vc.nTitle = @"是否接送";
         vc.index = IsTransfer;
+        vc.selectedStype = self.isTransfer;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -221,6 +226,7 @@
         DepositStypeVC *vc = [[DepositStypeVC alloc] init];
         vc.nTitle = @"托管类型";
         vc.index = DepositStype;
+        vc.selectedStype = self.depositStype;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }

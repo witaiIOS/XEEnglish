@@ -63,6 +63,9 @@
     }
     
     cell.stypeLabel.text = self.stypeArray[indexPath.section];
+    if ([self.selectedStype isEqualToString:cell.stypeLabel.text]) {
+        cell.selectImageView.highlighted = YES;
+    }
     
     return cell;
 }
