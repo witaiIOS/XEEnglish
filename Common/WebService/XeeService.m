@@ -381,6 +381,31 @@
     }];
 }
 
+
+/**
+ 托管申请
+ @param student_name    学生姓名
+ @param parent_name     家长姓名
+ @param mobile          手机号
+ @param type            type 1全托0半托
+ @param start_time      托管开始时间
+ @param end_time        托管结束时间
+ @param is_transfer     is_transfer 1接送 0不接送
+ @param receive_time    接孩子时间
+ @param send_time       送孩子时间
+ @param department_id   校区id
+ @param parent_id       注册id
+ */
+- (void)addTrustByStudentName:(NSString *)student_name andParentName:(NSString *)parent_name andMobile:(NSString *)mobile andType:(NSInteger )type andStartTime:(NSString *)start_time andEndTime:(NSString *)end_time andIsTransfer:(NSInteger )is_transfer andReceiveTime:(NSString *)receive_time andSendTime:(NSString *)send_time andDepartmentId:(NSString *)department_id andParentId:(NSString *)parent_id andToken:(NSString *)token andBlock:(void(^)(NSDictionary *result, NSError *error))block{
+    AFHTTPRequestOperation *operation = [WebServiceOpration addTrustByStudentName:student_name andParentName:parent_name andMobile:mobile andType:type andStartTime:start_time andEndTime:end_time andIsTransfer:is_transfer andReceiveTime:receive_time andSendTime:send_time andDepartmentId:department_id andParentId:parent_id andToken:token];
+    
+    [self getResponseWithOpration:operation andXmlKey:@"AddTrustResult" andBlock:^(NSString *response, NSDictionary *result, NSError *error) {
+        if (block) {
+            block(result,error);
+        }
+    }];
+}
+
 #pragma mark - 课程
 /**
  通过家长id，查找学生选课关系简介列表
