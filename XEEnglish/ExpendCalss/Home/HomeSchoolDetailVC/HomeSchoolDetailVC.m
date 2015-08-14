@@ -346,18 +346,22 @@
 
 #pragma mark - ServiceBtn
 - (void)ServiceBtnClicked:(id)sender{
-    
-    ServiceButton *selectBtn = (ServiceButton *)sender;
-    if (selectBtn.tag == 10) {
-        DepositServiceVC *vc = [[DepositServiceVC alloc] init];
-        vc.hidesBottomBarWhenPushed = YES;
-        vc.schoolInfoDic = self.schoolInfoDic;
-        [self.navigationController pushViewController:vc animated:YES];
+    if (![[UserInfo sharedUser] isLogin]) {
+        [UIFactory showAlert:@"请先登录"];
     }
-    else if (selectBtn.tag == 11){
-        PayListeningVC *vc = [[PayListeningVC alloc] init];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
+    else{
+        ServiceButton *selectBtn = (ServiceButton *)sender;
+        if (selectBtn.tag == 10) {
+            DepositServiceVC *vc = [[DepositServiceVC alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            vc.schoolInfoDic = self.schoolInfoDic;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else if (selectBtn.tag == 11){
+            PayListeningVC *vc = [[PayListeningVC alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
     
 }
